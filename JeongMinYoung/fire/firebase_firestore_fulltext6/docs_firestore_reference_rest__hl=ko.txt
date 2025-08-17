@@ -1,4 +1,4 @@
-Source URL: https://firebase.google.com/docs/firestore/reference/rest?hl=ko
+Source URL: https://firebase.google.com/docs/firestore/reference/rest/?hl=ko
 
 ## 본문
 Accesses the NoSQL document database built for automatic scaling, high performance, and ease of application development.
