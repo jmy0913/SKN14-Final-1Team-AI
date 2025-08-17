@@ -1,0 +1,1178 @@
+Source URL: https://firebase.google.com/docs/firestore/quickstart?hl=ko
+
+## 서문
+이 빠른 시작에서는 Cloud Firestore를 설정하고 데이터를 추가한 후 Firebase Console에서 방금 추가한 데이터를 보는 방법을 보여줍니다.
+
+## Cloud Firestore 데이터베이스 만들기
+Firebase Console에서 프로젝트를 엽니다. 왼쪽 패널에서 빌드를 펼친 다음 Firestore 데이터베이스를 선택합니다.
+
+Firebase Console에서 프로젝트를 엽니다. 왼쪽 패널에서 빌드를 펼친 다음 Firestore 데이터베이스를 선택합니다.
+
+데이터베이스 만들기를 클릭합니다.
+
+데이터베이스 만들기를 클릭합니다.
+
+데이터베이스의 위치를 선택합니다.
+
+위치를 선택할 수 없다면 프로젝트의 '기본 Google Cloud 리소스의 위치'가 이미 설정된 것입니다. 일부 프로젝트 리소스(예: 기본 Cloud Firestore 인스턴스)는 공통 위치 종속 항목을 공유하며, 위치는 프로젝트 생성 중이나 이 위치 종속 항목을 공유하는 다른 서비스를 설정할 때 설정할 수 있습니다.
+
+데이터베이스의 위치를 선택합니다.
+
+위치를 선택할 수 없다면 프로젝트의 '기본 Google Cloud 리소스의 위치'가 이미 설정된 것입니다. 일부 프로젝트 리소스(예: 기본 Cloud Firestore 인스턴스)는 공통 위치 종속 항목을 공유하며, 위치는 프로젝트 생성 중이나 이 위치 종속 항목을 공유하는 다른 서비스를 설정할 때 설정할 수 있습니다.
+
+Cloud Firestore Security Rules의 시작 모드를 선택합니다.
+
+테스트 모드
+
+모바일 및 웹 클라이언트 라이브러리를 시작할 때 유용하지만 모든 사용자가 데이터를 읽고 덮어쓸 수 있습니다. 테스트 완료 후 데이터 보안 섹션을 검토해야 합니다.
+
+웹, Apple 플랫폼 또는 Android SDK를 시작하려면 테스트 모드를 선택하세요.
+
+잠금 모드
+
+모바일 및 웹 클라이언트의 모든 읽기 및 쓰기를 거부합니다. 인증된 애플리케이션 서버(C#, Go, 자바, Node.js, PHP, Python, Ruby)에서는 사용자의 데이터베이스에 계속 액세스할 수 있습니다.
+
+C#, Go, 자바, Node.js, PHP, Python 또는 Ruby 서버 클라이언트 라이브러리를 시작하려면 잠금 모드를 선택하세요.
+
+Cloud Firestore Security Rules의 초기 집합이 기본 Cloud Firestore 데이터베이스에 적용됩니다. 프로젝트에 데이터베이스를 여러 개 만드는 경우 각 데이터베이스에 Cloud Firestore Security Rules를 배포할 수 있습니다.
+
+Cloud Firestore Security Rules의 시작 모드를 선택합니다.
+
+테스트 모드
+
+모바일 및 웹 클라이언트 라이브러리를 시작할 때 유용하지만 모든 사용자가 데이터를 읽고 덮어쓸 수 있습니다. 테스트 완료 후 데이터 보안 섹션을 검토해야 합니다.
+
+모바일 및 웹 클라이언트 라이브러리를 시작할 때 유용하지만 모든 사용자가 데이터를 읽고 덮어쓸 수 있습니다. 테스트 완료 후 데이터 보안 섹션을 검토해야 합니다.
+
+웹, Apple 플랫폼 또는 Android SDK를 시작하려면 테스트 모드를 선택하세요.
+
+웹, Apple 플랫폼 또는 Android SDK를 시작하려면 테스트 모드를 선택하세요.
+
+잠금 모드
+
+모바일 및 웹 클라이언트의 모든 읽기 및 쓰기를 거부합니다. 인증된 애플리케이션 서버(C#, Go, 자바, Node.js, PHP, Python, Ruby)에서는 사용자의 데이터베이스에 계속 액세스할 수 있습니다.
+
+모바일 및 웹 클라이언트의 모든 읽기 및 쓰기를 거부합니다. 인증된 애플리케이션 서버(C#, Go, 자바, Node.js, PHP, Python, Ruby)에서는 사용자의 데이터베이스에 계속 액세스할 수 있습니다.
+
+Cloud Firestore Security Rules의 초기 집합이 기본 Cloud Firestore 데이터베이스에 적용됩니다. 프로젝트에 데이터베이스를 여러 개 만드는 경우 각 데이터베이스에 Cloud Firestore Security Rules를 배포할 수 있습니다.
+
+만들기를 클릭합니다.
+
+만들기를 클릭합니다.
+
+Cloud Firestore를 사용 설정하면 Cloud API Manager의 API도 사용 설정됩니다.
+
+## 개발 환경 설정
+필요한 종속 항목 및 클라이언트 라이브러리를 앱에 추가하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+npm install firebase@12.1.0 --save
+
+언어: Web · 셀#2
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
+언어: Web · 설명
+안내에 따라 Firebase를 웹 앱에 추가합니다.
+
+Cloud Firestore SDK는 npm 패키지로도 제공됩니다.
+npm install firebase@12.1.0 --save
+Firebase와 Cloud Firestore를 모두 가져와야 합니다.
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
+언어: iOS+ · 셀#1
+https://github.com/firebase/firebase-ios-sdk
+
+언어: iOS+ · 설명
+안내에 따라 Firebase를 Apple 앱에 추가합니다.
+
+앱 프로젝트를 연 상태로 Xcode에서 File(파일) > Swift Packages(Swift 패키지) > Add Package Dependency(패키지 종속 항목 추가)로 이동합니다.
+
+메시지가 표시되면 Firebase Apple 플랫폼 SDK 저장소를 추가합니다.
+
+Firestore 라이브러리를 선택합니다.
+
+완료되면 Xcode가 백그라운드에서 자동으로 종속 항목을 확인하고 다운로드하기 시작합니다.
+
+언어: Android · 셀#1
+dependencies {
+ // Import the BoM for the Firebase platform
+ implementation(platform("com.google.firebase:firebase-bom:34.1.0"))
+
+ // Declare the dependency for the Cloud Firestore library
+ // When using the BoM, you don't specify versions in Firebase library dependencies
+ implementation("com.google.firebase:firebase-firestore")
+}
+
+언어: Android · 설명
+안내에 따라 Firebase를 Android 앱에 추가합니다.
+
+Firebase Android BoM을 사용하여 모듈(앱 수준) Gradle 파일(일반적으로 app/build.gradle.kts 또는 app/build.gradle)에서 Android용 Cloud Firestore 라이브러리의 종속 항목을 선언합니다.
+dependencies {
+ // Import the BoM for the Firebase platform
+ implementation(platform("com.google.firebase:firebase-bom:34.1.0"))
+
+ // Declare the dependency for the Cloud Firestore library
+ // When using the BoM, you don't specify versions in Firebase library dependencies
+ implementation("com.google.firebase:firebase-firestore")
+}
+
+Firebase Android BoM을 사용하면 앱에서 항상 호환되는 Firebase Android 라이브러리 버전을 사용합니다.
+
+(대안) BoM을 사용하지 않고 Firebase 라이브러리 종속 항목을 선언합니다.
+
+Kotlin 전용 라이브러리 모듈을 찾고 계신가요? 2023년 10월 출시부터 Kotlin과 Java 개발자 모두 기본 라이브러리 모듈을 사용할 수 있습니다. 자세한 내용은 이니셔티브에 관한 FAQ를 참조하세요.
+
+(대안) BoM을 사용하지 않고 Firebase 라이브러리 종속 항목을 선언합니다.
+
+앱에서 여러 Firebase 라이브러리를 사용하는 경우 모든 버전이 호환되도록 BoM을 사용하여 라이브러리 버전을 관리하는 것이 좋습니다.
+
+언어: Dart · 설명
+아직 구성하지 않았다면 Flutter 앱에서 Firebase를 구성하고 초기화합니다.
+
+Flutter 프로젝트 루트에서 다음 명령어를 실행하여 플러그인을 설치합니다.
+flutter pub add cloud_firestore
+
+완료되면 Flutter 애플리케이션을 다시 빌드합니다.
+flutter run
+
+선택사항: 사전 컴파일된 프레임워크를 포함하여 iOS 및 macOS 빌드 시간을 개선합니다.
+
+현재 iOS용 Firestore SDK는 Xcode에서 빌드하는 데 5분 이상 걸릴 수 있는 코드를 사용합니다. 빌드 시간을 크게 줄이려면 Podfile의 target 'Runner' do 블록에 다음 줄을 추가하여 사전 컴파일된 버전을 사용하면 됩니다.
+
+target 'Runner' do
+ use_frameworks!
+ use_modular_headers!
+
+ pod 'FirebaseFirestore',
+ :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git',
+ :tag => 'IOS_SDK_VERSION'
+
+ flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+ target 'RunnerTests' do
+ inherit! :search_paths
+ end
+end
+
+IOS_SDK_VERSION을 firebase_core의 firebase_sdk_version.rb 파일에 지정된 Firebase iOS SDK 버전으로 바꿉니다. firebase_core의 최신 버전을 사용하지 않는 경우 로컬 Pub 패키지 캐시(일반적으로 ~/.pub-cache)에서 이 파일을 찾습니다.
+
+또한 CocoaPods를 1.9.1 이상으로 업그레이드했는지 확인합니다.
+
+gem install cocoapods
+
+자세한 내용은 GitHub의 문제를 참조하세요.
+
+현재 iOS용 Firestore SDK는 Xcode에서 빌드하는 데 5분 이상 걸릴 수 있는 코드를 사용합니다. 빌드 시간을 크게 줄이려면 Podfile의 target 'Runner' do 블록에 다음 줄을 추가하여 사전 컴파일된 버전을 사용하면 됩니다.
+
+IOS_SDK_VERSION을 firebase_core의 firebase_sdk_version.rb 파일에 지정된 Firebase iOS SDK 버전으로 바꿉니다. firebase_core의 최신 버전을 사용하지 않는 경우 로컬 Pub 패키지 캐시(일반적으로 ~/.pub-cache)에서 이 파일을 찾습니다.
+
+또한 CocoaPods를 1.9.1 이상으로 업그레이드했는지 확인합니다.
+
+자세한 내용은 GitHub의 문제를 참조하세요.
+
+언어: Java · 셀#1
+compile 'com.google.firebase:firebase-admin:1.32.0'
+
+언어: Java · 셀#2
+<dependency>
+ <groupId>com.google.firebase</groupId>
+ <artifactId>firebase-admin</artifactId>
+ <version>1.32.0</version>
+</dependency>
+
+언어: Java · 설명
+Firebase Admin SDK를 앱에 추가합니다.
+Gradle 사용:
+compile 'com.google.firebase:firebase-admin:1.32.0'
+Maven 사용:
+<dependency>
+ <groupId>com.google.firebase</groupId>
+ <artifactId>firebase-admin</artifactId>
+ <version>1.32.0</version>
+</dependency>
+
+Gradle 사용:
+compile 'com.google.firebase:firebase-admin:1.32.0'
+
+Maven 사용:
+<dependency>
+ <groupId>com.google.firebase</groupId>
+ <artifactId>firebase-admin</artifactId>
+ <version>1.32.0</version>
+</dependency>
+
+아래 안내에 따라 사용자 환경에서 적절한 사용자 인증 정보를 사용해 Cloud Firestore를 초기화합니다.
+
+언어: Python · 셀#1
+pip install --upgrade firebase-admin
+
+언어: Python · 설명
+아래 안내에 따라 사용자 환경에서 적절한 사용자 인증 정보를 사용해 Cloud Firestore를 초기화합니다.
+
+언어: C++ · 셀#1
+android.defaultConfig.externalNativeBuild.cmake {
+ arguments "-DFIREBASE_CPP_SDK_DIR=$gradle.firebase_cpp_sdk_dir"
+ }
+
+ apply from: "$gradle.firebase_cpp_sdk_dir/Android/firebase_dependencies.gradle"
+ firebaseCpp.dependencies {
+ // earlier entries
+ auth
+ firestore
+ }
+
+언어: C++ · 셀#2
+add_subdirectory(${FIREBASE_CPP_SDK_DIR} bin/ EXCLUDE_FROM_ALL)
+ set(firebase_libs firebase_auth firebase_firestore firebase_app)
+ # Replace the target name below with the actual name of your target,
+ # for example, "native-lib".
+ target_link_libraries(${YOUR_TARGET_NAME_HERE} "${firebase_libs}")
+
+언어: C++ · 설명
+안내에 따라 Firebase를 C++ 프로젝트에 추가합니다.
+
+Android용 C++ 인터페이스
+
+Gradle 종속 항목 모듈(앱 수준) Gradle 파일(일반적으로 app/build.gradle)에 다음을 추가합니다.
+ android.defaultConfig.externalNativeBuild.cmake {
+ arguments "-DFIREBASE_CPP_SDK_DIR=$gradle.firebase_cpp_sdk_dir"
+ }
+
+ apply from: "$gradle.firebase_cpp_sdk_dir/Android/firebase_dependencies.gradle"
+ firebaseCpp.dependencies {
+ // earlier entries
+ auth
+ firestore
+ }
+
+바이너리 종속 항목 마찬가지로 바이너리 종속 항목을 가져올 때 권장되는 방법은 CMakeLists.txt 파일에 다음을 추가하는 것입니다.
+ add_subdirectory(${FIREBASE_CPP_SDK_DIR} bin/ EXCLUDE_FROM_ALL)
+ set(firebase_libs firebase_auth firebase_firestore firebase_app)
+ # Replace the target name below with the actual name of your target,
+ # for example, "native-lib".
+ target_link_libraries(${YOUR_TARGET_NAME_HERE} "${firebase_libs}")
+
+언어: Unity · 설명
+안내에 따라 Firebase를 Unity 프로젝트에 추가합니다.
+
+Unity 인터페이스를 사용하여 Android 빌드를 축소하도록 프로젝트를 구성합니다.
+
+Error while merging dex archives 메시지를 방지하려면 빌드를 축소해야 합니다.
+
+이 옵션은 Player Settings(플레이어 설정) > Android > Publishing Settings(게시 설정) > Minify(축소)에서 찾을 수 있습니다.
+
+축소를 사용 설정한 후에도 참조된 메서드의 개수가 여전히 한도를 초과하는 경우 또 다른 옵션은 다음 파일에서 multidex를 사용 설정하는 것입니다.
+Player Settings(플레이어 설정)에서 Custom Gradle Template(커스텀 Gradle 템플릿)이 사용 설정된 경우 mainTemplate.gradle
+또는 Android 스튜디오를 사용하여 내보낸 프로젝트를 빌드하는 경우 모듈 수준 build.gradle 파일
+
+Player Settings(플레이어 설정)에서 Custom Gradle Template(커스텀 Gradle 템플릿)이 사용 설정된 경우 mainTemplate.gradle
+
+또는 Android 스튜디오를 사용하여 내보낸 프로젝트를 빌드하는 경우 모듈 수준 build.gradle 파일
+
+안내에 따라 Firebase를 웹 앱에 추가합니다.
+
+Cloud Firestore SDK는 npm 패키지로도 제공됩니다.
+npm install firebase@12.1.0 --save
+ Firebase와 Cloud Firestore를 모두 가져와야 합니다.
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
+안내에 따라 Firebase를 웹 앱에 추가합니다.
+
+Firebase와 Cloud Firestore 라이브러리를 앱에 추가합니다.<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore-compat.js"></script>
+ Cloud Firestore SDK는 npm 패키지로도 제공됩니다.npm install firebase@12.1.0 --save
+ Firebase와 Cloud Firestore를 모두 수동으로 요청해야 합니다.
+import firebase from "firebase/compat/app";
+// Required for side-effects
+import "firebase/firestore";
+
+안내에 따라 Firebase를 Apple 앱에 추가합니다.
+
+앱 프로젝트를 연 상태로 Xcode에서 File(파일) > Swift Packages(Swift 패키지) > Add Package Dependency(패키지 종속 항목 추가)로 이동합니다.
+
+메시지가 표시되면 Firebase Apple 플랫폼 SDK 저장소를 추가합니다.
+
+Firestore 라이브러리를 선택합니다.
+
+완료되면 Xcode가 백그라운드에서 자동으로 종속 항목을 확인하고 다운로드하기 시작합니다.
+
+안내에 따라 Firebase를 Android 앱에 추가합니다.
+
+Firebase Android BoM을 사용하여 모듈(앱 수준) Gradle 파일(일반적으로 app/build.gradle.kts 또는 app/build.gradle)에서 Android용 Cloud Firestore 라이브러리의 종속 항목을 선언합니다.dependencies {
+ // Import the BoM for the Firebase platform
+ implementation(platform("com.google.firebase:firebase-bom:34.1.0"))
+
+ // Declare the dependency for the Cloud Firestore library
+ // When using the BoM, you don't specify versions in Firebase library dependencies
+ implementation("com.google.firebase:firebase-firestore")
+}
+
+ Firebase Android BoM을 사용하면 앱에서 항상 호환되는 Firebase Android 라이브러리 버전을 사용합니다.
+
+ (대안)
+ BoM을 사용하지 않고 Firebase 라이브러리 종속 항목을 선언합니다.
+
+ Firebase BoM을 사용하지 않도록 선택한 경우에는 종속 항목 줄에 각 Firebase 라이브러리 버전을 지정해야 합니다.
+ 앱에서 여러 Firebase 라이브러리를 사용하는 경우 모든 버전이 호환되도록 BoM을 사용하여 라이브러리 버전을 관리하는 것이 좋습니다.
+
+dependencies {
+ // Declare the dependency for the Cloud Firestore library
+ // When NOT using the BoM, you must specify versions in Firebase library dependencies
+ implementation("com.google.firebase:firebase-firestore:26.0.0")
+}
+
+ Kotlin 전용 라이브러리 모듈을 찾고 계신가요? 2023년 10월 출시부터 Kotlin과 Java 개발자 모두 기본 라이브러리 모듈을 사용할 수 있습니다. 자세한 내용은 이니셔티브에 관한 FAQ를 참조하세요.
+
+(대안)
+ BoM을 사용하지 않고 Firebase 라이브러리 종속 항목을 선언합니다.
+
+앱에서 여러 Firebase 라이브러리를 사용하는 경우 모든 버전이 호환되도록 BoM을 사용하여 라이브러리 버전을 관리하는 것이 좋습니다.
+
+아직 구성하지 않았다면 Flutter 앱에서 Firebase를 구성하고 초기화합니다.
+
+Flutter 프로젝트 루트에서 다음 명령어를 실행하여 플러그인을 설치합니다.
+ flutter pub add cloud_firestore
+
+완료되면 Flutter 애플리케이션을 다시 빌드합니다.
+ flutter run
+
+선택사항: 사전 컴파일된 프레임워크를 포함하여 iOS 및 macOS 빌드 시간을 개선합니다.
+ 현재 iOS용 Firestore SDK는 Xcode에서 빌드하는 데 5분 이상 걸릴 수 있는 코드를 사용합니다. 빌드 시간을 크게 줄이려면 Podfile의 target 'Runner' do 블록에 다음 줄을 추가하여 사전 컴파일된 버전을 사용하면 됩니다.
+ target 'Runner' do
+ use_frameworks!
+ use_modular_headers!
+
+ pod 'FirebaseFirestore',
+ :git => 'https://github.com/invertase/firestore-ios-sdk-frameworks.git',
+ :tag => 'IOS_SDK_VERSION'
+
+ flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
+ target 'RunnerTests' do
+ inherit! :search_paths
+ end
+end
+ IOS_SDK_VERSION을 firebase_core의 firebase_sdk_version.rb 파일에 지정된 Firebase iOS SDK 버전으로 바꿉니다. firebase_core의 최신 버전을 사용하지 않는 경우 로컬 Pub 패키지 캐시(일반적으로 ~/.pub-cache)에서 이 파일을 찾습니다.
+ 또한 CocoaPods를 1.9.1 이상으로 업그레이드했는지 확인합니다. gem install cocoapods
+ 자세한 내용은 GitHub의 문제를 참조하세요.
+
+현재 iOS용 Firestore SDK는 Xcode에서 빌드하는 데 5분 이상 걸릴 수 있는 코드를 사용합니다. 빌드 시간을 크게 줄이려면 Podfile의 target 'Runner' do 블록에 다음 줄을 추가하여 사전 컴파일된 버전을 사용하면 됩니다.
+
+IOS_SDK_VERSION을 firebase_core의 firebase_sdk_version.rb 파일에 지정된 Firebase iOS SDK 버전으로 바꿉니다. firebase_core의 최신 버전을 사용하지 않는 경우 로컬 Pub 패키지 캐시(일반적으로 ~/.pub-cache)에서 이 파일을 찾습니다.
+
+또한 CocoaPods를 1.9.1 이상으로 업그레이드했는지 확인합니다.
+
+자세한 내용은 GitHub의 문제를 참조하세요.
+
+Firebase Admin SDK를 앱에 추가합니다.
+ Gradle 사용:compile 'com.google.firebase:firebase-admin:1.32.0'
+
+ Maven 사용:<dependency>
+ <groupId>com.google.firebase</groupId>
+ <artifactId>firebase-admin</artifactId>
+ <version>1.32.0</version>
+</dependency>
+
+Gradle 사용:compile 'com.google.firebase:firebase-admin:1.32.0'
+
+Maven 사용:<dependency>
+ <groupId>com.google.firebase</groupId>
+ <artifactId>firebase-admin</artifactId>
+ <version>1.32.0</version>
+</dependency>
+
+아래 안내에 따라 사용자 환경에서 적절한 사용자 인증 정보를 사용해 Cloud Firestore를 초기화합니다.
+
+아래 안내에 따라 사용자 환경에서 적절한 사용자 인증 정보를 사용해 Cloud Firestore를 초기화합니다.
+
+안내에 따라 Firebase를 C++ 프로젝트에 추가합니다.
+
+Android용 C++ 인터페이스
+
+Gradle 종속 항목 모듈(앱 수준) Gradle 파일(일반적으로 app/build.gradle)에 다음을 추가합니다.
+
+ android.defaultConfig.externalNativeBuild.cmake {
+ arguments "-DFIREBASE_CPP_SDK_DIR=$gradle.firebase_cpp_sdk_dir"
+ }
+
+ apply from: "$gradle.firebase_cpp_sdk_dir/Android/firebase_dependencies.gradle"
+ firebaseCpp.dependencies {
+ // earlier entries
+ auth
+ firestore
+ }
+
+바이너리 종속 항목 마찬가지로 바이너리 종속 항목을 가져올 때 권장되는 방법은 CMakeLists.txt 파일에 다음을 추가하는 것입니다.
+ add_subdirectory(${FIREBASE_CPP_SDK_DIR} bin/ EXCLUDE_FROM_ALL)
+ set(firebase_libs firebase_auth firebase_firestore firebase_app)
+ # Replace the target name below with the actual name of your target,
+ # for example, "native-lib".
+ target_link_libraries(${YOUR_TARGET_NAME_HERE} "${firebase_libs}")
+
+안내에 따라 Firebase를 Unity 프로젝트에 추가합니다.
+
+Unity 인터페이스를 사용하여 Android 빌드를 축소하도록 프로젝트를 구성합니다.
+
+Error while merging dex archives 메시지를 방지하려면 빌드를 축소해야 합니다.
+
+이 옵션은 Player Settings(플레이어 설정) > Android > Publishing Settings(게시 설정) > Minify(축소)에서 찾을 수 있습니다.
+
+축소를 사용 설정한 후에도 참조된 메서드의 개수가 여전히 한도를 초과하는 경우 또 다른 옵션은 다음 파일에서 multidex를 사용 설정하는 것입니다.
+Player Settings(플레이어 설정)에서 Custom Gradle Template(커스텀 Gradle 템플릿)이 사용 설정된 경우 mainTemplate.gradle
+또는 Android 스튜디오를 사용하여 내보낸 프로젝트를 빌드하는 경우 모듈 수준 build.gradle 파일
+
+Player Settings(플레이어 설정)에서 Custom Gradle Template(커스텀 Gradle 템플릿)이 사용 설정된 경우 mainTemplate.gradle
+
+또는 Android 스튜디오를 사용하여 내보낸 프로젝트를 빌드하는 경우 모듈 수준 build.gradle 파일
+
+Firebase Admin SDK를 앱에 추가합니다.npm install firebase-admin --save
+
+아래 안내에 따라 사용자 환경에서 적절한 사용자 인증 정보를 사용해 Cloud Firestore를 초기화합니다.
+
+Firebase Admin SDK를 Go 앱에 추가합니다.go get firebase.google.com/go
+
+아래 안내에 따라 사용자 환경에서 적절한 사용자 인증 정보를 사용해 Cloud Firestore를 초기화합니다.
+
+Cloud Firestore 서버 클라이언트 라이브러리(Java, Node.js, Python, Go, PHP, C#, Ruby)는 인증을 위해 Google 애플리케이션 기본 사용자 인증 정보를 사용합니다.
+
+ 개발 환경에서 인증하려면 GOOGLE_APPLICATION_CREDENTIALS 환경 변수가 JSON 서비스 계정 키 파일을 가리키도록 설정합니다. API 콘솔 사용자 인증 정보 페이지에서 키 파일을 만들 수 있습니다.
+ export GOOGLE_APPLICATION_CREDENTIALS="path/to/your/keyfile.json"
+
+ 프로덕션 환경에서는 Cloud Firestore에 사용하는 것과 동일한 프로젝트를 사용하여 App Engine이나 Compute Engine에서 애플리케이션을 실행하는 경우 인증할 필요가 없습니다. 그 외의 경우는 서비스 계정을 설정합니다.
+
+개발 환경에서 인증하려면 GOOGLE_APPLICATION_CREDENTIALS 환경 변수가 JSON 서비스 계정 키 파일을 가리키도록 설정합니다. API 콘솔 사용자 인증 정보 페이지에서 키 파일을 만들 수 있습니다.
+ export GOOGLE_APPLICATION_CREDENTIALS="path/to/your/keyfile.json"
+
+프로덕션 환경에서는 Cloud Firestore에 사용하는 것과 동일한 프로젝트를 사용하여 App Engine이나 Compute Engine에서 애플리케이션을 실행하는 경우 인증할 필요가 없습니다. 그 외의 경우는 서비스 계정을 설정합니다.
+
+클라이언트 라이브러리를 사용하는 데 필요한
+ PHP용 gRPC 확장 프로그램을 설치하고 사용 설정합니다.
+
+Cloud Firestore PHP 라이브러리를 앱에 추가합니다.composer require google/cloud-firestore
+
+Cloud Firestore 서버 클라이언트 라이브러리(Java, Node.js, Python, Go, PHP, C#, Ruby)는 인증을 위해 Google 애플리케이션 기본 사용자 인증 정보를 사용합니다.
+
+ 개발 환경에서 인증하려면 GOOGLE_APPLICATION_CREDENTIALS 환경 변수가 JSON 서비스 계정 키 파일을 가리키도록 설정합니다. API 콘솔 사용자 인증 정보 페이지에서 키 파일을 만들 수 있습니다.
+ export GOOGLE_APPLICATION_CREDENTIALS="path/to/your/keyfile.json"
+
+ 프로덕션 환경에서는 Cloud Firestore에 사용하는 것과 동일한 프로젝트를 사용하여 App Engine이나 Compute Engine에서 애플리케이션을 실행하는 경우 인증할 필요가 없습니다. 그 외의 경우는 서비스 계정을 설정합니다.
+
+개발 환경에서 인증하려면 GOOGLE_APPLICATION_CREDENTIALS 환경 변수가 JSON 서비스 계정 키 파일을 가리키도록 설정합니다. API 콘솔 사용자 인증 정보 페이지에서 키 파일을 만들 수 있습니다.
+ export GOOGLE_APPLICATION_CREDENTIALS="path/to/your/keyfile.json"
+
+프로덕션 환경에서는 Cloud Firestore에 사용하는 것과 동일한 프로젝트를 사용하여 App Engine이나 Compute Engine에서 애플리케이션을 실행하는 경우 인증할 필요가 없습니다. 그 외의 경우는 서비스 계정을 설정합니다.
+
+Cloud Firestore C# 라이브러리를 .csproj 파일의 앱에 추가합니다.<ItemGroup>
+ <PackageReference Include="Google.Cloud.Firestore" Version="1.1.0-beta01" />
+</ItemGroup>
+
+Program.cs 파일에 다음을 추가합니다.using Google.Cloud.Firestore;
+
+Cloud Firestore 서버 클라이언트 라이브러리(Java, Node.js, Python, Go, PHP, C#, Ruby)는 인증을 위해 Google 애플리케이션 기본 사용자 인증 정보를 사용합니다.
+
+ 개발 환경에서 인증하려면 GOOGLE_APPLICATION_CREDENTIALS 환경 변수가 JSON 서비스 계정 키 파일을 가리키도록 설정합니다. API 콘솔 사용자 인증 정보 페이지에서 키 파일을 만들 수 있습니다.
+ export GOOGLE_APPLICATION_CREDENTIALS="path/to/your/keyfile.json"
+
+ 프로덕션 환경에서는 Cloud Firestore에 사용하는 것과 동일한 프로젝트를 사용하여 App Engine이나 Compute Engine에서 애플리케이션을 실행하는 경우 인증할 필요가 없습니다. 그 외의 경우는 서비스 계정을 설정합니다.
+
+개발 환경에서 인증하려면 GOOGLE_APPLICATION_CREDENTIALS 환경 변수가 JSON 서비스 계정 키 파일을 가리키도록 설정합니다. API 콘솔 사용자 인증 정보 페이지에서 키 파일을 만들 수 있습니다.
+ export GOOGLE_APPLICATION_CREDENTIALS="path/to/your/keyfile.json"
+
+프로덕션 환경에서는 Cloud Firestore에 사용하는 것과 동일한 프로젝트를 사용하여 App Engine이나 Compute Engine에서 애플리케이션을 실행하는 경우 인증할 필요가 없습니다. 그 외의 경우는 서비스 계정을 설정합니다.
+
+Cloud Firestore Ruby 라이브러리를 Gemfile의 앱에 추가합니다.gem "google-cloud-firestore"
+
+다음을 사용하여 Gemfile의 종속 항목을 설치합니다.bundle install
+
+## (선택사항) Firebase Local Emulator Suite으로 프로토타입 제작 및 테스트
+모바일 개발자를 대상으로 앱이 Cloud Firestore에서 데이터를 읽고 쓰는 방법에 대해 설명하기 전에 Cloud Cloud Firestore 기능을 프로토타입으로 제작하고 테스트하는 데 사용할 수 있는 도구 모음인 Firebase Local Emulator Suite를 소개하려 합니다. 다양한 데이터 모델을 사용해 보거나, 보안 규칙을 최적화하거나, 백엔드와 상호작용할 수 있는 가장 비용 효율적인 방법을 찾는 경우 실시간 서비스를 배포하지 않고 로컬에서 작업할 수 있다는 것은 획기적인 아이디어입니다.
+
+Cloud Firestore 에뮬레이터는 Local Emulator Suite의 일부이며 앱에서 에뮬레이션된 데이터베이스 콘텐츠와 구성은 물론 필요에 따라 에뮬레이션된 프로젝트 리소스(함수, 기타 데이터베이스, 보안 규칙)와 상호작용할 수 있게 해줍니다.
+
+Cloud Firestore 에뮬레이터를 사용하려면 다음 몇 단계만 거치면 됩니다.
+
+에뮬레이터에 연결하려면 앱의 테스트 구성에 코드 줄을 추가합니다.
+
+로컬 프로젝트 디렉터리의 루트에서 firebase emulators:start를 실행합니다.
+
+평소와 같이 Cloud Firestore 플랫폼 SDK를 사용하여 앱의 프로토타입 코드에서 호출합니다.
+
+자세한 내용은 Cloud Firestore 및 Cloud Functions 관련 둘러보기를 참조하세요. Local Emulator Suite 소개도 살펴보세요.
+
+## Cloud Firestore 초기화
+Cloud Firestore의 인스턴스를 초기화합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://support.google.com/firebase/answer/7015592
+const firebaseConfig = {
+ FIREBASE_CONFIGURATION
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+
+언어: Web · 설명
+FIREBASE_CONFIGURATION을 웹 앱의 firebaseConfig로 바꿉니다.
+
+기기의 연결이 끊겨도 데이터를 유지하려면 오프라인 데이터 사용 설정 문서를 참조하세요.
+
+언어: Swift · 셀#1
+import FirebaseCore
+import FirebaseFirestore
+
+언어: Swift · 셀#2
+FirebaseApp.configure()
+
+let db = Firestore.firestore()
+AppDelegate.swift
+
+언어: Objective-C · 셀#1
+@import FirebaseCore;
+@import FirebaseFirestore;
+
+// Use Firebase library to configure APIs
+[FIRApp configure];
+
+언어: Objective-C · 셀#2
+FIRFirestore *defaultFirestore = [FIRFirestore firestore];
+AppDelegate.m
+
+언어: Kotlin · 셀#1
+// Access a Cloud Firestore instance from your Activity
+
+언어: Kotlin · 셀#2
+val db = Firebase.firestore
+DocSnippets.kt
+
+언어: Java · 셀#1
+// Access a Cloud Firestore instance from your Activity
+
+언어: Java · 셀#2
+FirebaseFirestore db = FirebaseFirestore.getInstance();
+DocSnippets.java
+
+언어: Dart · 셀#1
+db = FirebaseFirestore.instance;
+
+FIREBASE_CONFIGURATION을 웹 앱의 firebaseConfig로 바꿉니다.
+
+기기의 연결이 끊겨도 데이터를 유지하려면 오프라인 데이터 사용 설정 문서를 참조하세요.
+
+FIREBASE_CONFIGURATION을 웹 앱의 firebaseConfig로 바꿉니다.
+
+기기의 연결이 끊겨도 데이터를 유지하려면 오프라인 데이터 사용 설정 문서를 참조하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+db = FirebaseFirestore.instance;
+
+Google Cloud에서 초기화import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.firestore.Firestore;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+
+// Use the application default credentials
+GoogleCredentials credentials = GoogleCredentials.getApplicationDefault();
+FirebaseOptions options = new FirebaseOptions.Builder()
+ .setCredentials(credentials)
+ .setProjectId(projectId)
+ .build();
+FirebaseApp.initializeApp(options);
+
+Firestore db = FirestoreClient.getFirestore();
+
+자체 서버에서 초기화
+자체 서버에서 Firebase Admin SDK를 사용하려면 서비스 계정을 사용합니다.
+
+Google Cloud 콘솔에서 IAM 및 관리자 > 서비스 계정으로 이동합니다. 새 비공개 키를 생성하고 JSON 파일을 저장합니다. 그런 다음 이 파일을 사용하여 SDK를 초기화합니다.
+
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.firestore.Firestore;
+
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.FirebaseOptions;
+
+// Use a service account
+InputStream serviceAccount = new FileInputStream("path/to/serviceAccount.json");
+GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
+FirebaseOptions options = new FirebaseOptions.Builder()
+ .setCredentials(credentials)
+ .build();
+FirebaseApp.initializeApp(options);
+
+Firestore db = FirestoreClient.getFirestore();
+
+자체 서버에서 Firebase Admin SDK를 사용하려면 서비스 계정을 사용합니다.
+
+Google Cloud 콘솔에서 IAM 및 관리자 > 서비스 계정으로 이동합니다. 새 비공개 키를 생성하고 JSON 파일을 저장합니다. 그런 다음 이 파일을 사용하여 SDK를 초기화합니다.
+
+Google Cloud에서 초기화import firebase_admin
+from firebase_admin import firestore
+
+# Application Default credentials are automatically created.
+app = firebase_admin.initialize_app()
+db = firestore.client()firestore.py
+
+기존 애플리케이션 기본 사용자 인증 정보를 사용하여 SDK를 초기화할 수도 있습니다.
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+# Use the application default credentials.
+cred = credentials.ApplicationDefault()
+
+firebase_admin.initialize_app(cred)
+db = firestore.client()firestore.py
+
+기존 애플리케이션 기본 사용자 인증 정보를 사용하여 SDK를 초기화할 수도 있습니다.
+
+자체 서버에서 초기화
+자체 서버에서 Firebase Admin SDK를 사용하려면 서비스 계정을 사용합니다.
+
+Google Cloud 콘솔에서 IAM 및 관리자 > 서비스 계정으로 이동합니다. 새 비공개 키를 생성하고 JSON 파일을 저장합니다. 그런 다음 이 파일을 사용하여 SDK를 초기화합니다.
+
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+# Use a service account.
+cred = credentials.Certificate('path/to/serviceAccount.json')
+
+app = firebase_admin.initialize_app(cred)
+
+db = firestore.client()firestore.py
+
+자체 서버에서 Firebase Admin SDK를 사용하려면 서비스 계정을 사용합니다.
+
+Google Cloud 콘솔에서 IAM 및 관리자 > 서비스 계정으로 이동합니다. 새 비공개 키를 생성하고 JSON 파일을 저장합니다. 그런 다음 이 파일을 사용하여 SDK를 초기화합니다.
+
+Google Cloud에서 초기화import firebase_admin
+from firebase_admin import firestore_async
+
+# Application Default credentials are automatically created.
+app = firebase_admin.initialize_app()
+db = firestore_async.client()firestore_async.py
+
+기존 애플리케이션 기본 사용자 인증 정보를 사용하여 SDK를 초기화할 수도 있습니다.
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore_async
+
+# Use the application default credentials.
+cred = credentials.ApplicationDefault()
+
+firebase_admin.initialize_app(cred)
+db = firestore_async.client()firestore_async.py
+
+기존 애플리케이션 기본 사용자 인증 정보를 사용하여 SDK를 초기화할 수도 있습니다.
+
+자체 서버에서 초기화
+자체 서버에서 Firebase Admin SDK를 사용하려면 서비스 계정을 사용합니다.
+
+Google Cloud 콘솔에서 IAM 및 관리자 > 서비스 계정으로 이동합니다. 새 비공개 키를 생성하고 JSON 파일을 저장합니다. 그런 다음 이 파일을 사용하여 SDK를 초기화합니다.
+
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore_async
+
+# Use a service account.
+cred = credentials.Certificate('path/to/serviceAccount.json')
+
+app = firebase_admin.initialize_app(cred)
+
+db = firestore_async.client()firestore_async.py
+
+자체 서버에서 Firebase Admin SDK를 사용하려면 서비스 계정을 사용합니다.
+
+Google Cloud 콘솔에서 IAM 및 관리자 > 서비스 계정으로 이동합니다. 새 비공개 키를 생성하고 JSON 파일을 저장합니다. 그런 다음 이 파일을 사용하여 SDK를 초기화합니다.
+
+Cloud Functions에서 초기화const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
+const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
+initializeApp();
+
+const db = getFirestore();
+index.js
+
+Google Cloud에서 초기화const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
+const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
+initializeApp({
+ credential: applicationDefault()
+});
+
+const db = getFirestore();index.js
+
+자체 서버에서 초기화
+자체 서버(또는 다른 Node.js 환경)에서 Firebase Admin SDK를 사용하려면 서비스 계정을 사용합니다.
+
+Google Cloud 콘솔에서 IAM 및 관리자 > 서비스 계정으로 이동합니다. 새 비공개 키를 생성하고 JSON 파일을 저장합니다. 그런 다음 이 파일을 사용하여 SDK를 초기화합니다.
+
+const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
+const { getFirestore, Timestamp, FieldValue, Filter } = require('firebase-admin/firestore');
+const serviceAccount = require('./path/to/serviceAccountKey.json');
+
+initializeApp({
+ credential: cert(serviceAccount)
+});
+
+const db = getFirestore();
+index.js
+
+자체 서버(또는 다른 Node.js 환경)에서 Firebase Admin SDK를 사용하려면 서비스 계정을 사용합니다.
+
+Google Cloud 콘솔에서 IAM 및 관리자 > 서비스 계정으로 이동합니다. 새 비공개 키를 생성하고 JSON 파일을 저장합니다. 그런 다음 이 파일을 사용하여 SDK를 초기화합니다.
+
+Google Cloud에서 초기화import (
+ "log"
+
+ firebase "firebase.google.com/go"
+ "google.golang.org/api/option"
+)
+
+// Use the application default credentials
+ctx := context.Background()
+conf := &firebase.Config{ProjectID: projectID}
+app, err := firebase.NewApp(ctx, conf)
+if err != nil {
+ log.Fatalln(err)
+}
+
+client, err := app.Firestore(ctx)
+if err != nil {
+ log.Fatalln(err)
+}
+defer client.Close()
+
+자체 서버에서 초기화
+자체 서버에서 Firebase Admin SDK를 사용하려면 서비스 계정을 사용합니다.
+
+Google Cloud 콘솔에서 IAM 및 관리자 > 서비스 계정으로 이동합니다. 새 비공개 키를 생성하고 JSON 파일을 저장합니다. 그런 다음 이 파일을 사용하여 SDK를 초기화합니다.
+
+import (
+ "log"
+
+ firebase "firebase.google.com/go"
+ "google.golang.org/api/option"
+)
+
+// Use a service account
+ctx := context.Background()
+sa := option.WithCredentialsFile("path/to/serviceAccount.json")
+app, err := firebase.NewApp(ctx, nil, sa)
+if err != nil {
+ log.Fatalln(err)
+}
+
+client, err := app.Firestore(ctx)
+if err != nil {
+ log.Fatalln(err)
+}
+defer client.Close()
+
+자체 서버에서 Firebase Admin SDK를 사용하려면 서비스 계정을 사용합니다.
+
+Google Cloud 콘솔에서 IAM 및 관리자 > 서비스 계정으로 이동합니다. 새 비공개 키를 생성하고 JSON 파일을 저장합니다. 그런 다음 이 파일을 사용하여 SDK를 초기화합니다.
+
+Cloud Firestore 클라이언트 설치 및 생성에 관한 자세한 내용은 Cloud Firestore 클라이언트 라이브러리를 참조하세요.
+
+Cloud Firestore 클라이언트 설치 및 생성에 관한 자세한 내용은 Cloud Firestore 클라이언트 라이브러리를 참조하세요.
+
+## 데이터 추가
+Cloud Firestore는 컬렉션에 저장되는 문서에 데이터를 저장합니다. 문서에 데이터를 처음 추가할 때 Cloud Firestore는 암시적으로 컬렉션과 문서를 만듭니다. 컬렉션이나 문서를 명시적으로 만들 필요가 없습니다.
+
+다음 예시 코드를 사용해 새 컬렉션과 문서를 만듭니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+import { collection, addDoc } from "firebase/firestore";
+
+try {
+ const docRef = await addDoc(collection(db, "users"), {
+ first: "Ada",
+ last: "Lovelace",
+ born: 1815
+ });
+ console.log("Document written with ID: ", docRef.id);
+} catch (e) {
+ console.error("Error adding document: ", e);
+}
+add_ada_lovelace.js
+
+언어: Swift · 셀#1
+// Add a new document with a generated ID
+do {
+ let ref = try await db.collection("users").addDocument(data: [
+ "first": "Ada",
+ "last": "Lovelace",
+ "born": 1815
+ ])
+ print("Document added with ID: \(ref.documentID)")
+} catch {
+ print("Error adding document: \(error)")
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+// Add a new document with a generated ID
+__block FIRDocumentReference *ref =
+ [[self.db collectionWithPath:@"users"] addDocumentWithData:@{
+ @"first": @"Ada",
+ @"last": @"Lovelace",
+ @"born": @1815
+ } completion:^(NSError * _Nullable error) {
+ if (error != nil) {
+ NSLog(@"Error adding document: %@", error);
+ } else {
+ NSLog(@"Document added with ID: %@", ref.documentID);
+ }
+ }];
+ViewController.m
+
+언어: Kotlin · 셀#1
+// Create a new user with a first and last name
+val user = hashMapOf(
+ "first" to "Ada",
+ "last" to "Lovelace",
+ "born" to 1815,
+)
+
+// Add a new document with a generated ID
+db.collection("users")
+ .add(user)
+ .addOnSuccessListener { documentReference ->
+ Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+ }
+ .addOnFailureListener { e ->
+ Log.w(TAG, "Error adding document", e)
+ }
+DocSnippets.kt
+
+언어: Java · 셀#1
+// Create a new user with a first and last name
+Map<String, Object> user = new HashMap<>();
+user.put("first", "Ada");
+user.put("last", "Lovelace");
+user.put("born", 1815);
+
+// Add a new document with a generated ID
+db.collection("users")
+ .add(user)
+ .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+ @Override
+ public void onSuccess(DocumentReference documentReference) {
+ Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+ }
+ })
+ .addOnFailureListener(new OnFailureListener() {
+ @Override
+ public void onFailure(@NonNull Exception e) {
+ Log.w(TAG, "Error adding document", e);
+ }
+ });
+DocSnippets.java
+
+언어: Dart · 셀#1
+// Create a new user with a first and last name
+final user = <String, dynamic>{
+ "first": "Ada",
+ "last": "Lovelace",
+ "born": 1815
+};
+
+// Add a new document with a generated ID
+db.collection("users").add(user).then((DocumentReference doc) =>
+ print('DocumentSnapshot added with ID: ${doc.id}'));
+firestore.dart
+
+언어: 웹 · 셀#1
+// Create a new user with a first and last name
+final user = <String, dynamic>{
+ "first": "Ada",
+ "last": "Lovelace",
+ "born": 1815
+};
+
+// Add a new document with a generated ID
+db.collection("users").add(user).then((DocumentReference doc) =>
+ print('DocumentSnapshot added with ID: ${doc.id}'));
+firestore.dart
+
+Cloud Firestore 클라이언트 설치 및 생성에 관한 자세한 내용은 Cloud Firestore 클라이언트 라이브러리를 참조하세요.
+
+이제 users 컬렉션에 다른 문서를 추가합니다. 첫 번째 문서에는 나타나지 않는 키-값 쌍(중간 이름)이 문서에 포함된다는 점에 유의하세요. 컬렉션의 문서에는 다른 정보 집합이 포함될 수 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+// Add a second document with a generated ID.
+import { addDoc, collection } from "firebase/firestore";
+
+try {
+ const docRef = await addDoc(collection(db, "users"), {
+ first: "Alan",
+ middle: "Mathison",
+ last: "Turing",
+ born: 1912
+ });
+
+ console.log("Document written with ID: ", docRef.id);
+} catch (e) {
+ console.error("Error adding document: ", e);
+}
+add_alan_turing.js
+
+언어: Swift · 셀#1
+// Add a second document with a generated ID.
+do {
+ let ref = try await db.collection("users").addDocument(data: [
+ "first": "Alan",
+ "middle": "Mathison",
+ "last": "Turing",
+ "born": 1912
+ ])
+ print("Document added with ID: \(ref.documentID)")
+} catch {
+ print("Error adding document: \(error)")
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+// Add a second document with a generated ID.
+__block FIRDocumentReference *ref =
+ [[self.db collectionWithPath:@"users"] addDocumentWithData:@{
+ @"first": @"Alan",
+ @"middle": @"Mathison",
+ @"last": @"Turing",
+ @"born": @1912
+ } completion:^(NSError * _Nullable error) {
+ if (error != nil) {
+ NSLog(@"Error adding document: %@", error);
+ } else {
+ NSLog(@"Document added with ID: %@", ref.documentID);
+ }
+ }];
+ViewController.m
+
+언어: Kotlin · 셀#1
+// Create a new user with a first, middle, and last name
+val user = hashMapOf(
+ "first" to "Alan",
+ "middle" to "Mathison",
+ "last" to "Turing",
+ "born" to 1912,
+)
+
+// Add a new document with a generated ID
+db.collection("users")
+ .add(user)
+ .addOnSuccessListener { documentReference ->
+ Log.d(TAG, "DocumentSnapshot added with ID: ${documentReference.id}")
+ }
+ .addOnFailureListener { e ->
+ Log.w(TAG, "Error adding document", e)
+ }
+DocSnippets.kt
+
+언어: Java · 셀#1
+// Create a new user with a first, middle, and last name
+Map<String, Object> user = new HashMap<>();
+user.put("first", "Alan");
+user.put("middle", "Mathison");
+user.put("last", "Turing");
+user.put("born", 1912);
+
+// Add a new document with a generated ID
+db.collection("users")
+ .add(user)
+ .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+ @Override
+ public void onSuccess(DocumentReference documentReference) {
+ Log.d(TAG, "DocumentSnapshot added with ID: " + documentReference.getId());
+ }
+ })
+ .addOnFailureListener(new OnFailureListener() {
+ @Override
+ public void onFailure(@NonNull Exception e) {
+ Log.w(TAG, "Error adding document", e);
+ }
+ });
+DocSnippets.java
+
+언어: Dart · 셀#1
+// Create a new user with a first and last name
+final user = <String, dynamic>{
+ "first": "Alan",
+ "middle": "Mathison",
+ "last": "Turing",
+ "born": 1912
+};
+
+// Add a new document with a generated ID
+db.collection("users").add(user).then((DocumentReference doc) =>
+ print('DocumentSnapshot added with ID: ${doc.id}'));
+firestore.dart
+
+언어: 웹 · 셀#1
+// Create a new user with a first and last name
+final user = <String, dynamic>{
+ "first": "Alan",
+ "middle": "Mathison",
+ "last": "Turing",
+ "born": 1912
+};
+
+// Add a new document with a generated ID
+db.collection("users").add(user).then((DocumentReference doc) =>
+ print('DocumentSnapshot added with ID: ${doc.id}'));
+firestore.dart
+
+Cloud Firestore 클라이언트 설치 및 생성에 관한 자세한 내용은 Cloud Firestore 클라이언트 라이브러리를 참조하세요.
+
+## 데이터 읽기
+Firebase Console의 데이터 뷰어를 사용하여 Cloud Firestore에 추가한 데이터를 빠르게 확인합니다.
+
+'get' 메서드를 사용해 전체 컬렉션을 가져올 수도 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+import { collection, getDocs } from "firebase/firestore";
+
+const querySnapshot = await getDocs(collection(db, "users"));
+querySnapshot.forEach((doc) => {
+ console.log(`${doc.id} => ${doc.data()}`);
+});
+get_all_users.js
+
+언어: Swift · 셀#1
+do {
+ let snapshot = try await db.collection("users").getDocuments()
+ for document in snapshot.documents {
+ print("\(document.documentID) => \(document.data())")
+ }
+} catch {
+ print("Error getting documents: \(error)")
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+[[self.db collectionWithPath:@"users"]
+ getDocumentsWithCompletion:^(FIRQuerySnapshot * _Nullable snapshot,
+ NSError * _Nullable error) {
+ if (error != nil) {
+ NSLog(@"Error getting documents: %@", error);
+ } else {
+ for (FIRDocumentSnapshot *document in snapshot.documents) {
+ NSLog(@"%@ => %@", document.documentID, document.data);
+ }
+ }
+ }];
+ViewController.m
+
+언어: Kotlin · 셀#1
+db.collection("users")
+ .get()
+ .addOnSuccessListener { result ->
+ for (document in result) {
+ Log.d(TAG, "${document.id} => ${document.data}")
+ }
+ }
+ .addOnFailureListener { exception ->
+ Log.w(TAG, "Error getting documents.", exception)
+ }
+DocSnippets.kt
+
+언어: Java · 셀#1
+db.collection("users")
+ .get()
+ .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+ @Override
+ public void onComplete(@NonNull Task<QuerySnapshot> task) {
+ if (task.isSuccessful()) {
+ for (QueryDocumentSnapshot document : task.getResult()) {
+ Log.d(TAG, document.getId() + " => " + document.getData());
+ }
+ } else {
+ Log.w(TAG, "Error getting documents.", task.getException());
+ }
+ }
+ });
+DocSnippets.java
+
+언어: Dart · 셀#1
+await db.collection("users").get().then((event) {
+ for (var doc in event.docs) {
+ print("${doc.id} => ${doc.data()}");
+ }
+});
+firestore.dart
+
+Cloud Firestore 클라이언트 설치 및 생성에 관한 자세한 내용은 Cloud Firestore 클라이언트 라이브러리를 참조하세요.
+
+## 데이터 보안
+웹, Android 또는 Apple 플랫폼 SDK를 사용하는 경우 Firebase 인증 및 Cloud Firestore Security Rules를 사용하여 Cloud Firestore의 데이터에 보안을 적용합니다.
+
+다음은 시작하는 데 사용할 수 있는 기본 규칙 세트입니다. Console의 규칙 탭에서 보안 규칙을 수정할 수 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 인증 필요 · 셀#1
+// Allow read/write access to a document keyed by the user's UID
+service cloud.firestore {
+ match /databases/{database}/documents {
+ match /users/{uid} {
+ allow read, write: if request.auth != null && request.auth.uid == uid;
+ }
+ }
+}
+
+언어: 잠금 모드 · 셀#1
+// Deny read/write access to all users under any conditions
+service cloud.firestore {
+ match /databases/{database}/documents {
+ match /{document=**} {
+ allow read, write: if false;
+ }
+ }
+}
+
+언어: 코드 · 셀#1
+// Deny read/write access to all users under any conditions
+service cloud.firestore {
+ match /databases/{database}/documents {
+ match /{document=**} {
+ allow read, write: if false;
+ }
+ }
+}
+
+웹, Android 또는 iOS 앱을 프로덕션에 배포하기 전에 앱 클라이언트만 Cloud Firestore 데이터에 액세스할 수 있도록 하는 단계를 수행합니다. 앱 체크 문서를 참조하세요.
+
+서버 SDK 중 하나를 사용하는 경우 Identity and Access Management(IAM)를 사용하여 Cloud Firestore의 데이터에 보안을 적용합니다.
+
+## 동영상 튜토리얼 보기
+Cloud Firestore 모바일 클라이언트 라이브러리 시작에 대한 자세한 안내는 다음 동영상 튜토리얼을 참조하세요.
+
+그 밖에도 많은 동영상을 Firebase YouTube 채널에서 확인할 수 있습니다.
+
+## 다음 단계
+다음 주제를 자세히 알아보세요.
+
+Codelabs - Android, iOS 또는 웹용 Codelab의 안내를 따라 실제 앱에서 Cloud Firestore를 사용하는 방법을 알아보세요.
+
+데이터 모델 - 계층적 데이터와 하위 컬렉션을 비롯한 Cloud Firestore에서 데이터가 구조화되는 방식을 자세히 알아보세요.
+
+데이터 추가 - Cloud Firestore에서 데이터를 만들고 업데이트하는 방법을 자세히 알아보세요.
+
+데이터 가져오기 - 데이터를 검색하는 방법을 자세히 알아보세요.
+
+단순 쿼리 및 복합 쿼리 실행 - 단순 쿼리 및 복합 쿼리 실행 방법을 알아보세요.
+
+쿼리 순서 지정 및 제한 - 쿼리에서 반환된 데이터의 순서를 지정하고 제한하는 방법을 알아보세요.

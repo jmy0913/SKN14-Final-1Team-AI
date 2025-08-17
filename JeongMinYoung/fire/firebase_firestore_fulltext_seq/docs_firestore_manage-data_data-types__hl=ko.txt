@@ -1,0 +1,35 @@
+Source URL: https://firebase.google.com/docs/firestore/manage-data/data-types?hl=ko
+
+## 서문
+이 페이지에서는 Cloud Firestore에서 지원하는 데이터 유형을 설명합니다.
+
+## 데이터 유형
+다음 표에는 Cloud Firestore에서 지원하는 데이터 유형이 나와 있습니다. 동일 유형의 값을 비교할 때 사용되는 정렬 순서도 설명하고 있습니다.
+
+## 값 유형 순서
+쿼리에 혼합 유형 값이 있는 필드가 있으면 Cloud Firestore는 내부 표시를 기준으로 확정된 순서를 사용합니다. 순서는 다음 목록과 같습니다.
+
+Null 값
+
+부울 값
+
+숫자순으로 정렬된 정수 및 부동 소수점 값
+
+날짜 값
+
+텍스트 문자열 값
+
+바이트 값
+
+Cloud Firestore 참조
+
+지리적 지점 값
+
+배열 값
+
+벡터 임베딩
+
+지도 값
+
+## 숫자 순서
+Cloud Firestore는 서로 인터리브 처리된 모든 숫자 값(Integer 및 Floating point)을 정렬합니다. 부동 소수점 비교는 IEEE 754의 전체 순서를 따르며, 특이한 예외로는 Cloud Firestore가 모든 NaN 값을 정규화하고 -Infinity보다 작다고 간주한다는 점입니다.

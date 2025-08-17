@@ -1,0 +1,96 @@
+Source URL: https://firebase.google.com/docs/firestore/locations?hl=ko
+
+## 서문
+Cloud Firestore 인스턴스를 프로비저닝할 때는 인스턴스의 위치를 선택해야 합니다. 지연 시간을 줄이고 가용성을 높이려면 데이터가 필요한 서비스 및 사용자와 가까운 위치에 데이터를 저장합니다.
+
+프로젝트에서 사용한 만큼 지불하는 Blaze 요금제를 사용하면 원하는 경우 프로젝트에서 각기 고유한 위치 설정이 적용된 데이터베이스를 여러 개 만들 수 있습니다.
+
+데이터베이스 인스턴스를 프로비저닝한 후에는 위치 설정을 변경할 수 없습니다.
+
+프로젝트의 모든 Realtime Database 인스턴스와 기본이 아닌 모든 Cloud Firestore 데이터베이스 인스턴스는 이 위치 종속 항목을 공유하지 않습니다.
+
+## 위치 유형
+멀티 리전 위치 또는 리전 위치에 Cloud Firestore 데이터를 저장할 수 있습니다.
+
+## 멀티 리전 위치
+데이터베이스의 가용성 및 내구성을 최대화하려면 멀티 리전 위치를 선택합니다.
+
+멀티 리전 위치는 데이터베이스의 여러 복제본이 저장되는 정의된 리전 집합으로 구성됩니다. 각 복제본은 데이터베이스의 모든 데이터를 포함하는 읽기-쓰기 복제본이거나 전체 데이터 세트를 관리하지는 않지만 복제에 참여하는 감시 복제본입니다.
+
+여러 리전 간에 데이터를 복제하면 한 리전 전체가 손실되더라도 계속해서 데이터를 사용할 수 있습니다. 한 리전 내에서 데이터는 영역 간에 복제되므로 한 영역이 손실되더라도 해당 리전 내에서 데이터를 계속 사용할 수 있습니다.
+
+Cloud Firestore는 다음과 같은 멀티 리전 위치를 지원합니다.
+
+## 리전 위치
+리전 내 위치는 사우스캐롤라이나와 같은 특정한 지리적 장소를 의미합니다. 리전 내 위치의 데이터는 리전 내 여러 영역에 복제됩니다. 모든 리전 내 위치는 서로 약 161km 이상 떨어져 있습니다.
+
+비용을 절감하거나, 애플리케이션이 지연 시간에 민감하여 쓰기 지연 시간을 단축하거나, 다른 Google Cloud 리소스와 위치를 공유하려면 리전 위치를 선택합니다.
+
+Cloud Firestore는 다음과 같은 리전별 리소스 위치를 지원합니다.
+
+## 위치 SLA
+Cloud Firestore 위치 유형에 따라 서비스수준계약(SLA) 업타임 비율이 결정됩니다.
+
+## 위치별 가격 책정
+Cloud Firestore 위치에 따라 데이터베이스 작업 비용이 결정됩니다.
+
+리전별 및 리전 유형별 가격 책정에 대한 자세한 설명은 Cloud Firestore 청구 이해를 참조하세요.
+
+## 데이터베이스 위치 보기
+Firebase Console에서 Cloud Firestore 데이터 탭으로 이동하여 데이터베이스 인스턴스 목록과 위치를 확인합니다.
+
+## '기본 Google Cloud 리소스의 위치'로 인한 가능한 위치 종속 항목
+'기본 Google Cloud 리소스의 위치'는 다음을 포함하여 Google App Engine과 연결된 모든 프로젝트 리소스의 위치 설정입니다.
+
+기본 Cloud Firestore 데이터베이스 인스턴스
+
+이름 형식이 *.appspot.com인 기본 Firebase용 Cloud Storage 버킷
+
+특히 1세대 예약 함수와 함께 사용되는 Google Cloud Scheduler
+
+이 '기본 Google Cloud 리소스 위치'는 변경할 수 없는 설정입니다. 또한 연결된 리소스 중 하나의 위치를 설정하면 App Engine과의 공통 연결로 인해 모든 리소스의 위치가 간접적으로 설정됩니다.
+
+그러나 지난 몇 년 동안 Firebase 및 Google Cloud 생태계가 여러 번 변경되면서 리소스와 App Engine에 대한 연결도 변경되었습니다. 특히 2024년 10월 30일부터 새롭게 프로비저닝된 모든 기본 Firebase용 Cloud Storage 버킷의 이름 형식은 *.firebasestorage.app이며 App Engine과 연결되지 않습니다.
+
+가능한 위치 종속 항목에서 변경된 사항에 대한 세부정보는 다음과 같습니다.
+
+2024년 10월 30일부터 기본 Cloud Firestore 인스턴스와 기본 Firebase용 Cloud Storage 버킷이 아직 프로비저닝되지 않은 경우:
+
+기본 Cloud Firestore 인스턴스를 프로비저닝하면 프로젝트에서 프로비저닝된 향후 App Engine 앱 위치가 설정됩니다. 그러나 향후 기본 Cloud Storage 버킷 위치를 지정하지 않습니다.
+
+기본 Cloud Storage 버킷을 프로비저닝해도 더 이상 App Engine 앱이 프로비저닝되지 않습니다. 따라서 기본 Cloud Storage 버킷 위치는 향후 기본 Cloud Firestore 인스턴스 위치를 지정하지 않습니다.
+
+2024년 10월 30일부터 기본 Cloud Firestore 인스턴스와 기본 Firebase용 Cloud Storage 버킷이 아직 프로비저닝되지 않은 경우:
+
+기본 Cloud Firestore 인스턴스를 프로비저닝하면 프로젝트에서 프로비저닝된 향후 App Engine 앱 위치가 설정됩니다. 그러나 향후 기본 Cloud Storage 버킷 위치를 지정하지 않습니다.
+
+기본 Cloud Firestore 인스턴스를 프로비저닝하면 프로젝트에서 프로비저닝된 향후 App Engine 앱 위치가 설정됩니다. 그러나 향후 기본 Cloud Storage 버킷 위치를 지정하지 않습니다.
+
+기본 Cloud Storage 버킷을 프로비저닝해도 더 이상 App Engine 앱이 프로비저닝되지 않습니다. 따라서 기본 Cloud Storage 버킷 위치는 향후 기본 Cloud Firestore 인스턴스 위치를 지정하지 않습니다.
+
+기본 Cloud Storage 버킷을 프로비저닝해도 더 이상 App Engine 앱이 프로비저닝되지 않습니다. 따라서 기본 Cloud Storage 버킷 위치는 향후 기본 Cloud Firestore 인스턴스 위치를 지정하지 않습니다.
+
+2024년 10월 30일부터 기본 Cloud Firestore 인스턴스가 이미 프로비저닝되었지만 기본 Firebase용 Cloud Storage 버킷이 프로비저닝되지 않은 경우:
+
+기존 기본 Cloud Firestore 인스턴스는 향후 기본 Cloud Storage 버킷(*.firebasestorage.app) 위치를 지정하지 않습니다.
+
+2024년 10월 30일부터 기본 Cloud Firestore 인스턴스가 이미 프로비저닝되었지만 기본 Firebase용 Cloud Storage 버킷이 프로비저닝되지 않은 경우:
+
+기존 기본 Cloud Firestore 인스턴스는 향후 기본 Cloud Storage 버킷(*.firebasestorage.app) 위치를 지정하지 않습니다.
+
+2024년 10월 30일부터 기본 Firebase용 Cloud Storage 버킷이 이미 프로비저닝되었지만(특히 *.appspot.com 버킷) 기본 Cloud Firestore 인스턴스가 프로비저닝되지 않은 경우:
+
+기본 Cloud Storage 버킷(*.appspot.com)이 프로비저닝되었을 때 App Engine 앱도 함께 프로비저닝되었으므로 향후 기본 Cloud Firestore 인스턴스 위치가 그때 설정되었습니다. *.appspot.com 버킷을 삭제하더라도 App Engine 앱을 삭제할 수 없으므로 향후 기본 Cloud Firestore 인스턴스 위치 설정이 이미 설정되어 있습니다.
+
+2024년 10월 30일부터 기본 Firebase용 Cloud Storage 버킷이 이미 프로비저닝되었지만(특히 *.appspot.com 버킷) 기본 Cloud Firestore 인스턴스가 프로비저닝되지 않은 경우:
+
+기본 Cloud Storage 버킷(*.appspot.com)이 프로비저닝되었을 때 App Engine 앱도 함께 프로비저닝되었으므로 향후 기본 Cloud Firestore 인스턴스 위치가 그때 설정되었습니다. *.appspot.com 버킷을 삭제하더라도 App Engine 앱을 삭제할 수 없으므로 향후 기본 Cloud Firestore 인스턴스 위치 설정이 이미 설정되어 있습니다.
+
+1세대 예약 함수를 사용한 경우 위치는 기본 Google Cloud 리소스 위치로 설정됩니다. 이는 Cloud Scheduler 및 App Engine이 이전에 서로 연결되어 있었기 때문입니다. 또한 이 위치 설정을 공유하는 다른 리소스를 프로비저닝하기 전에 1세대 예약 함수를 설정하면 해당 리소스의 위치도 설정됩니다.
+
+us-central 또는 europe-west 위치가 설정된 App Engine 앱이 있는 경우 기본 Google Cloud 리소스의 위치는 멀티 리전으로 간주됩니다.
+
+## 다음 단계
+특정 위치에서 Cloud Firestore 데이터베이스 만들려면 Cloud Firestore 시작하기를 참조하세요.
+
+지연 시간, 가용성, 내구성 요건을 충족하는 애플리케이션을 빌드하는 방법에 대한 자세한 내용은 지역 및 리전을 참조하세요.
