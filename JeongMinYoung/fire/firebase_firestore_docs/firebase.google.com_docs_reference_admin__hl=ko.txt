@@ -1,0 +1,119 @@
+Source URL: https://firebase.google.com/docs/reference/admin?hl=ko
+
+## 서문
+The Admin SDK is a set of server libraries that lets you interact with Firebase from privileged environments. The SDK supports Node.js, Java, Python, Go, and C# (.NET). For more information about feature support and setup tasks, see Add the Firebase Admin SDK to Your Server.
+
+## Node.js
+The Admin SDK for Node.js provides APIs for authentication, user management, Realtime Database, and more.
+
+firebase-admin
+
+firebase-admin.app-check
+
+firebase-admin.auth
+
+firebase-admin.database
+
+firebase-admin.data-connect
+
+firebase-admin.extensions
+
+firebase-admin.firestore
+
+firebase-admin.functions
+
+firebase-admin.instance-id
+
+firebase-admin.machine-learning
+
+firebase-admin.messaging
+
+firebase-admin.project-management
+
+firebase-admin.remote-config
+
+firebase-admin.security-rules
+
+firebase-admin.storage
+
+## Java
+The Admin SDK for Java provides APIs for authentication, user management, Realtime Database, and more.
+
+com.google.firebase
+
+com.google.firebase.auth
+
+com.google.firebase.cloud
+
+com.google.firebase.database
+
+com.google.firebase.iid
+
+com.google.firebase.messaging
+
+com.google.firebase.projectmanagement
+
+com.google.firebase.remoteconfig
+
+## Python
+The Admin SDK for Python provides APIs for authentication, user management, Realtime Database, and more.
+
+firebase_admin
+
+firebase-admin.app_check
+
+firebase_admin.auth
+
+firebase_admin.credentials
+
+firebase_admin.db
+
+firebase_admin.exceptions
+
+firebase_admin.firestore
+
+firebase_admin.firestore_async
+
+firebase_admin.functions
+
+firebase_admin.instance_id
+
+firebase_admin.messaging
+
+firebase_admin.ml
+
+firebase_admin.project_management
+
+firebase_admin.remote_config
+
+firebase_admin.storage
+
+firebase_admin.tenant_mgt
+
+## Go
+The Admin SDK for Go provides APIs for authentication, user management, Realtime Database, and more.
+
+firebase package
+
+appcheck package
+
+auth package
+
+db package
+
+errorutils package
+
+iid package
+
+messaging package
+
+storage package
+
+## C# (.NET)
+The Admin SDK for .NET provides APIs for authentication (ID token verification and custom token minting).
+
+FirebaseAdmin namespace
+
+FirebaseAdmin.Auth namespace
+
+FirebaseAdmin.Messaging namespace

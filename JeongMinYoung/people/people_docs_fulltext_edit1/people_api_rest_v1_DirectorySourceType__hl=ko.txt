@@ -1,0 +1,21 @@
+Source URL: https://developers.google.com/people/api/rest/v1/DirectorySourceType?hl=ko
+
+## 본문
+디렉터리 응답에서 반환할 데이터 소스 유형입니다.
+
+### 표
+| 열거형 | |
+| --- | --- |
+| DIRECTORY_SOURCE_TYPE_UNSPECIFIED | 지정되지 않았습니다. |
+| DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT | Google Workspace 도메인 공유 연락처 |
+| DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE | Google Workspace 도메인 프로필 |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+DIRECTORY_SOURCE_TYPE_UNSPECIFIED
+
+언어: 코드 · 셀#2
+DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT
+
+언어: 코드 · 셀#3
+DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE

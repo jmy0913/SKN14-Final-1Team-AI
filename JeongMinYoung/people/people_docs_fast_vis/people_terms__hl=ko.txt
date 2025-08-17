@@ -1,0 +1,68 @@
+Source URL: https://developers.google.com/people/terms?hl=ko
+
+## Fallback (article.innerText)
+기본 콘텐츠로 건너뛰기
+
+developers.google.com 은(는) 서비스 제공 및 서비스 품질 개선과 트래픽 분석을 위해 쿠키를 사용합니다. 동의 시 광고를 게재하고 표시되는 콘텐츠 및 광고를 맞춤설정하는 데도 쿠키가 사용됩니다. 자세히 알아보세요.
+
+동의함
+나중에
+people
+People API
+/
+로그인
+가이드
+참고자료
+지원
+도움을 얻는 방법
+Stack Overflow
+Issue Tracker
+서비스 약관
+ 이 페이지는 Cloud Translation API를 통해 번역되었습니다.
+홈
+제품
+Google Workspace
+People API
+지원
+People API 이용약관
+bookmark_border
+최종 수정일: 2015년 11월 23일
+
+이 API를 사용하면 Google API 서비스 약관 ('API 서비스 약관')에 동의하는 것으로 간주됩니다.
+
+달리 명시되지 않는 한 이 페이지의 콘텐츠에는 Creative Commons Attribution 4.0 라이선스에 따라 라이선스가 부여되며, 코드 샘플에는 Apache 2.0 라이선스에 따라 라이선스가 부여됩니다. 자세한 내용은 Google Developers 사이트 정책을 참조하세요. 자바는 Oracle 및/또는 Oracle 계열사의 등록 상표입니다.
+
+Stack Overflow
+google-people 태그로 질문하기
+약관
+Google API 서비스: 사용자 데이터 정책
+프로그램
+Google Developer Program
+Google Developer Groups
+Google Developer Experts
+Accelerators
+Women Techmakers
+Google Cloud & NVIDIA
+개발자 콘솔
+Google API Console
+Google Cloud Platform Console
+Google Play Console
+Firebase Console
+Actions on Google Console
+Cast SDK Developer Console
+Chrome Web Store Dashboard
+Google Home Developer Console
+Android
+Chrome
+Firebase
+Google Cloud Platform
+Google AI
+모든 제품
+약관
+개인정보처리방침
+쿠키 관리
+Google Developers 뉴스레터 신청
+구독
+정보
+채팅
+API

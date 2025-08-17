@@ -1,0 +1,5 @@
+Source URL: https://developers.google.com/people/terms?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다. Google Workspace People API People API 이용약관 컬렉션을 사용해 정리하기 내 환경설정을 기준으로 콘텐츠를 저장하고 분류하세요. 최종 수정일: 2015년 11월 23일 이 API를 사용하면 Google API 서비스 약관 ('API 서비스 약관') 에 동의하는 것으로 간주됩니다.
+

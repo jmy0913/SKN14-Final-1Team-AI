@@ -1,0 +1,41 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/delete?hl=ko
+
+## 본문
+Deletes a document.
+
+DELETE https://firestore.googleapis.com/v1/{name=projects/*/databases/*/documents/*/**}
+
+The URL uses gRPC Transcoding syntax.
+
+The request body must be empty.
+
+If successful, the response body is an empty JSON object.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| name | string Required. The resource name of the Document to delete. In the format: projects/{projectId}/databases/{databaseId}/documents/{document_path}. |
+
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| currentDocument | object (Precondition) An optional precondition on the document. The request will fail if this is set and not met by the target document. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+DELETE https://firestore.googleapis.com/v1/{name=projects/*/databases/*/documents/*/**}
+
+언어: 코드 · 셀#2
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#3
+https://www.googleapis.com/auth/cloud-platform

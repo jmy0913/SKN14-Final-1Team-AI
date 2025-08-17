@@ -1,0 +1,5 @@
+Source URL: https://developers.google.com/people/api/rest/v1/contactGroups.members?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다. Google Workspace People API 참고자료 REST Resource: contactGroups.members 컬렉션을 사용해 정리하기 내 환경설정을 기준으로 콘텐츠를 저장하고 분류하세요. 이 리소스에는 영구 데이터가 연결되어 있지 않습니다. 인증된 사용자가 소유한 연락처 그룹의 구성원을 수정합니다.
+

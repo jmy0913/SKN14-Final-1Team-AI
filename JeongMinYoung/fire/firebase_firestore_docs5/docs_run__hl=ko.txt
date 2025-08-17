@@ -1,0 +1,124 @@
+Source URL: https://firebase.google.com/docs/run?hl=ko
+
+## Fallback (article.innerText)
+기본 콘텐츠로 건너뛰기
+
+firebase.google.com 은(는) 서비스 제공 및 서비스 품질 개선과 트래픽 분석을 위해 쿠키를 사용합니다. 동의 시 광고를 게재하고 표시되는 콘텐츠 및 광고를 맞춤설정하는 데도 쿠키가 사용됩니다. 자세히 알아보세요.
+
+동의함
+나중에
+빌드
+실행
+문서
+더보기
+/
+블로그
+Studio
+Go to console
+로그인
+Documentation
+개요
+기본사항
+빌드
+실행
+참조
+샘플
+개요
+버전
+Test Lab
+App Distribution
+모니터링
+Crashlytics
+Performance Monitoring
+반복
+Remote Config
+A/B Testing
+참여
+Analytics
+Cloud Messaging
+In-App Messaging
+Dynamic Links
+Google AdMob
+Google Ads
+App Indexing
+관련 제품
+Authentication
+Extensions
+ 이 페이지는 Cloud Translation API를 통해 번역되었습니다.
+이 페이지의 내용
+앱을 실행하는 데 도움이 되는 제품 알아보기
+출시 전 앱 테스트 및 사용자 의견 수집
+앱 안정성 및 성능 개선
+앱 반복 및 동적으로 업데이트
+사용자 이해 및 참여 유도
+앱을 실행하는 데 도움이 되는 제품 알아보기
+
+자신 있게 앱을 실행하고 사용자에게 최고의 환경을 제공하세요.
+
+앱 품질과 환경을 최적화하는 데 도움이 되는 AI 지원 도구로 실행, 모니터링, 반복하세요.
+
+출시 전 앱 테스트 및 사용자 의견 수집
+Test Lab
+Firebase Test Lab을 사용하면 다양한 호스팅 기기에서 앱을 실행할 수 있으므로 실제 테스터에게 배포하기 전에 품질을 테스트할 수 있습니다. Firebase Console 또는 Google Cloud 버킷에서 테스트 결과(로그, 동영상, 스크린샷 포함)를 확인할 수 있습니다.
+소개
+App Distribution
+Firebase 앱 배포를 사용하면 신뢰할 수 있는 테스터에 앱을 쉽게 배포할 수 있습니다. 테스터 기기에 앱을 빠르게 제공하여 앱에 대한 의견을 조기에 자주 받을 수 있습니다. 또한 앱에서 Crashlytics를 사용하면 모든 빌드의 안정성 측정항목을 자동으로 얻게 되므로 출시 시기를 파악할 수 있습니다.
+소개
+앱 안정성 및 성능 개선
+Crashlytics
+Firebase Crashlytics는 가벼운 실시간 비정상 종료 보고 도구로 앱 품질을 저하시키는 앱 안정성 문제를 추적하고, 우선순위를 정하고, 문제를 해결하는 데 도움이 됩니다. Crashlytics는 비정상 종료를 지능적으로 그룹화하고 이러한 비정상 종료를 유발하는 상황을 강조하여 보여주므로 문제 해결 시간이 단축됩니다.
+소개
+Performance Monitoring
+사용자의 관점에서 앱의 상태와 속도에 대한 통계를 확인하고 지연 시간 문제를 해결하세요. Performance Monitoring 기능 및 도구를 시작하려면 가이드를 참고하세요.
+소개
+앱 반복 및 동적으로 업데이트
+Remote Config
+원격 구성은 사용자가 앱 업데이트를 다운로드할 필요 없이 앱의 동작과 모양을 변경할 수 있는 클라우드 서비스입니다.
+소개
+A/B Testing
+Firebase A/B 테스팅을 사용하면 제품 및 마케팅 실험을 쉽게 실행, 분석, 확장하여 앱 환경을 최적화할 수 있습니다.
+소개
+사용자 이해 및 참여 유도
+애널리틱스 성능 향상
+Google 애널리틱스는 사용자가 앱과 상호작용하는 방식을 파악할 수 있는 이벤트 보고서를 제공합니다. 애널리틱스는 Firebase 기능 전체에 통합되며 Firebase SDK를 사용하여 정의할 수 있는 이벤트에 대한 보고를 제공합니다.
+소개
+Cloud Messaging
+Firebase 클라우드 메시징 (FCM)은 Android, iOS, 웹 기기에 메시지와 데이터를 저렴한 비용으로 안정적으로 전송할 수 있는 크로스 플랫폼 메시징 솔루션입니다.
+소개
+In-App Messaging
+Firebase 인앱 메시지를 사용하면 주요 앱 기능을 사용하도록 권장하는 타겟팅된 상황별 메시지를 보내 앱 활성 사용자의 참여를 유도할 수 있습니다.
+소개
+
+달리 명시되지 않는 한 이 페이지의 콘텐츠에는 Creative Commons Attribution 4.0 라이선스에 따라 라이선스가 부여되며, 코드 샘플에는 Apache 2.0 라이선스에 따라 라이선스가 부여됩니다. 자세한 내용은 Google Developers 사이트 정책을 참조하세요. 자바는 Oracle 및/또는 Oracle 계열사의 등록 상표입니다.
+
+최종 업데이트: 2025-04-22(UTC)
+
+알아보기
+개발자 가이드
+SDK 및 API 참조
+샘플
+라이브러리
+GitHub
+최신 소식 확인하기
+블로그 보기
+Find us on Reddit
+Follow on X
+Subscribe on YouTube
+이벤트 참여
+지원
+지원팀에 문의하기
+Stack Overflow
+Slack 커뮤니티
+Google group
+출시 노트
+브랜드 가이드라인
+FAQ
+Android
+Chrome
+Firebase
+Google Cloud Platform
+모든 제품
+약관
+개인정보처리방침
+쿠키 관리
+채팅

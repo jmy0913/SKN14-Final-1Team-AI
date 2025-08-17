@@ -1,0 +1,128 @@
+Source URL: https://firebase.google.com/docs/web/environments-js-sdk?hl=ko
+
+## 지원되는 환경
+Firebase JavaScript SDK는 다음 환경에서 공식적으로 지원됩니다.
+
+## 브라우저
+1 Firebase AI Logic은 이전에 'Vertex AI in Firebase'라고 불렸습니다.
+
+### 표
+| Firebase 제품 | Edge | Firefox | Chrome | iOS Safari | Safari |
+| --- | --- | --- | --- | --- | --- |
+| Firebase AI Logic 1 |  |  |  |  |  |
+| Analytics |  |  |  |  |  |
+| App Check |  |  |  |  |  |
+| Authentication |  |  |  |  |  |
+| Cloud Firestore | (지속성
+제외) |  |  | (iOS 10 미만인 경우
+지속성
+제외) |  |
+| Cloud Functions |  |  |  |  |  |
+| Firebase 설치 |  |  |  |  |  |
+| Cloud Messaging | (Edge 17 이상, 모바일 제외) |  |  |  |  |
+| Cloud Storage |  |  |  |  |  |
+| Data Connect |  |  |  |  |  |
+| Performance Monitoring |  |  |  |  |  |
+| Realtime Database |  |  |  |  |  |
+| Remote Config |  |  |  |  |  |
+
+## 기타 환경
+1 Firebase AI Logic은 이전에 'Vertex AI in Firebase'라고 불렸습니다.
+
+### 표
+| Firebase 제품 | React Native | Node.js 18 이후 버전 | Chrome
+확장 프로그램 | Cordova |
+| --- | --- | --- | --- | --- |
+| Firebase AI Logic 1 |  |  |  |  |
+| App Check | (맞춤 제공자를 사용하여 네이티브 기기 증명 실행) | (맞춤 제공업체 사용) |  |  |
+| Analytics |  |  |  |  |
+| Authentication | (참고 참조) | (참고 참조) | (참고 참조) | (참고 참조) |
+| Cloud Firestore | (지속성
+제외) | (지속성
+제외) |  |  |
+| Cloud Functions |  |  |  |  |
+| Data Connect |  |  |  |  |
+| Firebase 설치 |  |  |  |  |
+| Cloud Messaging |  |  |  |  |
+| Cloud Storage | (업로드
+제외) |  |  |  |
+| Performance Monitoring |  |  |  |  |
+| Realtime Database |  |  |  |  |
+| Remote Config |  |  |  |  |
+
+## Polyfill
+Firebase JavaScript SDK는 최신 웹 플랫폼 표준을 기반으로 빌드되었습니다. 일부 오래된 버전의 브라우저와 자바스크립트 환경에서는 Firebase에 필요한 기능을 모두 지원하지는 않습니다. 오래된 브라우저와 환경을 지원해야 하는 경우 polyfill을 적절하게 로드해야 합니다.
+
+로드해야 할 대부분의 polyfill이 아래 섹션에 나와 있습니다.
+
+## 필수 polyfill
+### 표
+| 환경 | Polyfill |
+| --- | --- |
+| Safari 7, 8, 9 | ES 지원 |
+| Node 10 이전 버전 | ES 지원 |
+
+## 선택사항 polyfill
+Safari 10.1 이전 버전
+
+iOS 10.3 이전 버전
+
+Authentication
+
+Cloud Firestore
+
+Cloud Functions
+
+Performance Monitoring
+
+Node 18 이전 버전
+
+Cloud Storage
+
+React Native 및 Expo
+
+### 표
+| 환경 | Polyfill | Firebase 제품 |
+| --- | --- | --- |
+| Safari 10.1 이전 버전
+iOS 10.3 이전 버전 | 가져오기 | Authentication
+Cloud Firestore
+Cloud Functions
+Performance Monitoring |
+| Node 18 이전 버전 | 가져오기 | Authentication
+Cloud Firestore
+Cloud Functions
+Cloud Storage |
+| React Native 및 Expo | base-64 | Cloud Storage |
+
+## 추천 polyfill
+### 표
+| Polyfill | 라이선스 |
+| --- | --- |
+| ES 지원 | MIT |
+| fetch - `cross-fetch` - 이전 브라우저에 적합함 | MIT |
+| fetch - `undici` - Node.js에 적합함 | MIT |
+| base-64 | MIT |
+
+## React Native 및 Expo에 필요한 Polyfill 설정
+base64로 인코딩된 문자열을 업로드할 때 React Native 및 Expo의 경우 다음을 실행해야 합니다.
+
+npm에서 base-64를 설치합니다.
+
+Cloud Storage가 액세스할 수 있도록 base-64에서 decode를 가져와서 전역 범위에 atob로 연결합니다.
+
+## 옵션 1: (권장) Bundler를 Babel과 통합하여 사용
+Bundler를 사용하는 경우 Babel과 @babel/preset-env를 통합하여 polyfill을 가져옵니다.
+
+Babel과 bundler를 통합하는 방법은 Babel의 대화형 설정 가이드를 참조하세요.
+
+Babel을 사용하면 포함할 polyfill이 정확히 무엇인지 고민하지 않아도 됩니다. 지원해야 할 최소 버전의 브라우저 환경만 지정하면 Babel이 필요한 polyfill을 자동으로 추가해줍니다. Babel을 사용하면 Firebase나 자체 코드에서 새로운 ES 기능을 사용하는 경우에도 브라우저 지원 요구사항이 항상 충족됩니다.
+
+@babel/preset-env에는 환경 대상을 지정(옵션 targets)하고 polyfill을 추가(옵션 useBuiltIns)하는 구성 옵션에 대한 자세한 정보가 포함되어 있습니다.
+
+## 옵션 2: (권장되지 않음) 수동으로 polyfill 추가
+즐겨찾는 polyfill 라이브러리(예: core-js)를 사용하여 수동으로 polyfill을 추가할 수 있습니다.
+
+core-js는 HTML 페이지에 직접 포함할 수 있는 통합 polyfill 파일도 제공합니다.
+
+이 옵션을 사용하면 Babel을 사용하지 않을 때도 polyfill을 편리하게 관리할 수 있습니다. 하지만 이 통합 옵션을 사용할 경우 불필요한 polyfill이 포함되어 페이지가 무거워지고 페이지 로딩 시간이 길어질 수 있으므로 프로덕션 앱에서는 사용하지 않는 것이 좋습니다.

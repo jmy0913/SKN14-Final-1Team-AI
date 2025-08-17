@@ -1,0 +1,47 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/create?hl=ko
+
+## 본문
+Create a database.
+
+POST https://firestore.googleapis.com/v1/{parent=projects/*}/databases
+
+The URL uses gRPC Transcoding syntax.
+
+The request body contains an instance of Database.
+
+If successful, the response body contains a newly created instance of Operation.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| parent | string Required. A parent name of the form projects/{projectId} |
+
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| databaseId | string Required. The ID to use for the database, which will become the final component of the database's resource name. This value should be 4-63 characters. Valid characters are /[a-z][0-9]-/ with first character a letter and the last a letter or a number. Must not be UUID-like /[0-9a-f]{8}(-[0-9a-f]{4}){3}-[0-9a-f]{12}/. "(default)" database ID is also valid. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+POST https://firestore.googleapis.com/v1/{parent=projects/*}/databases
+
+언어: 코드 · 셀#2
+Database
+
+언어: 코드 · 셀#3
+Operation
+
+언어: 코드 · 셀#4
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#5
+https://www.googleapis.com/auth/cloud-platform

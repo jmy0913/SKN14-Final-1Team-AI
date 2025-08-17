@@ -1,0 +1,67 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/create?hl=ko
+
+## 본문
+Creates the specified index. A newly created index's initial state is CREATING. On completion of the returned google.longrunning.Operation, the state will be READY. If the index already exists, the call will return an ALREADY_EXISTS status.
+
+During creation, the process could result in an error, in which case the index will move to the ERROR state. The process can be recovered by fixing the data that caused the error, removing the index with delete, then re-creating the index with create.
+
+Indexes with a single field cannot be created.
+
+POST https://firestore.googleapis.com/v1beta1/{parent=projects/*/databases/*}/indexes
+
+The URL uses gRPC Transcoding syntax.
+
+The request body contains an instance of Index.
+
+If successful, the response body contains a newly created instance of Operation.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| parent | string The name of the database this index will apply to. For example: projects/{projectId}/databases/{databaseId} |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+CREATING
+
+언어: 코드 · 셀#2
+google.longrunning.Operation
+
+언어: 코드 · 셀#3
+READY
+
+언어: 코드 · 셀#4
+ALREADY_EXISTS
+
+언어: 코드 · 셀#5
+ERROR
+
+언어: 코드 · 셀#6
+delete
+
+언어: 코드 · 셀#7
+create
+
+언어: 코드 · 셀#8
+POST https://firestore.googleapis.com/v1beta1/{parent=projects/*/databases/*}/indexes
+
+언어: 코드 · 셀#9
+Index
+
+언어: 코드 · 셀#10
+Operation
+
+언어: 코드 · 셀#11
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#12
+https://www.googleapis.com/auth/cloud-platform

@@ -1,0 +1,57 @@
+Source URL: https://developers.google.com/people/quickstart/apps-script?hl=ko
+
+## 목표
+환경 구성
+
+스크립트를 만들고 구성합니다.
+
+스크립트를 실행합니다.
+
+## 기본 요건
+API 액세스가 사용 설정된 Google Workspace 도메인
+
+관리자 권한이 있는 해당 도메인의 Google 계정
+
+Google Drive 액세스
+
+## 스크립트 만들기
+script.google.com/create로 이동하여 새 스크립트를 만듭니다.
+
+스크립트 편집기의 내용을 다음 코드로 바꿉니다.
+
+저장 를 클릭합니다.
+
+제목 없는 프로젝트를 클릭하고 빠른 시작을 입력한 다음 이름 바꾸기를 클릭합니다.
+
+## People API 사용 설정
+편집기 code를 클릭합니다.
+
+편집기
+
+서비스 옆에 있는 서비스 추가 add를 클릭합니다 .
+
+서비스
+
+People API를 선택하고 추가를 클릭합니다.
+
+추가
+
+## 샘플 실행
+실행
+
+권한 검토를 클릭합니다.
+
+권한 검토
+
+계정을 선택합니다.
+
+허용을 클릭합니다.
+
+허용
+
+## 다음 단계
+Google Apps Script 고급 서비스 문서
+
+인증 및 승인 문제 해결
+
+People API 참조 문서

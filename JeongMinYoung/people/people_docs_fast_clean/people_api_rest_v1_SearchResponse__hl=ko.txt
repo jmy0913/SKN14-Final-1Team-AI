@@ -1,0 +1,129 @@
+Source URL: https://developers.google.com/people/api/rest/v1/SearchResponse?hl=ko
+
+## Fallback (article.innerText)
+기본 콘텐츠로 건너뛰기
+
+developers.google.com 은(는) 서비스 제공 및 서비스 품질 개선과 트래픽 분석을 위해 쿠키를 사용합니다. 동의 시 광고를 게재하고 표시되는 콘텐츠 및 광고를 맞춤설정하는 데도 쿠키가 사용됩니다. 자세히 알아보세요.
+
+동의함
+나중에
+people
+People API
+/
+로그인
+가이드
+참고자료
+지원
+개요
+REST 리소스
+연락처 그룹
+contactGroups.members
+기타 연락처
+사람
+People.connections
+유형
+BatchCreateContactsErrorDetails
+BatchUpdateContactsErrorDetails
+디렉터리 병합 소스 유형
+디렉터리 소스 유형
+개인 응답
+소스 유형 읽기
+요청 마스크
+SearchResponse
+상태
+표준 기능
+쿼리 매개변수
+클라이언트 라이브러리 참조
+브라우저
+Go
+Java
+.NET
+Node.js
+PHP
+Python
+Ruby
+ 이 페이지는 Cloud Translation API를 통해 번역되었습니다.
+홈
+제품
+Google Workspace
+People API
+참고자료
+SearchResponse
+bookmark_border
+이 페이지의 내용
+SearchResult
+
+특정 쿼리가 지정된 인증된 사용자의 검색 요청에 대한 응답입니다.
+
+JSON 표현
+
+{
+ "results": [
+ {
+ object (SearchResult)
+ }
+ ]
+}
+필드
+results[]
+
+object (SearchResult)
+
+요청 결과입니다.
+
+SearchResult
+
+검색어의 결과입니다.
+
+JSON 표현
+
+{
+ "person": {
+ object (Person)
+ }
+}
+필드
+person
+
+object (Person)
+
+일치하는 인물입니다.
+
+달리 명시되지 않는 한 이 페이지의 콘텐츠에는 Creative Commons Attribution 4.0 라이선스에 따라 라이선스가 부여되며, 코드 샘플에는 Apache 2.0 라이선스에 따라 라이선스가 부여됩니다. 자세한 내용은 Google Developers 사이트 정책을 참조하세요. 자바는 Oracle 및/또는 Oracle 계열사의 등록 상표입니다.
+
+최종 업데이트: 2024-08-21(UTC)
+
+Stack Overflow
+google-people 태그로 질문하기
+약관
+Google API 서비스: 사용자 데이터 정책
+프로그램
+Google Developer Program
+Google Developer Groups
+Google Developer Experts
+Accelerators
+Women Techmakers
+Google Cloud & NVIDIA
+개발자 콘솔
+Google API Console
+Google Cloud Platform Console
+Google Play Console
+Firebase Console
+Actions on Google Console
+Cast SDK Developer Console
+Chrome Web Store Dashboard
+Google Home Developer Console
+Android
+Chrome
+Firebase
+Google Cloud Platform
+Google AI
+모든 제품
+약관
+개인정보처리방침
+쿠키 관리
+Google Developers 뉴스레터 신청
+구독
+정보
+채팅
+API

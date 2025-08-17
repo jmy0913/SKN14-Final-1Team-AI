@@ -1,0 +1,71 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.documents/beginTransaction?hl=ko
+
+## 본문
+Starts a new transaction.
+
+POST https://firestore.googleapis.com/v1beta1/{database=projects/*/databases/*}/documents:beginTransaction
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+Required. The database name. In the format: projects/{projectId}/databases/{databaseId}.
+
+The request body contains data with the following structure:
+
+object (TransactionOptions)
+
+The options for the transaction. Defaults to a read-write transaction.
+
+The response for Firestore.BeginTransaction.
+
+If successful, the response body contains data with the following structure:
+
+string (bytes format)
+
+The transaction that was started.
+
+A base64-encoded string.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| database | string
+
+Required. The database name. In the format: projects/{projectId}/databases/{databaseId}. |
+
+| JSON representation |
+| --- |
+| {
+  "options": {
+    object (TransactionOptions)
+  }
+} |
+
+| Fields |
+| --- |
+| options | object (TransactionOptions)
+
+The options for the transaction. Defaults to a read-write transaction. |
+
+| JSON representation |
+| --- |
+| {
+  "transaction": string
+} |
+
+| Fields |
+| --- |
+| transaction | string (bytes format)
+
+The transaction that was started.
+
+A base64-encoded string. |

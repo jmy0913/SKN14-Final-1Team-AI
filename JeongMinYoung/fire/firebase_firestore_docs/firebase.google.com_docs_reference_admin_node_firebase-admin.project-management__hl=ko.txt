@@ -1,0 +1,75 @@
+Source URL: https://firebase.google.com/docs/reference/admin/node/firebase-admin.project-management?hl=ko
+
+## 서문
+Firebase project management.
+
+## Functions
+### 표
+| Function | Description |
+| --- | --- |
+| getProjectManagement(app) | Gets the ProjectManagement service for the default app or a given app.getProjectManagement() can be called with no arguments to access the default app's ProjectManagement service, or as getProjectManagement(app) to access the ProjectManagement service associated with a specific app. |
+
+## Classes
+### 표
+| Class | Description |
+| --- | --- |
+| AndroidApp | A reference to a Firebase Android app.Do not call this constructor directly. Instead, use ProjectManagement.androidApp(). |
+| FirebaseProjectManagementError | Firebase project management error code structure. This extends PrefixedFirebaseError. |
+| IosApp | A reference to a Firebase iOS app.Do not call this constructor directly. Instead, use ProjectManagement.iosApp(). |
+| ProjectManagement | The Firebase ProjectManagement service interface. |
+| ShaCertificate | A SHA-1 or SHA-256 certificate.Do not call this constructor directly. Instead, use [projectManagement.shaCertificate()](projectManagement.ProjectManagement#shaCertificate). |
+
+## Enumerations
+### 표
+| Enumeration | Description |
+| --- | --- |
+| AppPlatform | Platforms with which a Firebase App can be associated. |
+
+## Interfaces
+### 표
+| Interface | Description |
+| --- | --- |
+| AndroidAppMetadata | Metadata about a Firebase Android App. |
+| AppMetadata | Metadata about a Firebase app. |
+| IosAppMetadata | Metadata about a Firebase iOS App. |
+
+## Type Aliases
+### 표
+| Type Alias | Description |
+| --- | --- |
+| ProjectManagementErrorCode |  |
+
+## getProjectManagement(app)
+Gets the ProjectManagement service for the default app or a given app.
+
+getProjectManagement() can be called with no arguments to access the default app's ProjectManagement service, or as getProjectManagement(app) to access the ProjectManagement service associated with a specific app.
+
+Signature:
+
+## Parameters
+Returns:
+
+ProjectManagement
+
+The default ProjectManagement service if no app is provided or the ProjectManagement service associated with the provided app.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| app | App | Optional app whose ProjectManagement service to return. If not provided, the default ProjectManagement service will be returned. * |
+
+## ProjectManagementErrorCode
+Signature:
+
+## AppPlatform
+Platforms with which a Firebase App can be associated.
+
+Signature:
+
+## Enumeration Members
+### 표
+| Member | Value | Description |
+| --- | --- | --- |
+| ANDROID | "ANDROID" | The Firebase App is associated with Android. |
+| IOS | "IOS" | The Firebase App is associated with iOS. |
+| PLATFORM_UNKNOWN | "PLATFORM_UNKNOWN" | Unknown state. This is only used for distinguishing unset values. |

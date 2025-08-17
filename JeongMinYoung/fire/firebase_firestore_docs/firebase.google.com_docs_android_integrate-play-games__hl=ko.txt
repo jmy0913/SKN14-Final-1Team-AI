@@ -1,0 +1,104 @@
+Source URL: https://firebase.google.com/docs/android/integrate-play-games?hl=ko
+
+## 서문
+Firebase를 사용하면 게임을 한층 개선할 수 있습니다.
+
+앱 사용과 사용자 참여에 대한 통계를 제공하는 무료 앱 측정 솔루션인 Google Analytics를 사용하여 게임 이벤트에 로깅합니다.
+
+Crashlytics, Remote Config 등 게임을 지원하는 Firebase 제품을 사용합니다.
+
+## 시작하기
+Firebase 프로젝트를 아직 만들지 않았다면 만든 다음 게임에 Firebase를 추가합니다(C++ | Unity).
+
+다음에 유의하세요.
+이전에 Play Console에서 Google Play 개발자 계정을 Google Cloud 프로젝트에 연결한 경우 같은 프로젝트를 사용하여 Firebase를 시작합니다. 내부적으로 Firebase 프로젝트는 Google Cloud 프로젝트입니다(자세히 알아보기).
+Firebase 프로젝트를 만드는 과정에서 Google Analytics를 사용 설정하거나 Firebase Console의 통합 탭에서 프로젝트를 만든 후에 사용 설정합니다.
+
+Firebase 프로젝트를 아직 만들지 않았다면 만든 다음 게임에 Firebase를 추가합니다(C++ | Unity).
+
+이전에 Play Console에서 Google Play 개발자 계정을 Google Cloud 프로젝트에 연결한 경우 같은 프로젝트를 사용하여 Firebase를 시작합니다. 내부적으로 Firebase 프로젝트는 Google Cloud 프로젝트입니다(자세히 알아보기).
+
+Firebase 프로젝트를 만드는 과정에서 Google Analytics를 사용 설정하거나 Firebase Console의 통합 탭에서 프로젝트를 만든 후에 사용 설정합니다.
+
+Firebase 앱을 Google Play 개발자 계정에 연결합니다. 이 링크는 Play Games services 프로젝트에서 사용됩니다.
+Firebase Console에서 통합 탭으로 이동합니다. Google Play 카드에서 연결을 클릭한 후 화면에 표시된 안내에 따라 링크를 만듭니다.
+
+Google Play의 앱이 Play Games services를 사용하도록 설정되어 있는지 확인합니다.
+
+게임에서 이미 Google API를 사용하고 있는지 묻는 메시지가 표시되면 예, 게임에서 이미 Google API를 사용하고 있습니다를 선택합니다. 목록에서 Firebase 프로젝트를 선택한 후 사용을 클릭합니다.
+
+Google Play의 앱이 Play Games services를 사용하도록 설정되어 있는지 확인합니다.
+
+## Google Analytics를 사용하여 게임 이벤트 로깅
+Google Analytics를 앱에 추가합니다.
+
+Google Analytics용 Firebase SDK를 앱에 추가한 후에 Play Games 이벤트를 로깅할 수 있습니다. 로깅할 수 있는 샘플 이벤트의 예시는 다음과 같습니다.
+
+로그인 이벤트
+
+Bundle bundle = new Bundle();
+mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle);
+
+업적 달성
+
+Bundle bundle = new Bundle();
+bundle.putString(FirebaseAnalytics.Param.ACHIEVEMENT_ID, achievementId);
+mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.UNLOCK_ACHIEVEMENT, bundle);
+
+리더보드에 점수 등록
+
+Bundle bundle = new Bundle();
+bundle.putLong(FirebaseAnalytics.Param.SCORE, score);
+bundle.putString("leaderboard_id", leaderboardId);
+mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.POST_SCORE, bundle);
+
+Google Analytics용 Firebase SDK를 앱에 추가한 후에 Play Games 이벤트를 로깅할 수 있습니다. 로깅할 수 있는 샘플 이벤트의 예시는 다음과 같습니다.
+
+로그인 이벤트
+
+Bundle bundle = new Bundle();
+mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.LOGIN, bundle);
+
+로그인 이벤트
+
+업적 달성
+
+Bundle bundle = new Bundle();
+bundle.putString(FirebaseAnalytics.Param.ACHIEVEMENT_ID, achievementId);
+mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.UNLOCK_ACHIEVEMENT, bundle);
+
+업적 달성
+
+리더보드에 점수 등록
+
+Bundle bundle = new Bundle();
+bundle.putLong(FirebaseAnalytics.Param.SCORE, score);
+bundle.putString("leaderboard_id", leaderboardId);
+mFirebaseAnalytics.logEvent(FirebaseAnalytics.Event.POST_SCORE, bundle);
+
+리더보드에 점수 등록
+
+Firebase Console의 Analytics 대시보드에서 로깅된 이벤트를 볼 수 있습니다.
+
+Play Console의 게임 세부정보 페이지에서 앱 아이콘 옆에 있는 Firebase 아이콘을 클릭하여 Firebase Console에 액세스할 수도 있습니다.
+
+Firebase Console의 Analytics 대시보드에서 로깅된 이벤트를 볼 수 있습니다.
+
+Play Console의 게임 세부정보 페이지에서 앱 아이콘 옆에 있는 Firebase 아이콘을 클릭하여 Firebase Console에 액세스할 수도 있습니다.
+
+## Analytics 대시보드에서 Play Games 이벤트를 볼 수 없음
+Firebase 프로젝트에 Google Analytics를 사용 설정했고 게임에 Google Analytics를 통합했는지 확인합니다.
+
+코드에서 LOGIN, UNLOCK_ACHIEVEMENT 또는 POST_SCORE 관련 이벤트를 구현하는지 확인하세요.
+
+상세 로깅을 사용 설정하여 SDK가 이벤트를 기록하는지 확인하세요. 배터리 수명을 절약하기 위해 기기에서 이벤트를 일괄 전송하므로 Analytics 대시보드에 이벤트가 표시될 때까지 다소 시간이 걸릴 수 있습니다.
+
+## Firebase에 Google Play를 연결할 수 없음
+Firebase Console(settings > 프로젝트 설정 > 통합 > Google Play)을 사용하여 Google Play를 Firebase에 연결해야 합니다. 연결에 문제가 있는 경우 다음을 확인합니다.
+
+앱이 연결을 위한 모든 기본 요건을 충족하는지 확인합니다.
+
+링크를 만드는 데 필요한 액세스 권한이 있는지 확인합니다.
+
+## Play Console에서 Firebase Console에 액세스할 수 없음
+Google Play 개발자 계정이 Firebase 앱에 연결되어 있는지 확인합니다. Play Console에서 Play 개발자 계정의 소유자나 관리자는 settings설정 > 연결된 서비스 > Firebase에서 연결 상태를 볼 수 있습니다.

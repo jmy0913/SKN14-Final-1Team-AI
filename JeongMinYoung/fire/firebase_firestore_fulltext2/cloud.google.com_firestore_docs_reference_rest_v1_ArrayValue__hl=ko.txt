@@ -1,0 +1,15 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/ArrayValue?hl=ko
+
+## 본문
+An array value.
+
+### 표
+| JSON representation |
+| --- |
+| JSON representation |
+| { "values": [ { object (Value) } ] } |
+
+| Fields | |
+| --- | --- |
+| Fields | |
+| values[] | object (Value) Values in the array. |

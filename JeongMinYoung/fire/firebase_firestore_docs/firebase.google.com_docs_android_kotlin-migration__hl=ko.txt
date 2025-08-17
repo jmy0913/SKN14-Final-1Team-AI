@@ -1,0 +1,99 @@
+Source URL: https://firebase.google.com/docs/android/kotlin-migration?hl=ko
+
+## 서문
+Firebase는 Kotlin에 대한 노력을 늘리고 있으며, Firebase에서 Kotlin의 접근성과 사용 편의성을 높이기 위해 Android 생태계를 현대화하기 위해 노력하고 있습니다.
+
+이러한 현대화를 위해 Android용 Firebase SDK를 일부 변경합니다. 이 페이지에서는 이 변경사항에 관한 다음과 같은 중요한 정보를 설명합니다.
+
+변경사항
+
+변경하는 이유
+
+이 변경사항과 관련된 중요 날짜
+
+기본 모듈에서 KTX API를 사용하도록 마이그레이션하는 방법
+
+앱을 마이그레이션하는 방법 알아보기
+
+## 변경되는 사항
+Kotlin 확장 프로그램(KTX) API가 각각의 기본 모듈에 추가되었습니다. 예를 들어 firebase-perf-ktx의 모든 API는 com.google.firebase.perf 패키지 아래 firebase-perf에 추가되었습니다.
+
+이 변경사항으로 인해 Kotlin 개발자는 이제 KTX 모듈 대신 기본 모듈을 사용할 수 있습니다(Firebase BoM v32.5.0 이상 또는 BoM v32.5.0 이상에 나열된 기본 모듈 버전을 사용하는 경우).
+
+2025년 7월부터 KTX 모듈의 새 버전이 출시되지 않고 Firebase Android BoM(v34.0.0)에서 KTX 라이브러리가 삭제되었습니다.
+
+## 변경하는 이유가 무엇인가요?
+Firebase는 Android 개발자를 위해 Kotlin 중심 생태계를 조성하기 위해 최선을 다하고 있습니다. 이 패키징 현대화는 다음과 같은 이점을 제공합니다.
+
+간소화된 종속 항목 관리: 이제 단일 모듈에만 의존하면 되므로 기본 모듈과 Kotlin 확장 프로그램 간에 전환하거나 둘 다에 의존할 필요가 없습니다.
+
+## 이 변경사항과 관련된 중요 날짜
+2023년 10월 Kotlin 확장 프로그램(KTX) API가 각각의 기본 모듈에 추가되었으므로 이제 Firebase BoM v32.5.0 이상 또는 BoM v32.5.0 이상에 나열된 기본 모듈 버전을 사용할 때 기본 모듈에서 직접 KTX API를 사용할 수 있습니다.
+
+이와 동시에 KTX 모듈의 Kotlin 확장 프로그램(KTX) API가 지원 중단되었습니다(이 변경사항을 설명하는 출시 노트 참고). 지원 중단 단계 동안 KTX 모듈의 지원 중단된 API가 계속 작동하고 유지됩니다.
+
+2025년 7월부터 KTX 모듈의 새 버전이 출시되지 않고 Firebase BoM에서 KTX 모듈이 삭제되었습니다(BoM v34.0.0부터).
+
+이전에 출시된 모든 KTX 모듈 버전이나 BoM은 계속 작동하지만 현재 유지보수 종료로 전환되었습니다. 즉, KTX 모듈에 버그 수정, 이전 버전과 호환되는 변경사항, 새로운 기능이 추가되지 않습니다. 대신 Android에서 Firebase를 위한 모든 향후 개발은 기본 모듈(Java 및 Kotlin 모두)에서만 이루어집니다.
+
+## 기본 모듈에서 KTX API를 사용하도록 마이그레이션하는 방법
+Kotlin 확장 프로그램(KTX) API를 사용하는 경우 앱에서 다음과 같이 업데이트하여 KTX 모듈 대신 기본 모듈의 API를 사용하기 시작합니다.
+
+KTX 모듈이 아닌 기본 모듈을 사용하도록 Gradle 종속 항목을 수정합니다. 예를 들면 Firebase Android BoM를 사용하는 경우입니다(권장).
+
+BEFORE
+
+dependencies {
+ // ...
+
+ // Import the Firebase BoM
+ implementation(platform("com.google.firebase:firebase-bom:34.1.0"))
+
+ // Using KTX libraries for Authentication and Cloud Firestore
+ implementation("com.google.firebase:firebase-auth-ktx")
+ implementation("com.google.firebase:firebase-firestore-ktx")
+}
+
+이후
+
+dependencies {
+ // ...
+
+ // Import the Firebase BoM as usual
+ // Make sure to use Firebase BoM v32.5.0 or higher
+ implementation(platform("com.google.firebase:firebase-bom:34.1.0"))
+
+ // No need to use the KTX libraries; everything is now in the main module
+ implementation("com.google.firebase:firebase-auth")
+ implementation("com.google.firebase:firebase-firestore")
+}
+
+ Firebase Android BoM을 사용하지 않는 경우
+
+KTX 모듈이 아닌 기본 모듈을 사용하도록 Gradle 종속 항목을 수정합니다. 예를 들면 Firebase Android BoM를 사용하는 경우입니다(권장).
+
+BEFORE
+
+이후
+
+Firebase Android BoM을 사용하지 않는 경우
+
+코드를 업데이트하여 KTX API의 모든 일치하는 항목을 com.google.firebase 패키지 아래 기본 모듈에 있는 재배치된 API로 바꿉니다.
+
+이전
+
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.firestore.ktx.toObject
+import com.google.firebase.ktx.Firebase
+
+이후
+
+import com.google.firebase.auth.auth
+import com.google.firebase.firestore.firestore
+import com.google.firebase.firestore.toObject
+import com.google.firebase.Firebase
+
+코드를 업데이트하여 KTX API의 모든 일치하는 항목을 com.google.firebase 패키지 아래 기본 모듈에 있는 재배치된 API로 바꿉니다.
+
+이전

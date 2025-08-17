@@ -1,0 +1,384 @@
+Source URL: https://firebase.google.com/docs/reference/ios/firebasefirestore/api/reference/Classes?hl=ko
+
+## 본문
+The following classes are available globally.
+
+FIRAggregateField
+
+Represents an aggregation that can be performed by Firestore.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRAggregateField : NSObject
+
+Represents an aggregation that can be performed by Firestore.
+
+FIRAggregateQuery
+
+A query that calculates aggregations over an underlying query.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRAggregateQuery : NSObject
+
+A query that calculates aggregations over an underlying query.
+
+FIRAggregateQuerySnapshot
+
+The results of executing an AggregateQuery.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRAggregateQuerySnapshot : NSObject
+
+The results of executing an AggregateQuery.
+
+FIRCollectionReference
+
+A CollectionReference object can be used for adding documents, getting document references, and querying for documents (using the methods inherited from Query).
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRCollectionReference : FIRQuery
+
+A CollectionReference object can be used for adding documents, getting document references, and querying for documents (using the methods inherited from Query).
+
+FIRDocumentChange
+
+A DocumentChange represents a change to the documents matching a query. It contains the document affected and the type of change that occurred (added, modified, or removed).
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRDocumentChange : NSObject
+
+A DocumentChange represents a change to the documents matching a query. It contains the document affected and the type of change that occurred (added, modified, or removed).
+
+FIRDocumentReference
+
+A DocumentReference refers to a document location in a Firestore database and can be used to write, read, or listen to the location. The document at the referenced location may or may not exist. A DocumentReference can also be used to create a CollectionReference to a subcollection.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRDocumentReference : NSObject
+
+A DocumentReference refers to a document location in a Firestore database and can be used to write, read, or listen to the location. The document at the referenced location may or may not exist. A DocumentReference can also be used to create a CollectionReference to a subcollection.
+
+FIRDocumentSnapshot
+
+A DocumentSnapshot contains data read from a document in your Firestore database. The data can be extracted with the data property or by using subscript syntax to access a specific field.
+
+For a DocumentSnapshot that points to a non-existing document, any data access will return nil. You can use the exists property to explicitly verify a documents existence.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRDocumentSnapshot : NSObject
+
+A DocumentSnapshot contains data read from a document in your Firestore database. The data can be extracted with the data property or by using subscript syntax to access a specific field.
+
+For a DocumentSnapshot that points to a non-existing document, any data access will return nil. You can use the exists property to explicitly verify a documents existence.
+
+FIRQueryDocumentSnapshot
+
+A QueryDocumentSnapshot contains data read from a document in your Firestore database as part of a query. The document is guaranteed to exist and its data can be extracted with the data property or by using subscript syntax to access a specific field.
+
+A QueryDocumentSnapshot offers the same API surface as a DocumentSnapshot. As deleted documents are not returned from queries, its exists property will always be true and data() will never return nil.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRQueryDocumentSnapshot : FIRDocumentSnapshot
+
+A QueryDocumentSnapshot contains data read from a document in your Firestore database as part of a query. The document is guaranteed to exist and its data can be extracted with the data property or by using subscript syntax to access a specific field.
+
+A QueryDocumentSnapshot offers the same API surface as a DocumentSnapshot. As deleted documents are not returned from queries, its exists property will always be true and data() will never return nil.
+
+FIRFieldPath
+
+A FieldPath refers to a field in a document. The path may consist of a single field name (referring to a top level field in the document), or a list of field names (referring to a nested field in the document).
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRFieldPath : NSObject <NSCopying>
+
+A FieldPath refers to a field in a document. The path may consist of a single field name (referring to a top level field in the document), or a list of field names (referring to a nested field in the document).
+
+FIRFieldValue
+
+Sentinel values that can be used when writing document fields with setData() or updateData().
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRFieldValue : NSObject
+
+Sentinel values that can be used when writing document fields with setData() or updateData().
+
+FIRFilter
+
+A Filter represents a restriction on one or more field values and can be used to refine the results of a Query.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRFilter : NSObject
+
+A Filter represents a restriction on one or more field values and can be used to refine the results of a Query.
+
+FIRFirestore
+
+Firestore represents a Firestore Database and is the entry point for all Firestore operations.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRFirestore : NSObject
+
+Firestore represents a Firestore Database and is the entry point for all Firestore operations.
+
+FIRFirestoreSettings
+
+Settings used to configure a Firestore instance.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRFirestoreSettings : NSObject <NSCopying>
+
+Settings used to configure a Firestore instance.
+
+FIRGeoPoint
+
+An immutable object representing a geographical point in Firestore. The point is represented as a latitude/longitude pair.
+
+Latitude values are in the range of [-90, 90]. Longitude values are in the range of [-180, 180].
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRGeoPoint : NSObject <NSCopying>
+
+An immutable object representing a geographical point in Firestore. The point is represented as a latitude/longitude pair.
+
+Latitude values are in the range of [-90, 90]. Longitude values are in the range of [-180, 180].
+
+FIRLoadBundleTaskProgress
+
+Represents a progress update or a final state from loading bundles.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRLoadBundleTaskProgress : NSObject
+
+Represents a progress update or a final state from loading bundles.
+
+FIRLoadBundleTask
+
+Represents the task of loading a Firestore bundle. Observers can be registered with this task to observe the bundle loading progress, as well as task completion and error events.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRLoadBundleTask : NSObject
+
+Represents the task of loading a Firestore bundle. Observers can be registered with this task to observe the bundle loading progress, as well as task completion and error events.
+
+FIRPersistentCacheSettings
+
+Configures the SDK to use a persistent cache. Firestore documents and mutations are persisted across App restart.
+
+This is the default cache type unless explicitly specified otherwise.
+
+To use, create an instance using one of the initializers, then set the instance to FirestoreSettings.cacheSettings, and use FirestoreSettings instance to configure Firestore SDK.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRPersistentCacheSettings
+ : NSObject <NSCopying, FIRLocalCacheSettings>
+
+Configures the SDK to use a persistent cache. Firestore documents and mutations are persisted across App restart.
+
+This is the default cache type unless explicitly specified otherwise.
+
+To use, create an instance using one of the initializers, then set the instance to FirestoreSettings.cacheSettings, and use FirestoreSettings instance to configure Firestore SDK.
+
+FIRMemoryEagerGCSettings
+
+Configures the SDK to use an eager garbage collector for memory cache.
+
+Once configured, the SDK will remove any Firestore documents from memory as soon as they are not used by any active queries.
+
+To use, create an instance using the initializer, then initialize MemoryCacheSettings with this instance. This is the default garbage collector, so alternatively you can use the default initializer of MemoryCacheSettings.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRMemoryEagerGCSettings
+ : NSObject <NSCopying, FIRMemoryGarbageCollectorSettings>
+
+Configures the SDK to use an eager garbage collector for memory cache.
+
+Once configured, the SDK will remove any Firestore documents from memory as soon as they are not used by any active queries.
+
+To use, create an instance using the initializer, then initialize MemoryCacheSettings with this instance. This is the default garbage collector, so alternatively you can use the default initializer of MemoryCacheSettings.
+
+FIRMemoryLRUGCSettings
+
+Configures the SDK to use a least-recently-used garbage collector for memory cache.
+
+Once configured, the SDK will attempt to remove documents that are least recently used in batches, if the current cache size is larger than the given target cache size. Default cache size is 100MB.
+
+To use, create an instance using one of the initializers, then initialize MemoryCacheSettings with this instance.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRMemoryLRUGCSettings
+ : NSObject <NSCopying, FIRMemoryGarbageCollectorSettings>
+
+Configures the SDK to use a least-recently-used garbage collector for memory cache.
+
+Once configured, the SDK will attempt to remove documents that are least recently used in batches, if the current cache size is larger than the given target cache size. Default cache size is 100MB.
+
+To use, create an instance using one of the initializers, then initialize MemoryCacheSettings with this instance.
+
+FIRMemoryCacheSettings
+
+Configures the SDK to use a memory cache. Firestore documents and mutations are NOT persisted across App restart.
+
+To use, create an instance using one of the initializer, then set the instance to FirestoreSettings.cacheSettings, and use FirestoreSettings instance to configure Firestore SDK.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRMemoryCacheSettings : NSObject <NSCopying, FIRLocalCacheSettings>
+
+Configures the SDK to use a memory cache. Firestore documents and mutations are NOT persisted across App restart.
+
+To use, create an instance using one of the initializer, then set the instance to FirestoreSettings.cacheSettings, and use FirestoreSettings instance to configure Firestore SDK.
+
+FIRQuery
+
+A Query refers to a query which you can read or listen to. You can also construct refined Query objects by adding filters and ordering.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRQuery : NSObject
+
+A Query refers to a query which you can read or listen to. You can also construct refined Query objects by adding filters and ordering.
+
+FIRQuerySnapshot
+
+A QuerySnapshot contains zero or more DocumentSnapshot objects. It can be enumerated using the documents property and its size can be inspected with isEmpty and count.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRQuerySnapshot : NSObject
+
+A QuerySnapshot contains zero or more DocumentSnapshot objects. It can be enumerated using the documents property and its size can be inspected with isEmpty and count.
+
+FIRSnapshotListenOptions
+
+Options to configure the behavior of Firestore.addSnapshotListenerWithOptions(). Instances of this class control settings like whether metadata-only changes trigger events and the preferred data source.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRSnapshotListenOptions : NSObject
+
+Options to configure the behavior of Firestore.addSnapshotListenerWithOptions(). Instances of this class control settings like whether metadata-only changes trigger events and the preferred data source.
+
+FIRSnapshotMetadata
+
+Metadata about a snapshot, describing the state of the snapshot.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRSnapshotMetadata : NSObject
+
+Metadata about a snapshot, describing the state of the snapshot.
+
+FIRTransaction
+
+Transaction provides methods to read and write data within a transaction.
+
+See
+
+Firestore.runTransaction(_:)
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRTransaction : NSObject
+
+Transaction provides methods to read and write data within a transaction.
+
+See
+
+FIRTransactionOptions
+
+Options to customize the behavior of Firestore.runTransactionWithOptions().
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRTransactionOptions : NSObject <NSCopying>
+
+Options to customize the behavior of Firestore.runTransactionWithOptions().
+
+FIRWriteBatch
+
+A write batch is used to perform multiple writes as a single atomic unit.
+
+A WriteBatch object can be acquired by calling Firestore.batch(). It provides methods for adding writes to the write batch. None of the writes will be committed (or visible locally) until WriteBatch.commit() is called.
+
+Unlike transactions, write batches are persisted offline and therefore are preferable when you don’t need to condition your writes on read data.
+
+Declaration
+
+OBJECTIVE-C
+
+@interface FIRWriteBatch : NSObject
+
+A write batch is used to perform multiple writes as a single atomic unit.
+
+A WriteBatch object can be acquired by calling Firestore.batch(). It provides methods for adding writes to the write batch. None of the writes will be committed (or visible locally) until WriteBatch.commit() is called.
+
+Unlike transactions, write batches are persisted offline and therefore are preferable when you don’t need to condition your writes on read data.

@@ -1,0 +1,129 @@
+Source URL: https://developers.google.com/people/api/rest/v1/Status?hl=ko
+
+## Fallback (article.innerText)
+기본 콘텐츠로 건너뛰기
+
+developers.google.com 은(는) 서비스 제공 및 서비스 품질 개선과 트래픽 분석을 위해 쿠키를 사용합니다. 동의 시 광고를 게재하고 표시되는 콘텐츠 및 광고를 맞춤설정하는 데도 쿠키가 사용됩니다. 자세히 알아보세요.
+
+동의함
+나중에
+people
+People API
+/
+로그인
+가이드
+참고자료
+지원
+개요
+REST 리소스
+연락처 그룹
+contactGroups.members
+기타 연락처
+사람
+People.connections
+유형
+BatchCreateContactsErrorDetails
+BatchUpdateContactsErrorDetails
+디렉터리 병합 소스 유형
+디렉터리 소스 유형
+개인 응답
+소스 유형 읽기
+요청 마스크
+SearchResponse
+상태
+표준 기능
+쿼리 매개변수
+클라이언트 라이브러리 참조
+브라우저
+Go
+Java
+.NET
+Node.js
+PHP
+Python
+Ruby
+ 이 페이지는 Cloud Translation API를 통해 번역되었습니다.
+홈
+제품
+Google Workspace
+People API
+참고자료
+Status
+bookmark_border
+
+Status 유형은 REST API, RPC API를 비롯하여 다양한 프로그래밍 환경에 적합한 논리적 오류 모델을 정의하며, gRPC에서 사용됩니다. 각 Status 메시지에는 오류 코드, 오류 메시지, 오류 세부정보라는 3가지 데이터가 포함됩니다.
+
+API 설계 가이드에서 이 오류 모델과 모델 작업 방법에 대해 자세히 알아볼 수 있습니다.
+
+JSON 표현
+
+{
+ "code": integer,
+ "message": string,
+ "details": [
+ {
+ "@type": string,
+ field1: ...,
+ ...
+ }
+ ]
+}
+필드
+code
+
+integer
+
+상태 코드로, google.rpc.Code의 열거형 값이어야 합니다.
+
+message
+
+string
+
+개발자에게 정보를 제공하는 오류 메시지로, 영어로 작성되어야 합니다. 사용자에게 표시되는 모든 오류 메시지는 현지화되어 google.rpc.Status.details 필드에 전송되거나, 클라이언트 측에서 현지화되어야 합니다.
+
+details[]
+
+object
+
+오류 세부정보를 설명하는 메시지 목록입니다. API에서 사용할 일반적인 메시지 유형 집합이 있습니다.
+
+임의 유형의 필드를 포함하는 객체입니다. 추가 필드 "@type"은 유형을 식별하는 URI를 포함합니다. 예: { "id": 1234, "@type": "types.example.com/standard/id" }
+
+달리 명시되지 않는 한 이 페이지의 콘텐츠에는 Creative Commons Attribution 4.0 라이선스에 따라 라이선스가 부여되며, 코드 샘플에는 Apache 2.0 라이선스에 따라 라이선스가 부여됩니다. 자세한 내용은 Google Developers 사이트 정책을 참조하세요. 자바는 Oracle 및/또는 Oracle 계열사의 등록 상표입니다.
+
+최종 업데이트: 2024-08-21(UTC)
+
+Stack Overflow
+google-people 태그로 질문하기
+약관
+Google API 서비스: 사용자 데이터 정책
+프로그램
+Google Developer Program
+Google Developer Groups
+Google Developer Experts
+Accelerators
+Women Techmakers
+Google Cloud & NVIDIA
+개발자 콘솔
+Google API Console
+Google Cloud Platform Console
+Google Play Console
+Firebase Console
+Actions on Google Console
+Cast SDK Developer Console
+Chrome Web Store Dashboard
+Google Home Developer Console
+Android
+Chrome
+Firebase
+Google Cloud Platform
+Google AI
+모든 제품
+약관
+개인정보처리방침
+쿠키 관리
+Google Developers 뉴스레터 신청
+구독
+정보
+채팅
+API

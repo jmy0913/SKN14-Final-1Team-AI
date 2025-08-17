@@ -1,0 +1,60 @@
+Source URL: https://firebase.google.com/docs/firestore/reference/rest/v1/projects.locations/list?hl=ko
+
+## 본문
+Lists information about the supported locations for this service.
+
+GET https://firestore.googleapis.com/v1/{name=projects/*}/locations
+
+The URL uses gRPC Transcoding syntax.
+
+The request body must be empty.
+
+The response message for Locations.ListLocations.
+
+If successful, the response body contains data with the following structure:
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the OAuth 2.0 Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| name | string The resource that owns the locations collection, if applicable. |
+
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| filter | string A filter to narrow down results to a preferred subset. The filtering language accepts strings like "displayName=tokyo", and is documented in more detail in AIP-160. |
+| pageSize | integer The maximum number of results to return. If not set, the service selects a default. |
+| pageToken | string A page token received from the nextPageToken field in the response. Send that page token to receive the subsequent page. |
+| extraLocationTypes[] | string Optional. A list of extra location types that should be used as conditions for controlling the visibility of the locations. |
+
+| JSON representation |
+| --- |
+| JSON representation |
+| { "locations": [ { object (Location) } ], "nextPageToken": string } |
+
+| Fields | |
+| --- | --- |
+| Fields | |
+| locations[] | object (Location) A list of locations that matches the specified filter in the request. |
+| nextPageToken | string The standard List next-page token. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+GET https://firestore.googleapis.com/v1/{name=projects/*}/locations
+
+언어: 코드 · 셀#2
+Locations.ListLocations
+
+언어: 코드 · 셀#3
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#4
+https://www.googleapis.com/auth/cloud-platform

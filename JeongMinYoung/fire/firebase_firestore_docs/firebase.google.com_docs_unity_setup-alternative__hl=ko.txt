@@ -1,0 +1,153 @@
+Source URL: https://firebase.google.com/docs/unity/setup-alternative?hl=ko
+
+## 서문
+이 사이트에서는 다음을 제공합니다.
+
+애셋 패키지로 가져올 개별 .NET 4.X .unitypackage 파일
+
+Unity Package Manager를 사용하여 가져올 개별 .tgz 보관 파일
+
+개별 .unitypackage 파일에는 필요한 모든 종속 항목이 포함되고 .tgz 파일은 의존하는 .tgz 파일과 함께 나열되므로 이 기능은 앱에서 단일 Firebase 제품을 사용할 때 특히 유용합니다.
+
+이 페이지에서는 Unity Package Manager와 관련된 안내를 제공하므로 Unity 문서에서 해당 도구에 관한 내용을 살펴보는 것이 좋습니다.
+
+## Firebase 패키지를 애셋으로 가져오기
+Unity용 Google API 사이트에서 다운로드한 .unitypackage 파일로 Firebase 제품을 가져올 때 다음 사항에 유의하세요.
+
+프로젝트에서 Firebase 제품을 여러 개 사용하는 경우 모든 Firebase 제품을 다운로드하고 동일한 버전으로 업그레이드해야 합니다.
+
+한 프로젝트에서 가져오기 방법을 혼합해서 사용하지 마세요. 즉, 애셋 패키지 흐름과 Unity Package Manager 흐름을 사용하여 Firebase 제품을 가져오지 마세요.
+
+다운로드 후 가져오는 방법은 다음과 같습니다.
+
+Unity 프로젝트를 열고 Assets(애셋) > Import Package(패키지 가져오기) > Custom Package(커스텀 패키지)로 이동합니다.
+
+Import Unity Package(Unity 패키지 가져오기) 창에서 Import(가져오기)를 클릭합니다.
+
+## Unity Package Manager를 사용하여 Firebase 패키지 가져오기
+Unity용 Google API 보관 파일에서 다운로드한 .tgz 파일로 Firebase 제품을 가져올 때 다음 사항에 유의하세요.
+
+이 방법은 2018.3 이상에서만 사용할 수 있습니다.
+
+프로젝트에서 Firebase 제품을 여러 개 사용하는 경우 모든 Firebase 제품을 다운로드하고 동일한 버전으로 업그레이드해야 합니다.
+
+한 프로젝트에서 가져오기 방법을 혼합해서 사용하지 마세요. 즉, 애셋 패키지 흐름과 Unity Package Manager 흐름을 사용하여 Firebase 제품을 가져오지 마세요.
+
+각 제품 .tgz 파일의 종속 항목은 자체 .tgz 파일과 함께 연결됩니다. 제품 .tgz 파일과 종속 항목 .tgz 파일을 다운로드하여 올바른 순서로 가져와야 합니다.
+
+외부 종속 항목 관리자(com.google.external-dependency-manager)
+Firebase Core(com.google.firebase.app)
+프로젝트에서 사용되는 Firebase 제품입니다. Realtime Database 또는 Cloud Storage를 사용하는 경우 먼저 Authentication(com.google.firebase.auth)을 가져옵니다.
+
+각 제품 .tgz 파일의 종속 항목은 자체 .tgz 파일과 함께 연결됩니다. 제품 .tgz 파일과 종속 항목 .tgz 파일을 다운로드하여 올바른 순서로 가져와야 합니다.
+
+외부 종속 항목 관리자(com.google.external-dependency-manager)
+
+Firebase Core(com.google.firebase.app)
+
+프로젝트에서 사용되는 Firebase 제품입니다. Realtime Database 또는 Cloud Storage를 사용하는 경우 먼저 Authentication(com.google.firebase.auth)을 가져옵니다.
+
+다운로드한 후 다음 방법 중 하나를 사용하여 .tgz 파일을 프로젝트로 가져옵니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Package Manager UI · 셀#1
++
+
+언어: Package Manager UI · 셀#2
+Add package from tarball
+
+언어: Package Manager UI · 셀#3
+.tgz
+
+언어: Package Manager UI · 셀#4
+Add package from disk
+
+언어: manifest.json · 셀#1
+{
+ "dependencies": {
+ "com.google.external-dependency-manager": "file:../GooglePackages/com.google.external-dependency-manager-1.2.164.tgz",
+ "com.google.firebase.app": "file:../GooglePackages/com.google.firebase.app-7.1.0.tgz",
+ "com.google.firebase.auth": "file:../GooglePackages/com.google.firebase.auth-7.1.0.tgz",
+ "com.google.firebase.storage": "file:../GooglePackages/com.google.firebase.storage-7.1.0.tgz",
+ // com.unity package entries...
+ }
+}
+
+언어: manifest.json · 셀#2
+{
+ "dependencies": {
+ "com.google.external-dependency-manager": "file:../GooglePackages/com.google.external-dependency-manager-1.2.164",
+ "com.google.firebase.app": "file:../GooglePackages/com.google.firebase.app-7.1.0",
+ "com.google.firebase.auth": "file:../GooglePackages/com.google.firebase.auth-7.1.0",
+ "com.google.firebase.storage": "file:../GooglePackages/com.google.firebase.storage-7.1.0",
+ // com.unity package entries...
+ }
+}
+
+## Unity Package Manager에서 애셋 패키지로 마이그레이션
+경우에 따라 Unity Package Manager를 사용하여 Firebase 제품을 추적하는 것에서 Assets 폴더에 제품을 가져오는 것으로 전환할 수 있습니다.
+
+어떤 가져오기 방법을 사용하고 있는지 잘 모르겠다면 Unity 프로젝트 폴더에서 Packages/manifest.json 파일을 엽니다. 파일에 com.google.firebase로 시작하는 항목이 포함된 경우 프로젝트에서 가져오기에 Unity Package Manager를 사용한 것입니다.
+
+다음은 애셋 패키지로 마이그레이션하는 방법입니다.
+
+프로젝트에서 현재 Firebase 패키지 버전을 확인하고 삭제합니다.
+
+창 메뉴에서 Package Manager를 선택합니다. Package Manager 창에서 'Packages: In Project(패키지: 프로젝트 내)'가 선택되었는지 확인합니다.
+가져온 Firebase 패키지 버전을 확인합니다.
+각 패키지 이름을 클릭한 다음 Remove(삭제)를 클릭합니다. 외부 종속 항목 관리자 패키지(.com.google.external-dependency-manager)와 Firebase 패키지도 삭제해야 합니다.
+
+프로젝트에서 현재 Firebase 패키지 버전을 확인하고 삭제합니다.
+
+창 메뉴에서 Package Manager를 선택합니다. Package Manager 창에서 'Packages: In Project(패키지: 프로젝트 내)'가 선택되었는지 확인합니다.
+
+가져온 Firebase 패키지 버전을 확인합니다.
+
+각 패키지 이름을 클릭한 다음 Remove(삭제)를 클릭합니다. 외부 종속 항목 관리자 패키지(.com.google.external-dependency-manager)와 Firebase 패키지도 삭제해야 합니다.
+
+대체 .unitypackage 파일을 다운로드하고 가져옵니다. 다음과 같은 두 옵션을 선택할 수 있습니다.
+
+각 패키지의 최신 버전으로 업그레이드할 수 있는 경우 Add Firebase to your Unity project(Unity 프로젝트에 Firebase 추가)에 설명된 대로 Firebase Unity SDK zip 파일을 다운로드하고 가져옵니다.
+현재 .unitypackage 버전을 유지해야 하는 경우 이 페이지 위에서 설명한 대로 개별 패키지를 다운로드하고 가져올 수 있습니다.
+
+대체 .unitypackage 파일을 다운로드하고 가져옵니다. 다음과 같은 두 옵션을 선택할 수 있습니다.
+
+각 패키지의 최신 버전으로 업그레이드할 수 있는 경우 Add Firebase to your Unity project(Unity 프로젝트에 Firebase 추가)에 설명된 대로 Firebase Unity SDK zip 파일을 다운로드하고 가져옵니다.
+
+현재 .unitypackage 버전을 유지해야 하는 경우 이 페이지 위에서 설명한 대로 개별 패키지를 다운로드하고 가져올 수 있습니다.
+
+## 애셋 패키지에서 Unity Package Manager로 마이그레이션
+경우에 따라 Assets 폴더 아래에 제품 가져오기에서 Unity Package Manager를 사용하여 제품을 가져오고 추적하는 것으로 전환할 수 있습니다.
+
+어떤 가져오기 방법을 사용하고 있는지 잘 모르겠다면 Unity 프로젝트 폴더에서 Packages/manifest.json 파일을 엽니다. 파일에 com.google.firebase로 시작하는 항목이 포함된 경우 프로젝트에서 이미 Unity Package Manager를 사용하여 가져오고 있는 것입니다.
+
+Unity Package Manager로 마이그레이션하려면 다음 단계를 따르세요.
+
+다음 방법 중 하나를 사용하여 모든 Firebase 패키지와 외부 종속 항목 관리자 패키지가 Assets 폴더에서 삭제되었는지 확인합니다.
+
+EDM4U UI
+수동 삭제
+
+열려 있는 Unity 프로젝트에서 Assets(애셋) > External Dependency Manager(외부 종속 항목 관리자) > Version Handler(버전 핸들러) > Uninstall Managed Packages(관리형 패키지 제거)로 이동합니다.
+모든 Firebase 패키지 및 외부 종속 항목 관리자를 선택합니다.
+Uninstall Selected Package(선택한 패키지 제거)를 클릭합니다.
+
+다음 방법 중 하나를 사용하여 모든 Firebase 패키지와 외부 종속 항목 관리자 패키지가 Assets 폴더에서 삭제되었는지 확인합니다.
+
+이 페이지 위에서 설명된 대로 Unity Package Manager를 사용하여 패키지를 가져옵니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 수동 삭제 · 셀#1
+Assets/Editor Default Resources/Firebase
+
+언어: 수동 삭제 · 셀#2
+Assets/ExternalDependencyManager
+
+언어: 수동 삭제 · 셀#3
+Assets/Firebase
+
+언어: 수동 삭제 · 셀#4
+Assets/Parse
+
+언어: 수동 삭제 · 셀#5
+Assets/Plugins/iOS/Firebase

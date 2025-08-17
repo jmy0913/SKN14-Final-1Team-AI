@@ -1,0 +1,796 @@
+Source URL: https://firebase.google.com/docs/reference/admin/python/firebase_admin.project_management?hl=ko
+
+## 본문
+Firebase Project Management module.
+
+This module enables management of resources in Firebase projects, such as Android and iOS apps.
+
+Bases: object
+
+A reference to an Android app within a Firebase project.
+
+Note: Unless otherwise specified, all methods defined in this class make an RPC.
+
+Please use the module-level function android_app(app_id) to obtain instances of this class instead of instantiating it directly.
+
+add_sha_certificate(certificate_to_add)
+
+Adds a SHA certificate to this Android app.
+
+Parameters:
+
+certificate_to_add – The SHA certificate to add.
+
+Returns:
+
+None.
+
+Return type:
+
+NoneType
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service. (For example, if the certificate_to_add already exists.)
+
+Adds a SHA certificate to this Android app.
+
+Parameters:
+
+certificate_to_add – The SHA certificate to add.
+
+Returns:
+
+None.
+
+Return type:
+
+NoneType
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service. (For example, if the certificate_to_add already exists.)
+
+delete_sha_certificate(certificate_to_delete)
+
+Removes a SHA certificate from this Android app.
+
+Parameters:
+
+certificate_to_delete – The SHA certificate to delete.
+
+Returns:
+
+None.
+
+Return type:
+
+NoneType
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service. (For example, if the certificate_to_delete is not found.)
+
+Removes a SHA certificate from this Android app.
+
+certificate_to_delete – The SHA certificate to delete.
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service. (For example, if the certificate_to_delete is not found.)
+
+get_config()
+
+Retrieves the configuration artifact associated with this Android app.
+
+get_metadata()
+
+Retrieves detailed information about this Android app.
+
+Returns:
+
+An AndroidAppMetadata instance.
+
+Return type:
+
+AndroidAppMetadata
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service.
+
+Retrieves detailed information about this Android app.
+
+An AndroidAppMetadata instance.
+
+AndroidAppMetadata
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service.
+
+get_sha_certificates()
+
+Retrieves the entire list of SHA certificates associated with this Android app.
+
+Returns:
+
+A list of SHACertificate instances.
+
+Return type:
+
+list
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service.
+
+Retrieves the entire list of SHA certificates associated with this Android app.
+
+A list of SHACertificate instances.
+
+list
+
+set_display_name(new_display_name)
+
+Updates the display name attribute of this Android app to the one given.
+
+Parameters:
+
+new_display_name – The new display name for this Android app.
+
+Returns:
+
+None.
+
+Return type:
+
+NoneType
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service.
+
+Updates the display name attribute of this Android app to the one given.
+
+new_display_name – The new display name for this Android app.
+
+Returns the app ID of the Android app to which this instance refers.
+
+Note: This method does not make an RPC.
+
+The app ID of the Android app to which this instance refers.
+
+string
+
+Bases: _AppMetadata
+
+Android-specific information about an Android Firebase app.
+
+The canonical package name of this Android app as it would appear in the Play Store.
+
+A reference to an iOS app within a Firebase project.
+
+Please use the module-level function ios_app(app_id) to obtain instances of this class instead of instantiating it directly.
+
+Retrieves the configuration artifact associated with this iOS app.
+
+Retrieves detailed information about this iOS app.
+
+Returns:
+
+An IOSAppMetadata instance.
+
+Return type:
+
+IOSAppMetadata
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service.
+
+Retrieves detailed information about this iOS app.
+
+An IOSAppMetadata instance.
+
+IOSAppMetadata
+
+Updates the display name attribute of this iOS app to the one given.
+
+Parameters:
+
+new_display_name – The new display name for this iOS app.
+
+Returns:
+
+None.
+
+Return type:
+
+NoneType
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service.
+
+Updates the display name attribute of this iOS app to the one given.
+
+new_display_name – The new display name for this iOS app.
+
+Returns the app ID of the iOS app to which this instance refers.
+
+The app ID of the iOS app to which this instance refers.
+
+iOS-specific information about an iOS Firebase app.
+
+The canonical bundle ID of this iOS app as it would appear in the iOS AppStore.
+
+Represents a SHA-1 or SHA-256 certificate associated with an Android app.
+
+SHA_1 = 'SHA_1'
+
+SHA_256 = 'SHA_256'
+
+Returns the type of the SHA certificate encoded in the hash.
+
+One of ‘SHA_1’ or ‘SHA_256’.
+
+Returns the fully qualified resource name of this certificate, if known.
+
+The fully qualified resource name of this certificate, if known; otherwise, the empty string.
+
+Returns the certificate hash.
+
+The certificate hash.
+
+Obtains a reference to an Android app in the associated Firebase project.
+
+app_id – The app ID that identifies this Android app.
+
+app – An App instance (optional).
+
+app_id – The app ID that identifies this Android app.
+
+app – An App instance (optional).
+
+An AndroidApp instance.
+
+AndroidApp
+
+Creates a new Android app in the associated Firebase project.
+
+package_name – The package name of the Android app to be created.
+
+display_name – A nickname for this Android app (optional).
+
+app – An App instance (optional).
+
+package_name – The package name of the Android app to be created.
+
+display_name – A nickname for this Android app (optional).
+
+An AndroidApp instance that is a reference to the newly created app.
+
+Creates a new iOS app in the associated Firebase project.
+
+bundle_id – The bundle ID of the iOS app to be created.
+
+display_name – A nickname for this iOS app (optional).
+
+app – An App instance (optional).
+
+bundle_id – The bundle ID of the iOS app to be created.
+
+display_name – A nickname for this iOS app (optional).
+
+An IOSApp instance that is a reference to the newly created app.
+
+IOSApp
+
+Obtains a reference to an iOS app in the associated Firebase project.
+
+app_id – The app ID that identifies this iOS app.
+
+app – An App instance (optional).
+
+app_id – The app ID that identifies this iOS app.
+
+An IOSApp instance.
+
+Lists all Android apps in the associated Firebase project.
+
+a list of AndroidApp instances referring to each Android app in the Firebase project.
+
+Lists all iOS apps in the associated Firebase project.
+
+a list of IOSApp instances referring to each iOS app in the Firebase project.
+
+### 표
+| class firebase_admin.project_management.AndroidApp(app_id, service) |
+| --- |
+| Bases: object
+
+A reference to an Android app within a Firebase project.
+
+Note: Unless otherwise specified, all methods defined in this class make an RPC.
+
+Please use the module-level function android_app(app_id) to obtain instances of this class instead of instantiating it directly.
+
+add_sha_certificate(certificate_to_add)
+
+Adds a SHA certificate to this Android app.
+
+Parameters:
+
+certificate_to_add – The SHA certificate to add.
+
+Returns:
+
+None.
+
+Return type:
+
+NoneType
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service. (For example, if the certificate_to_add already exists.)
+
+delete_sha_certificate(certificate_to_delete)
+
+Removes a SHA certificate from this Android app.
+
+Parameters:
+
+certificate_to_delete – The SHA certificate to delete.
+
+Returns:
+
+None.
+
+Return type:
+
+NoneType
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service. (For example, if the certificate_to_delete is not found.)
+
+get_config()
+
+Retrieves the configuration artifact associated with this Android app.
+
+get_metadata()
+
+Retrieves detailed information about this Android app.
+
+Returns:
+
+An AndroidAppMetadata instance.
+
+Return type:
+
+AndroidAppMetadata
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service.
+
+get_sha_certificates()
+
+Retrieves the entire list of SHA certificates associated with this Android app.
+
+Returns:
+
+A list of SHACertificate instances.
+
+Return type:
+
+list
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service.
+
+set_display_name(new_display_name)
+
+Updates the display name attribute of this Android app to the one given.
+
+Parameters:
+
+new_display_name – The new display name for this Android app.
+
+Returns:
+
+None.
+
+Return type:
+
+NoneType
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service.
+
+property app_id
+
+
+Returns the app ID of the Android app to which this instance refers.
+
+Note: This method does not make an RPC.
+
+Returns:
+
+The app ID of the Android app to which this instance refers.
+
+Return type:
+
+string |
+| property app_id |
+| Returns the app ID of the Android app to which this instance refers.
+
+Note: This method does not make an RPC.
+
+Returns:
+
+The app ID of the Android app to which this instance refers.
+
+Return type:
+
+string |
+
+| property app_id |
+| --- |
+| Returns the app ID of the Android app to which this instance refers.
+
+Note: This method does not make an RPC.
+
+Returns:
+
+The app ID of the Android app to which this instance refers.
+
+Return type:
+
+string |
+
+| class firebase_admin.project_management.AndroidAppMetadata(package_name, name, app_id, display_name, project_id) |
+| --- |
+| Bases: _AppMetadata
+
+Android-specific information about an Android Firebase app.
+
+property package_name
+
+
+The canonical package name of this Android app as it would appear in the Play Store. |
+| property package_name |
+| The canonical package name of this Android app as it would appear in the Play Store. |
+
+| property package_name |
+| --- |
+| The canonical package name of this Android app as it would appear in the Play Store. |
+
+| class firebase_admin.project_management.IOSApp(app_id, service) |
+| --- |
+| Bases: object
+
+A reference to an iOS app within a Firebase project.
+
+Note: Unless otherwise specified, all methods defined in this class make an RPC.
+
+Please use the module-level function ios_app(app_id) to obtain instances of this class instead of instantiating it directly.
+
+get_config()
+
+Retrieves the configuration artifact associated with this iOS app.
+
+get_metadata()
+
+Retrieves detailed information about this iOS app.
+
+Returns:
+
+An IOSAppMetadata instance.
+
+Return type:
+
+IOSAppMetadata
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service.
+
+set_display_name(new_display_name)
+
+Updates the display name attribute of this iOS app to the one given.
+
+Parameters:
+
+new_display_name – The new display name for this iOS app.
+
+Returns:
+
+None.
+
+Return type:
+
+NoneType
+
+Raises:
+
+FirebaseError – If an error occurs while communicating with the Firebase Project Management Service.
+
+property app_id
+
+
+Returns the app ID of the iOS app to which this instance refers.
+
+Note: This method does not make an RPC.
+
+Returns:
+
+The app ID of the iOS app to which this instance refers.
+
+Return type:
+
+string |
+| property app_id |
+| Returns the app ID of the iOS app to which this instance refers.
+
+Note: This method does not make an RPC.
+
+Returns:
+
+The app ID of the iOS app to which this instance refers.
+
+Return type:
+
+string |
+
+| property app_id |
+| --- |
+| Returns the app ID of the iOS app to which this instance refers.
+
+Note: This method does not make an RPC.
+
+Returns:
+
+The app ID of the iOS app to which this instance refers.
+
+Return type:
+
+string |
+
+| class firebase_admin.project_management.IOSAppMetadata(bundle_id, name, app_id, display_name, project_id) |
+| --- |
+| Bases: _AppMetadata
+
+iOS-specific information about an iOS Firebase app.
+
+property bundle_id
+
+
+The canonical bundle ID of this iOS app as it would appear in the iOS AppStore. |
+| property bundle_id |
+| The canonical bundle ID of this iOS app as it would appear in the iOS AppStore. |
+
+| property bundle_id |
+| --- |
+| The canonical bundle ID of this iOS app as it would appear in the iOS AppStore. |
+
+| class firebase_admin.project_management.SHACertificate(sha_hash, name=None) |
+| --- |
+| Bases: object
+
+Represents a SHA-1 or SHA-256 certificate associated with an Android app.
+
+SHA_1 = 'SHA_1'
+SHA_256 = 'SHA_256'
+property cert_type
+
+
+Returns the type of the SHA certificate encoded in the hash.
+
+Returns:
+
+One of ‘SHA_1’ or ‘SHA_256’.
+
+Return type:
+
+string
+
+property name
+
+
+Returns the fully qualified resource name of this certificate, if known.
+
+Returns:
+
+The fully qualified resource name of this certificate, if known; otherwise, the empty string.
+
+Return type:
+
+string
+
+property sha_hash
+
+
+Returns the certificate hash.
+
+Returns:
+
+The certificate hash.
+
+Return type:
+
+string |
+| property cert_type |
+| Returns the type of the SHA certificate encoded in the hash.
+
+Returns:
+
+One of ‘SHA_1’ or ‘SHA_256’.
+
+Return type:
+
+string |
+| property name |
+| Returns the fully qualified resource name of this certificate, if known.
+
+Returns:
+
+The fully qualified resource name of this certificate, if known; otherwise, the empty string.
+
+Return type:
+
+string |
+| property sha_hash |
+| Returns the certificate hash.
+
+Returns:
+
+The certificate hash.
+
+Return type:
+
+string |
+
+| property cert_type |
+| --- |
+| Returns the type of the SHA certificate encoded in the hash.
+
+Returns:
+
+One of ‘SHA_1’ or ‘SHA_256’.
+
+Return type:
+
+string |
+
+| property name |
+| --- |
+| Returns the fully qualified resource name of this certificate, if known.
+
+Returns:
+
+The fully qualified resource name of this certificate, if known; otherwise, the empty string.
+
+Return type:
+
+string |
+
+| property sha_hash |
+| --- |
+| Returns the certificate hash.
+
+Returns:
+
+The certificate hash.
+
+Return type:
+
+string |
+
+| firebase_admin.project_management.android_app(app_id, app=None) |
+| --- |
+| Obtains a reference to an Android app in the associated Firebase project.
+
+Parameters:
+
+app_id – The app ID that identifies this Android app.
+
+app – An App instance (optional).
+
+Returns:
+
+An AndroidApp instance.
+
+Return type:
+
+AndroidApp |
+
+| firebase_admin.project_management.create_android_app(package_name, display_name=None, app=None) |
+| --- |
+| Creates a new Android app in the associated Firebase project.
+
+Parameters:
+
+package_name – The package name of the Android app to be created.
+
+display_name – A nickname for this Android app (optional).
+
+app – An App instance (optional).
+
+Returns:
+
+An AndroidApp instance that is a reference to the newly created app.
+
+Return type:
+
+AndroidApp |
+
+| firebase_admin.project_management.create_ios_app(bundle_id, display_name=None, app=None) |
+| --- |
+| Creates a new iOS app in the associated Firebase project.
+
+Parameters:
+
+bundle_id – The bundle ID of the iOS app to be created.
+
+display_name – A nickname for this iOS app (optional).
+
+app – An App instance (optional).
+
+Returns:
+
+An IOSApp instance that is a reference to the newly created app.
+
+Return type:
+
+IOSApp |
+
+| firebase_admin.project_management.ios_app(app_id, app=None) |
+| --- |
+| Obtains a reference to an iOS app in the associated Firebase project.
+
+Parameters:
+
+app_id – The app ID that identifies this iOS app.
+
+app – An App instance (optional).
+
+Returns:
+
+An IOSApp instance.
+
+Return type:
+
+IOSApp |
+
+| firebase_admin.project_management.list_android_apps(app=None) |
+| --- |
+| Lists all Android apps in the associated Firebase project.
+
+Parameters:
+
+app – An App instance (optional).
+
+Returns:
+
+a list of AndroidApp instances referring to each Android app in the Firebase project.
+
+Return type:
+
+list |
+
+| firebase_admin.project_management.list_ios_apps(app=None) |
+| --- |
+| Lists all iOS apps in the associated Firebase project.
+
+Parameters:
+
+app – An App instance (optional).
+
+Returns:
+
+a list of IOSApp instances referring to each iOS app in the Firebase project.
+
+Return type:
+
+list |

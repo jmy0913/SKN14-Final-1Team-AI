@@ -1,0 +1,105 @@
+Source URL: https://cloud.google.com/firestore/docs/security/iam?hl=ko
+
+## 서문
+Firestore용 서버 클라이언트 라이브러리를 사용하면 ID 및 액세스 관리(IAM)로 리소스에 대한 액세스를 관리할 수 있습니다. IAM을 사용하면 특정 Google Cloud 리소스에 대한 세부적인 액세스 권한을 부여하고 다른 리소스에 대한 무단 액세스를 방지할 수 있습니다. 이 페이지에서는 Firestore의 IAM 권한과 역할을 설명합니다. IAM에 대한 자세한 내용은 IAM 문서를 참고하세요.
+
+IAM은 최소 권한의 보안 원칙을 채택하여 리소스에 대해 필요한 액세스 권한만 부여할 수 있게 해줍니다.
+
+IAM을 사용하면 IAM 정책을 설정하여 어떠한 리소스에 대해 누구(사용자)에게 어떠한(역할) 권한이 있는지를 제어할 수 있습니다. IAM 정책은 사용자에게 역할을 한 개 이상 부여하여 특정 권한을 부여합니다. 예를 들어 datastore.indexAdmin 역할을 부여받은 사용자는 색인을 생성, 수정, 삭제, 나열 또는 볼 수 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+datastore.indexAdmin
+
+## 권한 및 역할
+이 섹션에는 Firestore에서 지원하는 권한과 역할이 요약되어 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+datastore.databases.get
+
+언어: 코드 · 셀#2
+datastore.databases.getMetadata
+
+## API 메서드에 필요한 권한
+다음 표에서는 각 작업을 수행하려는 호출자가 가져야 하는 권한을 보여줍니다.
+
+## 사전 정의된 역할
+IAM을 사용하면 Firestore의 모든 API 메서드에서 API를 요청하는 계정에 리소스를 사용할 수 있는 충분한 권한이 확인합니다. 권한을 부여하려면 사용자, 그룹 또는 서비스 계정에 역할을 부여하는 정책을 설정합니다. 프로젝트 사용자에게 기본 역할인 소유자, 편집자, 뷰어 외에도 Firestore 역할을 부여할 수 있습니다.
+
+다음 표에서는 Firestore IAM 역할을 보여줍니다. 사용자, 그룹 또는 서비스 계정에 여러 역할을 부여할 수 있습니다.
+
+## 커스텀 역할
+사전 정의된 역할로 비즈니스 요구사항이 해결되지 않는 경우, 권한을 지정하여 자신만의 커스텀 역할을 정의할 수 있습니다.
+
+커스텀 역할 알아보기
+
+커스텀 역할 생성 및 관리
+
+태그가 생성 또는 복원 작업에 표시되는 경우 일부 역할이 필요합니다. 태그 키-값 쌍을 만들어 데이터베이스 리소스에 연결하기 전에 태그 키-값 쌍을 만드는 방법에 관한 자세한 내용은 태그 만들기 및 관리를 참고하세요.
+
+다음 권한이 필요합니다.
+
+datastore.databases.listTagBindings
+
+datastore.databases.listEffectiveTags
+
+태그 값을 연결할 데이터베이스 리소스에 다음 권한이 필요합니다.
+
+datastore.databases.createTagBinding
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+datastore.databases.listTagBindings
+
+언어: 코드 · 셀#2
+datastore.databases.listEffectiveTags
+
+언어: 코드 · 셀#1
+datastore.databases.createTagBinding
+
+## 권한
+다음 표에는 Firestore에서 지원하는 권한이 나와 있습니다.
+
+## 역할 변경 지연 시간
+Firestore는 IAM 권한을 5분 동안 캐시하므로 역할 변경이 적용되기까지 최대 5분이 걸립니다.
+
+## Firestore IAM 관리
+Google Cloud 콘솔, IAM API 또는 gcloud 명령줄 도구를 사용하여 IAM 정책을 가져오고 설정할 수 있습니다. 자세한 내용은 프로젝트 구성원에게 액세스 권한 부여, 변경, 취소를 참고하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+gcloud
+
+## 조건부 액세스 권한 구성
+IAM 조건을 사용하면 조건부 액세스 제어를 정의하고 적용할 수 있습니다.
+
+예를 들어 다음 조건은 지정된 날짜까지 주 구성원에게 datastore.user 역할을 할당합니다.
+
+임시 액세스를 위한 IAM 조건을 정의하는 방법은 임시 액세스 구성을 참조하세요.
+
+하나 이상의 데이터베이스에 액세스하기 위해 IAM 조건을 구성하는 방법을 알아보려면 데이터베이스 액세스 조건 구성을 참조하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+datastore.user
+
+## IAM에 대한 보안 규칙 종속 항목
+모바일/웹 클라이언트의 Firestore 보안 규칙은 다음 서비스 계정과 IAM binding에 따라 다릅니다.
+
+Firebase에서 자동으로 이 서비스 계정을 설정합니다. 이 서비스 계정에서 firebaserules.system 역할을 삭제하면 보안 규칙이 모든 요청을 거부합니다. 이 IAM 바인딩을 복원하려면 다음 gcloud CLI 명령어를 사용합니다.
+
+project_id 및 project_number를 확인하려면 프로젝트 식별을 참조하세요.
+
+firebaserules.system 역할은 콘솔에서 기본적으로 숨겨져 있으므로 Google Cloud 콘솔 대신 Google Cloud CLI를 사용합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+firebaserules.system
+
+## 다음 단계
+IAM 자세히 알아보기
+
+IAM 역할 부여
+
+인증 알아보기

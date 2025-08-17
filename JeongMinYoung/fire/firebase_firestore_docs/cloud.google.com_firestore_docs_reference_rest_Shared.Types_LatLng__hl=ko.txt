@@ -1,0 +1,27 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/Shared.Types/LatLng?hl=ko
+
+## 본문
+An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges.
+
+number
+
+The latitude in degrees. It must be in the range [-90.0, +90.0].
+
+The longitude in degrees. It must be in the range [-180.0, +180.0].
+
+### 표
+| JSON representation |
+| --- |
+| {
+  "latitude": number,
+  "longitude": number
+} |
+
+| Fields |
+| --- |
+| latitude | number
+
+The latitude in degrees. It must be in the range [-90.0, +90.0]. |
+| longitude | number
+
+The longitude in degrees. It must be in the range [-180.0, +180.0]. |

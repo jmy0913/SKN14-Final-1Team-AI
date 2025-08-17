@@ -1,0 +1,557 @@
+Source URL: https://firebase.google.com/docs/projects/iam/permissions?hl=ko
+
+## 서문
+권한은 역할을 통해 프로젝트 구성원에게 부여됩니다. 역할은 권한 모음입니다. 프로젝트 구성원에게 역할을 할당하면 역할에 포함된 모든 권한이 프로젝트 구성원에게 부여됩니다.
+
+이 페이지에서는 Firebase 지원 역할에 나열된 권한으로 사용 설정된 작업을 설명합니다. 이러한 권한은 다음 두 가지 카테고리로 분류됩니다.
+
+모든 역할 또는 Firebase 내 특정 작업에 필요한 Identity and Access Management(IAM) 권한
+
+Firebase 제품별 IAM 권한
+
+## 필수 권한
+Firebase IAM에는 다음 권한이 포함되어 있습니다.
+
+Firebase 제품 또는 서비스를 사용하는 데 필요한 권한
+
+일부 Firebase 서비스별 작업을 수행하는 데 필요한 권한
+
+일부 Firebase 관리별 작업을 수행하는 데 필요한 권한
+
+특정 Firebase 제품 또는 서비스와 관련된 권한의 전반적인 목록과 설명은 Firebase 제품별 IAM 권한 내 해당 섹션을 참조하세요.
+
+## 모든 역할에 포함된 필수 권한
+다음 표에 모든 Firebase 제품 또는 서비스를 사용하는 데 필요한 권한이 나와 있습니다.
+
+이러한 권한은 각각의 Firebase 사전 정의된 역할에 자동으로 포함됩니다.
+
+firebase.*
+
+firebase.clients.get
+
+firebase.clients.list
+
+firebase.links.list
+
+firebase.projects.get
+
+resourcemanager.*
+
+resourcemanager.projects.get
+
+resourcemanager.projects.getIamPolicy
+
+resourcemanager.projects.list
+
+serviceusage.*
+
+apikeys.keys.get
+
+apikeys.keys.list
+
+apikeys.keys.lookup
+
+serviceusage.operations.get
+
+serviceusage.operations.list
+
+serviceusage.quotas.get
+
+serviceusage.services.get
+
+serviceusage.services.list
+
+### 표
+| 권한 | 설명 |
+| --- | --- |
+| firebase.* | Firebase 프로젝트 정보를 가져올 수 있는 권한을 부여합니다. |
+| resourcemanager.* | Firebase 프로젝트 정보를 가져올 수 있는 권한을 부여합니다. |
+| serviceusage.* | Google API 상태를 확인하고 Firebase CLI 명령어를 실행할 수 있는 권한을 부여합니다. |
+
+## Firebase 서비스별 작업에 필요한 권한
+다음 표에는 일부 Firebase 서비스별 작업을 수행하는 데 필요한 권한이 나와 있습니다.
+
+필요에 따라 이러한 권한은 각 Firebase 사전 정의된 역할에 자동으로 포함됩니다.
+
+### 표
+| 작업 | 필요한 권한 |
+| --- | --- |
+| 공동작업 도구(Slack, Jira, PagerDuty 등)를 사용하여 Firebase 프로젝트 통합에 액세스 | firebaseextensions.configs.* |
+| Stackdriver에서 사용량 및 분석 보기 | monitoring.timeSeries.list |
+| Firebase CLI 명령어 실행
+자세한 내용은 런타임 구성기 액세스에 대한 Google Cloud 문서를 참조하세요. | runtimeconfig.* |
+
+## Firebase 관리별 작업에 필요한 권한
+다음 표에는 일부 Firebase 관리별 작업을 수행하는 데 필요한 추가 권한이 나와 있습니다.
+
+### 표
+| 관리 권한 및 관련 작업 | 필요한 추가 권한 |
+| --- | --- |
+| firebase.billingPlans.update |
+| Firebase 프로젝트의 요금제 변경 | resourcemanager.projects.createBillingAssignment
+resourcemanager.projects.deleteBillingAssignment |
+| firebase.projects.delete |
+| Firebase 프로젝트 삭제 | resourcemanager.projects.delete |
+| firebase.projects.update |
+| Firebase 리소스를 기존 Google Cloud 프로젝트에 추가합니다. | resourcemanager.projects.get
+serviceusage.services.enable
+serviceusage.services.get |
+| Firebase 프로젝트 이름 변경 | resourcemanager.projects.update |
+| Android 앱에 대한 SHA 인증서 지문 추가 | clientauthconfig.clients.create |
+| Android 앱에 대한 SHA 인증서 지문 삭제 | clientauthconfig.clients.delete |
+| Apple 앱용 App Store ID 또는 팀 ID 업데이트 | clientauthconfig.clients.get
+clientauthconfig.clients.update |
+
+## Firebase 제품별 IAM 권한
+다음 표에는 Firebase 제품 또는 서비스와 관련된 권한이 나와 있습니다. 이러한 권한을 사용하여 커스텀 역할을 생성할 수 있습니다.
+
+## Firebase 관리 권한
+다음 관리 권한 중 일부에는 특정 작업을 수행하기 위한 추가 권한이 필요합니다.
+
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebase.billingPlans.get | 프로젝트의 현재 Firebase 요금제를 가져옵니다. |
+| firebase.billingPlans.update | 프로젝트의 현재 Firebase 요금제를 변경합니다. |
+| firebase.clients.create | 프로젝트에 새 앱을 추가합니다. |
+| firebase.clients.delete | 프로젝트에서 기존 앱을 삭제합니다. |
+| firebase.clients.get | 프로젝트의 앱 세부정보와 구성을 가져옵니다. |
+| firebase.clients.list | 프로젝트의 앱 목록을 가져옵니다. |
+| firebase.clients.undelete | 앱이 완전히 삭제되기 전에 삭제된 앱을 삭제 취소합니다. |
+| firebase.clients.update | 프로젝트의 앱 세부정보와 구성을 업데이트합니다. |
+| firebase.links.create | Google 시스템의 새 링크를 만듭니다.
+(Firebase 콘솔 > 프로젝트 설정 > 통합) |
+| firebase.links.delete | Google 시스템의 링크를 삭제합니다.
+(Firebase 콘솔 > 프로젝트 설정 > 통합) |
+| firebase.links.list | Google 시스템의 링크 목록을 가져옵니다.
+(Firebase 콘솔 > 프로젝트 설정 > 통합) |
+| firebase.links.update | Google 시스템의 기존 링크를 업데이트합니다.
+(Firebase 콘솔 > 프로젝트 설정 > 통합) |
+| firebase.playLinks.get | Google Play 링크 관련 세부정보를 가져옵니다.
+(Firebase 콘솔 > 프로젝트 설정 > 통합 > Google Play) |
+| firebase.playLinks.list | Google Play 링크 목록을 가져옵니다.
+(Firebase 콘솔 > 프로젝트 설정 > 통합 > Google Play) |
+| firebase.playLinks.update | 새 링크를 만들고 기존 링크를 Google Play에 업데이트합니다.
+(Firebase 콘솔 > 프로젝트 설정 > 통합 > Google Play) |
+| firebase.projects.delete | 기존 프로젝트를 삭제합니다. |
+| firebase.projects.get | 프로젝트의 세부정보 및 Firebase 리소스를 가져옵니다. |
+| firebase.projects.update | 기존 프로젝트의 속성을 수정합니다.
+해당하는 Firebase 제품 및 기능에 대한 알림을 수신합니다(자세히 알아보기). |
+| firebaseinstallations.instances.delete | Firebase 설치 ID와 해당 설치에 연결된 데이터를 삭제합니다 (자세히 알아보기). |
+
+## Google Analytics 권한
+다음 권한은 Firebase 프로젝트에 연결된 Analytics 속성에 대한 액세스 권한을 부여합니다. 이 권한을 통해 Firebase 프로젝트 구성원이 잠재고객, 사용자 속성, 유입경로, 보고서, 전환 등의 Analytics 데이터에 액세스할 수 있습니다.
+
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebaseanalytics.resources.googleAnalyticsEdit | 기본적으로 연결된 Analytics 속성에 Analytics 편집자 역할을 부여합니다. |
+| firebaseanalytics.resources.googleAnalyticsAdditionalAccess | 기본적으로 연결된 Analytics 속성에 Analytics 마케터 역할을 부여합니다. |
+| firebaseanalytics.resources.googleAnalyticsReadAndAnalyze | 기본적으로 연결된 Analytics 속성에 Analytics 뷰어 역할을 부여합니다. |
+| firebaseanalytics.resources.googleAnalyticsRestrictedAccess | 기본적으로 수익 데이터 및 비용 데이터에 대한 액세스 권한 없이 연결된 Analytics 속성에 Analytics 뷰어 역할을 부여합니다. |
+
+## Firebase App Check 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebaseappcheck.appAttestConfig.get | 앱의 App Attest 구성을 가져옵니다. |
+| firebaseappcheck.appAttestConfig.update | 앱의 App Attest 구성을 업데이트합니다. |
+| firebaseappcheck.appCheckTokens.verify | Firebase 프로젝트에 발급된 App Check 토큰 확인 |
+| firebaseappcheck.debugTokens.get | 앱의 디버그 토큰을 가져옵니다. |
+| firebaseappcheck.debugTokens.update | 앱의 디버그 토큰을 만들고, 업데이트하고, 삭제합니다. |
+| firebaseappcheck.deviceCheckConfig.get | 앱의 DeviceCheck 구성을 가져옵니다. |
+| firebaseappcheck.deviceCheckConfig.update | 앱의 DeviceCheck 구성을 업데이트합니다. |
+| firebaseappcheck.playIntegrityConfig.get | 앱의 Play Integrity 구성을 가져옵니다. |
+| firebaseappcheck.playIntegrityConfig.update | 앱의 Play Integrity 구성을 업데이트합니다. |
+| firebaseappcheck.recaptchaEnterpriseConfig.get | 앱의 reCAPTCHA Enterprise 구성을 가져옵니다. |
+| firebaseappcheck.recaptchaEnterpriseConfig.update | 앱의 reCAPTCHA Enterprise 구성을 업데이트합니다. |
+| firebaseappcheck.recaptchaV3Config.get | 앱의 reCAPTCHA v3 구성을 가져옵니다. |
+| firebaseappcheck.recaptchaV3Config.update | 앱의 reCAPTCHA v3 구성을 업데이트합니다. |
+| firebaseappcheck.safetyNetConfig.get | 앱의 SafetyNet 구성을 가져옵니다. |
+| firebaseappcheck.safetyNetConfig.update | 앱의 SafetyNet 구성을 업데이트합니다. |
+| firebaseappcheck.services.get | 프로젝트의 서비스 시행 구성을 가져옵니다. |
+| firebaseappcheck.services.update | 프로젝트의 서비스 시행 구성을 업데이트합니다. |
+
+## Firebase App Distribution 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebaseappdistro.releases.list | 기존 배포 및 초대 링크 목록을 가져옵니다. |
+| firebaseappdistro.releases.update | 배포를 생성, 삭제, 수정합니다.
+초대 링크를 생성 및 삭제합니다. |
+| firebaseappdistro.testers.list | 프로젝트의 기존 테스터 목록을 가져옵니다. |
+| firebaseappdistro.testers.update | 프로젝트에서 테스터를 생성 및 삭제합니다. |
+| firebaseappdistro.groups.list | 프로젝트의 기존 테스터 그룹 목록을 가져옵니다. |
+| firebaseappdistro.groups.update | 프로젝트에서 테스터 그룹을 생성 및 삭제합니다. |
+
+## Firebase Authentication 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebaseauth.configs.create | Authentication 구성 만들기 |
+| firebaseauth.configs.get | Authentication 구성 가져오기 |
+| firebaseauth.configs.getHashConfig | 사용자 계정의 비밀번호 해시 구성 및 비밀번호 해시를 가져옵니다. |
+| firebaseauth.configs.getSecret | Authentication 구성에서 클라이언트 보안 비밀번호를 가져옵니다. |
+| firebaseauth.configs.update | 기존 Authentication 구성 업데이트 |
+| firebaseauth.users.create | Authentication에서 새 사용자 만들기 |
+| firebaseauth.users.createSession | 로그인한 사용자의 세션 쿠키를 만듭니다. |
+| firebaseauth.users.delete | Authentication에서 기존 사용자 삭제 |
+| firebaseauth.users.get | 기존 Authentication 사용자 목록 가져오기 |
+| firebaseauth.users.sendEmail | 사용자에게 이메일을 보냅니다. |
+| firebaseauth.users.update | Authentication에서 기존 사용자 업데이트 |
+
+## Firebase A/B Testing 권한(베타)
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebaseabt.experimentresults.get | 실험 결과를 가져옵니다. |
+| firebaseabt.experiments.create | 새 실험을 만듭니다. |
+| firebaseabt.experiments.delete | 기존 실험을 삭제합니다. |
+| firebaseabt.experiments.get | 기존 실험 세부정보를 가져옵니다. |
+| firebaseabt.experiments.list | 기존 실험 목록을 가져옵니다. |
+| firebaseabt.experiments.update | 기존 실험을 업데이트합니다. |
+| firebaseabt.projectmetadata.get | 실험 설정에 필요한 분석 메타데이터를 가져옵니다. |
+
+## Firebase App Hosting 권한(베타)
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebaseapphosting.backends.create | Firebase 프로젝트의 새 App Hosting 백엔드를 만듭니다. |
+| firebaseapphosting.backends.delete | Firebase 프로젝트에서 기존 App Hosting 백엔드를 삭제합니다. |
+| firebaseapphosting.backends.get | Firebase 프로젝트에서 특정 App Hosting 백엔드에 관한 정보를 가져옵니다. |
+| firebaseapphosting.backends.list | Firebase 프로젝트에서 사용 가능한 모든 App Hosting 백엔드를 나열합니다. |
+| firebaseapphosting.backends.update | 기존 App Hosting 백엔드의 구성 또는 설정을 수정합니다. |
+| firebaseapphosting.builds.create | Firebase 프로젝트에서 App Hosting 백엔드의 새 빌드 프로세스를 시작합니다. |
+| firebaseapphosting.builds.delete | App Hosting 백엔드에서 기존 빌드를 삭제합니다. |
+| firebaseapphosting.builds.get | App Hosting 백엔드에서 기존 빌드의 세부정보를 가져옵니다. |
+| firebaseapphosting.builds.list | Firebase 프로젝트에서 App Hosting 백엔드와 연결된 모든 빌드를 나열합니다. |
+| firebaseapphosting.builds.update | 완료되지 않은 기존 App Hosting 빌드의 구성을 수정합니다. |
+| firebaseapphosting.domains.create | Firebase 프로젝트에서 App Hosting 백엔드의 새 도메인 연결을 만듭니다. |
+| firebaseapphosting.domains.delete | App Hosting 백엔드에서 도메인 연결을 삭제합니다. |
+| firebaseapphosting.domains.get | App Hosting 사이트와 연결된 특정 도메인에 대한 정보를 가져옵니다. |
+| firebaseapphosting.domains.list | App Hosting과 연결된 모든 도메인을 나열합니다. |
+| firebaseapphosting.domains.update | App Hosting 백엔드에 연결된 도메인의 설정 또는 구성을 수정합니다. |
+| firebaseapphosting.rollouts.create | 기존 빌드를 해당 App Hosting 백엔드의 현재 제공 버전으로 승격하는 새 출시를 시작합니다. |
+| firebaseapphosting.rollouts.get | 특정 App Hosting 출시에 대한 정보를 가져옵니다. |
+| firebaseapphosting.rollouts.list | App Hosting 백엔드와 연결된 모든 출시를 나열합니다. |
+| firebaseapphosting.traffic.get | App Hosting 사이트의 현재 트래픽 분할 및 출시 정책을 가져옵니다. |
+| firebaseapphosting.traffic.list | `firebaseapphosting.traffic.get`과 기능적으로 동일하며, 이 권한이 있는 백엔드에서 목록을 검색하는 기능이 추가되었습니다. |
+| firebaseapphosting.traffic.update | App Hosting 백엔드의 현재 트래픽 분할 및 출시 정책을 수정합니다. |
+
+## Cloud Firestore 권한
+Cloud Firestore 권한의 목록과 설명은 Google Cloud 문서를 참조하세요.
+
+## Cloud Storage 권한
+Cloud Storage 권한의 목록과 설명은 Google Cloud 문서를 참조하세요.
+
+## Firebase 보안 규칙(Cloud Firestore 및 Cloud Storage) 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebaserules.releases.create | 출시 버전을 만듭니다. |
+| firebaserules.releases.delete | 출시 버전을 삭제합니다. |
+| firebaserules.releases.get | 출시 버전을 가져옵니다. |
+| firebaserules.releases.getExecutable | 출시 버전의 바이너리 실행 가능 페이로드를 가져옵니다. |
+| firebaserules.releases.list | 출시 버전 목록을 가져옵니다. |
+| firebaserules.releases.update | 출시 버전의 규칙 집합 참조를 업데이트합니다. |
+| firebaserules.rulesets.create | 새 규칙 집합을 만듭니다. |
+| firebaserules.rulesets.delete | 기존 규칙 집합을 삭제합니다. |
+| firebaserules.rulesets.get | 소스가 있는 규칙 집합을 가져옵니다. |
+| firebaserules.rulesets.list | 규칙 집합 메타데이터(소스 없음)를 찾습니다. |
+| firebaserules.rulesets.test | 소스가 정확한지 테스트합니다. |
+
+## Cloud Functions for Firebase 권한
+Cloud Functions 권한의 목록과 설명은 IAM 문서를 참조하세요.
+
+함수를 배포하려면 표준 Firebase 사전 정의된 역할에 포함되지 않은 권한의 특정 구성이 필요합니다. 함수를 배포하려면 다음 옵션 중 하나를 사용합니다.
+
+프로젝트 소유자에게 함수 배포를 위임합니다.
+
+HTTP가 아닌 함수만 배포할 경우 프로젝트 편집자가 함수를 배포할 수 있습니다.
+
+프로젝트 소유자에게 함수 배포를 위임합니다.
+
+HTTP가 아닌 함수만 배포할 경우 프로젝트 편집자가 함수를 배포할 수 있습니다.
+
+다음 두 가지 역할을 가진 프로젝트 구성원에게 함수 배포를 위임합니다.
+
+Cloud Functions 관리자 역할(roles/cloudfunctions.admin)
+서비스 계정 사용자 역할(roles/iam.serviceAccountUser)
+
+프로젝트 소유자는 Google Cloud 콘솔 또는 gcloud CLI를 사용하여 프로젝트 구성원에게 이러한 역할을 할당할 수 있습니다. 이 역할 구성의 세부 절차와 보안에 미치는 영향은 IAM 문서를 참조하세요.
+
+다음 두 가지 역할을 가진 프로젝트 구성원에게 함수 배포를 위임합니다.
+
+Cloud Functions 관리자 역할(roles/cloudfunctions.admin)
+
+서비스 계정 사용자 역할(roles/iam.serviceAccountUser)
+
+프로젝트 소유자는 Google Cloud 콘솔 또는 gcloud CLI를 사용하여 프로젝트 구성원에게 이러한 역할을 할당할 수 있습니다. 이 역할 구성의 세부 절차와 보안에 미치는 영향은 IAM 문서를 참조하세요.
+
+## Firebase 메시징 캠페인 권한
+이러한 권한은 Firebase Cloud Messaging 및 Firebase In-App Messaging의 캠페인에 적용됩니다.
+
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebasemessagingcampaigns.campaigns.create | 새 캠페인을 만듭니다. |
+| firebasemessagingcampaigns.campaigns.delete | 기존 캠페인을 삭제합니다. |
+| firebasemessagingcampaigns.campaigns.get | 기존 캠페인 세부정보를 가져옵니다. |
+| firebasemessagingcampaigns.campaigns.list | 기존 캠페인 목록을 가져옵니다. |
+| firebasemessagingcampaigns.campaigns.update | 기존 캠페인을 업데이트합니다. |
+| firebasemessagingcampaigns.campaigns.start | 기존 캠페인을 시작합니다. |
+| firebasemessagingcampaigns.campaigns.stop | 기존 캠페인을 업데이트합니다. |
+
+## Firebase Cloud Messaging 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| cloudmessaging.messages.create | FCM HTTP API 및 Admin SDK를 통해 알림과 데이터 메시지를 보냅니다. |
+
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebasenotifications.messages.create | 알림 작성기에서 새 메시지를 작성합니다. |
+| firebasenotifications.messages.delete | 알림 작성기에서 기존 메시지를 삭제합니다. |
+| firebasenotifications.messages.get | 알림 작성기에서 기존 메시지 세부정보를 가져옵니다. |
+| firebasenotifications.messages.list | 알림 작성기에서 기존 메시지 목록을 가져옵니다. |
+| firebasenotifications.messages.update | 알림 작성기에서 기존 메시지를 업데이트합니다. |
+
+## Firebase Crashlytics 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebasecrashlytics.config.get | Crashlytics 구성 설정 가져오기 |
+| firebasecrashlytics.config.update | Crashlytics 구성 설정 업데이트 |
+| firebasecrashlytics.data.get | Crashlytics 문제 및 세션과 관련된 측정항목을 가져옵니다. |
+| firebasecrashlytics.issues.get | 문제에 첨부된 메모를 포함하여 Crashlytics 문제에 대한 세부정보를 가져옵니다. |
+| firebasecrashlytics.issues.list | Crashlytics 문제 목록 가져오기 |
+| firebasecrashlytics.issues.update | 기존 Crashlytics 문제를 열고, 닫고, 숨깁니다.
+문제에 첨부된 메모를 업데이트합니다. |
+| firebasecrashlytics.sessions.get | Crashlytics 비정상 종료 세션에 대한 세부정보 가져오기 |
+
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebasecrash.issues.update | 지원 중단되었습니다. 대신 적절한 firebasecrashlytics.* 권한을 사용하세요.
+기존 Crashlytics 문제를 업데이트하고, 문제의 메모를 작성하고, 속도 알림을 설정합니다. |
+| firebasecrash.reports.get | 지원 중단되었습니다. 대신 적절한 firebasecrashlytics.* 권한을 사용하세요.
+기존 Crashlytics 보고서 가져오기 |
+
+## Firebase Dynamic Links 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebasedynamiclinks.domains.create | 새 Dynamic Links 도메인 만들기 |
+| firebasedynamiclinks.domains.delete | 기존 Dynamic Links 도메인 삭제 |
+| firebasedynamiclinks.domains.get | 기존 Dynamic Links 도메인 세부정보 가져오기 |
+| firebasedynamiclinks.domains.list | 기존 Dynamic Links 도메인 목록 가져오기 |
+| firebasedynamiclinks.domains.update | 기존 Dynamic Links 도메인 업데이트 |
+| firebasedynamiclinks.links.create | 새 Dynamic Links 만들기 |
+| firebasedynamiclinks.links.get | 기존 Dynamic Links 세부정보 가져오기 |
+| firebasedynamiclinks.links.list | 기존 Dynamic Links 목록 가져오기 |
+| firebasedynamiclinks.links.update | 기존 Dynamic Links 업데이트 |
+| firebasedynamiclinks.stats.get | Dynamic Links 통계 가져오기 |
+| firebasedynamiclinks.destinations.list | 기존 Dynamic Links 대상 가져오기 |
+| firebasedynamiclinks.destinations.update | 기존 Dynamic Links 대상 업데이트 |
+
+## Firebase Extensions 게시 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebaseextensionspublisher.extensions.create | 확장 프로그램의 새 버전을 업로드합니다. |
+| firebaseextensionspublisher.extensions.delete | 확장 프로그램 버전을 삭제하거나 지원 중단합니다. |
+| firebaseextensionspublisher.extensions.get | 확장 프로그램 버전에 대한 세부정보를 가져옵니다. |
+| firebaseextensionspublisher.extensions.list | 이 게시자 프로젝트에서 업로드한 모든 확장 프로그램 버전을 나열합니다. |
+
+## Firebase Hosting 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebasehosting.sites.create | Firebase 프로젝트의 새 Hosting 리소스를 만듭니다. |
+| firebasehosting.sites.delete | Firebase 프로젝트의 기존 Hosting 리소스를 삭제합니다. |
+| firebasehosting.sites.get | Firebase 프로젝트의 기존 Hosting 리소스의 세부정보를 가져옵니다. |
+| firebasehosting.sites.list | Firebase 프로젝트의 Hosting 리소스 목록을 가져옵니다. |
+| firebasehosting.sites.update | Firebase 프로젝트의 기존 Hosting 리소스를 업데이트합니다. |
+
+## Firebase In-App Messaging 권한(베타)
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebaseinappmessaging.campaigns.create | 새 캠페인을 만듭니다. |
+| firebaseinappmessaging.campaigns.delete | 기존 캠페인을 삭제합니다. |
+| firebaseinappmessaging.campaigns.get | 기존 캠페인 세부정보를 가져옵니다. |
+| firebaseinappmessaging.campaigns.list | 기존 캠페인 목록을 가져옵니다. |
+| firebaseinappmessaging.campaigns.update | 기존 캠페인을 업데이트합니다. |
+
+## Firebase ML 권한(베타)
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebaseml.models.create | 새 ML 모델을 만듭니다. |
+| firebaseml.models.update | 기존 ML 모델을 업데이트합니다. |
+| firebaseml.models.delete | 기존 ML 모델을 삭제합니다. |
+| firebaseml.models.get | 기존 ML 모델 세부정보를 가져옵니다. |
+| firebaseml.models.list | 기존 ML 모델 목록을 가져옵니다. |
+| firebaseml.modelversions.create | 새 모델 버전을 만듭니다. |
+| firebaseml.modelversions.get | 기존 모델 버전 세부정보를 가져옵니다. |
+| firebaseml.modelversions.list | 기존 모델 버전 목록을 가져옵니다. |
+| firebaseml.modelversions.update | 기존 모델 버전을 업데이트합니다. |
+
+## Firebase AI Logic 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebasevertexai.configs.get | Firebase AI Logic 구성 가져오기 |
+| firebasevertexai.configs.update | Firebase AI Logic 구성 업데이트 |
+
+## Firebase Performance Monitoring 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebaseperformance.config.create | 새 문제 기준 구성을 만듭니다. |
+| firebaseperformance.config.delete | 기존 문제 기준 구성을 삭제합니다. |
+| firebaseperformance.config.update | 알림 및 기존 문제 기준 구성을 수정합니다. |
+| firebaseperformance.data.get | 모든 성능 데이터와 문제 기준 값을 봅니다. |
+
+## Firebase Realtime Database 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebasedatabase.instances.create | 새 데이터베이스 인스턴스를 만듭니다. |
+| firebasedatabase.instances.get | 기존 데이터베이스 인스턴스의 메타데이터를 가져옵니다.
+기존 데이터베이스 인스턴스의 데이터에 대한 읽기 전용 액세스 권한입니다. |
+| firebasedatabase.instances.list | 기존 데이터베이스 인스턴스 목록을 가져옵니다. |
+| firebasedatabase.instances.update | 기존 데이터베이스 인스턴스의 데이터에 대한 전체 읽기 및 쓰기 액세스 권한입니다.
+데이터베이스 인스턴스를 사용 설정 및 사용 중지합니다.
+기존 데이터베이스 인스턴스의 보안 규칙을 가져오고 수정합니다. |
+| firebasedatabase.instances.disable | 활성 데이터베이스 인스턴스를 사용 중지합니다.
+
+기존 데이터는 유지되지만 읽기/쓰기를 위해 액세스할 수 없습니다. |
+| firebasedatabase.instances.reenable | 사용 중지된 데이터베이스 인스턴스를 다시 사용 설정합니다.
+
+읽기/쓰기를 위해 기존 데이터에 다시 액세스할 수 있습니다. |
+| firebasedatabase.instances.delete | 사용 중지된 데이터베이스 인스턴스를 삭제합니다.
+
+삭제된 데이터베이스 이름은 재사용할 수 없습니다.
+삭제된 데이터베이스 인스턴스의 데이터는 20일 후에 영구적으로 삭제됩니다. |
+| firebasedatabase.instances.undelete | 삭제된 데이터베이스 인스턴스가 영구적으로 삭제되기 전에 삭제 취소합니다.
+
+삭제된 데이터베이스 인스턴스의 데이터는 인스턴스가 삭제된 후 20일이 지나면 영구적으로 삭제됩니다. |
+
+## Firebase Remote Config 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| cloudconfig.configs.get | Remote Config 데이터 검색 |
+| cloudconfig.configs.update | Remote Config 데이터 업데이트 |
+
+## Firebase Test Lab 권한
+Test Lab에서는 Cloud Storage 버킷에 액세스해야 하므로 표준 Firebase 사전 정의된 역할에 일부가 포함되어 있지 않은 매우 구체적인 권한 구성이 필요합니다. Test Lab에 대한 액세스 권한을 부여하려면 다음 옵션 중 하나를 사용하세요.
+
+Firebase Console에서 시작된 테스트
+
+별도의 전용 Firebase 프로젝트에서 앱을 테스트합니다.
+
+Test Lab 액세스 권한이 필요한 구성원을 추가한 후 Firebase Console을 사용하여 기존 프로젝트 역할을 할당합니다.
+
+구성원이 Test Lab으로 테스트를 실행하도록 허용하려면 프로젝트 편집자 이상의 역할을 할당합니다.
+구성원이 Test Lab에서 테스트 결과를 보도록 허용하려면 프로젝트 뷰어 이상의 역할을 할당합니다.
+
+Firebase Console에서 시작된 테스트
+
+별도의 전용 Firebase 프로젝트에서 앱을 테스트합니다.
+
+Test Lab 액세스 권한이 필요한 구성원을 추가한 후 Firebase Console을 사용하여 기존 프로젝트 역할을 할당합니다.
+
+구성원이 Test Lab으로 테스트를 실행하도록 허용하려면 프로젝트 편집자 이상의 역할을 할당합니다.
+구성원이 Test Lab에서 테스트 결과를 보도록 허용하려면 프로젝트 뷰어 이상의 역할을 할당합니다.
+
+Test Lab 액세스 권한이 필요한 구성원을 추가한 후 Firebase Console을 사용하여 기존 프로젝트 역할을 할당합니다.
+
+구성원이 Test Lab으로 테스트를 실행하도록 허용하려면 프로젝트 편집자 이상의 역할을 할당합니다.
+
+구성원이 Test Lab에서 테스트 결과를 보도록 허용하려면 프로젝트 뷰어 이상의 역할을 할당합니다.
+
+자체 Cloud Storage 버킷을 사용하면서 gcloud CLI, Testing API, 또는 Gradle 관리 기기에서 시작된 테스트:
+
+Google Cloud 콘솔을 사용하여 필수 권한 집합을 함께 부여하는 사전 정의된 역할 쌍을 할당합니다.
+
+구성원이 Test Lab으로 테스트를 실행하도록 허용하려면 다음을 역할을 모두 할당합니다.
+
+Firebase Test Lab 관리자(roles/cloudtestservice.testAdmin)
+Firebase 애널리틱스 뷰어(roles/firebase.analyticsViewer)
+
+구성원이 Test Lab에서 테스트 결과를 보도록 허용하려면 다음 역할을 모두 할당합니다.
+
+Firebase Test Lab 뷰어(roles/cloudtestservice.testViewer)
+Firebase 애널리틱스 뷰어(roles/firebase.analyticsViewer)
+
+자체 Cloud Storage 버킷을 사용하면서 gcloud CLI, Testing API, 또는 Gradle 관리 기기에서 시작된 테스트:
+
+Google Cloud 콘솔을 사용하여 필수 권한 집합을 함께 부여하는 사전 정의된 역할 쌍을 할당합니다.
+
+구성원이 Test Lab으로 테스트를 실행하도록 허용하려면 다음을 역할을 모두 할당합니다.
+
+Firebase Test Lab 관리자(roles/cloudtestservice.testAdmin)
+Firebase 애널리틱스 뷰어(roles/firebase.analyticsViewer)
+
+구성원이 Test Lab에서 테스트 결과를 보도록 허용하려면 다음 역할을 모두 할당합니다.
+
+Firebase Test Lab 뷰어(roles/cloudtestservice.testViewer)
+Firebase 애널리틱스 뷰어(roles/firebase.analyticsViewer)
+
+Google Cloud 콘솔을 사용하여 필수 권한 집합을 함께 부여하는 사전 정의된 역할 쌍을 할당합니다.
+
+구성원이 Test Lab으로 테스트를 실행하도록 허용하려면 다음을 역할을 모두 할당합니다.
+
+Firebase Test Lab 관리자(roles/cloudtestservice.testAdmin)
+Firebase 애널리틱스 뷰어(roles/firebase.analyticsViewer)
+
+구성원이 Test Lab으로 테스트를 실행하도록 허용하려면 다음을 역할을 모두 할당합니다.
+
+Firebase Test Lab 관리자(roles/cloudtestservice.testAdmin)
+
+Firebase 애널리틱스 뷰어(roles/firebase.analyticsViewer)
+
+구성원이 Test Lab에서 테스트 결과를 보도록 허용하려면 다음 역할을 모두 할당합니다.
+
+Firebase Test Lab 뷰어(roles/cloudtestservice.testViewer)
+Firebase 애널리틱스 뷰어(roles/firebase.analyticsViewer)
+
+구성원이 Test Lab에서 테스트 결과를 보도록 허용하려면 다음 역할을 모두 할당합니다.
+
+Firebase Test Lab 뷰어(roles/cloudtestservice.testViewer)
+
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| cloudtestservice.environmentcatalog.get | 프로젝트의 지원되는 테스트 환경 카탈로그를 가져옵니다. |
+| cloudtestservice.matrices.create | 지정된 사양에 따라 테스트 매트릭스 실행을 요청합니다. |
+| cloudtestservice.matrices.get | 테스트 매트릭스 상태를 가져옵니다. |
+| cloudtestservice.matrices.update | 완료되지 않은 테스트 매트릭스를 업데이트합니다. |
+| cloudtoolresults.executions.list | 기록에 대한 실행 목록을 가져옵니다. |
+| cloudtoolresults.executions.get | 기존 실행을 가져옵니다. |
+| cloudtoolresults.executions.create | 새 실행을 만듭니다. |
+| cloudtoolresults.executions.update | 기존 실행을 업데이트합니다. |
+| cloudtoolresults.histories.list | 기록 목록을 가져옵니다. |
+| cloudtoolresults.histories.get | 기존 기록을 가져옵니다. |
+| cloudtoolresults.histories.create | 새 기록을 만듭니다. |
+| cloudtoolresults.settings.create | 새 도구 결과 설정을 만듭니다. |
+| cloudtoolresults.settings.get | 기존 도구 결과 설정을 가져옵니다. |
+| cloudtoolresults.settings.update | 도구 결과 설정을 업데이트합니다. |
+| cloudtoolresults.steps.list | 실행 단계 목록을 가져옵니다. |
+| cloudtoolresults.steps.get | 기존 단계를 가져옵니다. |
+| cloudtoolresults.steps.create | 새 단계를 만듭니다. |
+| cloudtoolresults.steps.update | 기존 단계를 업데이트합니다. |
+
+## 외부 서비스 통합 권한
+### 표
+| 권한 이름 | 설명 |
+| --- | --- |
+| firebaseextensions.configs.create | 외부 서비스의 새 확장 프로그램 구성을 만듭니다.
+(Firebase 콘솔 > 프로젝트 설정 > 통합) |
+| firebaseextensions.configs.delete | 외부 서비스의 기존 확장 프로그램 구성을 삭제합니다.
+(Firebase 콘솔 > 프로젝트 설정 > 통합) |
+| firebaseextensions.configs.list | 외부 서비스의 확장 프로그램 구성 목록을 가져옵니다.
+(Firebase 콘솔 > 프로젝트 설정 > 통합) |
+| firebaseextensions.configs.update | 외부 서비스의 기존 확장 프로그램 구성을 업데이트합니다.
+(Firebase 콘솔 > 프로젝트 설정 > 통합) |

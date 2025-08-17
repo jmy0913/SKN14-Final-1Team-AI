@@ -1,0 +1,129 @@
+Source URL: https://firebase.google.com/docs/emulator-suite/connect_and_prototype?hl=ko
+
+## 서문
+곧바로 Firebase Local Emulator Suite을 사용하기 전에 사용 중인 플랫폼(Apple, Android 또는 웹)에 해당하는 Firebase 시작하기 주제에 따라 Firebase 프로젝트를 만들고, 개발 환경을 설정하고, Firebase SDK를 선택하고 설치해야 합니다.
+
+## 프로토타입 제작 및 테스트
+Local Emulator Suite에는 Firebase Local Emulator Suite 소개에 설명된 여러 제품 에뮬레이터가 포함되어 있습니다. 프로덕션에서 사용 중인 Firebase 제품에 해당하는 개별 에뮬레이터를 사용하거나 여러 에뮬레이터를 조합하여 프로토타입을 제작하고 테스트할 수 있습니다.
+
+이 주제와 관련하여, Local Emulator Suite 워크플로를 소개하기 위해 일반적인 제품의 조합(Firebase 데이터베이스 및 해당 데이터베이스의 작업으로 트리거되는 Cloud Functions)을 사용하는 앱을 만든다고 가정해 보겠습니다.
+
+Firebase 프로젝트를 로컬에서 초기화한 후 Local Emulator Suite을 사용하는 개발 주기는 일반적으로 3단계로 이루어집니다.
+
+에뮬레이터 및 Emulator Suite UI를 사용하여 대화형 방식으로 기능 프로토타입을 제작합니다.
+
+데이터베이스 에뮬레이터 또는 Cloud Functions 에뮬레이터를 사용하는 경우 한 번만 앱을 에뮬레이터에 연결하면 됩니다.
+
+에뮬레이터와 커스텀 스크립트로 테스트를 자동화합니다.
+
+## 로컬에서 Firebase 프로젝트 초기화
+CLI를 설치하거나 최신 버전으로 업데이트해야 합니다.
+
+아직 초기화하지 않았다면 화면의 안내에 따라 Cloud Functions와 Cloud Firestore 또는 Realtime Database를 사용하도록 지정하여 현재 작업 디렉터리를 Firebase 프로젝트로 초기화합니다.
+
+이제 프로젝트 디렉터리에 Firebase 구성 파일, 데이터베이스의 Firebase Security Rules 정의 파일, Cloud Functions 코드가 포함된 functions 디렉터리, 기타 지원 파일이 포함됩니다.
+
+## 대화형 방식으로 프로토타입 제작하기
+Local Emulator Suite은 새로운 기능에 대한 프로토타입을 신속하게 제작할 수 있도록 설계되었으며 도구 모음의 기본 제공 사용자 인터페이스는 가장 유용한 프로토타입 제작 도구 중 하나입니다. Firebase 콘솔을 로컬에서 실행하는 것과 유사합니다.
+
+Emulator Suite UI는 데이터베이스 설계를 반복하고, Cloud Functions와 관련된 다양한 데이터 흐름을 시도하며, 보안 규칙 변경사항을 평가하고, 로그를 확인하여 백엔드 서비스의 성능을 확인하는 등 다양하게 활용할 수 있습니다. 그런 다음 처음부터 다시 시작하려면 데이터베이스를 지우고 새로운 설계 아이디어로 시작하면 됩니다.
+
+다음 명령어를 사용하여 Local Emulator Suite을 시작하면 모두 사용할 수 있습니다.
+
+가상의 앱을 프로토타입으로 제작하기 위해 기본 Cloud 함수를 설정하고 테스트하여 데이터베이스의 텍스트 항목을 수정하고 Emulator Suite UI에서 해당 데이터베이스를 만들고 채워서 트리거합니다.
+
+프로젝트 디렉터리에서 functions/index.js 파일을 수정하여 데이터베이스 쓰기에 의해 트리거되는 Cloud 함수를 만듭니다. 기존 파일의 콘텐츠를 다음 스니펫으로 바꿉니다. 이 함수는 messages 컬렉션의 문서 변경사항을 수신 대기하고, 문서의 original 필드 콘텐츠를 대문자로 변환하고 결과를 해당 문서의 uppercase 필드에 저장합니다.
+
+firebase emulators:start를 사용하여 Local Emulator Suite을 실행합니다. Cloud Functions 및 데이터베이스 에뮬레이터가 시작되고, 자동으로 연동되도록 구성됩니다.
+
+http://localhost:4000에서 브라우저의 UI를 확인합니다. 포트 4000이 UI의 기본값이지만, Firebase CLI의 터미널 메시지 출력을 확인하세요. 사용 가능한 에뮬레이터의 상태를 확인합니다. 이번 예시에서는 Cloud Functions 및 Cloud Firestore 에뮬레이터가 실행됩니다.
+UI의 기본 페이지 보기
+
+UI의 Firestore > 데이터 탭에서 컬렉션 시작을 클릭하고 표시되는 메시지에 따라 messages 컬렉션에서 필드 이름이 original이고 값이 test인 새 문서를 만듭니다. 이렇게 하면 Cloud 함수가 트리거됩니다. 곧 'TEST' 문자열로 채워진 새로운 uppercase 필드가 표시되는지 확인합니다.
+컬렉션을 만드는 방법 보기 함수의 업데이트 보기
+
+Firestore > 요청 탭에서 에뮬레이션된 데이터베이스에 전달된 요청을 검사합니다. 검사 시 이러한 요청의 일부로 수행된 모든 Firebase Security Rules 평가를 포함합니다.
+
+로그 탭을 확인하여 함수가 데이터베이스를 업데이트할 때 오류가 발생하지 않았는지 확인합니다.
+
+인앱 데이터베이스 액세스 코드를 수정하거나 테스트 모음을 다시 컴파일 및 실행하지 않고도 원하는 데이터 흐름을 얻을 때까지 Cloud 함수 코드와 대화형 데이터베이스 수정 작업을 간편하게 반복할 수 있습니다.
+
+## 에뮬레이터에 앱 연결
+대화형 프로토타입 제작을 성공적으로 진행하고 설계를 결정했다면 적절한 SDK를 사용하여 앱에 데이터베이스 액세스 코드를 추가할 수 있습니다. Emulator Suite UI에서 데이터베이스 탭과 로그 탭(함수의 경우)을 계속 사용하여 앱의 동작이 올바른지 확인합니다.
+
+Local Emulator Suite은 로컬 개발 도구입니다. 프로덕션 데이터베이스에 대한 쓰기는 로컬에서 프로토타입을 제작하는 함수를 트리거하지 않습니다.
+
+앱에서 데이터베이스에 쓰기 작업을 수행하도록 전환하려면 테스트 클래스 또는 인앱 구성이 Cloud Firestore 에뮬레이터를 가리키도록 해야 합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+// 10.0.2.2 is the special IP address to connect to the 'localhost' of
+// the host computer from an Android emulator.
+val firestore = Firebase.firestore
+firestore.useEmulator("10.0.2.2", 8080)
+
+firestore.firestoreSettings = firestoreSettings {
+ isPersistenceEnabled = false
+}
+EmulatorSuite.kt
+
+언어: Java · 셀#1
+// 10.0.2.2 is the special IP address to connect to the 'localhost' of
+// the host computer from an Android emulator.
+FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+firestore.useEmulator("10.0.2.2", 8080);
+
+FirebaseFirestoreSettings settings = new FirebaseFirestoreSettings.Builder()
+ .setPersistenceEnabled(false)
+ .build();
+firestore.setFirestoreSettings(settings);
+EmulatorSuite.java
+
+언어: Swift · 셀#1
+let settings = Firestore.firestore().settings
+settings.host = "127.0.0.1:8080"
+settings.cacheSettings = MemoryCacheSettings()
+settings.isSSLEnabled = false
+Firestore.firestore().settings = settings
+ViewController.swift
+
+언어: Web · 셀#1
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
+
+// firebaseApps previously initialized using initializeApp()
+const db = getFirestore();
+connectFirestoreEmulator(db, '127.0.0.1', 8080);
+fs_emulator_connect.js
+
+언어: Web · 셀#1
+// Firebase previously initialized using firebase.initializeApp().
+var db = firebase.firestore();
+if (location.hostname === "localhost") {
+ db.useEmulator("127.0.0.1", 8080);
+}
+emulator-suite.js
+
+## 커스텀 스크립트로 테스트 자동화
+이제 전체 워크플로의 마지막 단계입니다. 기능 인앱의 프로토타입을 제작하고 모든 플랫폼에서 문제없이 작동될 것으로 보이면 최종 구현 및 테스트로 전환할 수 있습니다. 단위 테스트 및 CI 워크플로의 경우 exec 명령어 하나로 에뮬레이터를 시작하고 스크립트 테스트를 실행하며 에뮬레이터를 종료할 수 있습니다.
+
+## 개별 에뮬레이터에 대해 자세히 살펴보기
+지금까지 기본 클라이언트 측 워크플로에 대해 살펴봤으므로 이제는 서버 측 앱 개발에 사용하는 방법을 비롯하여 도구 모음의 개별 에뮬레이터에 대해 좀 더 자세히 알아보겠습니다.
+
+프로토타입 제작 워크플로에 Authentication 에뮬레이터 추가
+
+Realtime Database 에뮬레이터 기능 자세히 알아보기
+
+Cloud Storage for Firebase 에뮬레이터 기능 자세히 알아보기
+
+Cloud Firestore 에뮬레이터 기능 자세히 알아보기
+
+Cloud Functions 에뮬레이터에 앱 연결
+
+Extensions 에뮬레이터로 청구 비용을 최소화하면서 Firebase Extensions 평가
+
+## 다음 단계
+위에 링크된 특정 에뮬레이터와 관련된 주제를 읽어보세요. 그런 다음 아래를 실행합니다.
+
+선별된 동영상 모음 및 자세한 방법 예시는 Firebase 에뮬레이터 학습 재생목록을 참조하세요.
+
+보안 규칙 테스트 및 Firebase Test SDK와 관련된 고급 사용 사례는 보안 규칙 테스트(Cloud Firestore), 보안 규칙 테스트(Realtime Database), 보안 규칙 테스트(Cloud Storage for Firebase)를 살펴보세요.

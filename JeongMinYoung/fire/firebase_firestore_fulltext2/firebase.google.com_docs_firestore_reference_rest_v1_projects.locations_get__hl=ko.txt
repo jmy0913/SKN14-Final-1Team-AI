@@ -1,0 +1,39 @@
+Source URL: https://firebase.google.com/docs/firestore/reference/rest/v1/projects.locations/get?hl=ko
+
+## 본문
+Gets information about a location.
+
+GET https://firestore.googleapis.com/v1/{name=projects/*/locations/*}
+
+The URL uses gRPC Transcoding syntax.
+
+The request body must be empty.
+
+If successful, the response body contains an instance of Location.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the OAuth 2.0 Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| name | string Resource name for the location. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+GET https://firestore.googleapis.com/v1/{name=projects/*/locations/*}
+
+언어: 코드 · 셀#2
+Location
+
+언어: 코드 · 셀#3
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#4
+https://www.googleapis.com/auth/cloud-platform

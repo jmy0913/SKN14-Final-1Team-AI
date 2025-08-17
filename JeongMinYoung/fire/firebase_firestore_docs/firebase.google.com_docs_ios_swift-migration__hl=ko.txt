@@ -1,0 +1,21 @@
+Source URL: https://firebase.google.com/docs/ios/swift-migration?hl=ko
+
+## 변경되는 사항
+Apple용 Firebase SDK 10.17.0부터 Swift 확장 프로그램 SDK가 해당하는 기본 SDK에 병합되었습니다. 예를 들어 FirebaseFirestoreSwift 모듈의 모든 API가 FirebaseFirestore에 추가되어 해당 API에 액세스하기 위해 FirebaseFirestoreSwift 모듈을 가져올 필요가 없습니다.
+
+## 2023년 10월
+Swift 확장 프로그램 SDK가 기본 SDK에 병합되었으며 기본 SDK로 대체되어 지원 중단됩니다. 이 변경사항을 알리는 버전 10.17.0의 출시 노트를 참고하세요.
+
+이제 기본 SDK 모듈에서 직접 Swift 확장 프로그램 SDK API를 사용할 수 있습니다. 확장 프로그램 SDK는 다음 주 버전 출시까지 계속 사용 가능하지만 사용 시 지원 중단 경고가 표시됩니다.
+
+## 작업공간의 변경사항
+Firebase를 버전 10.17.0 이상으로 업데이트한 후 대상 설정의 일반 탭에서 프레임워크, 라이브러리, 삽입된 콘텐츠 섹션으로 이동하고 Swift 확장 프로그램 SDK(예: FirebaseFirestoreSwift)를 삭제합니다.
+
+Firebase를 버전 10.17.0 이상으로 업데이트한 후 Podfile로 이동하여 대상의 프레임워크 섹션 추가에 프로젝트의 종속 항목에 해당하는 줄을 삭제하고 Swift 확장 프로그램 SDK(예: 포드 FirebaseFirestoreSwift)를 삭제합니다. 그런 다음 pod install 명령어를 다시 실행합니다.
+
+Firebase를 버전 10.17.0 이상으로 업데이트한 후 프로젝트 내의 Swift 확장 프로그램 xcframeworks(예: FirebaseFirestoreSwift.xcframework)를 삭제합니다.
+
+## 소스 코드 변경사항
+이전에 사용한 모든 Swift 확장 프로그램 SDK의 경우 다음을 조치를 취합니다.
+
+Swift의 명시적 모듈 네임스페이스 지정을 사용하여 Swift 확장 프로그램 SDK 유형을 참조한 경우 이를 해당 기본 SDK로 대체해야 합니다. 예를 들어 FirebaseFirestoreSwift.QueryPredicate을 FirebaseFirestore.QueryPredicate로 바꿔야 합니다.

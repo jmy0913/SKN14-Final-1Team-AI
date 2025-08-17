@@ -1,0 +1,31 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/create?hl=ko
+
+## 본문
+Creates a composite index. This returns a google.longrunning.Operation which may be used to track the status of the creation. The metadata for the operation will be the type IndexOperationMetadata.
+
+POST https://firestore.googleapis.com/v1/{parent=projects/*/databases/*/collectionGroups/*}/indexes
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+Required. A parent name of the form projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}
+
+The request body contains an instance of Index.
+
+If successful, the response body contains a newly created instance of Operation.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| parent | string
+
+Required. A parent name of the form projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId} |

@@ -1,0 +1,101 @@
+Source URL: https://firebase.google.com/docs/projects/bigquery-export?hl=ko
+
+## 서문
+Firebase는 Firebase 콘솔에서 프로젝트의 이전 데이터를 탐색하고 분석하는 데 사용할 수 있는 도구를 제공합니다. 이러한 도구를 통해 앱이 사용되는 방식에 관해 궁금했던 점을 해결할 수 있습니다. 그러나 가끔 내 질문에 답할 수 있는 나만의 쿼리를 만들고 싶을 때가 있습니다.
+
+이렇게 하려면 Firebase의 프로젝트 데이터를 BigQuery로 내보내면 됩니다. BigQuery를 사용하면 BigQuery SQL로 데이터를 분석하거나 자체 도구로 사용할 데이터를 내보낼 수 있습니다.
+
+다음 Firebase 제품에서 BigQuery로 데이터를 내보내도록 Firebase를 구성할 수 있습니다.
+
+Analytics
+
+Cloud Messaging
+
+Crashlytics
+
+Performance Monitoring
+
+A/B Testing
+
+Remote Config 맞춤설정
+
+## 필수 권한 및 권장 역할
+BigQuery로 데이터를 내보내는 설정을 보거나 관리하려면 필요한 수준의 액세스 권한이 있어야 합니다.
+
+필요한 Firebase 액세스 권한이 없으면 Firebase 프로젝트 소유자에게 Firebase Console IAM 설정을 통해 관련 역할을 할당해 달라고 요청할 수 있습니다. 소유자 찾기 또는 할당 등 Firebase 프로젝트에 액세스하는 방법에 관해 궁금한 점이 있으면 Firebase 프로젝트의 권한 및 액세스 FAQ를 참조하세요.
+
+다음 표는 Firebase 프로젝트와 BigQuery의 최상위 연결에 적용됩니다.
+
+소유자
+
+Firebase 관리자
+
+모든 기본 역할(소유자, 편집자, 뷰어)
+
+모든 Firebase 수준 역할
+
+모든 Firebase 제품 카테고리 역할
+
+다음 표는 특히 Google Analytics 데이터를 BigQuery로 내보내는 데 적용됩니다.
+
+Firebase 관리자
+ 및
+ 서비스 사용량 관리자
+ 및
+ 프로젝트 IAM 관리자
+
+Google Analytics: 연결된 Google Analytics 속성에 대한 계정 관리자 또는 편집자와 동등한 역할
+
+아래의 참고를 확인하세요.
+
+Google 애널리틱스: 연결된 Google Analytics 속성에 대한 계정 관리자 또는 편집자와 동등한 역할
+
+다음 표는 BigQuery로 데이터를 내보낼 수 있는 모든 Firebase 제품(예: Crashlytics 또는 Performance Monitoring)에 적용됩니다.
+
+## BigQuery로 내보내기 사용 설정
+Firebase 콘솔에서 통합 페이지로 이동합니다.
+
+BigQuery 카드에서 연결을 클릭합니다.
+
+화면에 표시된 안내에 따라 BigQuery로 내보내기를 사용 설정합니다.
+
+## 내보내기를 사용 설정하면 어떻게 되나요?
+데이터 세트 위치를 선택합니다. 데이터 세트를 만든 후에는 위치를 변경할 수 없지만 데이터 세트를 다른 위치에 복사하거나 다른 위치에서 데이터 세트를 수동으로 이동(다시 만들기)할 수 있습니다. 자세한 내용은 기존 내보내기 위치 변경을 참조하세요.
+
+이 위치는 BigQuery로 내보낸 데이터에만 적용되며 Firebase 콘솔에서 사용하기 위해 저장된 데이터의 위치에는 영향을 미치지 않습니다.
+
+참고: 데이터 내보내기 위치를 선택하고 변경하는 기능은 기본적으로 Google Analytics, Performance Monitoring, Cloud Messaging에서 사용 가능합니다. Crashlytics의 경우 2024년 10월 중순 이후에 내보내기를 사용 설정했거나 새로운 내보내기 인프라로 업그레이드한 경우에만 내보내기 위치를 선택하고 변경할 수 있습니다.
+
+데이터 세트 위치를 선택합니다. 데이터 세트를 만든 후에는 위치를 변경할 수 없지만 데이터 세트를 다른 위치에 복사하거나 다른 위치에서 데이터 세트를 수동으로 이동(다시 만들기)할 수 있습니다. 자세한 내용은 기존 내보내기 위치 변경을 참조하세요.
+
+이 위치는 BigQuery로 내보낸 데이터에만 적용되며 Firebase 콘솔에서 사용하기 위해 저장된 데이터의 위치에는 영향을 미치지 않습니다.
+
+기본적으로 프로젝트에 있는 모든 앱은 BigQuery에 연결되며 나중에 프로젝트에 추가한 앱은 BigQuery에 자동으로 연결됩니다. 데이터를 전송하는 앱을 별도로 관리할 수 있습니다.
+
+Firebase에서 기존 데이터의 사본을 BigQuery로 내보냅니다. 내보내기용 데이터 초기 전파를 완료하는 데 최대 48시간이 걸릴 수 있습니다.
+
+Firebase에서 BigQuery로의 일일 데이터 동기화를 설정합니다.
+
+프로젝트를 연결한 후 첫 번째 데이터 세트를 BigQuery로 내보내려면 일반적으로 다음 날 동기화가 완료될 때까지 기다려야 합니다.
+
+일일 동기화는 BigQuery에서 설정했을 수 있는 예약된 내보내기에 관계없이 하루에 한 번 실행됩니다. 동기화 작업의 타이밍과 기간을 변경할 수 있으므로 내보내기의 특정 시점을 기준으로 다운스트림 작업을 예약하지 않는 것이 좋습니다.
+
+참고: Google Analytics 데이터를 BigQuery로 내보내는 작업은 하루에 이벤트 1백만 개로 제한됩니다. 이벤트 필터링을 사용하여 내보내는 이벤트 수를 제한할 수 있습니다. 자세한 내용은 데이터 필터링을 참조하세요. Google 애널리틱스 360 사용자의 경우 한도가 없습니다.
+
+Firebase에서 BigQuery로의 일일 데이터 동기화를 설정합니다.
+
+프로젝트를 연결한 후 첫 번째 데이터 세트를 BigQuery로 내보내려면 일반적으로 다음 날 동기화가 완료될 때까지 기다려야 합니다.
+
+일일 동기화는 BigQuery에서 설정했을 수 있는 예약된 내보내기에 관계없이 하루에 한 번 실행됩니다. 동기화 작업의 타이밍과 기간을 변경할 수 있으므로 내보내기의 특정 시점을 기준으로 다운스트림 작업을 예약하지 않는 것이 좋습니다.
+
+BigQuery로의 내보내기를 중지하려면 Firebase 콘솔에서 프로젝트를 연결 해제합니다.
+
+## 기존 내보내기 위치 변경
+제품을 BigQuery 내보내기용으로 사용 설정하고 데이터 세트를 만든 후에 데이터 세트 위치를 변경할 수 없습니다. 그러나 기존 데이터 세트를 다른 위치의 새 데이터 세트에 복사하고 데이터 내보내기를 새 위치로 재설정할 수 있습니다. BigQuery 데이터 세트 위치를 알아보세요.
+
+데이터 내보내기 위치를 변경할 제품을 선택합니다.
+
+## 가격 책정 및 BigQuery 샌드박스
+Firebase 프로젝트에서 무료 Spark 요금제를 사용하고 있으면 BigQuery에 무료로 액세스할 수 있는 BigQuery 샌드박스에 Crashlytics, Cloud Messaging, Google Analytics, Performance Monitoring을 연결할 수 있습니다. BigQuery 샌드박스의 기능에 대한 자세한 내용은 BigQuery 샌드박스 사용을 참조하세요.
+
+Firebase 프로젝트에서 사용한 만큼만 지불하는 Blaze 요금제를 사용하고 있으면 BigQuery에 A/B Testing, Crashlytics, Cloud Messaging, Google Analytics, Performance Monitoring을 연결할 수 있습니다. BigQuery를 사용하면 무료 사용을 제한하는 일반 BigQuery 가격 책정이 적용됩니다.

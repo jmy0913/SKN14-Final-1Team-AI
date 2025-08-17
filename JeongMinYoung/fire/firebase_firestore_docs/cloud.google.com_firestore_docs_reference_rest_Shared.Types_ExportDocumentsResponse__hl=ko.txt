@@ -1,0 +1,21 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/Shared.Types/ExportDocumentsResponse?hl=ko
+
+## 본문
+Returned in the google.longrunning.Operation response field.
+
+string
+
+Location of the output files. This can be used to begin an import into Cloud Firestore (this project or another project) after the operation completes successfully.
+
+### 표
+| JSON representation |
+| --- |
+| {
+  "outputUriPrefix": string
+} |
+
+| Fields |
+| --- |
+| outputUriPrefix | string
+
+Location of the output files. This can be used to begin an import into Cloud Firestore (this project or another project) after the operation completes successfully. |

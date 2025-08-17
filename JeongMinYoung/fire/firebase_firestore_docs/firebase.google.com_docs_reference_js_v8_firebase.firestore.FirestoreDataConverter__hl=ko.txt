@@ -1,0 +1,104 @@
+Source URL: https://firebase.google.com/docs/reference/js/v8/firebase.firestore.FirestoreDataConverter?hl=ko
+
+## 본문
+firebase.
+
+firestore.
+
+FirestoreDataConverter
+
+Converter used by withConverter() to transform user objects of type T into Firestore data.
+
+Using the converter allows you to specify generic type arguments when storing and retrieving objects from Firestore.
+
+Example
+
+class Post {
+ constructor(readonly title: string, readonly author: string) {}
+
+ toString(): string {
+ return this.title + ', by ' + this.author;
+ }
+}
+
+const postConverter = {
+ toFirestore(post: Post): firebase.firestore.DocumentData {
+ return {title: post.title, author: post.author};
+ },
+ fromFirestore(
+ snapshot: firebase.firestore.QueryDocumentSnapshot,
+ options: firebase.firestore.SnapshotOptions
+ ): Post {
+ const data = snapshot.data(options)!;
+ return new Post(data.title, data.author);
+ }
+};
+
+const postSnap = await firebase.firestore()
+ .collection('posts')
+ .withConverter(postConverter)
+ .doc().get();
+const post = postSnap.data();
+if (post !== undefined) {
+ post.title; // string
+ post.toString(); // Should be defined
+ post.someNonExistentProperty; // TS error
+}
+
+T
+
+fromFirestore
+
+toFirestore
+
+fromFirestore ( snapshot :  QueryDocumentSnapshot ,  options :  SnapshotOptions ) : T
+
+Called by the Firestore SDK to convert Firestore data into an object of type T. You can access your data by calling: snapshot.data(options).
+
+Parameters
+snapshot: QueryDocumentSnapshot
+
+A QueryDocumentSnapshot containing your data and metadata.
+
+options: SnapshotOptions
+
+The SnapshotOptions from the initial call to data().
+
+Returns T
+
+Called by the Firestore SDK to convert Firestore data into an object of type T. You can access your data by calling: snapshot.data(options).
+
+snapshot: QueryDocumentSnapshot
+
+A QueryDocumentSnapshot containing your data and metadata.
+
+A QueryDocumentSnapshot containing your data and metadata.
+
+options: SnapshotOptions
+
+The SnapshotOptions from the initial call to data().
+
+The SnapshotOptions from the initial call to data().
+
+toFirestore ( modelObject :  T ) : DocumentData
+
+Called by the Firestore SDK to convert a custom model object of type T into a plain Javascript object (suitable for writing directly to the Firestore database). To use set() with merge and mergeFields, toFirestore() must be defined with Partial<T>.
+
+Parameters
+modelObject: T
+Returns DocumentData
+
+Called by the Firestore SDK to convert a custom model object of type T into a plain Javascript object (suitable for writing directly to the Firestore database). To use set() with merge and mergeFields, toFirestore() must be defined with Partial<T>.
+
+modelObject: T
+
+toFirestore ( modelObject :  Partial < T > ,  options :  SetOptions ) : DocumentData
+
+Parameters
+modelObject: Partial<T>
+options: SetOptions
+Returns DocumentData
+
+modelObject: Partial<T>
+
+options: SetOptions

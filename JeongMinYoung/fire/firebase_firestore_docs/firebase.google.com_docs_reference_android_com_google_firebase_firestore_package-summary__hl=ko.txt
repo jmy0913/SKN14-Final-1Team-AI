@@ -1,0 +1,208 @@
+Source URL: https://firebase.google.com/docs/reference/android/com/google/firebase/firestore/package-summary?hl=ko
+
+## Annotations
+Annotation used to mark a POJO property to be automatically populated with the document's ID when the POJO is created from a Cloud Firestore document (for example, via toObject).
+
+Marks a field as excluded from the database instance.
+
+Properties that don't map to class fields are ignored when serializing to a class annotated with this annotation.
+
+Marks a field to be renamed when serialized.
+
+Annotation used to mark a timestamp field to be populated with a server timestamp.
+
+Properties that don't map to class fields when serializing to a class annotated with this annotation cause an exception to be thrown.
+
+### 표
+| DocumentId | Annotation used to mark a POJO property to be automatically populated with the document's ID when the POJO is created from a Cloud Firestore document (for example, via toObject). |
+| --- | --- |
+| Exclude | Marks a field as excluded from the database instance. |
+| IgnoreExtraProperties | Properties that don't map to class fields are ignored when serializing to a class annotated with this annotation. |
+| PropertyName | Marks a field to be renamed when serialized. |
+| ServerTimestamp | Annotation used to mark a timestamp field to be populated with a server timestamp. |
+| ThrowOnExtraProperties | Properties that don't map to class fields when serializing to a class annotated with this annotation cause an exception to be thrown. |
+
+## Interfaces
+An interface for event listeners.
+
+Represents a listener that can be removed by calling remove.
+
+Marker interface implemented by all supported cache settings.
+
+A listener that is called periodically during execution of a LoadBundleTask.
+
+An interface for providing code to be executed within a transaction context.
+
+An interface for providing code to be executed within a WriteBatch context.
+
+### 표
+| EventListener | An interface for event listeners. |
+| --- | --- |
+| ListenerRegistration | Represents a listener that can be removed by calling remove. |
+| LocalCacheSettings | Marker interface implemented by all supported cache settings. |
+| MemoryGarbageCollectorSettings |  |
+| OnProgressListener | A listener that is called periodically during execution of a LoadBundleTask. |
+| Transaction.Function | An interface for providing code to be executed within a transaction context. |
+| WriteBatch.Function | An interface for providing code to be executed within a WriteBatch context. |
+
+## Classes
+Represents an aggregation that can be performed by Firestore.
+
+Represents an "average" aggregation that can be performed by Firestore.
+
+Represents a "count" aggregation that can be performed by Firestore.
+
+Represents a "sum" aggregation that can be performed by Firestore.
+
+A query that calculates aggregations over an underlying query.
+
+The results of executing an AggregateQuery.
+
+Immutable class representing an array of bytes in Cloud Firestore.
+
+A CollectionReference can be used for adding documents, getting document references, and querying for documents (using the methods inherited from Query).
+
+A DocumentChange represents a change to the documents matching a query.
+
+A DocumentReference refers to a document location in a Cloud Firestore database and can be used to write, read, or listen to the location.
+
+A DocumentSnapshot contains data read from a document in your Cloud Firestore database.
+
+A FieldPath refers to a field in a document.
+
+Sentinel values that can be used when writing document fields with set() or update().
+
+A Filter represents a restriction on one or more field values and can be used to refine the results of a Query.
+
+Represents a Cloud Firestore database and is the entry point for all Cloud Firestore operations.
+
+Settings used to configure a FirebaseFirestore instance.
+
+A Builder for creating FirebaseFirestoreSettings.
+
+Immutable class representing a GeoPoint in Cloud Firestore
+
+Represents the task of loading a Firestore bundle.
+
+Represents a progress update or a final state from loading bundles.
+
+Configures the SDK to use a memory cache.
+
+A Builder for creating MemoryCacheSettings instance.
+
+Configures the SDK to use an eager garbage collector for memory cache.
+
+Configures the SDK to use a Least-Recently-Used garbage collector for memory cache.
+
+Persistent cache indexes can improve performance of local query execution.
+
+Configures the SDK to use a persistent cache.
+
+A Builder for creating PersistentCacheSettings instance.
+
+A Query which you can read or listen to.
+
+A QueryDocumentSnapshot contains data read from a document in your Cloud Firestore database as part of a query.
+
+A QuerySnapshot contains the results of a query.
+
+An options object that configures the behavior of set() calls.
+
+An options object that configures the behavior of addSnapshotListener() calls.
+
+Builder for constructing SnapshotListenOptions instances.
+
+Metadata about a snapshot, describing the state of the snapshot.
+
+A Transaction is passed to a Function to provide the methods to read and write data within the transaction context.
+
+Options to customize transaction behavior for runTransaction.
+
+A Builder for creating TransactionOptions.
+
+Represent a vector type in Firestore documents.
+
+A write batch, used to perform multiple writes as a single atomic unit.
+
+### 표
+| AggregateField | Represents an aggregation that can be performed by Firestore. |
+| --- | --- |
+| AggregateField.AverageAggregateField | Represents an "average" aggregation that can be performed by Firestore. |
+| AggregateField.CountAggregateField | Represents a "count" aggregation that can be performed by Firestore. |
+| AggregateField.SumAggregateField | Represents a "sum" aggregation that can be performed by Firestore. |
+| AggregateQuery | A query that calculates aggregations over an underlying query. |
+| AggregateQuerySnapshot | The results of executing an AggregateQuery. |
+| Blob | Immutable class representing an array of bytes in Cloud Firestore. |
+| CollectionReference | A CollectionReference can be used for adding documents, getting document references, and querying for documents (using the methods inherited from Query). |
+| DocumentChange | A DocumentChange represents a change to the documents matching a query. |
+| DocumentReference | A DocumentReference refers to a document location in a Cloud Firestore database and can be used to write, read, or listen to the location. |
+| DocumentSnapshot | A DocumentSnapshot contains data read from a document in your Cloud Firestore database. |
+| FieldPath | A FieldPath refers to a field in a document. |
+| FieldValue | Sentinel values that can be used when writing document fields with set() or update(). |
+| Filter | A Filter represents a restriction on one or more field values and can be used to refine the results of a Query. |
+| FirebaseFirestore | Represents a Cloud Firestore database and is the entry point for all Cloud Firestore operations. |
+| FirebaseFirestoreSettings | Settings used to configure a FirebaseFirestore instance. |
+| FirebaseFirestoreSettings.Builder | A Builder for creating FirebaseFirestoreSettings. |
+| FirestoreKt |  |
+| GeoPoint | Immutable class representing a GeoPoint in Cloud Firestore |
+| LoadBundleTask | Represents the task of loading a Firestore bundle. |
+| LoadBundleTaskProgress | Represents a progress update or a final state from loading bundles. |
+| MemoryCacheSettings | Configures the SDK to use a memory cache. |
+| MemoryCacheSettings.Builder | A Builder for creating MemoryCacheSettings instance. |
+| MemoryEagerGcSettings | Configures the SDK to use an eager garbage collector for memory cache. |
+| MemoryEagerGcSettings.Builder |  |
+| MemoryLruGcSettings | Configures the SDK to use a Least-Recently-Used garbage collector for memory cache. |
+| MemoryLruGcSettings.Builder |  |
+| PersistentCacheIndexManager | Persistent cache indexes can improve performance of local query execution. |
+| PersistentCacheSettings | Configures the SDK to use a persistent cache. |
+| PersistentCacheSettings.Builder | A Builder for creating PersistentCacheSettings instance. |
+| Query | A Query which you can read or listen to. |
+| QueryDocumentSnapshot | A QueryDocumentSnapshot contains data read from a document in your Cloud Firestore database as part of a query. |
+| QuerySnapshot | A QuerySnapshot contains the results of a query. |
+| SetOptions | An options object that configures the behavior of set() calls. |
+| SnapshotListenOptions | An options object that configures the behavior of addSnapshotListener() calls. |
+| SnapshotListenOptions.Builder | Builder for constructing SnapshotListenOptions instances. |
+| SnapshotMetadata | Metadata about a snapshot, describing the state of the snapshot. |
+| Transaction | A Transaction is passed to a Function to provide the methods to read and write data within the transaction context. |
+| TransactionOptions | Options to customize transaction behavior for runTransaction. |
+| TransactionOptions.Builder | A Builder for creating TransactionOptions. |
+| VectorValue | Represent a vector type in Firestore documents. |
+| WriteBatch | A write batch, used to perform multiple writes as a single atomic unit. |
+
+## Enums
+The sources from which an AggregateQuery can retrieve its results.
+
+An enumeration of snapshot diff types.
+
+Controls the return value for server timestamps that have not yet been set to their final value.
+
+The set of Cloud Firestore status codes.
+
+Configures the source option of addSnapshotListener() calls on DocumentReference and Query.
+
+Represents the state of bundle loading tasks.
+
+Indicates whether metadata-only changes (that is, only DocumentSnapshot.getMetadata() or QuerySnapshot.getMetadata() changed) should trigger snapshot events.
+
+An enum for the direction of a sort.
+
+Configures the behavior of get() calls on DocumentReference and Query.
+
+### 표
+| AggregateSource | The sources from which an AggregateQuery can retrieve its results. |
+| --- | --- |
+| DocumentChange.Type | An enumeration of snapshot diff types. |
+| DocumentSnapshot.ServerTimestampBehavior | Controls the return value for server timestamps that have not yet been set to their final value. |
+| FirebaseFirestoreException.Code | The set of Cloud Firestore status codes. |
+| ListenSource | Configures the source option of addSnapshotListener() calls on DocumentReference and Query. |
+| LoadBundleTaskProgress.TaskState | Represents the state of bundle loading tasks. |
+| MetadataChanges | Indicates whether metadata-only changes (that is, only DocumentSnapshot.getMetadata() or QuerySnapshot.getMetadata() changed) should trigger snapshot events. |
+| Query.Direction | An enum for the direction of a sort. |
+| Source | Configures the behavior of get() calls on DocumentReference and Query. |
+
+## Exceptions
+A class of exceptions thrown by Cloud Firestore.
+
+### 표
+| FirebaseFirestoreException | A class of exceptions thrown by Cloud Firestore. |
+| --- | --- |

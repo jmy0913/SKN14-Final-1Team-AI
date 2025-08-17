@@ -1,0 +1,146 @@
+Source URL: https://firebase.google.com/docs/projects/locations?hl=ko
+
+## 서문
+일부 Firebase 제품과 리소스에서는 위치 선택을 지원하지 않습니다. 또한 필요에 따라 위치 선택을 지원하는 제품과 리소스에 조직 수준 위치 제한을 설정할 수 있습니다.
+
+## 위치 설정이 필요한 제품 또는 리소스
+일부 제품이나 리소스를 사용하려면 위치 설정이 필요합니다.
+
+Gemini Developer API: 위치 선택이 불가능하며 항상 전역입니다.
+
+Vertex AI Gemini API: 위치가 설정되지 않은 경우 기본 리전은 us-central1입니다.
+
+1 프로젝트에서 이러한 제품을 처음 사용하기 시작한 시점에 따라 이러한 제품 간에 위치 종속 항목이 있을 수 있습니다. 이 종속 항목을 '기본 Google Cloud 리소스 위치'라고 할 수 있습니다. 이 위치 종속 항목에 대해 자세히 알아보세요.
+
+2 Analytics 보고 위치는 Google에서 Firebase의 고객 데이터를 처리하고 저장하는 위치에 영향을 주지 않습니다.
+
+### 표
+| 제품 | 기본 위치 | 추가 정보 |
+| --- | --- | --- |
+| Firebase AI Logic | Gemini Developer API: 위치 선택이 불가능하며 항상 전역입니다.
+Vertex AI Gemini API: 위치가 설정되지 않은 경우 기본 리전은 us-central1입니다. | 이 위치는 모델에 액세스하는 위치입니다. |
+| Google Analytics | 기본 위치가 없습니다.
+이 위치를 설정해야 합니다. | 이 위치는 조직의 국가나 리전을 나타내는 Analytics 보고 위치2입니다. 즉, Analytics 보고 위치를 통해 수익 보고서 통화를 설정합니다. |
+| Firebase App Hosting | 기본 위치가 없습니다.
+각 백엔드에 대해 이 위치를 설정해야 합니다. | 이 위치는 App Hosting 배포에서 각 백엔드 리소스를 만드는 위치입니다.
+각 백엔드는 서로 다른 위치에 있을 수 있습니다. |
+| Firebase Data Connect | 기본 위치가 없습니다.
+각 인스턴스의 위치를 설정해야 합니다. | 각 인스턴스는 서로 다른 위치에 있을 수 있습니다. |
+| Cloud Firestore 1 | 기본 위치가 없습니다.
+각 인스턴스의 위치를 설정해야 합니다. | 각 인스턴스는 서로 다른 위치에 있을 수 있습니다. |
+| Firebase Realtime Database | 기본 위치가 없습니다.
+각 인스턴스의 위치를 설정해야 합니다. | 각 인스턴스는 서로 다른 위치에 있을 수 있습니다. |
+| Cloud Storage for Firebase 1 | 기본 위치가 없습니다.
+각 버킷의 위치를 설정해야 합니다. | 각 버킷은 서로 다른 위치에 있을 수 있습니다. |
+| Cloud Functions for Firebase 1 | 위치가 설정되지 않은 경우 기본 리전은 us-central1입니다. | 각 함수는 서로 다른 위치에 있을 수 있습니다. |
+
+## 제품 또는 제품 리소스의 위치 설정
+일부 제품의 경우 제품 수준에서 위치를 설정합니다. 그러나 대부분 제품의 경우 리소스 수준(예: 각 Cloud Storage 버킷 또는 각 함수)에서 위치를 설정합니다.
+
+Gemini Developer API: 위치 선택이 불가능하며 항상 전역입니다.
+
+Vertex AI Gemini API: 코드베이스에서 Vertex AI 백엔드 서비스를 초기화할 때 필요에 따라 모델에 액세스할 위치를 지정할 수 있습니다.
+위치를 지정하지 않은 경우 기본 리전은 us-central1입니다.
+
+프로젝트 소유자 또는 편집자는 나중에 애널리틱스 보고 위치의 시간대와 통화를 수정할 수 있습니다. Google Analytics 설정으로 이동한 후 보고 창으로 이동합니다.
+
+위치를 지정하지 않은 경우 기본 리전은 us-central1입니다.
+
+1 프로젝트에서 이러한 제품을 처음 사용하기 시작한 시점에 따라 이러한 제품 간에 위치 종속 항목이 있을 수 있습니다. 이 종속 항목을 '기본 Google Cloud 리소스 위치'라고 할 수 있습니다. 이 위치 종속 항목에 대해 자세히 알아보세요.
+
+### 표
+| 제품 | 위치를 설정하는 시기 및 방법 | 사용 가능한 위치 |
+| --- | --- | --- |
+| Firebase AI Logic | Gemini Developer API: 위치 선택이 불가능하며 항상 전역입니다.
+Vertex AI Gemini API: 코드베이스에서 Vertex AI 백엔드 서비스를 초기화할 때 필요에 따라 모델에 액세스할 위치를 지정할 수 있습니다.
+위치를 지정하지 않은 경우 기본 리전은 us-central1입니다. | Firebase AI Logic 위치 |
+| Google Analytics | Firebase Console에서 Firebase 프로젝트에 Google Analytics를 사용 설정하면 애널리틱스 보고 위치를 선택하라는 메시지가 표시됩니다. 조직 위치를 나타내는 국가나 리전을 선택해야 합니다.
+
+프로젝트 소유자 또는 편집자는 나중에 애널리틱스 보고 위치의 시간대와 통화를 수정할 수 있습니다. Google Analytics 설정으로 이동한 후 보고 창으로 이동합니다. | Google Analytics 설정 > 보고 창에서 목록을 확인합니다. |
+| Firebase App Hosting | App Hosting 백엔드를 만들면 위치를 선택하라는 메시지가 표시됩니다. Firebase Console, REST API 또는 Firebase CLI를 사용하여 백엔드를 만들 수 있습니다. | App Hosting 위치 |
+| Firebase Data Connect | Data Connect 서비스 인스턴스를 프로비저닝할 때 위치를 설정합니다. 연결된 Google Cloud SQL 인스턴스의 위치도 설정합니다.
+Firebase Console 또는 Firebase CLI를 사용하여 인스턴스를 프로비저닝할 수 있습니다. | Data Connect 서비스 및 Cloud SQL 인스턴스 위치 |
+| Cloud Firestore 1 | Cloud Firestore 데이터베이스 인스턴스를 프로비저닝할 때 위치를 설정합니다. Firebase Console, REST API, Firebase CLI 또는 Terraform을 사용하여 인스턴스를 프로비저닝할 수 있습니다. | Cloud Firestore 위치 |
+| Firebase Realtime Database | Realtime Database 인스턴스를 프로비저닝할 때 위치를 설정합니다.
+Firebase Console, REST API, Firebase CLI 또는 Terraform을 사용하여 인스턴스를 프로비저닝할 수 있습니다. | Realtime Database 위치 |
+| Cloud Storage for Firebase 1 | Cloud Storage 버킷을 프로비저닝할 때 위치를 설정합니다.
+Firebase Console, REST API 또는 Terraform을 사용하여 버킷을 프로비저닝할 수 있습니다. | Cloud Storage for Firebase 위치 |
+| Cloud Functions for Firebase 1 | 함수를 작성할 때 필요에 따라 리전을 설정할 수 있습니다.
+
+위치를 지정하지 않은 경우 기본 리전은 us-central1입니다. | Cloud Functions for Firebase 위치 |
+
+## 위치 설정 보기
+Gemini Developer API: 위치 선택이 불가능하며 항상 전역입니다.
+
+Vertex AI Gemini API: 코드베이스에서 Vertex AI 백엔드 서비스의 초기화를 찾습니다. 위치를 지정하지 않은 경우 기본 위치는 us-central1입니다.
+
+Firebase Console에서 App Hosting 페이지로 이동하여 백엔드 목록과 위치를 확인합니다.
+
+특정 백엔드의 위치를 보려면 Firebase CLI 명령어 firebase apphosting:backends:get --project PROJECT_ID BACKEND_ID를 사용하면 됩니다.
+
+예약된 함수: Google Cloud 콘솔에서 Cloud Scheduler로 이동하여 각 작업과 함수의 주제 목록을 봅니다. 위치는 주제 이름의 마지막 세그먼트입니다.
+
+예약되지 않은 함수: 함수의 소스 코드에서 region 매개변수를 찾습니다. 리전을 지정하지 않은 경우 기본 위치는 us-central1입니다.
+
+### 표
+| 제품 | 위치 설정을 볼 수 있는 위치 |
+| --- | --- |
+| Firebase AI Logic | Gemini Developer API: 위치 선택이 불가능하며 항상 전역입니다.
+Vertex AI Gemini API: 코드베이스에서 Vertex AI 백엔드 서비스의 초기화를 찾습니다. 위치를 지정하지 않은 경우 기본 위치는 us-central1입니다. |
+| Google Analytics | Firebase Console에서 설정 settings 프로젝트 설정 > 통합 > Google Analytics로 이동합니다. 계정 번호를 클릭하여 Google Analytics 계정을 열고 관리 패널로 이동하여 계정 위치 정보를 확인합니다. |
+| Firebase App Hosting | Firebase Console에서 App Hosting 페이지로 이동하여 백엔드 목록과 위치를 확인합니다.
+특정 백엔드의 위치를 보려면 Firebase CLI 명령어 firebase apphosting:backends:get --project PROJECT_ID BACKEND_ID를 사용하면 됩니다. |
+| Firebase Data Connect | Firebase 콘솔에서 Data Connect 페이지로 이동하여 데이터베이스 인스턴스 목록과 위치를 봅니다. |
+| Cloud Firestore | Firebase 콘솔에서 Cloud Firestore 데이터 탭으로 이동하여 데이터베이스 인스턴스 목록과 위치를 봅니다. |
+| Firebase Realtime Database | Firebase 콘솔에서 Realtime Database 데이터 탭으로 이동하여 데이터베이스 인스턴스 목록과 위치를 봅니다. |
+| Cloud Storage for Firebase | Firebase 콘솔에서 Cloud Storage 파일 탭으로 이동하여 버킷 목록과 위치를 봅니다. |
+| Cloud Functions for Firebase | 예약된 함수: Google Cloud 콘솔에서 Cloud Scheduler로 이동하여 각 작업과 함수의 주제 목록을 봅니다. 위치는 주제 이름의 마지막 세그먼트입니다.
+예약되지 않은 함수: 함수의 소스 코드에서 region 매개변수를 찾습니다. 리전을 지정하지 않은 경우 기본 위치는 us-central1입니다. |
+
+## '기본 Google Cloud 리소스 위치'로 인해 가능한 위치 종속 항목
+'기본 Google Cloud 리소스 위치'는 다음을 포함하여 Google App Engine과 연결된 모든 프로젝트 리소스의 위치 설정입니다.
+
+기본 Cloud Firestore 데이터베이스 인스턴스
+
+이름 형식이 *.appspot.com인 기본 Firebase용 Cloud Storage 버킷
+
+특히 1세대 예약 함수와 함께 사용되는 Google Cloud Scheduler
+
+이 '기본 Google Cloud 리소스 위치'는 변경할 수 없는 설정입니다. 또한 연결된 리소스 중 하나의 위치를 설정하면 App Engine과의 공통 연결로 인해 모든 리소스의 위치가 간접적으로 설정됩니다.
+
+그러나 지난 몇 년 동안 Firebase 및 Google Cloud 생태계가 여러 번 변경되면서 리소스와 App Engine에 대한 연결도 변경되었습니다. 특히 2024년 10월 30일부터 새롭게 프로비저닝된 모든 기본 Firebase용 Cloud Storage 버킷의 이름 형식은 *.firebasestorage.app이며 App Engine과 연결되지 않습니다.
+
+가능한 위치 종속 항목에서 변경된 사항에 대한 세부정보는 다음과 같습니다.
+
+2024년 10월 30일부터 기본 Cloud Firestore 인스턴스와 기본 Firebase용 Cloud Storage 버킷이 아직 프로비저닝되지 않은 경우:
+
+기본 Cloud Firestore 인스턴스를 프로비저닝하면 프로젝트에서 프로비저닝된 향후 App Engine 앱 위치가 설정됩니다. 그러나 향후 기본 Cloud Storage 버킷 위치를 지정하지 않습니다.
+
+기본 Cloud Storage 버킷을 프로비저닝해도 더 이상 App Engine 앱이 프로비저닝되지 않습니다. 따라서 기본 Cloud Storage 버킷 위치는 향후 기본 Cloud Firestore 인스턴스 위치를 지정하지 않습니다.
+
+2024년 10월 30일부터 기본 Cloud Firestore 인스턴스와 기본 Firebase용 Cloud Storage 버킷이 아직 프로비저닝되지 않은 경우:
+
+기본 Cloud Firestore 인스턴스를 프로비저닝하면 프로젝트에서 프로비저닝된 향후 App Engine 앱 위치가 설정됩니다. 그러나 향후 기본 Cloud Storage 버킷 위치를 지정하지 않습니다.
+
+기본 Cloud Storage 버킷을 프로비저닝해도 더 이상 App Engine 앱이 프로비저닝되지 않습니다. 따라서 기본 Cloud Storage 버킷 위치는 향후 기본 Cloud Firestore 인스턴스 위치를 지정하지 않습니다.
+
+2024년 10월 30일부터 기본 Cloud Firestore 인스턴스가 이미 프로비저닝되었지만 기본 Firebase용 Cloud Storage 버킷이 프로비저닝되지 않은 경우:
+
+기존 기본 Cloud Firestore 인스턴스는 향후 기본 Cloud Storage 버킷(*.firebasestorage.app) 위치를 지정하지 않습니다.
+
+2024년 10월 30일부터 기본 Cloud Firestore 인스턴스가 이미 프로비저닝되었지만 기본 Firebase용 Cloud Storage 버킷이 프로비저닝되지 않은 경우:
+
+기존 기본 Cloud Firestore 인스턴스는 향후 기본 Cloud Storage 버킷(*.firebasestorage.app) 위치를 지정하지 않습니다.
+
+2024년 10월 30일부터 기본 Firebase용 Cloud Storage 버킷이 이미 프로비저닝되었지만(특히 *.appspot.com 버킷) 기본 Cloud Firestore 인스턴스가 프로비저닝되지 않은 경우:
+
+기본 Cloud Storage 버킷(*.appspot.com)이 프로비저닝되었을 때 App Engine 앱도 함께 프로비저닝되었으므로 향후 기본 Cloud Firestore 인스턴스 위치가 그때 설정되었습니다. *.appspot.com 버킷을 삭제하더라도 App Engine 앱을 삭제할 수 없으므로 향후 기본 Cloud Firestore 인스턴스 위치 설정이 이미 설정되어 있습니다.
+
+2024년 10월 30일부터 기본 Firebase용 Cloud Storage 버킷이 이미 프로비저닝되었지만(특히 *.appspot.com 버킷) 기본 Cloud Firestore 인스턴스가 프로비저닝되지 않은 경우:
+
+기본 Cloud Storage 버킷(*.appspot.com)이 프로비저닝되었을 때 App Engine 앱도 함께 프로비저닝되었으므로 향후 기본 Cloud Firestore 인스턴스 위치가 그때 설정되었습니다. *.appspot.com 버킷을 삭제하더라도 App Engine 앱을 삭제할 수 없으므로 향후 기본 Cloud Firestore 인스턴스 위치 설정이 이미 설정되어 있습니다.
+
+1세대 예약 함수를 사용한 경우 위치는 기본 Google Cloud 리소스 위치로 설정됩니다. 이는 Cloud Scheduler 및 App Engine이 이전에 서로 연결되어 있었기 때문입니다. 또한 이 위치 설정을 공유하는 다른 리소스를 프로비저닝하기 전에 1세대 예약 함수를 설정하면 위치도 설정됩니다.
+
+## 다음 단계
+지연 시간, 가용성, 내구성 요건을 충족하는 애플리케이션을 빌드하는 방법에 대한 자세한 내용은 지역 및 리전을 참조하세요.

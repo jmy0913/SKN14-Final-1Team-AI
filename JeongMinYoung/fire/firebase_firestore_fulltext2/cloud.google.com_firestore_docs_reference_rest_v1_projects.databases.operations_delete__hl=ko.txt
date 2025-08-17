@@ -1,0 +1,39 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations/delete?hl=ko
+
+## 본문
+Deletes a long-running operation. This method indicates that the client is no longer interested in the operation result. It does not cancel the operation. If the server doesn't support this method, it returns google.rpc.Code.UNIMPLEMENTED.
+
+DELETE https://firestore.googleapis.com/v1/{name=projects/*/databases/*/operations/*}
+
+The URL uses gRPC Transcoding syntax.
+
+The request body must be empty.
+
+If successful, the response body is an empty JSON object.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| name | string The name of the operation resource to be deleted. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+google.rpc.Code.UNIMPLEMENTED
+
+언어: 코드 · 셀#2
+DELETE https://firestore.googleapis.com/v1/{name=projects/*/databases/*/operations/*}
+
+언어: 코드 · 셀#3
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#4
+https://www.googleapis.com/auth/cloud-platform

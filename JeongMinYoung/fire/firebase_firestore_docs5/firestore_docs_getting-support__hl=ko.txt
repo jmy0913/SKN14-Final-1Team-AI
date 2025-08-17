@@ -1,0 +1,18 @@
+Source URL: https://cloud.google.com/firestore/docs/getting-support?hl=ko
+
+## Google 서포트 패키지 이용하기
+Google Cloud 는 다양한 니즈를 충족할 수 있도록 연중무휴 지원, 전화 지원, 기술 지원 관리자 상담과 같은 다양한 서포트 패키지를 제공합니다. 자세한 내용은 Cloud Customer Care를 참조하세요.
+
+## Stack Overflow에 질문하기
+Stack Overflow에서 Firestore에 대해 질문할 수 있습니다. Firestore에 대한 질문에는 google-cloud-firestore 태그를 사용하세요. 이 태그를 사용하면 Stack Overflow 커뮤니티뿐만 아니라 이 태그를 모니터링하고 비공식 지원을 제공하는 Google 엔지니어의 답변을 받을 수 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+google-cloud-firestore
+
+## Firestore 토론
+Google Cloud Slack 커뮤니티를 방문하여 Firestore 및 기타 Google Cloud 제품에 대해 토론할 수 있습니다. 아직 가입하지 않았다면 이 양식을 사용하여 가입하세요. Firestore의 경우 #firestore 채널에 가입하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+#firestore

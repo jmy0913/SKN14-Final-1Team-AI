@@ -1,0 +1,79 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.indexes/list?hl=ko
+
+## 본문
+Lists composite indexes.
+
+GET https://firestore.googleapis.com/v1/{parent=projects/*/databases/*/collectionGroups/*}/indexes
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+Required. A parent name of the form projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}
+
+The filter to apply to list results.
+
+integer
+
+The number of results to return.
+
+A page token, returned from a previous call to FirestoreAdmin.ListIndexes, that may be used to get the next page of results.
+
+The request body must be empty.
+
+The response for FirestoreAdmin.ListIndexes.
+
+If successful, the response body contains data with the following structure:
+
+object (Index)
+
+The requested indexes.
+
+A page token that may be used to request another page of results. If blank, this is the last page.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| parent | string
+
+Required. A parent name of the form projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId} |
+
+| Parameters |
+| --- |
+| filter | string
+
+The filter to apply to list results. |
+| pageSize | integer
+
+The number of results to return. |
+| pageToken | string
+
+A page token, returned from a previous call to FirestoreAdmin.ListIndexes, that may be used to get the next page of results. |
+
+| JSON representation |
+| --- |
+| {
+  "indexes": [
+    {
+      object (Index)
+    }
+  ],
+  "nextPageToken": string
+} |
+
+| Fields |
+| --- |
+| indexes[] | object (Index)
+
+The requested indexes. |
+| nextPageToken | string
+
+A page token that may be used to request another page of results. If blank, this is the last page. |

@@ -1,0 +1,198 @@
+Source URL: https://firebase.google.com/docs/gemini-in-firebase/try-gemini?hl=ko
+
+## 서문
+Firebase의 Gemini를 설정한 후 Firebase 개발자 환경을 개선하는 데 사용해 보세요.
+
+Gemini 창을 열려면 다음 안내를 따르세요.
+
+Firebase Console의 오른쪽 상단 메뉴에 있는 ✦Firebase의 Gemini를 클릭합니다.
+
+Gemini 창이 열리고 Firebase Console의 모든 페이지에서 유지됩니다. 이제 Gemini와 채팅하고 Gemini 창에서 사용할 수 있는 모든 기능을 살펴볼 수 있습니다.
+
+✦Firebase의 Gemini가 Firebase Console에 표시되지 않는 경우 프로젝트에 Firebase의 Gemini 설정의 단계를 따라 사용 설정하세요.
+
+## Gemini와 채팅하기
+Gemini 창을 연 후에는 즉시 Gemini와 대화를 시작하고 자연어를 사용하여 질문할 수 있습니다.
+
+다음 단계는 Remote Config에 관한 Gemini와의 대화를 보여줍니다.
+
+Firebase에 대해 무엇이든 물어보세요 필드에 질문을 입력하고 send 보내기를 클릭합니다. 예를 들어 다음과 같이 질문할 수 있습니다.
+
+When should I use a Remote Config rollout vs. an A/B Test?
+
+Gemini가 응답을 표시합니다.
+
+Firebase에 대해 무엇이든 물어보세요 필드에 질문을 입력하고 send 보내기를 클릭합니다. 예를 들어 다음과 같이 질문할 수 있습니다.
+
+Gemini가 응답을 표시합니다.
+
+다음으로 Gemini에게 보다 자세한 내용을 질문하여 대화를 확장하거나 코드를 붙여넣고 조언을 구합니다.
+
+대화를 이어나가고 정보를 계속 공유하고 문제를 해결하면서 작업 중인 앱과 프로젝트에 대한 질문을 하면 Gemini는 개선사항 및 최적화와 추가 안내를 제안합니다. Gemini에는 Gemini가 대답을 생성하는 데 사용한 문서 및 코드 샘플을 나열하는 출처 인용도 포함됩니다.
+
+## Firebase Console의 Gemini 창 살펴보기
+Firebase Console의 Gemini 창에는 Gemini를 사용한 협업을 간소화하는 다양한 기능이 있습니다.
+
+### 표
+| 옵션 | 작업 |
+| --- | --- |
+| 알림 | Firebase 알림을 봅니다. |
+| spark | Firebase의 Gemini와 채팅 |
+| add | Firebase에서 Gemini와 새 채팅 대화목록을 시작합니다. |
+| 기록 | Firebase의 Gemini에서 채팅 기록에 액세스합니다. |
+| contact_support | 도움 받기: 개발자 문서를 검색하고 지원팀에 문의하며, Firebase 서비스 상태를 확인합니다. |
+| dark_mode | 테마 선택: 밝은 테마 또는 어두운 테마를 선택하거나 기기 기본값을 선택합니다. |
+| text_select_start | Gemini 창을 콘솔의 특정 위치에 고정합니다. 창을 왼쪽, 상단, 오른쪽 또는 맨 아래에 고정할 수 있습니다. |
+| text_select_move_back_word | Gemini 창을 고정 해제하여 원래 상태로 되돌립니다. |
+| 전체 화면 | 전체 콘솔을 차지하도록 Gemini 창을 최대화합니다. |
+| fullscreen_exit | Gemini 창을 원래 크기로 복원합니다. |
+| bug_report | Firebase팀에 Firebase의 Gemini 경험에 관한 문제를 신고합니다. 버그를 신고하거나 개선사항을 제안하거나 일반적인 의견을 제공해 주시기 바랍니다. |
+| 닫기 | Gemini 창을 닫습니다. |
+
+## Firebase의 Gemini에서 맞춤설정 사용
+Firebase의 Gemini를 최대한 활용하려면 Firebase 프로젝트와 관련된 질문을 해 보세요. 다음 팁을 참조하세요.
+
+Realtime Database: '채팅 앱에서 효율적인 데이터 검색을 위해 Realtime Database를 구성하려면 어떻게 해야 하나요?'
+
+Authentication: '앱에서 어떤 종류의 로그인 방법을 지원하며 어떤 방법을 추가할 수 있나요?'
+
+Crashlytics: '최근 Crashlytics 신고를 토대로 앱의 안정성을 개선하기 위해 해결해야 할 세 가지 주요 문제는 무엇인가요?'
+
+특정 Firebase 설정에 맞게 질문을 조정하면 Firebase의 Gemini가 더 관련성 높고 활용 가능한 인사이트를 제공할 수 있습니다.
+
+Crashlytics: '최근 Crashlytics 신고를 토대로 앱의 안정성을 개선하기 위해 해결해야 할 세 가지 주요 문제는 무엇인가요?'
+
+특정 Firebase 설정에 맞게 질문을 조정하면 Firebase의 Gemini가 더 관련성 높고 활용 가능한 인사이트를 제공할 수 있습니다.
+
+## Crashlytics의 AI 지원 사용
+Crashlytics의 AI 지원을 사용하여 비정상 종료에 대한 통계를 생성하려면 다음 안내를 따르세요.
+
+프로젝트에서 Crashlytics 대시보드를 열고 앱을 선택합니다.
+
+조사하려는 비정상 종료를 찾아 선택합니다. 다음 중 하나 이상이 있는 통계가 포함된 Crashlytics 이벤트 페이지가 표시됩니다.
+
+가능한 원인과 함께 비정상 종료에 대한 분석
+디버깅 안내
+실행 가능한 다음 단계
+권장사항
+
+이벤트 페이지 상단에 Crashlytics의 AI 지원 기능이 표시되지 않으면 Firebase의 Gemini가 사용 설정되었는지 확인하세요(설정 안내는 Firebase의 Gemini 설정 참조). 또한 비정상 종료 또는 ANR 이벤트가 보여야 합니다. 심각하지 않은 이벤트는 아직 지원되지 않습니다.
+
+조사하려는 비정상 종료를 찾아 선택합니다. 다음 중 하나 이상이 있는 통계가 포함된 Crashlytics 이벤트 페이지가 표시됩니다.
+
+가능한 원인과 함께 비정상 종료에 대한 분석
+
+디버깅 안내
+
+실행 가능한 다음 단계
+
+권장사항
+
+이벤트 페이지 상단에 Crashlytics의 AI 지원 기능이 표시되지 않으면 Firebase의 Gemini가 사용 설정되었는지 확인하세요(설정 안내는 Firebase의 Gemini 설정 참조). 또한 비정상 종료 또는 ANR 이벤트가 보여야 합니다. 심각하지 않은 이벤트는 아직 지원되지 않습니다.
+
+더 자세한 통계를 얻기 위해 코드와 컨텍스트를 제공하려면 더 자세한 통계를 원하시나요? 상자에서 시작하기를 클릭합니다.
+
+Firebase의 Gemini가 요청하는 코드를 코드 필드에 붙여넣습니다.
+
+AI 인사이트를 개선하는 데 도움이 될 수 있는 추가 컨텍스트나 세부정보가 있으면 컨텍스트 또는 관련 세부정보 공유 필드에 추가하세요.
+
+AI 통계 재생성을 클릭합니다.
+
+Firebase의 Gemini는 제공된 코드와 컨텍스트를 기반으로 업데이트된 통계를 생성합니다.
+
+AI 통계 재생성을 클릭합니다.
+
+Firebase의 Gemini는 제공된 코드와 컨텍스트를 기반으로 업데이트된 통계를 생성합니다.
+
+Crashlytics의 AI 지원 받기에서 자세히 알아보세요.
+
+## Firebase의 Gemini를 통해 메시지 캠페인에 대한 AI 통계 가져오기
+Firebase의 Gemini는 Firebase Cloud Messaging 및 In-App Messaging 캠페인 실적을 개선하기 위한 메시지 캠페인 요약, 통계, 안내를 제공합니다. Firebase의 Gemini는 캠페인 데이터를 분석하여 캠페인의 도달범위와 효과를 파악하고 사용자 참여도와 성장을 개선하기 위한 전략을 제안합니다.
+
+## 메시지 캠페인에 대한 AI 통계 액세스
+메시지 캠페인 AI 통계를 사용하려면 프로젝트에 다음이 있는지 확인하세요.
+
+프로젝트에 Firebase의 Gemini가 사용 설정되어 있습니다. Firebase의 Gemini 설정에서 자세히 알아보세요.
+
+Firebase 프로젝트에서 Firebase Cloud Messaging 또는 In-App Messaging가 사용 설정되어 있습니다.
+
+캠페인이 하나 이상 존재하며 Firebase Console에 표시됩니다.
+
+이러한 요구사항이 충족되면 다음 단계를 따르세요.
+
+Firebase Console에서 메시지를 열어 캠페인 데이터에 액세스합니다.
+
+캠페인 데이터가 로드되면 AI 통계 생성을 클릭합니다.
+
+메시지 캠페인의 요약 및 분석이 표시됩니다.
+
+캠페인 데이터가 로드되면 AI 통계 생성을 클릭합니다.
+
+메시지 캠페인의 요약 및 분석이 표시됩니다.
+
+## Firebase의 Gemini를 사용하여 Data Connect의 GraphQL 쿼리 및 변형 생성
+AI assistance for Data Connect를 사용하여 자연어를 기반으로 GraphQL을 생성하려면 다음 단계를 따르세요.
+
+프로젝트에서 Data Connect를 열고 서비스에서 데이터 소스를 선택합니다.
+
+데이터를 클릭합니다.
+
+GraphQL 글쓰기 도우미pen_spark 아이콘을 클릭합니다.
+
+표시되는 텍스트 입력란에 생성하려는 쿼리 또는 변형을 자연어로 설명하고 생성을 클릭합니다.
+
+예를 들어 'Data Connect로 빌드(웹)' Codelab에 참조된 영화 데이터 소스를 사용하는 경우 '2022년 상위 5개 영화를 평점 순, 내림차순으로 반환해 줘.'라고 요청하면 다음과 같은 결과가 반환될 수 있습니다.
+
+query TopMovies2022 {
+ movies(where: {releaseYear: {eq: 2022}}, orderBy: [{rating: DESC}], limit: 5) {
+ id
+ title
+ rating
+ releaseYear
+ }
+}
+
+표시되는 텍스트 입력란에 생성하려는 쿼리 또는 변형을 자연어로 설명하고 생성을 클릭합니다.
+
+예를 들어 'Data Connect로 빌드(웹)' Codelab에 참조된 영화 데이터 소스를 사용하는 경우 '2022년 상위 5개 영화를 평점 순, 내림차순으로 반환해 줘.'라고 요청하면 다음과 같은 결과가 반환될 수 있습니다.
+
+대답을 검토합니다.
+
+대답이 올바른 것 같으면 삽입을 클릭하여 코드 편집기에 대답을 삽입합니다.
+대답을 수정할 수 있는 경우 수정을 클릭하고 프롬프트를 업데이트한 다음 재생성을 클릭합니다.
+
+대답을 검토합니다.
+
+대답이 올바른 것 같으면 삽입을 클릭하여 코드 편집기에 대답을 삽입합니다.
+
+대답을 수정할 수 있는 경우 수정을 클릭하고 프롬프트를 업데이트한 다음 재생성을 클릭합니다.
+
+대답을 수락한 후 해당하는 경우 파라미터 섹션에서 다음을 설정합니다.
+
+변수: 쿼리 또는 변형에 변수가 포함된 경우 여기에서 정의합니다. JSON을 사용하여 정의합니다(예: {"title":"The Matrix", "releaseYear":"1999"}).
+승인: 쿼리 또는 변형을 실행할 승인 컨텍스트(관리자, 인증됨, 인증되지 않음)를 선택합니다.
+경고: 변형을 실행하는 경우 실행하기 전에 신중하게 검토하세요. 데이터 편집기에서 변형을 실행하면 요청이 실행됩니다.
+
+대답을 수락한 후 해당하는 경우 파라미터 섹션에서 다음을 설정합니다.
+
+변수: 쿼리 또는 변형에 변수가 포함된 경우 여기에서 정의합니다. JSON을 사용하여 정의합니다(예: {"title":"The Matrix", "releaseYear":"1999"}).
+
+승인: 쿼리 또는 변형을 실행할 승인 컨텍스트(관리자, 인증됨, 인증되지 않음)를 선택합니다.
+
+코드 편집기에서 실행을 클릭하고 결과를 검토합니다.
+
+코드 편집기에서 여러 쿼리 또는 변형을 테스트하려면 이름을 지정해야 합니다. 예를 들어 다음 쿼리의 이름은 GetMovie입니다. 커서를 쿼리 또는 변형의 첫 번째 줄로 이동하여 실행 버튼을 활성화합니다.
+
+고급 사용 사례는 AI assistance for Data Connect 사용 사례를 참조하세요.
+
+## Firebase App Distribution의 AI 지원 사용
+Firebase 앱 테스트 에이전트는 AI의 기능을 사용하여 사용자가 제공하는 자연어 프롬프트를 기반으로 테스트를 만들고 실행합니다. 이 에이전트는 다양한 가상 및 실제 기기에서 실행하여 앱의 품질을 최고 수준으로 유지할 수 있는 단계별 테스트를 만듭니다. 자세한 내용은 앱 테스트 에이전트를 참조하세요.
+
+## Firebase Studio의 AI 지원 사용
+Firebase의 Gemini는 Firebase Studio 내에서 AI 지원 개발 환경을 제공합니다. 다음 두 가지 기본 인터페이스를 통해 Firebase Studio 내에서 Firebase의 Gemini를 사용할 수 있습니다.
+
+앱 프로토타입 제작 에이전트(Prototyper view): This agent assists with prototyping and Next.js web app generation and publishing to Firebase App Hosting with Genkit-powered agentic AI flows. Learn more at Get started with the App Prototyping agent and Develop, publish, and monitor a full-stack web app with the App Prototyping agent.
+
+Firebase Studio 작업공간(Code 뷰): Firebase Studio는 코딩 워크플로를 간소화하는 AI 지원 기능을 제공하는 전체 IDE를 제공합니다. 코드 편집기 내에서 인라인으로 또는 채팅을 사용하여 코드 제안, 코드 생성, 코드 개념 설명, 프로젝트 파일 업데이트, 터미널 명령어 실행, 명령어 출력 해석을 제공할 수 있습니다. Firebase Studio 작업공간 정보에서 자세히 알아보세요.
+
+Firebase Studio의 AI 지원에서 자세히 알아보세요.

@@ -1,0 +1,119 @@
+Source URL: https://developers.google.com/people/v1/directory?hl=ko
+
+## 디렉터리 사용자 목록
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜 · 셀#1
+GET /v1/people:listDirectoryPeople?sources=DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT&sources=DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE&readMask=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+언어: 자바 · 셀#1
+List<String> sources = new ArrayList<>();
+sources.add("DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT");
+sources.add("DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE");
+
+ListDirectoryPeopleResponse response = peopleService.people().listDirectoryPeople()
+ .setSources(sources)
+ .setReadMask("metadata,names,emailAddresses")
+ .execute();
+
+List<Person> people = response.getPeople();
+
+언어: 프로토콜 · 셀#1
+프로토콜
+자바
+
+언어: 자바 · 셀#1
+프로토콜
+자바
+
+## 변경된 디렉터리 사용자를 나열합니다.
+=== 코드/텍스트 탭 수집 ===
+언어: 자바 · 셀#1
+// Initial request
+List<String> sources = new ArrayList<>();
+sources.add("DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT");
+sources.add("DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE");
+
+ListDirectoryPeopleResponse fullSyncResponse = peopleService.people().listDirectoryPeople()
+ .setSources(sources)
+ .setReadMask("metadata,names,emailAddresses")
+ .setRequestSyncToken(true)
+ .execute();
+// Fetch all the pages
+while (fullSyncResponse.getNextPageToken() != null) {
+ fullSyncResponse = peopleService.people().listDirectoryPeople()
+ .setSources(sources)
+ .setReadMask("metadata,names,emailAddresses")
+ .setRequestSyncToken(true)
+ .setPageToken(fullSyncResponse.getNextPageToken())
+ .execute();
+}
+
+// Some time passes
+
+// Fetch incremental changes using the sync token returned in the last fullSyncResponse.
+try {
+ ListDirectoryPeopleResponse incrementalSyncResponse = peopleService.people().listDirectoryPeople()
+ .setSources(sources)
+ .setReadMask("metadata,names,emailAddresses")
+ .setSyncToken(fullSyncResponse.getNextSyncToken())
+ .execute();
+ for (Person person : incrementalSyncResponse.getDirectoryPeople()) {
+ handlePerson(person);
+ }
+
+ // Fetch all the pages
+ while (incrementalSyncResponse.getNextPageToken() != null) {
+ incrementalSyncResponse = peopleService.people().listDirectoryPeople
+ .setSources(sources)
+ .setReadMask("metadata,names,emailAddresses")
+ .setSyncToken(fullSyncResponse.getNextSyncToken())
+ .setPageToken(incrementalSyncResponse.getNextPageToken())
+ .execute();
+ for (Person person : incrementalSyncResponse.getDirectoryPeople()) {
+ handlePerson(person);
+ }
+ }
+} catch (GoogleJsonResponseException e) {
+ if (e.getStatusCode() == 410) {
+ // Sync token expired. Make full sync request.
+ }
+}
+
+void handlePerson(Person person) {
+ if (person.getMetadata().getDeleted()) {
+ // Handle deleted person
+ } else {
+ // Handle changed person
+ }
+}
+
+언어: 자바 · 셀#1
+자바
+
+## 디렉터리 사용자 검색
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜 · 셀#1
+POST /v1/people:searchDirectoryPeople?query=John&sources=DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT&sources=DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE&readMask=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+언어: 자바 · 셀#1
+List sources = new ArrayList<>();
+sources.add("DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT");
+sources.add("DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE");
+
+SearchDirectoryPeopleResponse response = peopleService.people().searchDirectoryPeople()
+ .setQuery("John")
+ .setSources(sources)
+ .setReadMask("metadata,names,emailAddresses")
+ .execute();
+
+List<Person> people = response.getPeople();
+
+언어: 프로토콜 · 셀#1
+프로토콜
+자바
+
+언어: 자바 · 셀#1
+프로토콜
+자바

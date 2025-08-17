@@ -1,0 +1,270 @@
+Source URL: https://cloud.google.com/firestore/docs/samples?hl=ko
+
+## 본문
+이 페이지에는 Firestore의 코드 샘플이 포함되어 있습니다. 다른 Google Cloud 제품의 코드 샘플을 검색하고 필터링하려면 Google Cloud 샘플 브라우저를 참조하세요.
+
+필터링 기준
+
+하나의 범위를 사용하여 Firestore 컬렉션 쿼리
+
+Firestore
+
+Google Cloud
+
+자바스크립트
+
+문서 필터에서 커서 시작으로 Firestore 컬렉션을 쿼리합니다(비동기).
+
+Firestore 컬렉션을 쿼리합니다(비동기).
+
+자동 생성된 ID로 Firestore 문서 참조를 만듭니다(비동기).
+
+다른 곳에서 실행하기 위한 Firestore 쿼리 직렬화
+
+Firestore 쿼리에 두 범위를 사용합니다(비동기).
+
+하나의 범위를 사용하여 Firestore 컬렉션 쿼리(비동기).
+
+Firestore 문서를 맵으로 가져오기
+
+커스텀 유형을 사용하여 Firestore 문서를 추가합니다(비동기).
+
+배열 필드가 포함된 Firestore 문서를 업데이트합니다(비동기).
+
+Firestore 문서 타임스탬프를 업데이트합니다(비동기).
+
+Firestore 필드 삭제
+
+잘못된 범위의 Firestore 쿼리 예시(비동기).
+
+필드(여러 항목) 필터에서 커서로 Firestore 컬렉션을 쿼리합니다(비동기).
+
+문서 경로에서 Firestore 문서 참조를 만듭니다(비동기).
+
+Firestore 문서 컬렉션을 만듭니다(비동기).
+
+내부의 Firestore 컬렉션 및 문서를 삭제합니다.
+
+병합을 사용하여 Firestore 문서 업데이트
+
+클라이언트에서 Firestore 문서용 커스텀 유형을 사용합니다(비동기).
+
+in 필터를 사용하여 Firestore 컬렉션 쿼리
+
+샤드 사용 중 Firestore 문서 가져오기(비동기).
+
+필터를 사용하여 Firestore 쿼리 순서 지정(비동기).
+
+string eq 필터를 사용하여 Firestore 컬렉션을 쿼리합니다(비동기).
+
+시작 커서 및 제한을 사용하여 Firestore 컬렉션 페이지화
+
+Firestore 쿼리 순서 지정 및 제한
+
+필터에서 커서 끝으로 Firestore 컬렉션 쿼리
+
+맵을 사용하여 Firestore 문서를 추가합니다(비동기).
+
+Firestore 샤딩 카운터를 만듭니다(비동기).
+
+Firestore 문서 참조를 만듭니다(비동기).
+
+트랜잭션에서 Firestore 문서 업데이트
+
+트랜잭션에서 Firestore 문서를 조건부로 업데이트
+
+시작 커서 및 제한을 사용하여 Firestore 컬렉션을 페이지로 나눕니다(비동기).
+
+필터에서 커서 끝으로 Firestore 컬렉션을 쿼리합니다(비동기).
+
+boolean eq 필터를 사용하여 Firestore 컬렉션을 쿼리합니다(비동기).
+
+파티션 쿼리를 사용하여 컬렉션 그룹 쿼리
+
+Firestore 문서 참조 만들기
+
+여러 필드에 Firestore 쿼리 순서 지정(비동기).
+
+잘못된 Firestore 쿼리 순서 및 제한 예시(비동기).
+
+커스텀 유형을 사용하여 Firestore 문서를 가져옵니다(비동기).
+
+자동 생성된 ID를 사용하여 Firestore 문서를 추가합니다(비동기).
+
+Firestore 분산 카운터의 커스텀 샤드 및 카운터 유형 만들기
+
+Firestore Watch 리스너 오류 처리
+
+트랜잭션에서 Firestore 문서를 조건부로 업데이트(비동기).
+
+중첩된 맵을 사용하여 Firestore 문서를 추가합니다(비동기).
+
+여러 eq 필터를 사용하여 Firestore 컬렉션을 쿼리합니다(비동기).
+
+Firestore 문서에서 일괄 업데이트를 수행합니다(비동기).
+
+eq 필터를 사용하여 Firestore 컬렉션 그룹을 쿼리합니다(비동기).
+
+array_contains 필터를 사용하여 Firestore 컬렉션 쿼리
+
+Firestore Watch 리스너 만들기
+
+Firestore 클라이언트 만들기(비동기).
+
+array_contains 필터를 사용하여 Firestore 컬렉션을 쿼리합니다(비동기).
+
+자동 생성된 ID를 사용하여 Firestore 문서 추가
+
+Firestore 문서 컬렉션 만들기
+
+잘못된 범위의 Firestore 쿼리 예시
+
+샤드를 사용하는 동안 Firestore 문서 필드 증가
+
+중첩된 컬렉션에서 Firestore 문서를 가져옵니다(비동기).
+
+Firestore Watch 리스너 구독 취소
+
+string eq 필터를 사용하여 Firestore 컬렉션 쿼리
+
+boolean eq 필터를 사용하여 Firestore 컬렉션 쿼리
+
+not in 필터를 사용하여 Firestore 컬렉션 쿼리
+
+Firestore 쿼리 내림차순으로 순서 지정 및 제한
+
+필드(여러 항목) 필터에서 커서로 Firestore 컬렉션 쿼리
+
+자동 생성된 ID로 Firestore 문서 참조 만들기
+
+Firestore 컬렉션 참조를 만듭니다(비동기).
+
+컬렉션에서 Firestore 문서 가져오기
+
+필터를 사용하여 Firestore 쿼리 순서 지정 및 제한
+
+Firestore 분산 카운터의 커스텀 샤드 및 카운터 유형을 만듭니다(비동기).
+
+Firestore 문서 타임스탬프 업데이트
+
+Firestore 문서 추가
+
+Firestore에 데이터를 추가합니다(비동기).
+
+문서 필터에서 커서 시작으로 Firestore 컬렉션 쿼리
+
+하위 컬렉션을 쿼리하는 방법을 설명합니다.
+
+샤드 사용 중 Firestore 문서 가져오기
+
+Firestore Watch 리스너로 변경 유형 관찰
+
+필터를 사용하여 Firestore 쿼리 순서 지정
+
+커스텀 유형을 사용하여 Firestore 문서를 가져옵니다.
+
+잘못된 Firestore 쿼리 순서 및 제한 예시
+
+샤드를 사용하는 동안 Firestore 문서 필드 증가(비동기).
+
+커스텀 클래스에서 생성된 Firestore 문서 가져오기
+
+array 필터를 사용하여 Firestore 컬렉션을 쿼리합니다(비동기).
+
+GA 및 버그 351980346의 여러 불평등에 관한 Firestore 문서 계획에서 원래 요청한 Firestore 및 Datastore 예시와 일치하는 C# 및 Ruby 샘플을 제공해 주세요. turbo/469184에 대한 요청입니다.
+
+맵을 사용하여 Firestore 문서 추가
+
+Firestore 문서를 맵으로 검색합니다(비동기).
+
+증분을 사용하여 Firestore 문서 필드를 업데이트합니다(비동기).
+
+not eq 필터를 사용하여 Firestore 컬렉션 쿼리
+
+커스텀 유형을 사용하여 Firestore 문서 추가
+
+클라이언트에서 Firestore 문서용 커스텀 유형 사용
+
+in 필터를 사용하여 Firestore 컬렉션을 쿼리합니다(비동기).
+
+Firestore 문서 필드를 업데이트합니다(비동기).
+
+내부의 Firestore 컬렉션 및 문서를 삭제합니다(비동기).
+
+array_contains_any 필터를 사용하여 Firestore 컬렉션 쿼리
+
+array 필터를 사용하여 Firestore 컬렉션 쿼리
+
+필터를 사용하여 Firestore 쿼리 순서 지정 및 제한(비동기).
+
+Firestore 필드를 삭제합니다(비동기).
+
+Firestore 컬렉션 내의 모든 문서를 가져옵니다(비동기).
+
+eq 필터를 사용하여 Firestore 컬렉션 그룹 쿼리
+
+Firestore 컬렉션 참조 만들기
+
+필드 필터에서 커서 시작으로 Firestore 컬렉션을 쿼리합니다(비동기).
+
+커스텀 클래스에서 생성된 Firestore 문서를 가져옵니다(비동기).
+
+트랜잭션에서 Firestore 문서 업데이트(비동기).
+
+단일 Firestore 문서 삭제
+
+Firestore 클라이언트 만들기
+
+여러 eq 필터를 사용하여 Firestore 컬렉션 쿼리
+
+문서 경로에서 Firestore 문서 참조 만들기
+
+중첩된 필드가 있는 Firestore 문서 추가
+
+Firestore 문서를 추가합니다(비동기).
+
+중첩된 컬렉션에서 Firestore 문서 가져오기
+
+병합을 사용하여 Firestore 문서를 업데이트합니다(비동기).
+
+중첩된 맵을 사용하여 Firestore 문서 추가
+
+Firestore 컬렉션 쿼리
+
+프로젝트 ID로 클라이언트 만들기
+
+중첩된 필드가 있는 Firestore 문서를 추가합니다(비동기).
+
+Firestore 쿼리에 두 범위 사용
+
+Firestore Watch로 쿼리 결과 변경사항 모니터링
+
+Firestore 시작하기
+
+Firestore 쿼리 내림차순으로 순서 지정 및 제한(비동기).
+
+Firestore 샤딩된 카운터 만들기
+
+array_contains_any 필터를 사용하여 Firestore 컬렉션을 쿼리합니다(비동기).
+
+Firestore 쿼리 순서 지정 및 제한(비동기).
+
+Firestore 문서 필드 업데이트
+
+필드 필터에서 커서 시작으로 Firestore 컬렉션 쿼리
+
+Firestore 하위 컬렉션 참조 만들기
+
+배열 필드가 포함된 Firestore 문서 업데이트
+
+Firestore 하위 컬렉션 참조를 만듭니다(비동기).
+
+단일 Firestore 문서를 삭제합니다(비동기).
+
+여러 필드에 Firestore 쿼리 순서 지정
+
+증분을 사용하여 Firestore 문서 필드 업데이트 필드가 없으면 Firestore가 필드를 만든 후 증분합니다.
+
+Firestore 컬렉션 내의 모든 문서 가져오기
+
+Firestore 문서에서 일괄 업데이트 수행

@@ -1,0 +1,154 @@
+Source URL: https://developers.google.com/people?hl=ko
+
+## Fallback (article.innerText)
+기본 콘텐츠로 건너뛰기
+people
+People API
+/
+English
+Deutsch
+Español
+Español – América Latina
+Français
+Indonesia
+Italiano
+Polski
+Português – Brasil
+Tiếng Việt
+Türkçe
+Русский
+עברית
+العربيّة
+فارسی
+हिंदी
+বাংলা
+ภาษาไทย
+中文 – 简体
+中文 – 繁體
+日本語
+한국어
+로그인
+가이드 참고자료 지원
+people
+People API
+가이드
+참고자료
+지원
+소개
+API 사용 준비하기
+프로필 읽기
+연락처 읽기 및 관리
+'기타 연락처' 읽기, 복사, 검색
+도메인 연락처 및 프로필 읽기
+CardDAV로 연락처 관리
+빠른 시작
+JavaScript
+Go
+Google Apps Script
+Java
+Node.js
+Python
+방법
+클라이언트 라이브러리 설치
+일괄 요청
+주소록 API 이전 가이드
+문제 해결
+인증 및 승인 문제 해결
+ 이 페이지는 Cloud Translation API를 통해 번역되었습니다.
+홈
+제품
+Google Workspace
+People API
+소개
+
+People API를 사용하면 다음과 같은 작업을 할 수 있습니다.
+
+인증된 사용자의 연락처 읽기 및 관리
+인증된 사용자의 '기타 연락처'를 읽고 복사합니다.
+인증된 사용자 및 사용자 연락처의 프로필 정보를 읽습니다.
+도메인 프로필 및 연락처 읽기
+
+예를 들어 인증된 사용자인 젠의 비공개 연락처에 파비안과 란지스가 있다고 가정해 보겠습니다. 앱에서 people.connections.list를 호출하여 연결 목록을 읽으면 젠에게는 앱에 목록 액세스 권한을 부여하라는 동의 화면이 표시됩니다. 젠이 동의하면 앱은 Fabian과 Ranjith를 위한 person resources가 포함된 목록을 읽습니다.
+
+앱이 특정 사람의 정보가 필요한 경우 people.get를 호출하고 리소스 이름을 전달하여 그 사람의 person resource를 가져올 수 있습니다.
+
+앱은 people.createContact를 사용하여 새 연락처를 만들어 연락처를 관리하고 people.updateContact를 사용하여 people.connections.list에서 읽은 기존 연락처를 업데이트하며 people.deleteContact를 사용하여 연락처를 삭제할 수도 있습니다.
+
+Google Workspace 사용자는 people.listDirectoryPeople를 사용하여 디렉터리 도메인 프로필과 도메인 연락처를 나열하거나 people.searchDirectoryPeople을 사용하여 검색할 수도 있습니다.
+
+사용자 정보의 병합된 뷰
+
+People API가 읽는 사용자 정보는 다음 조건에 따라 다양한 소스에서 병합됩니다.
+
+소스	조건
+공개 Google 프로필 데이터	항상을 탭합니다.
+Google Workspace 도메인 프로필 데이터	도메인 관리자가 도메인 범위 데이터의 외부 연락처 및 프로필 공유를 사용 설정하여 directory.readonly 범위를 부여했습니다.
+인증된 사용자의 비공개 프로필 정보	profile 범위 중 하나가 부여되었습니다.
+인증된 사용자의 연락처는	contacts 범위가 부여되었습니다.
+병합된 개인 데이터 이해
+
+사람에 대한 데이터는 한 가지 기본 소스 유형에서 파생됩니다. 인증된 이메일 주소, 전화번호 또는 프로필 URL을 통해 소스가 연결된 경우 다른 소스의 데이터는 이 데이터와 병합됩니다. 사람을 구성하는 방법은 다음과 같습니다.
+
+기본 출처	연락처	프로필	Google Workspace 도메인 프로필	Google Workspace 도메인 연락처	사용
+Contact	1	0+	0+	0+	대부분의 엔드포인트에 대해 반환됨
+프로필	0+	1	0 또는 1	0	로그인한 사용자의 사용자를 가져오거나 다른 사용자의 Google 계정으로 사용자를 가져오는 데 사용되는 경우 people.get에 반환됩니다.
+도메인 연락처	0+	0	0	1	people.listDirectoryPeople 또는 people.searchDirectoryPeople에서 반환됩니다.
+
+연락처 기반의 사용자만 변형 엔드포인트로 수정할 수 있습니다. 프로필 및 도메인 연락처 변형은 지원되지 않습니다.
+
+달리 명시되지 않는 한 이 페이지의 콘텐츠에는 Creative Commons Attribution 4.0 라이선스에 따라 라이선스가 부여되며, 코드 샘플에는 Apache 2.0 라이선스에 따라 라이선스가 부여됩니다. 자세한 내용은 Google Developers 사이트 정책을 참조하세요. 자바는 Oracle 및/또는 Oracle 계열사의 등록 상표입니다.
+
+최종 업데이트: 2025-07-25(UTC)
+
+ Stack Overflow
+google-people 태그로 질문하기
+약관
+Google API 서비스: 사용자 데이터 정책
+프로그램
+Google Developer Program
+Google Developer Groups
+Google Developer Experts
+Accelerators
+Women Techmakers
+Google Cloud & NVIDIA
+개발자 콘솔
+Google API Console
+Google Cloud Platform Console
+Google Play Console
+Firebase Console
+Actions on Google Console
+Cast SDK Developer Console
+Chrome Web Store Dashboard
+Google Home Developer Console
+Android
+Chrome
+Firebase
+Google Cloud Platform
+Google AI
+모든 제품
+약관
+개인정보처리방침
+Manage cookies
+Google Developers 뉴스레터 신청 구독
+English
+Deutsch
+Español
+Español – América Latina
+Français
+Indonesia
+Italiano
+Polski
+Português – Brasil
+Tiếng Việt
+Türkçe
+Русский
+עברית
+العربيّة
+فارسی
+हिंदी
+বাংলা
+ภาษาไทย
+中文 – 简体
+中文 – 繁體
+日本語
+한국어

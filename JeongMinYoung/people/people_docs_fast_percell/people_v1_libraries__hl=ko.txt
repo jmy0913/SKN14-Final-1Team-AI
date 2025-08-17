@@ -1,0 +1,21 @@
+Source URL: https://developers.google.com/people/v1/libraries?hl=ko
+
+## 본문
+=== 코드/텍스트 탭 수집 ===
+언어: 자바 · 셀#1
+pom.xml
+
+언어: 자바 · 셀#2
+build.gradle
+
+언어: Python · 셀#4
+sudo
+
+언어: Ruby · 셀#3
+google-api-client
+
+언어: Ruby · 셀#4
+sudo
+
+언어: Ruby · 셀#5
+RubyGems

@@ -1,0 +1,7 @@
+Source URL: https://developers.google.com/people/v1/query-parameters?hl=ko
+
+# 표준 쿼리 매개변수
+
+## 본문
+
+모든 People API 작업에 적용되는 쿼리 매개변수는 시스템 매개변수에 문서화되어 있습니다.

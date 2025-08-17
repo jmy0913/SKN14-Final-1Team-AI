@@ -1,0 +1,65 @@
+Source URL: https://developers.google.com/people/api/rest/v1/SearchResponse?hl=ko
+
+특정 쿼리가 지정된 인증된 사용자의 검색 요청에 대한 응답입니다.
+JSON 표현
+{
+  "results": [
+    {
+      object (SearchResult)
+    }
+  ]
+}
+필드
+results[]
+object (SearchResult)
+요청 결과입니다.
+SearchResult
+검색어의 결과입니다.
+JSON 표현
+{
+  "person": {
+    object (Person)
+  }
+}
+필드
+person
+object (Person)
+일치하는 인물입니다.
+
+특정 쿼리가 지정된 인증된 사용자의 검색 요청에 대한 응답입니다.
+
+JSON 표현
+{
+  "results": [
+    {
+      object (SearchResult)
+    }
+  ]
+}
+
+필드
+results[]
+object (SearchResult)
+요청 결과입니다.
+
+object (SearchResult)
+
+요청 결과입니다.
+
+검색어의 결과입니다.
+
+JSON 표현
+{
+  "person": {
+    object (Person)
+  }
+}
+
+필드
+person
+object (Person)
+일치하는 인물입니다.
+
+object (Person)
+
+일치하는 인물입니다.

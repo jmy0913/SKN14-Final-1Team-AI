@@ -1,0 +1,312 @@
+Source URL: https://cloud.google.com/firestore/docs/backups?hl=ko
+
+## 서문
+이 페이지에서는 Firestore 예약된 백업 기능을 사용하는 방법을 설명합니다. 백업을 사용하여 애플리케이션 수준 데이터 손상이나 우발적인 데이터 삭제로부터 데이터를 보호하세요.
+
+백업을 사용하면 지정된 데이터베이스를 매일 또는 매주 백업하도록 백업 일정을 구성할 수 있습니다. 그런 다음 이러한 백업을 사용하여 데이터를 새 데이터베이스로 복원할 수 있습니다.
+
+## 백업 정보
+백업은 특정 시점의 일관된 데이터베이스 사본입니다. 백업에는 해당 시점의 모든 데이터 및 색인 구성이 포함됩니다. 백업에 데이터베이스 TTL(수명) 정책은 포함되지 않습니다. 백업은 소스 데이터베이스와 동일한 위치에 있습니다.
+
+백업은 보관 기간을 설정할 수 있으며 보관 기간이 만료되거나 백업을 삭제할 때까지 저장됩니다. 소스 데이터베이스를 삭제해도 관련 백업이 자동으로 삭제되지 않습니다.
+
+Firestore는 백업과 관련된 메타데이터 및 데이터베이스와 관련된 백업 일정을 저장합니다. Firestore는 데이터베이스의 모든 백업이 만료되거나 삭제될 때까지 이 메타데이터를 유지합니다.
+
+백업을 만들거나 보존해도 라이브 데이터베이스에서 읽기 또는 쓰기 성능에 영향을 주지 않습니다.
+
+## 비용
+백업을 사용하면 다음 항목에 대한 요금이 부과됩니다.
+
+각 백업에서 사용하는 스토리지 용량
+
+복원 작업의 경우 백업 크기에 따라 요금이 청구됨
+
+자세한 내용과 정확한 가격은 가격 책정 페이지를 참조하세요.
+
+## 필요한 역할
+백업 및 백업 일정을 관리하는 데 필요한 권한을 얻으려면 관리자에게 다음 Identity and Access Management 역할 중 하나 이상을 부여해 달라고 요청하세요.
+
+roles/datastore.owner: Firestore 데이터베이스에 대한 전체 액세스 권한입니다.
+
+roles/datastore.backupsAdmin: 백업에 대한 읽기 및 쓰기 액세스 권한입니다.
+
+roles/datastore.backupsViewer: 백업에 대한 읽기 액세스 권한입니다.
+
+roles/datastore.backupSchedulesAdmin: 백업 일정에 대한 읽기 및 쓰기 액세스 권한입니다.
+
+roles/datastore.backupSchedulesViewer: 백업 일정에 대한 읽기 액세스 권한입니다.
+
+roles/datastore.restoreAdmin: 복원 작업을 시작할 권한입니다.
+
+## 백업 일정 만들기 및 관리
+아래 예시는 백업 일정을 설정하는 방법을 보여줍니다. 데이터베이스마다 최대 1개의 일일 백업 일정과 주간 백업 일정을 구성할 수 있습니다. 다른 요일에 여러 주간 백업 일정을 구성할 수는 없습니다.
+
+정확한 백업 시간은 구성할 수 없습니다. 백업은 매일 다른 시간에 수행됩니다. 주간 백업 일정의 경우 백업을 수행할 요일을 구성할 수 있습니다.
+
+## 백업 일정 만들기
+다음 도구 중 하나를 사용하여 백업 일정을 만듭니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore backups schedules create
+
+언어: gcloud · 셀#2
+--recurrence
+
+언어: gcloud · 셀#3
+daily
+
+언어: gcloud · 셀#4
+'(default)'
+
+언어: gcloud · 셀#5
+14w
+
+언어: Firebase CLI · 셀#1
+firebase firestore:databases:backups:schedules
+
+언어: Firebase CLI · 셀#2
+--recurrence
+
+언어: Firebase CLI · 셀#3
+DAILY
+
+언어: Firebase CLI · 셀#4
+'(default)'
+
+언어: Firebase CLI · 셀#5
+14w
+
+언어: Terraform · 셀#1
+resource "google_firestore_backup_schedule" "daily-backup" {
+ project = PROJECT_ID
+ database = DATABASE_ID
+
+ retention = RETENTION_PERIOD_SECONDS
+
+ daily_recurrence {}
+}
+
+언어: gcloud · 셀#1
+--recurrence
+
+언어: gcloud · 셀#2
+weekly
+
+언어: gcloud · 셀#3
+'(default)'
+
+언어: gcloud · 셀#4
+14w
+
+언어: gcloud · 셀#5
+SUN
+
+언어: gcloud · 셀#6
+MON
+
+언어: gcloud · 셀#7
+TUE
+
+언어: gcloud · 셀#8
+WED
+
+언어: gcloud · 셀#9
+THU
+
+언어: gcloud · 셀#10
+FRI
+
+언어: gcloud · 셀#11
+SAT
+
+언어: Firebase CLI · 셀#1
+--recurrence
+
+언어: Firebase CLI · 셀#2
+WEEKLY
+
+언어: Firebase CLI · 셀#3
+'(default)'
+
+언어: Firebase CLI · 셀#4
+14w
+
+언어: Firebase CLI · 셀#5
+SUNDAY
+
+언어: Firebase CLI · 셀#6
+MONDAY
+
+언어: Firebase CLI · 셀#7
+TUESDAY
+
+언어: Firebase CLI · 셀#8
+WEDNESDAY
+
+언어: Firebase CLI · 셀#9
+THURSDAY
+
+언어: Firebase CLI · 셀#10
+FRIDAY
+
+언어: Firebase CLI · 셀#11
+SATURDAY
+
+언어: Terraform · 셀#1
+resource "google_firestore_backup_schedule" "weekly-backup" {
+ project = PROJECT_ID
+ database = DATABASE_ID
+
+ retention = RETENTION_PERIOD_SECONDS
+
+ weekly_recurrence {
+ day = DAY
+ }
+}
+
+## 백업 일정 나열
+데이터베이스의 모든 백업 일정을 나열하려면 다음 방법 중 하나를 사용합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore backups schedules list
+
+언어: gcloud · 셀#2
+'(default)'
+
+언어: Firebase CLI · 셀#1
+firebase firestore:backups:schedules:list
+
+언어: Firebase CLI · 셀#2
+'(default)'
+
+## 백업 일정 설명
+백업 일정에 대한 정보를 가져오려면 다음 방법 중 하나를 사용하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore backups schedules describe
+
+언어: gcloud · 셀#2
+'(default)'
+
+## 백업 일정 업데이트
+백업 일정의 보관 기간을 업데이트하려면 다음 방법 중 하나를 사용하세요.
+
+백업 일정의 보관 기간은 업데이트할 수 있지만 반복은 업데이트할 수 없습니다. 다른 반복이 있는 백업 일정이 필요한 경우 더 이상 필요하지 않은 이전 백업 일정을 삭제하고 원하는 반복으로 새 백업 일정을 만듭니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore backups schedules update
+
+언어: gcloud · 셀#2
+'(default)'
+
+언어: gcloud · 셀#3
+14w
+
+언어: Firebase CLI · 셀#1
+firebase firestore:backups:schedules:update
+
+언어: Firebase CLI · 셀#2
+14w
+
+## 백업 일정 삭제
+백업 일정을 삭제하려면 다음 방법 중 하나를 사용하세요.
+
+백업 일정을 삭제해도 이 일정으로 이미 만든 백업은 삭제되지 않습니다. 보관 기간이 지난 후 만료될 때까지 기다리거나 백업을 수동으로 삭제하려면 백업 삭제를 참조하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore backups schedules delete
+
+언어: gcloud · 셀#2
+'(default)'
+
+언어: Firebase CLI · 셀#1
+firebase firestore:backups:schedules:delete
+
+## 백업 표시
+사용 가능한 백업을 나열하려면 다음 방법 중 하나를 사용합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore backups list
+
+언어: gcloud · 셀#2
+--format="table(name, database, state)"
+
+언어: gcloud · 셀#3
+--location
+
+언어: gcloud · 셀#4
+LOCATION
+
+언어: Firebase CLI · 셀#1
+firebase firestore:backups:list
+
+언어: Firebase CLI · 셀#2
+--location
+
+언어: Firebase CLI · 셀#3
+LOCATION
+
+## 백업 설명
+백업 세부정보를 보려면 다음 방법 중 하나를 사용하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore backups describe
+
+언어: Firebase CLI · 셀#1
+firebase firestore:backups:get
+
+## 백업 삭제
+백업을 삭제하려면 다음 방법 중 하나를 사용하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore backups delete
+
+언어: Firebase CLI · 셀#1
+firebase firestore:backups:delete
+
+## 데이터베이스 백업에서 데이터 복원
+복원 작업에서는 백업의 데이터를 새 Firestore 데이터베이스에 씁니다.
+
+복원 작업을 시작하려면 다음 방법 중 하나를 사용하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore databases restore
+
+언어: gcloud · 셀#2
+--tags=123/environment=production,123/costCenter=marketing
+
+언어: gcloud · 셀#3
+--tags=tagKeys/333=tagValues/444
+
+언어: gcloud · 셀#4
+metadata
+
+언어: gcloud · 셀#5
+name
+
+언어: gcloud · 셀#6
+response
+
+언어: gcloud · 셀#7
+progressPercentage
+
+언어: gcloud · 셀#8
+operationState
+
+언어: gcloud · 셀#9
+gcloud firestore operations list
+
+언어: gcloud · 셀#10
+gcloud firestore operations describe
+
+언어: Firebase CLI · 셀#1
+firebase firestore:databases:restore

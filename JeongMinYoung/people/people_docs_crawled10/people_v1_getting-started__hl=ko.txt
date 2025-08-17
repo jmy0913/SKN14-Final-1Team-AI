@@ -1,0 +1,15 @@
+Source URL: https://developers.google.com/people/v1/getting-started?hl=ko
+
+프로젝트를 생성
+
+Google 계정
+
+프로젝트
+
+설정 도구를 사용
+
+클라이언트 라이브러리
+
+승인
+
+빠른 시작 샘플 코드

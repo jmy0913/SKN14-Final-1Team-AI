@@ -1,0 +1,65 @@
+Source URL: https://firebase.google.com/docs/libraries/?hl=ko
+
+## 본문
+모든 플랫폼
+
+Flutter
+
+iOS+
+
+Android
+
+웹
+
+C++
+
+Unity
+
+모바일 및 웹 앱용 공식 Firebase SDK
+
+권한이 있는 환경에서 관리 작업을 수행할 수 있는 공식 Firebase SDK
+
+명령줄에서 Firebase와 연동되는 도구
+
+많이 사용되는 개발 프레임워크에 Firebase를 바인딩하기 위한 라이브러리입니다. 이러한 라이브러리는 자주 사용하는 프레임워크에 Firebase를 바인딩하려는 개발자에게 권장되지만 공식 Firebase SDK는 아니므로 Firebase 지원이 제공되지 않습니다. 이 라이브러리 사용에 관한 지원을 받으려면 GitHub에서 직접 문제를 보고하세요.
+
+일반적인 Firebase 작업 및 통합을 간소화하는 라이브러리
+
+### 표
+| 제목 | 설명 | _platforms | 시작하기 | 소스 |
+| --- | --- | --- | --- | --- |
+| Firebase Android SDK | 공식 Firebase Android SDK | Android | plat_android | GitHub |
+| Firebase Flutter SDK | 공식 Firebase Flutter SDK | Flutter | plat_flutter | GitHub |
+| Firebase Apple 플랫폼 SDK | 공식 Firebase Apple 플랫폼 SDK | iOS+ | plat_ios | GitHub |
+| Firebase 자바스크립트 SDK | 공식 Firebase 자바스크립트 SDK | 웹 | plat_web | GitHub |
+| Firebase Unity SDK | 공식 Firebase Unity SDK | Unity | plat_unity | GitHub |
+| Firebase C++ SDK | 공식 Firebase C++ SDK | C++ | plat_cpp | GitHub |
+
+| 제목 | 설명 | _platforms | 시작하기 | 소스 |
+| --- | --- | --- | --- | --- |
+| Firebase Node.js Admin SDK | 공식 Firebase Node.js Admin SDK | Node.js | plat_node | GitHub |
+| Firebase 자바 Admin SDK | 공식 Firebase 자바 Admin SDK | 자바 | plat_java | GitHub |
+| Firebase Python Admin SDK | 공식 Firebase Python Admin SDK | Python | plat_python | GitHub |
+| Firebase Go Admin SDK | 공식 Firebase Go Admin SDK | Go | plat_go | GitHub |
+
+| 제목 | 설명 | _platforms | 문서 | 소스 |
+| --- | --- | --- | --- | --- |
+| Firebase Tools | Firebase 명령줄 도구 (Firebase CLI) | 웹 | plat_node | GitHub |
+
+| 제목 | 설명 | _platforms | 문서 | 소스 |
+| --- | --- | --- | --- | --- |
+| AngularFire | Firebase의 Angular 바인딩 | 웹 | plat_web | GitHub |
+| EmberFire | Firebase의 Ember 바인딩 | 웹 | plat_web | GitHub |
+| ReactFire | Firebase의 React 바인딩 | 웹 | plat_web | GitHub |
+| React Native Firebase | Firebase의 React Native 바인딩 | Android,iOS+ | plat_ios plat_android | GitHub |
+| RxFire | Firebase의 RxJS 바인딩 | 웹 | plat_web | GitHub |
+| Vuefire | Firebase의 Vue 바인딩 | 웹 | plat_web | GitHub |
+
+| 제목 | 설명 | _platforms | 문서 | 소스 |
+| --- | --- | --- | --- | --- |
+| FirebaseUI | 다양한 Firebase 기능에 대한 UI 구성요소의 오픈소스 라이브러리 | iOS+, Android, 웹 | plat_ios plat_android plat_web | GitHub
+(Android, Apple, 웹) |
+| GeoFire | 다음을 지원하는 Firebase Realtime Database용 오픈소스 라이브러리입니다. 지리정보 쿼리 | iOS+, Android, 웹 | plat_ios plat_android plat_web | GitHub
+(Android, Apple, 웹) |
+| FirePad | 웹 앱에 공유 에디터를 추가하는 오픈소스 라이브러리입니다. | 웹 | plat_web | GitHub |
+| Firebase Import | 이 유틸리티는 큰 JSON 파일을 Firebase Realtime Database | NodeJS | plat_node | GitHub |

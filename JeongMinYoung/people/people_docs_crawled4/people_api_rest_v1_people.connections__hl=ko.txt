@@ -1,0 +1,490 @@
+Source URL: https://developers.google.com/people/api/rest/v1/people.connections?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다. Google Workspace People API 참고자료 REST Resource: people.connections 컬렉션을 사용해 정리하기 내 환경설정을 기준으로 콘텐츠를 저장하고 분류하세요. 리소스: Person <ph type="x-smartling-placeholder"> </ph> JSON 표현 리소스: Person 인증된 사용자의 연락처 및 프로필 데이터 등 다양한 데이터 소스에서 병합된 사람에 대한 정보입니다. 대부분의 필드에는 여러 개의 항목이 포함될 수 있습니다. 필드의 항목에는 순서가 보장되지 않지만 비어 있지 않은 각 필드에는 가 true로 설정된 필드가 정확히 한 개 있습니다. JSON 표현 서버에서 할당한 사람의 리소스 이름입니다. 형식의 ASCII 문자열. 리소스의 HTTP 항목 태그 . 웹 캐시 유효성 검사에 사용됩니다. 출력 전용입니다. 사람에 대한 메타데이터입니다. 개인의 상세 주소입니다. 이 항목은 지원 중단되었습니다. 출력 전용입니다. 지원 중단됨 개인의 연령대입니다. 출력 전용입니다. 개인의 연령대입니다. 사용자의 전기입니다. 이 필드는 연락처 소스의 싱글톤입니다. 사용자의 생일입니다. 이 필드는 연락처 소스의 싱글톤입니다. 이 항목은 지원 중단되었습니다. 지원 중단됨 : 데이터가 반환되지 않습니다. 자신의 자랑거리입니다. 사용자의 캘린더 URL입니다. 개인의 클라이언트 데이터입니다. 출력 전용입니다. 해당 인물의 표지 사진 사용자의 이메일 주소입니다. 의 경우 이메일 주소 수가 100개로 제한됩니다. 한 사람에게 더 많은 이메일 주소가 있다면 를 호출하여 전체 집합을 가져올 수 있습니다. 사용자의 일정입니다. 사용자의 외부 ID입니다. 사용자의 file-ases입니다. 사용자의 성별입니다. 이 필드는 연락처 소스의 싱글톤입니다. 사용자의 채팅 메시지 클라이언트입니다. 개인의 관심분야입니다. 사용자의 언어 환경설정입니다. 개인의 위치 사용자의 그룹 회원 정보입니다. 개인의 기타 키워드입니다. 사용자의 이름입니다. 이 필드는 연락처 소스의 싱글톤입니다. 사용자의 닉네임입니다. 개인의 직업입니다. 개인의 과거 또는 현재 조직입니다. 사용자의 전화번호입니다. 의 경우 전화번호 수가 100개로 제한됩니다. 사람의 전화번호가 더 많은 경우 를 호출하여 전체 세트를 가져올 수 있습니다. 출력 전용입니다. 해당 사용자의 사진입니다. 그 사람의 관계입니다. 이 항목은 지원 중단되었습니다. 출력 전용입니다. 지원 중단됨 : 데이터가 반환되지 않습니다. 개인의 관계에 대한 관심분야입니다. 이 항목은 지원 중단되었습니다. 출력 전용입니다. 지원 중단됨 : 데이터는 반환되지 않습니다. 개인의 관계 상태입니다. 이 항목은 지원 중단되었습니다. 지원 중단됨 : (대신 사용) 사용자의 거주지입니다. 사용자의 SIP 주소입니다. 개인의 기술입니다. 이 항목은 지원 중단되었습니다. 출력 전용입니다. 지원 중단됨 : 데이터가 반환되지 않습니다. 개인의 태그라인입니다. 사람과 관련된 URL입니다. 개인의 사용자 정의 데이터입니다. 인증된 사용자의 연락처 목록을 제공합니다.
+
+=== 코드 ===
+metadata.primary
+
+=== 코드 ===
+{
+  "resourceName": string,
+  "etag": string,
+  "metadata": {
+    object (PersonMetadata)
+  },
+  "addresses": [
+    {
+      object (Address)
+    }
+  ],
+  "ageRange": enum (AgeRange),
+  "ageRanges": [
+    {
+      object (AgeRangeType)
+    }
+  ],
+  "biographies": [
+    {
+      object (Biography)
+    }
+  ],
+  "birthdays": [
+    {
+      object (Birthday)
+    }
+  ],
+  "braggingRights": [
+    {
+      object (BraggingRights)
+    }
+  ],
+  "calendarUrls": [
+    {
+      object (CalendarUrl)
+    }
+  ],
+  "clientData": [
+    {
+      object (ClientData)
+    }
+  ],
+  "coverPhotos": [
+    {
+      object (CoverPhoto)
+    }
+  ],
+  "emailAddresses": [
+    {
+      object (EmailAddress)
+    }
+  ],
+  "events": [
+    {
+      object (Event)
+    }
+  ],
+  "externalIds": [
+    {
+      object (ExternalId)
+    }
+  ],
+  "fileAses": [
+    {
+      object (FileAs)
+    }
+  ],
+  "genders": [
+    {
+      object (Gender)
+    }
+  ],
+  "imClients": [
+    {
+      object (ImClient)
+    }
+  ],
+  "interests": [
+    {
+      object (Interest)
+    }
+  ],
+  "locales": [
+    {
+      object (Locale)
+    }
+  ],
+  "locations": [
+    {
+      object (Location)
+    }
+  ],
+  "memberships": [
+    {
+      object (Membership)
+    }
+  ],
+  "miscKeywords": [
+    {
+      object (MiscKeyword)
+    }
+  ],
+  "names": [
+    {
+      object (Name)
+    }
+  ],
+  "nicknames": [
+    {
+      object (Nickname)
+    }
+  ],
+  "occupations": [
+    {
+      object (Occupation)
+    }
+  ],
+  "organizations": [
+    {
+      object (Organization)
+    }
+  ],
+  "phoneNumbers": [
+    {
+      object (PhoneNumber)
+    }
+  ],
+  "photos": [
+    {
+      object (Photo)
+    }
+  ],
+  "relations": [
+    {
+      object (Relation)
+    }
+  ],
+  "relationshipInterests": [
+    {
+      object (RelationshipInterest)
+    }
+  ],
+  "relationshipStatuses": [
+    {
+      object (RelationshipStatus)
+    }
+  ],
+  "residences": [
+    {
+      object (Residence)
+    }
+  ],
+  "sipAddresses": [
+    {
+      object (SipAddress)
+    }
+  ],
+  "skills": [
+    {
+      object (Skill)
+    }
+  ],
+  "taglines": [
+    {
+      object (Tagline)
+    }
+  ],
+  "urls": [
+    {
+      object (Url)
+    }
+  ],
+  "userDefined": [
+    {
+      object (UserDefined)
+    }
+  ]
+}
+
+=== 코드 ===
+PersonMetadata
+
+=== 코드 ===
+AgeRangeType
+
+=== 코드 ===
+BraggingRights
+
+=== 코드 ===
+CalendarUrl
+
+=== 코드 ===
+EmailAddress
+
+=== 코드 ===
+MiscKeyword
+
+=== 코드 ===
+Organization
+
+=== 코드 ===
+PhoneNumber
+
+=== 코드 ===
+RelationshipInterest
+
+=== 코드 ===
+RelationshipStatus
+
+=== 코드 ===
+UserDefined
+
+=== 코드 ===
+resourceName
+
+=== 코드 ===
+people/{person_id}
+
+=== 코드 ===
+object (PersonMetadata)
+
+=== 코드 ===
+PersonMetadata
+
+=== 코드 ===
+addresses[]
+
+=== 코드 ===
+object (Address)
+
+=== 코드 ===
+ageRange
+(deprecated)
+
+=== 코드 ===
+enum (AgeRange)
+
+=== 코드 ===
+person.ageRanges
+
+=== 코드 ===
+ageRanges[]
+
+=== 코드 ===
+object (AgeRangeType)
+
+=== 코드 ===
+AgeRangeType
+
+=== 코드 ===
+biographies[]
+
+=== 코드 ===
+object (Biography)
+
+=== 코드 ===
+birthdays[]
+
+=== 코드 ===
+object (Birthday)
+
+=== 코드 ===
+braggingRights[]
+(deprecated)
+
+=== 코드 ===
+object (BraggingRights)
+
+=== 코드 ===
+BraggingRights
+
+=== 코드 ===
+calendarUrls[]
+
+=== 코드 ===
+object (CalendarUrl)
+
+=== 코드 ===
+CalendarUrl
+
+=== 코드 ===
+clientData[]
+
+=== 코드 ===
+object (ClientData)
+
+=== 코드 ===
+coverPhotos[]
+
+=== 코드 ===
+object (CoverPhoto)
+
+=== 코드 ===
+emailAddresses[]
+
+=== 코드 ===
+object (EmailAddress)
+
+=== 코드 ===
+EmailAddress
+
+=== 코드 ===
+people.connections.list
+
+=== 코드 ===
+people.connections.list
+
+=== 코드 ===
+otherContacts.list
+
+=== 코드 ===
+otherContacts.list
+
+=== 코드 ===
+people.getBatchGet
+
+=== 코드 ===
+object (Event)
+
+=== 코드 ===
+externalIds[]
+
+=== 코드 ===
+object (ExternalId)
+
+=== 코드 ===
+object (FileAs)
+
+=== 코드 ===
+object (Gender)
+
+=== 코드 ===
+imClients[]
+
+=== 코드 ===
+object (ImClient)
+
+=== 코드 ===
+interests[]
+
+=== 코드 ===
+object (Interest)
+
+=== 코드 ===
+object (Locale)
+
+=== 코드 ===
+locations[]
+
+=== 코드 ===
+object (Location)
+
+=== 코드 ===
+memberships[]
+
+=== 코드 ===
+object (Membership)
+
+=== 코드 ===
+miscKeywords[]
+
+=== 코드 ===
+object (MiscKeyword)
+
+=== 코드 ===
+MiscKeyword
+
+=== 코드 ===
+object (Name)
+
+=== 코드 ===
+nicknames[]
+
+=== 코드 ===
+object (Nickname)
+
+=== 코드 ===
+occupations[]
+
+=== 코드 ===
+object (Occupation)
+
+=== 코드 ===
+organizations[]
+
+=== 코드 ===
+object (Organization)
+
+=== 코드 ===
+Organization
+
+=== 코드 ===
+phoneNumbers[]
+
+=== 코드 ===
+object (PhoneNumber)
+
+=== 코드 ===
+PhoneNumber
+
+=== 코드 ===
+people.connections.list
+
+=== 코드 ===
+people.connections.list
+
+=== 코드 ===
+otherContacts.list
+
+=== 코드 ===
+otherContacts.list
+
+=== 코드 ===
+people.getBatchGet
+
+=== 코드 ===
+object (Photo)
+
+=== 코드 ===
+relations[]
+
+=== 코드 ===
+object (Relation)
+
+=== 코드 ===
+relationshipInterests[]
+(deprecated)
+
+=== 코드 ===
+object (RelationshipInterest)
+
+=== 코드 ===
+RelationshipInterest
+
+=== 코드 ===
+relationshipStatuses[]
+(deprecated)
+
+=== 코드 ===
+object (RelationshipStatus)
+
+=== 코드 ===
+RelationshipStatus
+
+=== 코드 ===
+residences[]
+(deprecated)
+
+=== 코드 ===
+object (Residence)
+
+=== 코드 ===
+person.locations
+
+=== 코드 ===
+sipAddresses[]
+
+=== 코드 ===
+object (SipAddress)
+
+=== 코드 ===
+object (Skill)
+
+=== 코드 ===
+taglines[]
+(deprecated)
+
+=== 코드 ===
+object (Tagline)
+
+=== 코드 ===
+object (Url)
+
+=== 코드 ===
+userDefined[]
+
+=== 코드 ===
+object (UserDefined)
+
+=== 코드 ===
+UserDefined

@@ -1,0 +1,204 @@
+Source URL: https://firebase.google.com/docs/reference/android/packages?hl=ko
+
+## 서문
+In July 2025, we stopped releasing new versions of KTX modules, and we removed the KTX libraries from the Firebase Android BoM (v34.0.0).
+
+Back in October 2023, the Kotlin extensions (KTX) APIs were added to their respective main modules. For example, all the APIs from firebase-perf-ktx were added to firebase-perf under the com.google.firebase.perf package. This change means that Kotlin developers should now depend on the main modules instead of the KTX modules (when using Firebase BoM v32.5.0+ or main module versions listed in BoM v32.5.0+).
+
+If you use KTX APIs from the previously released KTX modules, we strongly recommend that you migrate your app to use KTX APIs from the main modules instead. For details, see the FAQ about this initiative.
+
+## ads
+### 표
+| com.google.android.gms.ads |
+| --- |
+
+## measurement
+### 표
+| com.google.android.gms.measurement |   |
+| --- | --- |
+
+## measurement.api
+### 표
+| com.google.firebase.analytics |   |
+| --- | --- |
+
+## measurement.impl
+### 표
+| com.google.android.gms.measurement | Contains classes that configure Firebase Analytics core services. |
+| --- | --- |
+
+## firebase
+### 표
+| com.google.firebase |   |
+| --- | --- |
+| com.google.firebase.provider |  |
+
+## firebase.ai
+### 표
+| com.google.firebase.ai |   |
+| --- | --- |
+
+## firebase.appcheck
+### 표
+| com.google.firebase.appcheck |   |
+| --- | --- |
+
+## firebase.appcheck-debug
+### 표
+| com.google.firebase.appcheck-debug |   |
+| --- | --- |
+
+## firebase.appcheck-debug-testing
+### 표
+| com.google.firebase.appcheck-debug-testing |   |
+| --- | --- |
+
+## firebase.appcheck-playintegrity
+### 표
+| com.google.firebase.appcheck-playintegrity |   |
+| --- | --- |
+
+## firebase.appdistribution
+### 표
+| com.google.firebase.appdistribution |   |
+| --- | --- |
+
+## firebase.auth
+### 표
+| com.google.firebase.auth |   |
+| --- | --- |
+
+## firebase.crashlytics
+### 표
+| com.google.firebase.crashlytics |   |
+| --- | --- |
+
+## firebase.database
+### 표
+| com.google.firebase.database |   |
+| --- | --- |
+
+## firebase.firestore
+### 표
+| com.google.firebase |   |
+| --- | --- |
+| com.google.firebase.firestore |  |
+
+## firebase.functions
+### 표
+| com.google.firebase.functions |   |
+| --- | --- |
+
+## firebase.inappmessaging
+### 표
+| com.google.firebase.inappmessaging |   |
+| --- | --- |
+
+## firebase.inappmessaging.display
+### 표
+| com.google.firebase.inappmessaging.display |   |
+| --- | --- |
+
+## firebase.installations
+### 표
+| com.google.firebase.installations |   |
+| --- | --- |
+
+## firebase.messaging
+### 표
+| com.google.firebase.messaging | Contains public API classes for Firebase Cloud Messaging. |
+| --- | --- |
+
+## firebase.ml.modeldownloader
+### 표
+| com.google.firebase.ml.modeldownloader |   |
+| --- | --- |
+
+## firebase.perf
+### 표
+| com.google.firebase.perf |   |
+| --- | --- |
+| com.google.firebase.perf.metrics |  |
+
+## firebase.remoteconfig
+### 표
+| com.google.firebase.remoteconfig |   |
+| --- | --- |
+
+## firebase.storage
+### 표
+| com.google.firebase.storage |   |
+| --- | --- |
+
+## Inter-operational packages
+### 표
+| com.google.firebase.auth.internal |   |
+| --- | --- |
+
+## appindexing
+### 표
+| com.google.android.gms.appindexing |   |
+| --- | --- |
+| com.google.firebase.appindexing | The Firebase App Indexing API lets apps index personal content and log user actions with Google. |
+| com.google.firebase.appindexing.builders | This package contains builders and convenience methods to help construct common types of indexable objects and actions. |
+
+## firebase.appcheck-safetynet
+### 표
+| com.google.firebase.appcheck-safetynet |   |
+| --- | --- |
+
+## firebase.dynamiclinks
+### 표
+| com.google.firebase.dynamiclinks |   |
+| --- | --- |
+
+## firebase.iid
+### 표
+| com.google.firebase.iid |   |
+| --- | --- |
+
+## firebase.ml.common
+### 표
+| com.google.firebase.ml.common |   |
+| --- | --- |
+| com.google.firebase.ml.common.modeldownload |  |
+
+## firebase.ml.interpreter
+### 표
+| com.google.firebase.ml.custom |   |
+| --- | --- |
+
+## firebase.ml.naturallanguage
+### 표
+| com.google.firebase.ml.naturallanguage |   |
+| --- | --- |
+| com.google.firebase.ml.naturallanguage.languageid |  |
+| com.google.firebase.ml.naturallanguage.smartreply |  |
+
+## firebase.ml.naturallanguage.translate
+### 표
+| com.google.firebase.ml.naturallanguage.translate |   |
+| --- | --- |
+
+## firebase.ml.vision
+### 표
+| com.google.firebase.ml.vision |   |
+| --- | --- |
+| com.google.firebase.ml.vision.automl |  |
+| com.google.firebase.ml.vision.barcode |  |
+| com.google.firebase.ml.vision.cloud |  |
+| com.google.firebase.ml.vision.cloud.landmark |  |
+| com.google.firebase.ml.vision.common |  |
+| com.google.firebase.ml.vision.document |  |
+| com.google.firebase.ml.vision.face |  |
+| com.google.firebase.ml.vision.label |  |
+| com.google.firebase.ml.vision.objects |  |
+| com.google.firebase.ml.vision.text |  |
+
+## firebase.vertexai
+"Vertex AI in Firebase" has been replaced by Firebase AI Logic: firebase-ai
+
+### 표
+| com.google.firebase |   |
+| --- | --- |
+| com.google.firebase.vertexai |  |

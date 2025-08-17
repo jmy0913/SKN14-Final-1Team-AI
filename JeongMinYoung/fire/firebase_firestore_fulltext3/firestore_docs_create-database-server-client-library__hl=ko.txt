@@ -1,0 +1,82 @@
+Source URL: https://cloud.google.com/firestore/docs/create-database-server-client-library?hl=ko
+
+## 시작하기 전에
+Sign in to your Google Cloud account. If you're new to Google Cloud, create an account to evaluate how our products perform in real-world scenarios. New customers also get $300 in free credits to run, test, and deploy workloads.
+
+In the Google Cloud console, on the project selector page, select or create a Google Cloud project.
+
+Note: If you don't plan to keep the resources that you create in this procedure, create a project instead of selecting an existing project. After you finish these steps, you can delete the project, removing all resources associated with the project.
+
+Go to project selector
+
+In the Google Cloud console, on the project selector page, select or create a Google Cloud project.
+
+Go to project selector
+
+In the Google Cloud console, on the project selector page,
+ select or create a Google Cloud project.
+
+ Note: If you don't plan to keep the
+ resources that you create in this procedure, create a project instead of
+ selecting an existing project. After you finish these steps, you can
+ delete the project, removing all resources associated with the project.
+
+ Go to project selector
+
+In the Google Cloud console, on the project selector page,
+ select or create a Google Cloud project.
+
+## 기본 모드 데이터베이스에서 기본 모드로 Firestore 만들기
+새 프로젝트인 경우 Firestore 데이터베이스 인스턴스를 만들어야 합니다.
+
+Firestore 뷰어로 이동합니다.
+
+데이터베이스 서비스 선택 화면에서 기본 모드의 Firestore를 선택합니다.
+
+Firestore 위치를 선택합니다.
+
+위치를 선택할 수 없다면 프로젝트의 '기본 Google Cloud 리소스의 위치'가 이미 설정된 것입니다. 일부 프로젝트 리소스 (예: 기본 Firestore 인스턴스)는 공통 위치 종속 항목을 공유하며, 위치는 프로젝트 생성 중이나 이 위치 종속 항목을 공유하는 다른 서비스를 설정할 때 설정할 수 있습니다.
+
+Firestore 위치를 선택합니다.
+
+위치를 선택할 수 없다면 프로젝트의 '기본 Google Cloud 리소스의 위치'가 이미 설정된 것입니다. 일부 프로젝트 리소스 (예: 기본 Firestore 인스턴스)는 공통 위치 종속 항목을 공유하며, 위치는 프로젝트 생성 중이나 이 위치 종속 항목을 공유하는 다른 서비스를 설정할 때 설정할 수 있습니다.
+
+데이터베이스 만들기를 클릭합니다.
+
+Firestore 프로젝트를 만들면 Cloud API Manager에서도 API가 사용 설정됩니다.
+
+## 인증 설정
+클라이언트 라이브러리를 실행하려면 우선 서비스 계정을 만들고 환경 변수를 설정하여 인증을 설정해야 합니다.
+
+Provide authentication credentials to your application code by setting the environment variable GOOGLE_APPLICATION_CREDENTIALS. This variable applies only to your current shell session. If you want the variable to apply to future shell sessions, set the variable in your shell startup file, for example in the ~/.bashrc or ~/.profile file.
+
+## 앱에 서버 클라이언트 라이브러리 추가
+필요한 종속 항목과 클라이언트 라이브러리를 앱에 추가합니다.
+
+## 기본 모드에서 Firestore 초기화
+Firestore의 인스턴스를 초기화합니다.
+
+## 데이터 추가
+Firestore는 컬렉션에 저장되는 문서에 데이터를 저장합니다. 문서에 데이터를 처음 추가할 때 Firestore는 암시적으로 컬렉션과 문서를 만듭니다. 컬렉션이나 문서를 명시적으로 만들 필요가 없습니다.
+
+다음 예시 코드를 사용해 새 컬렉션과 문서를 만듭니다.
+
+이제 users 컬렉션에 다른 문서를 추가합니다. 첫 번째 문서에는 나타나지 않는 키-값 쌍(중간 이름)이 문서에 포함된다는 점에 유의하세요. 컬렉션의 문서에는 다른 정보 집합이 포함될 수 있습니다.
+
+## 데이터 읽기
+Firestore에 추가한 데이터를 빠르게 확인하려면 Firebase Console의 데이터 뷰어를 사용합니다.
+
+get 메서드를 사용하여 전체 컬렉션을 검색할 수도 있습니다.
+
+## 다음 단계
+다음 주제를 자세히 알아보세요.
+
+데이터 모델 - 계층적 데이터와 하위 컬렉션을 비롯한 Firestore에서 데이터가 구조화되는 방식을 자세히 알아보세요.
+
+데이터 추가 - Firestore에서 데이터를 만들고 업데이트하는 방법을 자세히 알아보세요.
+
+데이터 가져오기 - 데이터를 검색하는 방법을 자세히 알아보세요.
+
+단순 쿼리 및 복합 쿼리 실행 - 단순 쿼리 및 복합 쿼리 실행 방법을 알아보세요.
+
+쿼리 순서 지정 및 제한 - 쿼리에서 반환된 데이터의 순서를 지정하고 제한하는 방법을 알아보세요.

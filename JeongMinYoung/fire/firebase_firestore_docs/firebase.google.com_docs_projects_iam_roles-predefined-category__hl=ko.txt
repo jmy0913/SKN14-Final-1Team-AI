@@ -1,0 +1,150 @@
+Source URL: https://firebase.google.com/docs/projects/iam/roles-predefined-category?hl=ko
+
+## 서문
+이 역할은 제품 그룹에 대한 전체 읽기/쓰기 또는 읽기 전용 액세스 권한을 부여합니다. Google Analytics 및 일반 제품 카테고리를 중심으로 구성됩니다.
+
+Firebase Console 또는 Google Cloud 콘솔을 사용하여 이러한 제품 카테고리 역할을 프로젝트 구성원에게 할당합니다.
+
+## Firebase 애널리틱스 역할
+Google Analytics
+
+Firebase 애널리틱스 관리자  권한
+
+Firebase 애널리틱스 뷰어  권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase 애널리틱스 관리자
+roles/firebase.analyticsAdmin | 전체 읽기/쓰기 액세스 대상:
+Google Analytics | Firebase 애널리틱스 관리자  권한 |
+| Firebase 애널리틱스 뷰어
+roles/firebase.analyticsViewer | 읽기 전용 액세스 대상:
+Google Analytics | Firebase 애널리틱스 뷰어  권한 |
+
+## Firebase 개발 역할
+Google Analytics
+
+Firebase App Check
+
+Firebase App Hosting
+
+Firebase Authentication
+
+Firebase Realtime Database
+
+Cloud Firestore
+
+Cloud Storage for Firebase
+
+Firebase Hosting
+
+Cloud Functions for Firebase
+(함수를 배포하려면 특별한 구성이 필요하ㅁ)
+
+Firebase ML
+
+Firebase 개발 관리자  권한
+
+Cloud Functions for Firebase
+
+Firebase 개발 뷰어  권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase 개발 관리자
+roles/firebase.developAdmin | 전체 읽기/쓰기 액세스 대상:
+Google Analytics
+Firebase App Check
+Firebase App Hosting
+Firebase Authentication
+Firebase Realtime Database
+Cloud Firestore
+Cloud Storage for Firebase
+Firebase Hosting
+Cloud Functions for Firebase
+(함수를 배포하려면 특별한 구성이 필요하ㅁ)
+Firebase ML | Firebase 개발 관리자  권한 |
+| Firebase 개발 뷰어
+roles/firebase.developViewer | 읽기 전용 액세스 대상:
+Google Analytics
+Firebase App Check
+Firebase App Hosting
+Firebase Authentication
+Firebase Realtime Database
+Cloud Firestore
+Cloud Storage for Firebase
+Firebase Hosting
+Cloud Functions for Firebase
+Firebase ML | Firebase 개발 뷰어  권한 |
+
+## Firebase 품질 역할
+Google Analytics
+
+Firebase App Distribution
+
+Firebase Crashlytics
+
+Firebase Performance Monitoring
+
+Firebase 품질 관리자  권한
+
+Firebase 품질 뷰어  권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase 품질 관리자
+roles/firebase.qualityAdmin | 전체 읽기/쓰기 액세스 대상:
+Google Analytics
+Firebase App Distribution
+Firebase Crashlytics
+Firebase Performance Monitoring | Firebase 품질 관리자  권한 |
+| Firebase 품질 뷰어
+roles/firebase.qualityViewer | 읽기 전용 액세스 대상:
+Google Analytics
+Firebase App Distribution
+Firebase Crashlytics
+Firebase Performance Monitoring | Firebase 품질 뷰어  권한 |
+
+## Firebase 성장 역할
+Google Analytics
+
+Firebase A/B Testing
+
+Firebase 메시징 캠페인
+
+Firebase Cloud Messaging
+
+Firebase In-App Messaging
+
+Firebase Remote Config
+
+Firebase Dynamic Links
+
+Firebase 성장 관리자  권한
+
+Firebase 성장 뷰어  권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase 성장 관리자
+roles/firebase.growthAdmin | 전체 읽기/쓰기 액세스 대상:
+Google Analytics
+Firebase A/B Testing
+Firebase 메시징 캠페인
+Firebase Cloud Messaging
+Firebase In-App Messaging
+Firebase Remote Config
+Firebase Dynamic Links | Firebase 성장 관리자  권한 |
+| Firebase 성장 뷰어
+roles/firebase.growthViewer | 읽기 전용 액세스 대상:
+Google Analytics
+Firebase A/B Testing
+Firebase 메시징 캠페인
+Firebase Cloud Messaging
+Firebase In-App Messaging
+Firebase Remote Config
+Firebase Dynamic Links | Firebase 성장 뷰어  권한 |

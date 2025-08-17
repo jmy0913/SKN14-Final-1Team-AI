@@ -1,0 +1,2226 @@
+Source URL: https://firebase.google.com/docs/reference/js/firebase.firestore?hl=ko
+
+## Functions
+### 표
+| Function | Description |
+| --- | --- |
+| function(app, ...) |  |
+| getFirestore(app) | Returns the existing default Firestore instance that is associated with the provided FirebaseApp. If no instance exists, initializes a new instance with default settings. |
+| getFirestore(app, databaseId) | (Public Preview) Returns the existing named Firestore instance that is associated with the provided FirebaseApp. If no instance exists, initializes a new instance with default settings. |
+| initializeFirestore(app, settings, databaseId) | Initializes a new instance of Firestore with the provided settings. Can only be called before any other function, including getFirestore(). If the custom settings are empty, this function is equivalent to calling getFirestore(). |
+| function(db, ...) |  |
+| documentSnapshotFromJSON(db, json) | Builds a DocumentSnapshot instance from a JSON object created by DocumentSnapshot.toJSON(). |
+| documentSnapshotFromJSON(db, json, converter) | Builds a DocumentSnapshot instance from a JSON object created by DocumentSnapshot.toJSON(). |
+| querySnapshotFromJSON(db, json) | Builds a QuerySnapshot instance from a JSON object created by QuerySnapshot.toJSON(). |
+| querySnapshotFromJSON(db, json, converter) | Builds a QuerySnapshot instance from a JSON object created by QuerySnapshot.toJSON(). |
+| function(firestore, ...) |  |
+| clearIndexedDbPersistence(firestore) | Clears the persistent storage. This includes pending writes and cached documents.Must be called while the Firestore instance is not started (after the app is terminated or when the app is first initialized). On startup, this function must be called before other functions (other than initializeFirestore() or getFirestore())). If the Firestore instance is still running, the promise will be rejected with the error code of failed-precondition.Note: clearIndexedDbPersistence() is primarily intended to help write reliable tests that use Cloud Firestore. It uses an efficient mechanism for dropping existing data but does not attempt to securely overwrite or otherwise make cached data unrecoverable. For applications that are sensitive to the disclosure of cached data in between user sessions, we strongly recommend not enabling persistence at all. |
+| collection(firestore, path, pathSegments) | Gets a CollectionReference instance that refers to the collection at the specified absolute path. |
+| collectionGroup(firestore, collectionId) | Creates and returns a new Query instance that includes all documents in the database that are contained in a collection or subcollection with the given collectionId. |
+| connectFirestoreEmulator(firestore, host, port, options) | Modify this instance to communicate with the Cloud Firestore emulator.Note: This must be called before this instance has been used to do any operations. |
+| disableNetwork(firestore) | Disables network usage for this instance. It can be re-enabled via enableNetwork(). While the network is disabled, any snapshot listeners, getDoc() or getDocs() calls will return results from cache, and any write operations will be queued until the network is restored. |
+| doc(firestore, path, pathSegments) | Gets a DocumentReference instance that refers to the document at the specified absolute path. |
+| enableIndexedDbPersistence(firestore, persistenceSettings) | Attempts to enable persistent storage, if possible.On failure, enableIndexedDbPersistence() will reject the promise or throw an exception. There are several reasons why this can fail, which can be identified by the code on the error.* failed-precondition: The app is already open in another browser tab. * unimplemented: The browser is incompatible with the offline persistence implementation.Note that even after a failure, the Firestore instance will remain usable, however offline persistence will be disabled.Note: enableIndexedDbPersistence() must be called before any other functions (other than initializeFirestore(), getFirestore() or clearIndexedDbPersistence().Persistence cannot be used in a Node.js environment. |
+| enableMultiTabIndexedDbPersistence(firestore) | Attempts to enable multi-tab persistent storage, if possible. If enabled across all tabs, all operations share access to local persistence, including shared execution of queries and latency-compensated local document updates across all connected instances.On failure, enableMultiTabIndexedDbPersistence() will reject the promise or throw an exception. There are several reasons why this can fail, which can be identified by the code on the error.* failed-precondition: The app is already open in another browser tab and multi-tab is not enabled. * unimplemented: The browser is incompatible with the offline persistence implementation.Note that even after a failure, the Firestore instance will remain usable, however offline persistence will be disabled. |
+| enableNetwork(firestore) | Re-enables use of the network for this Firestore instance after a prior call to disableNetwork(). |
+| getPersistentCacheIndexManager(firestore) | Returns the PersistentCache Index Manager used by the given Firestore object. The PersistentCacheIndexManager instance, or null if local persistent storage is not in use. |
+| loadBundle(firestore, bundleData) | Loads a Firestore bundle into the local cache. |
+| namedQuery(firestore, name) | Reads a Firestore Query from local cache, identified by the given name.The named queries are packaged into bundles on the server side (along with resulting documents), and loaded to local cache using loadBundle. Once in local cache, use this method to extract a Query by name. |
+| onSnapshotResume(firestore, snapshotJson, onNext, onError, onCompletion, converter) | Attaches a listener for QuerySnapshot events based on data generated by invoking QuerySnapshot.toJSON() You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshotResume(firestore, snapshotJson, onNext, onError, onCompletion, converter) | Attaches a listener for DocumentSnapshot events based on data generated by invoking DocumentSnapshot.toJSON(). You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshotResume(firestore, snapshotJson, options, onNext, onError, onCompletion, converter) | Attaches a listener for QuerySnapshot events based on data generated by invoking QuerySnapshot.toJSON(). You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshotResume(firestore, snapshotJson, options, onNext, onError, onCompletion, converter) | Attaches a listener for DocumentSnapshot events based on data generated by invoking DocumentSnapshot.toJSON(). You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshotResume(firestore, snapshotJson, observer, converter) | Attaches a listener for QuerySnapshot events based on QuerySnapshot data generated by invoking QuerySnapshot.toJSON(). You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshotResume(firestore, snapshotJson, observer, converter) | Attaches a listener for DocumentSnapshot events based on data generated by invoking DocumentSnapshot.toJSON() You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshotResume(firestore, snapshotJson, options, observer, converter) | Attaches a listener for QuerySnapshot events based on QuerySnapshot data generated by invoking QuerySnapshot.toJSON() You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshotResume(firestore, snapshotJson, options, observer, converter) | Attaches a listener for DocumentSnapshot events based on QuerySnapshot data generated by invoking DocumentSnapshot.toJSON() You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshotsInSync(firestore, observer) | Attaches a listener for a snapshots-in-sync event. The snapshots-in-sync event indicates that all listeners affected by a given change have fired, even if a single server-generated change affects multiple listeners.NOTE: The snapshots-in-sync event only indicates that listeners are in sync with each other, but does not relate to whether those snapshots are in sync with the server. Use SnapshotMetadata in the individual listeners to determine if a snapshot is from the cache or the server. |
+| onSnapshotsInSync(firestore, onSync) | Attaches a listener for a snapshots-in-sync event. The snapshots-in-sync event indicates that all listeners affected by a given change have fired, even if a single server-generated change affects multiple listeners.NOTE: The snapshots-in-sync event only indicates that listeners are in sync with each other, but does not relate to whether those snapshots are in sync with the server. Use SnapshotMetadata in the individual listeners to determine if a snapshot is from the cache or the server. |
+| runTransaction(firestore, updateFunction, options) | Executes the given updateFunction and then attempts to commit the changes applied within the transaction. If any document read within the transaction has changed, Cloud Firestore retries the updateFunction. If it fails to commit after 5 attempts, the transaction fails.The maximum number of writes allowed in a single transaction is 500. |
+| setIndexConfiguration(firestore, configuration) | (Public Preview) Configures indexing for local query execution. Any previous index configuration is overridden. The Promise resolves once the index configuration has been persisted.The index entries themselves are created asynchronously. You can continue to use queries that require indexing even if the indices are not yet available. Query execution will automatically start using the index once the index entries have been written.Indexes are only supported with IndexedDb persistence. If IndexedDb is not enabled, any index configuration is ignored. |
+| setIndexConfiguration(firestore, json) | (Public Preview) Configures indexing for local query execution. Any previous index configuration is overridden. The Promise resolves once the index configuration has been persisted.The index entries themselves are created asynchronously. You can continue to use queries that require indexing even if the indices are not yet available. Query execution will automatically start using the index once the index entries have been written.Indexes are only supported with IndexedDb persistence. Invoke either enableIndexedDbPersistence() or enableMultiTabIndexedDbPersistence() before setting an index configuration. If IndexedDb is not enabled, any index configuration is ignored.The method accepts the JSON format exported by the Firebase CLI (firebase firestore:indexes). If the JSON format is invalid, this method throws an error. |
+| terminate(firestore) | Terminates the provided Firestore instance.After calling terminate() only the clearIndexedDbPersistence() function may be used. Any other function will throw a FirestoreError.To restart after termination, create a new instance of FirebaseFirestore with getFirestore().Termination does not cancel any pending writes, and any promises that are awaiting a response from the server will not be resolved. If you have persistence enabled, the next time you start this instance, it will resume sending these writes to the server.Note: Under normal circumstances, calling terminate() is not required. This function is useful only when you want to force this instance to release all of its resources or in combination with clearIndexedDbPersistence() to ensure that all local state is destroyed between test runs. |
+| waitForPendingWrites(firestore) | Waits until all currently pending writes for the active user have been acknowledged by the backend.The returned promise resolves immediately if there are no outstanding writes. Otherwise, the promise waits for all previously issued writes (including those written in a previous app session), but it does not wait for writes that were added after the function is called. If you want to wait for additional writes, call waitForPendingWrites() again.Any outstanding waitForPendingWrites() promises are rejected during user changes. |
+| writeBatch(firestore) | Creates a write batch, used for performing multiple writes as a single atomic operation. The maximum number of writes allowed in a single WriteBatch is 500.Unlike transactions, write batches are persisted offline and therefore are preferable when you don't need to condition your writes on read data. |
+| function() |  |
+| count() | Create an AggregateField object that can be used to compute the count of documents in the result set of a query. |
+| deleteField() | Returns a sentinel for use with updateDoc() or setDoc() with {merge: true} to mark a field for deletion. |
+| documentId() | Returns a special sentinel FieldPath to refer to the ID of a document. It can be used in queries to sort or filter by the document ID. |
+| getFirestore() | Returns the existing default Firestore instance that is associated with the default FirebaseApp. If no instance exists, initializes a new instance with default settings. |
+| memoryEagerGarbageCollector() | Creates an instance of MemoryEagerGarbageCollector. This is also the default garbage collector unless it is explicitly specified otherwise. |
+| persistentMultipleTabManager() | Creates an instance of PersistentMultipleTabManager. |
+| serverTimestamp() | Returns a sentinel used with setDoc() or updateDoc() to include a server-generated timestamp in the written data. |
+| function(databaseId, ...) |  |
+| getFirestore(databaseId) | (Public Preview) Returns the existing named Firestore instance that is associated with the default FirebaseApp. If no instance exists, initializes a new instance with default settings. |
+| function(elements, ...) |  |
+| arrayRemove(elements) | Returns a special value that can be used with setDoc() or that tells the server to remove the given elements from any array value that already exists on the server. All instances of each element specified will be removed from the array. If the field being modified is not already an array it will be overwritten with an empty array. |
+| arrayUnion(elements) | Returns a special value that can be used with setDoc() or updateDoc() that tells the server to union the given elements with any array value that already exists on the server. Each specified element that doesn't already exist in the array will be added to the end. If the field being modified is not already an array it will be overwritten with an array containing exactly the specified elements. |
+| function(field, ...) |  |
+| average(field) | Create an AggregateField object that can be used to compute the average of a specified field over a range of documents in the result set of a query. |
+| sum(field) | Create an AggregateField object that can be used to compute the sum of a specified field over a range of documents in the result set of a query. |
+| function(fieldPath, ...) |  |
+| orderBy(fieldPath, directionStr) | Creates a QueryOrderByConstraint that sorts the query result by the specified field, optionally in descending order instead of ascending.Note: Documents that do not contain the specified field will not be present in the query result. |
+| where(fieldPath, opStr, value) | Creates a QueryFieldFilterConstraint that enforces that documents must contain the specified field and that the value should satisfy the relation constraint provided. |
+| function(fieldValues, ...) |  |
+| endAt(fieldValues) | Creates a QueryEndAtConstraint that modifies the result set to end at the provided fields relative to the order of the query. The order of the field values must match the order of the order by clauses of the query. |
+| endBefore(fieldValues) | Creates a QueryEndAtConstraint that modifies the result set to end before the provided fields relative to the order of the query. The order of the field values must match the order of the order by clauses of the query. |
+| startAfter(fieldValues) | Creates a QueryStartAtConstraint that modifies the result set to start after the provided fields relative to the order of the query. The order of the field values must match the order of the order by clauses of the query. |
+| startAt(fieldValues) | Creates a QueryStartAtConstraint that modifies the result set to start at the provided fields relative to the order of the query. The order of the field values must match the order of the order by clauses of the query. |
+| function(indexManager, ...) |  |
+| deleteAllPersistentCacheIndexes(indexManager) | Removes all persistent cache indexes.Please note this function will also deletes indexes generated by setIndexConfiguration(), which is deprecated. |
+| disablePersistentCacheIndexAutoCreation(indexManager) | Stops creating persistent cache indexes automatically for local query execution. The indexes which have been created by calling enablePersistentCacheIndexAutoCreation() still take effect. |
+| enablePersistentCacheIndexAutoCreation(indexManager) | Enables the SDK to create persistent cache indexes automatically for local query execution when the SDK believes cache indexes can help improve performance.This feature is disabled by default. |
+| function(left, ...) |  |
+| aggregateFieldEqual(left, right) | Compares two 'AggregateField` instances for equality. |
+| aggregateQuerySnapshotEqual(left, right) | Compares two AggregateQuerySnapshot instances for equality.Two AggregateQuerySnapshot instances are considered "equal" if they have underlying queries that compare equal, and the same data. |
+| queryEqual(left, right) | Returns true if the provided queries point to the same collection and apply the same constraints. |
+| refEqual(left, right) | Returns true if the provided references are equal. |
+| snapshotEqual(left, right) | Returns true if the provided snapshots are equal. |
+| function(limit, ...) |  |
+| limit(limit) | Creates a QueryLimitConstraint that only returns the first matching documents. |
+| limitToLast(limit) | Creates a QueryLimitConstraint that only returns the last matching documents.You must specify at least one orderBy clause for limitToLast queries, otherwise an exception will be thrown during execution. |
+| function(logLevel, ...) |  |
+| setLogLevel(logLevel) | Sets the verbosity of Cloud Firestore logs (debug, error, or silent). |
+| function(n, ...) |  |
+| increment(n) | Returns a special value that can be used with setDoc() or updateDoc() that tells the server to increment the field's current value by the given value.If either the operand or the current field value uses floating point precision, all arithmetic follows IEEE 754 semantics. If both values are integers, values outside of JavaScript's safe number range (Number.MIN_SAFE_INTEGER to Number.MAX_SAFE_INTEGER) are also subject to precision loss. Furthermore, once processed by the Firestore backend, all integer operations are capped between -2^63 and 2^63-1.If the current field value is not of type number, or if the field does not yet exist, the transformation sets the field to the given value. |
+| function(query, ...) |  |
+| getAggregateFromServer(query, aggregateSpec) | Calculates the specified aggregations over the documents in the result set of the given query without actually downloading the documents.Using this function to perform aggregations is efficient because only the final aggregation values, not the documents' data, are downloaded. This function can perform aggregations of the documents in cases where the result set is prohibitively large to download entirely (thousands of documents).The result received from the server is presented, unaltered, without considering any local state. That is, documents in the local cache are not taken into consideration, neither are local modifications not yet synchronized with the server. Previously-downloaded results, if any, are not used. Every invocation of this function necessarily involves a round trip to the server. |
+| getCountFromServer(query) | Calculates the number of documents in the result set of the given query without actually downloading the documents.Using this function to count the documents is efficient because only the final count, not the documents' data, is downloaded. This function can count the documents in cases where the result set is prohibitively large to download entirely (thousands of documents).The result received from the server is presented, unaltered, without considering any local state. That is, documents in the local cache are not taken into consideration, neither are local modifications not yet synchronized with the server. Previously-downloaded results, if any, are not used. Every invocation of this function necessarily involves a round trip to the server. |
+| getDocs(query) | Executes the query and returns the results as a QuerySnapshot.Note: getDocs() attempts to provide up-to-date data when possible by waiting for data from the server, but it may return cached data or fail if you are offline and the server cannot be reached. To specify this behavior, invoke getDocsFromCache() or getDocsFromServer(). |
+| getDocsFromCache(query) | Executes the query and returns the results as a QuerySnapshot from cache. Returns an empty result set if no documents matching the query are currently cached. |
+| getDocsFromServer(query) | Executes the query and returns the results as a QuerySnapshot from the server. Returns an error if the network is not available. |
+| onSnapshot(query, observer) | Attaches a listener for QuerySnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshot(query, options, observer) | Attaches a listener for QuerySnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshot(query, onNext, onError, onCompletion) | Attaches a listener for QuerySnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshot(query, options, onNext, onError, onCompletion) | Attaches a listener for QuerySnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| query(query, compositeFilter, queryConstraints) | Creates a new immutable instance of Query that is extended to also include additional query constraints. |
+| query(query, queryConstraints) | Creates a new immutable instance of Query that is extended to also include additional query constraints. |
+| function(queryConstraints, ...) |  |
+| and(queryConstraints) | Creates a new QueryCompositeFilterConstraint that is a conjunction of the given filter constraints. A conjunction filter includes a document if it satisfies all of the given filters. |
+| or(queryConstraints) | Creates a new QueryCompositeFilterConstraint that is a disjunction of the given filter constraints. A disjunction filter includes a document if it satisfies any of the given filters. |
+| function(reference, ...) |  |
+| addDoc(reference, data) | Add a new document to specified CollectionReference with the given data, assigning it a document ID automatically. |
+| collection(reference, path, pathSegments) | Gets a CollectionReference instance that refers to a subcollection of reference at the specified relative path. |
+| collection(reference, path, pathSegments) | Gets a CollectionReference instance that refers to a subcollection of reference at the specified relative path. |
+| deleteDoc(reference) | Deletes the document referred to by the specified DocumentReference. |
+| doc(reference, path, pathSegments) | Gets a DocumentReference instance that refers to a document within reference at the specified relative path. If no path is specified, an automatically-generated unique ID will be used for the returned DocumentReference. |
+| doc(reference, path, pathSegments) | Gets a DocumentReference instance that refers to a document within reference at the specified relative path. |
+| getDoc(reference) | Reads the document referred to by this DocumentReference.Note: getDoc() attempts to provide up-to-date data when possible by waiting for data from the server, but it may return cached data or fail if you are offline and the server cannot be reached. To specify this behavior, invoke getDocFromCache() or getDocFromServer(). |
+| getDocFromCache(reference) | Reads the document referred to by this DocumentReference from cache. Returns an error if the document is not currently cached. |
+| getDocFromServer(reference) | Reads the document referred to by this DocumentReference from the server. Returns an error if the network is not available. |
+| onSnapshot(reference, observer) | Attaches a listener for DocumentSnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshot(reference, options, observer) | Attaches a listener for DocumentSnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshot(reference, onNext, onError, onCompletion) | Attaches a listener for DocumentSnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| onSnapshot(reference, options, onNext, onError, onCompletion) | Attaches a listener for DocumentSnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks.NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending. |
+| setDoc(reference, data) | Writes to the document referred to by this DocumentReference. If the document does not yet exist, it will be created. |
+| setDoc(reference, data, options) | Writes to the document referred to by the specified DocumentReference. If the document does not yet exist, it will be created. If you provide merge or mergeFields, the provided data can be merged into an existing document. |
+| updateDoc(reference, data) | Updates fields in the document referred to by the specified DocumentReference. The update will fail if applied to a document that does not exist. |
+| updateDoc(reference, field, value, moreFieldsAndValues) | Updates fields in the document referred to by the specified DocumentReference The update will fail if applied to a document that does not exist.Nested fields can be updated by providing dot-separated field path strings or by providing FieldPath objects. |
+| function(settings, ...) |  |
+| memoryLocalCache(settings) | Creates an instance of MemoryLocalCache. The instance can be set to FirestoreSettings.cache to tell the SDK which cache layer to use. |
+| memoryLruGarbageCollector(settings) | Creates an instance of MemoryLruGarbageCollector.A target size can be specified as part of the setting parameter. The collector will start deleting documents once the cache size exceeds the given size. The default cache size is 40MB (40 * 1024 * 1024 bytes). |
+| persistentLocalCache(settings) | Creates an instance of PersistentLocalCache. The instance can be set to FirestoreSettings.cache to tell the SDK which cache layer to use.Persistent cache cannot be used in a Node.js environment. |
+| persistentSingleTabManager(settings) | Creates an instance of PersistentSingleTabManager. |
+| function(snapshot, ...) |  |
+| endAt(snapshot) | Creates a QueryEndAtConstraint that modifies the result set to end at the provided document (inclusive). The end position is relative to the order of the query. The document must contain all of the fields provided in the orderBy of the query. |
+| endBefore(snapshot) | Creates a QueryEndAtConstraint that modifies the result set to end before the provided document (exclusive). The end position is relative to the order of the query. The document must contain all of the fields provided in the orderBy of the query. |
+| startAfter(snapshot) | Creates a QueryStartAtConstraint that modifies the result set to start after the provided document (exclusive). The starting position is relative to the order of the query. The document must contain all of the fields provided in the orderBy of the query. |
+| startAt(snapshot) | Creates a QueryStartAtConstraint that modifies the result set to start at the provided document (inclusive). The starting position is relative to the order of the query. The document must contain all of the fields provided in the orderBy of this query. |
+| function(values, ...) |  |
+| vector(values) | Creates a new VectorValue constructed with a copy of the given array of numbers. |
+
+## Classes
+### 표
+| Class | Description |
+| --- | --- |
+| AggregateField | Represents an aggregation that can be performed by Firestore. |
+| AggregateQuerySnapshot | The results of executing an aggregation query. |
+| Bytes | An immutable object representing an array of bytes. |
+| CollectionReference | A CollectionReference object can be used for adding documents, getting document references, and querying for documents (using query()). |
+| DocumentReference | A DocumentReference refers to a document location in a Firestore database and can be used to write, read, or listen to the location. The document at the referenced location may or may not exist. |
+| DocumentSnapshot | A DocumentSnapshot contains data read from a document in your Firestore database. The data can be extracted with .data() or .get(<field>) to get a specific field.For a DocumentSnapshot that points to a non-existing document, any data access will return 'undefined'. You can use the exists() method to explicitly verify a document's existence. |
+| FieldPath | A FieldPath refers to a field in a document. The path may consist of a single field name (referring to a top-level field in the document), or a list of field names (referring to a nested field in the document).Create a FieldPath by providing field names. If more than one field name is provided, the path will point to a nested field in a document. |
+| FieldValue | Sentinel values that can be used when writing document fields with set() or update(). |
+| Firestore | The Cloud Firestore service interface.Do not call this constructor directly. Instead, use getFirestore(). |
+| FirestoreError | An error returned by a Firestore operation. |
+| GeoPoint | An immutable object representing a geographic location in Firestore. The location is represented as latitude/longitude pair.Latitude values are in the range of [-90, 90]. Longitude values are in the range of [-180, 180]. |
+| LoadBundleTask | Represents the task of loading a Firestore bundle. It provides progress of bundle loading, as well as task completion and error events.The API is compatible with Promise<LoadBundleTaskProgress>. |
+| PersistentCacheIndexManager | A PersistentCacheIndexManager for configuring persistent cache indexes used for local query execution.To use, call getPersistentCacheIndexManager() to get an instance. |
+| Query | A Query refers to a query which you can read or listen to. You can also construct refined Query objects by adding filters and ordering. |
+| QueryCompositeFilterConstraint | A QueryCompositeFilterConstraint is used to narrow the set of documents returned by a Firestore query by performing the logical OR or AND of multiple QueryFieldFilterConstraints or QueryCompositeFilterConstraints. QueryCompositeFilterConstraints are created by invoking or() or and() and can then be passed to query() to create a new query instance that also contains the QueryCompositeFilterConstraint. |
+| QueryConstraint | A QueryConstraint is used to narrow the set of documents returned by a Firestore query. QueryConstraints are created by invoking where(), orderBy(), startAt(), startAfter(), endBefore(), endAt(), limit(), limitToLast() and can then be passed to query() to create a new query instance that also contains this QueryConstraint. |
+| QueryDocumentSnapshot | A QueryDocumentSnapshot contains data read from a document in your Firestore database as part of a query. The document is guaranteed to exist and its data can be extracted with .data() or .get(<field>) to get a specific field.A QueryDocumentSnapshot offers the same API surface as a DocumentSnapshot. Since query results contain only existing documents, the exists property will always be true and data() will never return 'undefined'. |
+| QueryEndAtConstraint | A QueryEndAtConstraint is used to exclude documents from the end of a result set returned by a Firestore query. QueryEndAtConstraints are created by invoking endAt() or endBefore() and can then be passed to query() to create a new query instance that also contains this QueryEndAtConstraint. |
+| QueryFieldFilterConstraint | A QueryFieldFilterConstraint is used to narrow the set of documents returned by a Firestore query by filtering on one or more document fields. QueryFieldFilterConstraints are created by invoking where() and can then be passed to query() to create a new query instance that also contains this QueryFieldFilterConstraint. |
+| QueryLimitConstraint | A QueryLimitConstraint is used to limit the number of documents returned by a Firestore query. QueryLimitConstraints are created by invoking limit() or limitToLast() and can then be passed to query() to create a new query instance that also contains this QueryLimitConstraint. |
+| QueryOrderByConstraint | A QueryOrderByConstraint is used to sort the set of documents returned by a Firestore query. QueryOrderByConstraints are created by invoking orderBy() and can then be passed to query() to create a new query instance that also contains this QueryOrderByConstraint.Note: Documents that do not contain the orderBy field will not be present in the query result. |
+| QuerySnapshot | A QuerySnapshot contains zero or more DocumentSnapshot objects representing the results of a query. The documents can be accessed as an array via the docs property or enumerated using the forEach method. The number of documents can be determined via the empty and size properties. |
+| QueryStartAtConstraint | A QueryStartAtConstraint is used to exclude documents from the start of a result set returned by a Firestore query. QueryStartAtConstraints are created by invoking startAt() or startAfter() and can then be passed to query() to create a new query instance that also contains this QueryStartAtConstraint. |
+| SnapshotMetadata | Metadata about a snapshot, describing the state of the snapshot. |
+| Timestamp | A Timestamp represents a point in time independent of any time zone or calendar, represented as seconds and fractions of seconds at nanosecond resolution in UTC Epoch time.It is encoded using the Proleptic Gregorian Calendar which extends the Gregorian calendar backwards to year one. It is encoded assuming all minutes are 60 seconds long, i.e. leap seconds are "smeared" so that no leap second table is needed for interpretation. Range is from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59.999999999Z.For examples and further specifications, refer to the Timestamp definition. |
+| Transaction | A reference to a transaction.The Transaction object passed to a transaction's updateFunction provides the methods to read and write data within the transaction context. See runTransaction(). |
+| VectorValue | Represents a vector type in Firestore documents. Create an instance with vector(). VectorValue |
+| WriteBatch | A write batch, used to perform multiple writes as a single atomic unit.A WriteBatch object can be acquired by calling writeBatch(). It provides methods for adding writes to the write batch. None of the writes will be committed (or visible locally) until WriteBatch.commit() is called. |
+
+## Interfaces
+### 표
+| Interface | Description |
+| --- | --- |
+| AggregateSpec | Specifies a set of aggregations and their aliases. |
+| DocumentChange | A DocumentChange represents a change to the documents matching a query. It contains the document affected and the type of change that occurred. |
+| DocumentData | Document data (for use with setDoc()) consists of fields mapped to values. |
+| ExperimentalLongPollingOptions | Options that configure the SDK’s underlying network transport (WebChannel) when long-polling is used.Note: This interface is "experimental" and is subject to change.See FirestoreSettings.experimentalAutoDetectLongPolling, FirestoreSettings.experimentalForceLongPolling, and FirestoreSettings.experimentalLongPollingOptions. |
+| FirestoreDataConverter | Converter used by withConverter() to transform user objects of type AppModelType into Firestore data of type DbModelType.Using the converter allows you to specify generic type arguments when storing and retrieving objects from Firestore.In this context, an "AppModel" is a class that is used in an application to package together related information and functionality. Such a class could, for example, have properties with complex, nested data types, properties used for memoization, properties of types not supported by Firestore (such as symbol and bigint), and helper functions that perform compound operations. Such classes are not suitable and/or possible to store into a Firestore database. Instead, instances of such classes need to be converted to "plain old JavaScript objects" (POJOs) with exclusively primitive properties, potentially nested inside other POJOs or arrays of POJOs. In this context, this type is referred to as the "DbModel" and would be an object suitable for persisting into Firestore. For convenience, applications can implement FirestoreDataConverter and register the converter with Firestore objects, such as DocumentReference or Query, to automatically convert AppModel to DbModel when storing into Firestore, and convert DbModel to AppModel when retrieving from Firestore. |
+| FirestoreSettings | Specifies custom configurations for your Cloud Firestore instance. You must set these before invoking any other methods. |
+| Index | (Public Preview) The SDK definition of a Firestore index. |
+| IndexConfiguration | (Public Preview) A list of Firestore indexes to speed up local query execution.See JSON Format for a description of the format of the index definition. |
+| IndexField | (Public Preview) A single field element in an index configuration. |
+| LoadBundleTaskProgress | Represents a progress update or a final state from loading bundles. |
+| MemoryCacheSettings | An settings object to configure an MemoryLocalCache instance. |
+| MemoryEagerGarbageCollector | A garbage collector deletes documents whenever they are not part of any active queries, and have no local mutations attached to them.This collector tries to ensure lowest memory footprints from the SDK, at the risk of documents not being cached for offline queries or for direct queries to the cache.Use factory function to create an instance of this collector. |
+| MemoryLocalCache | Provides an in-memory cache to the SDK. This is the default cache unless explicitly configured otherwise.To use, create an instance using the factory function , then set the instance to FirestoreSettings.cache and call initializeFirestore using the settings object. |
+| MemoryLruGarbageCollector | A garbage collector deletes Least-Recently-Used documents in multiple batches.This collector is configured with a target size, and will only perform collection when the cached documents exceed the target size. It avoids querying backend repeated for the same query or document, at the risk of having a larger memory footprint.Use factory function to create a instance of this collector. |
+| PersistenceSettings | Settings that can be passed to enableIndexedDbPersistence() to configure Firestore persistence.Persistence cannot be used in a Node.js environment. |
+| PersistentCacheSettings | An settings object to configure an PersistentLocalCache instance.Persistent cache cannot be used in a Node.js environment. |
+| PersistentLocalCache | Provides a persistent cache backed by IndexedDb to the SDK.To use, create an instance using the factory function , then set the instance to FirestoreSettings.cache and call initializeFirestore using the settings object. |
+| PersistentMultipleTabManager | A tab manager supporting multiple tabs. SDK will synchronize queries and mutations done across all tabs using the SDK. |
+| PersistentSingleTabManager | A tab manager supporting only one tab, no synchronization will be performed across tabs. |
+| PersistentSingleTabManagerSettings | Type to configure an PersistentSingleTabManager instance. |
+| SnapshotListenOptions | An options object that can be passed to onSnapshot() and QuerySnapshot.docChanges() to control which types of changes to include in the result set. |
+| SnapshotOptions | Options that configure how data is retrieved from a DocumentSnapshot (for example the desired behavior for server timestamps that have not yet been set to their final value). |
+| TransactionOptions | Options to customize transaction behavior. |
+| Unsubscribe | A function returned by onSnapshot() that removes the listener when invoked. |
+
+## Variables
+### 표
+| Variable | Description |
+| --- | --- |
+| CACHE_SIZE_UNLIMITED | Constant used to indicate the LRU garbage collection should be disabled. Set this value as the cacheSizeBytes on the settings passed to the Firestore instance. |
+
+## Type Aliases
+### 표
+| Type Alias | Description |
+| --- | --- |
+| AddPrefixToKeys | Returns a new map where every key is prefixed with the outer key appended to a dot. |
+| AggregateFieldType | The union of all AggregateField types that are supported by Firestore. |
+| AggregateSpecData | A type whose keys are taken from an AggregateSpec, and whose values are the result of the aggregation performed by the corresponding AggregateField from the input AggregateSpec. |
+| AggregateType | Union type representing the aggregate type to be performed. |
+| ChildUpdateFields | Helper for calculating the nested fields for a given type T1. This is needed to distribute union types such as undefined | {...} (happens for optional props) or {a: A} | {b: B}.In this use case, V is used to distribute the union types of T[K] on Record, since T[K] is evaluated as an expression and not distributed.See https://www.typescriptlang.org/docs/handbook/advanced-types.html#distributive-conditional-types |
+| DocumentChangeType | The type of a DocumentChange may be 'added', 'removed', or 'modified'. |
+| FirestoreErrorCode | The set of Firestore status codes. The codes are the same at the ones exposed by gRPC here: https://github.com/grpc/grpc/blob/master/doc/statuscodes.mdPossible values: - 'cancelled': The operation was cancelled (typically by the caller). - 'unknown': Unknown error or an error from a different error domain. - 'invalid-argument': Client specified an invalid argument. Note that this differs from 'failed-precondition'. 'invalid-argument' indicates arguments that are problematic regardless of the state of the system (e.g. an invalid field name). - 'deadline-exceeded': Deadline expired before operation could complete. For operations that change the state of the system, this error may be returned even if the operation has completed successfully. For example, a successful response from a server could have been delayed long enough for the deadline to expire. - 'not-found': Some requested document was not found. - 'already-exists': Some document that we attempted to create already exists. - 'permission-denied': The caller does not have permission to execute the specified operation. - 'resource-exhausted': Some resource has been exhausted, perhaps a per-user quota, or perhaps the entire file system is out of space. - 'failed-precondition': Operation was rejected because the system is not in a state required for the operation's execution. - 'aborted': The operation was aborted, typically due to a concurrency issue like transaction aborts, etc. - 'out-of-range': Operation was attempted past the valid range. - 'unimplemented': Operation is not implemented or not supported/enabled. - 'internal': Internal errors. Means some invariants expected by underlying system has been broken. If you see one of these errors, something is very broken. - 'unavailable': The service is currently unavailable. This is most likely a transient condition and may be corrected by retrying with a backoff. - 'data-loss': Unrecoverable data loss or corruption. - 'unauthenticated': The request does not have valid authentication credentials for the operation. |
+| FirestoreLocalCache | Union type from all supported SDK cache layer. |
+| ListenSource | Describe the source a query listens to.Set to default to listen to both cache and server changes. Set to cache to listen to changes in cache only. |
+| MemoryGarbageCollector | Union type from all support garbage collectors for memory local cache. |
+| NestedUpdateFields | For each field (e.g. 'bar'), find all nested keys (e.g. {'bar.baz': T1, 'bar.qux': T2}). Intersect them together to make a single map containing all possible keys that are all marked as optional |
+| OrderByDirection | The direction of a orderBy() clause is specified as 'desc' or 'asc' (descending or ascending). |
+| PartialWithFieldValue | Similar to TypeScript's Partial<T>, but allows nested fields to be omitted and FieldValues to be passed in as property values. |
+| PersistentTabManager | A union of all available tab managers. |
+| Primitive | Primitive types. |
+| QueryConstraintType | Describes the different query constraints available in this SDK. |
+| QueryFilterConstraint | QueryFilterConstraint is a helper union type that represents QueryFieldFilterConstraint and QueryCompositeFilterConstraint. |
+| QueryNonFilterConstraint | QueryNonFilterConstraint is a helper union type that represents QueryConstraints which are used to narrow or order the set of documents, but that do not explicitly filter on a document field. QueryNonFilterConstraints are created by invoking orderBy(), startAt(), startAfter(), endBefore(), endAt(), limit() or limitToLast() and can then be passed to query() to create a new query instance that also contains the QueryConstraint. |
+| SetOptions | An options object that configures the behavior of setDoc(), and calls. These calls can be configured to perform granular merges instead of overwriting the target documents in their entirety by providing a SetOptions with merge: true. |
+| TaskState | Represents the state of bundle loading tasks.Both 'Error' and 'Success' are sinking state: task will abort or complete and there will be no more updates after they are reported. |
+| UnionToIntersection | Given a union type U = T1 | T2 | ..., returns an intersected type (T1 & T2 & ...).Uses distributive conditional types and inference from conditional types. This works because multiple candidates for the same type variable in contra-variant positions causes an intersection type to be inferred. https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-inference-in-conditional-types https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type |
+| UpdateData | Update data (for use with updateDoc()) that consists of field paths (e.g. 'foo' or 'foo.baz') mapped to values. Fields that contain dots reference nested fields within the document. FieldValues can be passed in as property values. |
+| WhereFilterOp | Filter conditions in a where() clause are specified using the strings '&lt;', '&lt;=', '==', '!=', '&gt;=', '&gt;', 'array-contains', 'in', 'array-contains-any', and 'not-in'. |
+| WithFieldValue | Allows FieldValues to be passed in as a property value while maintaining type safety. |
+
+## getFirestore(app)
+Returns the existing default Firestore instance that is associated with the provided FirebaseApp. If no instance exists, initializes a new instance with default settings.
+
+Signature:
+
+Returns:
+
+Firestore
+
+The default Firestore instance of the provided app.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| app | FirebaseApp | The FirebaseApp instance that the returned Firestore instance is associated with. |
+
+## getFirestore(app, databaseId)
+This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
+
+Returns the existing named Firestore instance that is associated with the provided FirebaseApp. If no instance exists, initializes a new instance with default settings.
+
+Signature:
+
+Returns:
+
+Firestore
+
+The named Firestore instance of the provided app.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| app | FirebaseApp | The FirebaseApp instance that the returned Firestore instance is associated with. |
+| databaseId | string | The name of the database. |
+
+## initializeFirestore(app, settings, databaseId)
+Initializes a new instance of Firestore with the provided settings. Can only be called before any other function, including getFirestore(). If the custom settings are empty, this function is equivalent to calling getFirestore().
+
+Signature:
+
+Returns:
+
+Firestore
+
+A newly initialized Firestore instance.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| app | FirebaseApp | The FirebaseApp with which the Firestore instance will be associated. |
+| settings | FirestoreSettings | A settings object to configure the Firestore instance. |
+| databaseId | string | The name of the database. |
+
+## documentSnapshotFromJSON(db, json)
+Builds a DocumentSnapshot instance from a JSON object created by DocumentSnapshot.toJSON().
+
+Signature:
+
+Returns:
+
+DocumentSnapshot
+
+an instance of DocumentSnapshot if the JSON object could be parsed. Throws a FirestoreError if an error occurs.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| db | Firestore |  |
+| json | object | a JSON object represention of a DocumentSnapshot instance. |
+
+## documentSnapshotFromJSON(db, json, converter)
+Builds a DocumentSnapshot instance from a JSON object created by DocumentSnapshot.toJSON().
+
+Signature:
+
+Returns:
+
+DocumentSnapshot<AppModelType, DbModelType>
+
+an instance of DocumentSnapshot if the JSON object could be parsed. Throws a FirestoreError if an error occurs.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| db | Firestore |  |
+| json | object | a JSON object represention of a DocumentSnapshot instance. |
+| converter | FirestoreDataConverter<AppModelType, DbModelType> | Converts objects to and from Firestore. |
+
+## querySnapshotFromJSON(db, json)
+Builds a QuerySnapshot instance from a JSON object created by QuerySnapshot.toJSON().
+
+Signature:
+
+Returns:
+
+QuerySnapshot
+
+an instance of QuerySnapshot if the JSON object could be parsed. Throws a FirestoreError if an error occurs.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| db | Firestore |  |
+| json | object | a JSON object represention of a QuerySnapshot instance. |
+
+## querySnapshotFromJSON(db, json, converter)
+Builds a QuerySnapshot instance from a JSON object created by QuerySnapshot.toJSON().
+
+Signature:
+
+Returns:
+
+QuerySnapshot<AppModelType, DbModelType>
+
+an instance of QuerySnapshot if the JSON object could be parsed. Throws a FirestoreError if an error occurs.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| db | Firestore |  |
+| json | object | a JSON object represention of a QuerySnapshot instance. |
+| converter | FirestoreDataConverter<AppModelType, DbModelType> | Converts objects to and from Firestore. |
+
+## clearIndexedDbPersistence(firestore)
+Clears the persistent storage. This includes pending writes and cached documents.
+
+Must be called while the Firestore instance is not started (after the app is terminated or when the app is first initialized). On startup, this function must be called before other functions (other than initializeFirestore() or getFirestore())). If the Firestore instance is still running, the promise will be rejected with the error code of failed-precondition.
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise that is resolved when the persistent storage is cleared. Otherwise, the promise is rejected with an error.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to clear persistence for. |
+
+## collection(firestore, path, pathSegments)
+Gets a CollectionReference instance that refers to the collection at the specified absolute path.
+
+Signature:
+
+Returns:
+
+CollectionReference<DocumentData, DocumentData>
+
+The CollectionReference instance.
+
+If the final path has an even number of segments and does not point to a collection.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | A reference to the root Firestore instance. |
+| path | string | A slash-separated path to a collection. |
+| pathSegments | string[] | Additional path segments to apply relative to the first argument. |
+
+## collectionGroup(firestore, collectionId)
+Creates and returns a new Query instance that includes all documents in the database that are contained in a collection or subcollection with the given collectionId.
+
+Signature:
+
+Returns:
+
+Query<DocumentData, DocumentData>
+
+The created Query.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | A reference to the root Firestore instance. |
+| collectionId | string | Identifies the collections to query over. Every collection or subcollection with this ID as the last segment of its path will be included. Cannot contain a slash. |
+
+## connectFirestoreEmulator(firestore, host, port, options)
+Modify this instance to communicate with the Cloud Firestore emulator.
+
+Signature:
+
+Returns:
+
+void
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to configure to connect to the emulator. |
+| host | string | the emulator host (ex: localhost). |
+| port | number | the emulator port (ex: 9000). |
+| options | { mockUserToken?: EmulatorMockTokenOptions | string; } |  |
+
+## disableNetwork(firestore)
+Disables network usage for this instance. It can be re-enabled via enableNetwork(). While the network is disabled, any snapshot listeners, getDoc() or getDocs() calls will return results from cache, and any write operations will be queued until the network is restored.
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise that is resolved once the network has been disabled.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore |  |
+
+## doc(firestore, path, pathSegments)
+Gets a DocumentReference instance that refers to the document at the specified absolute path.
+
+Signature:
+
+Returns:
+
+DocumentReference<DocumentData, DocumentData>
+
+The DocumentReference instance.
+
+If the final path has an odd number of segments and does not point to a document.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | A reference to the root Firestore instance. |
+| path | string | A slash-separated path to a document. |
+| pathSegments | string[] | Additional path segments that will be applied relative to the first argument. |
+
+## enableIndexedDbPersistence(firestore, persistenceSettings)
+Warning: This API is now obsolete.
+
+This function will be removed in a future major release. Instead, set FirestoreSettings.localCache to an instance of PersistentLocalCache to turn on IndexedDb cache. Calling this function when FirestoreSettings.localCache is already specified will throw an exception.
+
+This function will be removed in a future major release. Instead, set FirestoreSettings.localCache to an instance of PersistentLocalCache to turn on IndexedDb cache. Calling this function when FirestoreSettings.localCache is already specified will throw an exception.
+
+Attempts to enable persistent storage, if possible.
+
+On failure, enableIndexedDbPersistence() will reject the promise or throw an exception. There are several reasons why this can fail, which can be identified by the code on the error.
+
+* failed-precondition: The app is already open in another browser tab. * unimplemented: The browser is incompatible with the offline persistence implementation.
+
+Note that even after a failure, the Firestore instance will remain usable, however offline persistence will be disabled.
+
+Persistence cannot be used in a Node.js environment.
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise that represents successfully enabling persistent storage.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to enable persistence for. |
+| persistenceSettings | PersistenceSettings | Optional settings object to configure persistence. |
+
+## enableMultiTabIndexedDbPersistence(firestore)
+Warning: This API is now obsolete.
+
+This function will be removed in a future major release. Instead, set FirestoreSettings.localCache to an instance of PersistentLocalCache to turn on indexeddb cache. Calling this function when FirestoreSettings.localCache is already specified will throw an exception.
+
+This function will be removed in a future major release. Instead, set FirestoreSettings.localCache to an instance of PersistentLocalCache to turn on indexeddb cache. Calling this function when FirestoreSettings.localCache is already specified will throw an exception.
+
+Attempts to enable multi-tab persistent storage, if possible. If enabled across all tabs, all operations share access to local persistence, including shared execution of queries and latency-compensated local document updates across all connected instances.
+
+On failure, enableMultiTabIndexedDbPersistence() will reject the promise or throw an exception. There are several reasons why this can fail, which can be identified by the code on the error.
+
+* failed-precondition: The app is already open in another browser tab and multi-tab is not enabled. * unimplemented: The browser is incompatible with the offline persistence implementation.
+
+Note that even after a failure, the Firestore instance will remain usable, however offline persistence will be disabled.
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise that represents successfully enabling persistent storage.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to enable persistence for. |
+
+## enableNetwork(firestore)
+Re-enables use of the network for this Firestore instance after a prior call to disableNetwork().
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise that is resolved once the network has been enabled.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore |  |
+
+## getPersistentCacheIndexManager(firestore)
+Returns the PersistentCache Index Manager used by the given Firestore object.
+
+The PersistentCacheIndexManager instance, or null if local persistent storage is not in use.
+
+Signature:
+
+Returns:
+
+PersistentCacheIndexManager | null
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore |  |
+
+## loadBundle(firestore, bundleData)
+Loads a Firestore bundle into the local cache.
+
+Signature:
+
+Returns:
+
+LoadBundleTask
+
+A LoadBundleTask object, which notifies callers with progress updates, and completion or error events. It can be used as a Promise<LoadBundleTaskProgress>.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to load bundles for. |
+| bundleData | ReadableStream<Uint8Array> | ArrayBuffer | string | An object representing the bundle to be loaded. Valid objects are ArrayBuffer, ReadableStream<Uint8Array> or string. |
+
+## namedQuery(firestore, name)
+Reads a Firestore Query from local cache, identified by the given name.
+
+The named queries are packaged into bundles on the server side (along with resulting documents), and loaded to local cache using loadBundle. Once in local cache, use this method to extract a Query by name.
+
+Signature:
+
+Returns:
+
+Promise<Query | null>
+
+A Promise that is resolved with the Query or null.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to read the query from. |
+| name | string | The name of the query. |
+
+## onSnapshotResume(firestore, snapshotJson, onNext, onError, onCompletion, converter)
+Attaches a listener for QuerySnapshot events based on data generated by invoking QuerySnapshot.toJSON() You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to enable the listener for. |
+| snapshotJson | object | A JSON object generated by invoking QuerySnapshot.toJSON(). |
+| onNext | (snapshot: QuerySnapshot<AppModelType, DbModelType>) => void | A callback to be called every time a new QuerySnapshot is available. |
+| onError | (error: FirestoreError) => void | A callback to be called if the listen fails or is cancelled. No further callbacks will occur. |
+| onCompletion | () => void | Can be provided, but will not be called since streams are never ending. |
+| converter | FirestoreDataConverter<DbModelType> | An optional object that converts objects from Firestore before the onNext listener is invoked. |
+
+## onSnapshotResume(firestore, snapshotJson, onNext, onError, onCompletion, converter)
+Attaches a listener for DocumentSnapshot events based on data generated by invoking DocumentSnapshot.toJSON(). You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to enable the listener for. |
+| snapshotJson | object | A JSON object generated by invoking DocumentSnapshot.toJSON(). |
+| onNext | (snapshot: DocumentSnapshot<AppModelType, DbModelType>) => void | A callback to be called every time a new DocumentSnapshot is available. |
+| onError | (error: FirestoreError) => void | A callback to be called if the listen fails or is cancelled. No further callbacks will occur. |
+| onCompletion | () => void | Can be provided, but will not be called since streams are never ending. |
+| converter | FirestoreDataConverter<DbModelType> | An optional object that converts objects from Firestore before the onNext listener is invoked. |
+
+## onSnapshotResume(firestore, snapshotJson, options, onNext, onError, onCompletion, converter)
+Attaches a listener for QuerySnapshot events based on data generated by invoking QuerySnapshot.toJSON(). You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to enable the listener for. |
+| snapshotJson | object | A JSON object generated by invoking QuerySnapshot.toJSON(). |
+| options | SnapshotListenOptions | Options controlling the listen behavior. |
+| onNext | (snapshot: QuerySnapshot<AppModelType, DbModelType>) => void | A callback to be called every time a new QuerySnapshot is available. |
+| onError | (error: FirestoreError) => void | A callback to be called if the listen fails or is cancelled. No further callbacks will occur. |
+| onCompletion | () => void | Can be provided, but will not be called since streams are never ending. |
+| converter | FirestoreDataConverter<DbModelType> | An optional object that converts objects from Firestore before the onNext listener is invoked. |
+
+## onSnapshotResume(firestore, snapshotJson, options, onNext, onError, onCompletion, converter)
+Attaches a listener for DocumentSnapshot events based on data generated by invoking DocumentSnapshot.toJSON(). You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to enable the listener for. |
+| snapshotJson | object | A JSON object generated by invoking DocumentSnapshot.toJSON(). |
+| options | SnapshotListenOptions | Options controlling the listen behavior. |
+| onNext | (snapshot: DocumentSnapshot<AppModelType, DbModelType>) => void | A callback to be called every time a new DocumentSnapshot is available. |
+| onError | (error: FirestoreError) => void | A callback to be called if the listen fails or is cancelled. No further callbacks will occur. |
+| onCompletion | () => void | Can be provided, but will not be called since streams are never ending. |
+| converter | FirestoreDataConverter<DbModelType> | An optional object that converts objects from Firestore before the onNext listener is invoked. |
+
+## onSnapshotResume(firestore, snapshotJson, observer, converter)
+Attaches a listener for QuerySnapshot events based on QuerySnapshot data generated by invoking QuerySnapshot.toJSON(). You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to enable the listener for. |
+| snapshotJson | object | A JSON object generated by invoking QuerySnapshot.toJSON(). |
+| observer | { next: (snapshot: QuerySnapshot<AppModelType, DbModelType>) => void; error?: (error: FirestoreError) => void; complete?: () => void; } | A single object containing next and error callbacks. |
+| converter | FirestoreDataConverter<DbModelType> | An optional object that converts objects from Firestore before the onNext listener is invoked. |
+
+## onSnapshotResume(firestore, snapshotJson, observer, converter)
+Attaches a listener for DocumentSnapshot events based on data generated by invoking DocumentSnapshot.toJSON() You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to enable the listener for. |
+| snapshotJson | object | A JSON object generated by invoking DocumentSnapshot.toJSON(). |
+| observer | { next: (snapshot: DocumentSnapshot<AppModelType, DbModelType>) => void; error?: (error: FirestoreError) => void; complete?: () => void; } | A single object containing next and error callbacks. |
+| converter | FirestoreDataConverter<DbModelType> | An optional object that converts objects from Firestore before the onNext listener is invoked. |
+
+## onSnapshotResume(firestore, snapshotJson, options, observer, converter)
+Attaches a listener for QuerySnapshot events based on QuerySnapshot data generated by invoking QuerySnapshot.toJSON() You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to enable the listener for. |
+| snapshotJson | object | A JSON object generated by invoking QuerySnapshot.toJSON(). |
+| options | SnapshotListenOptions | Options controlling the listen behavior. |
+| observer | { next: (snapshot: QuerySnapshot<AppModelType, DbModelType>) => void; error?: (error: FirestoreError) => void; complete?: () => void; } | A single object containing next and error callbacks. |
+| converter | FirestoreDataConverter<DbModelType> | An optional object that converts objects from Firestore before the onNext listener is invoked. |
+
+## onSnapshotResume(firestore, snapshotJson, options, observer, converter)
+Attaches a listener for DocumentSnapshot events based on QuerySnapshot data generated by invoking DocumentSnapshot.toJSON() You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to enable the listener for. |
+| snapshotJson | object | A JSON object generated by invoking DocumentSnapshot.toJSON(). |
+| options | SnapshotListenOptions | Options controlling the listen behavior. |
+| observer | { next: (snapshot: DocumentSnapshot<AppModelType, DbModelType>) => void; error?: (error: FirestoreError) => void; complete?: () => void; } | A single object containing next and error callbacks. |
+| converter | FirestoreDataConverter<DbModelType> | An optional object that converts objects from Firestore before the onNext listener is invoked. |
+
+## onSnapshotsInSync(firestore, observer)
+Attaches a listener for a snapshots-in-sync event. The snapshots-in-sync event indicates that all listeners affected by a given change have fired, even if a single server-generated change affects multiple listeners.
+
+NOTE: The snapshots-in-sync event only indicates that listeners are in sync with each other, but does not relate to whether those snapshots are in sync with the server. Use SnapshotMetadata in the individual listeners to determine if a snapshot is from the cache or the server.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The instance of Firestore for synchronizing snapshots. |
+| observer | { next?: (value: void) => void; error?: (error: FirestoreError) => void; complete?: () => void; } | A single object containing next and error callbacks. |
+
+## onSnapshotsInSync(firestore, onSync)
+Attaches a listener for a snapshots-in-sync event. The snapshots-in-sync event indicates that all listeners affected by a given change have fired, even if a single server-generated change affects multiple listeners.
+
+NOTE: The snapshots-in-sync event only indicates that listeners are in sync with each other, but does not relate to whether those snapshots are in sync with the server. Use SnapshotMetadata in the individual listeners to determine if a snapshot is from the cache or the server.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance for synchronizing snapshots. |
+| onSync | () => void | A callback to be called every time all snapshot listeners are in sync with each other. |
+
+## runTransaction(firestore, updateFunction, options)
+Executes the given updateFunction and then attempts to commit the changes applied within the transaction. If any document read within the transaction has changed, Cloud Firestore retries the updateFunction. If it fails to commit after 5 attempts, the transaction fails.
+
+The maximum number of writes allowed in a single transaction is 500.
+
+Signature:
+
+Returns:
+
+Promise<T>
+
+If the transaction completed successfully or was explicitly aborted (the updateFunction returned a failed promise), the promise returned by the updateFunctionis returned here. Otherwise, if the transaction failed, a rejected promise with the corresponding failure error is returned.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | A reference to the Firestore database to run this transaction against. |
+| updateFunction | (transaction: Transaction) => Promise<T> | The function to execute within the transaction context. |
+| options | TransactionOptions | An options object to configure maximum number of attempts to commit. |
+
+## setIndexConfiguration(firestore, configuration)
+This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
+
+Warning: This API is now obsolete.
+
+Instead of creating cache indexes manually, consider using enablePersistentCacheIndexAutoCreation() to let the SDK decide whether to create cache indexes for queries running locally.
+
+Instead of creating cache indexes manually, consider using enablePersistentCacheIndexAutoCreation() to let the SDK decide whether to create cache indexes for queries running locally.
+
+Configures indexing for local query execution. Any previous index configuration is overridden. The Promise resolves once the index configuration has been persisted.
+
+The index entries themselves are created asynchronously. You can continue to use queries that require indexing even if the indices are not yet available. Query execution will automatically start using the index once the index entries have been written.
+
+Indexes are only supported with IndexedDb persistence. If IndexedDb is not enabled, any index configuration is ignored.
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise that resolves once all indices are successfully configured.
+
+FirestoreError if the JSON format is invalid.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to configure indexes for. |
+| configuration | IndexConfiguration | The index definition. |
+
+## setIndexConfiguration(firestore, json)
+This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
+
+Warning: This API is now obsolete.
+
+Instead of creating cache indexes manually, consider using enablePersistentCacheIndexAutoCreation() to let the SDK decide whether to create cache indexes for queries running locally.
+
+Instead of creating cache indexes manually, consider using enablePersistentCacheIndexAutoCreation() to let the SDK decide whether to create cache indexes for queries running locally.
+
+Configures indexing for local query execution. Any previous index configuration is overridden. The Promise resolves once the index configuration has been persisted.
+
+The index entries themselves are created asynchronously. You can continue to use queries that require indexing even if the indices are not yet available. Query execution will automatically start using the index once the index entries have been written.
+
+Indexes are only supported with IndexedDb persistence. Invoke either enableIndexedDbPersistence() or enableMultiTabIndexedDbPersistence() before setting an index configuration. If IndexedDb is not enabled, any index configuration is ignored.
+
+The method accepts the JSON format exported by the Firebase CLI (firebase firestore:indexes). If the JSON format is invalid, this method throws an error.
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise that resolves once all indices are successfully configured.
+
+FirestoreError if the JSON format is invalid.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore | The Firestore instance to configure indexes for. |
+| json | string | The JSON format exported by the Firebase CLI. |
+
+## terminate(firestore)
+Terminates the provided Firestore instance.
+
+After calling terminate() only the clearIndexedDbPersistence() function may be used. Any other function will throw a FirestoreError.
+
+To restart after termination, create a new instance of FirebaseFirestore with getFirestore().
+
+Termination does not cancel any pending writes, and any promises that are awaiting a response from the server will not be resolved. If you have persistence enabled, the next time you start this instance, it will resume sending these writes to the server.
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise that is resolved when the instance has been successfully terminated.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore |  |
+
+## waitForPendingWrites(firestore)
+Waits until all currently pending writes for the active user have been acknowledged by the backend.
+
+The returned promise resolves immediately if there are no outstanding writes. Otherwise, the promise waits for all previously issued writes (including those written in a previous app session), but it does not wait for writes that were added after the function is called. If you want to wait for additional writes, call waitForPendingWrites() again.
+
+Any outstanding waitForPendingWrites() promises are rejected during user changes.
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise which resolves when all currently pending writes have been acknowledged by the backend.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore |  |
+
+## writeBatch(firestore)
+Creates a write batch, used for performing multiple writes as a single atomic operation. The maximum number of writes allowed in a single WriteBatch is 500.
+
+Unlike transactions, write batches are persisted offline and therefore are preferable when you don't need to condition your writes on read data.
+
+Signature:
+
+Returns:
+
+WriteBatch
+
+A WriteBatch that can be used to atomically execute multiple writes.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| firestore | Firestore |  |
+
+## count()
+Create an AggregateField object that can be used to compute the count of documents in the result set of a query.
+
+Signature:
+
+Returns:
+
+AggregateField<number>
+
+## deleteField()
+Returns a sentinel for use with updateDoc() or setDoc() with {merge: true} to mark a field for deletion.
+
+Signature:
+
+Returns:
+
+FieldValue
+
+## documentId()
+Returns a special sentinel FieldPath to refer to the ID of a document. It can be used in queries to sort or filter by the document ID.
+
+Signature:
+
+Returns:
+
+FieldPath
+
+## getFirestore()
+Returns the existing default Firestore instance that is associated with the default FirebaseApp. If no instance exists, initializes a new instance with default settings.
+
+Signature:
+
+Returns:
+
+Firestore
+
+The default Firestore instance of the default app.
+
+## memoryEagerGarbageCollector()
+Creates an instance of MemoryEagerGarbageCollector. This is also the default garbage collector unless it is explicitly specified otherwise.
+
+Signature:
+
+Returns:
+
+MemoryEagerGarbageCollector
+
+## persistentMultipleTabManager()
+Creates an instance of PersistentMultipleTabManager.
+
+Signature:
+
+Returns:
+
+PersistentMultipleTabManager
+
+## serverTimestamp()
+Returns a sentinel used with setDoc() or updateDoc() to include a server-generated timestamp in the written data.
+
+Signature:
+
+Returns:
+
+FieldValue
+
+## getFirestore(databaseId)
+This API is provided as a preview for developers and may change based on feedback that we receive. Do not use this API in a production environment.
+
+Returns the existing named Firestore instance that is associated with the default FirebaseApp. If no instance exists, initializes a new instance with default settings.
+
+Signature:
+
+Returns:
+
+Firestore
+
+The named Firestore instance of the default app.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| databaseId | string | The name of the database. |
+
+## arrayRemove(elements)
+Returns a special value that can be used with setDoc() or that tells the server to remove the given elements from any array value that already exists on the server. All instances of each element specified will be removed from the array. If the field being modified is not already an array it will be overwritten with an empty array.
+
+Signature:
+
+Returns:
+
+FieldValue
+
+The FieldValue sentinel for use in a call to setDoc() or updateDoc()
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| elements | unknown[] | The elements to remove from the array. |
+
+## arrayUnion(elements)
+Returns a special value that can be used with setDoc() or updateDoc() that tells the server to union the given elements with any array value that already exists on the server. Each specified element that doesn't already exist in the array will be added to the end. If the field being modified is not already an array it will be overwritten with an array containing exactly the specified elements.
+
+Signature:
+
+Returns:
+
+FieldValue
+
+The FieldValue sentinel for use in a call to setDoc() or updateDoc().
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| elements | unknown[] | The elements to union into the array. |
+
+## average(field)
+Create an AggregateField object that can be used to compute the average of a specified field over a range of documents in the result set of a query.
+
+Signature:
+
+Returns:
+
+AggregateField<number | null>
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| field | string | FieldPath | Specifies the field to average across the result set. |
+
+## sum(field)
+Create an AggregateField object that can be used to compute the sum of a specified field over a range of documents in the result set of a query.
+
+Signature:
+
+Returns:
+
+AggregateField<number>
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| field | string | FieldPath | Specifies the field to sum across the result set. |
+
+## orderBy(fieldPath, directionStr)
+Creates a QueryOrderByConstraint that sorts the query result by the specified field, optionally in descending order instead of ascending.
+
+Signature:
+
+Returns:
+
+QueryOrderByConstraint
+
+The created QueryOrderByConstraint.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| fieldPath | string | FieldPath | The field to sort by. |
+| directionStr | OrderByDirection | Optional direction to sort by ('asc' or 'desc'). If not specified, order will be ascending. |
+
+## where(fieldPath, opStr, value)
+Creates a QueryFieldFilterConstraint that enforces that documents must contain the specified field and that the value should satisfy the relation constraint provided.
+
+Signature:
+
+Returns:
+
+QueryFieldFilterConstraint
+
+The created QueryFieldFilterConstraint.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| fieldPath | string | FieldPath | The path to compare |
+| opStr | WhereFilterOp | The operation string (e.g "&lt;", "&lt;=", "==", "&lt;", "&lt;=", "!="). |
+| value | unknown | The value for comparison |
+
+## endAt(fieldValues)
+Creates a QueryEndAtConstraint that modifies the result set to end at the provided fields relative to the order of the query. The order of the field values must match the order of the order by clauses of the query.
+
+Signature:
+
+Returns:
+
+QueryEndAtConstraint
+
+A QueryEndAtConstraint to pass to query()
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| fieldValues | unknown[] | The field values to end this query at, in order of the query's order by. |
+
+## endBefore(fieldValues)
+Creates a QueryEndAtConstraint that modifies the result set to end before the provided fields relative to the order of the query. The order of the field values must match the order of the order by clauses of the query.
+
+Signature:
+
+Returns:
+
+QueryEndAtConstraint
+
+A QueryEndAtConstraint to pass to query()
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| fieldValues | unknown[] | The field values to end this query before, in order of the query's order by. |
+
+## startAfter(fieldValues)
+Creates a QueryStartAtConstraint that modifies the result set to start after the provided fields relative to the order of the query. The order of the field values must match the order of the order by clauses of the query.
+
+Signature:
+
+Returns:
+
+QueryStartAtConstraint
+
+A QueryStartAtConstraint to pass to query()
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| fieldValues | unknown[] | The field values to start this query after, in order of the query's order by. |
+
+## startAt(fieldValues)
+Creates a QueryStartAtConstraint that modifies the result set to start at the provided fields relative to the order of the query. The order of the field values must match the order of the order by clauses of the query.
+
+Signature:
+
+Returns:
+
+QueryStartAtConstraint
+
+A QueryStartAtConstraint to pass to query().
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| fieldValues | unknown[] | The field values to start this query at, in order of the query's order by. |
+
+## deleteAllPersistentCacheIndexes(indexManager)
+Removes all persistent cache indexes.
+
+Please note this function will also deletes indexes generated by setIndexConfiguration(), which is deprecated.
+
+Signature:
+
+Returns:
+
+void
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| indexManager | PersistentCacheIndexManager |  |
+
+## disablePersistentCacheIndexAutoCreation(indexManager)
+Stops creating persistent cache indexes automatically for local query execution. The indexes which have been created by calling enablePersistentCacheIndexAutoCreation() still take effect.
+
+Signature:
+
+Returns:
+
+void
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| indexManager | PersistentCacheIndexManager |  |
+
+## enablePersistentCacheIndexAutoCreation(indexManager)
+Enables the SDK to create persistent cache indexes automatically for local query execution when the SDK believes cache indexes can help improve performance.
+
+This feature is disabled by default.
+
+Signature:
+
+Returns:
+
+void
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| indexManager | PersistentCacheIndexManager |  |
+
+## aggregateFieldEqual(left, right)
+Compares two 'AggregateField` instances for equality.
+
+Signature:
+
+Returns:
+
+boolean
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| left | AggregateField<unknown> | Compare this AggregateField to the right. |
+| right | AggregateField<unknown> | Compare this AggregateField to the left. |
+
+## aggregateQuerySnapshotEqual(left, right)
+Compares two AggregateQuerySnapshot instances for equality.
+
+Two AggregateQuerySnapshot instances are considered "equal" if they have underlying queries that compare equal, and the same data.
+
+Signature:
+
+Returns:
+
+boolean
+
+true if the objects are "equal", as defined above, or false otherwise.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| left | AggregateQuerySnapshot<AggregateSpecType, AppModelType, DbModelType> | The first AggregateQuerySnapshot to compare. |
+| right | AggregateQuerySnapshot<AggregateSpecType, AppModelType, DbModelType> | The second AggregateQuerySnapshot to compare. |
+
+## queryEqual(left, right)
+Returns true if the provided queries point to the same collection and apply the same constraints.
+
+Signature:
+
+Returns:
+
+boolean
+
+true if the references point to the same location in the same Firestore database.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| left | Query<AppModelType, DbModelType> | A Query to compare. |
+| right | Query<AppModelType, DbModelType> | A Query to compare. |
+
+## refEqual(left, right)
+Returns true if the provided references are equal.
+
+Signature:
+
+Returns:
+
+boolean
+
+true if the references point to the same location in the same Firestore database.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| left | DocumentReference<AppModelType, DbModelType> | CollectionReference<AppModelType, DbModelType> | A reference to compare. |
+| right | DocumentReference<AppModelType, DbModelType> | CollectionReference<AppModelType, DbModelType> | A reference to compare. |
+
+## snapshotEqual(left, right)
+Returns true if the provided snapshots are equal.
+
+Signature:
+
+Returns:
+
+boolean
+
+true if the snapshots are equal.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| left | DocumentSnapshot<AppModelType, DbModelType> | QuerySnapshot<AppModelType, DbModelType> | A snapshot to compare. |
+| right | DocumentSnapshot<AppModelType, DbModelType> | QuerySnapshot<AppModelType, DbModelType> | A snapshot to compare. |
+
+## limit(limit)
+Creates a QueryLimitConstraint that only returns the first matching documents.
+
+Signature:
+
+Returns:
+
+QueryLimitConstraint
+
+The created QueryLimitConstraint.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| limit | number | The maximum number of items to return. |
+
+## limitToLast(limit)
+Creates a QueryLimitConstraint that only returns the last matching documents.
+
+You must specify at least one orderBy clause for limitToLast queries, otherwise an exception will be thrown during execution.
+
+Signature:
+
+Returns:
+
+QueryLimitConstraint
+
+The created QueryLimitConstraint.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| limit | number | The maximum number of items to return. |
+
+## setLogLevel(logLevel)
+Sets the verbosity of Cloud Firestore logs (debug, error, or silent).
+
+Signature:
+
+debug for the most verbose logging level, primarily for debugging.
+
+error to log errors only.
+
+silent to turn off logging.
+
+Returns:
+
+void
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| logLevel | LogLevel | The verbosity you set for activity and error logging. Can be any of the following values:
+debug for the most verbose logging level, primarily for debugging.
+error to log errors only.
+silent to turn off logging. |
+
+## increment(n)
+Returns a special value that can be used with setDoc() or updateDoc() that tells the server to increment the field's current value by the given value.
+
+If either the operand or the current field value uses floating point precision, all arithmetic follows IEEE 754 semantics. If both values are integers, values outside of JavaScript's safe number range (Number.MIN_SAFE_INTEGER to Number.MAX_SAFE_INTEGER) are also subject to precision loss. Furthermore, once processed by the Firestore backend, all integer operations are capped between -2^63 and 2^63-1.
+
+If the current field value is not of type number, or if the field does not yet exist, the transformation sets the field to the given value.
+
+Signature:
+
+Returns:
+
+FieldValue
+
+The FieldValue sentinel for use in a call to setDoc() or updateDoc()
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| n | number | The value to increment by. |
+
+## getAggregateFromServer(query, aggregateSpec)
+Calculates the specified aggregations over the documents in the result set of the given query without actually downloading the documents.
+
+Using this function to perform aggregations is efficient because only the final aggregation values, not the documents' data, are downloaded. This function can perform aggregations of the documents in cases where the result set is prohibitively large to download entirely (thousands of documents).
+
+The result received from the server is presented, unaltered, without considering any local state. That is, documents in the local cache are not taken into consideration, neither are local modifications not yet synchronized with the server. Previously-downloaded results, if any, are not used. Every invocation of this function necessarily involves a round trip to the server.
+
+Signature:
+
+Returns:
+
+Promise<AggregateQuerySnapshot<AggregateSpecType, AppModelType, DbModelType>>
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| query | Query<AppModelType, DbModelType> | The query whose result set is aggregated over. |
+| aggregateSpec | AggregateSpecType | An AggregateSpec object that specifies the aggregates to perform over the result set. The AggregateSpec specifies aliases for each aggregate, which can be used to retrieve the aggregate result. |
+
+## getCountFromServer(query)
+Calculates the number of documents in the result set of the given query without actually downloading the documents.
+
+Using this function to count the documents is efficient because only the final count, not the documents' data, is downloaded. This function can count the documents in cases where the result set is prohibitively large to download entirely (thousands of documents).
+
+The result received from the server is presented, unaltered, without considering any local state. That is, documents in the local cache are not taken into consideration, neither are local modifications not yet synchronized with the server. Previously-downloaded results, if any, are not used. Every invocation of this function necessarily involves a round trip to the server.
+
+Signature:
+
+Returns:
+
+Promise<AggregateQuerySnapshot<{ count: AggregateField<number>; }, AppModelType, DbModelType>>
+
+A Promise that will be resolved with the count; the count can be retrieved from snapshot.data().count, where snapshot is the AggregateQuerySnapshot to which the returned Promise resolves.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| query | Query<AppModelType, DbModelType> | The query whose result set size is calculated. |
+
+## getDocs(query)
+Executes the query and returns the results as a QuerySnapshot.
+
+Signature:
+
+Returns:
+
+Promise<QuerySnapshot<AppModelType, DbModelType>>
+
+A Promise that will be resolved with the results of the query.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| query | Query<AppModelType, DbModelType> |  |
+
+## getDocsFromCache(query)
+Executes the query and returns the results as a QuerySnapshot from cache. Returns an empty result set if no documents matching the query are currently cached.
+
+Signature:
+
+Returns:
+
+Promise<QuerySnapshot<AppModelType, DbModelType>>
+
+A Promise that will be resolved with the results of the query.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| query | Query<AppModelType, DbModelType> |  |
+
+## getDocsFromServer(query)
+Executes the query and returns the results as a QuerySnapshot from the server. Returns an error if the network is not available.
+
+Signature:
+
+Returns:
+
+Promise<QuerySnapshot<AppModelType, DbModelType>>
+
+A Promise that will be resolved with the results of the query.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| query | Query<AppModelType, DbModelType> |  |
+
+## onSnapshot(query, observer)
+Attaches a listener for QuerySnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| query | Query<AppModelType, DbModelType> | The query to listen to. |
+| observer | { next?: (snapshot: QuerySnapshot<AppModelType, DbModelType>) => void; error?: (error: FirestoreError) => void; complete?: () => void; } | A single object containing next and error callbacks. |
+
+## onSnapshot(query, options, observer)
+Attaches a listener for QuerySnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| query | Query<AppModelType, DbModelType> | The query to listen to. |
+| options | SnapshotListenOptions | Options controlling the listen behavior. |
+| observer | { next?: (snapshot: QuerySnapshot<AppModelType, DbModelType>) => void; error?: (error: FirestoreError) => void; complete?: () => void; } | A single object containing next and error callbacks. |
+
+## onSnapshot(query, onNext, onError, onCompletion)
+Attaches a listener for QuerySnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| query | Query<AppModelType, DbModelType> | The query to listen to. |
+| onNext | (snapshot: QuerySnapshot<AppModelType, DbModelType>) => void | A callback to be called every time a new QuerySnapshot is available. |
+| onError | (error: FirestoreError) => void | A callback to be called if the listen fails or is cancelled. No further callbacks will occur. |
+| onCompletion | () => void | Can be provided, but will not be called since streams are never ending. |
+
+## onSnapshot(query, options, onNext, onError, onCompletion)
+Attaches a listener for QuerySnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks. The listener can be cancelled by calling the function that is returned when onSnapshot is called.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| query | Query<AppModelType, DbModelType> | The query to listen to. |
+| options | SnapshotListenOptions | Options controlling the listen behavior. |
+| onNext | (snapshot: QuerySnapshot<AppModelType, DbModelType>) => void | A callback to be called every time a new QuerySnapshot is available. |
+| onError | (error: FirestoreError) => void | A callback to be called if the listen fails or is cancelled. No further callbacks will occur. |
+| onCompletion | () => void | Can be provided, but will not be called since streams are never ending. |
+
+## query(query, compositeFilter, queryConstraints)
+Creates a new immutable instance of Query that is extended to also include additional query constraints.
+
+Signature:
+
+Returns:
+
+Query<AppModelType, DbModelType>
+
+if any of the provided query constraints cannot be combined with the existing or new constraints.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| query | Query<AppModelType, DbModelType> | The Query instance to use as a base for the new constraints. |
+| compositeFilter | QueryCompositeFilterConstraint | The QueryCompositeFilterConstraint to apply. Create QueryCompositeFilterConstraint using and() or or(). |
+| queryConstraints | QueryNonFilterConstraint[] | Additional QueryNonFilterConstraints to apply (e.g. orderBy(), limit()). |
+
+## query(query, queryConstraints)
+Creates a new immutable instance of Query that is extended to also include additional query constraints.
+
+Signature:
+
+Returns:
+
+Query<AppModelType, DbModelType>
+
+if any of the provided query constraints cannot be combined with the existing or new constraints.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| query | Query<AppModelType, DbModelType> | The Query instance to use as a base for the new constraints. |
+| queryConstraints | QueryConstraint[] | The list of QueryConstraints to apply. |
+
+## and(queryConstraints)
+Creates a new QueryCompositeFilterConstraint that is a conjunction of the given filter constraints. A conjunction filter includes a document if it satisfies all of the given filters.
+
+Signature:
+
+Returns:
+
+QueryCompositeFilterConstraint
+
+The newly created QueryCompositeFilterConstraint.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| queryConstraints | QueryFilterConstraint[] | Optional. The list of QueryFilterConstraints to perform a conjunction for. These must be created with calls to where(), or(), or and(). |
+
+## or(queryConstraints)
+Creates a new QueryCompositeFilterConstraint that is a disjunction of the given filter constraints. A disjunction filter includes a document if it satisfies any of the given filters.
+
+Signature:
+
+Returns:
+
+QueryCompositeFilterConstraint
+
+The newly created QueryCompositeFilterConstraint.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| queryConstraints | QueryFilterConstraint[] | Optional. The list of QueryFilterConstraints to perform a disjunction for. These must be created with calls to where(), or(), or and(). |
+
+## addDoc(reference, data)
+Add a new document to specified CollectionReference with the given data, assigning it a document ID automatically.
+
+Signature:
+
+Returns:
+
+Promise<DocumentReference<AppModelType, DbModelType>>
+
+A Promise resolved with a DocumentReference pointing to the newly created document after it has been written to the backend (Note that it won't resolve while you're offline).
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | CollectionReference<AppModelType, DbModelType> | A reference to the collection to add this document to. |
+| data | WithFieldValue<AppModelType> | An Object containing the data for the new document. |
+
+## collection(reference, path, pathSegments)
+Gets a CollectionReference instance that refers to a subcollection of reference at the specified relative path.
+
+Signature:
+
+Returns:
+
+CollectionReference<DocumentData, DocumentData>
+
+The CollectionReference instance.
+
+If the final path has an even number of segments and does not point to a collection.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | CollectionReference<AppModelType, DbModelType> | A reference to a collection. |
+| path | string | A slash-separated path to a collection. |
+| pathSegments | string[] | Additional path segments to apply relative to the first argument. |
+
+## collection(reference, path, pathSegments)
+Gets a CollectionReference instance that refers to a subcollection of reference at the specified relative path.
+
+Signature:
+
+Returns:
+
+CollectionReference<DocumentData, DocumentData>
+
+The CollectionReference instance.
+
+If the final path has an even number of segments and does not point to a collection.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> | A reference to a Firestore document. |
+| path | string | A slash-separated path to a collection. |
+| pathSegments | string[] | Additional path segments that will be applied relative to the first argument. |
+
+## deleteDoc(reference)
+Deletes the document referred to by the specified DocumentReference.
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise resolved once the document has been successfully deleted from the backend (note that it won't resolve while you're offline).
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> | A reference to the document to delete. |
+
+## doc(reference, path, pathSegments)
+Gets a DocumentReference instance that refers to a document within reference at the specified relative path. If no path is specified, an automatically-generated unique ID will be used for the returned DocumentReference.
+
+Signature:
+
+Returns:
+
+DocumentReference<AppModelType, DbModelType>
+
+The DocumentReference instance.
+
+If the final path has an odd number of segments and does not point to a document.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | CollectionReference<AppModelType, DbModelType> | A reference to a collection. |
+| path | string | A slash-separated path to a document. Has to be omitted to use auto-generated IDs. |
+| pathSegments | string[] | Additional path segments that will be applied relative to the first argument. |
+
+## doc(reference, path, pathSegments)
+Gets a DocumentReference instance that refers to a document within reference at the specified relative path.
+
+Signature:
+
+Returns:
+
+DocumentReference<DocumentData, DocumentData>
+
+The DocumentReference instance.
+
+If the final path has an odd number of segments and does not point to a document.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> | A reference to a Firestore document. |
+| path | string | A slash-separated path to a document. |
+| pathSegments | string[] | Additional path segments that will be applied relative to the first argument. |
+
+## getDoc(reference)
+Reads the document referred to by this DocumentReference.
+
+Signature:
+
+Returns:
+
+Promise<DocumentSnapshot<AppModelType, DbModelType>>
+
+A Promise resolved with a DocumentSnapshot containing the current document contents.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> | The reference of the document to fetch. |
+
+## getDocFromCache(reference)
+Reads the document referred to by this DocumentReference from cache. Returns an error if the document is not currently cached.
+
+Signature:
+
+Returns:
+
+Promise<DocumentSnapshot<AppModelType, DbModelType>>
+
+A Promise resolved with a DocumentSnapshot containing the current document contents.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> |  |
+
+## getDocFromServer(reference)
+Reads the document referred to by this DocumentReference from the server. Returns an error if the network is not available.
+
+Signature:
+
+Returns:
+
+Promise<DocumentSnapshot<AppModelType, DbModelType>>
+
+A Promise resolved with a DocumentSnapshot containing the current document contents.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> |  |
+
+## onSnapshot(reference, observer)
+Attaches a listener for DocumentSnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> | A reference to the document to listen to. |
+| observer | { next?: (snapshot: DocumentSnapshot<AppModelType, DbModelType>) => void; error?: (error: FirestoreError) => void; complete?: () => void; } | A single object containing next and error callbacks. |
+
+## onSnapshot(reference, options, observer)
+Attaches a listener for DocumentSnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> | A reference to the document to listen to. |
+| options | SnapshotListenOptions | Options controlling the listen behavior. |
+| observer | { next?: (snapshot: DocumentSnapshot<AppModelType, DbModelType>) => void; error?: (error: FirestoreError) => void; complete?: () => void; } | A single object containing next and error callbacks. |
+
+## onSnapshot(reference, onNext, onError, onCompletion)
+Attaches a listener for DocumentSnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> | A reference to the document to listen to. |
+| onNext | (snapshot: DocumentSnapshot<AppModelType, DbModelType>) => void | A callback to be called every time a new DocumentSnapshot is available. |
+| onError | (error: FirestoreError) => void | A callback to be called if the listen fails or is cancelled. No further callbacks will occur. |
+| onCompletion | () => void | Can be provided, but will not be called since streams are never ending. |
+
+## onSnapshot(reference, options, onNext, onError, onCompletion)
+Attaches a listener for DocumentSnapshot events. You may either pass individual onNext and onError callbacks or pass a single observer object with next and error callbacks.
+
+NOTE: Although an onCompletion callback can be provided, it will never be called because the snapshot stream is never-ending.
+
+Signature:
+
+Returns:
+
+Unsubscribe
+
+An unsubscribe function that can be called to cancel the snapshot listener.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> | A reference to the document to listen to. |
+| options | SnapshotListenOptions | Options controlling the listen behavior. |
+| onNext | (snapshot: DocumentSnapshot<AppModelType, DbModelType>) => void | A callback to be called every time a new DocumentSnapshot is available. |
+| onError | (error: FirestoreError) => void | A callback to be called if the listen fails or is cancelled. No further callbacks will occur. |
+| onCompletion | () => void | Can be provided, but will not be called since streams are never ending. |
+
+## setDoc(reference, data)
+Writes to the document referred to by this DocumentReference. If the document does not yet exist, it will be created.
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise resolved once the data has been successfully written to the backend (note that it won't resolve while you're offline).
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> | A reference to the document to write. |
+| data | WithFieldValue<AppModelType> | A map of the fields and values for the document. |
+
+## setDoc(reference, data, options)
+Writes to the document referred to by the specified DocumentReference. If the document does not yet exist, it will be created. If you provide merge or mergeFields, the provided data can be merged into an existing document.
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise resolved once the data has been successfully written to the backend (note that it won't resolve while you're offline).
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> | A reference to the document to write. |
+| data | PartialWithFieldValue<AppModelType> | A map of the fields and values for the document. |
+| options | SetOptions | An object to configure the set behavior. |
+
+## updateDoc(reference, data)
+Updates fields in the document referred to by the specified DocumentReference. The update will fail if applied to a document that does not exist.
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise resolved once the data has been successfully written to the backend (note that it won't resolve while you're offline).
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> | A reference to the document to update. |
+| data | UpdateData<DbModelType> | An object containing the fields and values with which to update the document. Fields can contain dots to reference nested fields within the document. |
+
+## updateDoc(reference, field, value, moreFieldsAndValues)
+Updates fields in the document referred to by the specified DocumentReference The update will fail if applied to a document that does not exist.
+
+Nested fields can be updated by providing dot-separated field path strings or by providing FieldPath objects.
+
+Signature:
+
+Returns:
+
+Promise<void>
+
+A Promise resolved once the data has been successfully written to the backend (note that it won't resolve while you're offline).
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| reference | DocumentReference<AppModelType, DbModelType> | A reference to the document to update. |
+| field | string | FieldPath | The first field to update. |
+| value | unknown | The first value. |
+| moreFieldsAndValues | unknown[] | Additional key value pairs. |
+
+## memoryLocalCache(settings)
+Creates an instance of MemoryLocalCache. The instance can be set to FirestoreSettings.cache to tell the SDK which cache layer to use.
+
+Signature:
+
+Returns:
+
+MemoryLocalCache
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| settings | MemoryCacheSettings |  |
+
+## memoryLruGarbageCollector(settings)
+Creates an instance of MemoryLruGarbageCollector.
+
+A target size can be specified as part of the setting parameter. The collector will start deleting documents once the cache size exceeds the given size. The default cache size is 40MB (40 * 1024 * 1024 bytes).
+
+Signature:
+
+Returns:
+
+MemoryLruGarbageCollector
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| settings | { cacheSizeBytes?: number; } |  |
+
+## persistentLocalCache(settings)
+Creates an instance of PersistentLocalCache. The instance can be set to FirestoreSettings.cache to tell the SDK which cache layer to use.
+
+Persistent cache cannot be used in a Node.js environment.
+
+Signature:
+
+Returns:
+
+PersistentLocalCache
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| settings | PersistentCacheSettings |  |
+
+## persistentSingleTabManager(settings)
+Creates an instance of PersistentSingleTabManager.
+
+Signature:
+
+Returns:
+
+PersistentSingleTabManager
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| settings | PersistentSingleTabManagerSettings | undefined | Configures the created tab manager. |
+
+## endAt(snapshot)
+Creates a QueryEndAtConstraint that modifies the result set to end at the provided document (inclusive). The end position is relative to the order of the query. The document must contain all of the fields provided in the orderBy of the query.
+
+Signature:
+
+Returns:
+
+QueryEndAtConstraint
+
+A QueryEndAtConstraint to pass to query()
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| snapshot | DocumentSnapshot<AppModelType, DbModelType> | The snapshot of the document to end at. |
+
+## endBefore(snapshot)
+Creates a QueryEndAtConstraint that modifies the result set to end before the provided document (exclusive). The end position is relative to the order of the query. The document must contain all of the fields provided in the orderBy of the query.
+
+Signature:
+
+Returns:
+
+QueryEndAtConstraint
+
+A QueryEndAtConstraint to pass to query()
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| snapshot | DocumentSnapshot<AppModelType, DbModelType> | The snapshot of the document to end before. |
+
+## startAfter(snapshot)
+Creates a QueryStartAtConstraint that modifies the result set to start after the provided document (exclusive). The starting position is relative to the order of the query. The document must contain all of the fields provided in the orderBy of the query.
+
+Signature:
+
+Returns:
+
+QueryStartAtConstraint
+
+A QueryStartAtConstraint to pass to query()
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| snapshot | DocumentSnapshot<AppModelType, DbModelType> | The snapshot of the document to start after. |
+
+## startAt(snapshot)
+Creates a QueryStartAtConstraint that modifies the result set to start at the provided document (inclusive). The starting position is relative to the order of the query. The document must contain all of the fields provided in the orderBy of this query.
+
+Signature:
+
+Returns:
+
+QueryStartAtConstraint
+
+A QueryStartAtConstraint to pass to query().
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| snapshot | DocumentSnapshot<AppModelType, DbModelType> | The snapshot of the document to start at. |
+
+## vector(values)
+Creates a new VectorValue constructed with a copy of the given array of numbers.
+
+Signature:
+
+Returns:
+
+VectorValue
+
+A new VectorValue constructed with a copy of the given array of numbers.
+
+### 표
+| Parameter | Type | Description |
+| --- | --- | --- |
+| values | number[] | Create a VectorValue instance with a copy of this array of numbers. |
+
+## CACHE_SIZE_UNLIMITED
+Constant used to indicate the LRU garbage collection should be disabled. Set this value as the cacheSizeBytes on the settings passed to the Firestore instance.
+
+Signature:
+
+## AddPrefixToKeys
+Returns a new map where every key is prefixed with the outer key appended to a dot.
+
+Signature:
+
+## AggregateFieldType
+The union of all AggregateField types that are supported by Firestore.
+
+Signature:
+
+## AggregateSpecData
+A type whose keys are taken from an AggregateSpec, and whose values are the result of the aggregation performed by the corresponding AggregateField from the input AggregateSpec.
+
+Signature:
+
+## AggregateType
+Union type representing the aggregate type to be performed.
+
+Signature:
+
+## ChildUpdateFields
+Helper for calculating the nested fields for a given type T1. This is needed to distribute union types such as undefined | {...} (happens for optional props) or {a: A} | {b: B}.
+
+In this use case, V is used to distribute the union types of T[K] on Record, since T[K] is evaluated as an expression and not distributed.
+
+See https://www.typescriptlang.org/docs/handbook/advanced-types.html#distributive-conditional-types
+
+Signature:
+
+## DocumentChangeType
+The type of a DocumentChange may be 'added', 'removed', or 'modified'.
+
+Signature:
+
+## FirestoreErrorCode
+The set of Firestore status codes. The codes are the same at the ones exposed by gRPC here: https://github.com/grpc/grpc/blob/master/doc/statuscodes.md
+
+Possible values: - 'cancelled': The operation was cancelled (typically by the caller). - 'unknown': Unknown error or an error from a different error domain. - 'invalid-argument': Client specified an invalid argument. Note that this differs from 'failed-precondition'. 'invalid-argument' indicates arguments that are problematic regardless of the state of the system (e.g. an invalid field name). - 'deadline-exceeded': Deadline expired before operation could complete. For operations that change the state of the system, this error may be returned even if the operation has completed successfully. For example, a successful response from a server could have been delayed long enough for the deadline to expire. - 'not-found': Some requested document was not found. - 'already-exists': Some document that we attempted to create already exists. - 'permission-denied': The caller does not have permission to execute the specified operation. - 'resource-exhausted': Some resource has been exhausted, perhaps a per-user quota, or perhaps the entire file system is out of space. - 'failed-precondition': Operation was rejected because the system is not in a state required for the operation's execution. - 'aborted': The operation was aborted, typically due to a concurrency issue like transaction aborts, etc. - 'out-of-range': Operation was attempted past the valid range. - 'unimplemented': Operation is not implemented or not supported/enabled. - 'internal': Internal errors. Means some invariants expected by underlying system has been broken. If you see one of these errors, something is very broken. - 'unavailable': The service is currently unavailable. This is most likely a transient condition and may be corrected by retrying with a backoff. - 'data-loss': Unrecoverable data loss or corruption. - 'unauthenticated': The request does not have valid authentication credentials for the operation.
+
+Signature:
+
+## FirestoreLocalCache
+Union type from all supported SDK cache layer.
+
+Signature:
+
+## ListenSource
+Describe the source a query listens to.
+
+Set to default to listen to both cache and server changes. Set to cache to listen to changes in cache only.
+
+Signature:
+
+## MemoryGarbageCollector
+Union type from all support garbage collectors for memory local cache.
+
+Signature:
+
+## NestedUpdateFields
+For each field (e.g. 'bar'), find all nested keys (e.g. {'bar.baz': T1, 'bar.qux': T2}). Intersect them together to make a single map containing all possible keys that are all marked as optional
+
+Signature:
+
+## OrderByDirection
+The direction of a orderBy() clause is specified as 'desc' or 'asc' (descending or ascending).
+
+Signature:
+
+## PartialWithFieldValue
+Similar to TypeScript's Partial<T>, but allows nested fields to be omitted and FieldValues to be passed in as property values.
+
+Signature:
+
+## PersistentTabManager
+A union of all available tab managers.
+
+Signature:
+
+## Primitive
+Primitive types.
+
+Signature:
+
+## QueryConstraintType
+Describes the different query constraints available in this SDK.
+
+Signature:
+
+## QueryFilterConstraint
+QueryFilterConstraint is a helper union type that represents QueryFieldFilterConstraint and QueryCompositeFilterConstraint.
+
+Signature:
+
+## QueryNonFilterConstraint
+QueryNonFilterConstraint is a helper union type that represents QueryConstraints which are used to narrow or order the set of documents, but that do not explicitly filter on a document field. QueryNonFilterConstraints are created by invoking orderBy(), startAt(), startAfter(), endBefore(), endAt(), limit() or limitToLast() and can then be passed to query() to create a new query instance that also contains the QueryConstraint.
+
+Signature:
+
+## SetOptions
+An options object that configures the behavior of setDoc(), and calls. These calls can be configured to perform granular merges instead of overwriting the target documents in their entirety by providing a SetOptions with merge: true.
+
+Signature:
+
+## TaskState
+Represents the state of bundle loading tasks.
+
+Both 'Error' and 'Success' are sinking state: task will abort or complete and there will be no more updates after they are reported.
+
+Signature:
+
+## UnionToIntersection
+Given a union type U = T1 | T2 | ..., returns an intersected type (T1 & T2 & ...).
+
+Uses distributive conditional types and inference from conditional types. This works because multiple candidates for the same type variable in contra-variant positions causes an intersection type to be inferred. https://www.typescriptlang.org/docs/handbook/advanced-types.html#type-inference-in-conditional-types https://stackoverflow.com/questions/50374908/transform-union-type-to-intersection-type
+
+Signature:
+
+## UpdateData
+Update data (for use with updateDoc()) that consists of field paths (e.g. 'foo' or 'foo.baz') mapped to values. Fields that contain dots reference nested fields within the document. FieldValues can be passed in as property values.
+
+Signature:
+
+## WhereFilterOp
+Filter conditions in a where() clause are specified using the strings '&lt;', '&lt;=', '==', '!=', '&gt;=', '&gt;', 'array-contains', 'in', 'array-contains-any', and 'not-in'.
+
+Signature:
+
+## WithFieldValue
+Allows FieldValues to be passed in as a property value while maintaining type safety.
+
+Signature:

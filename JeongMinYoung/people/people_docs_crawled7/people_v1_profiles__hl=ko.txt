@@ -1,0 +1,21 @@
+Source URL: https://developers.google.com/people/v1/profiles?hl=ko
+
+## Fallback (article.innerText)
+이 페이지는 Cloud Translation API를 통해 번역되었습니다.
+홈
+제품
+Google Workspace
+People API
+프로필 읽기
+
+People API 사용 준비하기의 단계를 완료하면 프로필의 데이터를 읽을 준비가 됩니다.
+
+다음 코드 샘플은 몇 가지 간단한 요청을 보내는 방법을 보여줍니다. 메서드의 전체 목록은 참조 문서를 참고하세요.
+
+인증된 사용자의 사용자 가져오기
+
+사용자의 프로필을 가져오려면 다음 코드를 사용하세요.
+
+Google 계정 ID의 사용자 가져오기
+
+Google 계정 ID의 사용자 정보를 가져오려면 다음 코드를 사용하세요.

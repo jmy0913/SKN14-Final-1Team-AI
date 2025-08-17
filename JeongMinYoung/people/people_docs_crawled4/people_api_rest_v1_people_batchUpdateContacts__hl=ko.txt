@@ -1,0 +1,86 @@
+Source URL: https://developers.google.com/people/api/rest/v1/people/batchUpdateContacts?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다. Google Workspace People API 참고자료 Method: people.batchUpdateContacts 컬렉션을 사용해 정리하기 내 환경설정을 기준으로 콘텐츠를 저장하고 분류하세요. HTTP 요청 요청 본문 JSON 표현 응답 본문 JSON 표현 승인 범위 연락처를 일괄적으로 업데이트하고 업데이트된 연락처에 대한 리소스 이름 맵을 PersonResponses에 반환합니다. 지연 시간 및 실패 증가를 방지하려면 동일한 사용자에 대한 변형 요청을 순차적으로 전송해야 합니다. HTTP 요청 URL은 gRPC 트랜스코딩 구문을 사용합니다. 요청 본문 요청 본문에는 다음과 같은 구조의 데이터가 포함됩니다. JSON 표현 필수 항목입니다. 업데이트할 개인 데이터에 대한 리소스 이름의 맵입니다. 단일 요청으로 최대 200개의 연락처를 허용합니다. 쌍 목록을 포함하는 객체입니다. 예: 필수 항목입니다. 업데이트되는 사람의 필드를 제한하는 필드 마스크입니다. 여러 필드는 쉼표로 구분하여 지정할 수 있습니다. 각 사용자에 대해 지정된 모든 입력란이 대체되거나 비어 있는 경우 지워집니다. 유효한 값은 다음과 같습니다. addresses calendarUrls clientData emailAddresses externalIds imClients 관심분야 locales miscKeywords organizations phoneNumbers sipAddresses userDefined 필수 항목입니다. 각 사용자의 어떤 필드가 반환되는지를 제한하는 필드 마스크입니다. 여러 필드는 쉼표로 구분하여 지정할 수 있습니다. 읽기 마스크가 비어 있으면 post-Variant-get을 건너뛰고 응답에 데이터가 반환되지 않습니다. 유효한 값은 다음과 같습니다. addresses ageRanges calendarUrls clientData coverPhotos emailAddresses externalIds imClients 관심분야 locales 메타데이터 miscKeywords organizations phoneNumbers sipAddresses userDefined 선택사항입니다. 반환할 소스 유형의 마스크입니다. 설정하지 않으면 기본값은 입니다. 응답 본문 실패하면 각 연락처에 해당하는 오류 목록인 를 반환합니다. 연락처 일괄 업데이트 요청에 대한 응답입니다. 성공할 경우 응답 본문에 다음 구조의 데이터가 포함됩니다. JSON 표현 요청이 비어 있지 않은 경우 업데이트된 연락처에 대한 리소스 이름 맵입니다. 쌍 목록을 포함하는 객체입니다. 예: 승인 범위 다음 OAuth 범위가 필요합니다. 자세한 내용은 승인 가이드 를 참조하세요.
+
+=== 코드 ===
+POST https://people.googleapis.com/v1/people:batchUpdateContacts
+
+=== 코드 ===
+{
+  "contacts": {
+    string: {
+      object (Person)
+    },
+    ...
+  },
+  "updateMask": string,
+  "readMask": string,
+  "sources": [
+    enum (ReadSourceType)
+  ]
+}
+
+=== 코드 ===
+ReadSourceType
+
+=== 코드 ===
+map (key: string, value: object (Person))
+
+=== 코드 ===
+"key": value
+
+=== 코드 ===
+{ "name": "wrench", "mass": "1.3kg", "count": "3" }
+
+=== 코드 ===
+string (FieldMask format)
+
+=== 코드 ===
+string (FieldMask format)
+
+=== 코드 ===
+enum (ReadSourceType)
+
+=== 코드 ===
+ReadSourceType
+
+=== 코드 ===
+READ_SOURCE_TYPE_CONTACT
+
+=== 코드 ===
+READ_SOURCE_TYPE_PROFILE
+
+=== 코드 ===
+BatchUpdateContactsErrorDetails
+
+=== 코드 ===
+{
+  "updateResult": {
+    string: {
+      object (PersonResponse)
+    },
+    ...
+  }
+}
+
+=== 코드 ===
+PersonResponse
+
+=== 코드 ===
+updateResult
+
+=== 코드 ===
+map (key: string, value: object (PersonResponse))
+
+=== 코드 ===
+PersonResponse
+
+=== 코드 ===
+"key": value
+
+=== 코드 ===
+{ "name": "wrench", "mass": "1.3kg", "count": "3" }
+
+=== 코드 ===
+https://www.googleapis.com/auth/contacts

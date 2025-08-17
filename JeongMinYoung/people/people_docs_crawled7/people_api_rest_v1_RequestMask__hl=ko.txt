@@ -1,0 +1,28 @@
+Source URL: https://developers.google.com/people/api/rest/v1/RequestMask?hl=ko
+
+## Fallback (article.innerText)
+이 페이지는 Cloud Translation API를 통해 번역되었습니다.
+홈
+제품
+Google Workspace
+People API
+참고자료
+RequestMask
+bookmark_border
+
+이 항목은 지원 중단되었습니다.
+
+지원 중단됨 (대신 personFields 사용)
+
+응답에서 반환할 사람 필드를 설명합니다.
+
+JSON 표현
+{
+  "includeField": string
+}
+필드
+includeField
+
+string (FieldMask format)
+
+필수 항목입니다. 응답에 포함할 사용자 필드의 쉼표로 구분된 목록입니다. 각 경로는 person.로 시작해야 합니다(예: person.names 또는 person.photos).

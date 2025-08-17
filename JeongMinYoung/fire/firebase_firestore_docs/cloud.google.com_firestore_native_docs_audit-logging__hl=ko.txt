@@ -1,0 +1,795 @@
+Source URL: https://cloud.google.com/firestore/native/docs/audit-logging?hl=ko
+
+## 서문
+이 문서에서는 Firestore의 감사 로깅을 설명합니다. Google Cloud 서비스는 Google Cloud 리소스 내의 관리 및 액세스 활동을 기록하는 감사 로그를 생성합니다. Cloud 감사 로그에 대한 자세한 내용은 다음을 참조하세요.
+
+감사 로그 유형
+
+감사 로그 항목 구조
+
+감사 로그 저장 및 라우팅
+
+Cloud Logging 가격 책정 요약
+
+데이터 액세스 감사 로그 사용 설정
+
+## 참고
+감사 로깅을 구성할 때 서비스 이름 datastore.googleapis.com을 사용하여 datastore.googleapis.com 및 firestore.googleapis.com를 모두 구성합니다.구성되면 Firestore API의 로그에 서비스 이름 firestore.googleapis.com가 포함됩니다.
+
+DATA_READ 또는 DATA_WRITE 요청을 처리하는 데 걸린 시간을 보려면 AuditLog의 metadata 객체 내 processing_duration 필드를 참고하세요. processing_duration은 데이터베이스가 요청을 처리하는 데 걸린 시간을 설명합니다. 이 값은 최종 사용자 지연 시간보다 작습니다. 특히 네트워크 오버헤드를 포함하지 않습니다.
+
+Listen 요청의 경우 processing_duration는 반환된 초기 결과 집합의 감사 로그에만 있습니다. 동일한 Listen 대상에 대한 후속 감사 로그에는 없습니다.
+
+가져오기, 일괄 삭제 작업, TTL의 개별 쓰기는 감사 로그에 기록되지 않습니다.
+
+## 서비스 이름
+Firestore 감사 로그는 firestore.googleapis.com이라는 서비스 이름을 사용합니다. 이 서비스에 대한 필터:
+
+## 권한 유형별 메서드
+google.cloud.keyvisualizer.KeyVisualizer.GetScan
+
+google.cloud.keyvisualizer.KeyVisualizer.ListScans
+
+각 IAM 권한에는 type 속성이 포함되며 그 값은 네 가지 값(ADMIN_READ, ADMIN_WRITE, DATA_READ, DATA_WRITE) 중 하나일 수 있는 열거형입니다. 메서드를 호출하면 Firestore에서 메서드를 수행하는 데 필요한 권한의 type 속성에 따라 카테고리가 달라지는 감사 로그를 생성합니다. DATA_READ, DATA_WRITE, ADMIN_READ의 type 속성 값을 가진 IAM 권한이 필요한 메서드는 데이터 액세스 감사 로그를 생성합니다. type 속성 값이 ADMIN_WRITE인 IAM 권한이 필요한 메서드는 관리자 활동 감사 로그를 생성합니다.
+
+### 표
+| 권한 유형 | 메서드 |
+| --- | --- |
+| ADMIN_READ | google.cloud.location.Locations.GetLocation
+google.cloud.location.Locations.ListLocations
+google.firestore.admin.v1.FirestoreAdmin.GetBackup
+google.firestore.admin.v1.FirestoreAdmin.GetBackupSchedule
+google.firestore.admin.v1.FirestoreAdmin.GetDatabase
+google.firestore.admin.v1.FirestoreAdmin.GetField
+google.firestore.admin.v1.FirestoreAdmin.GetIndex
+google.firestore.admin.v1.FirestoreAdmin.ListBackupSchedules
+google.firestore.admin.v1.FirestoreAdmin.ListBackups
+google.firestore.admin.v1.FirestoreAdmin.ListDatabases
+google.firestore.admin.v1.FirestoreAdmin.ListFields
+google.firestore.admin.v1.FirestoreAdmin.ListIndexes
+google.firestore.admin.v1beta1.FirestoreAdmin.GetIndex
+google.firestore.admin.v1beta1.FirestoreAdmin.ListIndexes
+google.firestore.admin.v1beta2.FirestoreAdmin.GetField
+google.firestore.admin.v1beta2.FirestoreAdmin.GetIndex
+google.firestore.admin.v1beta2.FirestoreAdmin.ListFields
+google.firestore.admin.v1beta2.FirestoreAdmin.ListIndexes
+google.longrunning.Operations.GetOperation
+google.longrunning.Operations.ListOperations |
+| ADMIN_WRITE | google.firestore.admin.v1.FirestoreAdmin.BulkDeleteDocuments
+google.firestore.admin.v1.FirestoreAdmin.CreateBackupSchedule
+google.firestore.admin.v1.FirestoreAdmin.CreateDatabase
+google.firestore.admin.v1.FirestoreAdmin.CreateIndex
+google.firestore.admin.v1.FirestoreAdmin.DeleteBackup
+google.firestore.admin.v1.FirestoreAdmin.DeleteBackupSchedule
+google.firestore.admin.v1.FirestoreAdmin.DeleteDatabase
+google.firestore.admin.v1.FirestoreAdmin.DeleteIndex
+google.firestore.admin.v1.FirestoreAdmin.ExportDocuments
+google.firestore.admin.v1.FirestoreAdmin.ImportDocuments
+google.firestore.admin.v1.FirestoreAdmin.RestoreDatabase
+google.firestore.admin.v1.FirestoreAdmin.UpdateBackupSchedule
+google.firestore.admin.v1.FirestoreAdmin.UpdateDatabase
+google.firestore.admin.v1.FirestoreAdmin.UpdateField
+google.firestore.admin.v1beta1.FirestoreAdmin.CreateIndex
+google.firestore.admin.v1beta1.FirestoreAdmin.DeleteIndex
+google.firestore.admin.v1beta1.FirestoreAdmin.ExportDocuments
+google.firestore.admin.v1beta1.FirestoreAdmin.ImportDocuments
+google.firestore.admin.v1beta2.FirestoreAdmin.CreateIndex
+google.firestore.admin.v1beta2.FirestoreAdmin.DeleteIndex
+google.firestore.admin.v1beta2.FirestoreAdmin.ExportDocuments
+google.firestore.admin.v1beta2.FirestoreAdmin.ImportDocuments
+google.firestore.admin.v1beta2.FirestoreAdmin.UpdateField
+google.longrunning.Operations.CancelOperation
+google.longrunning.Operations.DeleteOperation |
+| DATA_READ | google.firestore.v1.Firestore.BatchGetDocuments
+google.firestore.v1.Firestore.BeginTransaction
+google.firestore.v1.Firestore.GetDocument
+google.firestore.v1.Firestore.ListCollectionIds
+google.firestore.v1.Firestore.ListDocuments
+google.firestore.v1.Firestore.Listen
+google.firestore.v1.Firestore.PartitionQuery
+google.firestore.v1.Firestore.Rollback
+google.firestore.v1.Firestore.RunAggregationQuery
+google.firestore.v1.Firestore.RunQuery
+google.firestore.v1beta1.Firestore.BatchGetDocuments
+google.firestore.v1beta1.Firestore.BeginTransaction
+google.firestore.v1beta1.Firestore.GetDocument
+google.firestore.v1beta1.Firestore.ListCollectionIds
+google.firestore.v1beta1.Firestore.ListDocuments
+google.firestore.v1beta1.Firestore.PartitionQuery
+google.firestore.v1beta1.Firestore.Rollback
+google.firestore.v1beta1.Firestore.RunAggregationQuery
+google.firestore.v1beta1.Firestore.RunQuery |
+| DATA_WRITE | google.firestore.v1.Firestore.BatchWrite
+google.firestore.v1.Firestore.Commit
+google.firestore.v1.Firestore.CreateDocument
+google.firestore.v1.Firestore.DeleteDocument
+google.firestore.v1.Firestore.UpdateDocument
+google.firestore.v1.Firestore.Write
+google.firestore.v1beta1.Firestore.BatchWrite
+google.firestore.v1beta1.Firestore.Commit
+google.firestore.v1beta1.Firestore.CreateDocument
+google.firestore.v1beta1.Firestore.DeleteDocument
+google.firestore.v1beta1.Firestore.UpdateDocument |
+
+## API 인터페이스 감사 로그
+메서드별 평가 방법과 평가 대상 권한에 대한 자세한 내용은 Firestore의 Identity and Access Management 문서를 참고하세요.
+
+## google.cloud.location.Locations
+다음 감사 로그는 google.cloud.location.Locations에 속하는 메서드와 연결되어 있습니다.
+
+메서드: google.cloud.location.Locations.GetLocation
+
+감사 로그 유형: 데이터 액세스
+
+권한:
+datastore.locations.get - ADMIN_READ
+
+datastore.locations.get - ADMIN_READ
+
+메서드가 장기 실행 또는 스트리밍 작업인지 여부: 아니요.
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.cloud.location.Locations.GetLocation"
+
+메서드: google.cloud.location.Locations.ListLocations
+
+권한:
+datastore.locations.list - ADMIN_READ
+
+datastore.locations.list - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.cloud.location.Locations.ListLocations"
+
+## google.firestore.admin.v1.FirestoreAdmin
+다음 감사 로그는 google.firestore.admin.v1.FirestoreAdmin에 속하는 메서드와 연결되어 있습니다.
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.BulkDeleteDocuments
+
+감사 로그 유형: 관리자 활동
+
+권한:
+datastore.databases.bulkDelete - ADMIN_WRITE
+
+datastore.databases.bulkDelete - ADMIN_WRITE
+
+메서드가 장기 실행 또는 스트리밍 작업인지 여부: 장기 실행 작업
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.BulkDeleteDocuments"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.CreateBackupSchedule
+
+권한:
+datastore.backupSchedules.create - ADMIN_WRITE
+
+datastore.backupSchedules.create - ADMIN_WRITE
+
+메서드가 장기 실행 또는 스트리밍 작업인지 여부: 아니요.
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.CreateBackupSchedule"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.CreateDatabase
+
+권한:
+datastore.databases.create - ADMIN_WRITE
+
+datastore.databases.create - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.CreateDatabase"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.CreateIndex
+
+권한:
+datastore.indexes.create - ADMIN_WRITE
+
+datastore.indexes.create - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.CreateIndex"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.DeleteBackup
+
+권한:
+datastore.backups.delete - ADMIN_WRITE
+
+datastore.backups.delete - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.DeleteBackup"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.DeleteBackupSchedule
+
+권한:
+datastore.backupSchedules.delete - ADMIN_WRITE
+
+datastore.backupSchedules.delete - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.DeleteBackupSchedule"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.DeleteDatabase
+
+권한:
+datastore.databases.delete - ADMIN_WRITE
+
+datastore.databases.delete - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.DeleteDatabase"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.DeleteIndex
+
+권한:
+datastore.indexes.delete - ADMIN_WRITE
+
+datastore.indexes.delete - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.DeleteIndex"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.ExportDocuments
+
+권한:
+datastore.databases.export - ADMIN_WRITE
+
+datastore.databases.export - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.ExportDocuments"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.GetBackup
+
+감사 로그 유형: 데이터 액세스
+
+권한:
+datastore.backups.get - ADMIN_READ
+
+datastore.backups.get - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.GetBackup"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.GetBackupSchedule
+
+권한:
+datastore.backupSchedules.get - ADMIN_READ
+
+datastore.backupSchedules.get - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.GetBackupSchedule"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.GetDatabase
+
+권한:
+datastore.databases.getMetadata - ADMIN_READ
+
+datastore.databases.getMetadata - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.GetDatabase"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.GetField
+
+권한:
+datastore.indexes.get - ADMIN_READ
+
+datastore.indexes.get - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.GetField"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.GetIndex
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.GetIndex"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.ImportDocuments
+
+권한:
+datastore.databases.import - ADMIN_WRITE
+
+datastore.databases.import - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.ImportDocuments"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.ListBackupSchedules
+
+권한:
+datastore.backupSchedules.list - ADMIN_READ
+
+datastore.backupSchedules.list - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.ListBackupSchedules"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.ListBackups
+
+권한:
+datastore.backups.list - ADMIN_READ
+
+datastore.backups.list - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.ListBackups"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.ListDatabases
+
+권한:
+datastore.databases.list - ADMIN_READ
+
+datastore.databases.list - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.ListDatabases"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.ListFields
+
+권한:
+datastore.indexes.list - ADMIN_READ
+
+datastore.indexes.list - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.ListFields"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.ListIndexes
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.ListIndexes"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.RestoreDatabase
+
+권한:
+datastore.backups.restoreDatabase - ADMIN_WRITE
+
+datastore.backups.restoreDatabase - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.RestoreDatabase"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.UpdateBackupSchedule
+
+권한:
+datastore.backupSchedules.update - ADMIN_WRITE
+
+datastore.backupSchedules.update - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.UpdateBackupSchedule"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.UpdateDatabase
+
+권한:
+datastore.databases.update - ADMIN_WRITE
+
+datastore.databases.update - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.UpdateDatabase"
+
+메서드: google.firestore.admin.v1.FirestoreAdmin.UpdateField
+
+권한:
+datastore.indexes.update - ADMIN_WRITE
+
+datastore.indexes.update - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1.FirestoreAdmin.UpdateField"
+
+## google.firestore.admin.v1beta1.FirestoreAdmin
+다음 감사 로그는 google.firestore.admin.v1beta1.FirestoreAdmin에 속하는 메서드와 연결되어 있습니다.
+
+메서드: google.firestore.admin.v1beta1.FirestoreAdmin.CreateIndex
+
+감사 로그 유형: 관리자 활동
+
+권한:
+datastore.indexes.create - ADMIN_WRITE
+
+datastore.indexes.create - ADMIN_WRITE
+
+메서드가 장기 실행 또는 스트리밍 작업인지 여부: 장기 실행 작업
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta1.FirestoreAdmin.CreateIndex"
+
+메서드: google.firestore.admin.v1beta1.FirestoreAdmin.DeleteIndex
+
+권한:
+datastore.indexes.delete - ADMIN_WRITE
+
+datastore.indexes.delete - ADMIN_WRITE
+
+메서드가 장기 실행 또는 스트리밍 작업인지 여부: 아니요.
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta1.FirestoreAdmin.DeleteIndex"
+
+메서드: google.firestore.admin.v1beta1.FirestoreAdmin.ExportDocuments
+
+권한:
+datastore.databases.export - ADMIN_WRITE
+
+datastore.databases.export - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta1.FirestoreAdmin.ExportDocuments"
+
+메서드: google.firestore.admin.v1beta1.FirestoreAdmin.GetIndex
+
+감사 로그 유형: 데이터 액세스
+
+권한:
+datastore.indexes.get - ADMIN_READ
+
+datastore.indexes.get - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta1.FirestoreAdmin.GetIndex"
+
+메서드: google.firestore.admin.v1beta1.FirestoreAdmin.ImportDocuments
+
+권한:
+datastore.databases.import - ADMIN_WRITE
+
+datastore.databases.import - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta1.FirestoreAdmin.ImportDocuments"
+
+메서드: google.firestore.admin.v1beta1.FirestoreAdmin.ListIndexes
+
+권한:
+datastore.indexes.list - ADMIN_READ
+
+datastore.indexes.list - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta1.FirestoreAdmin.ListIndexes"
+
+## google.firestore.admin.v1beta2.FirestoreAdmin
+다음 감사 로그는 google.firestore.admin.v1beta2.FirestoreAdmin에 속하는 메서드와 연결되어 있습니다.
+
+메서드: google.firestore.admin.v1beta2.FirestoreAdmin.CreateIndex
+
+감사 로그 유형: 관리자 활동
+
+권한:
+datastore.indexes.create - ADMIN_WRITE
+
+datastore.indexes.create - ADMIN_WRITE
+
+메서드가 장기 실행 또는 스트리밍 작업인지 여부: 장기 실행 작업
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta2.FirestoreAdmin.CreateIndex"
+
+메서드: google.firestore.admin.v1beta2.FirestoreAdmin.DeleteIndex
+
+권한:
+datastore.indexes.delete - ADMIN_WRITE
+
+datastore.indexes.delete - ADMIN_WRITE
+
+메서드가 장기 실행 또는 스트리밍 작업인지 여부: 아니요.
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta2.FirestoreAdmin.DeleteIndex"
+
+메서드: google.firestore.admin.v1beta2.FirestoreAdmin.ExportDocuments
+
+권한:
+datastore.databases.export - ADMIN_WRITE
+
+datastore.databases.export - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta2.FirestoreAdmin.ExportDocuments"
+
+메서드: google.firestore.admin.v1beta2.FirestoreAdmin.GetField
+
+감사 로그 유형: 데이터 액세스
+
+권한:
+datastore.indexes.get - ADMIN_READ
+
+datastore.indexes.get - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta2.FirestoreAdmin.GetField"
+
+메서드: google.firestore.admin.v1beta2.FirestoreAdmin.GetIndex
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta2.FirestoreAdmin.GetIndex"
+
+메서드: google.firestore.admin.v1beta2.FirestoreAdmin.ImportDocuments
+
+권한:
+datastore.databases.import - ADMIN_WRITE
+
+datastore.databases.import - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta2.FirestoreAdmin.ImportDocuments"
+
+메서드: google.firestore.admin.v1beta2.FirestoreAdmin.ListFields
+
+권한:
+datastore.indexes.list - ADMIN_READ
+
+datastore.indexes.list - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta2.FirestoreAdmin.ListFields"
+
+메서드: google.firestore.admin.v1beta2.FirestoreAdmin.ListIndexes
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta2.FirestoreAdmin.ListIndexes"
+
+메서드: google.firestore.admin.v1beta2.FirestoreAdmin.UpdateField
+
+권한:
+datastore.indexes.update - ADMIN_WRITE
+
+datastore.indexes.update - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.admin.v1beta2.FirestoreAdmin.UpdateField"
+
+## google.firestore.v1.Firestore
+다음 감사 로그는 google.firestore.v1.Firestore에 속하는 메서드와 연결되어 있습니다.
+
+메서드: google.firestore.v1.Firestore.BatchGetDocuments
+
+감사 로그 유형: 데이터 액세스
+
+권한:
+datastore.entities.get - DATA_READ
+
+datastore.entities.get - DATA_READ
+
+메서드가 장기 실행 또는 스트리밍 작업인지 여부: 스트리밍 RPC
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.BatchGetDocuments"
+
+메서드: google.firestore.v1.Firestore.BatchWrite
+
+권한:
+datastore.entities.create - DATA_WRITE
+datastore.entities.delete - DATA_WRITE
+datastore.entities.update - DATA_WRITE
+
+datastore.entities.create - DATA_WRITE
+
+datastore.entities.delete - DATA_WRITE
+
+datastore.entities.update - DATA_WRITE
+
+메서드가 장기 실행 또는 스트리밍 작업인지 여부: 아니요.
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.BatchWrite"
+
+메서드: google.firestore.v1.Firestore.BeginTransaction
+
+권한:
+datastore.databases.get - DATA_READ
+
+datastore.databases.get - DATA_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.BeginTransaction"
+
+메서드: google.firestore.v1.Firestore.Commit
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.Commit"
+
+메서드: google.firestore.v1.Firestore.CreateDocument
+
+권한:
+datastore.entities.allocateIds - DATA_WRITE
+datastore.entities.create - DATA_WRITE
+
+datastore.entities.allocateIds - DATA_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.CreateDocument"
+
+메서드: google.firestore.v1.Firestore.DeleteDocument
+
+권한:
+datastore.entities.delete - DATA_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.DeleteDocument"
+
+메서드: google.firestore.v1.Firestore.GetDocument
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.GetDocument"
+
+메서드: google.firestore.v1.Firestore.ListCollectionIds
+
+권한:
+datastore.entities.list - DATA_READ
+
+datastore.entities.list - DATA_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.ListCollectionIds"
+
+메서드: google.firestore.v1.Firestore.ListDocuments
+
+권한:
+datastore.entities.get - DATA_READ
+datastore.entities.list - DATA_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.ListDocuments"
+
+메서드: google.firestore.v1.Firestore.Listen
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.Listen"
+
+Listen은 여러 스트리밍 대상을 결합하는 장기 실행 RPC입니다. 각 대상은 문서 키의 쿼리 또는 집합입니다. 각 대상의 스트림에는 초기 결과 집합과 결과 집합에 대한 업데이트, 추가, 삭제 시퀀스가 포함됩니다. 대상은 관련 감사 단위입니다. Firestore는 각 대상을 다음과 같이 감사합니다.
+
+대상이 추가되면 대상 쿼리 또는 문서 키가 설정된 로그 항목을 내보냅니다. 이러한 항목에서 operation.first는 true입니다. 스트림이 이전 리슨 대상 스트림에서 계속되는 경우 감사 로그가 생략됩니다.
+
+이 대상의 마지막 감사 로그 이후 업데이트 수를 보고하는 주기적 업데이트를 내보냅니다.
+
+명시적으로 또는 Listen RPC 종료로 인해 대상이 스트림에서 삭제될 때 로그 항목을 내보냅니다. 이 로그 항목은 이 대상의 마지막 감사 로그 이후의 업데이트 수를 보고합니다. 이러한 항목에서 operation.last는 true입니다.
+
+내보낸 로그 항목에는 동일한 operation.id가 사용됩니다.
+
+메서드: google.firestore.v1.Firestore.PartitionQuery
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.PartitionQuery"
+
+메서드: google.firestore.v1.Firestore.Rollback
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.Rollback"
+
+메서드: google.firestore.v1.Firestore.RunAggregationQuery
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.RunAggregationQuery"
+
+메서드: google.firestore.v1.Firestore.RunQuery
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.RunQuery"
+
+메서드: google.firestore.v1.Firestore.UpdateDocument
+
+권한:
+datastore.entities.create - DATA_WRITE
+datastore.entities.update - DATA_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.UpdateDocument"
+
+메서드: google.firestore.v1.Firestore.Write
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1.Firestore.Write"
+
+## google.firestore.v1beta1.Firestore
+다음 감사 로그는 google.firestore.v1beta1.Firestore에 속하는 메서드와 연결되어 있습니다.
+
+메서드: google.firestore.v1beta1.Firestore.BatchGetDocuments
+
+감사 로그 유형: 데이터 액세스
+
+권한:
+datastore.databases.get - DATA_READ
+datastore.entities.get - DATA_READ
+
+datastore.databases.get - DATA_READ
+
+datastore.entities.get - DATA_READ
+
+메서드가 장기 실행 또는 스트리밍 작업인지 여부: 스트리밍 RPC
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.BatchGetDocuments"
+
+메서드: google.firestore.v1beta1.Firestore.BatchWrite
+
+권한:
+datastore.entities.create - DATA_WRITE
+datastore.entities.update - DATA_WRITE
+
+datastore.entities.create - DATA_WRITE
+
+datastore.entities.update - DATA_WRITE
+
+메서드가 장기 실행 또는 스트리밍 작업인지 여부: 아니요.
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.BatchWrite"
+
+메서드: google.firestore.v1beta1.Firestore.BeginTransaction
+
+권한:
+datastore.databases.get - DATA_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.BeginTransaction"
+
+메서드: google.firestore.v1beta1.Firestore.Commit
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.Commit"
+
+메서드: google.firestore.v1beta1.Firestore.CreateDocument
+
+권한:
+datastore.entities.allocateIds - DATA_WRITE
+datastore.entities.create - DATA_WRITE
+
+datastore.entities.allocateIds - DATA_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.CreateDocument"
+
+메서드: google.firestore.v1beta1.Firestore.DeleteDocument
+
+권한:
+datastore.entities.delete - DATA_WRITE
+
+datastore.entities.delete - DATA_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.DeleteDocument"
+
+메서드: google.firestore.v1beta1.Firestore.GetDocument
+
+권한:
+datastore.entities.get - DATA_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.GetDocument"
+
+메서드: google.firestore.v1beta1.Firestore.ListCollectionIds
+
+권한:
+datastore.entities.list - DATA_READ
+
+datastore.entities.list - DATA_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.ListCollectionIds"
+
+메서드: google.firestore.v1beta1.Firestore.ListDocuments
+
+권한:
+datastore.entities.get - DATA_READ
+datastore.entities.list - DATA_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.ListDocuments"
+
+메서드: google.firestore.v1beta1.Firestore.PartitionQuery
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.PartitionQuery"
+
+메서드: google.firestore.v1beta1.Firestore.Rollback
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.Rollback"
+
+메서드: google.firestore.v1beta1.Firestore.RunAggregationQuery
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.RunAggregationQuery"
+
+메서드: google.firestore.v1beta1.Firestore.RunQuery
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.RunQuery"
+
+메서드: google.firestore.v1beta1.Firestore.UpdateDocument
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.firestore.v1beta1.Firestore.UpdateDocument"
+
+## google.longrunning.Operations
+다음 감사 로그는 google.longrunning.Operations에 속하는 메서드와 연결되어 있습니다.
+
+메서드: google.longrunning.Operations.CancelOperation
+
+감사 로그 유형: 관리자 활동
+
+권한:
+datastore.operations.cancel - ADMIN_WRITE
+
+datastore.operations.cancel - ADMIN_WRITE
+
+메서드가 장기 실행 또는 스트리밍 작업인지 여부: 아니요.
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.longrunning.Operations.CancelOperation"
+
+메서드: google.longrunning.Operations.DeleteOperation
+
+권한:
+datastore.operations.delete - ADMIN_WRITE
+
+datastore.operations.delete - ADMIN_WRITE
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.longrunning.Operations.DeleteOperation"
+
+메서드: google.longrunning.Operations.GetOperation
+
+감사 로그 유형: 데이터 액세스
+
+권한:
+datastore.operations.get - ADMIN_READ
+
+datastore.operations.get - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.longrunning.Operations.GetOperation"
+
+메서드: google.longrunning.Operations.ListOperations
+
+권한:
+datastore.operations.list - ADMIN_READ
+
+datastore.operations.list - ADMIN_READ
+
+이 메서드에 대한 필터:: protoPayload.methodName="google.longrunning.Operations.ListOperations"
+
+## 요청 호출자 식별
+감사 로그 항목에는 로깅 작업을 수행한 ID에 대한 정보가 포함됩니다. 요청 호출자를 식별하려면 AuditLog 객체 내에서 다음 필드를 참조하세요.
+
+호출자 ID는 AuthenticationInfo 필드에 보관됩니다. 여기에는 사용자의 principalEmail이 포함될 수 있습니다. 이 정보는 가끔 수정됩니다.
+
+JSON 웹 토큰(JWT)이 타사 인증에 사용된 경우 thirdPartyPrincipal 필드에는 토큰의 헤더와 페이로드가 포함됩니다. 예를 들어 Firebase 인증으로 인증된 요청의 감사 로그에는 해당 요청의 인증 토큰이 포함됩니다.
+
+호출자 ID는 AuthenticationInfo 필드에 보관됩니다. 여기에는 사용자의 principalEmail이 포함될 수 있습니다. 이 정보는 가끔 수정됩니다.
+
+JSON 웹 토큰(JWT)이 타사 인증에 사용된 경우 thirdPartyPrincipal 필드에는 토큰의 헤더와 페이로드가 포함됩니다. 예를 들어 Firebase 인증으로 인증된 요청의 감사 로그에는 해당 요청의 인증 토큰이 포함됩니다.
+
+AuditLog 항목의 requestMetadata 객체 내에 있는 callerIp 필드에는 호출자의 IP 주소가 포함됩니다.

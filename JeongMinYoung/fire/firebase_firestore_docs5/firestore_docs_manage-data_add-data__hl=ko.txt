@@ -1,0 +1,1217 @@
+Source URL: https://cloud.google.com/firestore/docs/manage-data/add-data?hl=ko
+
+## 서문
+이 문서에서는 Firestore에서 개별 문서를 설정, 추가 또는 업데이트하는 방법을 설명합니다. 데이터를 일괄 쓰기하려면 트랜잭션 및 일괄 쓰기를 참고하세요.
+
+## 개요
+다음 방법 중 하나로 Firestore에 데이터를 쓸 수 있습니다.
+
+문서 식별자를 명시적으로 지정하여 컬렉션 내의 문서 데이터를 설정합니다.
+
+컬렉션에 새 문서를 추가합니다. 이 경우 Firestore에서 자동으로 문서 식별자를 생성합니다.
+
+자동으로 생성된 식별자로 빈 문서를 만들고 나중에 데이터를 할당합니다.
+
+## 시작하기 전에
+데이터를 설정, 추가 또는 업데이트하도록 Firestore를 초기화하려면 다음 단계를 완료해야 합니다.
+
+Firestore 데이터베이스를 만듭니다. 자세한 내용은 Firestore 빠른 시작 중 하나를 참고하세요.
+
+웹 또는 모바일 클라이언트 라이브러리를 사용하는 경우 보안 규칙으로 인증합니다. 자세한 내용은 보안 규칙 시작하기를 참조하세요.
+
+서버 클라이언트 라이브러리 또는 REST API를 사용하는 경우 Identity and Access Management(IAM)로 인증합니다. 자세한 내용은 서버 클라이언트 라이브러리의 보안을 참조하세요.
+
+## Firestore 초기화
+Firestore의 인스턴스를 초기화합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 웹 버전 9 · 셀#1
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://support.google.com/firebase/answer/7015592
+const firebaseConfig = {
+ FIREBASE_CONFIGURATION
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Initialize Firestore and get a reference to the service
+const db = getFirestore(app);
+
+언어: 웹 버전 8 · 셀#1
+import firebase from "firebase/app";
+import "firebase/firestore";
+
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://support.google.com/firebase/answer/7015592
+const firebaseConfig = {
+ FIREBASE_CONFIGURATION
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+
+// Initialize Firestore and get a reference to the service
+const db = firebase.firestore();
+
+언어: Swift · 셀#1
+import FirebaseCore
+import FirebaseFirestore
+
+언어: Swift · 셀#2
+FirebaseApp.configure()
+
+let db = Firestore.firestore()
+AppDelegate.swift
+
+언어: Objective-C · 셀#1
+@import FirebaseCore;
+@import FirebaseFirestore;
+
+// Use Firebase library to configure APIs
+[FIRApp configure];
+
+언어: Objective-C · 셀#2
+FIRFirestore *defaultFirestore = [FIRFirestore firestore];
+AppDelegate.m
+
+언어: Kotlin · 셀#1
+// Access a Firestore instance from your Activity
+
+언어: Kotlin · 셀#2
+val db = Firebase.firestore
+DocSnippets.kt
+
+언어: 자바 · 셀#1
+// Access a Firestore instance from your Activity
+
+언어: 자바 · 셀#2
+FirebaseFirestore db = FirebaseFirestore.getInstance();
+DocSnippets.java
+
+언어: Dart · 셀#1
+db = FirebaseFirestore.instance;
+
+언어: 자바 · 셀#1
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.FirestoreOptions;
+
+언어: 자바 · 셀#2
+FirestoreOptions firestoreOptions =
+ FirestoreOptions.getDefaultInstance().toBuilder()
+ .setProjectId(projectId)
+ .setCredentials(GoogleCredentials.getApplicationDefault())
+ .build();
+Firestore db = firestoreOptions.getService();
+Quickstart.java
+
+언어: Overflow 1-1 · 셀#1
+from google.cloud import firestore
+
+# The `project` parameter is optional and represents which project the client
+# will act on behalf of. If not supplied, the client falls back to the default
+# project inferred from the environment.
+db = firestore.Client(project="my-project-id")
+snippets.py
+
+언어: Overflow 1-3 · 셀#1
+from google.cloud import firestore
+
+# The `project` parameter is optional and represents which project the client
+# will act on behalf of. If not supplied, the client falls back to the default
+# project inferred from the environment.
+db = firestore.AsyncClient(project="my-project-id")
+snippets.py
+
+언어: Overflow 1-5 · 셀#1
+// Make sure the call to `Create()` happens some time before you call Firestore::GetInstance().
+App::Create();
+Firestore* db = Firestore::GetInstance();
+AppDelegate.mm
+
+언어: Overflow 1-7 · 셀#1
+const Firestore = require('@google-cloud/firestore');
+
+const db = new Firestore({
+ projectId: 'YOUR_PROJECT_ID',
+ keyFilename: '/path/to/keyfile.json',
+});
+
+언어: Overflow 1-9 · 셀#1
+import (
+	"context"
+	"flag"
+	"fmt"
+	"log"
+
+	"google.golang.org/api/iterator"
+
+	"cloud.google.com/go/firestore"
+)
+
+func createClient(ctx context.Context) *firestore.Client {
+	// Sets your Google Cloud Platform project ID.
+	projectID := "YOUR_PROJECT_ID"
+
+	client, err := firestore.NewClient(ctx, projectID)
+	if err != nil {
+ log.Fatalf("Failed to create client: %v", err)
+	}
+	// Close client when done with
+	// defer client.Close()
+	return client
+}
+
+main.go
+
+언어: Overflow 1-11 · 셀#1
+use Google\Cloud\Firestore\FirestoreClient;
+
+/**
+ * Initialize Cloud Firestore with default project ID.
+ */
+function setup_client_create(string $projectId = null)
+{
+ // Create the Cloud Firestore client
+ if (empty($projectId)) {
+ // The `projectId` parameter is optional and represents which project the
+ // client will act on behalf of. If not supplied, the client falls back to
+ // the default project inferred from the environment.
+ $db = new FirestoreClient();
+ printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
+ } else {
+ $db = new FirestoreClient([
+ 'projectId' => $projectId,
+ ]);
+ printf('Created Cloud Firestore client with project ID: %s' . PHP_EOL, $projectId);
+ }
+}
+
+언어: Overflow 1-13 · 셀#1
+using Firebase.Firestore;
+using Firebase.Extensions;
+
+언어: Overflow 1-13 · 셀#2
+FirebaseFirestore db = FirebaseFirestore.DefaultInstance;
+
+언어: Overflow 1-15 · 셀#1
+FirestoreDb db = FirestoreDb.Create(project);
+Console.WriteLine("Created Cloud Firestore client with project ID: {0}", project);
+
+언어: Overflow 1-17 · 셀#1
+require "google/cloud/firestore"
+
+# The `project_id` parameter is optional and represents which project the
+# client will act on behalf of. If not supplied, the client falls back to the
+# default project inferred from the environment.
+firestore = Google::Cloud::Firestore.new project_id: project_id
+
+puts "Created Cloud Firestore client with given project ID."
+quickstart.rb
+
+언어: 코드 · 셀#1
+require "google/cloud/firestore"
+
+# The `project_id` parameter is optional and represents which project the
+# client will act on behalf of. If not supplied, the client falls back to the
+# default project inferred from the environment.
+firestore = Google::Cloud::Firestore.new project_id: project_id
+
+puts "Created Cloud Firestore client with given project ID."
+quickstart.rb
+
+## 문서 설정
+단일 문서를 만들거나 덮어쓰려면 다음 언어별 set() 메서드를 사용합니다.
+
+문서가 없으면 새로 만듭니다. 문서가 있으면 새로 제공한 데이터로 내용을 덮어쓰지만, 다음과 같이 데이터를 기존 문서와 병합하도록 지정한 경우는 예외입니다.
+
+문서가 있는지 확실하지 않은 경우 전체 문서를 실수로 덮어쓰지 않도록 새 데이터를 기존 문서와 병합하는 옵션을 전달하세요. 맵이 포함된 문서의 경우 빈 맵이 있는 필드를 사용해 집합을 지정하면 대상 문서의 맵 필드를 덮어씁니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 웹 버전 9 · 셀#1
+import { doc, setDoc } from "firebase/firestore";
+
+// Add a new document in collection "cities"
+await setDoc(doc(db, "cities", "LA"), {
+ name: "Los Angeles",
+ state: "CA",
+ country: "USA"
+});
+set_document.js
+
+언어: 웹 버전 8 · 셀#1
+// Add a new document in collection "cities"
+db.collection("cities").doc("LA").set({
+ name: "Los Angeles",
+ state: "CA",
+ country: "USA"
+})
+.then(() => {
+ console.log("Document successfully written!");
+})
+.catch((error) => {
+ console.error("Error writing document: ", error);
+});
+test.firestore.js
+
+언어: Swift · 셀#1
+// Add a new document in collection "cities"
+do {
+ try await db.collection("cities").document("LA").setData([
+ "name": "Los Angeles",
+ "state": "CA",
+ "country": "USA"
+ ])
+ print("Document successfully written!")
+} catch {
+ print("Error writing document: \(error)")
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+// Add a new document in collection "cities"
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"LA"] setData:@{
+ @"name": @"Los Angeles",
+ @"state": @"CA",
+ @"country": @"USA"
+} completion:^(NSError * _Nullable error) {
+ if (error != nil) {
+ NSLog(@"Error writing document: %@", error);
+ } else {
+ NSLog(@"Document successfully written!");
+ }
+}];
+ViewController.m
+
+언어: Kotlin · 셀#1
+val city = hashMapOf(
+ "name" to "Los Angeles",
+ "state" to "CA",
+ "country" to "USA",
+)
+
+db.collection("cities").document("LA")
+ .set(city)
+ .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+ .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+DocSnippets.kt
+
+언어: 자바 · 셀#1
+Map<String, Object> city = new HashMap<>();
+city.put("name", "Los Angeles");
+city.put("state", "CA");
+city.put("country", "USA");
+
+db.collection("cities").document("LA")
+ .set(city)
+ .addOnSuccessListener(new OnSuccessListener<Void>() {
+ @Override
+ public void onSuccess(Void aVoid) {
+ Log.d(TAG, "DocumentSnapshot successfully written!");
+ }
+ })
+ .addOnFailureListener(new OnFailureListener() {
+ @Override
+ public void onFailure(@NonNull Exception e) {
+ Log.w(TAG, "Error writing document", e);
+ }
+ });
+DocSnippets.java
+
+언어: Dart · 셀#1
+final city = <String, String>{
+ "name": "Los Angeles",
+ "state": "CA",
+ "country": "USA"
+};
+
+db
+ .collection("cities")
+ .doc("LA")
+ .set(city)
+ .onError((e, _) => print("Error writing document: $e"));
+firestore.dart
+
+언어: 자바 · 셀#1
+// Create a Map to store the data we want to set
+Map<String, Object> docData = new HashMap<>();
+docData.put("name", "Los Angeles");
+docData.put("state", "CA");
+docData.put("country", "USA");
+docData.put("regions", Arrays.asList("west_coast", "socal"));
+// Add a new document (asynchronously) in collection "cities" with id "LA"
+ApiFuture<WriteResult> future = db.collection("cities").document("LA").set(docData);
+// ...
+// future.get() blocks on response
+System.out.println("Update time : " + future.get().getUpdateTime());
+ManageDataSnippets.java
+
+언어: Overflow 1-1 · 셀#1
+data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
+
+# Add a new doc in collection 'cities' with ID 'LA'
+db.collection("cities").document("LA").set(data)
+snippets.py
+
+언어: Overflow 1-3 · 셀#1
+data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
+
+# Add a new doc in collection 'cities' with ID 'LA'
+await db.collection("cities").document("LA").set(data)
+snippets.py
+
+언어: Overflow 1-5 · 셀#1
+// Add a new document in collection 'cities'
+db->Collection("cities")
+ .Document("LA")
+ .Set({{"name", FieldValue::String("Los Angeles")},
+ {"state", FieldValue::String("CA")},
+ {"country", FieldValue::String("USA")}})
+ .OnCompletion([](const Future<void>& future) {
+ if (future.error() == Error::kErrorOk) {
+ std::cout << "DocumentSnapshot successfully written!" << std::endl;
+ } else {
+ std::cout << "Error writing document: " << future.error_message()
+ << std::endl;
+ }
+ });
+snippets.cpp
+
+언어: Overflow 1-7 · 셀#1
+const data = {
+ name: 'Los Angeles',
+ state: 'CA',
+ country: 'USA'
+};
+
+// Add a new document in collection "cities" with ID 'LA'
+const res = await db.collection('cities').doc('LA').set(data);
+index.js
+
+언어: Overflow 1-9 · 셀#1
+import (
+	"context"
+	"log"
+
+	"cloud.google.com/go/firestore"
+)
+
+func addDocAsMap(ctx context.Context, client *firestore.Client) error {
+	_, err := client.Collection("cities").Doc("LA").Set(ctx, map[string]interface{}{
+ "name": "Los Angeles",
+ "state": "CA",
+ "country": "USA",
+	})
+	if err != nil {
+ // Handle any errors in an appropriate way, such as returning them.
+ log.Printf("An error has occurred: %s", err)
+	}
+
+	return err
+}
+
+save_data_set_from_map.go
+
+언어: Overflow 1-11 · 셀#1
+$data = [
+ 'name' => 'Los Angeles',
+ 'state' => 'CA',
+ 'country' => 'USA'
+];
+$db->collection('samples/php/cities')->document('LA')->set($data);
+
+언어: Overflow 1-13 · 셀#1
+DocumentReference docRef = db.Collection("cities").Document("LA");
+Dictionary<string, object> city = new Dictionary<string, object>
+{
+	{ "Name", "Los Angeles" },
+	{ "State", "CA" },
+	{ "Country", "USA" }
+};
+docRef.SetAsync(city).ContinueWithOnMainThread(task => {
+	Debug.Log("Added data to the LA document in the cities collection.");
+});
+
+언어: Overflow 1-15 · 셀#1
+DocumentReference docRef = db.Collection("cities").Document("LA");
+Dictionary<string, object> city = new Dictionary<string, object>
+{
+ { "name", "Los Angeles" },
+ { "state", "CA" },
+ { "country", "USA" }
+};
+await docRef.SetAsync(city);
+Program.cs
+
+언어: Overflow 1-17 · 셀#1
+city_ref = firestore.doc "#{collection_path}/LA"
+
+data = {
+ name: "Los Angeles",
+ state: "CA",
+ country: "USA"
+}
+
+city_ref.set data
+add_data.rb
+
+언어: 웹 버전 9 · 셀#1
+import { doc, setDoc } from "firebase/firestore";
+
+const cityRef = doc(db, 'cities', 'BJ');
+setDoc(cityRef, { capital: true }, { merge: true });
+set_with_merge.js
+
+언어: 웹 버전 8 · 셀#1
+var cityRef = db.collection('cities').doc('BJ');
+
+var setWithMerge = cityRef.set({
+ capital: true
+}, { merge: true });
+test.firestore.js
+
+언어: Swift · 셀#1
+// Update one field, creating the document if it does not exist.
+db.collection("cities").document("BJ").setData([ "capital": true ], merge: true)
+ViewController.swift
+
+언어: Objective-C · 셀#1
+// Write to the document reference, merging data with existing
+// if the document already exists
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"BJ"]
+ setData:@{ @"capital": @YES }
+ merge:YES
+ completion:^(NSError * _Nullable error) {
+ // ...
+ }];
+ViewController.m
+
+언어: Kotlin · 셀#1
+// Update one field, creating the document if it does not already exist.
+val data = hashMapOf("capital" to true)
+
+db.collection("cities").document("BJ")
+ .set(data, SetOptions.merge())
+DocSnippets.kt
+
+언어: 자바 · 셀#1
+// Update one field, creating the document if it does not already exist.
+Map<String, Object> data = new HashMap<>();
+data.put("capital", true);
+
+db.collection("cities").document("BJ")
+ .set(data, SetOptions.merge());
+DocSnippets.java
+
+언어: Dart · 셀#1
+// Update one field, creating the document if it does not already exist.
+final data = {"capital": true};
+
+db.collection("cities").doc("BJ").set(data, SetOptions(merge: true));
+firestore.dart
+
+언어: 자바 · 셀#1
+// asynchronously update doc, create the document if missing
+Map<String, Object> update = new HashMap<>();
+update.put("capital", true);
+
+ApiFuture<WriteResult> writeResult =
+ db.collection("cities").document("BJ").set(update, SetOptions.merge());
+// ...
+System.out.println("Update time : " + writeResult.get().getUpdateTime());
+ManageDataSnippets.java
+
+언어: Overflow 2-1 · 셀#1
+city_ref = db.collection("cities").document("BJ")
+
+city_ref.set({"capital": True}, merge=True)
+snippets.py
+
+언어: Overflow 2-3 · 셀#1
+city_ref = db.collection("cities").document("BJ")
+
+await city_ref.set({"capital": True}, merge=True)
+snippets.py
+
+언어: Overflow 2-5 · 셀#1
+db->Collection("cities").Document("BJ").Set(
+ {{"capital", FieldValue::Boolean(true)}}, SetOptions::Merge());
+snippets.cpp
+
+언어: Overflow 2-7 · 셀#1
+const cityRef = db.collection('cities').doc('BJ');
+
+const res = await cityRef.set({
+ capital: true
+}, { merge: true });
+index.js
+
+언어: Overflow 2-9 · 셀#1
+import (
+	"context"
+	"log"
+
+	"cloud.google.com/go/firestore"
+)
+
+func updateDocCreateIfMissing(ctx context.Context, client *firestore.Client) error {
+	_, err := client.Collection("cities").Doc("BJ").Set(ctx, map[string]interface{}{
+ "capital": true,
+	}, firestore.MergeAll)
+
+	if err != nil {
+ // Handle any errors in an appropriate way, such as returning them.
+ log.Printf("An error has occurred: %s", err)
+	}
+
+	return err
+}
+
+save_data_set_doc_upsert.go
+
+언어: Overflow 2-11 · 셀#1
+$cityRef = $db->collection('samples/php/cities')->document('BJ');
+$cityRef->set([
+ 'capital' => true
+], ['merge' => true]);
+
+언어: Overflow 2-13 · 셀#1
+DocumentReference docRef = db.Collection("cities").Document("LA");
+Dictionary<string, object> update = new Dictionary<string, object>
+{
+	{ "capital", false }
+};
+docRef.SetAsync(update, SetOptions.MergeAll);
+
+언어: Overflow 2-15 · 셀#1
+DocumentReference docRef = db.Collection("cities").Document("LA");
+Dictionary<string, object> update = new Dictionary<string, object>
+{
+ { "capital", false }
+};
+await docRef.SetAsync(update, SetOptions.MergeAll);
+Program.cs
+
+언어: Overflow 2-17 · 셀#1
+city_ref = firestore.doc "#{collection_path}/LA"
+city_ref.set({ capital: false }, merge: true)
+add_data.rb
+
+언어: 코드 · 셀#1
+city_ref = firestore.doc "#{collection_path}/LA"
+
+data = {
+ name: "Los Angeles",
+ state: "CA",
+ country: "USA"
+}
+
+city_ref.set data
+add_data.rb
+
+언어: 코드 · 셀#1
+city_ref = firestore.doc "#{collection_path}/LA"
+city_ref.set({ capital: false }, merge: true)
+add_data.rb
+
+## 데이터 유형
+Firestore를 사용하면 문서 안에 문자열, 부울, 숫자, 날짜, null, 중첩 배열, 객체를 비롯하여 다양한 데이터 유형을 쓸 수 있습니다. Firestore는 코드에서 사용하는 숫자 유형과 관계없이 숫자를 항상 배정밀도 실수로 저장합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 웹 버전 9 · 셀#1
+import { doc, setDoc, Timestamp } from "firebase/firestore";
+
+const docData = {
+ stringExample: "Hello world!",
+ booleanExample: true,
+ numberExample: 3.14159265,
+ dateExample: Timestamp.fromDate(new Date("December 10, 1815")),
+ arrayExample: [5, true, "hello"],
+ nullExample: null,
+ objectExample: {
+ a: 5,
+ b: {
+ nested: "foo"
+ }
+ }
+};
+await setDoc(doc(db, "data", "one"), docData);
+data_types.js
+
+언어: 웹 버전 8 · 셀#1
+var docData = {
+ stringExample: "Hello world!",
+ booleanExample: true,
+ numberExample: 3.14159265,
+ dateExample: firebase.firestore.Timestamp.fromDate(new Date("December 10, 1815")),
+ arrayExample: [5, true, "hello"],
+ nullExample: null,
+ objectExample: {
+ a: 5,
+ b: {
+ nested: "foo"
+ }
+ }
+};
+db.collection("data").doc("one").set(docData).then(() => {
+ console.log("Document successfully written!");
+});
+test.firestore.js
+
+언어: Swift · 셀#1
+let docData: [String: Any] = [
+ "stringExample": "Hello world!",
+ "booleanExample": true,
+ "numberExample": 3.14159265,
+ "dateExample": Timestamp(date: Date()),
+ "arrayExample": [5, true, "hello"],
+ "nullExample": NSNull(),
+ "objectExample": [
+ "a": 5,
+ "b": [
+ "nested": "foo"
+ ]
+ ]
+]
+do {
+ try await db.collection("data").document("one").setData(docData)
+ print("Document successfully written!")
+} catch {
+ print("Error writing document: \(error)")
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+NSDictionary *docData = @{
+ @"stringExample": @"Hello world!",
+ @"booleanExample": @YES,
+ @"numberExample": @3.14,
+ @"dateExample": [FIRTimestamp timestampWithDate:[NSDate date]],
+ @"arrayExample": @[@5, @YES, @"hello"],
+ @"nullExample": [NSNull null],
+ @"objectExample": @{
+ @"a": @5,
+ @"b": @{
+ @"nested": @"foo"
+ }
+ }
+};
+
+[[[self.db collectionWithPath:@"data"] documentWithPath:@"one"] setData:docData
+ completion:^(NSError * _Nullable error) {
+ if (error != nil) {
+ NSLog(@"Error writing document: %@", error);
+ } else {
+ NSLog(@"Document successfully written!");
+ }
+ }];
+ViewController.m
+
+언어: Kotlin · 셀#1
+val docData = hashMapOf(
+ "stringExample" to "Hello world!",
+ "booleanExample" to true,
+ "numberExample" to 3.14159265,
+ "dateExample" to Timestamp(Date()),
+ "listExample" to arrayListOf(1, 2, 3),
+ "nullExample" to null,
+)
+
+val nestedData = hashMapOf(
+ "a" to 5,
+ "b" to true,
+)
+
+docData["objectExample"] = nestedData
+
+db.collection("data").document("one")
+ .set(docData)
+ .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+ .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+DocSnippets.kt
+
+언어: 자바 · 셀#1
+Map<String, Object> docData = new HashMap<>();
+docData.put("stringExample", "Hello world!");
+docData.put("booleanExample", true);
+docData.put("numberExample", 3.14159265);
+docData.put("dateExample", new Timestamp(new Date()));
+docData.put("listExample", Arrays.asList(1, 2, 3));
+docData.put("nullExample", null);
+
+Map<String, Object> nestedData = new HashMap<>();
+nestedData.put("a", 5);
+nestedData.put("b", true);
+
+docData.put("objectExample", nestedData);
+
+db.collection("data").document("one")
+ .set(docData)
+ .addOnSuccessListener(new OnSuccessListener<Void>() {
+ @Override
+ public void onSuccess(Void aVoid) {
+ Log.d(TAG, "DocumentSnapshot successfully written!");
+ }
+ })
+ .addOnFailureListener(new OnFailureListener() {
+ @Override
+ public void onFailure(@NonNull Exception e) {
+ Log.w(TAG, "Error writing document", e);
+ }
+ });
+DocSnippets.java
+
+언어: Dart · 셀#1
+final docData = {
+ "stringExample": "Hello world!",
+ "booleanExample": true,
+ "numberExample": 3.14159265,
+ "dateExample": Timestamp.now(),
+ "listExample": [1, 2, 3],
+ "nullExample": null
+};
+
+final nestedData = {
+ "a": 5,
+ "b": true,
+};
+
+docData["objectExample"] = nestedData;
+
+db
+ .collection("data")
+ .doc("one")
+ .set(docData)
+ .onError((e, _) => print("Error writing document: $e"));
+firestore.dart
+
+언어: 자바 · 셀#1
+Map<String, Object> docData = new HashMap<>();
+docData.put("stringExample", "Hello, World");
+docData.put("booleanExample", false);
+docData.put("numberExample", 3.14159265);
+docData.put("nullExample", null);
+
+ArrayList<Object> arrayExample = new ArrayList<>();
+Collections.addAll(arrayExample, 5L, true, "hello");
+docData.put("arrayExample", arrayExample);
+
+Map<String, Object> objectExample = new HashMap<>();
+objectExample.put("a", 5L);
+objectExample.put("b", true);
+
+docData.put("objectExample", objectExample);
+
+ApiFuture<WriteResult> future = db.collection("data").document("one").set(docData);
+System.out.println("Update time : " + future.get().getUpdateTime());
+ManageDataSnippets.java
+
+언어: Overflow 1-1 · 셀#1
+data = {
+ "stringExample": "Hello, World!",
+ "booleanExample": True,
+ "numberExample": 3.14159265,
+ "dateExample": datetime.datetime.now(tz=datetime.timezone.utc),
+ "arrayExample": [5, True, "hello"],
+ "nullExample": None,
+ "objectExample": {"a": 5, "b": True},
+}
+
+db.collection("data").document("one").set(data)
+snippets.py
+
+언어: Overflow 1-3 · 셀#1
+data = {
+ "stringExample": "Hello, World!",
+ "booleanExample": True,
+ "numberExample": 3.14159265,
+ "dateExample": datetime.datetime.now(tz=datetime.timezone.utc),
+ "arrayExample": [5, True, "hello"],
+ "nullExample": None,
+ "objectExample": {"a": 5, "b": True},
+}
+
+await db.collection("data").document("one").set(data)
+snippets.py
+
+언어: Overflow 1-5 · 셀#1
+MapFieldValue doc_data{
+ {"stringExample", FieldValue::String("Hello world!")},
+ {"booleanExample", FieldValue::Boolean(true)},
+ {"numberExample", FieldValue::Double(3.14159265)},
+ {"dateExample", FieldValue::Timestamp(Timestamp::Now())},
+ {"arrayExample", FieldValue::Array({FieldValue::Integer(1),
+ FieldValue::Integer(2),
+ FieldValue::Integer(3)})},
+ {"nullExample", FieldValue::Null()},
+ {"objectExample",
+ FieldValue::Map(
+ {{"a", FieldValue::Integer(5)},
+ {"b", FieldValue::Map(
+ {{"nested", FieldValue::String("foo")}})}})},
+};
+
+db->Collection("data").Document("one").Set(doc_data).OnCompletion(
+ [](const Future<void>& future) {
+ if (future.error() == Error::kErrorOk) {
+ std::cout << "DocumentSnapshot successfully written!" << std::endl;
+ } else {
+ std::cout << "Error writing document: " << future.error_message()
+ << std::endl;
+ }
+ });
+snippets.cpp
+
+언어: Overflow 1-7 · 셀#1
+const data = {
+ stringExample: 'Hello, World!',
+ booleanExample: true,
+ numberExample: 3.14159265,
+ dateExample: Timestamp.fromDate(new Date('December 10, 1815')),
+ arrayExample: [5, true, 'hello'],
+ nullExample: null,
+ objectExample: {
+ a: 5,
+ b: true
+ }
+};
+
+const res = await db.collection('data').doc('one').set(data);
+index.js
+
+언어: Overflow 1-9 · 셀#1
+import (
+	"context"
+	"log"
+	"time"
+
+	"cloud.google.com/go/firestore"
+)
+
+func addDocDataTypes(ctx context.Context, client *firestore.Client) error {
+	doc := make(map[string]interface{})
+	doc["stringExample"] = "Hello world!"
+	doc["booleanExample"] = true
+	doc["numberExample"] = 3.14159265
+	doc["dateExample"] = time.Now()
+	doc["arrayExample"] = []interface{}{5, true, "hello"}
+	doc["nullExample"] = nil
+	doc["objectExample"] = map[string]interface{}{
+ "a": 5,
+ "b": true,
+	}
+
+	_, err := client.Collection("data").Doc("one").Set(ctx, doc)
+	if err != nil {
+ // Handle any errors in an appropriate way, such as returning them.
+ log.Printf("An error has occurred: %s", err)
+	}
+
+	return err
+}
+
+save_data_set_from_map_nested.go
+
+언어: Overflow 1-11 · 셀#1
+$data = [
+ 'stringExample' => 'Hello World',
+ 'booleanExample' => true,
+ 'numberExample' => 3.14159265,
+ 'dateExample' => new Timestamp(new DateTime()),
+ 'arrayExample' => array(5, true, 'hello'),
+ 'nullExample' => null,
+ 'objectExample' => ['a' => 5, 'b' => true],
+ 'documentReferenceExample' => $db->collection('samples/php/data')->document('two'),
+];
+$db->collection('samples/php/data')->document('one')->set($data);
+printf('Set multiple data-type data for the one document in the data collection.' . PHP_EOL);
+
+언어: Overflow 1-13 · 셀#1
+DocumentReference docRef = db.Collection("data").Document("one");
+Dictionary<string, object> docData = new Dictionary<string, object>
+{
+	{ "stringExample", "Hello World" },
+	{ "booleanExample", false },
+	{ "numberExample", 3.14159265 },
+	{ "nullExample", null },
+	{ "arrayExample", new List<object>() { 5, true, "Hello" } },
+	{ "objectExample", new Dictionary<string, object>
+ {
+ { "a", 5 },
+ { "b", true },
+ }
+	},
+};
+
+docRef.SetAsync(docData);
+
+언어: Overflow 1-15 · 셀#1
+DocumentReference docRef = db.Collection("data").Document("one");
+Dictionary<string, object> docData = new Dictionary<string, object>
+{
+ { "stringExample", "Hello World" },
+ { "booleanExample", false },
+ { "numberExample", 3.14159265 },
+ { "nullExample", null },
+ { "arrayExample", new object[] { 5, true, "Hello" } },
+ { "objectExample", new Dictionary<string, object>
+ {
+ { "a", 5 },
+ { "b", true},
+ }
+ }
+};
+
+await docRef.SetAsync(docData);
+Program.cs
+
+언어: Overflow 1-17 · 셀#1
+doc_ref = firestore.doc "#{collection_path}/one"
+
+data = {
+ stringExample: "Hello, World!",
+ booleanExample: true,
+ numberExample: 3.14159265,
+ dateExample: DateTime.now,
+ arrayExample: [5, true, "hello"],
+ nullExample: nil,
+ objectExample: {
+ a: 5,
+ b: true
+ }
+}
+
+doc_ref.set data
+add_data.rb
+
+언어: 코드 · 셀#1
+doc_ref = firestore.doc "#{collection_path}/one"
+
+data = {
+ stringExample: "Hello, World!",
+ booleanExample: true,
+ numberExample: 3.14159265,
+ dateExample: DateTime.now,
+ arrayExample: [5, true, "hello"],
+ nullExample: nil,
+ objectExample: {
+ a: 5,
+ b: true
+ }
+}
+
+doc_ref.set data
+add_data.rb
+
+## 커스텀 객체
+Map 또는 Dictionary 객체를 사용하여 문서를 표현하기가 불편한 경우가 많으므로 Firestore는 커스텀 클래스를 사용하여 문서를 작성하는 방식도 지원합니다. Firestore에서 객체를 지원되는 데이터 유형으로 변환합니다.
+
+커스텀 클래스를 사용하면 앞의 예시를 다음과 같이 다시 작성할 수 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 웹 버전 9 · 셀#1
+class City {
+ constructor (name, state, country ) {
+ this.name = name;
+ this.state = state;
+ this.country = country;
+ }
+ toString() {
+ return this.name + ', ' + this.state + ', ' + this.country;
+ }
+}
+
+// Firestore data converter
+const cityConverter = {
+ toFirestore: (city) => {
+ return {
+ name: city.name,
+ state: city.state,
+ country: city.country
+ };
+ },
+ fromFirestore: (snapshot, options) => {
+ const data = snapshot.data(options);
+ return new City(data.name, data.state, data.country);
+ }
+};
+city_custom_object.js
+
+언어: 웹 버전 8 · 셀#1
+class City {
+ constructor (name, state, country ) {
+ this.name = name;
+ this.state = state;
+ this.country = country;
+ }
+ toString() {
+ return this.name + ', ' + this.state + ', ' + this.country;
+ }
+}
+
+// Firestore data converter
+var cityConverter = {
+ toFirestore: function(city) {
+ return {
+ name: city.name,
+ state: city.state,
+ country: city.country
+ };
+ },
+ fromFirestore: function(snapshot, options){
+ const data = snapshot.data(options);
+ return new City(data.name, data.state, data.country);
+ }
+};
+test.firestore.js
+
+언어: Swift · 셀#1
+public struct City: Codable {
+
+ let name: String
+ let state: String?
+ let country: String?
+ let isCapital: Bool?
+ let population: Int64?
+
+ enum CodingKeys: String, CodingKey {
+ case name
+ case state
+ case country
+ case isCapital = "capital"
+ case population
+ }
+
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+// This isn't supported in Objective-C.
+
+언어: Kotlin · 셀#1
+data class City(
+ val name: String? = null,
+ val state: String? = null,
+ val country: String? = null,
+ @field:JvmField // use this annotation if your Boolean field is prefixed with 'is'
+ val isCapital: Boolean? = null,
+ val population: Long? = null,
+ val regions: List<String>? = null,
+)
+DocSnippets.kt
+
+언어: 자바 · 셀#1
+public class City {
+
+ private String name;
+ private String state;
+ private String country;
+ private boolean capital;
+ private long population;
+ private List<String> regions;
+
+ public City() {}
+
+ public City(String name, String state, String country, boolean capital, long population, List<String> regions) {
+ // ...
+ }
+
+ public String getName() {
+ return name;
+ }
+
+ public String getState() {
+ return state;
+ }
+
+ public String getCountry() {
+ return country;
+ }
+
+ public boolean isCapital() {
+ return capital;
+ }
+
+ public long getPopulation() {
+ return population;
+ }
+
+ public List<String> getRegions() {
+ return regions;
+ }
+
+}
+DocSnippets.java
+
+언어: Dart · 셀#1
+class City {
+ final String? name;
+ final String? state;
+ final String? country;
+ final bool? capital;
+ final int? population;
+ final List<String>? regions;
+
+ City({
+ this.name,
+ this.state,
+ this.country,
+ this.capital,
+ this.population,
+ this.regions,
+ });
+
+ factory City.fromFirestore(
+ DocumentSnapshot<Map<String, dynamic>> snapshot,
+ SnapshotOptions? options,
+ ) {
+ final data = snapshot.data();
+ return City(
+ name: data?['name'],
+ state: data?['state'],
+ country: data?['country'],
+ capital: data?['capital'],
+ population: data?['population'],
+ regions:
+ data?['regions'] is Iterable ? List.from(data?['regions']) : null,
+ );
+ }
+
+ Map<String, dynamic> toFirestore() {
+ return {
+ if (name != null) "name": name,
+ if (state != null) "state": state,
+ if (country != null) "country": country,
+ if (capital != null) "capital": capital,
+ if (population != null) "population": population,
+ if (regions != null) "regions": regions,
+ };
+ }
+}
+firestore_add_data_custom_objects_snippet.dart
+
+언어: 자바 · 셀#1
+public City() {
+ // Must have a public no-argument constructor
+}
+
+// Initialize all fields of a city
+public City(
+ String name,
+ String state,
+ String country,
+ Boolean capital,
+ Long population,
+ List<String> regions) {
+ this.name = name;
+ this.state = state;
+ this.country = country;
+ this.capital = capital;
+ this.population = population;
+ this.regions = regions;
+}
+
+City.java

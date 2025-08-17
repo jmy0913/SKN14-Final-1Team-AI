@@ -1,0 +1,24 @@
+Source URL: https://developers.google.com/people/api/rest/v1/RequestMask?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다. Google Workspace People API 참고자료 RequestMask 컬렉션을 사용해 정리하기 내 환경설정을 기준으로 콘텐츠를 저장하고 분류하세요. JSON 표현 이 항목은 지원 중단되었습니다. 지원 중단됨 응답에서 반환할 사람 필드를 설명합니다. JSON 표현 필수 항목입니다. 응답에 포함할 사용자 필드의 쉼표로 구분된 목록입니다. 각 경로는 로 시작해야 합니다(예:
+
+=== 코드 ===
+personFields
+
+=== 코드 ===
+{
+  "includeField": string
+}
+
+=== 코드 ===
+includeField
+
+=== 코드 ===
+string (FieldMask format)
+
+=== 코드 ===
+person.names
+
+=== 코드 ===
+person.photos

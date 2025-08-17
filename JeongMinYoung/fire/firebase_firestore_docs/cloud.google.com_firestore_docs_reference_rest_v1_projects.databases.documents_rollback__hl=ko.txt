@@ -1,0 +1,51 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/rollback?hl=ko
+
+## 본문
+Rolls back a transaction.
+
+POST https://firestore.googleapis.com/v1/{database=projects/*/databases/*}/documents:rollback
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+Required. The database name. In the format: projects/{projectId}/databases/{databaseId}.
+
+The request body contains data with the following structure:
+
+string (bytes format)
+
+Required. The transaction to roll back.
+
+A base64-encoded string.
+
+If successful, the response body is an empty JSON object.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| database | string
+
+Required. The database name. In the format: projects/{projectId}/databases/{databaseId}. |
+
+| JSON representation |
+| --- |
+| {
+  "transaction": string
+} |
+
+| Fields |
+| --- |
+| transaction | string (bytes format)
+
+Required. The transaction to roll back.
+
+A base64-encoded string. |

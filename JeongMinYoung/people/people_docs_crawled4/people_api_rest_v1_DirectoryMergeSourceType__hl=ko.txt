@@ -1,0 +1,10 @@
+Source URL: https://developers.google.com/people/api/rest/v1/DirectoryMergeSourceType?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다. Google Workspace People API 참고자료 DirectoryMergeSourceType 컬렉션을 사용해 정리하기 내 환경설정을 기준으로 콘텐츠를 저장하고 분류하세요. 디렉터리 사용자로 병합할 데이터 소스 유형입니다. 지정되지 않았습니다. 사용자 소유 연락처
+
+=== 코드 ===
+DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED
+
+=== 코드 ===
+DIRECTORY_MERGE_SOURCE_TYPE_CONTACT

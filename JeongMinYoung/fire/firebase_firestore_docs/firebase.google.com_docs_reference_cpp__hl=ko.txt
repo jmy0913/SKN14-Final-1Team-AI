@@ -1,0 +1,193 @@
+Source URL: https://firebase.google.com/docs/reference/cpp?hl=ko
+
+## firebase
+### 표
+| Classes |
+| --- |
+| firebase::App | Firebase application object. |
+| firebase::AppOptions | Options that control the creation of a Firebase App. |
+| firebase::Future | Type-specific version of FutureBase. |
+| firebase::FutureBase | Type-independent return type of asynchronous calls. |
+| firebase::FutureHandle | Class that provides more context to FutureHandleId, which allows the underlying API to track handles, perform reference counting, etc. |
+| firebase::ModuleInitializer | Utility class to help with initializing Firebase modules. |
+| firebase::Timestamp | A Timestamp represents a point in time independent of any time zone or calendar, represented as seconds and fractions of seconds at nanosecond resolution in UTC Epoch time. |
+| firebase::Variant | Variant data type used by Firebase libraries. |
+
+## firebase::analytics
+### 표
+| Structs |
+| --- |
+| firebase::analytics::Parameter | Event parameter. |
+
+## firebase::app_check
+### 표
+| Classes |
+| --- |
+| firebase::app_check::AppAttestProviderFactory | Implementation of an AppCheckProviderFactory that builds AppAttestProviders. |
+| firebase::app_check::AppCheck | Firebase App Check object. |
+| firebase::app_check::AppCheckListener | Base class used to receive messages when AppCheck token changes. |
+| firebase::app_check::AppCheckProvider | Interface for a provider that generates AppCheckTokens. |
+| firebase::app_check::AppCheckProviderFactory | Interface for a factory that generates AppCheckProviders. |
+| firebase::app_check::DebugAppCheckProviderFactory | Implementation of an AppCheckProviderFactory that builds DebugAppCheckProviders. |
+| firebase::app_check::DeviceCheckProviderFactory | Implementation of an AppCheckProviderFactory that builds DeviceCheckProviders. |
+| firebase::app_check::PlayIntegrityProviderFactory | Implementation of an AppCheckProviderFactory that builds PlayIntegrityProviders. |
+
+| Structs |
+| --- |
+| firebase::app_check::AppCheckToken | Struct to hold tokens emitted by the Firebase App Check service which are minted upon a successful application verification. |
+
+## firebase::auth
+### 표
+| Classes |
+| --- |
+| firebase::auth::Auth | Firebase authentication object. |
+| firebase::auth::Auth::FetchProvidersResult | Results of calls FetchProvidersForEmail. |
+| firebase::auth::AuthStateListener | Listener called when there is a change in the authentication state. |
+| firebase::auth::Credential | Authentication credentials for an authentication provider. |
+| firebase::auth::EmailAuthProvider | Use email and password to authenticate. |
+| firebase::auth::FacebookAuthProvider | Use an access token provided by Facebook to authenticate. |
+| firebase::auth::FederatedAuthProvider | Used to authenticate with Federated Auth Providers. |
+| firebase::auth::FederatedOAuthProvider | Authenticates with Federated OAuth Providers via the firebase::auth::Auth and firebase::auth::User classes. |
+| firebase::auth::GameCenterAuthProvider | GameCenter (Apple) auth provider. |
+| firebase::auth::GitHubAuthProvider | Use an access token provided by GitHub to authenticate. |
+| firebase::auth::GoogleAuthProvider | Use an ID token and access token provided by Google to authenticate. |
+| firebase::auth::IdTokenListener | Listener called when there is a change in the ID token. |
+| firebase::auth::MicrosoftAuthProvider | Use an access token provided by Microsoft to authenticate. |
+| firebase::auth::OAuthProvider | OAuth2.0+UserInfo auth provider (OIDC compliant and non-compliant). |
+| firebase::auth::PhoneAuthCredential | Wraps phone number and verification information for authentication purposes. |
+| firebase::auth::PhoneAuthProvider | Use phone number text messages to authenticate. |
+| firebase::auth::PhoneAuthProvider::ForceResendingToken | Token to maintain current phone number verification session. |
+| firebase::auth::PhoneAuthProvider::Listener | Receive callbacks from VerifyPhoneNumber events. |
+| firebase::auth::PlayGamesAuthProvider | Use a server auth code provided by Google Play Games to authenticate. |
+| firebase::auth::TwitterAuthProvider | Use a token and secret provided by Twitter to authenticate. |
+| firebase::auth::User | Firebase user account object. |
+| firebase::auth::User::UserProfile | Parameters to the UpdateUserProfile() function. |
+| firebase::auth::UserInfoInterface | Interface implemented by each identity provider. |
+| firebase::auth::YahooAuthProvider | Use an access token provided by Yahoo to authenticate. |
+
+| Structs |
+| --- |
+| firebase::auth::AdditionalUserInfo | Additional user data returned from an identity provider. |
+| firebase::auth::AuthResult | The result of operations that can affect authentication state. |
+| firebase::auth::FederatedOAuthProviderData | Contains information to identify an OAuth povider. |
+| firebase::auth::FederatedProviderData | Contains information required to authenticate with a third party provider. |
+| firebase::auth::PhoneAuthOptions | Options object for configuring phone validation flows in PhoneAuthProvider. |
+| firebase::auth::UserMetadata | Metadata corresponding to a Firebase user. |
+
+## firebase::database
+### 표
+| Classes |
+| --- |
+| firebase::database::ChildListener | Child listener interface. |
+| firebase::database::Database | Entry point for the Firebase Realtime Database C++ SDK. |
+| firebase::database::DatabaseReference | DatabaseReference represents a particular location in your Database and can be used for reading or writing data to that Database location. |
+| firebase::database::DataSnapshot | A DataSnapshot instance contains data from a Firebase Database location. |
+| firebase::database::DisconnectionHandler | Allows you to register server-side actions to occur when the client disconnects. |
+| firebase::database::MutableData | Instances of this class encapsulate the data and priority at a location. |
+| firebase::database::Query | The Query class is used for reading data. |
+| firebase::database::ValueListener | Value listener interface. |
+
+## firebase::firestore
+### 표
+| Classes |
+| --- |
+| firebase::firestore::AggregateQuery | A query that calculates aggregations over an underlying query. |
+| firebase::firestore::AggregateQuerySnapshot | The results of executing an AggregateQuery. |
+| firebase::firestore::CollectionReference | A CollectionReference can be used for adding documents, getting document references, and querying for documents (using the methods inherited from Query). |
+| firebase::firestore::DocumentChange | A DocumentChange represents a change to the documents matching a query. |
+| firebase::firestore::DocumentReference | A DocumentReference refers to a document location in a Firestore database and can be used to write, read, or listen to the location. |
+| firebase::firestore::DocumentSnapshot | A DocumentSnapshot contains data read from a document in your Firestore database. |
+| firebase::firestore::FieldPath | A FieldPath refers to a field in a document. |
+| firebase::firestore::FieldValue | A field value represents variant datatypes as stored by Firestore. |
+| firebase::firestore::Filter | A Filter represents a restriction on one or more field values and can be used to refine the results of a Query. |
+| firebase::firestore::Firestore | Entry point for the Firebase Firestore C++ SDK. |
+| firebase::firestore::GeoPoint | An immutable object representing a geographical point in Firestore. |
+| firebase::firestore::ListenerRegistration | Represents a listener that can be removed by calling Remove(). |
+| firebase::firestore::LoadBundleTaskProgress | Represents a progress update or the final state from loading bundles. |
+| firebase::firestore::Query | A Query which you can read or listen to. |
+| firebase::firestore::QuerySnapshot | A QuerySnapshot contains zero or more DocumentSnapshot objects. |
+| firebase::firestore::SetOptions | An options object that configures the behavior of Set() calls. |
+| firebase::firestore::Settings | Settings used to configure a Firestore instance. |
+| firebase::firestore::SnapshotMetadata | Metadata about a snapshot, describing the state of the snapshot. |
+| firebase::firestore::Transaction | Transaction provides methods to read and write data within a transaction. |
+| firebase::firestore::TransactionOptions | Options to customize transaction behavior for Firestore.runTransaction(). |
+| firebase::firestore::WriteBatch | A write batch is used to perform multiple writes as a single atomic unit. |
+
+## firebase::functions
+### 표
+| Classes |
+| --- |
+| firebase::functions::Functions | Entry point for the Firebase C++ SDK for Cloud Functions. |
+| firebase::functions::HttpsCallableReference | Represents a reference to a Cloud Functions object. |
+| firebase::functions::HttpsCallableResult | An HttpsCallableResult contains the result of calling an HttpsCallable. |
+
+## firebase::installations
+### 표
+| Classes |
+| --- |
+| firebase::installations::Installations | Installations provides a unique identifier for each app instance and a mechanism to authenticate and authorize actions (for example, sending an FCM message). |
+
+## firebase::messaging
+### 표
+| Classes |
+| --- |
+| firebase::messaging::Listener | Base class used to receive messages from Firebase Cloud Messaging. |
+| firebase::messaging::PollableListener | A listener that can be polled to consume pending Messages. |
+
+| Structs |
+| --- |
+| firebase::messaging::AndroidNotificationParams | Data structure for parameters that are unique to the Android implementation. |
+| firebase::messaging::Message | Data structure used to receive messages from cloud messaging. |
+| firebase::messaging::MessagingOptions | A class to configure the behavior of Firebase Cloud Messaging. |
+| firebase::messaging::Notification | Used for messages that display a notification. |
+
+## firebase::remote_config
+### 표
+| Classes |
+| --- |
+| firebase::remote_config::ConfigUpdateListenerRegistration | Calling Remove stops the listener from receiving config updates and unregisters itself. |
+| firebase::remote_config::RemoteConfig | Entry point for the Firebase C++ SDK for Remote Config. |
+
+| Structs |
+| --- |
+| firebase::remote_config::ConfigInfo | Describes the state of the most recent Fetch() call. |
+| firebase::remote_config::ConfigKeyValue | Describes a mapping of a key to a string value. |
+| firebase::remote_config::ConfigKeyValueVariant | Describes a mapping of a key to a value of any type. |
+| firebase::remote_config::ConfigSettings | Configurations for Remote Config behavior. |
+| firebase::remote_config::ConfigUpdate | Information about the updated config. |
+| firebase::remote_config::ValueInfo | Describes a retrieved value. |
+
+## firebase::storage
+### 표
+| Classes |
+| --- |
+| firebase::storage::Controller | Controls an ongoing operation, allowing the caller to Pause, Resume or Cancel an ongoing download or upload. |
+| firebase::storage::Listener | Base class used to receive pause and progress events on a running read or write operation. |
+| firebase::storage::Metadata | Metadata stores default attributes such as size and content type. |
+| firebase::storage::Storage | Entry point for the Firebase C++ SDK for Cloud Storage. |
+| firebase::storage::StorageReference | Represents a reference to a Cloud Storage object. |
+
+## firebase::ump
+### 표
+| Classes |
+| --- |
+| firebase::ump::ConsentInfo | Consent Information class for the User Messaging Platform SDK. |
+
+| Structs |
+| --- |
+| firebase::ump::ConsentDebugSettings | Debug settings for ConsentInfo::RequestConsentInfoUpdate(). |
+| firebase::ump::ConsentRequestParameters | Parameters for the ConsentInfo::RequestConsentInfoUpdate() operation. |
+
+## std
+### 표
+| Structs |
+| --- |
+| std::hash< firebase::firestore::FieldPath > | A convenient specialization of std::hash for FieldPath. |
+
+## Additional Resources
+### 표
+| Modules |
+| --- |
+| Analytics Events | Predefined event names. |
+| Analytics Parameters | Predefined event parameter names. |
+| Analytics User Properties | Predefined user property names. |

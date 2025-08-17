@@ -1,0 +1,168 @@
+Source URL: https://cloud.google.com/firestore/native/docs/trace-span-references?hl=ko
+
+## 서문
+프리뷰
+
+이 기능에는 서비스별 약관의 일반 서비스 약관 섹션에 있는 'GA 이전 제공 서비스 약관'이 적용됩니다. GA 이전 기능은 '있는 그대로' 제공되며 지원이 제한될 수 있습니다. 자세한 내용은 출시 단계 설명을 참조하세요.
+
+RPC를 실행하여 수집되는 클라이언트 측 trace는 클라이언트가 RPC 요청을 보낸 시간과 클라이언트가 RPC 응답을 수신한 시간의 타임스탬프가 포함된 스팬을 비롯하여 클라이언트의 모든 요청에 관한 여러 정보를 제공합니다. 스팬에는 네트워크 및 클라이언트 시스템으로 인한 지연 시간이 포함됩니다.
+
+클라이언트 측 trace에는 다음 정보가 포함될 수 있습니다.
+
+## 스팬 메타데이터
+### 표
+| 스팬 ID | 이 스팬의 고유 ID |
+| --- | --- |
+| 상위 스팬 ID | 상위 스팬의 ID입니다. 루트 스팬에는 설정되지 않습니다. |
+| 프로젝트 ID | Google Cloud trace를 처리한 프로젝트 ID |
+| 시작 시간 | 스팬 시작 시간 |
+| 종료 시간 | 스팬 종료 시간 |
+
+## 스팬 속성
+### 표
+| 클라이언트 버전 |
+| --- |
+| otel.scope.version | 문자열 |
+| 클라이언트 환경 |
+| gcp.firestore.memory_utilization | 실수(백분율) |
+| 클라이언트 연결 속성 |
+| gcp.firestore.settings.channel.needs_credentials | 부울 |
+| gcp.firestore.settings.channel.needs_endpoint | 부울 |
+| gcp.firestore.settings.channel.needs_headers | 부울 |
+| gcp.firestore.settings.channel.should_auto_close | 부울 |
+| gcp.firestore.settings.channel.transport_name | 문자열, 예: 'grpc' |
+| gcp.firestore.settings.credentials.authentication_type | 문자열, 예: 'OAuth2' |
+| gcp.firestore.settings.host | 문자열, 예: "firestore.googleapis.com:443" |
+| 데이터베이스 속성 |
+| gcp.firestore.settings.project_id | 문자열
+Firestore 데이터베이스가 포함된Google Cloud 프로젝트 ID |
+| gcp.firestore.settings.database_id | 문자열
+데이터베이스 외부 ID (이름) |
+| 클라이언트 RPC 재시도 설정 |
+| gcp.firestore.settings.retrySettings.initial_retry_delay | 문자열
+시간(초), 예: 0.01s |
+| gcp.firestore.settings.retrySettings.initial_rpc_timeout |
+| gcp.firestore.settings.retrySettings.max_attempts | 정수 (개수) |
+| gcp.firestore.settings.retrySettings.max_retry_delay | 문자열
+시간(초), 예: 0.1s |
+| gcp.firestore.settings.retrySettings.max_rpc_timeout |
+| gcp.firestore.settings.retrySettings.retry_delay_multiplier | double |
+| gcp.firestore.settings.retrySettings.rpc_timeout_multiplier | double |
+| gcp.firestore.settings.retrySettings.total_timeout | 문자열
+시간(초) |
+| OpenTelemetry 구성 |
+| otel.scope.name | 문자열, 예: "com.google.cloud.firestore" |
+| service.name | Sparky |
+| telemetry.sdk.language | 문자열, 예: 'java' |
+| telemetry.sdk.name | opentelemetry |
+| telemetry.sdk.version | 예: 1.29.0 |
+
+## 로그 및 이벤트
+클라이언트 측 trace는 다음 로그와 이벤트를 제공합니다.
+
+## gRPC 이벤트
+### 표
+| RPC 속성 |
+| --- |
+| message.id | 정수, 예: 1, 2 |
+| message.type | SENT 또는 RECEIVED |
+
+## AggregateQuery 이벤트
+### 표
+| 이벤트: 'RunAggregationQuery 스트림이 시작됨' |
+| --- |
+| 시도 | 0 이상의 정수 (예: 2) 초기 시도의 경우 0 |
+
+| 이벤트: 'RunAggregationQuery 응답 수신됨' |
+| --- |
+| 시도 | 0 이상의 정수 (예: 2) 초기 시도의 경우 0 |
+
+| 이벤트: 'RunAggregationQuery: 재시도 가능한 오류' |
+| --- |
+| error.message | 문자열 |
+
+| 이벤트: 'RunAggregationQuery: Error' |
+| --- |
+| error.message | 문자열 |
+
+## BatchGetDocuments 이벤트
+### 표
+| 이벤트: 'BatchGetDocuments: Start' |
+| --- |
+| doc_count | 정수 |
+| transactional | 부울 |
+
+| 이벤트: 'BatchGetDocuments: First Response Received' |
+| --- |
+
+| // 100개의 응답이 수신될 때마다
+이벤트: 'BatchGetDocuments: 100개의 응답이 수신됨' |
+| --- |
+
+| 이벤트: 'BatchGetDocuments: 응답 ${N}개로 완료됨' |
+| --- |
+| response_count | 정수 |
+
+## RunQuery 이벤트
+### 표
+| 이벤트: 'RunQuery' |
+| --- |
+| transactional | 부울 |
+| retry_query_with_cursor | 부울 |
+
+| 이벤트: 'RunQuery: First Response Received' |
+| --- |
+
+| // 100개의 응답이 수신될 때마다
+이벤트: 'RunQuery: Received 100 documents' |
+| --- |
+
+| // 서버에서 절반 닫기를 실행한 경우에만
+이벤트: 'RunQuery: Received RunQueryResponse.Done' |
+| --- |
+
+| 이벤트: 'RunQuery: 재시도 가능한 오류' |
+| --- |
+| error.message | 문자열 |
+
+| 이벤트: 'RunQuery: Error' |
+| --- |
+| error.message | 문자열 |
+
+| 이벤트: 'RunQuery: Completed' |
+| --- |
+| response_count | 정수 |
+
+## Transaction Events
+### 표
+| 스팬: 'Transaction.Run' |
+| --- |
+| transaction_type | 문자열 ('READ_ONLY' 또는 'READ_WRITE') |
+| attempts_allowed | 정수 |
+| attempts_remaining | 정수 |
+
+| // 트랜잭션을 재시도하는 경우에만
+이벤트: '트랜잭션 재시도 시작' |
+| --- |
+
+## 커밋 이벤트
+### 표
+| Span: 'BulkWriter.Commit' |
+| --- |
+| doc_count | 정수 |
+
+| 스팬: 'Batch.Commit' |
+| --- |
+| doc_count | 정수 |
+
+| 스팬: 'Transaction.Commit' |
+| --- |
+| doc_count | 정수 |
+
+## 예외적인 이벤트
+### 표
+| Span Status = ERROR |
+| --- |
+| exception.message | 문자열 |
+| exception.type | 문자열 |
+| exception.stacktrace | 문자열 |

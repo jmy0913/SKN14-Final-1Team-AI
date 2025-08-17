@@ -1,0 +1,7 @@
+Source URL: https://developers.google.com/people/v1/troubleshoot-authentication-authorization?hl=ko
+
+## This app isn't verified
+고급 > {프로젝트 이름}(안전하지 않음)으로 이동
+
+## idpiframe_initialization_failed: Failed to read the 'localStorage' property from 'Window'
+참고:

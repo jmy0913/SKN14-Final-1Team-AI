@@ -1,0 +1,14 @@
+Source URL: https://firebase.google.com/docs/guides?hl=ko
+
+## 본문
+Firebase 프로젝트를 시작하고 앱에 Firebase를 추가합니다.
+
+프로젝트 관리, 사용자 개인 정보 보호, 앱 출시를 위한 주요 개념 및 권장사항을 살펴보세요.
+
+iOS
+
+Android
+
+웹
+
+Admin SDK

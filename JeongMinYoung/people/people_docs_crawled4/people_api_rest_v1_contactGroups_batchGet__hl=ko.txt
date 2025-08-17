@@ -1,0 +1,101 @@
+Source URL: https://developers.google.com/people/api/rest/v1/contactGroups/batchGet?hl=ko
+
+## Fallback Text
+기본 콘텐츠로 건너뛰기
+people
+People API
+ 
+/
+English
+Deutsch
+Español
+Español – América Latina
+Français
+Indonesia
+Italiano
+Polski
+Português – Brasil
+Tiếng Việt
+Türkçe
+Русский
+עברית
+العربيّة
+فارسی
+हिंदी
+বাংলা
+ภาษาไทย
+中文 – 简体
+中文 – 繁體
+日本語
+한국어
+로그인
+가이드 참고자료 지원
+ 
+people
+People API
+가이드 
+참고자료 
+지원 
+개요
+REST 리소스
+연락처 그룹
+개요
+batchGet
+만들기
+삭제
+get
+list
+업데이트
+contactGroups.members
+개요
+수정하다
+기타 연락처
+개요
+다른 연락처의 내 연락처 그룹 복사
+list
+검색
+사람
+개요
+batchCreateContacts
+일괄 삭제 연락처
+일괄 업데이트 연락처
+연락처 만들기
+연락처 삭제
+연락처 사진 삭제
+get
+getBatchGet
+목록 디렉터리 사용자
+연락처 검색
+검색 디렉터리 사용자
+연락처 업데이트
+연락처 사진 업데이트
+People.connections
+개요
+list
+유형
+BatchCreateContactsErrorDetails
+BatchUpdateContactsErrorDetails
+디렉터리 병합 소스 유형
+디렉터리 소스 유형
+개인 응답
+소스 유형 읽기
+요청 마스크
+SearchResponse
+상태
+표준 기능
+쿼리 매개변수
+클라이언트 라이브러리 참조
+브라우저
+Go
+Java
+핵심 라이브러리
+API 라이브러리
+.NET
+핵심 라이브러리
+API 라이브러리
+Node.js
+PHP
+Python
+핵심 라이브러리
+API 라이브러리
+Ruby

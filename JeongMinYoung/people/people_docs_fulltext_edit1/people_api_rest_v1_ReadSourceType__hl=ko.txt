@@ -1,0 +1,47 @@
+Source URL: https://developers.google.com/people/api/rest/v1/ReadSourceType?hl=ko
+
+## 본문
+응답에 반환할 데이터 소스 유형입니다.
+
+### 표
+| 열거형 | |
+| --- | --- |
+| READ_SOURCE_TYPE_UNSPECIFIED | 지정되지 않았습니다. |
+| READ_SOURCE_TYPE_PROFILE | SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, SourceType.PROFILE를 반환합니다. |
+| READ_SOURCE_TYPE_CONTACT | SourceType.CONTACT를 반환합니다. |
+| READ_SOURCE_TYPE_DOMAIN_CONTACT | SourceType.DOMAIN_CONTACT를 반환합니다. |
+| READ_SOURCE_TYPE_OTHER_CONTACT | SourceType.OTHER_CONTACT를 반환합니다. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+READ_SOURCE_TYPE_UNSPECIFIED
+
+언어: 코드 · 셀#2
+READ_SOURCE_TYPE_PROFILE
+
+언어: 코드 · 셀#3
+SourceType.ACCOUNT
+
+언어: 코드 · 셀#4
+SourceType.DOMAIN_PROFILE
+
+언어: 코드 · 셀#5
+SourceType.PROFILE
+
+언어: 코드 · 셀#6
+READ_SOURCE_TYPE_CONTACT
+
+언어: 코드 · 셀#7
+SourceType.CONTACT
+
+언어: 코드 · 셀#8
+READ_SOURCE_TYPE_DOMAIN_CONTACT
+
+언어: 코드 · 셀#9
+SourceType.DOMAIN_CONTACT
+
+언어: 코드 · 셀#10
+READ_SOURCE_TYPE_OTHER_CONTACT
+
+언어: 코드 · 셀#11
+SourceType.OTHER_CONTACT

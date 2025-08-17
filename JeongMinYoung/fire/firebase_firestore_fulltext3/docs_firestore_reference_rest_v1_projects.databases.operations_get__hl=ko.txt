@@ -1,0 +1,36 @@
+Source URL: https://firebase.google.com/docs/firestore/reference/rest/v1/projects.databases.operations/get?hl=ko
+
+## 본문
+Gets the latest state of a long-running operation. Clients can use this method to poll the operation result at intervals as recommended by the API service.
+
+GET https://firestore.googleapis.com/v1/{name=projects/*/databases/*/operations/*}
+
+The URL uses gRPC Transcoding syntax.
+
+The request body must be empty.
+
+If successful, the response body contains an instance of Operation.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the OAuth 2.0 Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| name | string The name of the operation resource. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+GET https://firestore.googleapis.com/v1/{name=projects/*/databases/*/operations/*}
+
+언어: 코드 · 셀#2
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#3
+https://www.googleapis.com/auth/cloud-platform

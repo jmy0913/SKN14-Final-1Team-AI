@@ -1,0 +1,401 @@
+Source URL: https://cloud.google.com/firestore/docs/manage-databases?hl=ko
+
+## 서문
+이 페이지에서는 Firestore 데이터베이스를 생성, 업데이트, 삭제하는 방법을 설명합니다. 프로젝트당 Firestore 데이터베이스 여러 개를 만들 수 있습니다. 여러 데이터베이스를 사용하여 프로덕션 및 테스트 환경을 설정하고 고객 데이터를 격리하며 데이터 리전화를 수행할 수 있습니다.
+
+## (default) 데이터베이스
+데이터베이스를 지정하지 않으면 Firestore 클라이언트 라이브러리와 Google Cloud CLI가 기본적으로 (default) 데이터베이스에 연결됩니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+(default)
+
+## 필요한 역할
+데이터베이스를 만들고 관리하려면 Owner 또는 Datastore Owner Identity and Access Management 역할이 필요합니다. 이러한 역할은 필수 권한을 부여합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+Owner
+
+언어: 코드 · 셀#2
+Datastore Owner
+
+## 필수 권한
+데이터베이스를 관리하려면 다음 권한이 필요합니다.
+
+데이터베이스 만들기: datastore.databases.create
+
+데이터베이스 구성 읽기: datastore.databases.getMetadata
+
+데이터베이스 구성: datastore.databases.update
+
+데이터베이스 삭제: datastore.databases.delete
+
+데이터베이스 클론: datastore.databases.clone
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+datastore.databases.create
+
+언어: 코드 · 셀#2
+datastore.databases.getMetadata
+
+언어: 코드 · 셀#3
+datastore.databases.update
+
+언어: 코드 · 셀#4
+datastore.databases.delete
+
+언어: 코드 · 셀#5
+datastore.databases.clone
+
+## 데이터베이스 만들기
+데이터베이스를 만들려면 다음 방법 중 하나를 사용합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore databases create \
+--database=DATABASE_ID \
+--location=LOCATION \
+--type=DATABASE_TYPE \
+[--delete-protection]
+
+언어: Firebase CLI · 셀#1
+firebase firestore:databases:create DATABASE_ID \
+--location=LOCATION \
+[--delete-protection DELETE_PROTECTION_ENABLEMENT]
+
+언어: Terraform · 셀#1
+resource "google_firestore_database" "database" {
+ project = "project-id"
+ name = DATABASE_ID
+ location_id = LOCATION
+ type = DATABASE_TYPE
+
+ // Optional
+ delete_protection_state = DELETE_PROTECTION_STATE
+}
+
+## 데이터베이스 ID
+유효한 데이터베이스 ID에는 (default) 및 다음을 준수하는 ID가 포함됩니다.
+
+문자, 숫자, 하이픈(-) 문자만 포함합니다.
+
+문자는 소문자여야 합니다.
+
+첫 번째 글자는 문자여야 합니다.
+
+마지막 글자는 문자 또는 숫자여야 합니다.
+
+최소 4자(영문 기준)입니다.
+
+최대 63자(영문 기준)입니다.
+
+UUID이거나 UUID와 유사해서는 안 됩니다. 예를 들어 f47ac10b-58cc-0372-8567-0e02b2c3d479와 같은 ID를 사용하지 마세요.
+
+데이터베이스를 삭제하면 5분 동안 데이터베이스 ID를 재사용할 수 없습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+(default)
+
+언어: 코드 · 셀#1
+-
+
+언어: 코드 · 셀#2
+f47ac10b-58cc-0372-8567-0e02b2c3d479
+
+## 보호 삭제
+삭제 보호를 사용하여 데이터베이스가 실수로 삭제되는 것을 방지하세요. 삭제 보호가 사용 중지된 데이터베이스는 삭제 보호를 사용 중지할 때까지 삭제할 수 없습니다. 삭제 보호는 기본적으로 사용 중지되어 있습니다. 데이터베이스를 만들 때 삭제 보호를 사용 설정하거나 데이터베이스 구성을 업데이트하여 삭제 보호를 사용 설정할 수 있습니다.
+
+## 데이터베이스의 Firestore 보안 규칙 설정
+Firebase CLI를 사용하여 각 데이터베이스에 Firestore 보안 규칙을 배포합니다. Firestore 보안 규칙 관리 및 배포 가이드를 참조하세요.
+
+## 클라이언트 라이브러리를 사용하여 이름이 지정된 데이터베이스에 액세스
+이름이 지정된 데이터베이스에는 (default)가 아닌 모든 데이터베이스가 포함됩니다. 기본적으로 Firebase SDK 및 Google API 클라이언트 라이브러리는 프로젝트의 (default) Firestore 데이터베이스에 연결됩니다. 이름이 지정된 데이터베이스에 연결된 클라이언트를 만들려면 클라이언트를 인스턴스화할 때 데이터베이스 ID를 설정합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+(default)
+
+## 데이터베이스 나열
+다음 방법 중 하나를 사용하여 데이터베이스를 나열합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore databases list
+
+언어: Firebase CLI · 셀#1
+firebase firestore:databases:list
+
+## 데이터베이스 세부정보 보기
+단일 데이터베이스에 대한 세부정보를 보려면 다음 방법 중 하나를 사용합니다.
+
+DATABASE_ID를 데이터베이스 ID로 바꿉니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore databases describe --database=DATABASE_ID
+
+언어: Firebase CLI · 셀#1
+firebase firestore:databases:get DATABASE_ID
+
+## 데이터베이스 구성 업데이트
+데이터베이스의 구성 설정을 업데이트하려면 gcloud firestore databases update 명령어를 사용합니다. 데이터베이스 유형을 변경하거나 삭제 보호를 전환하려면 이 명령어를 사용합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+gcloud firestore databases update
+
+## 데이터베이스 유형 변경
+데이터베이스 유형을 업데이트하려면 gcloud firestore databases update 명령어를 --type= 플래그와 함께 사용합니다. 데이터베이스가 비어 있는 경우에만 유형을 변경할 수 있습니다.
+
+다음을 바꿉니다.
+
+DATABASE_ID: 데이터베이스 ID
+
+DATABASE_TYPE: 기본 모드의 경우 firestore-native, Datastore 모드의 경우 datastore-mode
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore databases update --database=DATABASE_ID \
+--type=DATABASE_TYPE
+
+언어: 코드 · 셀#1
+gcloud firestore databases update
+
+언어: 코드 · 셀#2
+--type=
+
+언어: 코드 · 셀#1
+firestore-native
+
+언어: 코드 · 셀#2
+datastore-mode
+
+## 삭제 방지 설정 업데이트
+데이터베이스에서 삭제 보호를 사용 설정하려면 gcloud firestore databases update 명령어를 --delete-protection 플래그와 함께 사용합니다. 예를 들면 다음과 같습니다.
+
+DATABASE_ID를 데이터베이스 ID로 바꿉니다.
+
+데이터베이스에서 삭제 보호를 사용 중지하려면 gcloud firestore databases update 명령어를 --no-delete-protection 플래그와 함께 사용합니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore databases update --database=DATABASE_ID --delete-protection
+
+언어: gcloud · 셀#1
+gcloud firestore databases update --database=DATABASE_ID --no-delete-protection
+
+언어: 코드 · 셀#1
+gcloud firestore databases update
+
+언어: 코드 · 셀#2
+--delete-protection
+
+언어: 코드 · 셀#2
+--no-delete-protection
+
+## 데이터베이스 삭제
+데이터베이스를 삭제하려면 콘솔이나 명령줄 도구를 사용합니다.
+
+데이터베이스에 삭제 보호 설정이 사용 설정된 경우 먼저 삭제 보호를 중지해야 합니다.
+
+데이터베이스에 App Engine 검색 데이터 또는 blob 항목이 포함된 경우 먼저 해당 데이터를 삭제해야 합니다.
+
+데이터베이스를 삭제해도 해당 데이터베이스의 Eventarc 트리거가 자동으로 삭제되지 않습니다. 트리거가 이벤트 제공을 중지하지만 트리거를 삭제하기 전까지 계속 존재합니다.
+
+데이터베이스 삭제 작업에 대한 요금은 청구되지 않습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud firestore databases delete --database=DATABASE_ID
+
+## 데이터베이스 클론
+프리뷰 - Database cloning
+
+이 기능에는 서비스별 약관의 일반 서비스 약관 섹션에 있는 'GA 이전 제공 서비스 약관'이 적용됩니다. GA 이전 기능은 '있는 그대로' 제공되며 지원이 제한될 수 있습니다. 자세한 내용은 출시 단계 설명을 참조하세요.
+
+선택한 타임스탬프의 기존 데이터베이스를 새 데이터베이스로 클론할 수 있습니다.
+
+클론된 데이터베이스는 소스 데이터베이스와 동일한 위치에 생성되는 새 데이터베이스입니다.
+
+클론을 만들기 위해 Firestore는 소스 데이터베이스의 PITR (point-in-time recovery) 데이터를 사용합니다. 클론된 데이터베이스에는 모든 데이터와 색인이 포함됩니다.
+
+클론된 데이터베이스는 소스 데이터베이스와 동일한 위치에 생성되는 새 데이터베이스입니다.
+
+클론을 만들기 위해 Firestore는 소스 데이터베이스의 PITR (point-in-time recovery) 데이터를 사용합니다. 클론된 데이터베이스에는 모든 데이터와 색인이 포함됩니다.
+
+기본적으로 클론된 데이터베이스는 Google의 기본 암호화 또는 CMEK 암호화를 사용하여 소스 데이터베이스와 동일한 방식으로 암호화됩니다. 다른 암호화 유형을 지정하거나 CMEK 암호화에 다른 키를 사용할 수 있습니다.
+
+타임스탬프는 1분 단위이며 PITR 기간에 정의된 과거의 시점을 지정합니다.
+
+데이터베이스에 PITR이 사용 설정된 경우 지난 7일 이내의 분을 선택합니다 (PITR이 7일 전에 사용 설정된 경우 그 미만).
+PITR이 사용 설정되어 있지 않으면 지난 1시간 중 아무 분이나 선택할 수 있습니다.
+데이터베이스 설명에서 선택할 수 있는 가장 이른 타임스탬프를 확인할 수 있습니다.
+
+타임스탬프는 1분 단위이며 PITR 기간에 정의된 과거의 시점을 지정합니다.
+
+데이터베이스에 PITR이 사용 설정된 경우 지난 7일 이내의 분을 선택합니다 (PITR이 7일 전에 사용 설정된 경우 그 미만).
+
+PITR이 사용 설정되어 있지 않으면 지난 1시간 중 아무 분이나 선택할 수 있습니다.
+
+데이터베이스 설명에서 선택할 수 있는 가장 이른 타임스탬프를 확인할 수 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud · 셀#1
+gcloud alpha firestore databases clone \
+--source-database='SOURCE_DATABASE_ID' \
+--snapshot-time='PITR_TIMESTAMP' \
+--destination-database='DESTINATION_DATABASE_ID'
+
+언어: gcloud · 셀#2
+gcloud alpha firestore databases clone \
+--source-database='projects/example-project/databases/(default)' \
+--snapshot-time='2025-06-01T10:20:00.00Z' \
+--destination-database='projects/example-project/databases/example-dest-db'
+
+언어: gcloud · 셀#3
+gcloud alpha firestore databases clone \
+--source-database='projects/example-project/databases/(default)' \
+--snapshot-time='2025-06-01T10:20:00.00Z' \
+--destination-database='projects/example-project/databases/example-dest-db' \
+--encryption-type='customer-managed-encryption' \
+--kms-key-name='projects/example-project/locations/us-central1/keyRings/example-key-ring/cryptoKeys/example-key'
+
+언어: 코드 · 셀#1
+datastore.databases.clone
+
+## 데이터베이스별 액세스 권한 구성
+Identity and Access Management 조건을 사용하여 데이터베이스 수준별로 액세스 권한을 구성할 수 있습니다. 다음 예시에서는 Google Cloud CLI를 사용하여 하나 이상의 데이터베이스에 조건부 액세스 권한을 할당합니다. Google Cloud 콘솔에서 IAM 조건을 정의할 수도 있습니다.
+
+## 기존 IAM 정책 보기
+PROJECT_ID를 프로젝트 ID로 설정합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+PROJECT_ID
+
+## 데이터베이스에 대한 액세스 권한 부여
+다음을 설정합니다.
+
+PROJECT_ID: 프로젝트 ID입니다.
+
+EMAIL: 특정 Google 계정을 나타내는 이메일 주소입니다. 예를 들면 alice@example.com입니다.
+
+DATABASE_ID: 데이터베이스 ID
+
+TITLE: 표현식의 제목(선택사항)입니다.
+
+DESCRIPTION: 표현식의 설명(선택사항)입니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+PROJECT_ID
+
+언어: 코드 · 셀#2
+EMAIL
+
+언어: 코드 · 셀#3
+alice@example.com
+
+언어: 코드 · 셀#4
+DATABASE_ID
+
+언어: 코드 · 셀#5
+TITLE
+
+언어: 코드 · 셀#6
+DESCRIPTION
+
+## 데이터베이스 1개를 제외한 모든 데이터베이스에 액세스 권한 부여
+다음을 설정합니다.
+
+PROJECT_ID: 프로젝트 ID입니다.
+
+EMAIL: 특정 Google 계정을 나타내는 이메일 주소입니다. 예를 들면 alice@example.com입니다.
+
+DATABASE_ID: 데이터베이스 ID
+
+TITLE: 표현식의 제목(선택사항)입니다.
+
+DESCRIPTION: 표현식의 설명(선택사항)입니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+PROJECT_ID
+
+언어: 코드 · 셀#2
+EMAIL
+
+언어: 코드 · 셀#3
+alice@example.com
+
+언어: 코드 · 셀#4
+DATABASE_ID
+
+언어: 코드 · 셀#5
+TITLE
+
+언어: 코드 · 셀#6
+DESCRIPTION
+
+## 지정된 구성원 및 역할의 정책 삭제
+다음을 설정합니다.
+
+PROJECT_ID: 프로젝트 ID입니다.
+
+EMAIL: 특정 Google 계정을 나타내는 이메일 주소입니다. 예를 들면 alice@example.com입니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+PROJECT_ID
+
+언어: 코드 · 셀#2
+EMAIL
+
+언어: 코드 · 셀#3
+alice@example.com
+
+## Cloud Monitoring
+Firestore 측정항목은 두 개의 모니터링 리소스 아래에 보고됩니다.
+
+firestore.googleapis.com/Database
+
+firestore_instance(기존)
+
+firestore.googleapis.com/Database를 확인하여 데이터베이스 수준에서 집계 측정항목을 검사할 수 있습니다. firestore_instance에 보고되는 측정항목은 프로젝트 수준에서 집계됩니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+firestore.googleapis.com/Database
+
+언어: 코드 · 셀#2
+firestore_instance
+
+## 제한사항
+프로젝트당 최대 100개의 데이터베이스를 포함할 수 있습니다. 지원팀에 문의하여 이 한도 상향을 요청할 수 있습니다.
+
+GAE 검색 데이터가 포함되어 있으면 (default) 데이터베이스를 삭제할 수 없습니다. Index Delete API를 사용하여 GAE 검색 데이터를 삭제합니다. 최근에 GAE 검색 데이터를 삭제한 경우 데이터베이스를 삭제하려면 대기 기간이 지나야 할 수 있습니다.
+
+blob 항목이 포함되어 있으면 (default) 데이터베이스를 삭제할 수 없습니다. Blobstore Delete API를 사용하여 Blobstore 데이터를 삭제합니다. Google Cloud 콘솔에서 SELECT * FROM __BlobInfo__ GQL 쿼리를 실행하여 (default) 데이터베이스에 Blobstore 데이터가 있는지 확인할 수 있습니다.
+
+삭제 후 5분이 지나야 데이터베이스 ID를 재사용할 수 있습니다.
+
+Cloud 함수 v1은 Firestore에서 이름이 지정된 데이터베이스를 지원하지 않습니다. Cloud Firestore 트리거 (2세대)를 사용하여 이름이 지정된 데이터베이스의 이벤트를 구성하세요.
+
+데이터베이스가 삭제된 후 동일한 이름으로 새 데이터베이스를 생성하더라도 Firestore 함수 트리거 v1 및 Firestore 이벤트 트리거가 작동이 중지될 수 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+(default)
+
+언어: 코드 · 셀#2
+SELECT * FROM __BlobInfo__
+
+## 다음 단계
+데이터 추가
+
+데이터 가져오기
+
+데이터 삭제

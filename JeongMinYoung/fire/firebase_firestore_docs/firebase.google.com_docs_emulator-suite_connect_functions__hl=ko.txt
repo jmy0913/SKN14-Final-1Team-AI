@@ -1,0 +1,179 @@
+Source URL: https://firebase.google.com/docs/emulator-suite/connect_functions?hl=ko
+
+## 서문
+베타. 이 에뮬레이터는 현재 베타 버전입니다. 이전 버전과 호환되지 않는 방식으로 변경될 수 있습니다. 의견을 보내주시면 항상 큰 도움이 됩니다. 사용해 보시고 의견을 알려주세요.
+
+앱을 Cloud Functions 에뮬레이터에 연결하기 전에 전반적인 Firebase Local Emulator Suite 워크플로를 이해하고 Local Emulator Suite을 설치 및 구성하고 CLI 명령어를 검토해야 합니다.
+
+## Firebase 프로젝트 선택
+Firebase Local Emulator Suite은 단일 Firebase 프로젝트의 제품을 에뮬레이션합니다.
+
+에뮬레이터를 시작하기 전에 사용할 프로젝트를 선택하려면 CLI로 작업 디렉터리에서 firebase use를 실행합니다. 또는 --project 플래그를 각 에뮬레이터 명령어에 전달합니다.
+
+Local Emulator Suite은 실제 Firebase 프로젝트 및 데모 프로젝트의 에뮬레이션을 지원합니다.
+
+실제 Firebase 프로젝트는 주로 Firebase 콘솔을 통해 만들고 구성한 프로젝트입니다.
+
+실제 프로젝트에는 데이터베이스 인스턴스, 스토리지 버킷, 함수 또는 해당 Firebase 프로젝트에 설정한 기타 리소스와 같은 라이브 리소스가 있습니다.
+
+실제 Firebase 프로젝트로 작업할 때는 지원되는 제품 일부 또는 전부를 에뮬레이션할 수 있습니다.
+
+에뮬레이션하지 않는 제품의 경우 앱과 코드가 데이터베이스 인스턴스, 스토리지 버킷, 함수 등 라이브 리소스와 상호작용합니다.
+
+데모 Firebase 프로젝트에는 실제 Firebase 구성이 없으며 라이브 리소스도 없습니다. 이러한 프로젝트는 일반적으로 Codelab 또는 기타 튜토리얼을 통해 액세스합니다.
+
+데모 프로젝트의 프로젝트 ID에는 demo- 프리픽스가 있습니다.
+
+가능한 한 데모 프로젝트를 사용하는 것이 좋습니다. 장점은 다음과 같습니다.
+
+손쉬운 설정: Firebase 프로젝트를 만들지 않고도 에뮬레이터를 실행할 수 있습니다.
+
+강력한 안전성: 코드에서 실수로 에뮬레이션되지 않은(프로덕션) 리소스를 호출하더라도 데이터 변경, 사용, 청구 등이 발생할 가능성이 없습니다.
+
+오프라인 지원 향상: SDK 구성을 다운로드하기 위해 인터넷에 액세스할 필요가 없습니다.
+
+### 표
+| 프로젝트 유형 | 특징 | 에뮬레이터와 함께 사용 |
+| --- | --- | --- |
+| 실제 | 실제 Firebase 프로젝트는 주로 Firebase 콘솔을 통해 만들고 구성한 프로젝트입니다.
+
+실제 프로젝트에는 데이터베이스 인스턴스, 스토리지 버킷, 함수 또는 해당 Firebase 프로젝트에 설정한 기타 리소스와 같은 라이브 리소스가 있습니다. | 실제 Firebase 프로젝트로 작업할 때는 지원되는 제품 일부 또는 전부를 에뮬레이션할 수 있습니다.
+
+에뮬레이션하지 않는 제품의 경우 앱과 코드가 데이터베이스 인스턴스, 스토리지 버킷, 함수 등 라이브 리소스와 상호작용합니다. |
+| 데모 | 데모 Firebase 프로젝트에는 실제 Firebase 구성이 없으며 라이브 리소스도 없습니다. 이러한 프로젝트는 일반적으로 Codelab 또는 기타 튜토리얼을 통해 액세스합니다.
+
+데모 프로젝트의 프로젝트 ID에는 demo- 프리픽스가 있습니다. | 데모 Firebase 프로젝트로 작업할 때는 앱과 코드가 에뮬레이터와만 상호작용합니다. 앱이 에뮬레이터에서 실행 중이지 않은 리소스와 상호작용하려고 하면 코드가 실패합니다. |
+
+## 호출 가능한 함수를 위한 앱 구현
+프로토타입 및 테스트 활동에 호출 가능한 백엔드 함수가 포함된 경우 다음과 같이 Cloud Functions for Firebase 에뮬레이터와의 상호작용을 구성합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+// 10.0.2.2 is the special IP address to connect to the 'localhost' of
+// the host computer from an Android emulator.
+val functions = Firebase.functions
+functions.useEmulator("10.0.2.2", 5001)
+MainActivity.kt
+
+언어: Java · 셀#1
+// 10.0.2.2 is the special IP address to connect to the 'localhost' of
+// the host computer from an Android emulator.
+FirebaseFunctions functions = FirebaseFunctions.getInstance();
+functions.useEmulator("10.0.2.2", 5001);
+MainActivity.java
+
+언어: Swift · 셀#1
+Functions.functions().useEmulator(withHost: "localhost", port: 5001)
+ViewController.swift
+
+언어: Web · 셀#1
+import { getApp } from "firebase/app";
+import { getFunctions, connectFunctionsEmulator } from "firebase/functions";
+
+const functions = getFunctions(getApp());
+connectFunctionsEmulator(functions, "127.0.0.1", 5001);
+fb_functions_emulator_connect.js
+
+언어: Web · 셀#1
+firebase.functions().useEmulator("127.0.0.1", 5001);
+emulator-suite.js
+
+## HTTPS 함수 에뮬레이션을 위한 앱 구현
+코드의 각 HTTPS 함수는 다음 URL 형식을 사용하여 로컬 에뮬레이터에서 제공됩니다.
+
+http://$HOST:$PORT/$PROJECT/$REGION/$NAME
+
+예를 들어 기본 호스트 포트와 리전을 포함한 단순한 helloWorld 함수는 다음 형식으로 제공됩니다.
+
+https://localhost:5001/$PROJECT/us-central1/helloWorld
+
+## 태스크 큐 함수 에뮬레이션을 위한 앱 구현
+에뮬레이터는 트리거 정의에 따라 에뮬레이션된 작업 큐를 자동으로 설정하고, CLOUD_TASKS_EMULATOR_HOST 환경 변수를 통해 실행 중임을 감지하면 Admin SDK는 큐에 추가된 요청을 에뮬레이터로 다시 라우팅합니다.
+
+프로덕션에서 사용되는 전달 시스템은 에뮬레이터에 구현된 시스템보다 더 복잡하므로 에뮬레이션된 동작이 프로덕션 환경을 정확하게 반영한다고 기대해서는 안 됩니다. 에뮬레이터 내의 매개변수는 태스크가 전달되고 재시도되는 속도의 상한을 제공합니다.
+
+## 백그라운드 트리거 함수 에뮬레이션을 위한 앱 구현
+Cloud Functions 에뮬레이터는 다음 소스의 백그라운드 트리거 함수를 지원합니다.
+
+Realtime Database 에뮬레이터
+
+Cloud Firestore 에뮬레이터
+
+Authentication 에뮬레이터
+
+Pub/Sub 에뮬레이터
+
+Firebase 알림 에뮬레이터
+
+백그라운드 이벤트를 트리거하려면 Emulator Suite UI를 사용하거나 플랫폼용 SDK를 사용하여 에뮬레이터에 앱 또는 테스트 코드를 연결하여 백엔드 리소스를 수정하세요.
+
+## 확장 프로그램에서 내보낸 커스텀 이벤트의 테스트 핸들러
+Cloud Functions v2로 Firebase Extensions 커스텀 이벤트를 처리하기 위해 구현하는 함수의 경우 Cloud Functions 에뮬레이터가 Eventarc 에뮬레이터와 페어링되어 Eventarc 트리거를 지원합니다.
+
+이벤트를 내보내는 확장 프로그램의 커스텀 이벤트 핸들러를 테스트하려면 Cloud Functions 및 Eventarc 에뮬레이터를 설치해야 합니다.
+
+Eventarc 에뮬레이터가 실행 중인 경우 Cloud Functions 런타임은 현재 프로세스에서 EVENTARC_EMULATOR 환경 변수를 localhost:9299로 설정합니다. EVENTARC_EMULATOR 환경 변수가 설정되면 Firebase Admin SDK가 자동으로 Eventarc 에뮬레이터에 연결됩니다. Local Emulator Suite 구성에 설명된 대로 기본 포트를 수정할 수 있습니다.
+
+환경 변수가 올바르게 구성되면 Firebase Admin SDK가 자동으로 Eventarc 에뮬레이터에 이벤트를 전송합니다. 그러면 Eventarc 에뮬레이터는 Cloud Functions 에뮬레이터를 다시 호출하여 등록된 핸들러를 트리거합니다.
+
+Emulator Suite UI의 Functions 로그에서 핸들러 실행에 관한 자세한 내용을 확인할 수 있습니다.
+
+## 로컬 테스트 환경 구성
+함수가 dotenv 기반 환경 구성을 사용하는 경우 로컬 테스트 환경에서 해당 동작을 에뮬레이션할 수 있습니다.
+
+로컬 Cloud Functions 에뮬레이터를 사용하는 경우 .env.local 파일을 설정하여 프로젝트의 환경 변수를 재정의할 수 있습니다. .env.local의 콘텐츠는 .env 및 프로젝트별 .env 파일보다 우선 적용됩니다.
+
+예를 들어 프로젝트에 개발 및 로컬 테스트용으로 약간 다른 값이 포함된 다음 세 개의 파일이 포함되어 있다고 가정하겠습니다.
+
+AUDIENCE=Humans
+
+로컬 컨텍스트에서 시작할 때 에뮬레이터는 다음에 표시된 환경 변수를 로드합니다.
+
+### 표
+| .env | .env.dev | .env.local |
+| --- | --- | --- |
+| PLANET=Earth
+
+AUDIENCE=Humans | AUDIENCE=Dev Humans | AUDIENCE=Local Humans |
+
+## Cloud Functions 에뮬레이터의 보안 비밀 및 사용자 인증 정보
+Cloud Functions 에뮬레이터는 민감한 구성 정보를 저장하고 이러한 정보에 액세스하기 위해 보안 비밀을 사용하는 것을 지원합니다. 기본적으로 에뮬레이터는 애플리케이션 기본 사용자 인증 정보를 사용하여 프로덕션 보안 비밀에 액세스하려고 시도합니다. 지속적 통합(CI) 환경과 같은 특정 상황에서는 권한 제한으로 인해 에뮬레이터가 보안 비밀 값에 액세스하지 못할 수 있습니다.
+
+Cloud Functions 에뮬레이터의 환경 변수 지원과 마찬가지로 .secret.local 파일을 설정하여 보안 비밀 값을 재정의할 수 있습니다. 이렇게 하면 특히 보안 비밀 값에 액세스할 수 없는 경우에도 로컬에서 함수를 쉽게 테스트할 수 있습니다.
+
+## Cloud Functions를 테스트하기 위한 다른 도구로는 무엇이 있나요?
+Cloud Functions 에뮬레이터는 다른 프로토타입 및 테스트 도구로 보완됩니다.
+
+Cloud Functions 셸: 대화형의 반복 함수 프로토타입 제작 및 개발을 지원합니다. 이 셸은 개발용 REPL 스타일 인터페이스를 갖춘 Cloud Functions 에뮬레이터를 사용합니다. Cloud Firestore 또는 Realtime Database 에뮬레이터와의 통합은 제공되지 않습니다. 셸을 사용하여 데이터를 모의 처리하고 함수 호출을 수행하여 Local Emulator Suite에서 현재 지원하지 않는 제품(예: 애널리틱스, 원격 구성, Crashlytics 등)과의 상호작용을 시뮬레이션합니다.
+
+Cloud Functions용 Firebase Test SDK: 함수 개발용 Mocha 프레임워크가 있는 Node.js입니다. 실제로 Cloud Functions Test SDK는 Cloud Functions 셸을 기반으로 자동화 기능을 제공합니다.
+
+Cloud Functions 셸 및 Cloud Functions Test SDK에 대한 자세한 내용은 대화형으로 함수 테스트 및 Cloud Functions 단위 테스트를 참조하세요.
+
+## Cloud Functions 에뮬레이터와 프로덕션 환경의 차이점
+Cloud Functions 에뮬레이터는 대부분의 사용 사례에서 프로덕션 환경과 상당히 유사합니다. Google은 노드 런타임 내의 모든 항목이 프로덕션 환경과 최대한 유사하도록 다양한 노력을 기울였습니다. 하지만 에뮬레이터는 컨테이너화된 프로덕션 환경 전체를 모방하지 않으므로, 함수 코드는 실제와 같이 실행되지만 환경의 다른 측면(예: 로컬 파일, 함수 비정상 종료 후 동작 등)에는 차이가 있습니다.
+
+## Cloud IAM
+Firebase 에뮬레이터 도구 모음은 실행을 위해 IAM 관련 동작을 복제하거나 준수하려는 시도를 하지 않습니다. 에뮬레이터는 제공된 Firebase 보안 규칙을 준수하지만 일반적으로 IAM을 사용하게 되는 상황(예: 서비스 계정과 따라서 권한을 호출하는 Cloud Functions를 설정)에서는 에뮬레이터를 구성할 수 없으며 로컬 스크립트를 직접 실행하는 것과 유사한 방식으로 개발 머신에서 글로벌 가용 계정을 사용하게 됩니다.
+
+## 메모리 및 프로세서 제한
+에뮬레이터는 함수에 메모리 또는 프로세서 제한을 적용하지 않습니다. 그러나 에뮬레이터는 timeoutSeconds 런타임 인수를 통한 함수 타임아웃을 지원합니다.
+
+함수가 에뮬레이터에서 실행될 때 함수 실행 시간이 프로덕션 환경과 다를 수 있음에 유의하세요. 먼저 에뮬레이터로 함수를 설계하고 테스트한 후 프로덕션 환경에서 제한된 테스트를 실행하여 실행 시간을 확인하는 것이 좋습니다.
+
+## 로컬 환경과 프로덕션 환경의 차이점 계획
+에뮬레이터는 로컬 머신에서 실행되므로 애플리케이션, 기본 제공 프로그램, 유틸리티용 로컬 환경에 따라 달라집니다.
+
+Cloud Functions 개발을 위한 로컬 환경은 다음의 경우 Google 프로덕션 환경과 다를 수 있다는 점에 유의하세요.
+
+프로덕션 환경을 시뮬레이션하기 위해 로컬로 설치하는 애플리케이션(예: 이 튜토리얼의 ImageMagick)은 특히 다른 버전이 필요하거나 Linux 이외 환경에서 개발할 경우 프로덕션 환경의 동작과 다를 수 있습니다. 함수 배포 시 누락된 프로그램의 자체 바이너리 사본을 함께 배포하는 것이 좋습니다.
+
+마찬가지로 Linux 이외 환경(예: macOS)에서 개발할 경우, 기본 제공 유틸리티(예: ls, mkdir과 같은 셸 명령어)가 프로덕션 환경에서 사용 가능한 버전과 다를 수 있습니다. 네이티브 명령어에 노드 전용 대체 값을 사용하거나 배포와 함께 번들로 묶을 Linux 바이너리를 빌드하여 이 문제를 처리할 수 있습니다.
+
+## 다시 시도 중
+Cloud Functions 에뮬레이터는 실패 시 함수 재시도를 지원하지 않습니다.
+
+## 다음 단계
+선별된 동영상 모음 및 자세한 방법 예시는 Firebase 에뮬레이터 학습 재생목록을 참조하세요.
+
+로컬에서 함수 실행에서 Cloud Functions for Firebase 에뮬레이터에 대해 자세히 알아보세요.

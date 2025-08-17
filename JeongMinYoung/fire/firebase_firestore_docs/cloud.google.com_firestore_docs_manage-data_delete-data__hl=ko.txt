@@ -1,0 +1,264 @@
+Source URL: https://cloud.google.com/firestore/docs/manage-data/delete-data?hl=ko
+
+## 서문
+다음 예시는 문서, 필드, 컬렉션을 삭제하는 방법을 보여줍니다.
+
+## 문서 삭제
+문서를 삭제하려면 다음과 같은 언어별 delete() 메서드를 사용합니다.
+
+문서를 삭제해도 Firestore는 하위 컬렉션 내 문서를 자동으로 삭제하지 않습니다. 따라서 참조를 통해 하위 컬렉션 문서에 액세스할 수 있습니다. 예를 들어 /mycoll/mydoc에서 상위 문서를 삭제했더라도 /mycoll/mydoc/mysubcoll/mysubdoc 경로에 있는 문서에 액세스할 수 있습니다.
+
+존재하지 않는 상위 문서가 Console에 나타나는 경우에도 쿼리나 스냅샷에는 표시되지 않습니다.
+
+문서를 삭제할 때 하위 컬렉션의 문서까지 삭제하려면 수동으로 삭제해야 합니다. 자세한 내용은 컬렉션 삭제를 참조하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 웹 버전 9 · 셀#1
+import { doc, deleteDoc } from "firebase/firestore";
+
+await deleteDoc(doc(db, "cities", "DC"));
+delete_document.js
+
+언어: 웹 버전 8 · 셀#1
+db.collection("cities").doc("DC").delete().then(() => {
+ console.log("Document successfully deleted!");
+}).catch((error) => {
+ console.error("Error removing document: ", error);
+});
+test.firestore.js
+
+언어: Swift · 셀#1
+do {
+ try await db.collection("cities").document("DC").delete()
+ print("Document successfully removed!")
+} catch {
+ print("Error removing document: \(error)")
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"DC"]
+ deleteDocumentWithCompletion:^(NSError * _Nullable error) {
+ if (error != nil) {
+ NSLog(@"Error removing document: %@", error);
+ } else {
+ NSLog(@"Document successfully removed!");
+ }
+}];
+ViewController.m
+
+언어: Kotlin · 셀#1
+db.collection("cities").document("DC")
+ .delete()
+ .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully deleted!") }
+ .addOnFailureListener { e -> Log.w(TAG, "Error deleting document", e) }
+DocSnippets.kt
+
+언어: 자바 · 셀#1
+db.collection("cities").document("DC")
+ .delete()
+ .addOnSuccessListener(new OnSuccessListener<Void>() {
+ @Override
+ public void onSuccess(Void aVoid) {
+ Log.d(TAG, "DocumentSnapshot successfully deleted!");
+ }
+ })
+ .addOnFailureListener(new OnFailureListener() {
+ @Override
+ public void onFailure(@NonNull Exception e) {
+ Log.w(TAG, "Error deleting document", e);
+ }
+ });
+DocSnippets.java
+
+언어: Dart · 셀#1
+db.collection("cities").doc("DC").delete().then(
+ (doc) => print("Document deleted"),
+ onError: (e) => print("Error updating document $e"),
+ );
+firestore.dart
+
+언어: 자바 · 셀#1
+// asynchronously delete a document
+ApiFuture<WriteResult> writeResult = db.collection("cities").document("DC").delete();
+// ...
+System.out.println("Update time : " + writeResult.get().getUpdateTime());
+ManageDataSnippets.java
+
+## 필드 삭제
+문서에서 특정 필드를 삭제하려면 문서를 업데이트할 때 다음과 같은 언어별 FieldValue.delete() 메서드를 사용합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 웹 버전 9 · 셀#1
+import { doc, updateDoc, deleteField } from "firebase/firestore";
+
+const cityRef = doc(db, 'cities', 'BJ');
+
+// Remove the 'capital' field from the document
+await updateDoc(cityRef, {
+ capital: deleteField()
+});
+update_delete_field.js
+
+언어: 웹 버전 8 · 셀#1
+var cityRef = db.collection('cities').doc('BJ');
+
+// Remove the 'capital' field from the document
+var removeCapital = cityRef.update({
+ capital: firebase.firestore.FieldValue.delete()
+});
+test.firestore.js
+
+언어: Swift · 셀#1
+do {
+
+ try await db.collection("cities").document("BJ").updateData([
+ "capital": FieldValue.delete(),
+ ])
+ print("Document successfully updated")
+} catch {
+ print("Error updating document: \(error)")
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"BJ"] updateData:@{
+ @"capital": [FIRFieldValue fieldValueForDelete]
+} completion:^(NSError * _Nullable error) {
+ if (error != nil) {
+ NSLog(@"Error updating document: %@", error);
+ } else {
+ NSLog(@"Document successfully updated");
+ }
+}];
+ViewController.m
+
+언어: Kotlin · 셀#1
+val docRef = db.collection("cities").document("BJ")
+
+// Remove the 'capital' field from the document
+val updates = hashMapOf<String, Any>(
+ "capital" to FieldValue.delete(),
+)
+
+docRef.update(updates).addOnCompleteListener { }
+DocSnippets.kt
+
+언어: 자바 · 셀#1
+DocumentReference docRef = db.collection("cities").document("BJ");
+
+// Remove the 'capital' field from the document
+Map<String,Object> updates = new HashMap<>();
+updates.put("capital", FieldValue.delete());
+
+docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
+ // ...
+ // ...
+DocSnippets.java
+
+언어: Dart · 셀#1
+final docRef = db.collection("cities").doc("BJ");
+
+// Remove the 'capital' field from the document
+final updates = <String, dynamic>{
+ "capital": FieldValue.delete(),
+};
+
+docRef.update(updates);
+firestore.dart
+
+언어: 자바 · 셀#1
+DocumentReference docRef = db.collection("cities").document("BJ");
+Map<String, Object> updates = new HashMap<>();
+updates.put("capital", FieldValue.delete());
+// Update and delete the "capital" field in the document
+ApiFuture<WriteResult> writeResult = docRef.update(updates);
+System.out.println("Update time : " + writeResult.get());
+ManageDataSnippets.java
+
+## 컬렉션 삭제
+Firestore에서 전체 컬렉션 또는 하위 컬렉션을 삭제하려면 컬렉션 또는 하위 컬렉션에 포함된 모든 문서를 검색(읽기)하여 삭제합니다. 이 프로세스에는 읽기 및 삭제 비용이 모두 발생합니다. 컬렉션의 규모가 큰 경우 문서를 조금씩 나누어 삭제하면 메모리 부족 오류를 방지할 수 있습니다. 전체 컬렉션 또는 하위 컬렉션이 삭제될 때까지 이 과정을 반복하세요.
+
+컬렉션을 삭제하려면 제한되지 않은 개별 삭제 요청 수를 조정해야 합니다. 전체 컬렉션은 신뢰할 수 있는 서버 환경에서만 삭제하세요. 모바일 또는 웹 클라이언트에서도 컬렉션을 삭제할 수 있지만, 이 경우 보안 및 성능에 부정적인 영향을 미칩니다.
+
+아래의 스니펫은 다소 단순화되어 있으므로 오류 처리, 보안, 하위 컬렉션 삭제 또는 성능 극대화에 대해서는 다루지 않습니다. 프로덕션 환경에서 컬렉션을 삭제하는 한 가지 추천 방법에 대한 자세한 내용은 컬렉션 및 하위 컬렉션 삭제를 참조하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 웹 · 셀#1
+// Deleting collections from a Web client is not recommended.
+
+언어: Swift · 셀#1
+// Deleting collections from an Apple client is not recommended.
+
+언어: Objective-C · 셀#1
+// Deleting collections from an Apple client is not recommended.
+
+언어: Kotlin · 셀#1
+// Deleting collections from an Android client is not recommended.
+
+언어: 자바 · 셀#1
+// Deleting collections from an Android client is not recommended.
+
+언어: Java · 셀#1
+/**
+ * Delete a collection in batches to avoid out-of-memory errors. Batch size may be tuned based on
+ * document size (atmost 1MB) and application requirements.
+ */
+void deleteCollection(CollectionReference collection, int batchSize) {
+ try {
+ // retrieve a small batch of documents to avoid out-of-memory errors
+ ApiFuture<QuerySnapshot> future = collection.limit(batchSize).get();
+ int deleted = 0;
+ // future.get() blocks on document retrieval
+ List<QueryDocumentSnapshot> documents = future.get().getDocuments();
+ for (QueryDocumentSnapshot document : documents) {
+ document.getReference().delete();
+ ++deleted;
+ }
+ if (deleted >= batchSize) {
+ // retrieve and delete another batch
+ deleteCollection(collection, batchSize);
+ }
+ } catch (Exception e) {
+ System.err.println("Error deleting collection : " + e.getMessage());
+ }
+}
+
+ManageDataSnippets.java
+
+언어: Python · 셀#1
+def delete_collection(coll_ref, batch_size):
+ if batch_size == 0:
+ return
+
+ docs = coll_ref.list_documents(page_size=batch_size)
+ deleted = 0
+
+ for doc in docs:
+ print(f"Deleting doc {doc.id} => {doc.get().to_dict()}")
+ doc.delete()
+ deleted = deleted + 1
+
+ if deleted >= batch_size:
+ return delete_collection(coll_ref, batch_size)
+
+snippets.py
+
+## Firebase CLI를 사용한 데이터 삭제
+Firebase CLI를 사용해 문서 및 컬렉션을 삭제할 수도 있습니다. 데이터를 삭제하려면 다음 명령어를 사용하세요.
+
+## Console을 사용한 데이터 삭제
+Console의 Firestore 페이지에서 문서 및 컬렉션을 삭제할 수 있습니다. Console에서 문서를 삭제하면 하위 컬렉션을 포함하여 해당 문서의 모든 중첩된 데이터가 삭제됩니다.
+
+## TTL 정책을 사용하여 데이터 삭제
+TTL 정책은 특정 필드를 특정 컬렉션 그룹의 문서 만료 시간으로 지정합니다. TTL 삭제 작업은 문서 삭제 비용에 포함됩니다.
+
+TTL 설정에 대한 자세한 내용은 TTL 정책으로 데이터 보관 관리를 참조하세요.
+
+오류 코드 및 데이터 삭제 시 지연 시간 문제를 해결하는 방법에 대한 자세한 내용은 문제해결 페이지를 참고하세요.
+
+## Dataflow를 사용하여 데이터 삭제
+Dataflow는 Firestore 데이터베이스에서 일괄 작업을 수행할 수 있는 유용한 도구입니다. Dataflow용 Firestore 커넥터 소개 블로그 게시물에는 컬렉션 그룹의 모든 문서를 삭제하는 예시가 나와 있습니다.
+
+## 관리형 일괄 삭제 사용
+Firestore는 하나 이상의 컬렉션 그룹을 일괄 삭제하는 기능을 지원합니다. 자세한 내용은 데이터 일괄 삭제를 참고하세요.

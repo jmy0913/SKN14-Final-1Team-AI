@@ -1,0 +1,78 @@
+Source URL: https://firebase.google.com/docs/projects/iam/roles-predefined-all-products?hl=ko
+
+## 본문
+이 역할은 모든 Firebase 제품에 대한 전체 읽기/쓰기 또는 읽기 전용 액세스 권한을 부여합니다.
+
+Firebase Console 또는 Google Cloud 콘솔을 사용하여 이러한 Firebase 수준 역할을 프로젝트 구성원에게 할당하세요.
+
+Firebase 관리자  권한
+
+다음에 포함된 모든 권한:
+
+firebase.analyticsAdmin
+
+firebase.developAdmin
+
+firebase.qualityAdmin
+
+firebase.growthAdmin
+
+cloudtestservice.testAdmin
+
+cloudtestservice.testViewer
+
+추가 권한:
+
+clientauthconfig.clients.create
+
+clientauthconfig.clients.delete
+
+clientauthconfig.clients.update
+
+firebase.billingPlans.update
+
+firebase.clients.create
+
+firebase.clients.delete
+
+firebase.clients.undelete
+
+firebase.clients.update
+
+firebase.links.create
+
+firebase.links.delete
+
+firebase.links.update
+
+firebase.playLinks.update
+
+firebase.projects.delete
+
+firebase.projects.update
+
+추가 액세스:
+ Firebase Extensions 설치 및 관리
+
+Firebase 뷰어  권한
+
+firebase.analyticsViewer
+
+firebase.developViewer
+
+firebase.qualityViewer
+
+firebase.growthViewer
+
+추가 액세스:
+설치된 Firebase Extensions 보기
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase 관리자
+roles/firebase.admin | 모든 Firebase 서비스에 대한
+전체 읽기/쓰기 액세스 권한 | Firebase 관리자  권한 |
+| Firebase 뷰어
+roles/firebase.viewer | 모든 Firebase 서비스에 대한
+읽기 전용 액세스 권한 | Firebase 뷰어  권한 |

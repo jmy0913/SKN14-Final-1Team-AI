@@ -1,0 +1,52 @@
+Source URL: https://firebase.google.com/docs/firestore/reference/rest/v1/projects.databases/bulkDeleteDocuments?hl=ko
+
+## 본문
+Bulk deletes a subset of documents from Google Cloud Firestore. Documents created or updated after the underlying system starts to process the request will not be deleted. The bulk delete occurs in the background and its progress can be monitored and managed via the Operation resource that is created.
+
+For more details on bulk delete behavior, refer to: https://cloud.google.com/firestore/docs/manage-data/bulk-delete
+
+POST https://firestore.googleapis.com/v1/{name=projects/*/databases/*}:bulkDeleteDocuments
+
+The URL uses gRPC Transcoding syntax.
+
+The request body contains data with the following structure:
+
+If successful, the response body contains an instance of Operation.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the OAuth 2.0 Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| name | string Required. Database to operate. Should be of the form: projects/{projectId}/databases/{databaseId}. |
+
+| JSON representation |
+| --- |
+| JSON representation |
+| { "collectionIds": [ string ], "namespaceIds": [ string ] } |
+
+| Fields | |
+| --- | --- |
+| Fields | |
+| collectionIds[] | string Optional. IDs of the collection groups to delete. Unspecified means all collection groups. Each collection group in this list must be unique. |
+| namespaceIds[] | string Optional. Namespaces to delete. An empty list means all namespaces. This is the recommended usage for databases that don't use namespaces. An empty string element represents the default namespace. This should be used if the database has data in non-default namespaces, but doesn't want to delete from them. Each namespace in this list must be unique. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+POST https://firestore.googleapis.com/v1/{name=projects/*/databases/*}:bulkDeleteDocuments
+
+언어: 코드 · 셀#2
+Operation
+
+언어: 코드 · 셀#3
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#4
+https://www.googleapis.com/auth/cloud-platform

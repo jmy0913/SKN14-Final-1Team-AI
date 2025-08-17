@@ -1,0 +1,32 @@
+Source URL: https://developers.google.com/people/api/rest/v1/SearchResponse?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다. Google Workspace People API 참고자료 SearchResponse 컬렉션을 사용해 정리하기 내 환경설정을 기준으로 콘텐츠를 저장하고 분류하세요. JSON 표현 SearchResult <ph type="x-smartling-placeholder"> </ph> JSON 표현 특정 쿼리가 지정된 인증된 사용자의 검색 요청에 대한 응답입니다. JSON 표현 요청 결과입니다. SearchResult 검색어의 결과입니다. JSON 표현 일치하는 인물입니다.
+
+=== 코드 ===
+{
+  "results": [
+    {
+      object (SearchResult)
+    }
+  ]
+}
+
+=== 코드 ===
+SearchResult
+
+=== 코드 ===
+object (SearchResult)
+
+=== 코드 ===
+SearchResult
+
+=== 코드 ===
+{
+  "person": {
+    object (Person)
+  }
+}
+
+=== 코드 ===
+object (Person)

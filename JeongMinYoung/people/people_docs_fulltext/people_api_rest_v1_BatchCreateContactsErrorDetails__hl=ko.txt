@@ -1,0 +1,80 @@
+Source URL: https://developers.google.com/people/api/rest/v1/BatchCreateContactsErrorDetails?hl=ko
+
+## 본문
+JSON 표현
+
+people.batchCreateContacts 작업에서 요청이 실패할 때 오류 세부정보를 기록하는 메시지입니다.
+
+JSON 표현
+
+{
+ "contactErrors": {
+ integer: {
+ object (Status)
+ },
+ ...
+ }
+}
+
+{
+ "contactErrors": {
+ integer: {
+ object (Status)
+ },
+ ...
+ }
+}
+
+필드
+contactErrors
+
+map (key: integer, value: object (Status))
+
+일괄 생성 실패의 원인이 된 연락처를 클라이언트가 식별할 수 있도록 세부 정보를 제공합니다. 색인이 나타나지 않으면 연락처가 성공적으로 만들어진 것입니다.
+
+아래 지도에서:
+
+키는 BatchCreateContactsRequest.contacts에 있는 연락처의 색인입니다. 색인은 0부터 시작합니다.
+값은 상태입니다. google.rpc.Status.details에는 연락처의 오류 목록이 포함됩니다.
+
+"key": value 쌍 목록을 포함하는 객체입니다. 예: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+
+필드
+
+contactErrors
+
+map (key: integer, value: object (Status))
+
+일괄 생성 실패의 원인이 된 연락처를 클라이언트가 식별할 수 있도록 세부 정보를 제공합니다. 색인이 나타나지 않으면 연락처가 성공적으로 만들어진 것입니다.
+
+아래 지도에서:
+
+키는 BatchCreateContactsRequest.contacts에 있는 연락처의 색인입니다. 색인은 0부터 시작합니다.
+값은 상태입니다. google.rpc.Status.details에는 연락처의 오류 목록이 포함됩니다.
+
+"key": value 쌍 목록을 포함하는 객체입니다. 예: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+
+contactErrors
+
+map (key: integer, value: object (Status))
+
+일괄 생성 실패의 원인이 된 연락처를 클라이언트가 식별할 수 있도록 세부 정보를 제공합니다. 색인이 나타나지 않으면 연락처가 성공적으로 만들어진 것입니다.
+
+아래 지도에서:
+
+키는 BatchCreateContactsRequest.contacts에 있는 연락처의 색인입니다. 색인은 0부터 시작합니다.
+값은 상태입니다. google.rpc.Status.details에는 연락처의 오류 목록이 포함됩니다.
+
+"key": value 쌍 목록을 포함하는 객체입니다. 예: { "name": "wrench", "mass": "1.3kg", "count": "3" }
+
+map (key: integer, value: object (Status))
+
+일괄 생성 실패의 원인이 된 연락처를 클라이언트가 식별할 수 있도록 세부 정보를 제공합니다. 색인이 나타나지 않으면 연락처가 성공적으로 만들어진 것입니다.
+
+아래 지도에서:
+
+키는 BatchCreateContactsRequest.contacts에 있는 연락처의 색인입니다. 색인은 0부터 시작합니다.
+
+값은 상태입니다. google.rpc.Status.details에는 연락처의 오류 목록이 포함됩니다.
+
+"key": value 쌍 목록을 포함하는 객체입니다. 예: { "name": "wrench", "mass": "1.3kg", "count": "3" }

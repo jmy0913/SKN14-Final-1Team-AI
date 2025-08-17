@@ -1,0 +1,53 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.userCreds/list?hl=ko
+
+## 본문
+List all user creds in the database. Note that the returned resource does not contain the secret value itself.
+
+GET https://firestore.googleapis.com/v1/{parent=projects/*/databases/*}/userCreds
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+Required. A parent database name of the form projects/{projectId}/databases/{databaseId}
+
+The request body must be empty.
+
+The response for FirestoreAdmin.ListUserCreds.
+
+If successful, the response body contains data with the following structure:
+
+object (UserCreds)
+
+The user creds for the database.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| parent | string
+
+Required. A parent database name of the form projects/{projectId}/databases/{databaseId} |
+
+| JSON representation |
+| --- |
+| {
+  "userCreds": [
+    {
+      object (UserCreds)
+    }
+  ]
+} |
+
+| Fields |
+| --- |
+| userCreds[] | object (UserCreds)
+
+The user creds for the database. |

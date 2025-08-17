@@ -1,0 +1,100 @@
+Source URL: https://firebase.google.com/docs/gemini-in-firebase?hl=ko
+
+## 서문
+AI 기반 공동작업 어시스턴트인 Firebase의 Gemini를 사용하여 개발 프로세스를 간소화하세요.
+
+Firebase Console 및 기타 Firebase 개발 환경에서 자연어 채팅 인터페이스를 사용하여 Firebase의 Gemini에서 새로운 통계를 얻어 Firebase 제품 및 기능에 대한 질문에 즉각적인 답변을 얻고, 더 빠른 개발을 위해 코드를 생성하고, 문제 해결 프로세스를 단축하세요.
+
+시작하기
+
+## 주요 기능
+### 표
+| 자연어 쿼리 | 영어로 Gemini에 프롬프트를 입력합니다. |
+| --- | --- |
+| 실시간 지원 | Gemini는 항상 이용 가능하며 언제든지 필요할 때 도움을 드릴 수 있습니다. 컨텍스트 전환 또는 문서를 찾을 필요 없음: Firebase의 Gemini는 답변을 제공하고 소스 문서 및 관련 Codelab에 바로 연결해 줍니다. |
+| 컨텍스트 인식 Firebase 전문성 | Firebase의 Gemini는 Firebase 제품, 서비스, 프로젝트에 대한 심층적인 지식을 갖추고 있으므로 기능, 권장사항, 구현 안내에 관한 맞춤 정보를 제공할 수 있습니다. |
+| 코드 생성 및 디버깅 | Firebase의 Gemini는 다양한 프로그래밍 언어의 요청을 기반으로 코드 스니펫을 생성할 수 있으며 Gemini가 대답을 생성하는 데 사용한 문서 및 코드 샘플을 나열하는 출처 인용을 포함합니다. 또한 기존 코드를 분석하고, 잠재적 문제를 식별하며, 개선사항을 제안합니다. |
+| 오류 디코딩 및 문제 해결 | Firebase의 Gemini는 오류 메시지를 해독하고 명확한 설명과 완화 방법을 제공합니다. 또한 로그를 분석하여 문제를 신속하게 해결하기 위한 단계를 제안할 수 있습니다. |
+| 권장사항 | Firebase의 Gemini는 앱이 최고의 성능을 발휘할 수 있도록 Firebase 권장사항에 관한 안내를 제공합니다. |
+| 플랫폼 및 프레임워크 지원 | Firebase의 Gemini는 사용하는 플랫폼(Android, iOS, 웹 등) 또는 프레임워크 (Flutter, React 등)에 관계없이 모두 지원할 수 있습니다. |
+| Firebase Crashlytics의 AI 지원 | Crashlytics를 사용하고 Firebase의 Gemini를 사용 설정하면 Apple 및 Android 앱의 디버깅 및 문제 해결을 위한 AI 지원을 받을 수 있습니다. AI 지원은 문제 설명, 가능한 근본 원인에 대한 정보, 문제 해결 제안을 포함하여 앱의 비정상 종료에 대한 활용 가능한 분석 정보를 제공합니다. 원하는 경우 코드와 컨텍스트를 제공하여 더 심층적인 통계를 얻을 수 있습니다. Crashlytics의 AI 지원 받기에서 자세히 알아보세요. |
+| Firebase Cloud Messaging 및 In-App Messaging를 사용한 캠페인 요약 및 통계 | Firebase의 Gemini는 메시지 캠페인을 요약하고 분석하여 실적을 개선하기 위한 실행 가능한 추천을 제공합니다. Firebase의 Gemini를 통해 메시지 캠페인에 대한 AI 통계 가져오기에서 자세히 알아보세요. |
+| Firebase Data Connect의 AI 지원 | Firebase의 Gemini를 사용하여 자연어로 주문형으로 스키마, 쿼리, 변형을 생성합니다. 쿼리 및 변형에 AI assistance for Data Connect 사용에서 자세히 알아보세요. |
+| 앱 테스트 에이전트를 통한 AI 지원 Android 테스트 | Firebase Console의 App Distribution에서 액세스할 수 있는 Firebase 앱 테스트 에이전트는 AI를 사용하여 사용자가 제공하는 자연어 프롬프트를 기반으로 테스트를 만들고 실행합니다. 이 에이전트는 다양한 가상 및 실제 기기에서 실행하여 앱의 품질을 최고 수준으로 유지할 수 있는 단계별 테스트를 만듭니다. 앱 테스트 에이전트에서 자세히 알아보기 |
+
+## Firebase의 Gemini
+Firebase Console, Firebase CLI 또는 Firebase MCP 서버에서 Firebase의 Gemini를 사용 설정하면 Gemini가 Firebase 환경에 액세스할 수 있게 되며 대답은 프로젝트에 맞게 조정될 수 있습니다.
+
+Firebase의 Gemini(무료)를 사용하는 경우:
+Firebase의 Gemini(무료)를 사용하는 경우 Google 서비스 약관 및 생성형 AI에 관한 금지된 사용 정책이 적용되므로 Firebase의 Gemini는 사용자의 프롬프트와 대답을 사용하여 모델을 학습시킬 수 있습니다.
+
+할당량 및 가격 책정에서 Firebase의 Gemini(무료)에 대해 자세히 알아보세요.
+
+Firebase의 Gemini(무료)를 사용하는 경우:
+Firebase의 Gemini(무료)를 사용하는 경우 Google 서비스 약관 및 생성형 AI에 관한 금지된 사용 정책이 적용되므로 Firebase의 Gemini는 사용자의 프롬프트와 대답을 사용하여 모델을 학습시킬 수 있습니다.
+
+할당량 및 가격 책정에서 Firebase의 Gemini(무료)에 대해 자세히 알아보세요.
+
+Gemini Code Assist Standard 또는 Enterprise 라이선스로 Firebase의 Gemini를 사용하는 경우:
+사용 시 Google Cloud 서비스 약관 및 서비스별 약관의 생성형 AI 서비스 약관이 적용되므로 Firebase의 Gemini는 대답, 사용자 프롬프트 또는 사용자 데이터를 사용하여 모델을 학습시키지 않습니다.
+
+Firebase의 Gemini 및 Gemini Code Assist에서 사용자 데이터를 사용하는 방식에 대한 자세한 내용은 Google Cloud용 Gemini에서 사용자 데이터를 사용하는 방식을 참조하세요.
+
+Gemini Code Assist에 대한 자세한 내용은 Gemini Code Assist 개요를 참조하세요.
+
+Gemini Code Assist Standard 또는 Enterprise 라이선스로 Firebase의 Gemini를 사용하는 경우:
+사용 시 Google Cloud 서비스 약관 및 서비스별 약관의 생성형 AI 서비스 약관이 적용되므로 Firebase의 Gemini는 대답, 사용자 프롬프트 또는 사용자 데이터를 사용하여 모델을 학습시키지 않습니다.
+
+Firebase의 Gemini 및 Gemini Code Assist에서 사용자 데이터를 사용하는 방식에 대한 자세한 내용은 Google Cloud용 Gemini에서 사용자 데이터를 사용하는 방식을 참조하세요.
+
+Gemini Code Assist에 대한 자세한 내용은 Gemini Code Assist 개요를 참조하세요.
+
+## Firebase Studio 내 Firebase의 Gemini
+Firebase Studio 내에서 생성형 AI 기능을 사용하는 경우 생성형 AI에 관한 금지된 사용 정책 및 Gemini API 추가 서비스 약관(특히 Gemini API 추가 서비스 약관: 무료 서비스에 따름)이 적용됩니다.
+
+Firebase Studio 내 Firebase의 Gemini에 대해 자세히 알아보세요.
+
+## Firebase의 Gemini 설정
+자세한 설정 단계는 Firebase의 Gemini 설정을 참조하세요.
+
+## 할당량 및 가격 책정
+이 섹션에서는 Firebase의 Gemini의 할당량 및 가격 구조를 설명합니다.
+
+## 할당량 및 한도
+현재 할당량은 Gemini for Google Cloud API의 할당량 페이지에서 확인할 수 있습니다.
+
+Google Cloud 콘솔에서 사용 설정된 API 및 서비스를 선택합니다.
+
+검색한 다음 Gemini for Google Cloud API을 클릭합니다.
+
+할당량 및 시스템 한도를 클릭합니다.
+
+Gemini for Google Cloud API 할당량이 나타납니다. Firebase의 Gemini는 '사용자당 일일 Chat API 요청 수' 할당량을 사용합니다.
+
+할당량 상향을 요청하려면 다음을 수행합니다.
+
+상향 조정할 할당량을 선택하고 요청 수정을 클릭합니다.
+
+요청하려는 할당량으로 새 값 텍스트 입력란을 업데이트한 다음 제출을 클릭합니다.
+
+Google Cloud팀에서 요청을 검토하고 이메일로 답변을 드립니다.
+
+요청하려는 할당량으로 새 값 텍스트 입력란을 업데이트한 다음 제출을 클릭합니다.
+
+Google Cloud팀에서 요청을 검토하고 이메일로 답변을 드립니다.
+
+## 가격 책정
+가격은 사용 중인 Firebase의 Gemini 버전 및 계정 유형에 따라 다릅니다.
+
+Google Workspace(이전 명칭: G Suite)를 사용하지 않는 사용자는 Firebase Console 및 IDE 도구(예: Visual Studio Code용 Data Connect VS Code 확장 프로그램)에서 Firebase의 Gemini를 무료로 사용할 수 있습니다.
+
+Google Workspace(이전 명칭: G Suite) 사용자는 Firebase Console에서 Firebase의 Gemini에 액세스하려면 Gemini Code Assist Standard 또는 Enterprise 라이선스가 있어야 합니다. 이 라이선스는 Google Workspace 관리자가 설정할 수 있습니다. Gemini Code Assist 라이선스로 Firebase의 Gemini 사용에서 자세히 알아보세요.
+
+이용약관 및 데이터 사용 방식은 사용하는 요금제에 따라 다릅니다. Firebase의 Gemini에서 사용자 데이터를 사용하는 방법에서 자세히 알아보세요.
+
+## 다음 단계
+Firebase의 Gemini 설정
+
+Firebase Console에서 Gemini 사용해 보기
+
+프롬프트 최적화 자세히 알아보기

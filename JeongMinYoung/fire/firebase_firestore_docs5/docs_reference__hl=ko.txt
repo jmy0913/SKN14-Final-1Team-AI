@@ -1,0 +1,40 @@
+Source URL: https://firebase.google.com/docs/reference?hl=ko
+
+## 서문
+The API reference documentation provides detailed information for each of the classes and methods in the Firebase SDK. Choose your preferred platform from the list below.
+
+plat_ios
+iOS reference
+
+View full API for Swift & Obj-C
+
+View full API for Swift & Obj-C
+
+View full API for JS Client
+
+plat_cpp
+C++ reference
+
+View full API now
+
+View full API now
+
+plat_unity
+Unity reference
+
+View full API now
+
+vpn_key
+Admin reference
+
+View full API now
+
+## Other reference documentation
+Find detailed information about app configuration settings, or Firebase related tools.
+
+CLI Reference
+
+Firebase Cloud Messaging: HTTP v1 API
+
+## Index of all libraries
+View an index of all supported platforms, frameworks, libraries, and tools.

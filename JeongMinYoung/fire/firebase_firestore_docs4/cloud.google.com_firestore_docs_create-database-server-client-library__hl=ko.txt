@@ -1,0 +1,486 @@
+Source URL: https://cloud.google.com/firestore/docs/create-database-server-client-library?hl=ko
+
+## 시작하기 전에
+Sign in to your Google Cloud account. If you're new to Google Cloud, create an account to evaluate how our products perform in real-world scenarios. New customers also get $300 in free credits to run, test, and deploy workloads.
+
+In the Google Cloud console, on the project selector page, select or create a Google Cloud project.
+
+Note: If you don't plan to keep the resources that you create in this procedure, create a project instead of selecting an existing project. After you finish these steps, you can delete the project, removing all resources associated with the project.
+
+Go to project selector
+
+In the Google Cloud console, on the project selector page, select or create a Google Cloud project.
+
+Go to project selector
+
+In the Google Cloud console, on the project selector page,
+ select or create a Google Cloud project.
+
+ Note: If you don't plan to keep the
+ resources that you create in this procedure, create a project instead of
+ selecting an existing project. After you finish these steps, you can
+ delete the project, removing all resources associated with the project.
+
+ Go to project selector
+
+In the Google Cloud console, on the project selector page,
+ select or create a Google Cloud project.
+
+## 기본 모드 데이터베이스에서 기본 모드로 Firestore 만들기
+새 프로젝트인 경우 Firestore 데이터베이스 인스턴스를 만들어야 합니다.
+
+Firestore 뷰어로 이동합니다.
+
+데이터베이스 서비스 선택 화면에서 기본 모드의 Firestore를 선택합니다.
+
+Firestore 위치를 선택합니다.
+
+위치를 선택할 수 없다면 프로젝트의 '기본 Google Cloud 리소스의 위치'가 이미 설정된 것입니다. 일부 프로젝트 리소스 (예: 기본 Firestore 인스턴스)는 공통 위치 종속 항목을 공유하며, 위치는 프로젝트 생성 중이나 이 위치 종속 항목을 공유하는 다른 서비스를 설정할 때 설정할 수 있습니다.
+
+Firestore 위치를 선택합니다.
+
+위치를 선택할 수 없다면 프로젝트의 '기본 Google Cloud 리소스의 위치'가 이미 설정된 것입니다. 일부 프로젝트 리소스 (예: 기본 Firestore 인스턴스)는 공통 위치 종속 항목을 공유하며, 위치는 프로젝트 생성 중이나 이 위치 종속 항목을 공유하는 다른 서비스를 설정할 때 설정할 수 있습니다.
+
+데이터베이스 만들기를 클릭합니다.
+
+Firestore 프로젝트를 만들면 Cloud API Manager에서도 API가 사용 설정됩니다.
+
+## 인증 설정
+클라이언트 라이브러리를 실행하려면 우선 서비스 계정을 만들고 환경 변수를 설정하여 인증을 설정해야 합니다.
+
+Provide authentication credentials to your application code by setting the environment variable GOOGLE_APPLICATION_CREDENTIALS. This variable applies only to your current shell session. If you want the variable to apply to future shell sessions, set the variable in your shell startup file, for example in the ~/.bashrc or ~/.profile file.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Linux 또는 macOS · 셀#1
+export GOOGLE_APPLICATION_CREDENTIALS="KEY_PATH"
+
+언어: Linux 또는 macOS · 셀#2
+export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/service-account-file.json"
+
+언어: Windows · 셀#1
+$env:GOOGLE_APPLICATION_CREDENTIALS="KEY_PATH"
+
+언어: Windows · 셀#2
+$env:GOOGLE_APPLICATION_CREDENTIALS="C:\Users\username\Downloads\service-account-file.json"
+
+언어: Windows · 셀#3
+set GOOGLE_APPLICATION_CREDENTIALS=KEY_PATH
+
+## 앱에 서버 클라이언트 라이브러리 추가
+필요한 종속 항목과 클라이언트 라이브러리를 앱에 추가합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 자바 · 셀#1
+<dependencyManagement>
+ <dependencies>
+ <dependency>
+ <groupId>com.google.cloud</groupId>
+ <artifactId>libraries-bom</artifactId>
+ <version>26.64.0</version>
+ <type>pom</type>
+ <scope>import</scope>
+ </dependency>
+ </dependencies>
+</dependencyManagement>
+
+<dependencies>
+ <dependency>
+ <groupId>com.google.cloud</groupId>
+ <artifactId>google-cloud-firestore</artifactId>
+ </dependency>
+pom.xml
+
+언어: Python · 셀#1
+pip install --upgrade google-cloud-firestore
+
+언어: Node.js · 셀#1
+npm install --save @google-cloud/firestore
+
+언어: Go · 셀#1
+go get cloud.google.com/go/firestore
+
+언어: Go · 셀#2
+import "cloud.google.com/go/firestore"
+
+언어: PHP · 셀#1
+composer require google/cloud-firestore
+
+언어: C# · 셀#1
+<ItemGroup>
+ <PackageReference Include="Google.Cloud.Firestore" Version="1.1.0-beta01" />
+</ItemGroup>
+
+## 기본 모드에서 Firestore 초기화
+Firestore의 인스턴스를 초기화합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 자바 · 셀#1
+import com.google.cloud.firestore.Firestore;
+import com.google.cloud.firestore.FirestoreOptions;
+
+언어: 자바 · 셀#2
+FirestoreOptions firestoreOptions =
+ FirestoreOptions.getDefaultInstance().toBuilder()
+ .setProjectId(projectId)
+ .setCredentials(GoogleCredentials.getApplicationDefault())
+ .build();
+Firestore db = firestoreOptions.getService();
+Quickstart.java
+
+언어: Python · 셀#1
+from google.cloud import firestore
+
+# The `project` parameter is optional and represents which project the client
+# will act on behalf of. If not supplied, the client falls back to the default
+# project inferred from the environment.
+db = firestore.Client(project="my-project-id")
+snippets.py
+
+언어: Python · 셀#1
+from google.cloud import firestore
+
+# The `project` parameter is optional and represents which project the client
+# will act on behalf of. If not supplied, the client falls back to the default
+# project inferred from the environment.
+db = firestore.AsyncClient(project="my-project-id")
+snippets.py
+
+언어: Node.js · 셀#1
+const Firestore = require('@google-cloud/firestore');
+
+const db = new Firestore({
+ projectId: 'YOUR_PROJECT_ID',
+ keyFilename: '/path/to/keyfile.json',
+});
+
+언어: Go · 셀#1
+import (
+	"context"
+	"flag"
+	"fmt"
+	"log"
+
+	"google.golang.org/api/iterator"
+
+	"cloud.google.com/go/firestore"
+)
+
+func createClient(ctx context.Context) *firestore.Client {
+	// Sets your Google Cloud Platform project ID.
+	projectID := "YOUR_PROJECT_ID"
+
+	client, err := firestore.NewClient(ctx, projectID)
+	if err != nil {
+ log.Fatalf("Failed to create client: %v", err)
+	}
+	// Close client when done with
+	// defer client.Close()
+	return client
+}
+
+main.go
+
+언어: PHP · 셀#1
+use Google\Cloud\Firestore\FirestoreClient;
+
+/**
+ * Initialize Cloud Firestore with default project ID.
+ */
+function setup_client_create(string $projectId = null)
+{
+ // Create the Cloud Firestore client
+ if (empty($projectId)) {
+ // The `projectId` parameter is optional and represents which project the
+ // client will act on behalf of. If not supplied, the client falls back to
+ // the default project inferred from the environment.
+ $db = new FirestoreClient();
+ printf('Created Cloud Firestore client with default project ID.' . PHP_EOL);
+ } else {
+ $db = new FirestoreClient([
+ 'projectId' => $projectId,
+ ]);
+ printf('Created Cloud Firestore client with project ID: %s' . PHP_EOL, $projectId);
+ }
+}
+setup_client_create.php
+
+언어: C# · 셀#1
+FirestoreDb db = FirestoreDb.Create(project);
+Console.WriteLine("Created Cloud Firestore client with project ID: {0}", project);
+Program.cs
+
+언어: Ruby · 셀#1
+require "google/cloud/firestore"
+
+# The `project_id` parameter is optional and represents which project the
+# client will act on behalf of. If not supplied, the client falls back to the
+# default project inferred from the environment.
+firestore = Google::Cloud::Firestore.new project_id: project_id
+
+puts "Created Cloud Firestore client with given project ID."
+quickstart.rb
+
+## 데이터 추가
+Firestore는 컬렉션에 저장되는 문서에 데이터를 저장합니다. 문서에 데이터를 처음 추가할 때 Firestore는 암시적으로 컬렉션과 문서를 만듭니다. 컬렉션이나 문서를 명시적으로 만들 필요가 없습니다.
+
+다음 예시 코드를 사용해 새 컬렉션과 문서를 만듭니다.
+
+이제 users 컬렉션에 다른 문서를 추가합니다. 첫 번째 문서에는 나타나지 않는 키-값 쌍(중간 이름)이 문서에 포함된다는 점에 유의하세요. 컬렉션의 문서에는 다른 정보 집합이 포함될 수 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Java · 셀#1
+DocumentReference docRef = db.collection("users").document("alovelace");
+// Add document data with id "alovelace" using a hashmap
+Map<String, Object> data = new HashMap<>();
+data.put("first", "Ada");
+data.put("last", "Lovelace");
+data.put("born", 1815);
+//asynchronously write data
+ApiFuture<WriteResult> result = docRef.set(data);
+// ...
+// result.get() blocks on response
+System.out.println("Update time : " + result.get().getUpdateTime());
+
+언어: Python · 셀#1
+doc_ref = db.collection("users").document("alovelace")
+doc_ref.set({"first": "Ada", "last": "Lovelace", "born": 1815})
+
+언어: Python · 셀#1
+doc_ref = db.collection("users").document("alovelace")
+await doc_ref.set({"first": "Ada", "last": "Lovelace", "born": 1815})
+
+언어: Node.js · 셀#1
+const docRef = db.collection('users').doc('alovelace');
+
+await docRef.set({
+ first: 'Ada',
+ last: 'Lovelace',
+ born: 1815
+});
+
+언어: Go · 셀#1
+_, _, err := client.Collection("users").Add(ctx, map[string]interface{}{
+	"first": "Ada",
+	"last": "Lovelace",
+	"born": 1815,
+})
+if err != nil {
+	log.Fatalf("Failed adding alovelace: %v", err)
+}
+
+언어: PHP · 셀#1
+$docRef = $db->collection('samples/php/users')->document('alovelace');
+$docRef->set([
+ 'first' => 'Ada',
+ 'last' => 'Lovelace',
+ 'born' => 1815
+]);
+printf('Added data to the lovelace document in the users collection.' . PHP_EOL);
+
+언어: C# · 셀#1
+DocumentReference docRef = db.Collection("users").Document("alovelace");
+Dictionary<string, object> user = new Dictionary<string, object>
+{
+ { "First", "Ada" },
+ { "Last", "Lovelace" },
+ { "Born", 1815 }
+};
+await docRef.SetAsync(user);
+
+언어: Ruby · 셀#1
+doc_ref = firestore.doc "#{collection_path}/alovelace"
+
+doc_ref.set(
+ {
+ first: "Ada",
+ last: "Lovelace",
+ born: 1815
+ }
+)
+
+puts "Added data to the alovelace document in the users collection."
+
+언어: Java · 셀#1
+DocumentReference docRef = db.collection("users").document("aturing");
+// Add document data with an additional field ("middle")
+Map<String, Object> data = new HashMap<>();
+data.put("first", "Alan");
+data.put("middle", "Mathison");
+data.put("last", "Turing");
+data.put("born", 1912);
+
+ApiFuture<WriteResult> result = docRef.set(data);
+System.out.println("Update time : " + result.get().getUpdateTime());
+
+언어: Python · 셀#1
+doc_ref = db.collection("users").document("aturing")
+doc_ref.set({"first": "Alan", "middle": "Mathison", "last": "Turing", "born": 1912})
+
+언어: Python · 셀#1
+doc_ref = db.collection("users").document("aturing")
+await doc_ref.set(
+ {"first": "Alan", "middle": "Mathison", "last": "Turing", "born": 1912}
+)
+
+언어: Node.js · 셀#1
+const aTuringRef = db.collection('users').doc('aturing');
+
+await aTuringRef.set({
+ 'first': 'Alan',
+ 'middle': 'Mathison',
+ 'last': 'Turing',
+ 'born': 1912
+});
+
+언어: Go · 셀#1
+_, _, err = client.Collection("users").Add(ctx, map[string]interface{}{
+	"first": "Alan",
+	"middle": "Mathison",
+	"last": "Turing",
+	"born": 1912,
+})
+if err != nil {
+	log.Fatalf("Failed adding aturing: %v", err)
+}
+
+언어: PHP · 셀#1
+$docRef = $db->collection('samples/php/users')->document('aturing');
+$docRef->set([
+ 'first' => 'Alan',
+ 'middle' => 'Mathison',
+ 'last' => 'Turing',
+ 'born' => 1912
+]);
+printf('Added data to the aturing document in the users collection.' . PHP_EOL);
+
+언어: C# · 셀#1
+DocumentReference docRef = db.Collection("users").Document("aturing");
+Dictionary<string, object> user = new Dictionary<string, object>
+{
+ { "First", "Alan" },
+ { "Middle", "Mathison" },
+ { "Last", "Turing" },
+ { "Born", 1912 }
+};
+await docRef.SetAsync(user);
+
+언어: Ruby · 셀#1
+doc_ref = firestore.doc "#{collection_path}/aturing"
+
+doc_ref.set(
+ {
+ first: "Alan",
+ middle: "Mathison",
+ last: "Turing",
+ born: 1912
+ }
+)
+
+puts "Added data to the aturing document in the users collection."
+
+## 데이터 읽기
+Firestore에 추가한 데이터를 빠르게 확인하려면 Firebase Console의 데이터 뷰어를 사용합니다.
+
+get 메서드를 사용하여 전체 컬렉션을 검색할 수도 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Java · 셀#1
+// asynchronously retrieve all users
+ApiFuture<QuerySnapshot> query = db.collection("users").get();
+// ...
+// query.get() blocks on response
+QuerySnapshot querySnapshot = query.get();
+List<QueryDocumentSnapshot> documents = querySnapshot.getDocuments();
+for (QueryDocumentSnapshot document : documents) {
+ System.out.println("User: " + document.getId());
+ System.out.println("First: " + document.getString("first"));
+ if (document.contains("middle")) {
+ System.out.println("Middle: " + document.getString("middle"));
+ }
+ System.out.println("Last: " + document.getString("last"));
+ System.out.println("Born: " + document.getLong("born"));
+}
+
+언어: Python · 셀#1
+users_ref = db.collection("users")
+docs = users_ref.stream()
+
+for doc in docs:
+ print(f"{doc.id} => {doc.to_dict()}")
+
+언어: Python · 셀#1
+users_ref = db.collection("users")
+docs = users_ref.stream()
+
+async for doc in docs:
+ print(f"{doc.id} => {doc.to_dict()}")
+
+언어: Node.js · 셀#1
+const snapshot = await db.collection('users').get();
+snapshot.forEach((doc) => {
+ console.log(doc.id, '=>', doc.data());
+});
+
+언어: Go · 셀#1
+iter := client.Collection("users").Documents(ctx)
+for {
+	doc, err := iter.Next()
+	if err == iterator.Done {
+ break
+	}
+	if err != nil {
+ log.Fatalf("Failed to iterate: %v", err)
+	}
+	fmt.Println(doc.Data())
+}
+
+언어: PHP · 셀#1
+$usersRef = $db->collection('samples/php/users');
+$snapshot = $usersRef->documents();
+foreach ($snapshot as $user) {
+ printf('User: %s' . PHP_EOL, $user->id());
+ printf('First: %s' . PHP_EOL, $user['first']);
+ if (!empty($user['middle'])) {
+ printf('Middle: %s' . PHP_EOL, $user['middle']);
+ }
+ printf('Last: %s' . PHP_EOL, $user['last']);
+ printf('Born: %d' . PHP_EOL, $user['born']);
+ printf(PHP_EOL);
+}
+printf('Retrieved and printed out all documents from the users collection.' . PHP_EOL);
+
+언어: C# · 셀#1
+CollectionReference usersRef = db.Collection("users");
+QuerySnapshot snapshot = await usersRef.GetSnapshotAsync();
+foreach (DocumentSnapshot document in snapshot.Documents)
+{
+ Console.WriteLine("User: {0}", document.Id);
+ Dictionary<string, object> documentDictionary = document.ToDictionary();
+ Console.WriteLine("First: {0}", documentDictionary["First"]);
+ if (documentDictionary.ContainsKey("Middle"))
+ {
+ Console.WriteLine("Middle: {0}", documentDictionary["Middle"]);
+ }
+ Console.WriteLine("Last: {0}", documentDictionary["Last"]);
+ Console.WriteLine("Born: {0}", documentDictionary["Born"]);
+ Console.WriteLine();
+}
+
+언어: Ruby · 셀#1
+users_ref = firestore.col collection_path
+users_ref.get do |user|
+ puts "#{user.document_id} data: #{user.data}."
+end
+
+## 다음 단계
+다음 주제를 자세히 알아보세요.
+
+데이터 모델 - 계층적 데이터와 하위 컬렉션을 비롯한 Firestore에서 데이터가 구조화되는 방식을 자세히 알아보세요.
+
+데이터 추가 - Firestore에서 데이터를 만들고 업데이트하는 방법을 자세히 알아보세요.
+
+데이터 가져오기 - 데이터를 검색하는 방법을 자세히 알아보세요.
+
+단순 쿼리 및 복합 쿼리 실행 - 단순 쿼리 및 복합 쿼리 실행 방법을 알아보세요.
+
+쿼리 순서 지정 및 제한 - 쿼리에서 반환된 데이터의 순서를 지정하고 제한하는 방법을 알아보세요.

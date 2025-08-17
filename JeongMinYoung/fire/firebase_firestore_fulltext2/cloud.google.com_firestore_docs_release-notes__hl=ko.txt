@@ -1,0 +1,533 @@
+Source URL: https://cloud.google.com/firestore/docs/release-notes?hl=ko
+
+## 본문
+You can see the latest product updates for all of Google Cloud on the Google Cloud page, browse and filter all release notes in the Google Cloud console, or programmatically access release notes in BigQuery.
+
+To get the latest product updates delivered to you, add the URL of this page to your feed reader, or add the feed URL directly.
+
+You can clone an existing database at a selected timestamp into a new database. This feature is available in Preview.
+
+Committed use discounts are now generally available (GA) for Firestore in exchange for a commitment to continuously spend a certain amount on Firestore read/write/delete operations for one year or three years. For details, see Committed use discounts.
+
+You can now use Query insights to view query performance metrics for your database. This feature is in Preview.
+
+Firestore is now available on Database Center. You can track your Firestore resources in the fleet inventory section and the resource table in the Database Center. You can also use Database Center to monitor the following health issues for your Firestore resources:
+
+No automated backup policy
+
+No point-in-time recovery
+
+Cloud Firestore now supports multi-region nam7 United States (Central and East), which consists of regions us-central1 (Iowa) and us-east4 (Northern Virginia).
+
+For a full list of supported locations, see Locations.
+
+Firestore now supports the europe-north2 Stockholm region.
+
+Firestore is supported by Database Center. Database Center is an AI-assisted dashboard that gives you one centralized view across your entire database fleet. Database Center displays the following health issue for Firestore:
+
+For more information, see Database Center overview and database health issues.
+
+You can now Manage Firestore resources using Organization Policy Service custom constraints.
+
+You can monitor performance using client-side traces in Java and Node.js. This feature is in Preview.
+
+You can now use Active Assist to provide recommendations and insights that improve the reliability of your databases. This feature is generally available (GA).
+
+For more information, see Reliability recommender.
+
+Firestore now supports the northamerica-south1 Queretaro region.
+
+You can now use the Firestore managed bulk delete service to delete documents in bulk. This feature is in Preview.
+
+For more information, see Bulk delete data.
+
+The Google Cloud console now includes a monitoring dashboard for each database. For more information, see Use the Cloud Monitoring dashboard.
+
+You can now use customer-managed encryption keys (CMEK) in Firestore to protect your data. This feature is generally available (GA) behind an allow-list.
+
+For more information, see Customer-managed encryption keys (CMEK).
+
+You can now use Firestore to perform K-nearest neighbor (KNN) vector searches. Additionally, use Firestore vector searches with inequality filters, retrieve the calculated vector distance, and specify a distance threshold. This feature is generally available (GA).
+
+For more information, see Search with vector embeddings.
+
+You can now apply range and inequality filters to multiple fields in a query. This feature is generally available (GA).
+
+For more information, see Query with range and inequality filters on multiple fields overview.
+
+Scheduled backups are now available in GA.
+
+Firestore now supports the us-south1 Dallas region.
+
+Firestore now supports the following additional locations:
+
+africa-south1 Johannesburg
+
+europe-north1 Finland
+
+europe-southwest1 Madrid
+
+europe-west10 Berlin
+
+europe-west12 Turin
+
+europe-west8 Milan
+
+southamerica-west1 Santiago
+
+us-central1 Iowa
+
+us-east5 Columbus
+
+Support for Customer-managed encryption keys (CMEK). This feature is in Preview.
+
+You can now use Firestore to perform K-nearest neighbor (KNN) vector searches. This feature is in Preview.
+
+Firestore now supports using range and inequality filters on multiple fields in a single query. This feature is in Preview.
+
+Support for Query Explain. This feature is in Preview.
+
+Query Explain lets you submit queries and receive detailed query plan, billing and performance statistics on query execution in return. It helps you understand how your queries are executed, showing you inefficiencies.
+
+It functions like the EXPLAIN [ANALYZE] operation in many relational database systems.
+
+For more information, see the guide for Query Explain.
+
+Eventarc events and Firestore events for Cloud Functions (2nd gen) are now supported at the General Availability (GA) level.
+
+The ability to create multiple databases per project is now supported at the General Availability level.
+
+Support for the europe-west1 (Belgium) and me-central2 (Dammam) locations.
+
+Index scans in Key Visualizer are now supported at the General Availability (GA) level.
+
+You can now assemble and execute sum() and avg() queries in the Google Cloud console.
+
+You can now create and delete non-default databases in the Google Cloud console.
+
+Support for Firestore point-in-time recovery (PITR) feature that provides protection against accidental deletion or writes is now generally available (GA).
+
+For documents with many fields that don't require indexing, you can now add collection-level index exemptions on all fields in a collection group. To learn more, see Add a collection-level exemption. This feature is generally available (GA).
+
+The sum() and average() aggregation functions are now available.
+
+Updated the following index limits:
+
+Raised the maximum number of composite indexes from 200 to 500 for projects with billing enabled. The limit is 200 for projects without billing enabled.
+
+Raised the maximum number of single-field index configurations from 200 to 500 for projects with billing enabled. The limit is 200 for projects without billing enabled.
+
+For more information about these limits, see Quotas and limits.
+
+Support for europe-west9 (Paris), me-central1 (Doha), and me-west1 (Tel Aviv).
+
+The Google Cloud console now supports a usage dashboard for each database.
+
+Scheduled backups now available in Preview.
+
+You can now view and list multiple databases using the Google Cloud console. This feature is in Preview.
+
+You can now visualize heatmap pattern for index keys and make better workload pattern predictions. To learn more, see Key Visualizer. This feature is in Preview.
+
+The project usage monitoring page has moved to a new URL under the existing project usage page. For more information, see Usage dashboard.
+
+Support for Firestore point-in-time recovery (PITR) feature that provides protection against accidental deletion or writes is now available in Preview.
+
+Support for the northamerica-northeast2 (Toronto) region.
+
+Multiple databases now available in Preview.
+
+OR queries now supported at the General Availability level.
+
+Support for the asia-south2 (Delhi) region.
+
+count() queries are now supported at the General Availability level.
+
+Eventarc events and Firestore events for Cloud Functions (2nd gen) now available in Preview.
+
+The Firestore documentation has been updated to include guidance on using regional endpoints. For details, see Regional endpoints.
+
+Firestore no longer limits the number of writes that can be passed to a Commit operation or performed in a transaction. Previously, the limit was 500. Limits for request size and the transaction time limit still apply.
+
+OR queries now available in Preview.
+
+Support for the europe-west4 (Netherlands) region.
+
+The Firestore indexes pages in the Google Cloud and Firebase consoles now show the __name__ field in each composite index definition. The __name__ field is added by default to each index definition and affects the sorting of results. The __name__ field was always part of each index definition but was previously hidden by the console.
+
+Support for the australia-southeast2 (Melbourne) region.
+
+count() queries now available in Preview.
+
+The following database limits no longer apply:
+
+Maximum writes per second per database: 10,000
+
+Maximum concurrent connections for mobile/web clients per database: 1,000,000
+
+Time-to-live (TTL) policies are now supported at the General Availability level.
+
+Added a query builder and table view to the Firestore data section in the Google Cloud console. Use the query builder to filter and compare many documents at once. To learn more, see Query data in the Google Cloud console.
+
+Time-to-live (TTL) policies now available in Preview.
+
+Support for VPC Service Controls is now available in General Availability.
+
+Firebase App Check now supports Firestore at the General Availability release level. Use App Check in your mobile or web app to ensure that only your app can access your Firestore data.
+
+The datastore.databases.getMetadata permission now supports custom Identity and Access Management roles.
+
+Support for VPC Service Controls is now available in Preview.
+
+Key Visualizer for Firestore is now generally available (GA).
+
+Firebase App Check now supports the Firestore iOS and Android SDKs.
+
+Dartpad, Flutter's online editor, now supports Firestore. For an example, see this sample app.
+
+DATA_READ and DATA_WRITE Data Access audit logs are now supported at the General Availability release level. See Firestore audit logging information.
+
+Firestore triggers for Cloud Functions are now supported at the General Availability release level.
+
+Added DATA_READ and DATA_WRITE Data Access audit logs. See Firestore audit logging information. This feature is available in Preview.
+
+This feature was released on September 2, 2021.
+
+The DATA_READ and DATA_WRITE Data Access audit logs feature has been moved to a future release. It is not currently available.
+
+This feature release was moved to September 2, 2021.
+
+Support for Identity and Access Management custom roles.
+
+Support for the following additional locations:
+
+asia-southeast1 Singapore
+
+us-west1 Oregeon
+
+asia-east1 Taiwan
+
+See the full list of locations.
+
+Support for the europe-central2 (Warsaw) region.
+
+A Firestore connector for Workflows is now available in public preview.
+
+You can now start import and export operations from the Google Cloud Console.
+
+Firestore now supports the not equals != and not-in query operators.
+
+You can now use the goog-firestoremanaged billing report label to view costs related to import and export operations.
+
+You can now view your Firestore Security Rules in the Cloud Console.
+
+The Google Cloud console now includes a Firestore usage dashboard.
+
+Support for the asia-southeast2 (Jakarta).
+
+Support for us-west4 region (Las Vegas).
+
+Support for us-west3 (Salt Lake City) and asia-northeast3 (Seoul).
+
+Cloud Firestore now supports the in and array-contains-any query operators.
+
+Added the Active Connections and Snapshot Listeners Cloud Firestore metrics to Stackdriver Monitoring. To learn more about using these metrics to set up dashboards and alerts, see Monitoring usage.
+
+Cloud Firestore now supports collection group queries. A collection group consists of all collections with the same ID. By default, queries retrieve results from a single collection in your database. Use a collection group query to retrieve documents from a collection group instead of from a single collection.
+
+Support for asia-northeast2 region (Osaka).
+
+Support for europe-west6 region (Zürich).
+
+You can now use the increment operation to increase or decrease the current value of a numeric field by a given amount. For more on this feature, see our announcement.
+
+General Availability release of Cloud Firestore. The Cloud Firestore SLA is now in effect, including 99.999% availability for multi-region instances and 99.99% availability for regional instances.
+
+Cloud Firestore now supports the following 10 additional locations:
+
+Multi-region
+
+eur3 Europe
+
+Multi-region
+
+eur3 Europe
+
+North America (regional)
+
+us-west2 Los Angeles
+northamerica-northeast1 Montréal
+us-east4 Northern Virginia
+
+North America (regional)
+
+us-west2 Los Angeles
+
+northamerica-northeast1 Montréal
+
+us-east4 Northern Virginia
+
+South America (regional)
+
+southamerica-east1 São Paulo
+
+South America (regional)
+
+southamerica-east1 São Paulo
+
+Europe (regional)
+
+europe-west2 London
+
+Europe (regional)
+
+europe-west2 London
+
+Asia (regional)
+
+asia-south1 Mumbai
+asia-east2 Hong Kong
+asia-northeast1 Tokyo
+
+Asia (regional)
+
+asia-south1 Mumbai
+
+asia-east2 Hong Kong
+
+asia-northeast1 Tokyo
+
+Australia (regional)
+
+australia-southeast1 Sydney
+
+Australia (regional)
+
+australia-southeast1 Sydney
+
+For a full list of supported multi-regions and regions, see Cloud Firestore Locations.
+
+We added a Cloud Firestore emulator you can use for local testing. To set up the emulator, see Testing Cloud Firestore Security Rules.
+
+We added two new features to help you work with arrays:
+
+Array contains queries: query for documents that contain a particular array value.
+
+Array transforms: the arrayUnion() and arrayRemove() functions allow you to directly modify array field values.
+
+You can now create a Cloud Firestore database in Datastore mode. Datastore mode allows you to use Cloud Datastore client libraries with an improved Cloud Firestore storage layer, removing eventual consistency limitations.
+
+Cloud Firestore now supports the europe-west3 and us-east1 regions, see Cloud Firestore Locations.
+
+You can now add single-field index exemptions to exempt specific fields from automatic indexing.
+
+You can now manage your Cloud Firestore instance from the Google Cloud Platform console.
+
+Added support for importing and exporting of documents, see Exporting and Importing Data.
+
+Added code examples for the Ruby server client library.
+
+Documentation updates:
+
+New page on Cloud Firestore indexes. This page describes Cloud Firestore index types, the relationship between queries and indexes, and index merging for equality filters.
+
+Added code examples for the C# server client library.
+
+We raised the Cloud Firestore Security Rules limits for document access calls.
+
+The Firebase SDK for Cloud Functions v1.0.0 is now available and introduces some breaking changes, see the Cloud Firestore section of the Firebase SDK for Cloud Functions Migration Guide.
+
+Cloud Firestore Security Rules now support the getAfter() function. Use this function to enforce data validation for atomic operations.
+
+New documentation page on Cloud Firestore Security Rules and queries.
+
+This page clarifies how Cloud Firestore Security Rules evaluate query requests. Read this page to learn how to write queries that satisfy your security rules and how to write security rules based on query properties like limit and orderby.
+
+New Cloud Firestore server client libraries:
+
+Overhaul of the Cloud Firestore Security Rules documentation. These improved pages add more examples and give a clearer introduction to the structure of Cloud Firestore Security Rules:
+
+Getting Started with Security Rules
+
+Structuring Security Rules
+
+Writing Conditions for Security Rules
+
+Cloud Firestore Security Rules now offer the ability to limit read or write access to data based on query parameters. Learn more about query-based rules.
+
+Beta release of Cloud Firestore.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+nam7
+
+언어: 코드 · 셀#2
+us-central1
+
+언어: 코드 · 셀#3
+us-east4
+
+언어: 코드 · 셀#4
+europe-north2
+
+언어: 코드 · 셀#5
+northamerica-south1
+
+언어: 코드 · 셀#6
+us-south1
+
+언어: 코드 · 셀#7
+africa-south1
+
+언어: 코드 · 셀#8
+europe-north1
+
+언어: 코드 · 셀#9
+europe-southwest1
+
+언어: 코드 · 셀#10
+europe-west10
+
+언어: 코드 · 셀#11
+europe-west12
+
+언어: 코드 · 셀#12
+europe-west8
+
+언어: 코드 · 셀#13
+southamerica-west1
+
+언어: 코드 · 셀#14
+us-east5
+
+언어: 코드 · 셀#15
+EXPLAIN [ANALYZE]
+
+언어: 코드 · 셀#16
+sum()
+
+언어: 코드 · 셀#17
+avg()
+
+언어: 코드 · 셀#18
+average()
+
+언어: 코드 · 셀#19
+OR
+
+언어: 코드 · 셀#20
+count()
+
+언어: 코드 · 셀#21
+Commit
+
+언어: 코드 · 셀#22
+europe-west4
+
+언어: 코드 · 셀#23
+__name__
+
+언어: 코드 · 셀#24
+australia-southeast2
+
+언어: 코드 · 셀#25
+datastore.databases.getMetadata
+
+언어: 코드 · 셀#26
+DATA_READ
+
+언어: 코드 · 셀#27
+DATA_WRITE
+
+언어: 코드 · 셀#28
+asia-southeast1
+
+언어: 코드 · 셀#29
+us-west1
+
+언어: 코드 · 셀#30
+asia-east1
+
+언어: 코드 · 셀#31
+europe-central2
+
+언어: 코드 · 셀#32
+!=
+
+언어: 코드 · 셀#33
+not-in
+
+언어: 코드 · 셀#34
+goog-firestoremanaged
+
+언어: 코드 · 셀#35
+asia-southeast2
+
+언어: 코드 · 셀#36
+us-west4
+
+언어: 코드 · 셀#37
+us-west3
+
+언어: 코드 · 셀#38
+asia-northeast3
+
+언어: 코드 · 셀#39
+in
+
+언어: 코드 · 셀#40
+array-contains-any
+
+언어: 코드 · 셀#41
+asia-northeast2
+
+언어: 코드 · 셀#42
+europe-west6
+
+언어: 코드 · 셀#43
+eur3
+
+언어: 코드 · 셀#44
+us-west2
+
+언어: 코드 · 셀#45
+northamerica-northeast1
+
+언어: 코드 · 셀#46
+southamerica-east1
+
+언어: 코드 · 셀#47
+europe-west2
+
+언어: 코드 · 셀#48
+asia-south1
+
+언어: 코드 · 셀#49
+asia-east2
+
+언어: 코드 · 셀#50
+asia-northeast1
+
+언어: 코드 · 셀#51
+australia-southeast1
+
+언어: 코드 · 셀#52
+arrayUnion()
+
+언어: 코드 · 셀#53
+arrayRemove()
+
+언어: 코드 · 셀#54
+europe-west3
+
+언어: 코드 · 셀#55
+us-east1
+
+언어: 코드 · 셀#56
+getAfter()
+
+언어: 코드 · 셀#57
+limit
+
+언어: 코드 · 셀#58
+orderby

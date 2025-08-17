@@ -1,0 +1,300 @@
+Source URL: https://developers.google.com/people/api/rest/v1/contactGroups?hl=ko
+
+## 본문
+리소스: ContactGroup
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+JSON 표현
+
+ContactGroupMetadata
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+GroupType
+
+GroupClientData
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+메서드
+
+연락처 그룹
+
+string
+
+서버에서 할당한 연락처 그룹의 리소스 이름입니다. contactGroups/{contactGroupId} 형식의 ASCII 문자열.
+
+리소스의 HTTP 항목 태그. 웹 캐시 유효성 검사에 사용됩니다.
+
+object (ContactGroupMetadata)
+
+출력 전용입니다. 연락처 그룹에 대한 메타데이터입니다.
+
+enum (GroupType)
+
+출력 전용입니다. 연락처 그룹 유형입니다.
+
+그룹 소유자가 설정한 연락처 그룹 이름 또는 시스템 그룹에 대한 시스템 제공 이름입니다.
+
+contactGroups.create 또는 contactGroups.update의 경우 이름은 사용자 연락처 그룹별로 고유해야 합니다. 중복된 이름으로 그룹을 만들려고 하면 HTTP 409 오류가 반환됩니다.
+
+출력 전용입니다. 뷰어의 계정 언어로 번역되고 형식이 지정된 이름 또는 시스템 그룹 이름의 Accept-Language HTTP 헤더 언어입니다. 소유자가 설정한 그룹 이름은 이름과 동일합니다.
+
+출력 전용입니다. 연락처 그룹의 구성원인 담당자 리소스 이름의 목록입니다. 이 필드는 GET 요청에 대해서만 채워지며 get 요청에서 maxMembers만큼의 멤버만 반환합니다.
+
+integer
+
+출력 전용입니다. 요청에 지정된 최대 회원 수와 관계없이 그룹의 총 연락처 수입니다.
+
+object (GroupClientData)
+
+그룹의 클라이언트 데이터입니다.
+
+연락처 그룹에 관한 메타데이터입니다.
+
+string (Timestamp format)
+
+출력 전용입니다. 그룹이 마지막으로 업데이트된 시간입니다.
+
+RFC3339 UTC 'Zulu' 형식의 타임스탬프입니다(나노초 단위, 소수점 이하 9자리). 예를 들면 "2014-10-02T15:01:23Z" 및 "2014-10-02T15:01:23.045123456Z"입니다.
+
+boolean
+
+출력 전용입니다. 연락처 그룹 리소스가 삭제되었으면 true입니다. 동기화 토큰이 포함된 contactGroups.list 요청에 대해서만 채워집니다.
+
+연락처 그룹 유형
+
+클라이언트가 채우는 임의의 클라이언트 데이터입니다. 중복된 키와 값이 허용됩니다.
+
+클라이언트가 지정한 클라이언트 데이터 키입니다.
+
+클라이언트 데이터의 클라이언트 지정 값입니다.
+
+### 표
+| JSON 표현 |
+| --- |
+| {
+ "resourceName": string,
+ "etag": string,
+ "metadata": {
+ object (ContactGroupMetadata)
+ },
+ "groupType": enum (GroupType),
+ "name": string,
+ "formattedName": string,
+ "memberResourceNames": [
+ string
+ ],
+ "memberCount": integer,
+ "clientData": [
+ {
+ object (GroupClientData)
+ }
+ ]
+} |
+
+| 필드 | |
+| --- | --- |
+| resourceName | string
+
+서버에서 할당한 연락처 그룹의 리소스 이름입니다. contactGroups/{contactGroupId} 형식의 ASCII 문자열. |
+| etag | string
+
+리소스의 HTTP 항목 태그. 웹 캐시 유효성 검사에 사용됩니다. |
+| metadata | object (ContactGroupMetadata)
+
+출력 전용입니다. 연락처 그룹에 대한 메타데이터입니다. |
+| groupType | enum (GroupType)
+
+출력 전용입니다. 연락처 그룹 유형입니다. |
+| name | string
+
+그룹 소유자가 설정한 연락처 그룹 이름 또는 시스템 그룹에 대한 시스템 제공 이름입니다.
+
+contactGroups.create 또는 contactGroups.update의 경우 이름은 사용자 연락처 그룹별로 고유해야 합니다. 중복된 이름으로 그룹을 만들려고 하면 HTTP 409 오류가 반환됩니다. |
+| formattedName | string
+
+출력 전용입니다. 뷰어의 계정 언어로 번역되고 형식이 지정된 이름 또는 시스템 그룹 이름의 Accept-Language HTTP 헤더 언어입니다. 소유자가 설정한 그룹 이름은 이름과 동일합니다. |
+| memberResourceNames[] | string
+
+출력 전용입니다. 연락처 그룹의 구성원인 담당자 리소스 이름의 목록입니다. 이 필드는 GET 요청에 대해서만 채워지며 get 요청에서 maxMembers만큼의 멤버만 반환합니다. |
+| memberCount | integer
+
+출력 전용입니다. 요청에 지정된 최대 회원 수와 관계없이 그룹의 총 연락처 수입니다. |
+| clientData[] | object (GroupClientData)
+
+그룹의 클라이언트 데이터입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "updateTime": string,
+ "deleted": boolean
+} |
+
+| 필드 | |
+| --- | --- |
+| updateTime | string (Timestamp format)
+
+출력 전용입니다. 그룹이 마지막으로 업데이트된 시간입니다.
+
+RFC3339 UTC 'Zulu' 형식의 타임스탬프입니다(나노초 단위, 소수점 이하 9자리). 예를 들면 "2014-10-02T15:01:23Z" 및 "2014-10-02T15:01:23.045123456Z"입니다. |
+| deleted | boolean
+
+출력 전용입니다. 연락처 그룹 리소스가 삭제되었으면 true입니다. 동기화 토큰이 포함된 contactGroups.list 요청에 대해서만 채워집니다. |
+
+| 열거형 | |
+| --- | --- |
+| GROUP_TYPE_UNSPECIFIED | 지정되지 않았습니다. |
+| USER_CONTACT_GROUP | 사용자가 정의한 연락처 그룹입니다. |
+| SYSTEM_CONTACT_GROUP | 시스템에서 정의된 연락처 그룹입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "key": string,
+ "value": string
+} |
+
+| 필드 | |
+| --- | --- |
+| key | string
+
+클라이언트가 지정한 클라이언트 데이터 키입니다. |
+| value | string
+
+클라이언트 데이터의 클라이언트 지정 값입니다. |
+
+| 메서드 | |
+| --- | --- |
+| batchGet | 연락처 그룹 리소스 이름 목록을 지정하여 인증된 사용자가 소유한 연락처 그룹 목록을 가져옵니다. |
+| create | 인증된 사용자가 소유한 새 연락처 그룹을 만듭니다. |
+| delete | 연락처 그룹 리소스 이름을 지정하여 인증된 사용자가 소유한 기존 연락처 그룹을 삭제합니다. |
+| get | 연락처 그룹 리소스 이름을 지정하여 인증된 사용자가 소유한 특정 연락처 그룹을 가져옵니다. |
+| list | 인증된 사용자가 소유한 모든 연락처 그룹을 나열합니다. |
+| update | 인증된 사용자가 소유한 기존 연락처 그룹의 이름을 업데이트합니다. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+resourceName
+
+언어: 코드 · 셀#2
+string
+
+언어: 코드 · 셀#3
+contactGroups/{contactGroupId}
+
+언어: 코드 · 셀#4
+etag
+
+언어: 코드 · 셀#5
+metadata
+
+언어: 코드 · 셀#6
+object (ContactGroupMetadata)
+
+언어: 코드 · 셀#7
+ContactGroupMetadata
+
+언어: 코드 · 셀#8
+groupType
+
+언어: 코드 · 셀#9
+enum (GroupType)
+
+언어: 코드 · 셀#10
+GroupType
+
+언어: 코드 · 셀#11
+name
+
+언어: 코드 · 셀#12
+contactGroups.create
+
+언어: 코드 · 셀#13
+contactGroups.update
+
+언어: 코드 · 셀#14
+formattedName
+
+언어: 코드 · 셀#15
+Accept-Language
+
+언어: 코드 · 셀#16
+memberResourceNames[]
+
+언어: 코드 · 셀#17
+maxMembers
+
+언어: 코드 · 셀#18
+memberCount
+
+언어: 코드 · 셀#19
+integer
+
+언어: 코드 · 셀#20
+clientData[]
+
+언어: 코드 · 셀#21
+object (GroupClientData)
+
+언어: 코드 · 셀#22
+GroupClientData
+
+언어: 코드 · 셀#23
+updateTime
+
+언어: 코드 · 셀#24
+string (Timestamp format)
+
+언어: 코드 · 셀#25
+Timestamp
+
+언어: 코드 · 셀#26
+"2014-10-02T15:01:23Z"
+
+언어: 코드 · 셀#27
+"2014-10-02T15:01:23.045123456Z"
+
+언어: 코드 · 셀#28
+deleted
+
+언어: 코드 · 셀#29
+boolean
+
+언어: 코드 · 셀#30
+contactGroups.list
+
+언어: 코드 · 셀#31
+GROUP_TYPE_UNSPECIFIED
+
+언어: 코드 · 셀#32
+USER_CONTACT_GROUP
+
+언어: 코드 · 셀#33
+SYSTEM_CONTACT_GROUP
+
+언어: 코드 · 셀#34
+key
+
+언어: 코드 · 셀#35
+value
+
+언어: 코드 · 셀#36
+batchGet
+
+언어: 코드 · 셀#37
+create
+
+언어: 코드 · 셀#38
+delete
+
+언어: 코드 · 셀#39
+get
+
+언어: 코드 · 셀#40
+list
+
+언어: 코드 · 셀#41
+update

@@ -1,0 +1,37 @@
+Source URL: https://cloud.google.com/firestore/native/docs/reference/libraries?hl=ko
+
+## 서문
+이 페이지에서는 Firestore API에 사용할 수 있는 SDK 및 클라이언트 라이브러리를 설명합니다. Firestore API로의 직접적인 HTTP 및 RPC 호출도 가능하지만 Firestore 클라이언트 라이브러리는 권장사항을 구현하며 데이터베이스에 보다 쉽게 액세스할 수 있도록 합니다.
+
+Firestore는 모바일 또는 웹 SDK와 서버 클라이언트 라이브러리를 지원합니다.
+
+## 모바일 및 웹 SDK
+Firestore는 Android, iOS, 웹용 SDK를 지원합니다. Firestore 보안 규칙 및 Firebase 인증과 함께 사용되는 모바일 및 웹 SDK는 서버리스 앱 아키텍처를 지원하며, 여기서 클라이언트는 Firestore 데이터베이스에 직접 연결됩니다. 서버리스 아키텍처이므로 클라이언트와 Firestore 데이터베이스 사이에 중간 서버를 유지할 필요가 없습니다.
+
+모바일 및 웹 SDK는 실시간 업데이트와 오프라인 데이터 지속성도 지원합니다.
+
+## 참조 문서 및 리소스
+각 SDK에 대한 자세한 내용은 다음 리소스를 참조하세요.
+
+## 서버 클라이언트 라이브러리
+서버 클라이언트 라이브러리는 데이터베이스에 대한 전체 액세스 권한이 있는 Firestore 환경을 만듭니다. 이 환경에서는 Firestore 보안 규칙에 따라 요청이 평가되지 않습니다. 권한 있는 Firestore 서버는 Identity and Access Management(IAM)를 사용하여 보호됩니다. 관련 내용은 서버 클라이언트 라이브러리의 보안을 참고하세요.
+
+관리 데이터베이스 작업을 해야 하거나 사용자와 Firestore 데이터베이스 사이에 중간 서버가 있는 아키텍처를 원한다면 서버 클라이언트 라이브러리를 사용하세요.
+
+Firestore 서버 클라이언트 라이브러리는 Firebase Admin SDK와 Google Cloud 클라이언트 라이브러리로 사용할 수 있습니다. 두 라이브러리 집합 모두 동일한 Firestore 기능을 제공합니다. Firebase Admin SDK를 이용해 Firestore와 다른 여러 Firebase 제품(예: Firebase 인증 및 Firebase 클라우드 메시징)을 단일 라이브러리에 번들로 묶을 수 있습니다.
+
+## Firebase Admin SDK
+Firebase Admin SDK 사용을 시작하려면 서버에 Firebase Admin SDK 추가를 참조하세요.
+
+Firebase Admin SDK에 관한 자세한 내용은 다음 리소스를 참조하세요.
+
+## Google Cloud 클라이언트 라이브러리
+Firestore용 Google Cloud 클라이언트 라이브러리에 대한 자세한 내용은 다음 리소스를 참고하세요.
+
+## 타사 라이브러리 통합
+Firestore는 모바일 또는 웹 SDK 및 서버 클라이언트 라이브러리 외에도 다양한 오픈소스 라이브러리와의 통합을 제공합니다. 자세한 내용은 라이브러리 및 프레임워크 통합을 참고하세요.
+
+## 다음 단계
+인증 알아보기
+
+클라이언트 라이브러리의 보안 규칙에 대해 알아봅니다.

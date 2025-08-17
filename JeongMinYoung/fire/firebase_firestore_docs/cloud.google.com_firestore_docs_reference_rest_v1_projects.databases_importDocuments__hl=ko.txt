@@ -1,0 +1,65 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/importDocuments?hl=ko
+
+## 본문
+Imports documents into Google Cloud Firestore. Existing documents with the same name are overwritten. The import occurs in the background and its progress can be monitored and managed via the Operation resource that is created. If an databases.importDocuments operation is cancelled, it is possible that a subset of the data has already been imported to Cloud Firestore.
+
+POST https://firestore.googleapis.com/v1/{name=projects/*/databases/*}:importDocuments
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+Required. Database to import into. Should be of the form: projects/{projectId}/databases/{databaseId}.
+
+The request body contains data with the following structure:
+
+Which collection IDs to import. Unspecified means all collections included in the import. Each collection ID in this list must be unique.
+
+Location of the exported files. This must match the outputUriPrefix of an ExportDocumentsResponse from an export that has completed successfully. See: google.firestore.admin.v1.ExportDocumentsResponse.output_uri_prefix.
+
+An empty list represents all namespaces. This is the preferred usage for databases that don't use namespaces.
+
+An empty string element represents the default namespace. This should be used if the database has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique.
+
+If successful, the response body contains an instance of Operation.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| name | string
+
+Required. Database to import into. Should be of the form: projects/{projectId}/databases/{databaseId}. |
+
+| JSON representation |
+| --- |
+| {
+  "collectionIds": [
+    string
+  ],
+  "inputUriPrefix": string,
+  "namespaceIds": [
+    string
+  ]
+} |
+
+| Fields |
+| --- |
+| collectionIds[] | string
+
+Which collection IDs to import. Unspecified means all collections included in the import. Each collection ID in this list must be unique. |
+| inputUriPrefix | string
+
+Location of the exported files. This must match the outputUriPrefix of an ExportDocumentsResponse from an export that has completed successfully. See: google.firestore.admin.v1.ExportDocumentsResponse.output_uri_prefix. |
+| namespaceIds[] | string
+
+An empty list represents all namespaces. This is the preferred usage for databases that don't use namespaces.
+
+An empty string element represents the default namespace. This should be used if the database has data in non-default namespaces, but doesn't want to include them. Each namespace in this list must be unique. |

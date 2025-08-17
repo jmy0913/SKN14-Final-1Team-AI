@@ -1,0 +1,7 @@
+Source URL: https://developers.google.com/people/api/rest/v1/otherContacts?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다. Google Workspace People API 참고자료 REST Resource: otherContacts 컬렉션을 사용해 정리하기 내 환경설정을 기준으로 콘텐츠를 저장하고 분류하세요. 이 리소스에는 영구 데이터가 연결되어 있지 않습니다. '기타 연락처'를 사용자의 'myContacts' 그룹에 있는 새 연락처에 복사합니다. 지연 시간 증가 및 실패를 방지하려면 동일한 사용자에 대한 변형 요청을 순차적으로 전송해야 합니다. 연락처 그룹에 없는 연락처인 '기타 연락처'를 모두 나열합니다. 검색어와 일치하는 인증된 사용자의 다른 연락처에 있는 연락처 목록을 제공합니다.
+
+=== 코드 ===
+copyOtherContactToMyContactsGroup

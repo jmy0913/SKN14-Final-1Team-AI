@@ -1,0 +1,121 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/Shared.Types/LocationMetadata?hl=ko
+
+## Fallback (article.innerText)
+Skip to main content
+문서
+기술 영역
+크로스 프로덕트 도구
+관련 사이트
+/
+Console
+Firestore
+가이드
+참조
+샘플
+리소스
+문의하기
+무료로 시작하기
+Firestore
+모든 API 및 참조
+Firestore에 인증
+모바일/웹 클라이언트 라이브러리
+서버 클라이언트 라이브러리
+Cloud Functions
+REST 참조
+개요
+v1beta1
+v1beta2
+v1
+Shared.Types
+유형
+ApiScope
+ArrayConfig
+ArrayValue
+BulkDeleteDocumentsMetadata
+BulkDeleteDocumentsResponse
+ChangeType
+CloneDatabaseMetadata
+CreateDatabaseMetadata
+DeleteDatabaseMetadata
+밀도
+ExportDocumentsMetadata
+ExportDocumentsResponse
+FieldOperationMetadata
+ImportDocumentsMetadata
+IndexOperationMetadata
+LatLng
+LocationMetadata
+작업
+OperationState
+OperationType
+주문
+Progress
+QueryScope
+RestoreDatabaseMetadata
+State
+UpdateDatabaseMetadata
+WaitOperationRequest
+RPC 참조
+Firestore
+Documentation
+참조
+Send feedback
+LocationMetadata
+bookmark_border
+
+This type has no fields.
+
+The metadata message for google.cloud.location.Location.metadata.
+
+Send feedback
+
+Except as otherwise noted, the content of this page is licensed under the Creative Commons Attribution 4.0 License, and code samples are licensed under the Apache 2.0 License. For details, see the Google Developers Site Policies. Java is a registered trademark of Oracle and/or its affiliates.
+
+Last updated 2025-05-19 UTC.
+
+Why Google
+Choosing Google Cloud
+Trust and security
+Modern Infrastructure Cloud
+Multicloud
+Global infrastructure
+Customers and case studies
+Analyst reports
+Whitepapers
+Products and pricing
+See all products
+See all solutions
+Google Cloud for Startups
+Google Cloud Marketplace
+Google Cloud pricing
+Contact sales
+Support
+Google Cloud Community
+Support
+Release Notes
+System status
+Resources
+GitHub
+Getting Started with Google Cloud
+Google Cloud documentation
+Code samples
+Cloud Architecture Center
+Training and Certification
+Developer Center
+Engage
+Blog
+Events
+X (Twitter)
+Google Cloud on YouTube
+Google Cloud Tech on YouTube
+Become a Partner
+Google Cloud Affiliate Program
+Press Corner
+About Google
+Privacy
+Site terms
+Google Cloud terms
+쿠키 관리
+Our third decade of climate action: join us
+Sign up for the Google Cloud newsletter
+Subscribe

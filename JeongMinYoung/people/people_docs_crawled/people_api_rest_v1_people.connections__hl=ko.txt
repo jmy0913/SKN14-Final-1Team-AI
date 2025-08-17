@@ -1,0 +1,798 @@
+Source URL: https://developers.google.com/people/api/rest/v1/people.connections?hl=ko
+
+리소스: Person
+인증된 사용자의 연락처 및 프로필 데이터 등 다양한 데이터 소스에서 병합된 사람에 대한 정보입니다.
+대부분의 필드에는 여러 개의 항목이 포함될 수 있습니다. 필드의 항목에는 순서가 보장되지 않지만 비어 있지 않은 각 필드에는 metadata.primary가 true로 설정된 필드가 정확히 한 개 있습니다.
+JSON 표현
+{
+  "resourceName": string,
+  "etag": string,
+  "metadata": {
+    object (PersonMetadata)
+  },
+  "addresses": [
+    {
+      object (Address)
+    }
+  ],
+  "ageRange": enum (AgeRange),
+  "ageRanges": [
+    {
+      object (AgeRangeType)
+    }
+  ],
+  "biographies": [
+    {
+      object (Biography)
+    }
+  ],
+  "birthdays": [
+    {
+      object (Birthday)
+    }
+  ],
+  "braggingRights": [
+    {
+      object (BraggingRights)
+    }
+  ],
+  "calendarUrls": [
+    {
+      object (CalendarUrl)
+    }
+  ],
+  "clientData": [
+    {
+      object (ClientData)
+    }
+  ],
+  "coverPhotos": [
+    {
+      object (CoverPhoto)
+    }
+  ],
+  "emailAddresses": [
+    {
+      object (EmailAddress)
+    }
+  ],
+  "events": [
+    {
+      object (Event)
+    }
+  ],
+  "externalIds": [
+    {
+      object (ExternalId)
+    }
+  ],
+  "fileAses": [
+    {
+      object (FileAs)
+    }
+  ],
+  "genders": [
+    {
+      object (Gender)
+    }
+  ],
+  "imClients": [
+    {
+      object (ImClient)
+    }
+  ],
+  "interests": [
+    {
+      object (Interest)
+    }
+  ],
+  "locales": [
+    {
+      object (Locale)
+    }
+  ],
+  "locations": [
+    {
+      object (Location)
+    }
+  ],
+  "memberships": [
+    {
+      object (Membership)
+    }
+  ],
+  "miscKeywords": [
+    {
+      object (MiscKeyword)
+    }
+  ],
+  "names": [
+    {
+      object (Name)
+    }
+  ],
+  "nicknames": [
+    {
+      object (Nickname)
+    }
+  ],
+  "occupations": [
+    {
+      object (Occupation)
+    }
+  ],
+  "organizations": [
+    {
+      object (Organization)
+    }
+  ],
+  "phoneNumbers": [
+    {
+      object (PhoneNumber)
+    }
+  ],
+  "photos": [
+    {
+      object (Photo)
+    }
+  ],
+  "relations": [
+    {
+      object (Relation)
+    }
+  ],
+  "relationshipInterests": [
+    {
+      object (RelationshipInterest)
+    }
+  ],
+  "relationshipStatuses": [
+    {
+      object (RelationshipStatus)
+    }
+  ],
+  "residences": [
+    {
+      object (Residence)
+    }
+  ],
+  "sipAddresses": [
+    {
+      object (SipAddress)
+    }
+  ],
+  "skills": [
+    {
+      object (Skill)
+    }
+  ],
+  "taglines": [
+    {
+      object (Tagline)
+    }
+  ],
+  "urls": [
+    {
+      object (Url)
+    }
+  ],
+  "userDefined": [
+    {
+      object (UserDefined)
+    }
+  ]
+}
+필드
+resourceName
+string
+서버에서 할당한 사람의 리소스 이름입니다. people/{person_id} 형식의 ASCII 문자열.
+etag
+string
+리소스의 HTTP 항목 태그. 웹 캐시 유효성 검사에 사용됩니다.
+metadata
+object (PersonMetadata)
+출력 전용입니다. 사람에 대한 메타데이터입니다.
+addresses[]
+object (Address)
+개인의 상세 주소입니다.
+ageRange
+(deprecated)
+enum (AgeRange)
+이 항목은 지원 중단되었습니다.
+출력 전용입니다. 지원 중단됨 (대신 person.ageRanges 사용)
+개인의 연령대입니다.
+ageRanges[]
+object (AgeRangeType)
+출력 전용입니다. 개인의 연령대입니다.
+biographies[]
+object (Biography)
+사용자의 전기입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+birthdays[]
+object (Birthday)
+사용자의 생일입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+braggingRights[]
+(deprecated)
+object (BraggingRights)
+이 항목은 지원 중단되었습니다.
+지원 중단됨: 데이터가 반환되지 않습니다. 자신의 자랑거리입니다.
+calendarUrls[]
+object (CalendarUrl)
+사용자의 캘린더 URL입니다.
+clientData[]
+object (ClientData)
+개인의 클라이언트 데이터입니다.
+coverPhotos[]
+object (CoverPhoto)
+출력 전용입니다. 해당 인물의 표지 사진
+emailAddresses[]
+object (EmailAddress)
+사용자의 이메일 주소입니다. people.connections.list 및 otherContacts.list의 경우 이메일 주소 수가 100개로 제한됩니다. 한 사람에게 더 많은 이메일 주소가 있다면 people.getBatchGet를 호출하여 전체 집합을 가져올 수 있습니다.
+events[]
+object (Event)
+사용자의 일정입니다.
+externalIds[]
+object (ExternalId)
+사용자의 외부 ID입니다.
+fileAses[]
+object (FileAs)
+사용자의 file-ases입니다.
+genders[]
+object (Gender)
+사용자의 성별입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+imClients[]
+object (ImClient)
+사용자의 채팅 메시지 클라이언트입니다.
+interests[]
+object (Interest)
+개인의 관심분야입니다.
+locales[]
+object (Locale)
+사용자의 언어 환경설정입니다.
+locations[]
+object (Location)
+개인의 위치
+memberships[]
+object (Membership)
+사용자의 그룹 회원 정보입니다.
+miscKeywords[]
+object (MiscKeyword)
+개인의 기타 키워드입니다.
+names[]
+object (Name)
+사용자의 이름입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+nicknames[]
+object (Nickname)
+사용자의 닉네임입니다.
+occupations[]
+object (Occupation)
+개인의 직업입니다.
+organizations[]
+object (Organization)
+개인의 과거 또는 현재 조직입니다.
+phoneNumbers[]
+object (PhoneNumber)
+사용자의 전화번호입니다. people.connections.list 및 otherContacts.list의 경우 전화번호 수가 100개로 제한됩니다. 사람의 전화번호가 더 많은 경우 people.getBatchGet를 호출하여 전체 세트를 가져올 수 있습니다.
+photos[]
+object (Photo)
+출력 전용입니다. 해당 사용자의 사진입니다.
+relations[]
+object (Relation)
+그 사람의 관계입니다.
+relationshipInterests[]
+(deprecated)
+object (RelationshipInterest)
+이 항목은 지원 중단되었습니다.
+출력 전용입니다. 지원 중단됨: 데이터가 반환되지 않습니다. 개인의 관계에 대한 관심분야입니다.
+relationshipStatuses[]
+(deprecated)
+object (RelationshipStatus)
+이 항목은 지원 중단되었습니다.
+출력 전용입니다. 지원 중단됨: 데이터는 반환되지 않습니다. 개인의 관계 상태입니다.
+residences[]
+(deprecated)
+object (Residence)
+이 항목은 지원 중단되었습니다.
+지원 중단됨: (대신 person.locations 사용) 사용자의 거주지입니다.
+sipAddresses[]
+object (SipAddress)
+사용자의 SIP 주소입니다.
+skills[]
+object (Skill)
+개인의 기술입니다.
+taglines[]
+(deprecated)
+object (Tagline)
+이 항목은 지원 중단되었습니다.
+출력 전용입니다. 지원 중단됨: 데이터가 반환되지 않습니다. 개인의 태그라인입니다.
+urls[]
+object (Url)
+사람과 관련된 URL입니다.
+userDefined[]
+object (UserDefined)
+개인의 사용자 정의 데이터입니다.
+메서드
+list
+인증된 사용자의 연락처 목록을 제공합니다.
+
+인증된 사용자의 연락처 및 프로필 데이터 등 다양한 데이터 소스에서 병합된 사람에 대한 정보입니다.
+
+대부분의 필드에는 여러 개의 항목이 포함될 수 있습니다. 필드의 항목에는 순서가 보장되지 않지만 비어 있지 않은 각 필드에는 metadata.primary가 true로 설정된 필드가 정확히 한 개 있습니다.
+
+JSON 표현
+{
+  "resourceName": string,
+  "etag": string,
+  "metadata": {
+    object (PersonMetadata)
+  },
+  "addresses": [
+    {
+      object (Address)
+    }
+  ],
+  "ageRange": enum (AgeRange),
+  "ageRanges": [
+    {
+      object (AgeRangeType)
+    }
+  ],
+  "biographies": [
+    {
+      object (Biography)
+    }
+  ],
+  "birthdays": [
+    {
+      object (Birthday)
+    }
+  ],
+  "braggingRights": [
+    {
+      object (BraggingRights)
+    }
+  ],
+  "calendarUrls": [
+    {
+      object (CalendarUrl)
+    }
+  ],
+  "clientData": [
+    {
+      object (ClientData)
+    }
+  ],
+  "coverPhotos": [
+    {
+      object (CoverPhoto)
+    }
+  ],
+  "emailAddresses": [
+    {
+      object (EmailAddress)
+    }
+  ],
+  "events": [
+    {
+      object (Event)
+    }
+  ],
+  "externalIds": [
+    {
+      object (ExternalId)
+    }
+  ],
+  "fileAses": [
+    {
+      object (FileAs)
+    }
+  ],
+  "genders": [
+    {
+      object (Gender)
+    }
+  ],
+  "imClients": [
+    {
+      object (ImClient)
+    }
+  ],
+  "interests": [
+    {
+      object (Interest)
+    }
+  ],
+  "locales": [
+    {
+      object (Locale)
+    }
+  ],
+  "locations": [
+    {
+      object (Location)
+    }
+  ],
+  "memberships": [
+    {
+      object (Membership)
+    }
+  ],
+  "miscKeywords": [
+    {
+      object (MiscKeyword)
+    }
+  ],
+  "names": [
+    {
+      object (Name)
+    }
+  ],
+  "nicknames": [
+    {
+      object (Nickname)
+    }
+  ],
+  "occupations": [
+    {
+      object (Occupation)
+    }
+  ],
+  "organizations": [
+    {
+      object (Organization)
+    }
+  ],
+  "phoneNumbers": [
+    {
+      object (PhoneNumber)
+    }
+  ],
+  "photos": [
+    {
+      object (Photo)
+    }
+  ],
+  "relations": [
+    {
+      object (Relation)
+    }
+  ],
+  "relationshipInterests": [
+    {
+      object (RelationshipInterest)
+    }
+  ],
+  "relationshipStatuses": [
+    {
+      object (RelationshipStatus)
+    }
+  ],
+  "residences": [
+    {
+      object (Residence)
+    }
+  ],
+  "sipAddresses": [
+    {
+      object (SipAddress)
+    }
+  ],
+  "skills": [
+    {
+      object (Skill)
+    }
+  ],
+  "taglines": [
+    {
+      object (Tagline)
+    }
+  ],
+  "urls": [
+    {
+      object (Url)
+    }
+  ],
+  "userDefined": [
+    {
+      object (UserDefined)
+    }
+  ]
+}
+
+필드
+resourceName
+string
+서버에서 할당한 사람의 리소스 이름입니다. people/{person_id} 형식의 ASCII 문자열.
+etag
+string
+리소스의 HTTP 항목 태그. 웹 캐시 유효성 검사에 사용됩니다.
+metadata
+object (PersonMetadata)
+출력 전용입니다. 사람에 대한 메타데이터입니다.
+addresses[]
+object (Address)
+개인의 상세 주소입니다.
+ageRange
+(deprecated)
+enum (AgeRange)
+이 항목은 지원 중단되었습니다.
+출력 전용입니다. 지원 중단됨 (대신 person.ageRanges 사용)
+개인의 연령대입니다.
+ageRanges[]
+object (AgeRangeType)
+출력 전용입니다. 개인의 연령대입니다.
+biographies[]
+object (Biography)
+사용자의 전기입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+birthdays[]
+object (Birthday)
+사용자의 생일입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+braggingRights[]
+(deprecated)
+object (BraggingRights)
+이 항목은 지원 중단되었습니다.
+지원 중단됨: 데이터가 반환되지 않습니다. 자신의 자랑거리입니다.
+calendarUrls[]
+object (CalendarUrl)
+사용자의 캘린더 URL입니다.
+clientData[]
+object (ClientData)
+개인의 클라이언트 데이터입니다.
+coverPhotos[]
+object (CoverPhoto)
+출력 전용입니다. 해당 인물의 표지 사진
+emailAddresses[]
+object (EmailAddress)
+사용자의 이메일 주소입니다. people.connections.list 및 otherContacts.list의 경우 이메일 주소 수가 100개로 제한됩니다. 한 사람에게 더 많은 이메일 주소가 있다면 people.getBatchGet를 호출하여 전체 집합을 가져올 수 있습니다.
+events[]
+object (Event)
+사용자의 일정입니다.
+externalIds[]
+object (ExternalId)
+사용자의 외부 ID입니다.
+fileAses[]
+object (FileAs)
+사용자의 file-ases입니다.
+genders[]
+object (Gender)
+사용자의 성별입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+imClients[]
+object (ImClient)
+사용자의 채팅 메시지 클라이언트입니다.
+interests[]
+object (Interest)
+개인의 관심분야입니다.
+locales[]
+object (Locale)
+사용자의 언어 환경설정입니다.
+locations[]
+object (Location)
+개인의 위치
+memberships[]
+object (Membership)
+사용자의 그룹 회원 정보입니다.
+miscKeywords[]
+object (MiscKeyword)
+개인의 기타 키워드입니다.
+names[]
+object (Name)
+사용자의 이름입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+nicknames[]
+object (Nickname)
+사용자의 닉네임입니다.
+occupations[]
+object (Occupation)
+개인의 직업입니다.
+organizations[]
+object (Organization)
+개인의 과거 또는 현재 조직입니다.
+phoneNumbers[]
+object (PhoneNumber)
+사용자의 전화번호입니다. people.connections.list 및 otherContacts.list의 경우 전화번호 수가 100개로 제한됩니다. 사람의 전화번호가 더 많은 경우 people.getBatchGet를 호출하여 전체 세트를 가져올 수 있습니다.
+photos[]
+object (Photo)
+출력 전용입니다. 해당 사용자의 사진입니다.
+relations[]
+object (Relation)
+그 사람의 관계입니다.
+relationshipInterests[]
+(deprecated)
+object (RelationshipInterest)
+이 항목은 지원 중단되었습니다.
+출력 전용입니다. 지원 중단됨: 데이터가 반환되지 않습니다. 개인의 관계에 대한 관심분야입니다.
+relationshipStatuses[]
+(deprecated)
+object (RelationshipStatus)
+이 항목은 지원 중단되었습니다.
+출력 전용입니다. 지원 중단됨: 데이터는 반환되지 않습니다. 개인의 관계 상태입니다.
+residences[]
+(deprecated)
+object (Residence)
+이 항목은 지원 중단되었습니다.
+지원 중단됨: (대신 person.locations 사용) 사용자의 거주지입니다.
+sipAddresses[]
+object (SipAddress)
+사용자의 SIP 주소입니다.
+skills[]
+object (Skill)
+개인의 기술입니다.
+taglines[]
+(deprecated)
+object (Tagline)
+이 항목은 지원 중단되었습니다.
+출력 전용입니다. 지원 중단됨: 데이터가 반환되지 않습니다. 개인의 태그라인입니다.
+urls[]
+object (Url)
+사람과 관련된 URL입니다.
+userDefined[]
+object (UserDefined)
+개인의 사용자 정의 데이터입니다.
+
+string
+
+서버에서 할당한 사람의 리소스 이름입니다. people/{person_id} 형식의 ASCII 문자열.
+
+string
+
+리소스의 HTTP 항목 태그. 웹 캐시 유효성 검사에 사용됩니다.
+
+object (PersonMetadata)
+
+출력 전용입니다. 사람에 대한 메타데이터입니다.
+
+object (Address)
+
+개인의 상세 주소입니다.
+
+enum (AgeRange)
+
+이 항목은 지원 중단되었습니다.
+
+출력 전용입니다. 지원 중단됨 (대신 person.ageRanges 사용)
+
+개인의 연령대입니다.
+
+object (AgeRangeType)
+
+출력 전용입니다. 개인의 연령대입니다.
+
+object (Biography)
+
+사용자의 전기입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+
+object (Birthday)
+
+사용자의 생일입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+
+object (BraggingRights)
+
+이 항목은 지원 중단되었습니다.
+
+지원 중단됨: 데이터가 반환되지 않습니다. 자신의 자랑거리입니다.
+
+object (CalendarUrl)
+
+사용자의 캘린더 URL입니다.
+
+object (ClientData)
+
+개인의 클라이언트 데이터입니다.
+
+object (CoverPhoto)
+
+출력 전용입니다. 해당 인물의 표지 사진
+
+object (EmailAddress)
+
+사용자의 이메일 주소입니다. people.connections.list 및 otherContacts.list의 경우 이메일 주소 수가 100개로 제한됩니다. 한 사람에게 더 많은 이메일 주소가 있다면 people.getBatchGet를 호출하여 전체 집합을 가져올 수 있습니다.
+
+object (Event)
+
+사용자의 일정입니다.
+
+object (ExternalId)
+
+사용자의 외부 ID입니다.
+
+object (FileAs)
+
+사용자의 file-ases입니다.
+
+object (Gender)
+
+사용자의 성별입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+
+object (ImClient)
+
+사용자의 채팅 메시지 클라이언트입니다.
+
+object (Interest)
+
+개인의 관심분야입니다.
+
+object (Locale)
+
+사용자의 언어 환경설정입니다.
+
+object (Location)
+
+개인의 위치
+
+object (Membership)
+
+사용자의 그룹 회원 정보입니다.
+
+object (MiscKeyword)
+
+개인의 기타 키워드입니다.
+
+object (Name)
+
+사용자의 이름입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+
+object (Nickname)
+
+사용자의 닉네임입니다.
+
+object (Occupation)
+
+개인의 직업입니다.
+
+object (Organization)
+
+개인의 과거 또는 현재 조직입니다.
+
+object (PhoneNumber)
+
+사용자의 전화번호입니다. people.connections.list 및 otherContacts.list의 경우 전화번호 수가 100개로 제한됩니다. 사람의 전화번호가 더 많은 경우 people.getBatchGet를 호출하여 전체 세트를 가져올 수 있습니다.
+
+object (Photo)
+
+출력 전용입니다. 해당 사용자의 사진입니다.
+
+object (Relation)
+
+그 사람의 관계입니다.
+
+object (RelationshipInterest)
+
+이 항목은 지원 중단되었습니다.
+
+출력 전용입니다. 지원 중단됨: 데이터가 반환되지 않습니다. 개인의 관계에 대한 관심분야입니다.
+
+object (RelationshipStatus)
+
+이 항목은 지원 중단되었습니다.
+
+출력 전용입니다. 지원 중단됨: 데이터는 반환되지 않습니다. 개인의 관계 상태입니다.
+
+object (Residence)
+
+이 항목은 지원 중단되었습니다.
+
+지원 중단됨: (대신 person.locations 사용) 사용자의 거주지입니다.
+
+object (SipAddress)
+
+사용자의 SIP 주소입니다.
+
+object (Skill)
+
+개인의 기술입니다.
+
+object (Tagline)
+
+이 항목은 지원 중단되었습니다.
+
+출력 전용입니다. 지원 중단됨: 데이터가 반환되지 않습니다. 개인의 태그라인입니다.
+
+object (Url)
+
+사람과 관련된 URL입니다.
+
+object (UserDefined)
+
+개인의 사용자 정의 데이터입니다.
+
+메서드
+list
+인증된 사용자의 연락처 목록을 제공합니다.

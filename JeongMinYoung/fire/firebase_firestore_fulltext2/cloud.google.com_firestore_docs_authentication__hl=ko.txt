@@ -1,0 +1,241 @@
+Source URL: https://cloud.google.com/firestore/docs/authentication?hl=ko
+
+## 서문
+이 문서에서는 프로그래매틱 방식으로 Firestore에 인증하는 방법을 설명합니다. Firestore 인증 방법은 API에 액세스하는 데 사용하는 인터페이스와 코드가 실행되는 환경에 따라 다릅니다.
+
+Google Cloud 인증에 대한 자세한 내용은 인증 메서드를 참조하세요.
+
+## API 액세스
+Firestore는 프로그래매틱 액세스를 지원합니다. 다음 방법으로 API에 액세스할 수 있습니다.
+
+클라이언트 라이브러리
+
+Google Cloud CLI
+
+## 클라이언트 라이브러리
+Firestore 클라이언트 라이브러리는 프로그래매틱 방식으로 Firestore에 인증하기 위한 고급 언어 지원을 제공합니다. Google Cloud API 호출을 인증하기 위해 클라이언트 라이브러리는 애플리케이션 기본 사용자 인증 정보(ADC)를 지원합니다. 라이브러리는 정의된 위치 집합에서 사용자 인증 정보를 찾고 이러한 사용자 인증 정보를 사용해서 API에 대한 요청을 인증합니다. ADC를 사용하면 애플리케이션 코드를 수정할 필요 없이 로컬 개발 또는 프로덕션과 같은 다양한 환경에서 애플리케이션에 사용자 인증 정보를 제공할 수 있습니다.
+
+## Google Cloud CLI
+gcloud CLI를 사용하여 Firestore에 액세스할 때 gcloud CLI 명령어에서 사용하는 사용자 인증 정보를 제공하는 사용자 계정으로 gcloud CLI에 로그인합니다.
+
+조직의 보안 정책으로 인해 사용자 계정에 필요한 권한이 없는 경우 서비스 계정 가장을 사용할 수 있습니다.
+
+자세한 내용은 gcloud CLI 사용을 위한 인증을 참조하세요. Firestore에서 gcloud CLI를 사용하는 방법에 대한 자세한 내용은 gcloud CLI 참조 페이지를 확인하세요.
+
+## Firestore 인증 설정
+인증 설정 방법은 코드를 실행 중인 환경에 따라 달라집니다.
+
+인증 설정을 위한 가장 일반적인 옵션은 다음과 같습니다. 인증에 대한 추가 옵션 및 자세한 내용은 인증 방법을 참조하세요.
+
+## 로컬 개발 환경용
+다음 방법으로 로컬 개발 환경의 사용자 인증 정보를 설정할 수 있습니다.
+
+클라이언트 라이브러리 또는 서드 파티 도구의 사용자 인증 정보
+
+서비스 계정 가장
+
+로컬 환경에서 애플리케이션 기본 사용자 인증 정보(ADC)를 설정합니다.
+
+Install the Google Cloud CLI. After installation, initialize the Google Cloud CLI by running the following command:
+
+gcloud init
+
+If you're using an external identity provider (IdP), you must first sign in to the gcloud CLI with your federated identity.
+
+Install the Google Cloud CLI. After installation, initialize the Google Cloud CLI by running the following command:
+
+If you're using an external identity provider (IdP), you must first sign in to the gcloud CLI with your federated identity.
+
+If you're using a local shell, then create local authentication credentials for your user account:
+
+gcloud auth application-default login
+
+You don't need to do this if you're using Cloud Shell.
+
+If an authentication error is returned, and you are using an external identity provider (IdP), confirm that you have signed in to the gcloud CLI with your federated identity.
+
+로그인 화면이 표시됩니다. 로그인하면 사용자 인증 정보는 ADC에서 사용하는 로컬 사용자 인증 정보 파일에 저장됩니다.
+
+If you're using a local shell, then create local authentication credentials for your user account:
+
+You don't need to do this if you're using Cloud Shell.
+
+If an authentication error is returned, and you are using an external identity provider (IdP), confirm that you have signed in to the gcloud CLI with your federated identity.
+
+로그인 화면이 표시됩니다. 로그인하면 사용자 인증 정보는 ADC에서 사용하는 로컬 사용자 인증 정보 파일에 저장됩니다.
+
+로컬 환경에서 ADC 사용에 대한 자세한 내용은 로컬 개발 환경용 ADC 설정을 참조하세요.
+
+대부분의 경우 사용자 인증 정보를 사용하여 로컬 개발 환경에서 인증할 수 있습니다. 이렇게 할 수 없거나 서비스 계정에 할당된 권한을 테스트해야 하는 경우에는 서비스 계정 가장을 사용할 수 있습니다. 서비스 계정 토큰 생성자(roles/iam.serviceAccountTokenCreator) IAM 역할에 포함된 iam.serviceAccounts.getAccessToken 권한이 있어야 합니다.
+
+gcloud config set 명령어를 사용하여 서비스 계정 가장을 사용하도록 gcloud CLI를 설정할 수 있습니다.
+
+서비스 계정 가장에 대한 자세한 내용은 서비스 계정 가장 사용을 참조하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+roles/iam.serviceAccountTokenCreator
+
+언어: 코드 · 셀#2
+iam.serviceAccounts.getAccessToken
+
+언어: 코드 · 셀#1
+gcloud config set
+
+언어: 코드 · 셀#1
+gcloud auth application-default login
+
+언어: 코드 · 셀#2
+--impersonate-service-account
+
+## Google Cloud
+Google Cloud에서 실행되는 워크로드를 인증하려면 코드가 실행 중인 컴퓨팅 리소스(예: Compute Engine 가상 머신(VM) 인스턴스)에 연결된 서비스 계정의 사용자 인증 정보를 사용합니다. 이 방식은 Google Cloud 컴퓨팅 리소스에서 실행되는 코드에 선호되는 인증 방법입니다.
+
+대부분의 서비스의 경우 코드를 실행할 리소스를 만들 때 서비스 계정을 연결해야 합니다. 이후에는 서비스 계정을 추가하거나 교체할 수 없습니다. 언제든지 VM 인스턴스에 서비스 계정을 연결할 수 있게 해주는 Compute Engine은 예외입니다.
+
+gcloud CLI를 사용하여 서비스 계정을 만들고 리소스에 연결합니다.
+
+Google Cloud CLI를 설치합니다. 설치 후 다음 명령어를 실행하여 Google Cloud CLI를 초기화합니다.
+
+gcloud init
+
+외부 ID 공급업체 (IdP)를 사용하는 경우 먼저 제휴 ID로 gcloud CLI에 로그인해야 합니다.
+
+Google Cloud CLI를 설치합니다. 설치 후 다음 명령어를 실행하여 Google Cloud CLI를 초기화합니다.
+
+외부 ID 공급업체 (IdP)를 사용하는 경우 먼저 제휴 ID로 gcloud CLI에 로그인해야 합니다.
+
+Set up authentication:
+
+Create the service account:
+
+gcloud iam service-accounts create SERVICE_ACCOUNT_NAME
+
+Replace SERVICE_ACCOUNT_NAME with a name for the service account.
+
+To provide access to your project and your resources, grant a role to the service account:
+
+gcloud projects add-iam-policy-binding PROJECT_ID --member="serviceAccount:SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com" --role=ROLE
+
+Replace the following:
+
+SERVICE_ACCOUNT_NAME: the name of the service account
+PROJECT_ID: the project ID where you created the service account
+ROLE: the role to grant
+Note: The --role flag affects which resources the service account can access in your project. You can revoke these roles or grant additional roles later. In production environments, do not grant the Owner, Editor, or Viewer roles. Instead, grant a predefined role or custom role that meets your needs.
+To grant another role to the service account, run the command as you did in the previous step.
+
+Grant the required role to the principal that will attach the service account to other resources.
+
+gcloud iam service-accounts add-iam-policy-binding SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com --member="user:USER_EMAIL" --role=roles/iam.serviceAccountUser
+
+Replace the following:
+
+SERVICE_ACCOUNT_NAME: the name of the service account
+PROJECT_ID: the project ID where you created the service account
+USER_EMAIL: the email address for a Google Account
+
+Set up authentication:
+
+Create the service account:
+
+gcloud iam service-accounts create SERVICE_ACCOUNT_NAME
+
+Replace SERVICE_ACCOUNT_NAME with a name for the service account.
+
+Create the service account:
+
+Replace SERVICE_ACCOUNT_NAME with a name for the service account.
+
+To provide access to your project and your resources, grant a role to the service account:
+
+gcloud projects add-iam-policy-binding PROJECT_ID --member="serviceAccount:SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com" --role=ROLE
+
+Replace the following:
+
+SERVICE_ACCOUNT_NAME: the name of the service account
+PROJECT_ID: the project ID where you created the service account
+ROLE: the role to grant
+Note: The --role flag affects which resources the service account can access in your project. You can revoke these roles or grant additional roles later. In production environments, do not grant the Owner, Editor, or Viewer roles. Instead, grant a predefined role or custom role that meets your needs.
+
+To provide access to your project and your resources, grant a role to the service account:
+
+Replace the following:
+
+SERVICE_ACCOUNT_NAME: the name of the service account
+
+PROJECT_ID: the project ID where you created the service account
+
+ROLE: the role to grant
+
+To grant another role to the service account, run the command as you did in the previous step.
+
+Grant the required role to the principal that will attach the service account to other resources.
+
+gcloud iam service-accounts add-iam-policy-binding SERVICE_ACCOUNT_NAME@PROJECT_ID.iam.gserviceaccount.com --member="user:USER_EMAIL" --role=roles/iam.serviceAccountUser
+
+Replace the following:
+
+SERVICE_ACCOUNT_NAME: the name of the service account
+PROJECT_ID: the project ID where you created the service account
+USER_EMAIL: the email address for a Google Account
+
+Grant the required role to the principal that will attach the service account to other resources.
+
+USER_EMAIL: the email address for a Google Account
+
+코드를 실행할 리소스를 만들고 이 리소스에 서비스 계정을 연결합니다. 예를 들어 Compute Engine을 사용하는 경우 다음 안내를 따르세요.
+
+Create a Compute Engine instance. Configure the instance as follows:
+INSTANCE_NAME을 원하는 인스턴스 이름으로 바꿉니다.
+--zone 플래그를 인스턴스를 만들 영역으로 설정합니다.
+--service-account 플래그를 만든 서비스 계정의 이메일 주소로 설정합니다.
+gcloud compute instances create INSTANCE_NAME --zone=ZONE --service-account=SERVICE_ACCOUNT_EMAIL
+
+코드를 실행할 리소스를 만들고 이 리소스에 서비스 계정을 연결합니다. 예를 들어 Compute Engine을 사용하는 경우 다음 안내를 따르세요.
+
+INSTANCE_NAME을 원하는 인스턴스 이름으로 바꿉니다.
+
+--zone 플래그를 인스턴스를 만들 영역으로 설정합니다.
+
+--service-account 플래그를 만든 서비스 계정의 이메일 주소로 설정합니다.
+
+Google API 인증에 대한 자세한 내용은 인증 방법을 참조하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+SERVICE_ACCOUNT_NAME
+
+언어: 코드 · 셀#2
+PROJECT_ID
+
+언어: 코드 · 셀#3
+ROLE
+
+언어: 코드 · 셀#4
+--role
+
+언어: 코드 · 셀#5
+USER_EMAIL
+
+언어: 코드 · 셀#6
+INSTANCE_NAME
+
+언어: 코드 · 셀#7
+--zone
+
+언어: 코드 · 셀#8
+--service-account
+
+## 온프레미스 또는 다른 클라우드 제공업체
+Google Cloud 외부에서 인증을 설정하는 데 선호되는 방법은 워크로드 아이덴티티 제휴를 사용하는 것입니다. 자세한 내용은 인증 문서에서 온프레미스 또는 다른 클라우드 제공업체의 ADC 설정을 참조하세요.
+
+## Firestore 액세스 제어
+Firestore에 인증한 후에는 Google Cloud 리소스에 액세스할 수 있는 권한이 있어야 합니다. Firestore는 승인을 위해 Identity and Access Management (IAM)를 사용합니다.
+
+Firestore의 역할에 대한 자세한 내용은 서버 클라이언트 라이브러리의 보안을 참고하세요. IAM 및 승인에 대한 자세한 내용은 IAM 개요를 참조하세요.
+
+## 다음 단계
+Google Cloud 인증 방법 알아보기
+
+인증 사용 사례 목록 살펴보기

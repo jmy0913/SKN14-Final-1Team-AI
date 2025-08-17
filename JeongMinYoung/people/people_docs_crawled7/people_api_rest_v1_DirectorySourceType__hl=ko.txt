@@ -1,0 +1,21 @@
+Source URL: https://developers.google.com/people/api/rest/v1/DirectorySourceType?hl=ko
+
+## Fallback (article.innerText)
+이 페이지는 Cloud Translation API를 통해 번역되었습니다.
+홈
+제품
+Google Workspace
+People API
+참고자료
+DirectorySourceType
+bookmark_border
+
+디렉터리 응답에서 반환할 데이터 소스 유형입니다.
+
+열거형
+DIRECTORY_SOURCE_TYPE_UNSPECIFIED
+지정되지 않았습니다.
+DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT
+Google Workspace 도메인 공유 연락처
+DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE
+Google Workspace 도메인 프로필

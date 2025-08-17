@@ -1,0 +1,242 @@
+Source URL: https://firebase.google.com/docs/emulator-suite/connect_auth?hl=ko
+
+## 서문
+앱에서 Authentication 에뮬레이터를 사용하기 전에 전반적인 Firebase Local Emulator Suite 워크플로를 이해하고 Local Emulator Suite을 설치 및 구성하고 CLI 명령어를 검토해야 합니다.
+
+이 주제는 프로덕션을 위한 Firebase Authentication 솔루션 개발에 대한 이해도를 전제로 합니다. 필요한 경우 플랫폼 및 인증 기술 조합에 관한 문서를 검토하세요.
+
+## Authentication 에뮬레이터로 무엇을 할 수 있나요?
+Authentication 에뮬레이터는 Firebase Authentication 서비스의 충실도 높은 로컬 에뮬레이션을 제공하며 프로덕션 Firebase Authentication의 기능을 대부분 제공합니다. Apple 플랫폼, Android, 웹 Firebase SDK와 페어링하면 에뮬레이터를 사용하여 다음을 수행할 수 있습니다.
+
+이메일/비밀번호, 전화번호/SMS, SMS 다중 인증(MFA), 서드 파티(예: Google) ID 공급업체 인증을 테스트하는 데 사용할 에뮬레이션된 사용자 계정 생성, 업데이트 및 관리
+
+에뮬레이션된 사용자 보기 및 수정
+
+프로토타입 커스텀 토큰 인증 시스템
+
+에뮬레이터 UI 로그 탭에서 인증 관련 메시지를 확인합니다.
+
+## Firebase 프로젝트 선택
+Firebase Local Emulator Suite은 단일 Firebase 프로젝트의 제품을 에뮬레이션합니다.
+
+에뮬레이터를 시작하기 전에 사용할 프로젝트를 선택하려면 CLI로 작업 디렉터리에서 firebase use를 실행합니다. 또는 --project 플래그를 각 에뮬레이터 명령어에 전달합니다.
+
+Local Emulator Suite은 실제 Firebase 프로젝트 및 데모 프로젝트의 에뮬레이션을 지원합니다.
+
+실제 Firebase 프로젝트는 주로 Firebase 콘솔을 통해 만들고 구성한 프로젝트입니다.
+
+실제 프로젝트에는 데이터베이스 인스턴스, 스토리지 버킷, 함수 또는 해당 Firebase 프로젝트에 설정한 기타 리소스와 같은 라이브 리소스가 있습니다.
+
+실제 Firebase 프로젝트로 작업할 때는 지원되는 제품 일부 또는 전부를 에뮬레이션할 수 있습니다.
+
+에뮬레이션하지 않는 제품의 경우 앱과 코드가 데이터베이스 인스턴스, 스토리지 버킷, 함수 등 라이브 리소스와 상호작용합니다.
+
+데모 Firebase 프로젝트에는 실제 Firebase 구성이 없으며 라이브 리소스도 없습니다. 이러한 프로젝트는 일반적으로 Codelab 또는 기타 튜토리얼을 통해 액세스합니다.
+
+데모 프로젝트의 프로젝트 ID에는 demo- 프리픽스가 있습니다.
+
+가능한 한 데모 프로젝트를 사용하는 것이 좋습니다. 장점은 다음과 같습니다.
+
+손쉬운 설정: Firebase 프로젝트를 만들지 않고도 에뮬레이터를 실행할 수 있습니다.
+
+강력한 안전성: 코드에서 실수로 에뮬레이션되지 않은(프로덕션) 리소스를 호출하더라도 데이터 변경, 사용, 청구 등이 발생할 가능성이 없습니다.
+
+오프라인 지원 향상: SDK 구성을 다운로드하기 위해 인터넷에 액세스할 필요가 없습니다.
+
+### 표
+| 프로젝트 유형 | 특징 | 에뮬레이터와 함께 사용 |
+| --- | --- | --- |
+| 실제 | 실제 Firebase 프로젝트는 주로 Firebase 콘솔을 통해 만들고 구성한 프로젝트입니다.
+
+실제 프로젝트에는 데이터베이스 인스턴스, 스토리지 버킷, 함수 또는 해당 Firebase 프로젝트에 설정한 기타 리소스와 같은 라이브 리소스가 있습니다. | 실제 Firebase 프로젝트로 작업할 때는 지원되는 제품 일부 또는 전부를 에뮬레이션할 수 있습니다.
+
+에뮬레이션하지 않는 제품의 경우 앱과 코드가 데이터베이스 인스턴스, 스토리지 버킷, 함수 등 라이브 리소스와 상호작용합니다. |
+| 데모 | 데모 Firebase 프로젝트에는 실제 Firebase 구성이 없으며 라이브 리소스도 없습니다. 이러한 프로젝트는 일반적으로 Codelab 또는 기타 튜토리얼을 통해 액세스합니다.
+
+데모 프로젝트의 프로젝트 ID에는 demo- 프리픽스가 있습니다. | 데모 Firebase 프로젝트로 작업할 때는 앱과 코드가 에뮬레이터와만 상호작용합니다. 앱이 에뮬레이터에서 실행 중이지 않은 리소스와 상호작용하려고 하면 코드가 실패합니다. |
+
+## Android, iOS, 웹 SDK
+Authentication 에뮬레이터와 상호작용하도록 인앱 구성 또는 테스트 클래스를 다음과 같이 설정합니다.
+
+Authentication과 Cloud Functions, Cloud Firestore 또는 Realtime Database의 Firebase Security Rules 간 상호작용의 프로토타입을 제작하고 테스트하는 데 추가 설정이 필요하지 않습니다. Authentication 에뮬레이터가 구성되어 있고 다른 에뮬레이터가 실행 중이면 자동으로 함께 작동합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+Firebase.auth.useEmulator("10.0.2.2", 9099)
+
+언어: Java · 셀#1
+FirebaseAuth.getInstance().useEmulator("10.0.2.2", 9099);
+
+언어: Swift · 셀#1
+Auth.auth().useEmulator(withHost:"127.0.0.1", port:9099)
+
+언어: Web · 셀#1
+import { getAuth, connectAuthEmulator } from "firebase/auth";
+
+const auth = getAuth();
+connectAuthEmulator(auth, "http://127.0.0.1:9099");
+auth_emulator_connect.js
+
+언어: Web · 셀#1
+const auth = firebase.auth();
+auth.useEmulator("http://127.0.0.1:9099");
+emulator-suite.js
+
+## Admin SDK초
+FIREBASE_AUTH_EMULATOR_HOST 환경 변수가 설정되면 Firebase Admin SDK가 Authentication 에뮬레이터에 자동으로 연결됩니다.
+
+Cloud Functions 에뮬레이터는 Authentication 에뮬레이터를 자동으로 인식하므로 Cloud Functions와 Authentication 에뮬레이터 간의 통합을 테스트할 때 이 단계를 건너뛰어도 됩니다. Cloud Functions에 Admin SDK에 대한 환경 변수가 자동으로 설정됩니다.
+
+환경 변수가 설정되어 있으면 Firebase Admin SDK가 Authentication 에뮬레이터에서 발급한 서명되지 않은 ID 토큰과 세션 쿠키를 각각 verifyIdToken 및 createSessionCookie 메서드를 통해 수락하여 로컬 개발 및 테스트를 지원합니다. 프로덕션 단계에서 환경 변수를 설정하지 마세요.
+
+Admin SDK 코드를 다른 환경에서 실행되는 공유 에뮬레이터에 연결하려면 Firebase CLI를 사용하여 설정한 것과 동일한 프로젝트 ID를 지정해야 합니다. 프로젝트 ID를 initializeApp에 직접 전달하거나 GCLOUD_PROJECT 환경 변수를 설정할 수 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Node.js Admin SDK · 셀#1
+admin.initializeApp({ projectId: "your-project-id" });
+
+언어: 환경 변수 · 셀#1
+export GCLOUD_PROJECT="your-project-id"
+
+## ID 토큰
+보안상의 이유로 Authentication 에뮬레이터는 다른 Firebase 에뮬레이터 또는 Firebase Admin SDK(구성된 경우)에서만 허용되는 서명되지 않은 ID 토큰을 발급합니다. 이러한 토큰은 프로덕션 모드에서 실행되는 프로덕션 Firebase 서비스 또는 Firebase Admin SDK에서는 거부됩니다(예: 위에서 설명한 설정 단계가 없는 기본 동작).
+
+## 에뮬레이터 시작
+Emulator Suite UI를 통해 Authentication 에뮬레이터를 대화형으로 사용하고 로컬 REST 인터페이스를 통해 비대화형으로 사용할 수 있습니다. 다음 섹션에서는 대화형 및 비대화형 사용 사례를 다룹니다.
+
+Authentication 에뮬레이터, REST 인터페이스, Emulator Suite UI를 시작하려면 다음을 실행합니다.
+
+## 에뮬레이션된 이메일, 이메일 링크, 익명 인증
+익명 인증의 경우 앱에서 플랫폼(iOS, Android, 웹)에 해당하는 로그인 로직을 실행할 수 있습니다.
+
+이메일/비밀번호 인증의 경우 앱에서 Authentication SDK 메서드를 사용해 Authentication 에뮬레이터에 사용자 계정을 추가하거나 Emulator Suite UI를 사용하여 프로토타입 제작을 시작할 수 있습니다.
+
+Emulator Suite UI에서 인증 탭을 클릭합니다.
+
+사용자 추가 버튼을 클릭합니다.
+
+사용자 계정 만들기 마법사의 안내에 따라 이메일 인증 필드를 채웁니다.
+
+테스트 사용자가 생성되면 앱에서는 플랫폼(iOS, Android, 웹)에 해당하는 SDK 로직으로 사용자를 로그인 또는 로그아웃 처리할 수 있습니다.
+
+이메일 링크 흐름으로 이메일 인증/로그인을 테스트하는 경우 에뮬레이터는 firebase emulators:start가 실행된 터미널에 URL을 출력합니다.
+
+해당 링크를 브라우저에 붙여넣어 인증 이벤트를 시뮬레이션하고 인증에 성공했는지 확인합니다.
+
+비밀번호 재설정을 테스트하는 경우 에뮬레이터가 newPassword 파라미터(필요한 경우 변경 가능)를 포함한 유사한 URL을 터미널에 출력합니다.
+
+## 비대화형 테스트
+Emulator Suite UI 또는 클라이언트 코드를 사용하여 이메일/비밀번호 사용자 계정을 관리하는 대신, REST API를 호출하여 사용자 계정을 생성 및 삭제하고 대역 외 이메일 인증 코드를 가져오는 테스트 설정 스크립트를 작성하여 에뮬레이터 이메일 인증 URL을 채울 수 있습니다. 이렇게 하면 플랫폼과 테스트 코드가 분리되어 비대화형으로 테스트할 수 있습니다.
+
+비대화형 이메일 및 비밀번호 테스트 흐름의 일반적인 순서는 다음과 같습니다.
+
+Authentication signUp REST 엔드포인트를 사용하여 사용자를 만듭니다.
+
+테스트를 수행할 이메일 및 비밀번호를 사용하여 사용자를 로그인 처리합니다.
+
+테스트에 해당되는 경우 에뮬레이터별 REST 엔드포인트에서 사용 가능한 대역 외 이메일 인증 코드를 가져옵니다.
+
+데이터를 지우기 위해 에뮬레이터별 REST 엔드포인트를 사용하여 사용자 레코드를 플러시합니다.
+
+## 에뮬레이션된 전화/SMS 인증
+전화 인증의 경우 인증 에뮬레이터는 다음을 지원하지 않습니다.
+
+reCAPTCHA 및 APN 흐름. 에뮬레이터와 상호작용하도록 구성했으면 클라이언트 SDK가 통합 테스트(iOS, Android, 웹)에 설명된 것과 유사한 방식으로 이러한 인증 방법을 사용 중지합니다.
+
+Firebase 콘솔에서 사전 구성된 코드로 전화번호 테스트
+
+그 외의 경우 클라이언트 코드 측면에서 전화/SMS 인증 흐름은 프로덕션 환경(iOS, Android, 웹)에 설명된 것과 동일합니다.
+
+Emulator Suite UI 사용:
+
+Emulator Suite UI에서 인증 탭을 클릭합니다.
+
+사용자 추가 버튼을 클릭합니다.
+
+사용자 계정 만들기 마법사의 안내에 따라 전화 인증 필드를 채웁니다.
+
+하지만 전화 인증 흐름의 경우 이동통신사에 연결하는 것이 로컬 테스트 범위를 벗어나며 적합하지 않기 때문에 에뮬레이터가 문자 메시지 전송을 트리거하지 않습니다. 대신 에뮬레이터가 firebase emulators:start를 실행한 것과 동일한 터미널에 SMS로 전송했을 코드를 출력합니다. 이 코드를 앱에 입력하여 사용자가 문자 메시지를 확인하는 과정을 시뮬레이션하세요.
+
+## 비대화형 테스트
+비대화형 전화 인증 테스트의 경우 Authentication 에뮬레이터 REST API를 사용하여 사용 가능한 SMS 코드를 가져옵니다. 코드는 흐름을 시작할 때마다 다릅니다.
+
+일반적인 순서는 다음과 같습니다.
+
+플랫폼에 signInWithPhoneNumber를 호출하여 인증 절차를 시작합니다.
+
+에뮬레이터별 REST 엔드포인트를 사용하여 인증 코드를 가져옵니다.
+
+평소대로 인증 코드를 사용하여 confirmationResult.confirm(code)을 호출합니다.
+
+## 다단계 SMS
+Authentication 에뮬레이터는 iOS, Android 및 웹용 프로덕션에서 사용할 수 있는 SMS 다중 인증(MFA) 흐름의 프로토타입 제작 및 테스트를 지원합니다.
+
+모의 사용자를 에뮬레이터에 추가할 때 MFA를 사용 설정하고 2단계 인증 SMS 메시지가 전송될 전화번호를 하나 이상 구성할 수 있습니다. 메시지는 firebase emulators:start를 실행한 것과 동일한 터미널에 출력되며 REST 인터페이스에서 사용할 수 있습니다.
+
+## 에뮬레이션된 타사 ID 공급업체(IDP) 인증
+Authentication 에뮬레이터를 사용하면 프로덕션 코드의 변경사항 없이 iOS, Android 또는 웹 앱에서 다양한 타사 인증 흐름을 테스트할 수 있습니다. 인증 흐름의 예는 앱에서 사용할 수 있는 다양한 공급업체 및 플랫폼 조합에 관한 문서를 참조하세요.
+
+일반적으로 Firebase SDK를 사용해 다음 두 가지 방법 중 하나로 인증할 수 있습니다.
+
+앱에서 사용자 인증 정보를 가져오기 위한 타사 IDP와의 모든 상호작용을 포함하여 전체 프로세스를 처음부터 끝까지 SDK가 처리하도록 합니다.
+
+앱에서 타사 SDK를 사용하여 타사 공급업체로부터 사용자 인증 정보를 수동으로 가져와 이 정보를 Authentication SDK에 전달합니다.
+
+다시 한번 위의 문서 링크를 확인하고 Firebase SDK 관리 혹은 수동 사용자 인증 정보 가져오기 중 사용하고자 하는 흐름을 숙지했는지 확인하세요. Authentication 에뮬레이터는 두 방법 모두 테스트를 지원합니다.
+
+## Firebase SDK 기반 IDP 흐름 테스트
+앱에서 Microsoft, GitHub 또는 Yahoo 로그인을 위한 OAuthProvider와 같은 Firebase SDK 엔드 투 엔드 흐름을 사용하여 대화형 테스트를 수행하는 경우 Authentication 에뮬레이터가 로컬 버전의 해당 로그인 페이지를 제공하여 signinWithPopup 또는 signInWithRedirect 메서드를 호출하는 웹 앱에서 인증을 테스트할 수 있도록 지원합니다. 이렇게 로컬에서 제공되는 로그인 페이지는 플랫폼의 WebView 라이브러리에서 렌더링된 모바일 앱에도 표시됩니다.
+
+에뮬레이터는 흐름이 진행되는 동안 필요에 따라 가상의 타사 사용자 계정과 사용자 인증 정보를 생성합니다.
+
+## 수동 사용자 인증 정보 가져오기로 IDP 흐름 테스트
+'수동' 로그인 기법을 사용하여 플랫폼의 signInWithCredentials 메서드를 호출하면 평소와 같이 앱에서 실제 타사 로그인을 요청하고 실제 타사 사용자 인증 정보를 가져옵니다.
+
+에뮬레이터는 Google 로그인, Apple, JSON 웹 토큰(JWT)으로 구현된 ID 토큰을 사용하는 타사 공급업체에서 가져온 사용자 인증 정보에 대한 signInWithCredential 인증만 지원합니다. 액세스 토큰(예: JWT가 아닌 Facebook 또는 Twitter에서 제공되는 토큰)은 지원되지 않습니다. 다음 섹션에서는 이러한 경우에 사용할 수 있는 대안을 설명합니다.
+
+## 비대화형 테스트
+비대화형 테스트를 진행하는 한 가지 방법은 에뮬레이터에서 제공하는 로그인 페이지에서 사용자 클릭을 자동화하는 것입니다. 웹 앱의 경우 WebDriver와 같은 제어 인터페이스를 사용합니다. 모바일 앱의 경우 플랫폼에서 Espresso 또는 Xcode와 같은 UI 테스트 도구를 사용합니다.
+
+또는 코드를 업데이트하여 signInWithCredential을 사용(예: 코드 브랜치에서)하고 실제 사용자 인증 정보 대신 계정에 대한 가상의 ID 토큰과 함께 토큰 인증 흐름을 사용할 수 있습니다.
+
+IDP에서 idToken을 가져오는 코드 부분을 다시 쓰거나 또는 주석 처리합니다. 이렇게 하면 테스트 중에 실제 사용자 이름과 비밀번호를 입력하지 않아도 되며 테스트에 IDP의 API 할당량 및 비율 제한이 적용되지 않습니다.
+
+두 번째로 signInWithCredential의 토큰 대신 리터럴 JSON 문자열을 사용합니다. 예를 들어 웹 SDK를 사용하여 코드를 다음과 같이 변경할 수 있습니다.
+
+에뮬레이터와 함께 사용할 때 이 코드는 Google에서 foo@example.com 이메일을 사용하여 사용자를 성공적으로 인증합니다. 하위 필드를 서로 다른 사용자 로그인 처리를 모방하여 어떤 문자열로든 변경할 수 있는 기본 키라고 생각하세요. 예를 들어 firebase.auth.GoogleAuthProvider는 new firebase.auth.OAuthProvider('yahoo.com') 또는 모의 처리하려는 다른 공급업체 ID로 바꿀 수 있습니다.
+
+## 에뮬레이션된 커스텀 토큰 인증
+Authentication 에뮬레이터는 프로덕션 Authentication 문서에 설명된 대로 지원되는 플랫폼에서 signInWithCustomToken 메서드로의 호출을 사용하여 커스텀 JSON 웹 토큰으로 인증을 처리합니다.
+
+## Authentication 에뮬레이터와 프로덕션 환경의 차이점
+Firebase Authentication 에뮬레이터는 프로덕션 제품의 여러 기능을 시뮬레이션합니다. 그러나 모든 종류의 인증 시스템은 여러 수준(기기, 타사 제공업체, Firebase 등)에서 보안에 크게 의존하므로 에뮬레이터가 모든 흐름을 적절히 재생성하기는 어렵습니다.
+
+## Cloud IAM
+Firebase 에뮬레이터 도구 모음은 실행을 위해 IAM 관련 동작을 복제하거나 준수하려는 시도를 하지 않습니다. 에뮬레이터는 제공된 Firebase 보안 규칙을 준수하지만 일반적으로 IAM을 사용하게 되는 상황(예: 서비스 계정과 따라서 권한을 호출하는 Cloud Functions를 설정)에서는 에뮬레이터를 구성할 수 없으며 로컬 스크립트를 직접 실행하는 것과 유사한 방식으로 개발 머신에서 글로벌 가용 계정을 사용하게 됩니다.
+
+## 모바일에서 이메일 링크를 통해 로그인
+이메일 링크 로그인은 모바일 플랫폼에서 Firebase 동적 링크를 사용하므로, 모든 링크가 모바일 웹 플랫폼에서 열립니다.
+
+## 타사 로그인
+타사 로그인 절차의 경우 Firebase Authentication은 Twitter 및 GitHub와 같은 타사 제공업체의 보안용 사용자 인증 정보를 사용합니다.
+
+Authentication 에뮬레이터는 Google 및 Apple과 같은 OpenID Connect 제공업체의 실제 사용자 인증 정보를 수락합니다. OpenID Connect 이외 공급업체의 사용자 인증 정보는 지원되지 않습니다.
+
+## 이메일/SMS 로그인
+프로덕션 앱에서 이메일 및 SMS 로그인 흐름은 사용자가 수신 메시지를 확인하고 로그인 인터페이스에 로그인 코드를 입력하는 비동기 작업을 포함합니다. Authentication 에뮬레이터는 이메일이나 SMS 메시지를 보내지 않지만, 위에서 설명한 대로 로그인 코드를 생성하고 테스트용으로 사용하는 터미널에 출력합니다.
+
+에뮬레이터는 Firebase 콘솔을 사용하여 작업할 때처럼 고정된 로그인 코드로 테스트 전화번호를 정의하는 기능을 지원하지 않습니다.
+
+## 커스텀 토큰 인증
+Authentication 에뮬레이터는 커스텀 토큰의 서명 또는 만료를 검증하지 않습니다. 따라서 특별히 작성된 토큰과 시나리오 프로토타입 제작 및 테스트에서 무기한으로 토큰을 재사용할 수 있습니다.
+
+## 비율 제한/악용 방지
+Authentication 에뮬레이터는 프로덕션 비율 제한 또는 악용 방지 기능을 복제하지 않습니다.
+
+## 차단 함수
+프로덕션에서는 beforeCreate 및 beforeSignIn 이벤트가 둘 다 트리거된 후에 사용자가 스토리지에 1번 작성됩니다. 하지만 기술적인 제한으로 인해 Authentication 에뮬레이터는 스토리지에 2번(사용자 생성 후 1번, 로그인 후 1번) 작성합니다. 즉, 신규 사용자의 경우 Authentication 에뮬레이터의 beforeSignIn에서 getAuth().getUser()를 호출할 수 있지만 프로덕션에서는 이렇게 하면 오류가 발생합니다.
+
+## 다음 단계
+선별된 동영상 모음 및 자세한 방법 예시는 Firebase 에뮬레이터 학습 재생목록을 참조하세요.
+
+트리거 함수는 일반적인 Authentication 통합 사례이므로 로컬에서 함수 실행에서 Firebase용 Cloud Functions 에뮬레이터에 대한 자세한 내용을 참조하세요.

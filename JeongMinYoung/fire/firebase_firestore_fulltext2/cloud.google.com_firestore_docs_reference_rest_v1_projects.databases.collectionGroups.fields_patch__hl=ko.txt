@@ -1,0 +1,66 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.collectionGroups.fields/patch?hl=ko
+
+## 본문
+Updates a field configuration. Currently, field updates apply only to single field index configuration. However, calls to FirestoreAdmin.UpdateField should provide a field mask to avoid changing any configuration that the caller isn't aware of. The field mask should be specified as: { paths: "indexConfig" }.
+
+This call returns a google.longrunning.Operation which may be used to track the status of the field update. The metadata for the operation will be the type FieldOperationMetadata.
+
+To configure the default field settings for the database, use the special Field with resource name: projects/{projectId}/databases/{databaseId}/collectionGroups/__default__/fields/*.
+
+PATCH https://firestore.googleapis.com/v1/{field.name=projects/*/databases/*/collectionGroups/*/fields/*}
+
+The URL uses gRPC Transcoding syntax.
+
+The request body contains an instance of Field.
+
+If successful, the response body contains an instance of Operation.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| field.name | string Required. A field name of the form: projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}/fields/{fieldPath} A field path can be a simple field name, e.g. address or a path to fields within mapValue , e.g. address.city, or a special field path. The only valid special field is *, which represents any field. Field paths can be quoted using ` (backtick). The only character that must be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: *, ., ` (backtick), [, ], as well as any ascii symbolic characters. Examples: `address.city` represents a field named address.city, not the map key city in the field address. `*` represents a field named *, not any field. A special Field contains the default indexing settings for all fields. This field's resource name is: projects/{projectId}/databases/{databaseId}/collectionGroups/__default__/fields/* Indexes defined on this Field will be applied to all fields which do not have their own Field index configuration. |
+
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| updateMask | string (FieldMask format) A mask, relative to the field. If specified, only configuration specified by this field_mask will be updated in the field. This is a comma-separated list of fully qualified names of fields. Example: "user.displayName,photo". |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+FirestoreAdmin.UpdateField
+
+언어: 코드 · 셀#2
+{ paths: "indexConfig" }
+
+언어: 코드 · 셀#3
+google.longrunning.Operation
+
+언어: 코드 · 셀#4
+FieldOperationMetadata
+
+언어: 코드 · 셀#5
+Field
+
+언어: 코드 · 셀#6
+projects/{projectId}/databases/{databaseId}/collectionGroups/__default__/fields/*
+
+언어: 코드 · 셀#7
+PATCH https://firestore.googleapis.com/v1/{field.name=projects/*/databases/*/collectionGroups/*/fields/*}
+
+언어: 코드 · 셀#8
+Operation
+
+언어: 코드 · 셀#9
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#10
+https://www.googleapis.com/auth/cloud-platform

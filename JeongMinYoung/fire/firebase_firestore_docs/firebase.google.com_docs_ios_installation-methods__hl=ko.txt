@@ -1,0 +1,121 @@
+Source URL: https://firebase.google.com/docs/ios/installation-methods?hl=ko
+
+## Swift Package Manager
+Firebase에서는 새 프로젝트에 Swift Package Manager를 사용할 것을 권장합니다.
+
+## Xcode를 통해 설치
+Swift Package Manager 지원 기능을 사용하려면 16.2 이상이 필요합니다.
+
+CocoaPods 기반 프로젝트에서 마이그레이션하는 경우 pod deintegrate를 실행하여 Xcode 프로젝트에서 CocoaPods를 삭제합니다. CocoaPods에서 생성된 .xcworkspace 파일은 나중에 안전하게 삭제할 수 있습니다. 프로젝트에 Firebase를 처음 추가하는 경우에는 이 단계를 무시해도 됩니다.
+
+Xcode에서 File(파일) > Add Packages(패키지 추가)로 이동하여 Firebase 라이브러리를 설치합니다.
+
+표시되는 메시지에서 Firebase GitHub 저장소를 선택합니다.
+
+https://github.com/firebase/firebase-ios-sdk.git
+
+표시되는 메시지에서 Firebase GitHub 저장소를 선택합니다.
+
+사용할 Firebase 버전을 선택합니다. 새 프로젝트인 경우 최신 버전의 Firebase를 사용하는 것이 좋습니다.
+
+앱에 포함할 Firebase 라이브러리를 선택합니다.
+
+작업을 완료하면 Xcode에서 패키지 종속 항목 확인하고 백그라운드에서 다운로드하기 시작합니다.
+
+## Package.swift 경유
+그런 다음 Firebase 제품을 사용하는 대상에서 Firebase를 해당 대상의 dependencies 배열에 추가합니다.
+
+## 제품별 고려사항
+일부 Firebase 제품의 경우 올바르게 작동하려면 추가 통합 단계가 필요합니다.
+
+전이적으로 포함된 경우 Google Analytics에서는 -ObjC 링커 플래그를 대상의 빌드 설정에 추가해야 합니다.
+
+Crashlytics에서는 디버그 기호를 업로드해야 합니다.
+
+Xcode의 실행 스크립트 빌드 단계에서 빌드 후 디버그 기호를 자동으로 업로드할 수 있습니다. 실행 스크립트는 다음 위치에 있습니다.
+
+기호를 업로드하는 또 다른 방법은 upload-symbols 스크립트를 사용하는 것입니다. 스크립트를 프로젝트 파일의 하위 디렉터리(예: scripts/upload-symbols)에 저장한 다음 스크립트가 실행 가능한지 확인합니다.
+
+이 스크립트는 dSYM 파일을 수동으로 업로드하는 데 사용할 수 있습니다. 스크립트에 대한 사용법 참고사항과 추가 안내를 보려면 파라미터 없이 upload-symbols를 실행하세요.
+
+## CocoaPods
+Firebase는 Swift Package Manager 외에도 CocoaPods를 사용한 설치를 지원합니다.
+
+Firebase의 CocoaPods 배포에는 Xcode 16.2 및 CocoaPods 1.12.0 이상이 필요합니다. 다음은 CocoaPods를 사용하여 Firebase를 설치하는 방법입니다.
+
+Podfile이 없으면 만듭니다. 프로젝트 디렉터리의 루트에서 다음 명령어를 실행합니다.
+
+pod init
+참고: Podfile에는 use_frameworks!(동적 링크) 또는 use_frameworks! :linkage => :static이 포함되어야 합니다. 자세한 내용은 Firebase 종속 항목을 정적 또는 동적으로 연결 문서를 참조하세요.
+
+Podfile이 없으면 만듭니다. 프로젝트 디렉터리의 루트에서 다음 명령어를 실행합니다.
+
+앱에 사용할 Firebase 포드를 Podfile에 추가합니다.
+
+지원되는 Firebase 제품을 앱에 추가할 수 있습니다.
+
+Analytics 사용 설정됨
+Analytics 사용 설정되지 않음
+# Add the Firebase pod for Google Analytics
+pod 'FirebaseAnalytics'
+
+# For Analytics without IDFA collection capability, use this pod instead
+# pod FirebaseAnalytics/Core
+
+# Add the pods for any other Firebase products you want to use in your app
+# For example, to use Firebase Authentication and Cloud Firestore
+pod 'FirebaseAuth'
+pod 'FirebaseFirestore'
+
+Apple의 사용자 개인 정보 보호 및 데이터 사용과 앱 추적 투명성 문서에서 기기 수준 광고 식별자인 IDFA에 대해 자세히 알아보세요.
+
+바이너리 Firebase 종속 항목은 기본적으로 정적 프레임워크로 통합됩니다. Firebase를 동적 프레임워크의 종속 항목으로 사용하는 경우 프레임워크 또는 라이브러리에서의 Firebase 사용에 관한 문서를 읽어보세요.
+
+앱에 사용할 Firebase 포드를 Podfile에 추가합니다.
+
+지원되는 Firebase 제품을 앱에 추가할 수 있습니다.
+
+포드를 설치하고 .xcworkspace 파일을 열어 Xcode에서 프로젝트를 확인합니다.
+
+pod install --repo-update
+open your-project.xcworkspace
+
+포드를 설치하고 .xcworkspace 파일을 열어 Xcode에서 프로젝트를 확인합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Analytics 사용 설정됨 · 셀#1
+# Add the Firebase pod for Google Analytics
+pod 'FirebaseAnalytics'
+
+# For Analytics without IDFA collection capability, use this pod instead
+# pod FirebaseAnalytics/Core
+
+# Add the pods for any other Firebase products you want to use in your app
+# For example, to use Firebase Authentication and Cloud Firestore
+pod 'FirebaseAuth'
+pod 'FirebaseFirestore'
+
+언어: Analytics 사용 설정되지 않음 · 셀#1
+# Add the pods for the Firebase products you want to use in your app
+# For example, to use Firebase Authentication and Cloud Firestore
+pod 'FirebaseAuth'
+pod 'FirebaseFirestore'
+
+## 제품별 고려사항
+일부 Firebase 제품의 경우 올바르게 작동하려면 추가 통합 단계가 필요합니다.
+
+Crashlytics에서는 디버그 기호를 업로드해야 합니다.
+
+Xcode의 실행 스크립트 빌드 단계에서 빌드 후 디버그 기호를 자동으로 업로드할 수 있습니다. 실행 스크립트는 다음 위치에 있습니다.
+
+## Carthage
+Carthage 지원은 실험용입니다. Carthage를 통해 앱에 Firebase를 포함하는 방법은 GitHub 안내를 참조하세요.
+
+## 수동 통합
+Firebase는 종속 항목 관리자를 사용하지 않고 Firebase를 통합하려는 사용자를 위해 사전 빌드된 바이너리 XCFramework 배포를 제공합니다. Firebase를 설치하려면 다음 안내를 따르세요.
+
+프레임워크 SDK zip 파일을 다운로드합니다. 이 파일에는 모든 Firebase SDK에 사용 가능한 모든 대상 아키텍처의 아키텍처 슬라이스가 포함되어 있으므로 다운로드하는 데 다소 시간이 걸릴 수 있습니다.
+
+파일 압축을 푼 다음 앱에 포함할 프레임워크의 README를 검토합니다.
+
+타겟의 빌드 설정에서 Other Linker Settings에 -ObjC 링커 플래그를 추가합니다.

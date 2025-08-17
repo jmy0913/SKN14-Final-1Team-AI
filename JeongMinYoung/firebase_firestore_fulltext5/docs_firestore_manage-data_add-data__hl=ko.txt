@@ -1,0 +1,1585 @@
+Source URL: https://firebase.google.com/docs/firestore/manage-data/add-data?hl=ko
+
+## 서문
+이 문서에서는 Cloud Firestore에서 개별 문서를 설정, 추가 또는 업데이트하는 방법을 설명합니다. 데이터를 일괄 쓰기하려면 트랜잭션 및 일괄 쓰기를 참조하세요.
+
+## 개요
+다음 방법 중 하나로 Cloud Firestore에 데이터를 쓸 수 있습니다.
+
+문서 식별자를 명시적으로 지정하여 컬렉션 내의 문서 데이터를 설정합니다.
+
+컬렉션에 새 문서를 추가합니다. 이 경우 Cloud Firestore에서 자동으로 문서 식별자를 생성합니다.
+
+자동으로 생성된 식별자로 빈 문서를 만들고 나중에 데이터를 할당합니다.
+
+## 시작하기 전에
+데이터를 설정, 추가 또는 업데이트하도록 Cloud Firestore를 초기화하려면 다음 단계를 완료해야 합니다.
+
+Cloud Firestore 데이터베이스 만들기 자세한 내용은 Cloud Firestore 시작하기를 참조하세요.
+
+웹 또는 모바일 클라이언트 라이브러리를 사용하는 경우 보안 규칙으로 인증합니다. 자세한 내용은 보안 규칙 시작하기를 참조하세요.
+
+서버 클라이언트 라이브러리 또는 REST API를 사용하는 경우 Identity and Access Management(IAM)로 인증합니다. 자세한 내용은 서버 클라이언트 라이브러리의 보안을 참조하세요.
+
+## Cloud Firestore 초기화
+Cloud Firestore의 인스턴스를 초기화합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+import { initializeApp } from "firebase/app";
+import { getFirestore } from "firebase/firestore";
+
+// TODO: Replace the following with your app's Firebase project configuration
+// See: https://support.google.com/firebase/answer/7015592
+const firebaseConfig = {
+ FIREBASE_CONFIGURATION
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+
+// Initialize Cloud Firestore and get a reference to the service
+const db = getFirestore(app);
+
+언어: Swift · 셀#1
+import FirebaseCore
+import FirebaseFirestore
+
+언어: Swift · 셀#2
+FirebaseApp.configure()
+
+let db = Firestore.firestore()
+AppDelegate.swift
+
+언어: Objective-C · 셀#1
+@import FirebaseCore;
+@import FirebaseFirestore;
+
+// Use Firebase library to configure APIs
+[FIRApp configure];
+
+언어: Objective-C · 셀#2
+FIRFirestore *defaultFirestore = [FIRFirestore firestore];
+AppDelegate.m
+
+언어: Kotlin · 셀#1
+// Access a Cloud Firestore instance from your Activity
+
+언어: Kotlin · 셀#2
+val db = Firebase.firestore
+DocSnippets.kt
+
+언어: Java · 셀#1
+// Access a Cloud Firestore instance from your Activity
+
+언어: Java · 셀#2
+FirebaseFirestore db = FirebaseFirestore.getInstance();
+DocSnippets.java
+
+언어: Dart · 셀#1
+db = FirebaseFirestore.instance;
+
+언어: Python · 셀#1
+import firebase_admin
+from firebase_admin import firestore
+
+# Application Default credentials are automatically created.
+app = firebase_admin.initialize_app()
+db = firestore.client()
+firestore.py
+
+언어: Python · 셀#2
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+# Use the application default credentials.
+cred = credentials.ApplicationDefault()
+
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+firestore.py
+
+언어: Python · 셀#3
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+# Use a service account.
+cred = credentials.Certificate('path/to/serviceAccount.json')
+
+app = firebase_admin.initialize_app(cred)
+
+db = firestore.client()
+firestore.py
+
+언어: 코드 · 셀#1
+import firebase_admin
+from firebase_admin import firestore
+
+# Application Default credentials are automatically created.
+app = firebase_admin.initialize_app()
+db = firestore.client()
+firestore.py
+
+언어: 코드 · 셀#2
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+# Use the application default credentials.
+cred = credentials.ApplicationDefault()
+
+firebase_admin.initialize_app(cred)
+db = firestore.client()
+firestore.py
+
+언어: 코드 · 셀#3
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+
+# Use a service account.
+cred = credentials.Certificate('path/to/serviceAccount.json')
+
+app = firebase_admin.initialize_app(cred)
+
+db = firestore.client()
+firestore.py
+
+## 문서 설정
+단일 문서를 만들거나 덮어쓰려면 다음 언어별 set() 메서드를 사용합니다.
+
+문서가 없으면 새로 만듭니다. 문서가 있으면 새로 제공한 데이터로 내용을 덮어쓰지만, 다음과 같이 데이터를 기존 문서와 병합하도록 지정한 경우는 예외입니다.
+
+문서가 있는지 확실하지 않은 경우 전체 문서를 실수로 덮어쓰지 않도록 새 데이터를 기존 문서와 병합하는 옵션을 전달하세요. 맵이 포함된 문서의 경우 빈 맵이 있는 필드를 사용해 집합을 지정하면 대상 문서의 맵 필드를 덮어씁니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+import { doc, setDoc } from "firebase/firestore";
+
+// Add a new document in collection "cities"
+await setDoc(doc(db, "cities", "LA"), {
+ name: "Los Angeles",
+ state: "CA",
+ country: "USA"
+});
+set_document.js
+
+언어: Swift · 셀#1
+// Add a new document in collection "cities"
+do {
+ try await db.collection("cities").document("LA").setData([
+ "name": "Los Angeles",
+ "state": "CA",
+ "country": "USA"
+ ])
+ print("Document successfully written!")
+} catch {
+ print("Error writing document: \(error)")
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+// Add a new document in collection "cities"
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"LA"] setData:@{
+ @"name": @"Los Angeles",
+ @"state": @"CA",
+ @"country": @"USA"
+} completion:^(NSError * _Nullable error) {
+ if (error != nil) {
+ NSLog(@"Error writing document: %@", error);
+ } else {
+ NSLog(@"Document successfully written!");
+ }
+}];
+ViewController.m
+
+언어: Kotlin · 셀#1
+val city = hashMapOf(
+ "name" to "Los Angeles",
+ "state" to "CA",
+ "country" to "USA",
+)
+
+db.collection("cities").document("LA")
+ .set(city)
+ .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+ .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+DocSnippets.kt
+
+언어: Java · 셀#1
+Map<String, Object> city = new HashMap<>();
+city.put("name", "Los Angeles");
+city.put("state", "CA");
+city.put("country", "USA");
+
+db.collection("cities").document("LA")
+ .set(city)
+ .addOnSuccessListener(new OnSuccessListener<Void>() {
+ @Override
+ public void onSuccess(Void aVoid) {
+ Log.d(TAG, "DocumentSnapshot successfully written!");
+ }
+ })
+ .addOnFailureListener(new OnFailureListener() {
+ @Override
+ public void onFailure(@NonNull Exception e) {
+ Log.w(TAG, "Error writing document", e);
+ }
+ });
+DocSnippets.java
+
+언어: Dart · 셀#1
+final city = <String, String>{
+ "name": "Los Angeles",
+ "state": "CA",
+ "country": "USA"
+};
+
+db
+ .collection("cities")
+ .doc("LA")
+ .set(city)
+ .onError((e, _) => print("Error writing document: $e"));
+firestore.dart
+
+언어: Python · 셀#1
+data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
+
+# Add a new doc in collection 'cities' with ID 'LA'
+db.collection("cities").document("LA").set(data)
+snippets.py
+
+언어: Web · 셀#1
+import { doc, setDoc } from "firebase/firestore";
+
+const cityRef = doc(db, 'cities', 'BJ');
+setDoc(cityRef, { capital: true }, { merge: true });
+set_with_merge.js
+
+언어: Swift · 셀#1
+// Update one field, creating the document if it does not exist.
+db.collection("cities").document("BJ").setData([ "capital": true ], merge: true)
+ViewController.swift
+
+언어: Objective-C · 셀#1
+// Write to the document reference, merging data with existing
+// if the document already exists
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"BJ"]
+ setData:@{ @"capital": @YES }
+ merge:YES
+ completion:^(NSError * _Nullable error) {
+ // ...
+ }];
+ViewController.m
+
+언어: Kotlin · 셀#1
+// Update one field, creating the document if it does not already exist.
+val data = hashMapOf("capital" to true)
+
+db.collection("cities").document("BJ")
+ .set(data, SetOptions.merge())
+DocSnippets.kt
+
+언어: Java · 셀#1
+// Update one field, creating the document if it does not already exist.
+Map<String, Object> data = new HashMap<>();
+data.put("capital", true);
+
+db.collection("cities").document("BJ")
+ .set(data, SetOptions.merge());
+DocSnippets.java
+
+언어: Dart · 셀#1
+// Update one field, creating the document if it does not already exist.
+final data = {"capital": true};
+
+db.collection("cities").doc("BJ").set(data, SetOptions(merge: true));
+firestore.dart
+
+언어: Python · 셀#1
+city_ref = db.collection("cities").document("BJ")
+
+city_ref.set({"capital": True}, merge=True)
+snippets.py
+
+언어: 코드 · 셀#1
+data = {"name": "Los Angeles", "state": "CA", "country": "USA"}
+
+# Add a new doc in collection 'cities' with ID 'LA'
+db.collection("cities").document("LA").set(data)
+snippets.py
+
+언어: 코드 · 셀#1
+city_ref = db.collection("cities").document("BJ")
+
+city_ref.set({"capital": True}, merge=True)
+snippets.py
+
+## 데이터 유형
+Cloud Firestore를 사용하면 문서 안에 문자열, 불리언, 숫자, 날짜, null, 중첩 배열, 객체를 비롯하여 다양한 데이터 유형을 쓸 수 있습니다. Cloud Firestore는 코드에서 사용하는 숫자 유형과 관계없이 숫자를 항상 배정밀도 부동 소수점으로 저장합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+import { doc, setDoc, Timestamp } from "firebase/firestore";
+
+const docData = {
+ stringExample: "Hello world!",
+ booleanExample: true,
+ numberExample: 3.14159265,
+ dateExample: Timestamp.fromDate(new Date("December 10, 1815")),
+ arrayExample: [5, true, "hello"],
+ nullExample: null,
+ objectExample: {
+ a: 5,
+ b: {
+ nested: "foo"
+ }
+ }
+};
+await setDoc(doc(db, "data", "one"), docData);
+data_types.js
+
+언어: Swift · 셀#1
+let docData: [String: Any] = [
+ "stringExample": "Hello world!",
+ "booleanExample": true,
+ "numberExample": 3.14159265,
+ "dateExample": Timestamp(date: Date()),
+ "arrayExample": [5, true, "hello"],
+ "nullExample": NSNull(),
+ "objectExample": [
+ "a": 5,
+ "b": [
+ "nested": "foo"
+ ]
+ ]
+]
+do {
+ try await db.collection("data").document("one").setData(docData)
+ print("Document successfully written!")
+} catch {
+ print("Error writing document: \(error)")
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+NSDictionary *docData = @{
+ @"stringExample": @"Hello world!",
+ @"booleanExample": @YES,
+ @"numberExample": @3.14,
+ @"dateExample": [FIRTimestamp timestampWithDate:[NSDate date]],
+ @"arrayExample": @[@5, @YES, @"hello"],
+ @"nullExample": [NSNull null],
+ @"objectExample": @{
+ @"a": @5,
+ @"b": @{
+ @"nested": @"foo"
+ }
+ }
+};
+
+[[[self.db collectionWithPath:@"data"] documentWithPath:@"one"] setData:docData
+ completion:^(NSError * _Nullable error) {
+ if (error != nil) {
+ NSLog(@"Error writing document: %@", error);
+ } else {
+ NSLog(@"Document successfully written!");
+ }
+ }];
+ViewController.m
+
+언어: Kotlin · 셀#1
+val docData = hashMapOf(
+ "stringExample" to "Hello world!",
+ "booleanExample" to true,
+ "numberExample" to 3.14159265,
+ "dateExample" to Timestamp(Date()),
+ "listExample" to arrayListOf(1, 2, 3),
+ "nullExample" to null,
+)
+
+val nestedData = hashMapOf(
+ "a" to 5,
+ "b" to true,
+)
+
+docData["objectExample"] = nestedData
+
+db.collection("data").document("one")
+ .set(docData)
+ .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully written!") }
+ .addOnFailureListener { e -> Log.w(TAG, "Error writing document", e) }
+DocSnippets.kt
+
+언어: Java · 셀#1
+Map<String, Object> docData = new HashMap<>();
+docData.put("stringExample", "Hello world!");
+docData.put("booleanExample", true);
+docData.put("numberExample", 3.14159265);
+docData.put("dateExample", new Timestamp(new Date()));
+docData.put("listExample", Arrays.asList(1, 2, 3));
+docData.put("nullExample", null);
+
+Map<String, Object> nestedData = new HashMap<>();
+nestedData.put("a", 5);
+nestedData.put("b", true);
+
+docData.put("objectExample", nestedData);
+
+db.collection("data").document("one")
+ .set(docData)
+ .addOnSuccessListener(new OnSuccessListener<Void>() {
+ @Override
+ public void onSuccess(Void aVoid) {
+ Log.d(TAG, "DocumentSnapshot successfully written!");
+ }
+ })
+ .addOnFailureListener(new OnFailureListener() {
+ @Override
+ public void onFailure(@NonNull Exception e) {
+ Log.w(TAG, "Error writing document", e);
+ }
+ });
+DocSnippets.java
+
+언어: Dart · 셀#1
+final docData = {
+ "stringExample": "Hello world!",
+ "booleanExample": true,
+ "numberExample": 3.14159265,
+ "dateExample": Timestamp.now(),
+ "listExample": [1, 2, 3],
+ "nullExample": null
+};
+
+final nestedData = {
+ "a": 5,
+ "b": true,
+};
+
+docData["objectExample"] = nestedData;
+
+db
+ .collection("data")
+ .doc("one")
+ .set(docData)
+ .onError((e, _) => print("Error writing document: $e"));
+firestore.dart
+
+언어: Python · 셀#1
+data = {
+ "stringExample": "Hello, World!",
+ "booleanExample": True,
+ "numberExample": 3.14159265,
+ "dateExample": datetime.datetime.now(tz=datetime.timezone.utc),
+ "arrayExample": [5, True, "hello"],
+ "nullExample": None,
+ "objectExample": {"a": 5, "b": True},
+}
+
+db.collection("data").document("one").set(data)
+snippets.py
+
+언어: 코드 · 셀#1
+data = {
+ "stringExample": "Hello, World!",
+ "booleanExample": True,
+ "numberExample": 3.14159265,
+ "dateExample": datetime.datetime.now(tz=datetime.timezone.utc),
+ "arrayExample": [5, True, "hello"],
+ "nullExample": None,
+ "objectExample": {"a": 5, "b": True},
+}
+
+db.collection("data").document("one").set(data)
+snippets.py
+
+## 커스텀 객체
+Map 또는 Dictionary 객체를 사용하여 문서를 표현하기가 불편한 경우가 많으므로 Cloud Firestore는 커스텀 클래스를 사용하여 문서를 작성하는 방식도 지원합니다. Cloud Firestore에서 객체를 지원되는 데이터 유형으로 변환합니다.
+
+커스텀 클래스를 사용하면 앞의 예시를 다음과 같이 다시 작성할 수 있습니다.
+
+### 도식/예시
+Map
+
+Dictionary
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+class City {
+ constructor (name, state, country ) {
+ this.name = name;
+ this.state = state;
+ this.country = country;
+ }
+ toString() {
+ return this.name + ', ' + this.state + ', ' + this.country;
+ }
+}
+
+// Firestore data converter
+const cityConverter = {
+ toFirestore: (city) => {
+ return {
+ name: city.name,
+ state: city.state,
+ country: city.country
+ };
+ },
+ fromFirestore: (snapshot, options) => {
+ const data = snapshot.data(options);
+ return new City(data.name, data.state, data.country);
+ }
+};
+city_custom_object.js
+
+언어: Swift · 셀#1
+public struct City: Codable {
+
+ let name: String
+ let state: String?
+ let country: String?
+ let isCapital: Bool?
+ let population: Int64?
+
+ enum CodingKeys: String, CodingKey {
+ case name
+ case state
+ case country
+ case isCapital = "capital"
+ case population
+ }
+
+}
+ViewController.swift
+
+언어: Kotlin · 셀#1
+data class City(
+ val name: String? = null,
+ val state: String? = null,
+ val country: String? = null,
+ @field:JvmField // use this annotation if your Boolean field is prefixed with 'is'
+ val isCapital: Boolean? = null,
+ val population: Long? = null,
+ val regions: List<String>? = null,
+)
+DocSnippets.kt
+
+언어: Java · 셀#1
+public class City {
+
+ private String name;
+ private String state;
+ private String country;
+ private boolean capital;
+ private long population;
+ private List<String> regions;
+
+ public City() {}
+
+ public City(String name, String state, String country, boolean capital, long population, List<String> regions) {
+ // ...
+ }
+
+ public String getName() {
+ return name;
+ }
+
+ public String getState() {
+ return state;
+ }
+
+ public String getCountry() {
+ return country;
+ }
+
+ public boolean isCapital() {
+ return capital;
+ }
+
+ public long getPopulation() {
+ return population;
+ }
+
+ public List<String> getRegions() {
+ return regions;
+ }
+
+}
+DocSnippets.java
+
+언어: Dart · 셀#1
+class City {
+ final String? name;
+ final String? state;
+ final String? country;
+ final bool? capital;
+ final int? population;
+ final List<String>? regions;
+
+ City({
+ this.name,
+ this.state,
+ this.country,
+ this.capital,
+ this.population,
+ this.regions,
+ });
+
+ factory City.fromFirestore(
+ DocumentSnapshot<Map<String, dynamic>> snapshot,
+ SnapshotOptions? options,
+ ) {
+ final data = snapshot.data();
+ return City(
+ name: data?['name'],
+ state: data?['state'],
+ country: data?['country'],
+ capital: data?['capital'],
+ population: data?['population'],
+ regions:
+ data?['regions'] is Iterable ? List.from(data?['regions']) : null,
+ );
+ }
+
+ Map<String, dynamic> toFirestore() {
+ return {
+ if (name != null) "name": name,
+ if (state != null) "state": state,
+ if (country != null) "country": country,
+ if (capital != null) "capital": capital,
+ if (population != null) "population": population,
+ if (regions != null) "regions": regions,
+ };
+ }
+}
+firestore_add_data_custom_objects_snippet.dart
+
+언어: Python · 셀#1
+class City:
+ def __init__(self, name, state, country, capital=False, population=0, regions=[]):
+ self.name = name
+ self.state = state
+ self.country = country
+ self.capital = capital
+ self.population = population
+ self.regions = regions
+
+ @staticmethod
+ def from_dict(source):
+ # ...
+
+ def to_dict(self):
+ # ...
+
+ def __repr__(self):
+ return f"City(\
+ name={self.name}, \
+ country={self.country}, \
+ population={self.population}, \
+ capital={self.capital}, \
+ regions={self.regions}\
+ )"
+
+snippets.py
+
+언어: Web · 셀#1
+import { doc, setDoc } from "firebase/firestore";
+
+// Set with cityConverter
+const ref = doc(db, "cities", "LA").withConverter(cityConverter);
+await setDoc(ref, new City("Los Angeles", "CA", "USA"));
+set_custom_object.js
+
+언어: Swift · 셀#1
+let city = City(name: "Los Angeles",
+ state: "CA",
+ country: "USA",
+ isCapital: false,
+ population: 5000000)
+
+do {
+ try db.collection("cities").document("LA").setData(from: city)
+} catch let error {
+ print("Error writing city to Firestore: \(error)")
+}
+ViewController.swift
+
+언어: Kotlin · 셀#1
+val city = City(
+ "Los Angeles",
+ "CA",
+ "USA",
+ false,
+ 5000000L,
+ listOf("west_coast", "socal"),
+)
+db.collection("cities").document("LA").set(city)
+DocSnippets.kt
+
+언어: Java · 셀#1
+City city = new City("Los Angeles", "CA", "USA",
+ false, 5000000L, Arrays.asList("west_coast", "sorcal"));
+db.collection("cities").document("LA").set(city);
+DocSnippets.java
+
+언어: Dart · 셀#1
+final city = City(
+ name: "Los Angeles",
+ state: "CA",
+ country: "USA",
+ capital: false,
+ population: 5000000,
+ regions: ["west_coast", "socal"],
+);
+final docRef = db
+ .collection("cities")
+ .withConverter(
+ fromFirestore: City.fromFirestore,
+ toFirestore: (City city, options) => city.toFirestore(),
+ )
+ .doc("LA");
+await docRef.set(city);
+firestore.dart
+
+언어: Python · 셀#1
+city = City(name="Los Angeles", state="CA", country="USA")
+db.collection("cities").document("LA").set(city.to_dict())
+snippets.py
+
+언어: 코드 · 셀#1
+class City:
+ def __init__(self, name, state, country, capital=False, population=0, regions=[]):
+ self.name = name
+ self.state = state
+ self.country = country
+ self.capital = capital
+ self.population = population
+ self.regions = regions
+
+ @staticmethod
+ def from_dict(source):
+ # ...
+
+ def to_dict(self):
+ # ...
+
+ def __repr__(self):
+ return f"City(\
+ name={self.name}, \
+ country={self.country}, \
+ population={self.population}, \
+ capital={self.capital}, \
+ regions={self.regions}\
+ )"
+
+snippets.py
+
+언어: 코드 · 셀#1
+city = City(name="Los Angeles", state="CA", country="USA")
+db.collection("cities").document("LA").set(city.to_dict())
+snippets.py
+
+## 문서 추가
+set()을 사용하여 문서를 만들 때는 다음 예시와 같이 만들 문서의 ID를 지정해야 합니다.
+
+문서에 유의미한 ID가 없는 경우 Cloud Firestore에서 ID를 자동으로 생성할 수 있습니다. 다음과 같은 언어별 add() 메서드를 호출할 수 있습니다.
+
+경우에 따라서는 자동 생성 ID를 사용하여 문서 참조를 만든 후 참조를 사용하는 방법이 유용할 수 있습니다. 이 사용 사례의 경우 doc()를 호출하면 됩니다.
+
+백엔드에서 .add(...)와 .doc().set(...)는 동일하므로 두 가지 옵션 중 하나를 선택하면 됩니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+import { doc, setDoc } from "firebase/firestore";
+
+await setDoc(doc(db, "cities", "new-city-id"), data);
+cities_document_set.js
+
+언어: Swift · 셀#1
+db.collection("cities").document("new-city-id").setData(data)
+ViewController.swift
+
+언어: Objective-C · 셀#1
+[[[self.db collectionWithPath:@"cities"] documentWithPath:@"new-city-id"]
+ setData:data];
+ViewController.m
+
+언어: Kotlin · 셀#1
+db.collection("cities").document("new-city-id").set(data)
+DocSnippets.kt
+
+언어: Java · 셀#1
+db.collection("cities").document("new-city-id").set(data);
+DocSnippets.java
+
+언어: Dart · 셀#1
+db.collection("cities").doc("new-city-id").set({"name": "Chicago"});
+firestore.dart
+
+언어: Python · 셀#1
+db.collection("cities").document("new-city-id").set(data)
+snippets.py
+
+언어: Web · 셀#1
+import { collection, addDoc } from "firebase/firestore";
+
+// Add a new document with a generated id.
+const docRef = await addDoc(collection(db, "cities"), {
+ name: "Tokyo",
+ country: "Japan"
+});
+console.log("Document written with ID: ", docRef.id);
+add_document.js
+
+언어: Swift · 셀#1
+// Add a new document with a generated id.
+do {
+ let ref = try await db.collection("cities").addDocument(data: [
+ "name": "Tokyo",
+ "country": "Japan"
+ ])
+ print("Document added with ID: \(ref.documentID)")
+} catch {
+ print("Error adding document: \(error)")
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+// Add a new document with a generated id.
+__block FIRDocumentReference *ref =
+ [[self.db collectionWithPath:@"cities"] addDocumentWithData:@{
+ @"name": @"Tokyo",
+ @"country": @"Japan"
+ } completion:^(NSError * _Nullable error) {
+ if (error != nil) {
+ NSLog(@"Error adding document: %@", error);
+ } else {
+ NSLog(@"Document added with ID: %@", ref.documentID);
+ }
+ }];
+ViewController.m
+
+언어: Kotlin · 셀#1
+// Add a new document with a generated id.
+val data = hashMapOf(
+ "name" to "Tokyo",
+ "country" to "Japan",
+)
+
+db.collection("cities")
+ .add(data)
+ .addOnSuccessListener { documentReference ->
+ Log.d(TAG, "DocumentSnapshot written with ID: ${documentReference.id}")
+ }
+ .addOnFailureListener { e ->
+ Log.w(TAG, "Error adding document", e)
+ }
+DocSnippets.kt
+
+언어: Java · 셀#1
+// Add a new document with a generated id.
+Map<String, Object> data = new HashMap<>();
+data.put("name", "Tokyo");
+data.put("country", "Japan");
+
+db.collection("cities")
+ .add(data)
+ .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+ @Override
+ public void onSuccess(DocumentReference documentReference) {
+ Log.d(TAG, "DocumentSnapshot written with ID: " + documentReference.getId());
+ }
+ })
+ .addOnFailureListener(new OnFailureListener() {
+ @Override
+ public void onFailure(@NonNull Exception e) {
+ Log.w(TAG, "Error adding document", e);
+ }
+ });
+DocSnippets.java
+
+언어: Dart · 셀#1
+// Add a new document with a generated id.
+final data = {"name": "Tokyo", "country": "Japan"};
+
+db.collection("cities").add(data).then((documentSnapshot) =>
+ print("Added Data with ID: ${documentSnapshot.id}"));
+firestore.dart
+
+언어: Python · 셀#1
+city = {"name": "Tokyo", "country": "Japan"}
+update_time, city_ref = db.collection("cities").add(city)
+print(f"Added document with id {city_ref.id}")
+snippets.py
+
+언어: Web · 셀#1
+import { collection, doc, setDoc } from "firebase/firestore";
+
+// Add a new document with a generated id
+const newCityRef = doc(collection(db, "cities"));
+
+// later...
+await setDoc(newCityRef, data);
+new_document.js
+
+언어: Swift · 셀#1
+let newCityRef = db.collection("cities").document()
+
+// later...
+newCityRef.setData([
+ // ...
+])
+ViewController.swift
+
+언어: Objective-C · 셀#1
+FIRDocumentReference *newCityRef = [[self.db collectionWithPath:@"cities"] documentWithAutoID];
+// later...
+[newCityRef setData:@{ /* ... */ }];
+ViewController.m
+
+언어: Kotlin · 셀#1
+val data = HashMap<String, Any>()
+
+val newCityRef = db.collection("cities").document()
+
+// Later...
+newCityRef.set(data)
+DocSnippets.kt
+
+언어: Java · 셀#1
+Map<String, Object> data = new HashMap<>();
+
+DocumentReference newCityRef = db.collection("cities").document();
+
+// Later...
+newCityRef.set(data);
+DocSnippets.java
+
+언어: Dart · 셀#1
+// Add a new document with a generated id.
+final data = <String, dynamic>{};
+
+final newCityRef = db.collection("cities").doc();
+
+// Later...
+newCityRef.set(data);
+
+firestore.dart
+
+언어: Python · 셀#1
+new_city_ref = db.collection("cities").document()
+
+# later...
+new_city_ref.set(
+ {
+ # ...
+ }
+)
+snippets.py
+
+언어: 코드 · 셀#1
+db.collection("cities").document("new-city-id").set(data)
+snippets.py
+
+언어: 코드 · 셀#1
+city = {"name": "Tokyo", "country": "Japan"}
+update_time, city_ref = db.collection("cities").add(city)
+print(f"Added document with id {city_ref.id}")
+snippets.py
+
+언어: 코드 · 셀#1
+new_city_ref = db.collection("cities").document()
+
+# later...
+new_city_ref.set(
+ {
+ # ...
+ }
+)
+snippets.py
+
+## 문서 업데이트
+전체 문서를 덮어쓰지 않고 문서의 일부 필드를 업데이트하려면 다음과 같은 언어별 update() 메서드를 사용합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+import { doc, updateDoc } from "firebase/firestore";
+
+const washingtonRef = doc(db, "cities", "DC");
+
+// Set the "capital" field of the city 'DC'
+await updateDoc(washingtonRef, {
+ capital: true
+});
+update_document.js
+
+언어: Swift · 셀#1
+let washingtonRef = db.collection("cities").document("DC")
+
+// Set the "capital" field of the city 'DC'
+do {
+ try await washingtonRef.updateData([
+ "capital": true
+ ])
+ print("Document successfully updated")
+} catch {
+ print("Error updating document: \(error)")
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+FIRDocumentReference *washingtonRef =
+ [[self.db collectionWithPath:@"cities"] documentWithPath:@"DC"];
+// Set the "capital" field of the city
+[washingtonRef updateData:@{
+ @"capital": @YES
+} completion:^(NSError * _Nullable error) {
+ if (error != nil) {
+ NSLog(@"Error updating document: %@", error);
+ } else {
+ NSLog(@"Document successfully updated");
+ }
+}];
+ViewController.m
+
+언어: Kotlin · 셀#1
+val washingtonRef = db.collection("cities").document("DC")
+
+// Set the "isCapital" field of the city 'DC'
+washingtonRef
+ .update("capital", true)
+ .addOnSuccessListener { Log.d(TAG, "DocumentSnapshot successfully updated!") }
+ .addOnFailureListener { e -> Log.w(TAG, "Error updating document", e) }
+DocSnippets.kt
+
+언어: Java · 셀#1
+DocumentReference washingtonRef = db.collection("cities").document("DC");
+
+// Set the "isCapital" field of the city 'DC'
+washingtonRef
+ .update("capital", true)
+ .addOnSuccessListener(new OnSuccessListener<Void>() {
+ @Override
+ public void onSuccess(Void aVoid) {
+ Log.d(TAG, "DocumentSnapshot successfully updated!");
+ }
+ })
+ .addOnFailureListener(new OnFailureListener() {
+ @Override
+ public void onFailure(@NonNull Exception e) {
+ Log.w(TAG, "Error updating document", e);
+ }
+ });
+DocSnippets.java
+
+언어: Dart · 셀#1
+final washingtonRef = db.collection("cites").doc("DC");
+washingtonRef.update({"capital": true}).then(
+ (value) => print("DocumentSnapshot successfully updated!"),
+ onError: (e) => print("Error updating document $e"));
+firestore.dart
+
+언어: Python · 셀#1
+city_ref = db.collection("cities").document("DC")
+
+# Set the capital field
+city_ref.update({"capital": True})
+snippets.py
+
+언어: 코드 · 셀#1
+city_ref = db.collection("cities").document("DC")
+
+# Set the capital field
+city_ref.update({"capital": True})
+snippets.py
+
+## 서버 타임스탬프
+문서의 필드를 서버 업데이트 수신 시점을 추적하는 서버 타임스탬프로 설정할 수 있습니다.
+
+트랜잭션 안의 여러 타임스탬프 필드를 업데이트할 때 각 필드는 동일한 서버 타임스탬프 값을 수신합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+import { updateDoc, serverTimestamp } from "firebase/firestore";
+
+const docRef = doc(db, 'objects', 'some-id');
+
+// Update the timestamp field with the value from the server
+const updateTimestamp = await updateDoc(docRef, {
+ timestamp: serverTimestamp()
+});
+update_with_server_timestamp.js
+
+언어: Swift · 셀#1
+do {
+ try await db.collection("objects").document("some-id").updateData([
+ "lastUpdated": FieldValue.serverTimestamp(),
+ ])
+ print("Document successfully updated")
+} catch {
+ print("Error updating document: \(error)")
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+[[[self.db collectionWithPath:@"objects"] documentWithPath:@"some-id"] updateData:@{
+ @"lastUpdated": [FIRFieldValue fieldValueForServerTimestamp]
+} completion:^(NSError * _Nullable error) {
+ if (error != nil) {
+ NSLog(@"Error updating document: %@", error);
+ } else {
+ NSLog(@"Document successfully updated");
+ }
+}];
+ViewController.m
+
+언어: Kotlin · 셀#1
+// If you're using custom Kotlin objects in Android, add an @ServerTimestamp
+// annotation to a Date field for your custom object classes. This indicates
+// that the Date field should be treated as a server timestamp by the object mapper.
+val docRef = db.collection("objects").document("some-id")
+
+// Update the timestamp field with the value from the server
+val updates = hashMapOf<String, Any>(
+ "timestamp" to FieldValue.serverTimestamp(),
+)
+
+docRef.update(updates).addOnCompleteListener { }
+DocSnippets.kt
+
+언어: Java · 셀#1
+// If you're using custom Java objects in Android, add an @ServerTimestamp
+// annotation to a Date field for your custom object classes. This indicates
+// that the Date field should be treated as a server timestamp by the object mapper.
+DocumentReference docRef = db.collection("objects").document("some-id");
+
+// Update the timestamp field with the value from the server
+Map<String,Object> updates = new HashMap<>();
+updates.put("timestamp", FieldValue.serverTimestamp());
+
+docRef.update(updates).addOnCompleteListener(new OnCompleteListener<Void>() {
+ // ...
+ // ...
+DocSnippets.java
+
+언어: Dart · 셀#1
+final docRef = db.collection("objects").doc("some-id");
+final updates = <String, dynamic>{
+ "timestamp": FieldValue.serverTimestamp(),
+};
+
+docRef.update(updates).then(
+ (value) => print("DocumentSnapshot successfully updated!"),
+ onError: (e) => print("Error updating document $e"));
+firestore.dart
+
+언어: Python · 셀#1
+city_ref = db.collection("objects").document("some-id")
+city_ref.update({"timestamp": firestore.SERVER_TIMESTAMP})
+snippets.py
+
+언어: 코드 · 셀#1
+city_ref = db.collection("objects").document("some-id")
+city_ref.update({"timestamp": firestore.SERVER_TIMESTAMP})
+snippets.py
+
+## 중첩된 객체의 필드 업데이트
+문서에 중첩된 객체가 있으면 update()를 호출할 때 점 표기법을 사용하여 문서 내 중첩 필드를 참조할 수 있습니다.
+
+점 표기법을 사용하면 다른 중첩 필드를 덮어쓰지 않고 단일 중첩 필드를 업데이트할 수 있습니다. 점 표기법을 사용하지 않고 중첩 필드를 업데이트하면 다음 예시와 같이 전체 맵 필드를 덮어씁니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+import { doc, setDoc, updateDoc } from "firebase/firestore";
+
+// Create an initial document to update.
+const frankDocRef = doc(db, "users", "frank");
+await setDoc(frankDocRef, {
+ name: "Frank",
+ favorites: { food: "Pizza", color: "Blue", subject: "recess" },
+ age: 12
+});
+
+// To update age and favorite color:
+await updateDoc(frankDocRef, {
+ "age": 13,
+ "favorites.color": "Red"
+});
+update_document_nested.js
+
+언어: Swift · 셀#1
+// Create an initial document to update.
+let frankDocRef = db.collection("users").document("frank")
+do {
+ try await frankDocRef.setData([
+ "name": "Frank",
+ "favorites": [ "food": "Pizza", "color": "Blue", "subject": "recess" ],
+ "age": 12
+ ])
+
+ // To update age and favorite color:
+ try await frankDocRef.updateData([
+ "age": 13,
+ "favorites.color": "Red"
+ ])
+ print("Document successfully updated")
+} catch {
+ print("Error updating document: \(error)")
+}
+ViewController.swift
+
+언어: Objective-C · 셀#1
+// Create an initial document to update.
+FIRDocumentReference *frankDocRef =
+ [[self.db collectionWithPath:@"users"] documentWithPath:@"frank"];
+[frankDocRef setData:@{
+ @"name": @"Frank",
+ @"favorites": @{
+ @"food": @"Pizza",
+ @"color": @"Blue",
+ @"subject": @"recess"
+ },
+ @"age": @12
+}];
+// To update age and favorite color:
+[frankDocRef updateData:@{
+ @"age": @13,
+ @"favorites.color": @"Red",
+} completion:^(NSError * _Nullable error) {
+ if (error != nil) {
+ NSLog(@"Error updating document: %@", error);
+ } else {
+ NSLog(@"Document successfully updated");
+ }
+}];
+ViewController.m
+
+언어: Kotlin · 셀#1
+// Assume the document contains:
+// {
+// name: "Frank",
+// favorites: { food: "Pizza", color: "Blue", subject: "recess" }
+// age: 12
+// }
+//
+// To update age and favorite color:
+db.collection("users").document("frank")
+ .update(
+ mapOf(
+ "age" to 13,
+ "favorites.color" to "Red",
+ ),
+ )
+DocSnippets.kt
+
+언어: Java · 셀#1
+// Assume the document contains:
+// {
+// name: "Frank",
+// favorites: { food: "Pizza", color: "Blue", subject: "recess" }
+// age: 12
+// }
+//
+// To update age and favorite color:
+db.collection("users").document("frank")
+ .update(
+ "age", 13,
+ "favorites.color", "Red"
+ );
+DocSnippets.java
+
+언어: Dart · 셀#1
+// Assume the document contains:
+// {
+// name: "Frank",
+// favorites: { food: "Pizza", color: "Blue", subject: "recess" }
+// age: 12
+// }
+db
+ .collection("users")
+ .doc("frank")
+ .update({"age": 13, "favorites.color": "Red"});
+firestore.dart
+
+언어: Python · 셀#1
+# Create an initial document to update
+frank_ref = db.collection("users").document("frank")
+frank_ref.set(
+ {
+ "name": "Frank",
+ "favorites": {"food": "Pizza", "color": "Blue", "subject": "Recess"},
+ "age": 12,
+ }
+)
+
+# Update age and favorite color
+frank_ref.update({"age": 13, "favorites.color": "Red"})
+snippets.py
+
+언어: 웹 · 셀#1
+// Create our initial doc
+db.collection("users").doc("frank").set({
+ name: "Frank",
+ favorites: {
+ food: "Pizza",
+ color: "Blue",
+ subject: "Recess"
+ },
+ age: 12
+}).then(function() {
+ console.log("Frank created");
+});
+
+// Update the doc without using dot notation.
+// Notice the map value for favorites.
+db.collection("users").doc("frank").update({
+ favorites: {
+ food: "Ice Cream"
+ }
+}).then(function() {
+ console.log("Frank food updated");
+});
+
+/*
+Ending State, favorite.color and favorite.subject are no longer present:
+/users
+ /frank
+ {
+ name: "Frank",
+ favorites: {
+ food: "Ice Cream",
+ },
+ age: 12
+ }
+ */
+
+언어: 코드 · 셀#1
+# Create an initial document to update
+frank_ref = db.collection("users").document("frank")
+frank_ref.set(
+ {
+ "name": "Frank",
+ "favorites": {"food": "Pizza", "color": "Blue", "subject": "Recess"},
+ "age": 12,
+ }
+)
+
+# Update age and favorite color
+frank_ref.update({"age": 13, "favorites.color": "Red"})
+snippets.py
+
+언어: 코드 · 셀#1
+// Create our initial doc
+db.collection("users").doc("frank").set({
+ name: "Frank",
+ favorites: {
+ food: "Pizza",
+ color: "Blue",
+ subject: "Recess"
+ },
+ age: 12
+}).then(function() {
+ console.log("Frank created");
+});
+
+// Update the doc without using dot notation.
+// Notice the map value for favorites.
+db.collection("users").doc("frank").update({
+ favorites: {
+ food: "Ice Cream"
+ }
+}).then(function() {
+ console.log("Frank food updated");
+});
+
+/*
+Ending State, favorite.color and favorite.subject are no longer present:
+/users
+ /frank
+ {
+ name: "Frank",
+ favorites: {
+ food: "Ice Cream",
+ },
+ age: 12
+ }
+ */
+
+## 배열 요소 업데이트
+문서에 배열 필드가 포함되어 있으면 arrayUnion() 및 arrayRemove()를 사용해 요소를 추가하거나 삭제할 수 있습니다. arrayUnion()은 배열에 없는 요소만 추가하고, arrayRemove()는 제공된 각 요소의 모든 인스턴스를 삭제합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+import { doc, updateDoc, arrayUnion, arrayRemove } from "firebase/firestore";
+
+const washingtonRef = doc(db, "cities", "DC");
+
+// Atomically add a new region to the "regions" array field.
+await updateDoc(washingtonRef, {
+ regions: arrayUnion("greater_virginia")
+});
+
+// Atomically remove a region from the "regions" array field.
+await updateDoc(washingtonRef, {
+ regions: arrayRemove("east_coast")
+});
+update_document_array.js
+
+언어: Swift · 셀#1
+let washingtonRef = db.collection("cities").document("DC")
+
+// Atomically add a new region to the "regions" array field.
+washingtonRef.updateData([
+ "regions": FieldValue.arrayUnion(["greater_virginia"])
+])
+
+// Atomically remove a region from the "regions" array field.
+washingtonRef.updateData([
+ "regions": FieldValue.arrayRemove(["east_coast"])
+])
+ViewController.swift
+
+언어: Objective-C · 셀#1
+FIRDocumentReference *washingtonRef =
+ [[self.db collectionWithPath:@"cities"] documentWithPath:@"DC"];
+
+// Atomically add a new region to the "regions" array field.
+[washingtonRef updateData:@{
+ @"regions": [FIRFieldValue fieldValueForArrayUnion:@[@"greater_virginia"]]
+}];
+
+// Atomically remove a new region to the "regions" array field.
+[washingtonRef updateData:@{
+ @"regions": [FIRFieldValue fieldValueForArrayRemove:@[@"east_coast"]]
+}];
+ViewController.m
+
+언어: Kotlin · 셀#1
+val washingtonRef = db.collection("cities").document("DC")
+
+// Atomically add a new region to the "regions" array field.
+washingtonRef.update("regions", FieldValue.arrayUnion("greater_virginia"))
+
+// Atomically remove a region from the "regions" array field.
+washingtonRef.update("regions", FieldValue.arrayRemove("east_coast"))
+DocSnippets.kt
+
+언어: Java · 셀#1
+DocumentReference washingtonRef = db.collection("cities").document("DC");
+
+// Atomically add a new region to the "regions" array field.
+washingtonRef.update("regions", FieldValue.arrayUnion("greater_virginia"));
+
+// Atomically remove a region from the "regions" array field.
+washingtonRef.update("regions", FieldValue.arrayRemove("east_coast"));
+DocSnippets.java
+
+언어: Dart · 셀#1
+final washingtonRef = db.collection("cities").doc("DC");
+
+// Atomically add a new region to the "regions" array field.
+washingtonRef.update({
+ "regions": FieldValue.arrayUnion(["greater_virginia"]),
+});
+
+// Atomically remove a region from the "regions" array field.
+washingtonRef.update({
+ "regions": FieldValue.arrayRemove(["east_coast"]),
+});
+firestore.dart
+
+언어: Python · 셀#1
+city_ref = db.collection("cities").document("DC")
+
+# Atomically add a new region to the 'regions' array field.
+city_ref.update({"regions": firestore.ArrayUnion(["greater_virginia"])})
+
+# // Atomically remove a region from the 'regions' array field.
+city_ref.update({"regions": firestore.ArrayRemove(["east_coast"])})
+snippets.py
+
+언어: 코드 · 셀#1
+city_ref = db.collection("cities").document("DC")
+
+# Atomically add a new region to the 'regions' array field.
+city_ref.update({"regions": firestore.ArrayUnion(["greater_virginia"])})
+
+# // Atomically remove a region from the 'regions' array field.
+city_ref.update({"regions": firestore.ArrayRemove(["east_coast"])})
+snippets.py
+
+## 숫자 값 늘리기
+다음 예시와 같이 숫자 필드 값을 늘리거나 줄일 수 있습니다. 증분 작업은 필드의 현재 값을 지정된 값만큼 늘리거나 줄입니다.
+
+증분 작업은 카운터를 구현하는 데 유용하지만, 단일 문서를 너무 빨리 업데이트하면 경합 또는 오류가 발생할 수 있습니다. 카운터를 매우 높은 속도로 업데이트해야 하는 경우 분산 카운터 페이지를 참조하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Web · 셀#1
+import { doc, updateDoc, increment } from "firebase/firestore";
+
+const washingtonRef = doc(db, "cities", "DC");
+
+// Atomically increment the population of the city by 50.
+await updateDoc(washingtonRef, {
+ population: increment(50)
+});
+update_document_increment.js
+
+언어: Swift · 셀#1
+let washingtonRef = db.collection("cities").document("DC")
+
+// Atomically increment the population of the city by 50.
+// Note that increment() with no arguments increments by 1.
+washingtonRef.updateData([
+ "population": FieldValue.increment(Int64(50))
+])
+ViewController.swift
+
+언어: Objective-C · 셀#1
+FIRDocumentReference *washingtonRef =
+ [[self.db collectionWithPath:@"cities"] documentWithPath:@"DC"];
+
+// Atomically increment the population of the city by 50.
+// Note that increment() with no arguments increments by 1.
+[washingtonRef updateData:@{
+ @"population": [FIRFieldValue fieldValueForIntegerIncrement:50]
+}];
+ViewController.m
+
+언어: Kotlin · 셀#1
+val washingtonRef = db.collection("cities").document("DC")
+
+// Atomically increment the population of the city by 50.
+washingtonRef.update("population", FieldValue.increment(50))
+DocSnippets.kt
+
+언어: Java · 셀#1
+DocumentReference washingtonRef = db.collection("cities").document("DC");
+
+// Atomically increment the population of the city by 50.
+washingtonRef.update("population", FieldValue.increment(50));
+DocSnippets.java
+
+언어: Dart · 셀#1
+var washingtonRef = db.collection('cities').doc('DC');
+
+// Atomically increment the population of the city by 50.
+washingtonRef.update(
+ {"population": FieldValue.increment(50)},
+);
+firestore.dart
+
+언어: Python · 셀#1
+washington_ref = db.collection("cities").document("DC")
+
+washington_ref.update({"population": firestore.Increment(50)})
+snippets.py
+
+언어: 코드 · 셀#1
+washington_ref = db.collection("cities").document("DC")
+
+washington_ref.update({"population": firestore.Increment(50)})
+snippets.py

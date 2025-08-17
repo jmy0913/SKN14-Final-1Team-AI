@@ -1,0 +1,38 @@
+Source URL: https://developers.google.com/people/v1/libraries?hl=ko
+
+## 본문
+People API는 HTTP 및 JSON에 기반하므로 모든 표준 HTTP 클라이언트는 요청을 보내고 응답을 파싱할 수 있습니다.
+
+그러나 Google API 클라이언트 라이브러리는 HTTP를 통한 API 요청에 대한 통합 및 향상된 보안 클라이언트 라이브러리는 다양한 프로그래밍 언어 사전 정의된 임곗값을 사용하면 응답을 파싱합니다
+
+시작하려면 개발에 사용할 프로그래밍 언어를 선택하세요.
+
+다음 표에는 People API에 액세스하는 다른 방법이 나와 있습니다.
+
+### 표
+| 액세스 방법 | 설명 |
+| --- | --- |
+| 액세스 방법 | 설명 |
+| API 탐색기 | 브라우저에서 바로 Google API를 사용해 볼 수 있는 대화형 도구 |
+| Apps Script | Google 제품 및 서드 파티 서비스 전반에서 작업을 자동화하는 JavaScript 클라우드 스크립팅 언어입니다. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: iframe · 셀#1
+<project>
+ <dependencies>
+ <dependency>
+ <groupId>com.google.apis</groupId>
+ <artifactId>google-api-services-people</artifactId>
+ <version>v1-rev20240313-2.0.0</version>
+ </dependency>
+ </dependencies>
+</project>
+
+언어: iframe · 셀#1
+repositories {
+ mavenCentral()
+}
+
+dependencies {
+ compile 'com.google.apis:google-api-services-people:v1-rev20240313-2.0.0'
+}

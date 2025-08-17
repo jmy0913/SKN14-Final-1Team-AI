@@ -1,0 +1,44 @@
+Source URL: https://firebase.google.com/docs/firestore/reference/rest/v1/projects.databases.backupSchedules/patch?hl=ko
+
+## 본문
+Updates a backup schedule.
+
+PATCH https://firestore.googleapis.com/v1/{backupSchedule.name=projects/*/databases/*/backupSchedules/*}
+
+The URL uses gRPC Transcoding syntax.
+
+The request body contains an instance of BackupSchedule.
+
+If successful, the response body contains an instance of BackupSchedule.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the OAuth 2.0 Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| backupSchedule.name | string Output only. The unique backup schedule identifier across all locations and databases for the given project. This will be auto-assigned. Format is projects/{project}/databases/{database}/backupSchedules/{backupSchedule} |
+
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| updateMask | string (FieldMask format) The list of fields to be updated. This is a comma-separated list of fully qualified names of fields. Example: "user.displayName,photo". |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+PATCH https://firestore.googleapis.com/v1/{backupSchedule.name=projects/*/databases/*/backupSchedules/*}
+
+언어: 코드 · 셀#2
+BackupSchedule
+
+언어: 코드 · 셀#3
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#4
+https://www.googleapis.com/auth/cloud-platform

@@ -1,0 +1,30 @@
+Source URL: https://developers.google.com/people/support?hl=ko
+
+## 서문
+참고:
+
+개발자
+
+의견
+
+문제 신고
+
+## Reddit (비공식)
+r/GoogleAppsScript
+
+r/googleworkspacedevs
+
+## Stack Overflow
+기존 질문 검색 새 질문하기
+
+## 개발자 제품 의견
+기존 의견 검색 버그 제출 기능 요청 제출
+
+## Google Workspace 지원팀에 문의하기
+문제에 대한 설명 및 정상일 때의 작동 방식
+
+문제를 재현하는 데 사용할 수 있는 단계 목록 및 소량의 샘플 코드 스니펫
+
+기대한 출력 및 실제로 발생한 출력에 대한 설명. 발생한 오류 메시지를 모두 포함하세요.
+
+개발 환경에 대한 정보(프로그래밍 언어, 라이브러리 버전 등)

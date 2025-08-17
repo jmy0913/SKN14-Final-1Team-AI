@@ -1,0 +1,35 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.backupSchedules/create?hl=ko
+
+## 본문
+Creates a backup schedule on a database. At most two backup schedules can be configured on a database, one daily backup schedule and one weekly backup schedule.
+
+POST https://firestore.googleapis.com/v1/{parent=projects/*/databases/*}/backupSchedules
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+Required. The parent database.
+
+Format projects/{project}/databases/{database}
+
+The request body contains an instance of BackupSchedule.
+
+If successful, the response body contains a newly created instance of BackupSchedule.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| parent | string
+
+Required. The parent database.
+
+Format projects/{project}/databases/{database} |

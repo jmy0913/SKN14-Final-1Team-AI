@@ -1,0 +1,78 @@
+Source URL: https://firebase.google.com/docs/perf-mon?hl=ko
+
+## 서문
+앱의 성능 문제를 파악합니다.
+
+Performance Monitoring SDK를 사용하여 앱에서 성능 데이터를 수집하고 Firebase Console에서 데이터를 검토 및 분석합니다. Performance Monitoring을 통해 앱 성능을 개선할 수 있는 부분을 실시간으로 파악하여 성능 문제를 해결할 수 있습니다.
+
+시작할 준비가 되셨나요? 플랫폼을 선택하세요.
+
+iOS+ Android 웹 Flutter
+
+## 주요 기능
+### 표
+| 앱 시작 시간, HTTP 네트워크 요청 등을 자동으로 측정 | 앱에 Performance Monitoring SDK를 통합하면 코드를 작성할 필요 없이 앱 성능을 크게 좌우하는 여러 가지 요소에 대한 모니터링을 시작할 수 있습니다.
+네이티브 앱의 경우 SDK는 시작 시간, 화면별 렌더링 데이터, 포그라운드 활동, 백그라운드 활동을 로깅합니다. 웹 앱의 경우 SDK는 콘텐츠가 포함된 첫 페인트, 사용자가 앱과 상호작용하는 기능 등의 요소를 로깅합니다. |
+| --- | --- |
+| 앱 성능을 개선할 수 있는 상황 파악 | 사용자에게 불편을 주는 상황과 이유를 정확히 파악하지 못하면 앱의 성능을 최적화하기가 어려울 수 있습니다. Performance Monitoring을 사용하면 성능 측정항목을 국가, 기기, 앱 버전, OS 수준과 같은 속성에 따라 분류하여 파악할 수 있습니다. |
+| 앱 모니터링 맞춤설정 | 커스텀 코드 trace를 계측하면 새 화면을 로드하거나 새 상호작용 기능을 표시할 때와 같은 특정 상황의 앱 성능을 캡처할 수 있습니다. 또한 이러한 trace를 수집하면서 직접 정의한 이벤트(예: 캐시 적중)를 계수하는 커스텀 측정항목을 커스텀 코드 trace에서 만들 수 있습니다. |
+| 앱 성능의 큰 변화 파악 | 앱을 성공적으로 운영하려면 네트워크 중단과 같은 주요 앱 성능 문제를 파악하고 해결하는 것이 매우 중요합니다. Performance Monitoring을 사용하면 앱의 가장 중요한 부분에 대한 알림을 설정하고 맞춤설정하여 이러한 문제가 사용자에게 영향을 미치기 전에 성능 문제를 발견하고 이에 대응할 수 있습니다. |
+
+## 작동 원리
+Performance Monitoring SDK를 추가하면 Firebase에서 자동으로 앱의 여러 일반적인 프로세스에 대한 데이터를 수집하기 시작합니다. 예를 들면 다음과 같습니다.
+
+Apple 및 Android 앱의 앱 시작 시간
+
+Apple 및 Android 앱용 화면 렌더링
+
+웹 앱용 페이지 로드
+
+모든 유형의 앱에 대한 네트워크 요청
+
+Performance Monitoring은 trace를 사용하여 이러한 프로세스에 대한 데이터를 수집합니다. trace는 앱에서 두 시점 간에 캡처된 데이터가 포함된 보고서입니다.
+
+각 trace의 수집된 성능 데이터를 측정항목이라고 하며, 이는 trace 유형에 따라 다릅니다. 예를 들어 앱의 인스턴스에서 네트워크 요청을 실행하면 trace는 응답 시간 및 페이로드 크기와 같이 네트워크 요청 모니터링에 중요한 측정항목을 수집합니다.
+
+앱의 인스턴스가 모니터링되는 프로세스를 실행할 때마다 연결된 trace가 해당 앱 인스턴스의 속성 데이터를 자동으로 수집합니다. 예를 들어 Android 앱에서 네트워크 요청을 실행하는 경우 trace는 특정 앱 인스턴스의 기기, 앱 버전, 기타 속성을 수집합니다. 이러한 속성을 사용하여 성능 데이터를 필터링하고 특정 사용자 세그먼트에 문제가 발생했는지 확인할 수 있습니다.
+
+Performance Monitoring의 기본 trace를 사용하면 앱 모니터링을 시작할 수 있지만 특정 작업 또는 흐름의 성능을 알아보려면 앱에서 코드의 자체 커스텀 trace 계측을 시도해 보세요.
+
+### 표
+|   | Apple 및 Android 앱의 앱 시작 시간
+Apple 및 Android 앱용 화면 렌더링 | 웹 앱용 페이지 로드
+모든 유형의 앱에 대한 네트워크 요청 |
+| --- | --- | --- |
+
+## 구현 경로
+### 표
+|   | 앱에 Performance Monitoring SDK 추가 | 앱에서 사용할 기타 Firebase 제품과 함께 Performance Monitoring SDK를 앱에 추가할 수 있습니다.
+Apple 플랫폼 | Android | Web | Flutter |
+| --- | --- | --- |
+|  | (선택사항)
+앱에서 커스텀 코드 trace 및 커스텀 측정항목 계측 | Performance Monitoring SDK를 사용하면 커스텀 코드 trace 및 커스텀 측정항목을 계측하여 앱 성능의 특정한 부분을 측정할 수 있습니다. |
+|  | Console에서 성능 데이터를 실시간으로 모니터링 | Firebase Console에서 사용자가 체감하는 성능 데이터를 모니터링하여 앱 성능을 개선할 수 있는 여지를 구체적으로 파악할 수 있습니다. 성능 데이터를 앱 버전, 국가, 기기, OS와 같은 속성에 따라 분류하여 파악할 수 있습니다. |
+
+## 사용자 데이터
+Performance Monitoring은 이름, 이메일 주소, 전화번호 등 개인을 식별하는 정보를 영구적으로 저장하지 않습니다. Performance Monitoring은 HTTP 네트워크 요청을 모니터링할 때 URL 파라미터를 제외한 URL을 사용하여 집계된 익명 URL 패턴을 작성하며 이 패턴이 저장되어 Firebase Console에 표시됩니다.
+
+자세한 내용은 Performance Monitoring에서 수집하는 정보의 예를 참조하세요.
+
+## 다음 단계
+앱에서 Performance Monitoring을 사용하려면 다음을 참조하세요.
+
+Apple 플랫폼에서 Performance Monitoring 시작하기
+Android에서 Performance Monitoring 시작하기
+웹에서 Performance Monitoring 시작하기
+Flutter에서 Performance Monitoring 시작하기
+
+앱에서 Performance Monitoring을 사용하려면 다음을 참조하세요.
+
+Apple 플랫폼에서 Performance Monitoring 시작하기
+
+Android에서 Performance Monitoring 시작하기
+
+웹에서 Performance Monitoring 시작하기
+
+Flutter에서 Performance Monitoring 시작하기
+
+알림 설정에 대한 자세한 내용은 성능 문제 알림 설정을 참조하세요.

@@ -1,0 +1,37 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rpc/google.type?hl=ko
+
+## 본문
+DayOfWeek (enum)
+
+LatLng (message)
+
+Represents a day of the week.
+
+An object that represents a latitude/longitude pair. This is expressed as a pair of doubles to represent degrees latitude and degrees longitude. Unless specified otherwise, this object must conform to the WGS84 standard. Values must be within normalized ranges.
+
+double
+
+The latitude in degrees. It must be in the range [-90.0, +90.0].
+
+The longitude in degrees. It must be in the range [-180.0, +180.0].
+
+### 표
+| Enums |
+| --- |
+| DAY_OF_WEEK_UNSPECIFIED | The day of the week is unspecified. |
+| MONDAY | Monday |
+| TUESDAY | Tuesday |
+| WEDNESDAY | Wednesday |
+| THURSDAY | Thursday |
+| FRIDAY | Friday |
+| SATURDAY | Saturday |
+| SUNDAY | Sunday |
+
+| Fields |
+| --- |
+| latitude | double
+
+The latitude in degrees. It must be in the range [-90.0, +90.0]. |
+| longitude | double
+
+The longitude in degrees. It must be in the range [-180.0, +180.0]. |

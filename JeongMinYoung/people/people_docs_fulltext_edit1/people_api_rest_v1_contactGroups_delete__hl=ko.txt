@@ -1,0 +1,74 @@
+Source URL: https://developers.google.com/people/api/rest/v1/contactGroups/delete?hl=ko
+
+## 본문
+HTTP 요청
+
+경로 매개변수
+
+쿼리 매개변수
+
+요청 본문
+
+응답 본문
+
+승인 범위
+
+실습
+
+연락처 그룹 리소스 이름을 지정하여 인증된 사용자가 소유한 기존 연락처 그룹을 삭제합니다.
+
+지연 시간 증가 및 실패를 방지하려면 동일한 사용자에 대한 변형 요청을 순차적으로 전송해야 합니다.
+
+DELETE https://people.googleapis.com/v1/{resourceName=contactGroups/*}
+
+URL은 gRPC 트랜스코딩 구문을 사용합니다.
+
+string
+
+필수 항목입니다. 삭제할 연락처 그룹의 리소스 이름입니다.
+
+boolean
+
+선택사항입니다. 지정된 그룹에서 연락처도 삭제하려면 true로 설정합니다.
+
+요청 본문은 비어 있어야 합니다.
+
+성공한 경우 응답 본문은 비어 있습니다.
+
+다음 OAuth 범위가 필요합니다.
+
+https://www.googleapis.com/auth/contacts
+
+자세한 내용은 승인 가이드를 참조하세요.
+
+### 표
+| 매개변수 | |
+| --- | --- |
+| resourceName | string
+
+필수 항목입니다. 삭제할 연락처 그룹의 리소스 이름입니다. |
+
+| 매개변수 | |
+| --- | --- |
+| deleteContacts | boolean
+
+선택사항입니다. 지정된 그룹에서 연락처도 삭제하려면 true로 설정합니다. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+DELETE https://people.googleapis.com/v1/{resourceName=contactGroups/*}
+
+언어: 코드 · 셀#2
+resourceName
+
+언어: 코드 · 셀#3
+string
+
+언어: 코드 · 셀#4
+deleteContacts
+
+언어: 코드 · 셀#5
+boolean
+
+언어: 코드 · 셀#6
+https://www.googleapis.com/auth/contacts

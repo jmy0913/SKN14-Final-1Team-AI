@@ -1,0 +1,91 @@
+Source URL: https://firebase.google.com/docs/ios/learn-more?hl=ko
+
+## 서문
+Firebase를 사용하여 Apple 앱을 개발할 때 익숙하지 않거나 Firebase에만 해당하는 개념을 발견할 수 있습니다. 이 페이지에서는 이러한 질문에 답변하거나 자세한 내용을 알아보는 데 유용한 리소스를 안내합니다.
+
+이 페이지에서 다루지 않은 주제와 관련해 궁금한 점이 있으면 언제든지 온라인 커뮤니티를 방문하시기 바랍니다. 이 페이지에는 정기적으로 새로운 주제가 업데이트되므로 알아보려는 주제가 추가되었는지 추후에 다시 확인해 보세요.
+
+## 플랫폼별 Firebase 라이브러리 지원
+다음 표에서는 Apple 플랫폼과 호환되는 Firebase 라이브러리를 설명합니다. 당분간 visionOS 및 watchOS는 커뮤니티에서만 지원됩니다. 설치 안내 및 알려진 문제는 Firebase Apple 플랫폼 SDK GitHub 저장소를 참조하세요.
+
+1 Firebase AI Logic은 이전에 'Vertex AI in Firebase'라고 불렸습니다.
+
+### 표
+| 라이브러리 | iOS | macOS | Mac
+Catalyst | tvOS | visionOS | watchOS |
+| --- | --- | --- | --- | --- | --- | --- |
+| A/B Testing |  |  |  |  |  |  |
+| Firebase AI Logic 1 | iOS 15 이상 | macOS 12 이상 | Catalyst 15 이상 | tvOS 15 이상(커뮤니티 지원만 제공) |  | watchOS 8 이상 |
+| Analytics |  | v8.9.0+ | v8.9.0+ | v8.9.0+ |  |  |
+| 광고 ID가 없는 Analytics |  | v8.9.0+ | v8.9.0+ | v8.9.0+ |  |  |
+| Analytics 온디바이스 전환 |  |  |  |  |  |  |
+| App Check DeviceCheck 제공업체 |  |  |  |  |  | watchOS 9+ |
+| App Check App Attest 제공업체 | iOS 14+ | macOS 11 이상 | Catalyst 14 이상 | tvOS 15 이상 |  | watchOS 9+ |
+| App Check 커스텀 및 디버그 제공자 |  |  |  |  |  |  |
+| App Distribution |  |  |  |  |  |  |
+| Authentication |  | partial | partial | partial | partial | partial |
+| Cloud Firestore |  |  |  |  | 소스 배포판만 |  |
+| Cloud Functions |  |  |  |  |  |  |
+| Cloud Messaging |  |  |  |  |  |  |
+| Cloud Storage |  |  |  |  |  |  |
+| Crashlytics |  |  |  |  |  |  |
+| Data Connect |  |  |  |  |  |  |
+| Dynamic Links |  |  |  |  |  |  |
+| Firebase 설치 |  |  |  |  |  |  |
+| Firebase ML 모델 다운로더 |  |  |  |  |  |  |
+| In-App Messaging |  |  |  |  |  |  |
+| Performance Monitoring |  |  |  |  |  |  |
+| Realtime Database |  |  |  |  |  |  |
+| Remote Config |  |  |  |  |  |  |
+
+## 앱 클립
+대부분의 Firebase 라이브러리는 앱 클립 타겟에 빌드되어 실행되지만 대부분의 경우 기본 OS 제한사항에 영향을 받습니다. 알려진 문제는 다음과 같습니다.
+
+사용자가 앱이 설치되지 않은 링크를 탭하면 동적 링크를 통해 앱 클립으로 이동할 수 없습니다.
+
+Firestore 및 실시간 데이터베이스에서 기본 CFStream 종속 항목으로 인해 앱 클립의 데이터를 로드할 수 없습니다.
+
+알려진 앱 클립 문제의 전체 목록은 Firebase GitHub 저장소를 참조하세요.
+
+## GoogleService-Info.plist
+Firebase를 Apple 프로젝트에 추가하는 과정에서 프로젝트에 GoogleService-Info.plist 구성 파일을 추가해야 합니다. 단일 앱에서 여러 Firebase 프로젝트를 사용하려면 여러 프로젝트 구성 문서를 참조하세요.
+
+Firebase 앱 초기화 프로세스에 대한 자세한 내용은 Swift 참고 문서를 확인하세요.
+
+## Swift Package Manager
+Swift Package Manager 통합에 관한 자세한 내용은 가이드를 참조하세요.
+
+## SwiftUI
+Firebase는 SwiftUI를 완벽하게 지원하지만, 완전한 SwiftUI 환경에서 Firebase가 올바르게 작동하려면 UIKit 앱과 약간 다르게 설정해야 합니다. 자세한 내용은 피터 프리제의 블로그 게시물을 참조하세요.
+
+알려진 문제로 인해 SwiftUI 애플리케이션에서 재구성을 중지해야 합니다. 자세한 내용은 앱 대리인 재구성 섹션을 참조하세요.
+
+## 앱 대리인 재구성
+Firebase는 앱의 앱 위임 클래스에서 일부 메서드를 재구성하여 FCM 및 APN 토큰과 같은 특정 Firebase 서비스를 OS 콜백에 자동으로 연결합니다. 앱의 Info.plist 파일에 FirebaseAppDelegateProxyEnabled 플래그를 추가하고 NO로 설정하여 재구성을 중지할 수 있습니다.
+
+Analytics, App Distribution, Authentication, FCM 등 4가지 Firebase 제품에서 앱 대리인 재구성을 사용합니다. 애플리케이션에서 재구성을 중지했으며 다음 제품 중 하나를 사용하는 경우 제품별 가이드를 참고하여 재구성 없이 제품을 사용하는 방법을 알아보세요.
+
+Analytics
+
+App Distribution
+
+Authentication
+
+FCM
+
+## iOS 14 지원
+iOS 14에는 사용자의 광고 식별자에 대한 사용자 권한이 새롭게 변경되었습니다. 앱에 영향을 미칠지에 대한 자세한 내용은 iOS 14 준비 가이드를 참조하세요.
+
+## Firebase Apple 플랫폼 SDK용 오픈소스 리소스
+Firebase는 오픈소스 개발을 지원하며 커뮤니티 참여와 의견 제공을 권장합니다.
+
+## Firebase Apple 플랫폼 SDK
+Analytics를 제외한 모든 Apple 플랫폼용 Firebase SDK는 공개 Firebase GitHub 저장소에서 오픈소스 라이브러리로 개발됩니다.
+
+## FirebaseUI
+FirebaseUI는 Cloud Firestore 및 Realtime Database의 인증 및 데이터 유틸리티를 위한 삽입형 UI 흐름을 포함하며 Firebase를 기반으로 한 유틸리티 라이브러리 집합입니다. GitHub 페이지에서 FirebaseUI에 대한 자세한 내용을 참조하세요.
+
+## 빠른 시작 샘플
+Firebase는 iOS용 Firebase API 대부분에 대한 빠른 시작 샘플 모음을 유지관리합니다. 공개 Firebase GitHub 빠른 시작 저장소에서 이러한 빠른 시작을 찾아보세요.
+
+Xcode에서 각 빠른 시작을 연 다음 휴대기기 또는 시뮬레이터에서 실행할 수 있습니다. 또는 Firebase SDK를 사용하기 위한 예시 코드로 이 빠른 시작을 사용할 수 있습니다.

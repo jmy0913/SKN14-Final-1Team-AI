@@ -1,0 +1,63 @@
+Source URL: https://firebase.google.com/docs/unity/learn-more?hl=ko
+
+## 서문
+Firebase를 사용하여 Unity 프로젝트를 개발할 때 익숙하지 않거나 Firebase에만 해당하는 개념을 발견할 수도 있습니다. 이 페이지에서는 이러한 질문에 답변하거나 자세한 내용을 알아보는 데 유용한 리소스를 안내합니다.
+
+이 페이지에서 다루지 않은 주제와 관련해 궁금한 점이 있으면 언제든지 온라인 커뮤니티를 방문하시기 바랍니다. 이 페이지에는 정기적으로 새로운 주제가 업데이트되므로 알아보려는 주제가 추가되었는지 추후에 다시 확인해 보세요.
+
+## 플랫폼별 Firebase 라이브러리 지원
+다음 표에서는 어떤 Firebase 라이브러리가 어떤 플랫폼과 호환되는지 설명합니다. 현재 데스크톱 플랫폼은 개발 워크플로를 용이하게 하기 위해 Unity 편집기에서만 공식적으로만 지원됩니다.
+
+### 표
+| 플랫폼 | Android | iOS | tvOS | macOS
+(베타) | Windows
+(베타) | Linux
+(베타) |
+| --- | --- | --- | --- | --- | --- | --- |
+| A/B Testing |  |  | v10.4.0+ |  |  |  |
+| Firebase AI Logic |  |  | v10.4.0+ |  |  |  |
+| Analytics |  |  | v10.4.0+ |  |  |  |
+| App Distribution |  |  | v10.4.0+ |  |  |  |
+| Authentication |  |  | v10.4.0+ |  |  |  |
+| Cloud Firestore |  |  | v10.4.0+ |  |  |  |
+| Cloud Functions |  |  | v10.4.0+ |  |  |  |
+| Cloud Messaging |  |  | v10.4.0+ |  |  |  |
+| Cloud Storage |  |  | v10.4.0+ |  |  |  |
+| Crashlytics |  |  | v10.4.0+ |  |  |  |
+| Dynamic Links |  |  |  |  |  |  |
+| Realtime Database |  |  | v10.4.0+ |  |  |  |
+| Remote Config |  |  | v10.4.0+ |  |  |  |
+
+## Google 서비스 – 구성 파일
+Firebase를 Unity 프로젝트에 추가하는 과정에서 Firebase 구성 파일을 추가해야 합니다.
+
+Apple 플랫폼의 경우 GoogleService-Info.plist를 추가합니다.
+
+Android의 경우 google-services.json을 추가합니다.
+
+데스크톱의 경우 개발 중인 플랫폼에 따라 이러한 구성 파일 중 하나 또는 둘 다를 추가합니다.
+
+단일 앱에서 여러 Firebase 프로젝트를 사용하려면 여러 프로젝트 구성 문서를 참조하세요.
+
+## Firebase Unity SDK용 오픈소스 리소스
+Firebase는 오픈소스 개발을 지원하며 참여와 의견 제공을 권장합니다.
+
+## Firebase SDK
+오픈소스 Unity SDK는 GitHub 저장소에서 제공됩니다.
+
+Firebase용 Unity SDK 빌드 방법에 대해서 다음을 참조하세요.
+
+Unity SDK는 오픈소스 C++ SDK를 기반으로 빌드됩니다.
+
+C++ SDK는 오픈소스 iOS SDK 및 Android SDK를 기반으로 빌드됩니다.
+
+## 빠른 시작 샘플
+Firebase는 Unity용 Firebase API에 대한 빠른 시작 샘플 모음을 유지관리합니다. 공개 Firebase GitHub 빠른 시작 저장소에서 이러한 빠른 시작을 찾아보세요.
+
+Unity에서 각 빠른 시작을 연 다음 휴대기기 또는 Unity 편집기에서 실행할 수 있습니다. 또는 Firebase SDK를 사용하기 위한 예시 코드로 이 빠른 시작을 사용할 수 있습니다.
+
+## MechaHamster
+MechaHamster는 Unity에 기본 제공되는 오픈소스 게임으로 출시된 게임에서 Google Analytics, Authentication, Realtime Database, Cloud Messaging, Crashlytics, Remote Config, Cloud Storage, Cloud Functions, Test Lab을 비롯한 여러 Firebase 기능을 보여줍니다. Firebase GitHub 저장소에서 제공됩니다.
+
+## Firebase Unity 솔루션
+Firebase Unity 솔루션은 Unity 개발자가 Firebase로 일반적인 작업을 하는 데 도움이 되는 여러 오픈소스 유틸리티가 포함된 저장소입니다. 현재 솔루션에는 리더보드 구현과 Unity 편집기에서 직접 Firebase Remote Config 구성을 만들고 동기화할 수 있는 유틸리티가 포함되어 있습니다. Firebase GitHub 저장소에서 제공됩니다.

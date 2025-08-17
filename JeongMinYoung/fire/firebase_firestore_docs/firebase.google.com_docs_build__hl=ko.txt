@@ -1,0 +1,6 @@
+Source URL: https://firebase.google.com/docs/build?hl=ko
+
+## 본문
+전 세계로 확장할 수 있는 제품으로 빠르고 안전하게 시장에 진출하세요.
+
+앱에 AI 기반 환경을 빌드하고 Google Cloud에서 제공하는 완전 관리형 인프라로 개발을 가속화하여 가장 중요한 업무에 집중할 수 있습니다.

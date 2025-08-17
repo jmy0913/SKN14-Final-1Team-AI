@@ -1,0 +1,6 @@
+Source URL: https://firebase.google.com/docs/projects/iam/roles-custom?hl=ko
+
+## 본문
+커스텀 역할은 조직의 구체적인 요구에 맞춰 특정 권한을 보유하도록 완전히 맞춤설정된 IAM 역할입니다. Google Cloud 문서에서 커스텀 역할에 대해 자세히 알아보세요.
+
+Firebase 관련 권한과 다른 많은 Google Cloud 제품의 다양한 권한을 사용하여 커스텀 역할을 만듭니다.

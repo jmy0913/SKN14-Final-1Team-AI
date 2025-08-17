@@ -1,0 +1,13 @@
+Source URL: https://firebase.google.com/docs/firestore/reference/rest/Shared.Types/Density?hl=ko
+
+## 본문
+The density configuration for the index.
+
+### 표
+| Enums | |
+| --- | --- |
+| Enums | |
+| DENSITY_UNSPECIFIED | Unspecified. It will use database default setting. This value is input only. |
+| SPARSE_ALL | In order for an index entry to be added, the document must contain all fields specified in the index. This is the only allowed value for indexes having ApiScope ANY_API and DATASTORE_MODE_API. |
+| SPARSE_ANY | In order for an index entry to be added, the document must contain at least one of the fields specified in the index. Non-existent fields are treated as having a NULL value when generating index entries. |
+| DENSE | An index entry will be added regardless of whether the document contains any of the fields specified in the index. Non-existent fields are treated as having a NULL value when generating index entries. |

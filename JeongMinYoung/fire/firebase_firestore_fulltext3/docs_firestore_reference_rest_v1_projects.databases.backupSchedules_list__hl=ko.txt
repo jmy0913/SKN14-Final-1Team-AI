@@ -1,0 +1,48 @@
+Source URL: https://firebase.google.com/docs/firestore/reference/rest/v1/projects.databases.backupSchedules/list?hl=ko
+
+## 본문
+List backup schedules.
+
+GET https://firestore.googleapis.com/v1/{parent=projects/*/databases/*}/backupSchedules
+
+The URL uses gRPC Transcoding syntax.
+
+The request body must be empty.
+
+The response for FirestoreAdmin.ListBackupSchedules.
+
+If successful, the response body contains data with the following structure:
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the OAuth 2.0 Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| parent | string Required. The parent database. Format is projects/{project}/databases/{database}. |
+
+| JSON representation |
+| --- |
+| JSON representation |
+| { "backupSchedules": [ { object (BackupSchedule) } ] } |
+
+| Fields | |
+| --- | --- |
+| Fields | |
+| backupSchedules[] | object (BackupSchedule) List of all backup schedules. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+GET https://firestore.googleapis.com/v1/{parent=projects/*/databases/*}/backupSchedules
+
+언어: 코드 · 셀#2
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#3
+https://www.googleapis.com/auth/cloud-platform

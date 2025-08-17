@@ -1,0 +1,188 @@
+Source URL: https://firebase.google.com/docs/web/setup?hl=ko
+
+## 서문
+이 가이드에서는 웹 앱에서 또는 최종 사용자의 액세스를 위한 클라이언트(예: Node.js 데스크톱 또는 IoT 애플리케이션)로 Firebase JavaScript SDK를 사용하는 방법을 설명합니다.
+
+## 1단계: Firebase 프로젝트 만들기 및 앱 등록
+JavaScript 앱에 Firebase를 추가하려면 우선 Firebase 프로젝트를 만들고 해당 프로젝트에 앱을 등록해야 합니다. Firebase에 앱을 등록하면 Firebase 프로젝트 리소스와 앱을 연결하는 데 사용할 Firebase 구성 객체를 얻게 됩니다.
+
+Firebase 프로젝트와 프로젝트에 앱 추가 시 권장사항에 대한 자세한 내용은 Firebase 프로젝트 이해를 참조하세요.
+
+Firebase Console에서 프로젝트 추가를 클릭합니다.
+
+ 기존 Google Cloud 프로젝트에 Firebase 리소스를 추가하려면 프로젝트 이름을 입력하거나 드롭다운 메뉴에서 선택합니다.
+
+ 새 프로젝트를 만들려면 프로젝트 이름을 입력합니다. 필요한 경우 프로젝트 이름 아래에 표시되는 프로젝트 ID를 수정할 수도 있습니다.
+
+ Firebase는 지정된 이름을 토대로 Firebase 프로젝트의 고유 ID를 생성합니다. Firebase에서 프로젝트의 리소스를 프로비저닝한 후에는 프로젝트 ID를 수정할 수 없으므로 이 프로젝트 ID를 수정하려면 지금 수정해야 합니다. Firebase에서 프로젝트 ID가 어떻게 사용되는지를 알아보려면 Firebase 프로젝트 이해를 참조하세요.
+
+Firebase Console에서 프로젝트 추가를 클릭합니다.
+
+기존 Google Cloud 프로젝트에 Firebase 리소스를 추가하려면 프로젝트 이름을 입력하거나 드롭다운 메뉴에서 선택합니다.
+
+새 프로젝트를 만들려면 프로젝트 이름을 입력합니다. 필요한 경우 프로젝트 이름 아래에 표시되는 프로젝트 ID를 수정할 수도 있습니다.
+
+ Firebase는 지정된 이름을 토대로 Firebase 프로젝트의 고유 ID를 생성합니다. Firebase에서 프로젝트의 리소스를 프로비저닝한 후에는 프로젝트 ID를 수정할 수 없으므로 이 프로젝트 ID를 수정하려면 지금 수정해야 합니다. Firebase에서 프로젝트 ID가 어떻게 사용되는지를 알아보려면 Firebase 프로젝트 이해를 참조하세요.
+
+새 프로젝트를 만들려면 프로젝트 이름을 입력합니다. 필요한 경우 프로젝트 이름 아래에 표시되는 프로젝트 ID를 수정할 수도 있습니다.
+
+메시지가 표시되면 Firebase 약관을 검토하고 이에 동의합니다.
+
+계속을 클릭합니다.
+
+(선택사항) Firebase A/B Testing, Cloud Messaging, Crashlytics, In-App Messaging, Remote Config(맞춤설정 포함) 등 Firebase 제품의 사용 환경을 최적화하려면 프로젝트에 Google Analytics를 설정합니다.
+
+ 기존 Google Analytics 계정을 선택하거나 새 계정을 만듭니다. 새 계정을 만드는 경우 Analytics 보고 위치를 선택한 후 프로젝트의 데이터 공유 설정 및 Google Analytics 약관에 동의합니다.
+ 나중에 언제든지 settings 프로젝트 설정의 통합 탭에서 Google Analytics를 설정할 수 있습니다.
+
+(선택사항) Firebase A/B Testing, Cloud Messaging, Crashlytics, In-App Messaging, Remote Config(맞춤설정 포함) 등 Firebase 제품의 사용 환경을 최적화하려면 프로젝트에 Google Analytics를 설정합니다.
+
+기존 Google Analytics 계정을 선택하거나 새 계정을 만듭니다. 새 계정을 만드는 경우 Analytics 보고 위치를 선택한 후 프로젝트의 데이터 공유 설정 및 Google Analytics 약관에 동의합니다.
+
+프로젝트 만들기(또는 기존 Google Cloud 프로젝트에 Firebase를 추가하는 경우에는 Firebase 추가)를 클릭합니다.
+
+Firebase에서 Firebase 프로젝트용 리소스를 자동으로 프로비저닝합니다. 프로세스가 완료되면 Firebase Console에서 Firebase 프로젝트의 개요 페이지로 이동됩니다.
+
+Firebase 프로젝트가 준비되었으면 웹 앱을 해당 프로젝트에 등록할 수 있습니다.
+
+Firebase Console의 프로젝트 개요 페이지 중앙에 있는 웹 아이콘(plat_web)을 클릭하여 설정 워크플로를 시작합니다.
+
+ Firebase 프로젝트에 앱을 이미 추가한 경우 앱 추가를 클릭하여 플랫폼 옵션을 표시합니다.
+
+Firebase Console의 프로젝트 개요 페이지 중앙에 있는 웹 아이콘(plat_web)을 클릭하여 설정 워크플로를 시작합니다.
+
+Firebase 프로젝트에 앱을 이미 추가한 경우 앱 추가를 클릭하여 플랫폼 옵션을 표시합니다.
+
+앱의 닉네임을 입력합니다.
+닉네임은 편의상 지정하는 내부용 식별자이며 Firebase Console에서 나에게만 표시됩니다.
+
+앱 등록을 클릭합니다.
+
+화면에 표시된 안내에 따라 앱에 Firebase SDK를 추가하고 초기화합니다.
+ 이 시작하기 페이지의 다음 단계에서 Firebase SDK를 추가, 초기화, 사용하는 방법을 자세히 알아볼 수 있습니다.
+
+화면에 표시된 안내에 따라 앱에 Firebase SDK를 추가하고 초기화합니다.
+
+이 시작하기 페이지의 다음 단계에서 Firebase SDK를 추가, 초기화, 사용하는 방법을 자세히 알아볼 수 있습니다.
+
+JavaScript 프로젝트가 준비되지 않았지만 Firebase 제품을 사용해 보고자 하는 경우 빠른 시작 샘플 중 하나를 다운로드하세요.
+
+## 2단계: SDK 설치 및 Firebase 초기화
+이 페이지에서는 자바스크립트 모듈 형식을 사용하는 Firebase JS SDK의 모듈식 API 설정 안내를 설명합니다.
+
+이 워크플로에서는 npm을 사용하고, 모듈 번들러 또는 자바스크립트 프레임워크 도구가 필요합니다. 모듈식 API는 사용하지 않는 코드를 없애고(트리 쉐이킹) SDK 크기를 줄이기 위해 모듈 번들러와 연동하도록 최적화되었기 때문입니다.
+
+npm을 사용하여 Firebase를 설치합니다.
+
+npm install firebase
+
+npm을 사용하여 Firebase를 설치합니다.
+
+앱에서 Firebase를 초기화하고 Firebase 앱 객체를 만듭니다.
+
+import { initializeApp } from 'firebase/app';
+
+// TODO: Replace the following with your app's Firebase configuration
+const firebaseConfig = {
+ //...
+};
+
+const app = initializeApp(firebaseConfig);
+
+Firebase 앱은 일반적인 구성을 저장하고 Firebase 서비스 간에 인증을 공유하는 컨테이너와 유사한 객체입니다. 코드에서 Firebase 앱 객체를 초기화한 후 Firebase 서비스를 추가하고 사용할 수 있습니다.
+
+앱에 서버 측 렌더링(SSR)을 기반으로 하는 동적 기능이 포함되어 있는 경우 서버 렌더링과 클라이언트 렌더링 패스 전반에서 구성이 유지되도록 몇 가지 추가 단계를 수행해야 합니다. 서버 로직에서 FirebaseServerApp 인터페이스를 구현하여 앱의 서비스 워커를 사용한 세션 관리를 최적화합니다.
+
+ESM을 사용 중이며 브라우저 모듈을 사용하고 싶으신가요? 다음 패턴을 사용하도록 모든 import 줄을 바꿉니다.
+import { } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-SERVICE.js'
+(여기서 SERVICE는 firebase-firestore와 같은 SDK 이름입니다).
+
+브라우저 모듈을 사용하면 빠르게 시작할 수 있지만 프로덕션의 경우 모듈 번들러를 사용하는 것이 좋습니다.
+
+앱에서 Firebase를 초기화하고 Firebase 앱 객체를 만듭니다.
+
+Firebase 앱은 일반적인 구성을 저장하고 Firebase 서비스 간에 인증을 공유하는 컨테이너와 유사한 객체입니다. 코드에서 Firebase 앱 객체를 초기화한 후 Firebase 서비스를 추가하고 사용할 수 있습니다.
+
+앱에 서버 측 렌더링(SSR)을 기반으로 하는 동적 기능이 포함되어 있는 경우 서버 렌더링과 클라이언트 렌더링 패스 전반에서 구성이 유지되도록 몇 가지 추가 단계를 수행해야 합니다. 서버 로직에서 FirebaseServerApp 인터페이스를 구현하여 앱의 서비스 워커를 사용한 세션 관리를 최적화합니다.
+
+브라우저 모듈을 사용하면 빠르게 시작할 수 있지만 프로덕션의 경우 모듈 번들러를 사용하는 것이 좋습니다.
+
+## 3단계: 앱에서 Firebase에 액세스
+Firebase 서비스(Cloud Firestore, Authentication, Realtime Database, Remote Config 등)를 개별 하위 패키지 내에서 가져올 수 있습니다.
+
+아래 예시는 Cloud Firestore Lite SDK를 사용하여 데이터 목록을 검색하는 방법을 보여줍니다.
+
+## 4단계: 크기 축소를 위해 모듈 번들러(webpack/Rollup) 사용
+Firebase 웹 SDK는 사용하지 않는 코드를 삭제(트리 쉐이킹)하기 위해 모듈 번들러와 연동되도록 설계되었습니다. 프로덕션 앱에는 이 방식을 사용하는 것이 좋습니다. Angular CLI, Next.js, Vue CLI, Create React App과 같은 도구는 npm을 통해 설치하고 코드베이스로 가져온 라이브러리의 모듈 번들링을 자동으로 처리합니다.
+
+자세한 내용은 Firebase와 함께 모듈 번들러 사용 가이드를 참조하세요.
+
+## 웹에서 사용 가능한 Firebase 서비스
+이제 Firebase를 사용하도록 설정했으므로 웹 앱에서 다음과 같은 사용 가능한 Firebase 서비스를 추가하고 사용할 수 있습니다.
+
+다음 명령어는 npm을 사용하여 로컬에 설치된 Firebase 라이브러리를 가져오는 방법을 보여줍니다. 다른 가져오기 옵션은 사용 가능한 라이브러리 문서를 참조하세요.
+
+웹용Firebase AI Logic1
+import { } from 'firebase/ai';
+
+웹용 애널리틱스
+import { } from 'firebase/analytics';
+
+웹용 앱 체크
+import { } from 'firebase/app-check';
+
+웹용 인증
+import { } from 'firebase/auth';
+
+웹용 Cloud Firestore
+import { } from 'firebase/firestore';
+
+웹용 Cloud Functions
+import { } from 'firebase/functions';
+
+웹용 클라우드 메시징
+import { } from 'firebase/messaging';
+
+웹용 Cloud Storage
+import { } from 'firebase/storage';
+
+웹용 Data Connect
+import { } from 'firebase/data-connect';
+
+웹용 Performance Monitoring
+import { } from 'firebase/performance';
+
+웹용 실시간 데이터베이스
+import { } from 'firebase/database';
+
+웹용 원격 구성
+import { } from 'firebase/remote-config';
+
+1 Firebase AI Logic은 이전에 firebase/vertexai 패키지와 함께 'Vertex AI in Firebase'라고 불렸습니다.
+
+## 다음 단계
+Firebase 알아보기:
+
+샘플 Firebase 앱을 살펴봅니다.
+
+Firebase 웹 Codelab에서 사용 방법을 실습합니다.
+
+GitHub의 오픈소스 코드를 살펴봅니다.
+
+Firebase JavaScript SDK가 지원되는 환경을 검토합니다.
+
+AngularFire, RxFire, 웹용 FirebaseUI와 같이 Firebase에서 유지관리하는 추가 오픈소스 라이브러리를 사용하여 개발 속도를 높입니다.
+
+앱 출시 준비
+
+Google Cloud 콘솔에서 프로젝트의 예산 알림을 설정합니다.
+Firebase 콘솔에서 사용량 및 결제 대시보드를 모니터링하여 여러 Firebase 서비스에서 프로젝트 사용량을 전체적으로 파악합니다.
+Firebase 출시 체크리스트를 검토합니다.
+
+앱 출시 준비
+
+Google Cloud 콘솔에서 프로젝트의 예산 알림을 설정합니다.
+
+Firebase 콘솔에서 사용량 및 결제 대시보드를 모니터링하여 여러 Firebase 서비스에서 프로젝트 사용량을 전체적으로 파악합니다.
+
+Firebase 출시 체크리스트를 검토합니다.

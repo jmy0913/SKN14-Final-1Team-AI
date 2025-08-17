@@ -1,0 +1,273 @@
+Source URL: https://developers.google.com/people/v1/contacts?hl=ko
+
+## 사용자의 연락처 표시
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜 · 셀#1
+GET /v1/people/me/connections?personFields=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+언어: 자바 · 셀#1
+ListConnectionsResponse response = peopleService.people().connections().list("people/me")
+ .setPersonFields("names,emailAddresses")
+ .execute();
+List<Person> people = response.getConnections();
+
+언어: Python · 셀#1
+people = people_service.people().connections()
+ .list('people/me', personFields='names,emailAddresses')
+
+언어: PHP · 셀#1
+$people = $people_service->people_connections->listPeopleConnections(
+ 'people/me', array('personFields' => 'names,emailAddresses'));
+
+언어: .NET · 셀#1
+PeopleResource.ConnectionsResource.ListRequest peopleRequest =
+ peopleService.People.Connections.List("people/me");
+peopleRequest.PersonFields = "names,emailAddresses";
+ListConnectionsResponse response = peopleRequest.Execute();
+IList<Person> people = response.Connections;
+
+## 변경된 사용자의 연락처를 나열합니다.
+=== 코드/텍스트 탭 수집 ===
+언어: 자바 · 셀#1
+// Initial request
+ListConnectionsResponse fullSyncResponse = peopleService.people().connections().list("people/me")
+ .setPersonFields("metadata,names,emailAddresses")
+ .setRequestSyncToken(true)
+ .execute();
+// Fetch all the pages
+while (fullSyncResponse.getNextPageToken() != null) {
+ fullSyncResponse = peopleService.people().connections().list("people/me")
+ .setPersonFields("metadata,names,emailAddresses")
+ .setRequestSyncToken(true)
+ .setPageToken(fullSyncResponse.getNextPageToken())
+ .execute();
+}
+
+// Some time passes
+
+// Fetch incremental changes using the sync token returned in the last fullSyncResponse.
+try {
+ ListConnectionsResponse incrementalSyncResponse = peopleService.people().connections().list("people/me")
+ .setPersonFields("metadata,names,emailAddresses")
+ .setSyncToken(fullSyncResponse.getNextSyncToken())
+ .execute();
+ for (Person person : incrementalSyncResponse.getConnections()) {
+ handlePerson(person);
+ }
+
+ // Fetch all the pages
+ while (incrementalSyncResponse.getNextPageToken() != null) {
+ incrementalSyncResponse = peopleService.people().connections().list("people/me")
+ .setPersonFields("metadata,names,emailAddresses")
+ .setSyncToken(fullSyncResponse.getNextSyncToken())
+ .setPageToken(incrementalSyncResponse.getNextPageToken())
+ .execute();
+ for (Person person : incrementalSyncResponse.getConnections()) {
+ handlePerson(person);
+ }
+ }
+} catch (GoogleJsonResponseException e) {
+ if (e.getStatusCode() == 410) {
+ // Sync token expired. Make full sync request.
+ }
+}
+
+void handlePerson(Person person) {
+ if (person.getMetadata().getDeleted()) {
+ // Handle deleted person
+ } else {
+ // Handle changed person
+ }
+}
+
+## 사용자의 연락처 검색
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜 · 셀#1
+// Warmup cache
+GET /v1/people:searchContacts?query=&readMask=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+// Send search request after several seconds
+GET /v1/people:searchContacts?query=query&readMask=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+언어: 자바 · 셀#1
+// Warmup cache
+SearchResponse response = peopleService.people().searchContacts()
+ .setQuery("")
+ .setReadMask("names,emailAddresses")
+ .execute();
+
+// Wait a few seconds
+Thread.sleep(5);
+
+// Send search request
+SearchResponse response = peopleService.people().searchContacts()
+ .setQuery("query")
+ .setReadMask("names,emailAddresses")
+ .execute();
+
+## 새 연락처 만들기
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜 · 셀#1
+POST /v1/people:createContact HTTP/1.1
+Body: { "names": [{ "givenName": "John", "familyName": "Doe" }] }
+Host: people.googleapis.com
+
+언어: 자바 · 셀#1
+Person contactToCreate = new Person();
+List<Name> names = new ArrayList<>();
+names.add(new Name().setGivenName("John").setFamilyName("Doe"));
+contactToCreate.setNames(names);
+
+Person createdContact = peopleService.people().createContact(contactToCreate).execute();
+
+## 요청당 할당량 사용량
+중요한 읽기 요청 1회 (연락처 및 프로필 읽기)
+
+1개의 중요한 쓰기 요청 (연락처 생성 및 업데이트)
+
+일일 연락처 쓰기 (총) 1회
+
+## 기존 연락처 업데이트하기
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜 · 셀#1
+PATCH /v1/resource_name:updateContact?updatePersonFields=emailAddresses HTTP/1.1
+Body: {
+ "resourceName": "resource_name",
+ "etag": "etag",
+ "emailAddresses": [{ "value": "john.doe@gmail.com" }],
+}
+Host: people.googleapis.com
+
+언어: 자바 · 셀#1
+Person contactToUpdate = peopleService.people().get("resource_name").execute();
+
+List<EmailAddress> emailAddresses = new ArrayList<>();
+emailAddresses.add(new EmailAddress().setValue("john.doe@gmail.com"));
+contactToUpdate.setEmailAddresses(emailAddresses);
+
+Person updatedContact = peopleService.people()
+ .updateContact(contactToUpdate.getResourceName(), contactToUpdate)
+ .setUpdatePersonFields("emailAddresses")
+ .execute();
+
+## 요청당 할당량 사용량
+중요한 읽기 요청 1회 (연락처 및 프로필 읽기)
+
+1개의 중요한 쓰기 요청 (연락처 생성 및 업데이트)
+
+일일 연락처 쓰기 (총) 1회
+
+## 기존 연락처 삭제하기
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜 · 셀#1
+DELETE /v1/resource_name:deleteContact HTTP/1.1
+Host: people.googleapis.com
+
+언어: 자바 · 셀#1
+peopleService.people().deleteContact("resource_name").execute();
+
+## 요청당 할당량 사용량
+1개의 쓰기 요청 (연락처 삭제 및 연락처 그룹 쓰기)
+
+## 새 연락처 일괄 생성
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜 · 셀#1
+POST /v1/people:batchCreateContacts?readMask=names HTTP/1.1
+Body: {
+ "contacts": [
+ {
+ "contactPerson": {
+ "names": [
+ {
+ "givenName": "John",
+ "familyName": "Doe"
+ }
+ ]
+ }
+ }
+ ]
+}
+Host: people.googleapis.com
+
+언어: 자바 · 셀#1
+Person person1 = new Person();
+person1.setNames(ImmutableList.of(new Name().setGivenName("John").setFamilyName("Doe")));
+ContactToCreate contactToCreate1 = new ContactToCreate();
+contactToCreate1.setContactPerson(person1);
+
+Person person2 = new Person();
+person2.setNames(ImmutableList.of(new Name().setGivenName("Bob").setFamilyName("Dylan")));
+ContactToCreate contactToCreate2 = new ContactToCreate();
+contactToCreate2.setContactPerson(person2);
+
+BatchCreateContactsRequest request = new BatchCreateContactsRequest();
+request.setContacts(ImmutableList.of(contactToCreate1, contactToCreate2)).setReadMask("names");
+
+BatchCreateContactsResponse response =
+ peopleService.people().batchCreateContacts(request).execute();
+
+## 요청당 할당량 사용량
+6개의 중요한 읽기 요청 (연락처 및 프로필 읽기)
+
+6개의 중요한 쓰기 요청 (연락처 생성 및 업데이트)
+
+일일 연락처 쓰기 200회 (총)
+
+## 기존 연락처 일괄 업데이트
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜 · 셀#1
+POST /v1/people:batchUpdateContacts?updateMask=names&readMask=names,emailAddresses HTTP/1.1
+Body: {
+ "contacts": {
+ "resource_name": {
+ "emailAddresses": [
+ {
+ "value": "john.doe@gmail.com"
+ }
+ ]
+ "etag": "etag"
+ }
+ }
+}
+Host: people.googleapis.com
+
+언어: 자바 · 셀#1
+Person contactToUpdate = peopleService.people().get("resource_name").execute();
+
+contactToUpdate.setNames(
+ ImmutableList.of(new Name().setGivenName("John").setFamilyName("Doe")));
+
+BatchUpdateContactsRequest request = new BatchUpdateContactsRequest();
+ImmutableMap<String, Person> map =
+ ImmutableMap.of(contactToUpdate.getResourceName(), contactToUpdate);
+request.setContacts(map).setUpdateMask("names").setReadMask("names,emailAddresses");
+
+BatchUpdateContactsResponse response =
+ peopleService.people().batchUpdateContacts(request).execute();
+
+## 요청당 할당량 사용량
+6개의 중요한 읽기 요청 (연락처 및 프로필 읽기)
+
+6개의 중요한 쓰기 요청 (연락처 생성 및 업데이트)
+
+일일 연락처 쓰기 200회 (총)
+
+## 기존 연락처 일괄 삭제
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜 · 셀#1
+POST /v1/people:batchDeleteContacts HTTP/1.1
+Body: {"resource_names": ["resource_name"]}
+Host: people.googleapis.com
+
+언어: 자바 · 셀#1
+BatchDeleteContactsRequest request = new BatchDeleteContactsRequest();
+
+request.setResourceNames(ImmutableList.of(resource_name));
+
+peopleService.people().batchDeleteContacts(request).execute();
+
+## 요청당 할당량 사용량
+쓰기 요청 10개 (연락처 삭제 및 연락처 그룹 쓰기)

@@ -1,0 +1,75 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1beta1/projects.databases.indexes/list?hl=ko
+
+## 본문
+Lists the indexes that match the specified filters.
+
+GET https://firestore.googleapis.com/v1beta1/{parent=projects/*/databases/*}/indexes
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+The database name. For example: projects/{projectId}/databases/{databaseId}
+
+integer
+
+The standard List page size.
+
+The standard List page token.
+
+The request body must be empty.
+
+The response for FirestoreAdmin.ListIndexes.
+
+If successful, the response body contains data with the following structure:
+
+object (Index)
+
+The indexes.
+
+The standard List next-page token.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| parent | string
+
+The database name. For example: projects/{projectId}/databases/{databaseId} |
+
+| Parameters |
+| --- |
+| filter | string |
+| pageSize | integer
+
+The standard List page size. |
+| pageToken | string
+
+The standard List page token. |
+
+| JSON representation |
+| --- |
+| {
+  "indexes": [
+    {
+      object (Index)
+    }
+  ],
+  "nextPageToken": string
+} |
+
+| Fields |
+| --- |
+| indexes[] | object (Index)
+
+The indexes. |
+| nextPageToken | string
+
+The standard List next-page token. |

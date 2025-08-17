@@ -1,0 +1,1692 @@
+Source URL: https://cloud.google.com/firestore/docs/pricing?hl=ko
+
+## 본문
+Firestore 가격 책정
+
+사용량 모니터링
+
+지출 관리
+
+가격 책정 예시
+
+다음 단계
+
+이 문서에서는 Firestore Standard 버전의 가격 책정 세부정보를 설명합니다. Enterprise 버전 가격 책정은 Firestore Enterprise 버전 가격 책정을 참조하세요.
+
+USD 외의 통화로 지불하는 경우 Cloud Platform SKU에 해당 통화로 표기된 가격이 적용됩니다.
+
+Firestore를 사용할 경우 다음 항목에 대한 요금이 부과됩니다.
+
+읽기, 쓰기, 삭제한 문서의 수
+
+쿼리를 충족하기 위해 읽은 색인 항목 수. 색인 읽기에 대해 자세히 알아보세요.
+
+메타데이터 및 색인에 대한 오버헤드 등 데이터베이스에서 사용되는 스토리지 용량
+
+사용하는 네트워크 대역폭의 양
+
+스토리지 및 대역폭 사용량은 기비바이트 (GiB)로 계산되며, 1GiB = 230바이트입니다. 모든 요금은 일 단위로 누적됩니다.
+
+다음 섹션에서는 Firestore 사용 요금 청구 방법을 자세히 설명합니다.
+
+무료 할당량
+
+Firestore는 비용 없이 시작할 수 있는 무료 할당량을 제공합니다. 무료 할당량은 아래에 나와 있습니다. 할당량이 더 필요하다면 Google Cloud 프로젝트에 결제를 사용 설정해야 합니다.
+
+할당량은 일 단위로 적용되며 태평양 표준시 자정에 재설정됩니다.
+
+Firestore는 프로젝트당 정확히 하나의 무료 데이터베이스를 허용합니다.
+
+다음 작업 및 기능에는 무료 사용량이 포함되지 않습니다. 다음 기능을 사용하려면 결제를 사용 설정해야 합니다.
+
+TTL 삭제
+
+PITR 데이터
+
+데이터 백업
+
+복원 작업
+
+클론 작업
+
+이러한 기능에 요금이 청구되는 방식에 대한 자세한 내용은 스토리지 가격 책정을 참조하세요.
+
+위치별 가격 책정
+
+다음 표에는 Firestore 위치별 읽기, 쓰기, 삭제, 스토리지에 대한 가격이 나와 있습니다.
+
+Johannesburg (africa-south1)
+
+Taiwan (asia-east1)
+
+Hong Kong (asia-east2)
+
+Tokyo (asia-northeast1)
+
+Osaka (asia-northeast2)
+
+Seoul (asia-northeast3)
+
+Mumbai (asia-south1)
+
+Delhi (asia-south2)
+
+Singapore (asia-southeast1)
+
+Jakarta (asia-southeast2)
+
+Bangkok (asia-southeast3)
+
+Sydney (australia-southeast1)
+
+Melbourne (australia-southeast2)
+
+Europe 3 (eur3)
+
+Warsaw (europe-central2)
+
+Finland (europe-north1)
+
+Stockholm (europe-north2)
+
+Madrid (europe-southwest1)
+
+Belgium (europe-west1)
+
+Berlin (europe-west10)
+
+Turin (europe-west12)
+
+London (europe-west2)
+
+Frankfurt (europe-west3)
+
+Netherlands (europe-west4)
+
+Galaxy Frankfurt (europe-west5)
+
+Zurich (europe-west6)
+
+Milan (europe-west8)
+
+Paris (europe-west9)
+
+Doha (me-central1)
+
+Dammam (me-central2)
+
+Tel Aviv (me-west1)
+
+North America 5 (nam5)
+
+North America 7 (nam7)
+
+Montreal (northamerica-northeast1)
+
+Toronto (northamerica-northeast2)
+
+Mexico (northamerica-south1)
+
+Sao Paulo (southamerica-east1)
+
+Santiago (southamerica-west1)
+
+Iowa (us-central1)
+
+South Carolina (us-east1)
+
+Northern Virginia (us-east4)
+
+Columbus (us-east5)
+
+Dallas (us-south1)
+
+Oregon (us-west1)
+
+Los Angeles (us-west2)
+
+Salt Lake City (us-west3)
+
+Las Vegas (us-west4)
+
+Phoenix (us-west8)
+
+*가격은 무료 할당량 초과 시 가격 (단위당)을 반영합니다.
+
+이름이 지정된 데이터베이스의 경우 무료 할당량 없음
+
+기본이 아닌, 이름이 지정된 데이터베이스를 만들려면 결제를 사용 설정해야 합니다.
+
+이름이 지정된 데이터베이스를 만들거나 삭제하는 데 추가 비용이 들지는 않지만 이러한 데이터베이스에는 무료 할당량이 제공되지 않습니다. 대신 이름이 지정된 데이터베이스에서 발생한 사용량을 기준으로 요금이 청구됩니다.
+
+읽기, 쓰기, 삭제
+
+쿼리를 충족하기 위해 읽은 문서 및 색인 항목에 대한 요금이 청구됩니다. 수행하는 각 문서 쓰기 및 삭제에 요금이 부과됩니다.
+
+쓰기 및 삭제 요금 부과 방식은 간단합니다. 쓰기의 경우 각 set 또는 update 작업은 쓰기 1회로 계산됩니다.
+
+읽기 작업 요금에는 몇 가지 유의해야 할 세부사항이 있습니다. 다음 섹션에서 이를 자세히 설명합니다.
+
+색인 항목 읽기
+
+쿼리에 의해 최대 1,000개의 색인 항목을 읽을 때마다 읽기 작업 1회의 요금이 부과되며 다음의 경우는 예외입니다.
+
+참고: Firestore 쿼리 설명을 사용하여 쿼리에서 색인 항목 읽기에 요금을 청구하는지 확인할 수 있습니다.
+
+K-최근접 이웃 벡터 검색어의 경우 쿼리에서 읽은 최대 100개의 kNN 벡터 색인 항목의 각 배치에 대해 읽기 작업이 한 번만 청구됩니다.
+
+예를 들어 limit: 5가 포함된 다음 벡터 검색어가 문서 5개를 반환하고 KNN 벡터 색인 항목 1,550개를 읽는 경우 반환된 문서의 읽기 작업 5개와 색인 항목의 읽기 작업 16개에 대한 요금이 청구됩니다.
+
+범위 필드가 최대 1개인 쿼리에는 색인 항목 읽기에 대한 요금이 청구되지 않습니다.
+
+예를 들어 다음 쿼리에는 일치 필드 (age) 한 개와 범위 필드 (start_date) 한 개가 포함되며 색인 항목 읽기에 대해 요금이 청구되지 않습니다.
+
+다음 쿼리에는 두 개의 범위 필드 (age 및 start_date)가 포함되며, 색인 항목 읽기에 대해 요금이 청구됩니다.
+
+쿼리에 다른 범위 필드가 하나 이상 있는 경우order by 절에서 표시되는 필드는 범위 필드로 간주됩니다. 따라서 다음 쿼리에는 두 개의 범위 필드 (age 및 start_date)가 포함되며, 색인 항목 읽기에 대해 요금이 청구됩니다.
+
+__name__ 필드는 일치 필터에만 사용되더라도 항상 범위 필드로 간주됩니다. 따라서 다음 쿼리에는 두 개의 범위 필드 (age 및 __name__)가 포함되며, 색인 항목 읽기에 대해 요금이 청구됩니다.
+
+집계 쿼리
+
+count(), sum(), avg()와 같은 집계 쿼리의 경우 위에서 설명한 대로 쿼리에서 읽은 색인 항목에 대해 요금이 청구됩니다. 색인 항목 0개를 읽는 집계 쿼리의 경우 최소 1회의 문서 읽기 요금이 부과됩니다.
+
+예를 들어 0~1, 000개의 색인 항목을 읽는 count() 작업은 문서 읽기 한 건에 대해 요금이 청구됩니다. 1, 500개의 색인 항목을 읽는 count() 작업의 경우 두 건의 문서 읽기 요금이 청구됩니다.
+
+사용된 색인 및 읽은 색인 항목에 대해 자세히 알아보려면 쿼리 설명을 참조하세요.
+
+쿼리 결과 수신 대기
+
+Firestore를 사용하면 쿼리 결과를 수신 대기하고 쿼리 결과가 변경되면 실시간으로 업데이트를 받을 수 있습니다.
+
+쿼리 결과를 수신 대기하면 결과 집합의 문서가 추가되거나 업데이트될 때마다 읽기 요금이 부과됩니다. 또한 결과 집합에서 문서가 삭제될 때도 문서가 변경되므로 읽기 요금이 부과됩니다. 반면, 문서 자체가 삭제되면 읽기 요금이 부과되지 않습니다.
+
+모바일 및 웹 SDK의 리스너 청구는 오프라인 지속성 사용 설정 여부에 따라 달라집니다.
+
+오프라인 지속성이 사용 설정되고 리스너 연결이 30분 이상 끊어진 경우 (예: 사용자가 오프라인 상태로 전환) 완전히 새로운 쿼리를 실행한 것처럼 문서 및 색인 항목 읽기에 대한 요금이 부과됩니다.
+
+오프라인 지속성을 사용 중지하면 리스너의 연결을 해제했다가 다시 연결할 때마다 완전히 새로운 쿼리를 실행한 것처럼 문서 및 색인 항목 읽기 요금이 부과됩니다.
+
+참고: 범위 필드가 최대 1개인 쿼리의 경우 색인 항목 읽기에 대한 요금이 청구되지 않습니다. 자세한 내용은 여기를 참고하세요.
+
+대규모 결과 집합 관리
+
+Firestore에는 많은 결과를 반환하는 쿼리를 관리할 때 유용한 몇 가지 기능이 있습니다.
+
+커서: 장기 실행 쿼리를 재개할 수 있습니다.
+
+페이지 토큰: 쿼리 결과를 페이지화하는 데 도움이 됩니다.
+
+한도: 검색할 결과의 수를 지정합니다.
+
+오프셋: 문서를 정해진 수만큼 건너뛸 수 있습니다.
+
+커서, 페이지 토큰, 한도를 사용할 경우 부과되는 추가 요금은 없습니다. 이러한 기능을 사용하면 실제로 필요한 문서만 읽어 비용을 절약할 수 있습니다.
+
+하지만 오프셋이 포함된 쿼리를 보내면 건너뛴 문서마다 읽기 요금이 부과됩니다. 예를 들어 10개의 오프셋을 사용하는 쿼리에서 문서 1개를 반환하면 읽기 11회에 대한 요금이 부과됩니다. 이 같은 추가 비용이 부과되므로 가능하다면 항상 오프셋 대신 커서를 사용해야 합니다.
+
+문서 읽기 외의 쿼리
+
+컬렉션 ID 목록 요청과 같이 문서 읽기 외의 쿼리는 문서 읽기 1회에 대한 요금이 부과됩니다. 전체 결과 집합을 가져오는 데 요청이 여러 개 필요한 경우 (예: 페이지화를 사용하는 경우) 요청별로 요금이 청구됩니다.
+
+쿼리에 부과되는 최소 요금
+
+쿼리가 결과를 반환하지 않더라도 수행하는 쿼리마다 문서 읽기 1회에 해당하는 최소 요금이 부과됩니다.
+
+Firestore 보안 규칙
+
+모바일 및 웹 클라이언트 라이브러리의 경우 Firestore 보안 규칙에서 exists(), get() 또는 getAfter() 를 사용하여 데이터베이스에서 하나 이상의 문서를 읽는다면 다음과 같은 추가 읽기 요금이 부과됩니다.
+
+Firestore 보안 규칙을 평가하는 데 필요한 읽기에 대해 요금이 부과됩니다.
+
+예를 들어 규칙이 3개의 문서를 참조하지만 Firestore에서는 규칙 평가를 위해 두 문서만 읽으면 될 경우 종속 문서에 대한 2회의 추가 읽기 요금이 부과됩니다.
+
+규칙이 문서를 여러 번 참조하더라도 읽기 요금은 종속 문서당 1회만 청구됩니다.
+
+규칙 평가는 요청별로 한 번만 요금이 부과됩니다.
+
+따라서 여러 개의 문서를 읽는 데 필요한 요청의 수가 더 적으므로 문서를 한 번에 하나씩 읽는 것보다 여러 문서를 읽는 편이 비용이 적게 듭니다.
+
+쿼리 결과를 수신 대기하면 다음과 같은 경우에 규칙 평가에 대한 요금이 부과됩니다.
+
+쿼리를 보낼 때
+
+쿼리 결과가 업데이트될 때마다
+
+사용자 기기가 오프라인 상태로 전환되었다가 온라인 상태가 될 때마다
+
+규칙이 업데이트될 때마다
+
+규칙에서 종속 문서를 업데이트할 때마다
+
+데이터베이스 스토리지 크기
+
+스토리지 오버헤드를 포함해 Firestore에 저장되는 데이터 양에 대한 요금이 부과됩니다. 오버헤드에는 메타데이터, 자동 색인, 복합 색인이 포함됩니다.
+
+Firestore에 저장된 각 문서에는 다음과 같은 메타데이터가 필요합니다.
+
+컬렉션 ID 및 문서 이름을 포함한 문서 ID
+
+각 필드의 이름 및 값: Firestore에는 스키마가 없으므로 문서의 각 필드 이름을 필드 값과 함께 저장해야 합니다.
+
+문서를 참조하는 단일 필드 및 복합 색인: 각 색인 항목에는 컬렉션 ID, 색인 정의에 따른 여러 필드 값, 그리고 문서 이름이 포함됩니다.
+
+스토리지 비용은 GiB/월 단위로 매일 계산됩니다. Firestore는 데이터베이스 크기를 매일 측정합니다. 한 달 동안 이러한 샘플 포인트의 평균을 계산하여 데이터베이스 스토리지 크기를 계산합니다. 이 평균 값에 스토리지의 단가(GiB-월)를 곱합니다.
+
+스토리지 크기 계산에서 Firestore 스토리지 계산 방법을 알아보세요.
+
+PITR을 사용 설정하면 PITR 데이터 스토리지에 대한 요금이 부과됩니다. 대부분의 고객은 PITR 데이터 스토리지의 전체 비용이 데이터베이스의 스토리지 비용과 비슷하다는 것을 알게 됩니다.
+
+참고: PITR 데이터의 요금은 데이터베이스 스토리지 크기 청구와는 별도로 청구됩니다. PITR 데이터는 데이터 스토리지 크기 비용에 영향을 주지 않습니다.
+
+PITR의 스토리지 비용은 GiB/월 단위로 매일 계산됩니다. Firestore는 데이터베이스 크기를 매일 측정합니다. 한 달 동안 이러한 샘플 포인트의 평균을 계산하여 데이터베이스 스토리지 크기를 계산합니다. 이 평균 값에 PITR의 단가 (GiB-월)를 곱합니다.
+
+예를 들어 한 달 동안의 데이터베이스 평균 크기가 1GiB이고 PITR이 해당 월 내내 사용 설정된 상태라면 청구할 수 있는 PITR 데이터 크기도 1GiB입니다.
+
+최소 결제: 사용 설정 후 1일 이내에 PITR을 사용 중지하더라도 최대 1일의 PITR 스토리지 비용이 청구될 수 있습니다.
+
+백업 데이터 및 복원 작업
+
+백업을 사용 설정하면 데이터베이스 백업 스토리지에 대한 요금이 부과됩니다. 백업의 스토리지 크기는 백업을 가져왔을 때 데이터베이스의 스토리지 크기와 동일합니다.
+
+백업의 스토리지 비용은 GiB/월 단위입니다. 한 달 동안 각 백업이 보관되는 일수(한 달 평균)도 계산됩니다. 각 백업 비용은 백업이 보관된 일수가 한 달에서 차지하는 비율을 백업의 스토리지 크기와 곱하고 단가를 곱하여 계산됩니다. 결제 목적으로는 날짜 경계가 America/Los_Angeles 시간대로 정의됩니다.
+
+복원 작업을 수행하면 Firestore에서 복원 작업의 백업 크기를 측정합니다. 백업 크기에는 복원 작업의 단가 (GiB)를 곱합니다.
+
+쿼리 설명
+
+Firestore 쿼리 설명을 사용하면 비용이 발생합니다.
+
+기본 옵션을 사용하여 쿼리를 설명하는 경우 색인 읽기 작업이 수행되지 않습니다. 쿼리 복잡성과 관계없이 읽기 작업 1회에 대한 요금이 청구됩니다.
+
+분석 옵션을 사용하여 쿼리를 설명하는 경우 색인 및 읽기 작업이 수행되므로 쿼리에 대한 요금이 평소와 같이 청구됩니다. 설명 및 분석 활동에 대한 추가 요금은 없으며 실행 중인 쿼리에 대한 일반적인 요금만 청구됩니다.
+
+네트워크 대역폭
+
+다음 섹션에 나와 있듯이 Firestore 요청에서 사용된 네트워크 대역폭에 대한 요금이 부과됩니다. Firestore 요청의 네트워크 대역폭 비용은 요청의 응답 크기, Firestore 데이터베이스의 위치, 응답의 대상에 따라 달라집니다.
+
+Firestore는 직렬화된 메시지 형식을 기준으로 응답 크기를 계산합니다. SSL 오버헤드와 같은 프로토콜 오버헤드는 네트워크 대역폭 사용량에 포함되지 않습니다. Firestore 보안 규칙에서 거부된 요청은 네트워크 대역폭 사용량에 포함되지 않습니다.
+
+사용된 네트워크 대역폭 양을 확인하려면 Google Cloud 콘솔을 사용해 결제 데이터를 파일로 내보내면 됩니다.
+
+일반 네트워크 가격 책정
+
+Google Cloud Platform에서 발생한 요청 (예: Google Compute Engine에서 실행되는 애플리케이션의 요청)은 다음과 같이 요금이 부과됩니다.
+
+인터넷 데이터 전송 요금
+
+다음과 같은 경우 인터넷 데이터 전송 요금이 부과됩니다.
+
+미국 리전 간 트래픽을 제외한 리전 간의 Google Cloud 요청
+
+Google Cloud 외부의 요청 (예: 사용자의 휴대기기)
+
+네트워크 아웃바운드 데이터 전송: 전 세계 대상 위치 (중국 및 오스트레일리아 제외, 홍콩 포함) (GiB당)
+
+Firestore 사용량을 모니터링하는 방법은 사용량 모니터링을 참조하세요.
+
+지출을 관리하려면 월예산 및 알림을 설정합니다.
+
+Google Cloud 예산 및 알림
+
+Google Cloud에서는 모든 Google Cloud 서비스의 월예산을 설정할 수 있습니다. 월예산을 사용해 Firestore의 네트워크 대역폭 비용을 포함한 전체적인 Google Cloud 비용을 모니터링하세요. 예산을 설정한 후에 알림을 설정할 수 있으며 비용이 늘어 예산에 가까워지면 이메일 알림이 전송됩니다.
+
+중요: Firestore 및 기타 Google Cloud 서비스에 대한 요청은 Google Cloud 월 예산을 초과해도 성공합니다. Google Cloud 예산을 초과하지 않도록 사용 패턴을 변경할 책임은 사용자에게 있습니다.
+
+이 안내를 따라 Google Cloud 콘솔에서 월예산을 설정하고 알림을 만드세요.
+
+실제 샘플 앱에서 발생하는 Firestore 청구 비용은 Firestore 청구 예시를 참조하세요.
+
+Firestore 문서 읽어보기
+
+Firestore 시작하기
+
+가격 계산기 사용해 보기
+
+Firestore 솔루션 및 사용 사례 알아보기
+
+디지털 혁신 가속화
+
+디지털 혁신을 이제 막 시작한 기업이든 이미 일정 수준에 도달한 기업이든 Google Cloud를 사용하면 가장 까다로운 도전과제를 해결할 수 있습니다.
+
+자세히 알아보기
+
+주요 이점
+
+Google Cloud를 선택해야 하는 이유기업들이 Google을 선택하는 주요 이유
+
+AI 및 ML엔터프라이즈 지원 AI를 활용하세요.
+
+멀티 클라우드어디서나 필요한 앱을 실행
+
+글로벌 인프라Google과 동일한 인프라를 기반으로 빌드
+
+데이터 클라우드통합 데이터를 통한 더욱 스마트한 결정
+
+최신 인프라 클라우드차세대 클라우드 인프라입니다.
+
+보안사용자, 데이터, 앱을 보호하세요.
+
+생산성 및 공동작업AI 지원 앱으로 팀과 소통
+
+보고서 및 통계
+
+경영진 통계최고 책임자의 관점에 맞게 선별됩니다.
+
+애널리스트 보고서Google에 대한 업계 분석가들의 평가
+
+백서인기 백서 탐색 및 다운로드
+
+고객 사례우수사례 및 동영상 살펴보기
+
+업종별 솔루션
+
+애플리케이션 현대화
+
+인공지능
+
+API 및 애플리케이션
+
+데이터 분석
+
+데이터베이스
+
+인프라 현대화
+
+생산성 및 공동작업
+
+보안
+
+스타트업 및 SMB
+
+업종별 솔루션비용 절감, 운영 민첩성 향상, 새로운 시장 기회 포착
+
+소매업소매 가치 사슬을 위한 분석 및 공동작업 도구
+
+소비재소비재 디지털 혁신 및 브랜드 성장 솔루션
+
+금융 서비스금융 서비스를 위한 컴퓨팅, 데이터 관리, 분석 도구
+
+의료 및 생명과학대규모의 연구 진행 및 의료 혁신 지원
+
+미디어 및 엔터테인먼트콘텐츠 제작 및 배포 작업을 위한 솔루션
+
+전자통신5G 배포 및 수익 창출을 위한 하이브리드 및 멀티 클라우드 서비스
+
+게임게임을 더욱 빠르게 빌드하고 확장할 수 있는 AI 기반 솔루션
+
+제조업제조업 가치 사슬을 최적화하는 마이그레이션 및 AI 도구
+
+공급망 및 물류공급망 및 물류 운영 전반에서 지속 가능하고 효율적이며 복원력이 우수한 데이터 기반 운영을 지원합니다.
+
+정부 기관정부 기관을 위한 데이터 스토리지, AI, 분석 솔루션
+
+교육더 적극적인 학습 경험을 제공하는 교육 도구
+
+원하는 내용을 찾을 수 없으신가요?
+
+모든 업종별 솔루션 보기
+
+애플리케이션 현대화소프트웨어 관행과 기능을 평가, 계획, 구현, 측정하여 조직의 비즈니스 애플리케이션 포트폴리오를 현대화하고 단순화합니다.
+
+CAMPDORA를 사용하여 소프트웨어 배포 기능을 개선하는 프로그램
+
+기존 애플리케이션 현대화기존 워크로드의 클라우드 마이그레이션을 분석 및 분류하고 시작합니다.
+
+PaaS에서 마이그레이션: Cloud Foundry, OpenShift기존 컨테이너를 Google의 관리형 컨테이너 서비스로 이동하기 위한 도구입니다.
+
+메인프레임에서 마이그레이션메인프레임 앱을 클라우드로 이전하기 위한 자동화된 도구 및 처방적 안내입니다.
+
+소프트웨어 배포 현대화내부 루프 생산성, CI/CD, S3C 등 소프트웨어 공급망 권장사항입니다.
+
+DevOps 권장사항조직에서 DevOps를 구현하기 위한 프로세스 및 리소스
+
+SRE 원칙조직에 사이트 안정성 엔지니어링(SRE)을 채택하기 위한 도구 및 리소스
+
+Operations for GKE 2일 차효과적인 GKE 관리 및 모니터링을 위한 도구 및 가이드입니다.
+
+FinOps 및 GKE 최적화GKE에서 안정적이고 성능이 우수하며 비용 효율적인 애플리케이션을 실행하기 위한 권장사항입니다.
+
+에지에서 애플리케이션 실행하드웨어 제약이 없는 Google 에지 솔루션의 현지화되고 지연 시간이 짧은 앱에 대한 안내입니다.
+
+멀티 클라우드를 위한 설계여러 클라우드에서 일관된 플랫폼으로 워크로드를 관리합니다.
+
+서버리스로 전환앱 개발, 배포, 확장을 위한 완전 관리형 환경
+
+인공지능AI 및 머신러닝을 사용하여 비즈니스에 인텔리전스 및 효율성 추가
+
+Google AI를 사용한 고객 참여 제품군Google Cloud의 최첨단 대화형 AI를 결합한 엔드 투 엔드 애플리케이션입니다.
+
+Document AI문서 처리 및 데이터 캡처의 대규모 자동화
+
+소매업을 위한 Vertex AI Search소매업체를 위한 Google 품질 수준의 검색 및 제품 추천
+
+Google Cloud를 위한 Gemini애플리케이션 개발, 코딩 등을 위한 AI 어시스턴트입니다.
+
+Google Cloud의 생성형 AI생성형 AI를 활용하여 콘텐츠 제작 및 탐색, 연구, 고객 서비스, 개발자 효율성을 혁신하세요.
+
+API 및 애플리케이션API, 앱, 자동화를 사용하여 코딩 없이도 혁신 속도 향상
+
+API를 사용한 새 비즈니스 채널개발자 및 파트너 생태계의 조성과 지원
+
+API를 사용한 기존 애플리케이션 활용기존 앱을 확장하고 현대화하는 클라우드 서비스
+
+Open Banking APIx오픈 뱅킹 규정 준수 API의 보안 전송 간소화 및 가속화
+
+데이터 분석분석을 대폭 간소화하는 완전 관리형 서버리스 분석 플랫폼으로 규모에 상관없이 데이터에서 빠르게 유용한 정보 파악
+
+데이터 마이그레이션AI 지원 데이터 플랫폼을 통해 마이그레이션하고 현대화하세요.
+
+데이터 레이크 현대화데이터 레이크를 빌드하고 현대화하는 서비스
+
+스트림 분석이벤트 스트림 수집, 처리, 분석을 통해 유용한 정보 파악
+
+마케팅 분석고객 데이터 수집, 분석, 활성화를 위한 솔루션
+
+데이터 세트Google, 공공부문, 상용 공급업체 제공 데이터로 분석 및 AI 이니셔티브 강화
+
+비즈니스 인텔리전스BI 스택을 현대화하고 풍부한 데이터 환경을 만들기 위한 솔루션
+
+데이터 분석을 위한 AI데이터 분석을 위해 SQL을 작성하고, 예측 모델을 빌드하고, AI로 데이터를 시각화하세요.
+
+데이터베이스보안, 안정성, 고가용성, 완전 관리형 데이터 서비스로 기업 데이터를 마이그레이션하고 관리
+
+데이터베이스 마이그레이션데이터베이스 마이그레이션 수명 주기를 간소화하는 가이드 및 도구
+
+데이터베이스 현대화운영 데이터베이스 인프라 현대화를 위한 업그레이드
+
+게임용 데이터베이스Google Cloud 데이터베이스로 글로벌 실시간 게임 빌드
+
+Google Cloud 데이터베이스데이터를 마이그레이션, 관리, 현대화하는 데이터베이스 서비스
+
+Oracle 워크로드를 Google Cloud로 마이그레이션Oracle 워크로드의 재호스팅, 플랫폼 변경, 재작성
+
+오픈소스 데이터베이스엔터프라이즈급 지원을 제공하는 완전 관리형 오픈소스 데이터베이스
+
+Google Cloud 기반 SQL ServerGoogle Cloud에서 SQL Server 가상 머신을 실행하는 옵션
+
+데이터베이스를 위한 GeminiAI를 사용하여 데이터베이스 개발 및 관리를 강화하세요.
+
+인프라 현대화SAP, VMware, Windows, Oracle, 기타 워크로드를 위한 솔루션으로 빠르게 마이그레이션
+
+애플리케이션 마이그레이션클라우드로 이전하기 위한 검색 및 분석 도구
+
+Google Cloud 기반 SAPSAP 애플리케이션 및 SAP HANA 실행을 위한 인증
+
+고성능 컴퓨팅모든 워크로드를 지원하는 컴퓨팅, 스토리지, 네트워킹 옵션
+
+Google Cloud에서 Windows 실행Windows 워크로드 실행을 위한 도구 및 파트너
+
+데이터 센터 마이그레이션VM, 앱, 데이터베이스 등을 위한 마이그레이션 솔루션
+
+Active Assist클라우드 리소스의 자동 최적화 및 보안 강화
+
+가상 데스크톱데스크톱 및 애플리케이션용 원격 근무 솔루션(VDI 및 DaaS)
+
+Rapid Migration and Modernization Program클라우드로 간편하게 이전할 수 있게 해주는 엔드 투 엔드 마이그레이션 프로그램
+
+백업 및 재해 복구비즈니스 연속성 니즈를 충족하는지 확인
+
+Google Cloud 기반 Red HatGoogle과 Red Hat은 기존 온프렘 및 커스텀 애플리케이션을 위한 엔터프라이즈급 플랫폼을 제공합니다.
+
+생산성 및 공동작업영향력을 발휘하기 위해 빌드된 인간 중심 설계의 솔루션으로 팀의 공동작업 방식을 변경
+
+Google Workspace기업용 공동작업 및 생산성 도구
+
+Google Workspace Essentials팀을 위한 안전한 화상 회의와 현대적 공동작업 도구
+
+Cloud IDIT 관리자가 사용자 기기와 앱을 관리할 수 있는 통합 플랫폼
+
+Chrome Enterprise비즈니스용 ChromeOS, Chrome 브라우저, Chrome 기기
+
+보안온라인 위협을 감지, 조사, 대응하여 비즈니스 보호
+
+보안 분석 및 운영페타바이트 규모의 보안 원격 분석 솔루션
+
+웹 앱 및 API 보호웹 애플리케이션 및 API에 대한 위협 및 사기 방지
+
+보안 및 복원력 프레임워크보안 및 복원력 수명 주기의 각 단계에 대한 솔루션
+
+코드형 위험 및 규정 준수(RCaC)자동화를 통해 거버넌스, 위험, 규정 준수 기능을 현대화하는 솔루션
+
+소프트웨어 공급망 보안엔드 투 엔드 소프트웨어 공급망 보안 개선을 위한 솔루션
+
+Security Foundation강력한 보안 상황을 달성하는 데 도움이 되는 추천 제품
+
+스타트업 및 SMB맞춤형 솔루션과 프로그램을 통해 스타트업 및 SMB 성장 가속화
+
+스타트업 프로그램스타트업의 역량을 한 단계 끌어올리기 위한 재무, 비즈니스, 기술 지원 받기
+
+중소기업웹 호스팅, 앱 개발, AI, 분석을 위한 솔루션 살펴보기
+
+Software as a Service더욱 우수한 SaaS 제품을 빌드하고 효율적으로 확장하며 비즈니스 성장 도모
+
+추천 제품
+
+AI 및 머신러닝
+
+비즈니스 인텔리전스
+
+컴퓨팅
+
+컨테이너
+
+개발자 도구
+
+분산 클라우드
+
+하이브리드 및 멀티 클라우드
+
+업종별
+
+통합 서비스
+
+관리 도구
+
+지도 및 지리정보
+
+미디어 서비스
+
+마이그레이션
+
+혼합 현실
+
+네트워킹
+
+운영
+
+보안 및 ID
+
+서버리스
+
+스토리지
+
+웹3
+
+Compute EngineGoogle의 데이터 센터에서 실행되는 가상 머신
+
+Cloud Storage안전하고 내구성과 확장성이 뛰어난 객체 스토리지
+
+BigQuery비즈니스 민첩성을 높이고 통찰력을 얻기 위한 데이터 웨어하우스
+
+Cloud Run컨테이너화된 앱 실행을 위한 완전 관리형 환경
+
+Google Kubernetes Engine컨테이너화된 앱 실행을 위한 관리형 환경
+
+Vertex AIML 모델 및 생성형 AI를 위한 통합 플랫폼
+
+LookerBI, 데이터 애플리케이션, 임베디드 분석을 위한 플랫폼
+
+Apigee API 관리가시성과 제어를 통해 어디서나 API 전체 수명 주기 관리
+
+Cloud SQLMySQL, PostgreSQL, SQL Server용 관계형 데이터베이스 서비스
+
+GeminiGemini를 기반으로 하는 Google Cloud 제품입니다.
+
+Cloud CDN웹 및 동영상 전송을 위한 콘텐츠 전송 네트워크
+
+모든 제품 보기(100개 이상)
+
+Vertex AI PlatformML 모델 및 생성형 AI를 위한 통합 플랫폼
+
+Vertex AI StudioVertex AI로 기반 모델 빌드, 조정, 배포
+
+Vertex AI Agent Builder생성형 AI 환경을 빌드하고 배포하세요.
+
+대화형 에이전트결정론적 AI 및 생성형 AI 기능을 모두 사용하여 대화형 AI를 빌드하세요.
+
+Vertex AI Search엔터프라이즈 앱과 환경에서 Google 품질의 검색을 빌드하세요.
+
+Speech-to-Text125개 언어로 음성 인식 및 스크립트 작성
+
+Text-to-Speech220개 이상의 음성 및 40개 이상의 언어로 음성 합성
+
+Translation AI언어 인식, 번역, 용어집 지원
+
+Vision AI감정, 텍스트 등을 인식하는 커스텀 및 선행 학습된 모델
+
+서비스형 고객센터클라우드 기반의 옴니채널 고객센터 솔루션입니다.
+
+모든 AI 및 머신러닝 제품 보기
+
+Looker Studio대시보드, 보고, 분석을 위한 대화형 데이터 제품군
+
+App Engine앱 및 백엔드용 서버리스 애플리케이션 플랫폼
+
+Cloud GPUML, 과학 컴퓨팅, 3D 시각화용 GPU
+
+Migrate to Virtual Machines서버 및 가상 머신을 Compute Engine으로 마이그레이션
+
+스팟 VM일괄 작업 및 내결함성 워크로드에 적합한 컴퓨팅 인스턴스
+
+Batch일괄 작업을 예약할 수 있는 완전 관리형 서비스입니다.
+
+단독 테넌트 노드규정 준수, 라이선스, 관리를 위한 전용 하드웨어
+
+베어메탈Google Cloud에서 특수한 워크로드를 실행하기 위한 인프라
+
+추천자Google Cloud 제품 및 서비스 사용 권장사항
+
+VMware Engine완전 관리형 기본 VMware Cloud Foundation 소프트웨어 스택
+
+모든 컴퓨팅 제품 보기
+
+Cloud BuildDocker 컨테이너에서 빌드 단계를 실행하기 위한 솔루션
+
+Artifact Registry빌드 아티팩트 및 종속 항목의 패키지 관리자
+
+Cloud CodeKubernetes 애플리케이션 작성, 실행, 디버깅을 위한 IDE 지원
+
+Cloud DeployGKE 및 Cloud Run에 대한 완전 관리형 지속적 배포
+
+Migrate to ContainersGKE 기반 시스템 컨테이너로 VM을 마이그레이션하기 위한 구성요소
+
+Deep Learning Containers데이터 과학 프레임워크, 라이브러리, 도구가 포함된 컨테이너
+
+KnativeKubernetes에 최적화된 클라우드 기반 소프트웨어를 구축하기 위한 구성요소
+
+Dataflow스트림 및 일괄 처리를 위한 스트리밍 분석
+
+Pub/Sub이벤트 수집 및 전송을 위한 메시지 서비스
+
+DataprocApache Spark 및 Apache Hadoop 클러스터를 실행하는 서비스
+
+Cloud Data Fusion데이터 파이프라인 빌드 및 관리를 위한 데이터 통합
+
+Cloud ComposerApache Airflow를 기반으로 구축된 워크플로 조정 서비스
+
+BigLake다양한 형식의 멀티모달 데이터를 쿼리하는 스토리지 엔진입니다.
+
+Dataplex사일로에서 데이터 관리를 통합하기 위한 지능형 데이터 패브릭
+
+DataformBigQuery에서 SQL 워크플로 빌드, 버전 제어, 배포
+
+Analytics Hub데이터 분석 애셋을 안전하고 효율적으로 교환하는 서비스
+
+모든 데이터 분석 제품 보기
+
+PostgreSQL용 AlloyDB엔터프라이즈 워크로드를 위한 완전 관리형 PostgreSQL 호환 데이터베이스
+
+Cloud SQLMySQL, PostgreSQL, SQL Server용 완전 관리형 데이터베이스
+
+Firestore풍부한 모바일, 웹, IoT 앱을 빌드하기 위한 클라우드 기반 문서 데이터베이스
+
+Spanner무제한 확장과 99.999%의 가용성을 제공하는 클라우드 기반 관계형 데이터베이스
+
+Bigtable지연 시간이 짧은 대규모 워크로드를 위한 클라우드 기반 와이드 칼럼 데이터베이스
+
+Datastream서버리스 변경 데이터 캡처 및 복제 서비스
+
+Database Migration Service최소한의 다운타임으로 Cloud SQL로 서버리스 마이그레이션
+
+베어메탈 솔루션Oracle 워크로드를 위한 완전 관리형 인프라입니다.
+
+Memorystore1밀리초 미만의 데이터 액세스를 위한 완전 관리형 Redis 및 Memcached입니다.
+
+Artifact Registry빌드 아티팩트 및 종속 항목의 범용 패키지 관리자
+
+Cloud Build지속적 통합 및 지속적 배포 플랫폼
+
+Cloud Deployment ManagerGoogle Cloud 리소스를 만들고 관리하는 서비스
+
+Cloud SDKGoogle Cloud용 명령줄 도구 및 라이브러리
+
+Cloud Scheduler태스크 자동화 및 관리를 위한 크론 작업 스케줄러
+
+Cloud Source Repositories코드를 저장, 관리, 추적하는 비공개 Git 저장소
+
+Infrastructure ManagerTerraform으로 인프라 관리 자동화
+
+Cloud Workstations클라우드의 안전한 관리형 개발 환경
+
+Gemini Code AssistGoogle Cloud와 IDE 전반에서 사용할 수 있는 AI 기반 어시스턴트입니다.
+
+모든 개발자 도구 보기
+
+Google Distributed Cloud Connected에지 워크로드를 위한 분산형 클라우드 서비스
+
+에어 갭이 적용된 Google Distributed Cloud에어 갭 적용 워크로드를 위한 분산형 클라우드
+
+Apigee API 관리API 관리, 개발, 보안 플랫폼
+
+Migrate to Containers워크로드 및 기존 애플리케이션을 GKE로 옮기는 도구
+
+Cloud BuildGoogle Cloud 인프라에서 빌드를 실행하는 서비스
+
+운영모니터링, 로깅, 애플리케이션 성능 제품군
+
+Google Distributed Cloud에지 및 데이터 센터를 위한 완전 관리형 솔루션
+
+자금 세탁 방지 AIAI로 의심스러운 잠재적 자금세탁 활동을 감지
+
+Cloud Healthcare API기존 의료 시스템과 Google Cloud 기반의 앱을 연결하는 솔루션
+
+Fitbit 기기 연결Google Cloud에서 연결된 Fitbit 데이터를 통해 환자의 상태를 종합적으로 파악할 수 있습니다.
+
+Telecom Network Automation통신 네트워크에 사용할 수 있는 클라우드 기반 자동화
+
+Telecom Data Fabric자동화된 접근 방식을 사용한 통신 데이터 관리 및 분석
+
+Telecom Subscriber Insights데이터를 수집하여 구독자 확보 및 유지를 개선
+
+Spectrum Access System(SAS)민간 광대역 무선 서비스(CBRS)에 대한 기본 액세스 제어
+
+Application Integration서드 파티 앱에 연결하고 코드 없이 데이터 일관성을 지원
+
+Workflows서버리스 제품 및 API 서비스의 워크플로 조정
+
+Cloud Tasks비동기 태스크 실행을 위한 태스크 관리 서비스
+
+Eventarc모든 서비스를 연결할 수 있는 이벤트 기반 아키텍처 빌드
+
+Cloud Shell명령줄이 내장된 대화형 셸 환경
+
+Cloud 콘솔클라우드 앱 관리와 모니터링을 위한 웹 기반 인터페이스
+
+Cloud EndpointsGoogle Cloud에서의 API 배포 및 개발 관리
+
+Cloud IAMGoogle Cloud 리소스의 권한 관리 시스템
+
+Cloud APIGoogle Cloud 서비스의 프로그래매틱 인터페이스
+
+서비스 카탈로그내부 기업용 솔루션 관리자를 위한 서비스 카탈로그
+
+비용 관리비용 모니터링, 관리, 최적화 도구
+
+탄소 발자국Google Cloud 탄소 배출량 보고서를 보고 내보낼 수 있는 대시보드
+
+구성 커넥터Google Cloud 리소스 관리를 위한 Kubernetes 부가기능
+
+Active Assist성능, 보안, 비용을 간편하게 관리할 수 있는 도구
+
+모든 관리 도구 보기
+
+Earth Engine지구 관측 데이터 및 분석을 위한 지리정보 플랫폼
+
+Google Maps Platform몰입형 위치정보 활용 환경을 생성하고 비즈니스 운영을 개선
+
+Cloud CDN웹 및 동영상 콘텐츠 전송을 위한 콘텐츠 전송 네트워크
+
+Live Stream API스트리밍을 위해 실시간 동영상 및 패키지를 변환하는 서비스.
+
+OpenCue시각 효과 및 애니메이션을 위한 오픈소스 렌더링 관리자
+
+Transcoder API최적화된 전송을 위해 동영상 파일 변환 및 패키징
+
+Video Stitcher API동적 또는 서버 측 광고 삽입 서비스
+
+마이그레이션 센터Google Cloud로 마이그레이션하고 현대화하는 통합 플랫폼입니다.
+
+애플리케이션 마이그레이션저비용 갱신 주기를 위해 클라우드로 앱 마이그레이션
+
+Migrate to Virtual MachinesCompute Engine으로 VM 및 물리적 서버를 마이그레이션하기 위한 구성요소
+
+Cloud Foundation ToolkitDeployment Manager와 Terraform용 참조 템플릿
+
+BigQuery Data Transfer Service데이터를 예약하고 BigQuery로 옮기는 데이터 가져오기 서비스
+
+Transfer ApplianceGoogle Cloud로 대용량 데이터를 이전하기 위한 스토리지 서버
+
+Storage Transfer Service온라인 및 온프레미스 소스에서 Cloud Storage로 데이터 전송
+
+VMware EngineVMware 워크로드를 마이그레이션하여 Google Cloud를 기반으로 실행
+
+Immersive Stream for XR3D 및 XR 환경을 호스팅, 렌더링, 스트리밍
+
+Cloud Armor웹 및 DDoS 공격에 대한 보안 정책 및 방어
+
+Cloud CDN 및 Media CDN웹 및 동영상 콘텐츠 전송을 위한 콘텐츠 전송 네트워크
+
+Cloud DNS안정적이고 지연 시간이 짧은 이름 조회를 위한 DNS(도메인 이름 시스템)
+
+Cloud Load Balancing애플리케이션 및 리전에 트래픽을 분산하는 서비스
+
+Cloud NAT비공개 인스턴스에 인터넷 액세스 권한을 부여하는 NAT 서비스
+
+Cloud ConnectivityVPN, 피어링, 기업의 니즈를 위한 연결 옵션
+
+Network Connectivity Center네트워크를 간소화하고 확장하기 위한 연결 관리
+
+Network Intelligence Center네트워크 모니터링, 인증, 최적화 플랫폼
+
+네트워크 서비스 등급성능, 가용성, 비용에 따른 클라우드 네트워크 옵션
+
+Virtual Private Cloud조직 전체에 하나의 VPC만 사용해 프로젝트 내에서 팀을 분리
+
+Private Service ConnectVPC와 서비스 간의 보안 연결
+
+모든 네트워킹 제품 보기
+
+Cloud LoggingGoogle Cloud 감사, 플랫폼, 애플리케이션 로그 관리
+
+Cloud Monitoring풍부한 측정항목으로 인프라 및 애플리케이션 상태 점검
+
+Error Reporting애플리케이션 오류 식별 및 분석
+
+Cloud Debugger실시간 애플리케이션 상태 검사 및 프로덕션 단계의 디버깅
+
+Cloud Trace애플리케이션에서 지연 데이터를 수집하는 추적 시스템
+
+Cloud Profiler애플리케이션 성능 분석을 위한 CPU 및 힙 프로파일러
+
+Cloud 할당량모든 Google Cloud 서비스의 할당량을 관리합니다.
+
+AppSheet애플리케이션을 빌드 및 확장하는 코딩 없는 개발 플랫폼
+
+AppSheet Automation통합 플랫폼에서 자동화 및 애플리케이션을 빌드
+
+Google Workspace개인과 조직을 위한 공동작업 및 생산성 도구
+
+Workspace를 위한 GeminiGoogle Workspace 앱에 생성형 AI 삽입
+
+Sensitive Data Protection중요한 데이터 애셋을 탐색, 분류, 보호
+
+Mandiant Managed Defense연중무휴 안심하고 위협을 파악하고 제거합니다.
+
+Security Command CenterGoogle Cloud 애셋에 대한 위협을 방어하기 위한 플랫폼
+
+Cloud Key ManagementGoogle Cloud에서 암호화 키 관리
+
+Mandiant 이슈 대응침해의 영향을 최소화합니다.
+
+Chrome Enterprise Premium광범위한 엔드포인트 가시성을 갖춘 안전한 엔터프라이즈 브라우징을 이용하세요.
+
+Assured Workloads민감한 워크로드에 대한 규정 준수 및 보안 제어
+
+Google Security Operations사이버 위협을 감지 및 조사하고 이에 대응하세요.
+
+Mandiant Consulting이슈 발생 전후와 도중에 전문가의 안내를 받습니다.
+
+모든 보안 및 ID 제품 보기
+
+Cloud Functions클라우드 이벤트에 응답하는 함수를 만들기 위한 플랫폼
+
+API 게이트웨이완전 관리형 게이트웨이를 사용하여 API를 개발, 배포, 보호, 관리
+
+블록 스토리지AI, 분석, 데이터베이스, 엔터프라이즈 애플리케이션을 위한 고성능 스토리지입니다.
+
+Filestore확장성이 뛰어나고 안전한 파일 스토리지
+
+Persistent DiskGoogle Cloud에서 실행되는 가상 머신 인스턴스용 블록 스토리지
+
+Firebase용 Cloud Storage사용자 제작 콘텐츠 저장 및 제공을 위한 객체 스토리지
+
+로컬 SSD고성능 요건에 맞게 로컬로 연결된 블록 스토리지
+
+Parallelstore고성능 관리형 병렬 파일 서비스입니다.
+
+Google Cloud NetApp VolumesNFS, SMB, 멀티 프로토콜 환경을 위한 파일 저장 서비스
+
+백업 및 DR 서비스중앙 집중식의 애플리케이션 일관성이 있는 데이터 보호를 위한 서비스
+
+블록체인 노드 엔진블록체인 개발을 위한 완전 관리형 노드 호스팅
+
+블록체인 RPC블록체인에서 빌드하도록 지원하는 엔터프라이즈급 RPC입니다.
+
+투명한 가격 책정 방식으로 비용 절감
+
+Google Cloud는 사용한 만큼만 지불하는 가격 책정 방식으로 월별 사용량과 선불 리소스의 할인율을 기준으로 자동 할인을 제공합니다. 지금 Google에 문의하여 견적을 받아보세요.
+
+견적서 1건 요청
+
+가격 책정 개요 및 도구
+
+Google Cloud 가격 책정사용한 만큼만 지불하고 자유롭게 서비스 전환 가능
+
+가격 계산기클라우드 비용 절감 계산
+
+Google Cloud 무료 등급월별 무료 사용으로 제품을 살펴보세요.
+
+비용 최적화 프레임워크워크로드 비용 최적화를 위한 권장사항을 확인하세요.
+
+비용 관리 도구비용을 모니터링하고 관리할 수 있는 도구입니다.
+
+제품별 가격 책정
+
+Compute Engine
+
+Cloud SQL
+
+Google Kubernetes Engine
+
+Cloud Storage
+
+BigQuery
+
+100개 이상의 제품이 포함된 정가 목록 보기
+
+학습 및 빌드
+
+Google Cloud 무료 프로그램$300의 무료 크레딧과 20여 개의 무료 제품
+
+빠른 시작튜토리얼과 둘러보기를 확인하세요.
+
+블로그Google의 최신 제품 뉴스와 스토리 확인
+
+학습 허브역할 기반 학습으로 커리어 성장
+
+자격증자격증 준비 및 등록
+
+클라우드 아키텍처 센터참조 아키텍처와 권장사항을 확인하세요.
+
+연결
+
+혁신가Google Cloud 개발자 프로그램에 가입하세요.
+
+Developer Center최신 정보를 놓치지 않고 확인하세요.
+
+이벤트 및 웹 세미나예정된 이벤트와 주문형 이벤트를 둘러보세요.
+
+Google Cloud 커뮤니티질문하고, 답변을 찾고, 소통하기
+
+컨설팅 및 파트너
+
+Google Cloud 컨설팅Google Cloud 전문가와 함께 클라우드 프로젝트를 진행하세요.
+
+Google Cloud Marketplace클릭 몇 번으로 즉시 사용 가능한 솔루션 배포
+
+Google Cloud 파트너파트너 지원의 이점 살펴보기
+
+파트너 되기파트너 어드밴티지 프로그램 가입
+
+개요arrow_forward
+
+arrow_forward
+
+솔루션arrow_forward
+
+제품arrow_forward
+
+가격 책정arrow_forward
+
+리소스arrow_forward
+
+Docs
+
+지원
+
+콘솔
+
+Google Cloud를 선택해야 하는 이유
+
+AI 및 ML
+
+멀티 클라우드
+
+글로벌 인프라
+
+데이터 클라우드
+
+최신 인프라 클라우드
+
+경영진 통계
+
+애널리스트 보고서
+
+백서
+
+고객 사례
+
+소매업
+
+소비재
+
+금융 서비스
+
+의료 및 생명과학
+
+미디어 및 엔터테인먼트
+
+전자통신
+
+게임
+
+제조업
+
+공급망 및 물류
+
+정부 기관
+
+교육
+
+모든 솔루션 보기
+
+CAMP
+
+기존 애플리케이션 현대화
+
+PaaS에서 마이그레이션: Cloud Foundry, OpenShift
+
+메인프레임에서 마이그레이션
+
+소프트웨어 배포 현대화
+
+DevOps 권장사항
+
+SRE 원칙
+
+Operations for GKE 2일 차
+
+FinOps 및 GKE 최적화
+
+에지에서 애플리케이션 실행
+
+멀티 클라우드를 위한 설계
+
+서버리스로 전환
+
+Google AI를 사용한 고객 참여 제품군
+
+Document AI
+
+소매업을 위한 Vertex AI Search
+
+Google Cloud를 위한 Gemini
+
+Google Cloud의 생성형 AI
+
+API를 사용한 새 비즈니스 채널
+
+API를 사용한 기존 애플리케이션 활용
+
+Open Banking APIx
+
+데이터 마이그레이션
+
+데이터 레이크 현대화
+
+스트림 분석
+
+마케팅 분석
+
+데이터 세트
+
+데이터 분석을 위한 AI
+
+데이터베이스 마이그레이션
+
+데이터베이스 현대화
+
+게임용 데이터베이스
+
+Google Cloud 데이터베이스
+
+Oracle 워크로드를 Google Cloud로 마이그레이션
+
+오픈소스 데이터베이스
+
+Google Cloud 기반 SQL Server
+
+데이터베이스를 위한 Gemini
+
+애플리케이션 마이그레이션
+
+Google Cloud 기반 SAP
+
+고성능 컴퓨팅
+
+Google Cloud에서 Windows 실행
+
+데이터 센터 마이그레이션
+
+Active Assist
+
+가상 데스크톱
+
+Rapid Migration and Modernization Program
+
+백업 및 재해 복구
+
+Google Cloud 기반 Red Hat
+
+Google Workspace
+
+Google Workspace Essentials
+
+Cloud ID
+
+Chrome Enterprise
+
+보안 분석 및 운영
+
+웹 앱 및 API 보호
+
+보안 및 복원력 프레임워크
+
+코드형 위험 및 규정 준수(RCaC)
+
+소프트웨어 공급망 보안
+
+Security Foundation
+
+스타트업 프로그램
+
+중소기업
+
+Software as a Service
+
+Cloud Run
+
+Vertex AI
+
+Looker
+
+Apigee API 관리
+
+Gemini
+
+Cloud CDN
+
+Vertex AI Platform
+
+Vertex AI Studio
+
+Vertex AI Agent Builder
+
+대화형 에이전트
+
+Vertex AI Search
+
+Speech-to-Text
+
+Text-to-Speech
+
+Translation AI
+
+Vision AI
+
+서비스형 고객센터
+
+Looker Studio
+
+App Engine
+
+Cloud GPU
+
+Migrate to Virtual Machines
+
+스팟 VM
+
+Batch
+
+단독 테넌트 노드
+
+베어메탈
+
+추천자
+
+VMware Engine
+
+Cloud Build
+
+Artifact Registry
+
+Cloud Code
+
+Cloud Deploy
+
+Migrate to Containers
+
+Deep Learning Containers
+
+Knative
+
+Dataflow
+
+Pub/Sub
+
+Dataproc
+
+Cloud Data Fusion
+
+Cloud Composer
+
+BigLake
+
+Dataplex
+
+Dataform
+
+Analytics Hub
+
+PostgreSQL용 AlloyDB
+
+Firestore
+
+Spanner
+
+Bigtable
+
+Datastream
+
+Database Migration Service
+
+베어메탈 솔루션
+
+Memorystore
+
+Cloud Deployment Manager
+
+Cloud SDK
+
+Cloud Scheduler
+
+Cloud Source Repositories
+
+Infrastructure Manager
+
+Cloud Workstations
+
+Gemini Code Assist
+
+Google Distributed Cloud Connected
+
+에어 갭이 적용된 Google Distributed Cloud
+
+Google Distributed Cloud
+
+자금 세탁 방지 AI
+
+Cloud Healthcare API
+
+Fitbit 기기 연결
+
+Telecom Network Automation
+
+Telecom Data Fabric
+
+Telecom Subscriber Insights
+
+Spectrum Access System(SAS)
+
+Application Integration
+
+Workflows
+
+Cloud Tasks
+
+Eventarc
+
+Cloud Shell
+
+Cloud 콘솔
+
+Cloud Endpoints
+
+Cloud IAM
+
+Cloud API
+
+서비스 카탈로그
+
+비용 관리
+
+탄소 발자국
+
+구성 커넥터
+
+Earth Engine
+
+Google Maps Platform
+
+Live Stream API
+
+OpenCue
+
+Transcoder API
+
+Video Stitcher API
+
+마이그레이션 센터
+
+Cloud Foundation Toolkit
+
+BigQuery Data Transfer Service
+
+Transfer Appliance
+
+Storage Transfer Service
+
+Immersive Stream for XR
+
+Cloud Armor
+
+Cloud CDN 및 Media CDN
+
+Cloud DNS
+
+Cloud Load Balancing
+
+Cloud NAT
+
+Cloud Connectivity
+
+Network Connectivity Center
+
+Network Intelligence Center
+
+네트워크 서비스 등급
+
+Virtual Private Cloud
+
+Private Service Connect
+
+Cloud Logging
+
+Cloud Monitoring
+
+Error Reporting
+
+Cloud Debugger
+
+Cloud Trace
+
+Cloud Profiler
+
+Cloud 할당량
+
+AppSheet
+
+AppSheet Automation
+
+Workspace를 위한 Gemini
+
+Sensitive Data Protection
+
+Mandiant Managed Defense
+
+Security Command Center
+
+Cloud Key Management
+
+Mandiant 이슈 대응
+
+Chrome Enterprise Premium
+
+Assured Workloads
+
+Google Security Operations
+
+Mandiant Consulting
+
+Cloud Functions
+
+API 게이트웨이
+
+블록 스토리지
+
+Filestore
+
+Persistent Disk
+
+Firebase용 Cloud Storage
+
+로컬 SSD
+
+Parallelstore
+
+Google Cloud NetApp Volumes
+
+백업 및 DR 서비스
+
+블록체인 노드 엔진
+
+블록체인 RPC
+
+Google Cloud 가격 책정
+
+가격 계산기
+
+Google Cloud 무료 등급
+
+비용 최적화 프레임워크
+
+비용 관리 도구
+
+Google Cloud 무료 프로그램
+
+빠른 시작
+
+블로그
+
+학습 허브
+
+자격증
+
+클라우드 아키텍처 센터
+
+혁신가
+
+Developer Center
+
+이벤트 및 웹 세미나
+
+Google Cloud 커뮤니티
+
+Google Cloud 컨설팅
+
+Google Cloud Marketplace
+
+Google Cloud 파트너
+
+파트너 되기
+
+Google을 선택해야 하는 이유
+Google Cloud 선택
+신뢰 및 보안
+최신 인프라 클라우드
+멀티 클라우드
+글로벌 인프라
+고객 및 우수사례
+애널리스트 보고서
+백서
+블로그
+
+Google Cloud 선택
+
+신뢰 및 보안
+
+고객 및 우수사례
+
+제품 및 가격 책정
+Google Cloud 가격 책정
+Google Workspace 가격 책정
+모든 제품 보기
+
+Google Workspace 가격 책정
+
+모든 제품 보기
+
+솔루션
+인프라 현대화
+데이터베이스
+애플리케이션 현대화
+스마트 분석
+인공지능
+보안
+생산성 및 작업 방식의 혁신
+업종별 솔루션
+DevOps 솔루션
+중소기업용 솔루션
+모든 솔루션 보기
+
+스마트 분석
+
+생산성 및 작업 방식의 혁신
+
+DevOps 솔루션
+
+중소기업용 솔루션
+
+Google Cloud 제휴 프로그램
+
+Google Cloud 문서
+
+Google Cloud 빠른 시작
+
+클라우드 컴퓨팅 알아보기
+
+코드 샘플
+
+학습
+
+인증
+
+Google Cloud for Startups
+
+시스템 상태
+
+출시 노트
+
+참여
+영업팀에 문의
+파트너 찾기
+파트너 되기
+이벤트
+팟캐스트
+Developer Center
+보도자료 코너
+Google Cloud의 YouTube 채널
+Google Cloud Tech의 YouTube 채널
+Twitter 팔로우
+사용자 연구 참여
+Google Cloud 채용 정보
+Google Cloud 커뮤니티
+
+영업팀에 문의
+
+파트너 찾기
+
+이벤트
+
+팟캐스트
+
+보도자료 코너
+
+Google Cloud의 YouTube 채널
+
+Google Cloud Tech의 YouTube 채널
+
+Twitter 팔로우
+
+사용자 연구 참여
+
+Google Cloud 채용 정보
+
+Google 정보
+
+개인정보처리방침
+
+사이트 약관
+
+Google Cloud 약관
+
+쿠키 관리
+
+Google의 기후 행동 30년: 동참하기
+
+Google Cloud 뉴스레터 구독하기
+구독
+
+‪English‬
+
+‪Deutsch‬
+
+‪Español‬
+
+‪Español (Latinoamérica)‬
+
+‪Français‬
+
+‪Indonesia‬
+
+‪Italiano‬
+
+‪Português (Brasil)‬
+
+‪简体中文‬
+
+‪繁體中文‬
+
+‪日本語‬
+
+‪한국어‬
+
+### 표
+| 무료 등급 | 할당량 |
+| --- | --- |
+| 무료 등급 | 할당량 |
+| 저장된 데이터 | 1GiB |
+| 문서 읽기 | 50,000/일 |
+| 문서 쓰기 | 20,000/일 |
+| 문서 삭제 | 20,000/일 |
+| 아웃바운드 데이터 전송 | 10GiB/월 |
+
+| | 일일 무료 할당량 | Default* (USD) info | Cloud Firestore CUD - 1 Year* (USD) info | Cloud Firestore CUD - 3 Year* (USD) info | 가격 단위 |
+| --- | --- | --- | --- | --- | --- |
+| | 일일 무료 할당량 | Default* (USD) info | Cloud Firestore CUD - 1 Year* (USD) info | Cloud Firestore CUD - 3 Year* (USD) info | 가격 단위 |
+| 문서 읽기 | 50,000 | US$0.03 | US$0.024 | US$0.018 | 문서 100,000개당 |
+| 문서 쓰기 | 20,000 | US$0.09 | US$0.072 | US$0.054 | 문서 100,000개당 |
+| 문서 삭제 | 20,000 | US$0.01 | US$0.008 | US$0.006 | 문서 100,000개당 |
+| TTL 삭제 | 지원되지 않음 | US$0.01 | US$0.008 | US$0.006 | 문서 100,000개당 |
+| 저장된 데이터 | 스토리지 1GB | US$0.000205479 | - | - | GiB |
+| PITR 데이터 | 지원되지 않음 | US$0.000205479 | - | - | GiB |
+| 데이터 백업 | 지원되지 않음 | US$0.000041096 | - | - | GiB |
+| 복원 작업 | 지원되지 않음 | US$0.20 | - | - | GiB |
+| 클론 작업 | 지원되지 않음 | US$0.20 | - | - | GiB |
+
+| 트래픽 유형 | 가격 |
+| --- | --- |
+| 트래픽 유형 | 가격 |
+| 인바운드 데이터 전송 | 무료 |
+| 리전 내 데이터 전송 | 무료 |
+| 동일한 멀티 리전에 속한 리전 간 데이터 전송 | 무료 |
+| 미국 내 리전 간 데이터 전송(GiB당) | $0.01(매월 첫 10GiB는 무료) |
+| 미국 리전 간 트래픽을 제외한 리전 간 데이터 전송 | Google Cloud Platform 아웃바운드 인터넷 데이터 전송 요금 |
+
+| 서비스 | 가격(USD) |
+| --- | --- |
+| 서비스 | 가격(USD) |
+| 아시아 태평양, 유럽, 아메리카 | 0 gibibyte to 10 gibibyte US$0.00 (Free) 10 gibibyte to 1,024 gibibyte US$0.12 1,024 gibibyte to 10,240 gibibyte US$0.11 10,240 gibibyte and above US$0.08 |
+| 싱가포르, 도쿄 | 0 gibibyte to 10 gibibyte US$0.00 (Free) 10 gibibyte to 1,024 gibibyte US$0.14 1,024 gibibyte to 10,240 gibibyte US$0.13 10,240 gibibyte and above US$0.09 |
+
+| | 가격(USD) |
+| --- | --- |
+| | 가격(USD) |
+| 네트워크 아웃바운드 데이터 전송: 중국 대상 위치 (홍콩 제외) (GiB당) | 0 gibibyte to 10 gibibyte US$0.00 (Free) 10 gibibyte to 1,024 gibibyte US$0.23 1,024 gibibyte to 10,240 gibibyte US$0.22 10,240 gibibyte and above US$0.20 |
+| 네트워크 아웃바운드 데이터 전송: 오스트레일리아 대상 위치 (GiB당) | 0 gibibyte to 10 gibibyte US$0.00 (Free) 10 gibibyte to 1,024 gibibyte US$0.19 1,024 gibibyte to 10,240 gibibyte US$0.18 10,240 gibibyte and above US$0.15 |
+| 네트워크 인바운드 데이터 전송 | $0 (무료) |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+// Requires single-field vector index
+
+언어: 코드 · 셀#2
+const vectorQuery: VectorQuery = db.collection('cities').findNearest('embedding_field', FieldValue.vector([3.0, 1.0, 2.0]), {
+
+언어: 코드 · 셀#3
+limit: 5,
+
+언어: 코드 · 셀#4
+distanceMeasure: 'EUCLIDEAN'
+
+언어: 코드 · 셀#5
+});
+
+언어: 코드 · 셀#6
+db.collection("employees").whereEqualTo("age", 35)
+
+언어: 코드 · 셀#7
+.whereGreaterThanOrEqualTo("start_date", new Date(2020, 1, 1))
+
+언어: 코드 · 셀#8
+db.collection("employees").whereGreaterThanOrEqualTo("age", 35)
+
+언어: 코드 · 셀#9
+.orderBy("start_date")
+
+언어: 코드 · 셀#10
+db.collection("employees").whereIn("__name__", Arrays.asList("/employees/Alice", "/employees/Bob"))
+
+언어: 코드 · 셀#11
+.orderBy("age")

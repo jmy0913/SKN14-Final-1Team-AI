@@ -1,0 +1,87 @@
+Source URL: https://cloud.google.com/firestore/native/docs/app-engine-requirement?hl=ko
+
+## 서문
+이전에는 모든 Firestore 데이터베이스가 App Engine 앱에 연결되었습니다. 이렇게 App Engine 앱에 연결되면 데이터베이스에는 동일한 프로젝트의 활성 App Engine 앱이 필요합니다. 활성 App Engine 앱이 없으면 데이터베이스에 대한 읽기 및 쓰기 액세스가 중지됩니다.
+
+이제 Firestore 데이터베이스는 기본적으로 App Engine에서 연결 해제됩니다.
+
+데이터베이스가 App Engine에 연결된 경우에는 데이터베이스의 연결을 해제할 수 있습니다.
+
+## 활성 App Engine
+활성 App Engine 앱은 동일한 프로젝트에 앱이 있고 이 앱이 중지되지 않았음을 의미합니다. 앱이 사용되어야 할 필요는 없습니다. 연결된 앱과 데이터베이스는 같은 리전에 있어야 합니다.
+
+App Engine 앱을 사용 중지하면 해당 앱에 연결된 Firestore 데이터베이스에 대한 액세스도 사용 중지됩니다.
+
+## App Engine 연결 상태 보기
+REST API를 사용하여 App Engine 연결 해제 상태를 확인할 수 있습니다.
+
+응답에서 appEngineIntegrationMode 값을 확인합니다. 값이 DISABLED이면 데이터베이스가 App Engine 앱에 연결되지 않은 것입니다.
+
+## App Engine에서 데이터베이스 연결 해제
+Firestore 데이터로 이동
+
+REST API를 사용하여 데이터베이스의 연결을 해제할 수도 있습니다.
+
+데이터베이스를 연결 해제하면 데이터베이스에 대한 액세스에 영향을 주지 않고 App Engine을 중지할 수 있습니다. 연결 해제는 되돌릴 수 없습니다. 연결 해제 작업이 적용되는 데 최대 5분이 걸릴 수 있습니다.
+
+## Terraform App Engine 리소스 마이그레이션
+이전에 google_app_engine_application Terraform 리소스를 통해 Firestore 데이터베이스를 관리한 경우 대신 google_firestore_database Terraform 리소스를 사용할 수 있습니다.
+
+Terraform을 통한 Firestore 데이터베이스 관리 방법에 대한 일반적인 안내는 데이터베이스 생성 자동화를 참조하세요.
+
+## google_firestore_database 리소스 만들기
+Terraform 구성 파일에서 새 google_firestore_database 리소스를 만듭니다.
+
+사용 가능한 위치 목록은 Firestore 위치를 참조하세요. 기존 데이터베이스 위치에 해당하는 위치를 선택합니다.
+
+## 기존 Firestore 데이터베이스 가져오기
+먼저 Firestore API가 사용 설정되어 있는지 확인합니다.
+
+다음으로 기존 Firestore 데이터베이스를 Terraform 상태로 가져옵니다.
+
+다음을 실행합니다.
+
+출력을 검사하여 가져오기가 성공적으로 완료되었는지 확인합니다. 출력에 변경된 필드가 표시되면 변경사항이 의도한 것인지 확인합니다. 출력에 다음과 유사한 줄이 포함된 경우 다음을 수행합니다.
+
+Terraform 구성 파일을 검사하여 특히 project, location 또는 name 필드에서 오류가 있는지 확인한 후 terraform plan을 다시 실행합니다. Terraform에서 데이터베이스를 교체해야 하는 필드는 계획 출력에서 # forces replacement로 표시됩니다.
+
+Terraform 계획 출력에 만족하면 다음을 실행합니다.
+
+## google_app_engine_application 리소스 삭제
+Terraform 구성 파일에 기존 google_app_engine_application 리소스가 있으면 지금 이 파일에서 삭제합니다.
+
+그런 후 다시 다음을 실행합니다.
+
+다음과 비슷한 출력이 표시됩니다.
+
+계획 출력에 만족하면 다음을 실행합니다.
+
+Terraform에서는 현재 App Engine 리소스를 삭제할 수 없습니다. Terraform에 리소스가 삭제된 것으로 표시되지만 실제로는 App Engine 애플리케이션이 삭제되지는 않습니다. 하지만 더 이상 Terraform에서 App Engine 애플리케이션을 관리하지 않습니다.
+
+## Firestore API 요구사항
+이전에는 모든 Firestore 데이터베이스가 App Engine 앱에 연결되었습니다. 이제는 Firestore 데이터베이스가 기본적으로 App Engine에서 연결 해제됩니다. 또한 기존 데이터베이스와 새로 만든 데이터베이스 등 모든 데이터베이스에는 다음 요구사항이 있습니다.
+
+Google Cloud 콘솔 및 gcloud CLI에서 데이터베이스를 관리하려면 프로젝트에서 Firestore API를 사용 설정해야 합니다. 기본 모드의 Firestore와 Datastore 모드 데이터베이스의 Firestore 모두에 필요한 단계입니다.
+
+Google Cloud 콘솔 또는 gcloud CLI에서 실행할 경우 아래 관리 작업에 다음 IAM 권한이 필요합니다.
+
+데이터베이스 만들기: datastore.databases.create
+데이터베이스 메타데이터 보기: datastore.databases.getMetadata
+데이터베이스 메타데이터 수정: datastore.databases.update
+
+Google Cloud 콘솔 또는 gcloud CLI에서 실행할 경우 아래 관리 작업에 다음 IAM 권한이 필요합니다.
+
+데이터베이스 만들기: datastore.databases.create
+
+데이터베이스 메타데이터 보기: datastore.databases.getMetadata
+
+데이터베이스 메타데이터 수정: datastore.databases.update
+
+Datastore 사용자 및 Datastore 뷰어와 같은 사전 정의된 역할에는 필요한 권한이 있습니다. 커스텀 IAM 역할을 만든 경우 위 권한을 포함하도록 역할을 업데이트해야 할 수 있습니다.
+
+이전에 Datastore에 대한 커스텀 역할을 정의했으면 datastore.databases.getMetadata 권한이 없을 수 있습니다. datastore.databases.getMetadata로 커스텀 역할을 업데이트하거나 사전 정의된 역할을 사용하여 지속적인 액세스를 보장합니다.
+
+## Terraform을 통해 API 사용 설정
+원하는 경우 Terraform을 통해 Firestore API를 사용 설정할 수도 있습니다.
+
+google_firestore_database 리소스가 있는 경우 Terraform에서 데이터베이스를 만들려고 하기 전에 API가 사용 설정되었는지 확인하려면 google_project_service 리소스에 종속 항목을 추가하면 됩니다.

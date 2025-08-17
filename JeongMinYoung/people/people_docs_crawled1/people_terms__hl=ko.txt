@@ -1,0 +1,8 @@
+Source URL: https://developers.google.com/people/terms?hl=ko
+
+# People API 이용약관
+
+## 본문
+
+최종 수정일: 2015년 11월 23일
+이 API를 사용하면 Google API 서비스 약관 ('API 서비스 약관')에 동의하는 것으로 간주됩니다.

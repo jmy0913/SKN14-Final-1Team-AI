@@ -1,0 +1,220 @@
+Source URL: https://developers.google.com/people/v1/profiles?hl=ko
+
+# 프로필 읽기
+bookmark_border
+
+## 1. 인증된 사용자의 사용자 가져오기
+
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜
+GET /v1/people/me?personFields=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+언어: 자바
+Person profile = peopleService.people().get("people/me")
+    .setPersonFields("names,emailAddresses")
+    .execute();
+
+언어: Python
+profile = people_service.people()
+    .get('people/me', personFields='names,emailAddresses')
+
+언어: PHP
+$profile = $people_service->people->get(
+    'people/me', array('personFields' => 'names,emailAddresses'));
+
+언어: .NET
+PeopleResource.GetRequest peopleRequest =
+    peopleService.People.Get("people/me");
+peopleRequest.PersonFields = "names,emailAddresses";
+Person profile = peopleRequest.Execute();
+
+언어: 프로토콜
+GET /v1/people/me?personFields=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+언어: 프로토콜
+GET /v1/people/me?personFields=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+GET /v1/people/
+account_id?personFields=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+언어: 자바
+Person profile = peopleService.people().get("people/me")
+    .setPersonFields("names,emailAddresses")
+    .execute();
+
+언어: 자바
+Person profile = peopleService.people().get("people/me")
+    .setPersonFields("names,emailAddresses")
+    .execute();
+
+Person profile = peopleService.people().get("people/
+account_id")
+    .setPersonFields("names,emailAddresses")
+    .execute();
+
+언어: Python
+profile = people_service.people()
+    .get('people/me', personFields='names,emailAddresses')
+
+언어: Python
+profile = people_service.people()
+    .get('people/me', personFields='names,emailAddresses')
+
+profile = people_service.people()
+    .get('people/
+account_id', personFields='names,emailAddresses')
+
+언어: PHP
+$profile = $people_service->people->get(
+    'people/me', array('personFields' => 'names,emailAddresses'));
+
+언어: PHP
+$profile = $people_service->people->get(
+    'people/me', array('personFields' => 'names,emailAddresses'));
+
+$profile = $people_service->people->get(
+    'people/
+account_id', array('personFields' => 'names,emailAddresses'));
+
+언어: .NET
+PeopleResource.GetRequest peopleRequest =
+    peopleService.People.Get("people/me");
+peopleRequest.PersonFields = "names,emailAddresses";
+Person profile = peopleRequest.Execute();
+
+언어: .NET
+PeopleResource.GetRequest peopleRequest =
+    peopleService.People.Get("people/me");
+peopleRequest.PersonFields = "names,emailAddresses";
+Person profile = peopleRequest.Execute();
+
+PeopleResource.GetRequest peopleRequest =
+    peopleService.People.Get("people/
+account_id");
+peopleRequest.PersonFields = "names,emailAddresses";
+Person profile = peopleRequest.Execute();
+
+사용자의 프로필을 가져오려면 다음 코드를 사용하세요.
+
+프로토콜
+자바
+Python
+PHP
+.NET
+PeopleResource.GetRequest peopleRequest =
+    peopleService.People.Get("people/me");
+peopleRequest.PersonFields = "names,emailAddresses";
+Person profile = peopleRequest.Execute();
+
+## 2. Google 계정 ID의 사용자 가져오기
+
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜
+GET /v1/people/account_id?personFields=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+언어: 자바
+Person profile = peopleService.people().get("people/account_id")
+    .setPersonFields("names,emailAddresses")
+    .execute();
+
+언어: Python
+profile = people_service.people()
+    .get('people/account_id', personFields='names,emailAddresses')
+
+언어: PHP
+$profile = $people_service->people->get(
+    'people/account_id', array('personFields' => 'names,emailAddresses'));
+
+언어: .NET
+PeopleResource.GetRequest peopleRequest =
+    peopleService.People.Get("people/
+account_id");
+peopleRequest.PersonFields = "names,emailAddresses";
+Person profile = peopleRequest.Execute();
+
+언어: 프로토콜
+GET /v1/people/account_id?personFields=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+언어: 프로토콜
+GET /v1/people/me?personFields=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+GET /v1/people/
+account_id?personFields=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+언어: 자바
+Person profile = peopleService.people().get("people/account_id")
+    .setPersonFields("names,emailAddresses")
+    .execute();
+
+언어: 자바
+Person profile = peopleService.people().get("people/me")
+    .setPersonFields("names,emailAddresses")
+    .execute();
+
+Person profile = peopleService.people().get("people/
+account_id")
+    .setPersonFields("names,emailAddresses")
+    .execute();
+
+언어: Python
+profile = people_service.people()
+    .get('people/account_id', personFields='names,emailAddresses')
+
+언어: Python
+profile = people_service.people()
+    .get('people/me', personFields='names,emailAddresses')
+
+profile = people_service.people()
+    .get('people/
+account_id', personFields='names,emailAddresses')
+
+언어: PHP
+$profile = $people_service->people->get(
+    'people/account_id', array('personFields' => 'names,emailAddresses'));
+
+언어: PHP
+$profile = $people_service->people->get(
+    'people/me', array('personFields' => 'names,emailAddresses'));
+
+$profile = $people_service->people->get(
+    'people/
+account_id', array('personFields' => 'names,emailAddresses'));
+
+언어: .NET
+PeopleResource.GetRequest peopleRequest =
+    peopleService.People.Get("people/account_id");
+peopleRequest.PersonFields = "names,emailAddresses";
+Person profile = peopleRequest.Execute();
+
+언어: .NET
+PeopleResource.GetRequest peopleRequest =
+    peopleService.People.Get("people/me");
+peopleRequest.PersonFields = "names,emailAddresses";
+Person profile = peopleRequest.Execute();
+
+PeopleResource.GetRequest peopleRequest =
+    peopleService.People.Get("people/
+account_id");
+peopleRequest.PersonFields = "names,emailAddresses";
+Person profile = peopleRequest.Execute();
+
+Google 계정 ID의 사용자 정보를 가져오려면 다음 코드를 사용하세요.
+
+프로토콜
+자바
+Python
+PHP
+.NET
+PeopleResource.GetRequest peopleRequest =
+    peopleService.People.Get("people/
+account_id");
+peopleRequest.PersonFields = "names,emailAddresses";
+Person profile = peopleRequest.Execute();

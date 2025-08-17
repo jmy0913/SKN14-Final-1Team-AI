@@ -1,0 +1,24 @@
+Source URL: https://firebase.google.com/docs/reference/js/firestore_.fieldpath?hl=ko
+
+## 서문
+A FieldPath refers to a field in a document. The path may consist of a single field name (referring to a top-level field in the document), or a list of field names (referring to a nested field in the document).
+
+Create a FieldPath by providing field names. If more than one field name is provided, the path will point to a nested field in a document.
+
+Signature:
+
+## FieldPath.(constructor)
+Creates a FieldPath from the provided field names. If more than one field name is provided, the path will point to a nested field in a document.
+
+Signature:
+
+## FieldPath.isEqual()
+Returns true if this FieldPath is equal to the provided one.
+
+Signature:
+
+Returns:
+
+boolean
+
+true if this FieldPath is equal to the provided one.

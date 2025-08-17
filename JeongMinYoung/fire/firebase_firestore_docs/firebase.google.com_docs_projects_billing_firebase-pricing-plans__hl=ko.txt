@@ -1,0 +1,276 @@
+Source URL: https://firebase.google.com/docs/projects/billing/firebase-pricing-plans?hl=ko
+
+## 서문
+이 페이지에서는 Firebase 비용이 청구되는 방식, 다른 Google 서비스와의 연결 방식 등 Firebase 요금제에 대해 설명합니다.
+
+Firebase에서는 무료 Spark 요금제와 사용한 만큼만 지불하는 Blaze 요금제등 두 가지 요금제를 제공합니다. 다음은 각 요금제에 대한 간략한 설명입니다. 자세한 내용은 이 페이지의 후반부에 있는 섹션을 참조하세요.
+
+처음 시작하거나 무료 Firebase 제품만
+사용하는 경우 결제 정보 필요 없음
+
+결제 계정을 연결하여 더 많은 서비스와
+무료 사용 할당량을 넘는 사용량 수준 이용
+
+* 무료 제품에도 특정 기능과 관련된 제한사항이 있습니다(예: Crashlytics는 커스텀 로깅을 64KB로 제한함). 이러한 유형의 정보를 찾으려면 Firebase 문서의 각 제품 섹션을 참조하세요.
+
+** 제품에 따라 Spark 요금제와 Blaze 요금제로 제공되는 무료 사용 할당량이 다를 수 있습니다. 자세한 내용은 이 FAQ를 참조하세요.
+
+'무료' 또는 '유료'로 간주되는 Firebase 제품은 무엇인가요?
+
+무료 Firebase 제품
+ 프로젝트에서 사용하는 Firebase 요금제와 관계없이 프로덕션 앱이거나 사용자가 수백만 명이더라도 다음 Firebase 제품을 무료로 사용할 수 있습니다.
+
+ A/B Testing
+ App Check
+ App Distribution
+ Authentication(대부분의 옵션)
+
+ Cloud Messaging(FCM)
+ Crashlytics
+ Firebase ML(모델 배포)
+
+ In-App Messaging
+ Performance Monitoring
+ Remote Config
+
+ 유료 사용량 등급이 적용되는 Firebase 제품
+ 프로젝트에서 사용하는 Firebase 요금제에 관계없이 다음 Firebase 제품 사용 할당량은 무료입니다. 프로젝트에서 Blaze 요금제를 사용 중인 경우 추가 사용량에 대해서는 사용한 만큼만 지불하면 됩니다.
+
+ App Hosting 및 Hosting
+ Authentication(휴대전화)
+ Data Connect
+ Extensions
+
+ Cloud Firestore
+ Cloud Storage
+ Cloud Functions
+
+ Realtime Database
+ Test Lab
+ Firebase AI Logic
+
+ Firebase 요금제(특히 Cloud Functions 및 Google Cloud 제품)에 대한 자세한 내용은 Firebase 가격 책정 페이지를 참조하세요.
+
+무료 Firebase 제품
+ 프로젝트에서 사용하는 Firebase 요금제와 관계없이 프로덕션 앱이거나 사용자가 수백만 명이더라도 다음 Firebase 제품을 무료로 사용할 수 있습니다.
+
+유료 사용량 등급이 적용되는 Firebase 제품
+ 프로젝트에서 사용하는 Firebase 요금제에 관계없이 다음 Firebase 제품 사용 할당량은 무료입니다. 프로젝트에서 Blaze 요금제를 사용 중인 경우 추가 사용량에 대해서는 사용한 만큼만 지불하면 됩니다.
+
+Firebase 요금제(특히 Cloud Functions 및 Google Cloud 제품)에 대한 자세한 내용은 Firebase 가격 책정 페이지를 참조하세요.
+
+### 표
+| Spark 요금제
+
+처음 시작하거나 무료 Firebase 제품만
+사용하는 경우 결제 정보 필요 없음 | Blaze 요금제
+
+결제 계정을 연결하여 더 많은 서비스와
+무료 사용 할당량을 넘는 사용량 수준 이용 |
+| --- | --- |
+| 무료 Firebase 제품 및 기능 전체 사용* | 무료 Firebase 제품 및 기능 전체 사용* |
+| 유료 Firebase 제품의 무료 사용 할당량** | 유료 Firebase 제품의 무료 사용 할당량** |
+|  | 유료 Firebase 제품 추가 사용량에 대해 사용한 만큼만 지불 |
+|  | Cloud Functions 사용
+(무료 사용 할당량 소진 후 추가 사용량에 대해서는 사용한 만큼만 지불 가격 책정 적용) |
+|  | 유료 Google Cloud 제품 및 기능 이용 |
+| * 무료 제품에도 특정 기능과 관련된 제한사항이 있습니다(예: Crashlytics는 커스텀 로깅을 64KB로 제한함). 이러한 유형의 정보를 찾으려면 Firebase 문서의 각 제품 섹션을 참조하세요.
+
+** 제품에 따라 Spark 요금제와 Blaze 요금제로 제공되는 무료 사용 할당량이 다를 수 있습니다. 자세한 내용은 이 FAQ를 참조하세요. |
+
+## 제품별 정보 알아보기
+각 요금제의 제품별 세부정보: Firebase 가격 책정 페이지를 확인하세요. 이 페이지에서는 무료 Firebase 제품, 무료 사용 할당량, Firebase 제품의 사용한 만큼만 지불하는 가격 책정에 대해 알아봅니다.
+
+사용량, 할당량, 가격 책정에 대한 제품별 정보: 제품별 문서를 확인하세요. 이 페이지에서는 보통 제품 사용부터 결제에 이르는 과정의 예시와 특정 기능의 제한사항을 제공합니다(예: Crashlytics는 커스텀 로깅을 64KB로 제한함). 이러한 유형의 정보를 찾으려면 Firebase 문서의 각 제품 섹션을 참조하세요.
+
+## 프로젝트, 앱, 결제 간의 관계
+다음 그림은 요금제 및 결제 계정이 프로젝트 및 앱과 연결되는 방식을 보여줍니다.
+
+## Spark 요금제
+앱 개발 초기 단계인 경우 무료 Spark 요금제부터 시작하세요. 결제 정보를 제공하지 않아도 대부분의 Firebase 기능을 바로 사용할 수 있습니다.
+
+Remote Config 및 Crashlytics 같은 무료 Firebase 제품만 사용하는 경우 프로덕션 앱에서 Spark 요금제를 사용할 수 있습니다.
+
+'무료' 또는 '유료'로 간주되는 Firebase 제품은 무엇인가요?
+
+무료 Firebase 제품
+ 프로젝트에서 사용하는 Firebase 요금제와 관계없이 프로덕션 앱이거나 사용자가 수백만 명이더라도 다음 Firebase 제품을 무료로 사용할 수 있습니다.
+
+ A/B Testing
+ App Check
+ App Distribution
+ Authentication(대부분의 옵션)
+
+ Cloud Messaging(FCM)
+ Crashlytics
+ Firebase ML(모델 배포)
+
+ In-App Messaging
+ Performance Monitoring
+ Remote Config
+
+ 유료 사용량 등급이 적용되는 Firebase 제품
+ 프로젝트에서 사용하는 Firebase 요금제에 관계없이 다음 Firebase 제품 사용 할당량은 무료입니다. 프로젝트에서 Blaze 요금제를 사용 중인 경우 추가 사용량에 대해서는 사용한 만큼만 지불하면 됩니다.
+
+ App Hosting 및 Hosting
+ Authentication(휴대전화)
+ Data Connect
+ Extensions
+
+ Cloud Firestore
+ Cloud Storage
+ Cloud Functions
+
+ Realtime Database
+ Test Lab
+ Firebase AI Logic
+
+ Firebase 요금제(특히 Cloud Functions 및 Google Cloud 제품)에 대한 자세한 내용은 Firebase 가격 책정 페이지를 참조하세요.
+
+무료 Firebase 제품
+ 프로젝트에서 사용하는 Firebase 요금제와 관계없이 프로덕션 앱이거나 사용자가 수백만 명이더라도 다음 Firebase 제품을 무료로 사용할 수 있습니다.
+
+유료 사용량 등급이 적용되는 Firebase 제품
+ 프로젝트에서 사용하는 Firebase 요금제에 관계없이 다음 Firebase 제품 사용 할당량은 무료입니다. 프로젝트에서 Blaze 요금제를 사용 중인 경우 추가 사용량에 대해서는 사용한 만큼만 지불하면 됩니다.
+
+Firebase 요금제(특히 Cloud Functions 및 Google Cloud 제품)에 대한 자세한 내용은 Firebase 가격 책정 페이지를 참조하세요.
+
+## Spark 요금제에는 어떤 서비스가 포함되어 있나요?
+Spark 요금제에는 다음과 같은 서비스 이용이 포함됩니다.
+
+무료 Firebase 제품 및 기능*(예: 소셜 로그인 방법, Remote Config, Crashlytics) 전체 사용
+
+유료 Firebase 제품(예: Cloud Firestore, Cloud Storage, Hosting)의 무료 사용 할당량
+
+* 무료 제품에도 특정 기능과 관련된 제한사항이 있습니다(예: Crashlytics는 커스텀 로깅을 64KB로 제한함). 이러한 유형의 정보를 찾으려면 Firebase 문서의 각 제품 섹션을 참조하세요.
+
+## 시나리오 예시
+다음은 Spark 요금제의 사용량 및 청구 예시입니다.
+
+예시 1: 앱에서 소셜 로그인 메서드, Remote Config, Crashlytics를 사용합니다. 앱 사용자가 수백만 명이더라도 이 3가지 제품의 모든 기능을 무료로 이용할 수 있습니다.
+
+예시 2: 앱에서 커스텀 Authentication, Crashlytics, Cloud Firestore를 사용합니다. 사용자 수에 관계없이 커스텀 Authentication 및 Crashlytics의 모든 기능을 이용할 수 있으며 매일 Cloud Firestore 문서 쓰기 20,000회와 문서 읽기 50,000회를 무료로 수행할 수 있습니다.
+
+## Spark 요금제 관련 유의사항
+Spark 요금제와 관련하여 다음 사항에 유의하세요.
+
+한 달 중에 제품의 무료 할당량 한도를 초과하면 해당 제품의 프로젝트 사용량이 월말까지 정지됩니다.
+
+이 내용은 Firebase 프로젝트에 등록된 모든 앱에 적용됩니다.
+
+해당 제품을 다시 사용하려면 다음 결제 주기까지 기다리거나 Blaze 요금제로 업그레이드해야 합니다.
+
+한 달 중에 제품의 무료 할당량 한도를 초과하면 해당 제품의 프로젝트 사용량이 월말까지 정지됩니다.
+
+이 내용은 Firebase 프로젝트에 등록된 모든 앱에 적용됩니다.
+
+해당 제품을 다시 사용하려면 다음 결제 주기까지 기다리거나 Blaze 요금제로 업그레이드해야 합니다.
+
+무료 제품에도 특정 기능과 관련된 제한사항이 있습니다(예: Crashlytics는 커스텀 로깅을 64KB로 제한함). 이러한 유형의 정보를 찾으려면 Firebase 문서의 각 제품 섹션을 참조하세요. 제품 또는 기능에 따라 이러한 제한사항은 인프라, 공정한 액세스, 기타 서비스 보호와 같은 요인으로 인해 발생할 수 있습니다.
+
+Spark 요금제에서는 유료 Google Cloud 제품 및 기능(예: Pub/Sub, Cloud Run 또는 Analytics용 BigQuery 스트리밍)을 프로젝트에 사용할 수 없습니다.
+
+## Blaze 요금제
+앱에 유료 서비스에서 제공하는 기능이 필요하거나 할당량을 늘리려는 경우(Blaze 요금제에서 이 기능을 제공하는 제품에 해당) 사용한 만큼만 지불하는 Blaze 요금제로 업그레이드할 수 있습니다.
+
+Blaze 요금제에서는 Firebase 프로젝트에 Cloud Billing 계정이 연결되어 프로젝트와 앱에서 더 많은 서비스와 더 높은 사용량 수준을 이용할 수 있습니다.
+
+## Blaze 요금제에는 어떤 서비스가 포함되어 있나요?
+Blaze 요금제에는 다음과 같은 서비스 이용이 포함됩니다.
+
+무료 Firebase 제품 및 기능*(예: 소셜 로그인 방법, Remote Config, Crashlytics) 전체 사용
+
+유료 Firebase 제품(예: Cloud Firestore, Cloud Storage, Hosting)의 무료 사용 할당량
+
+유료 Firebase 제품 추가 사용량에 대해 사용한 만큼만 지불
+
+Cloud Functions for Firebase의 무료 사용 할당량 소진 후 사용한 만큼만 지불
+
+유료 Google Cloud 제품 및 기능(예: Pub/Sub, Cloud Run 또는 Analytics용 BigQuery 스트리밍) 이용
+
+* 무료 제품에도 특정 기능과 관련된 제한사항이 있습니다(예: Crashlytics는 커스텀 로깅을 64KB로 제한함). 이러한 유형의 정보를 찾으려면 Firebase 문서의 각 제품 섹션을 참조하세요.
+
+프로젝트가 Blaze 요금제에서 유료 제품에 적용되는 무료 사용 할당량을 초과하지 않으면 해당 제품(Cloud Functions 제외)의 청구 내역이 표시되지 않습니다. 무료 사용 할당량을 초과하더라도 사용한 리소스에 대한 비용만 지불하면 됩니다. 이 때문에 Blaze 요금제를 '사용한 만큼만 지불' 요금제라고도 부릅니다.
+
+## 시나리오 예시
+다음은 Blaze 요금제의 사용량 및 청구 예시입니다.
+
+예시 1: 앱에서 소셜 로그인 메서드, Remote Config, Crashlytics를 사용합니다. 앱 사용자가 수백만 명이더라도 이 3가지 제품의 모든 기능을 무료로 이용할 수 있습니다.
+
+예시 2: 앱에서 커스텀 Authentication, Crashlytics, Cloud Firestore를 사용합니다. 사용자 수에 관계없이 커스텀 Authentication 및 Crashlytics의 모든 기능을 이용할 수 있으며 매일 Cloud Firestore 문서 읽기 50,000회와 문서 쓰기 20,000회를 무료로 수행할 수 있습니다.
+
+하지만 프로젝트의 Cloud Firestore 사용량이 일일 할당량보다 많으면 해당 날짜의 50,000회 또는 20,000회를 초과한 읽기 및 쓰기에 대한 요금이 청구됩니다.
+
+예시 2: 앱에서 커스텀 Authentication, Crashlytics, Cloud Firestore를 사용합니다. 사용자 수에 관계없이 커스텀 Authentication 및 Crashlytics의 모든 기능을 이용할 수 있으며 매일 Cloud Firestore 문서 읽기 50,000회와 문서 쓰기 20,000회를 무료로 수행할 수 있습니다.
+
+하지만 프로젝트의 Cloud Firestore 사용량이 일일 할당량보다 많으면 해당 날짜의 50,000회 또는 20,000회를 초과한 읽기 및 쓰기에 대한 요금이 청구됩니다.
+
+## Blaze 요금제 관련 유의사항
+Blaze 요금제와 관련하여 다음 사항에 유의하세요.
+
+제품에 따라 Spark 요금제와 Blaze 요금제로 제공되는 무료 사용 할당량이 다를 수 있습니다. 자세한 내용은 이 FAQ를 참조하세요.
+
+무료 제품에도 특정 기능과 관련된 제한사항이 있습니다(예: Crashlytics는 커스텀 로깅을 64KB로 제한함). 이러한 유형의 정보를 찾으려면 Firebase 문서의 각 제품 섹션을 참조하세요. 제품 또는 기능에 따라 이러한 제한사항은 인프라, 공정한 액세스, 기타 서비스 보호와 같은 요인으로 인해 발생할 수 있습니다.
+
+대부분의 Firebase 제품 및 기능은 일일 사용량을 기준으로 할당량과 가격이 책정되지만 월별 또는 시간별 사용량을 기준으로 하는 경우도 있습니다. 예를 들어 Cloud Functions에는 매월 재설정되는 무료 사용량 등급이 적용되지만 Cloud Firestore 및 Cloud Storage에는 매일 재설정되는 무료 등급이 적용됩니다. 자세한 내용은 이 FAQ를 참조하세요.
+
+## Google Cloud Billing 계정
+프로젝트에서 Blaze 요금제를 사용하면 프로젝트가 Google Cloud Billing 계정에 연결됩니다. 여기서는 Cloud Billing 계정에 대한 간략한 정보를 몇 가지 소개합니다.
+
+Cloud Billing 계정에는 결제 수단이 필요합니다. 여기에는 대부분의 주요 신용카드와 기타 결제 수단이 포함됩니다. 자세한 내용은 Cloud Billing 문서를 참조하세요.
+
+Firebase 프로젝트 여러 개를 단일 Cloud Billing 계정에 연결할 수 있습니다. 모든 프로젝트에 Blaze 요금제가 적용됩니다.
+
+크레딧을 받을 자격이 되는지 확인합니다. 예를 들어 Firebase와 Google Cloud를 처음 사용하는 경우 'Google Cloud $300 무료 체험판'을 통해 Google 서비스를 사용해 볼 수 있습니다. 이 크레딧을 초과하는 사용량 또는 비용은 사용 중인 크레딧 프로그램에 따라 결정됩니다.
+
+## Spark에서 Blaze로 업그레이드
+Firebase 콘솔에서 Blaze 요금제로 업그레이드할 수 있습니다.
+
+모든 인텐트와 상황에서 Firebase 프로젝트를 Blaze 요금제로 업그레이드하면 Cloud Billing 계정이 기본 Google Cloud 프로젝트에 연결됩니다.
+
+Google Cloud 콘솔 내에서 Cloud Billing 계정을 프로젝트에 연결
+
+같은 프로젝트에서 Google Cloud 서비스(예: Pub/Sub 또는 Cloud Run) 또는 Google 지도 API 사용
+
+예를 들어 Google Cloud 콘솔 내에서 Google Cloud 서비스를 사용하려면 Cloud Billing 계정을 연결해야 합니다. 그러면 Firebase 요금제가 Blaze 요금제로 자동으로 업그레이드됩니다.
+
+같은 프로젝트에서 Google Cloud 서비스(예: Pub/Sub 또는 Cloud Run) 또는 Google 지도 API 사용
+
+예를 들어 Google Cloud 콘솔 내에서 Google Cloud 서비스를 사용하려면 Cloud Billing 계정을 연결해야 합니다. 그러면 Firebase 요금제가 Blaze 요금제로 자동으로 업그레이드됩니다.
+
+제품에 따라 Spark 요금제와 Blaze 요금제로 제공되는 무료 사용 할당량이 다를 수 있습니다. 자세한 내용은 이 FAQ를 참조하세요.
+
+## Blaze에서 Spark 요금제로 다운그레이드
+Firebase 콘솔에서 Spark 요금제로 다운그레이드할 수 있습니다.
+
+Google Cloud 콘솔 내에서 Cloud Billing 계정을 프로젝트에서 연결 해제
+
+프로젝트에 연결된 Cloud Billing 계정 해지
+Cloud Billing에서 결제 상태나 내역에 따라 계정을 해지할 수 있습니다. Cloud Billing 문제를 해결하는 방법을 알아보세요.
+
+프로젝트에서 Pub/Sub, Cloud Run 또는 Analytics용 BigQuery 스트리밍과 같은 유료 Google Cloud 서비스에 액세스할 수 없게 됩니다.
+
+프로젝트에서 기본 외의 Realtime Database 인스턴스 또는 기본 외의 Cloud Storage 버킷에 액세스할 수 없게 됩니다.
+
+이러한 인스턴스와 버킷의 데이터가 삭제되지는 않지만 데이터에 액세스할 수 없게 됩니다(앱에서 읽기/쓰기 액세스 불가, Console 액세스 불가, REST API 액세스 불가).
+
+액세스를 다시 사용 설정하려면 Blaze 요금제로 업그레이드하세요.
+
+기본 외의 인스턴스와 버킷에서 데이터를 삭제해야 하지만 Spark 요금제를 유지하려면 Firebase 지원팀에 문의하세요.
+
+프로젝트에서 기본 외의 Realtime Database 인스턴스 또는 기본 외의 Cloud Storage 버킷에 액세스할 수 없게 됩니다.
+
+이러한 인스턴스와 버킷의 데이터가 삭제되지는 않지만 데이터에 액세스할 수 없게 됩니다(앱에서 읽기/쓰기 액세스 불가, Console 액세스 불가, REST API 액세스 불가).
+
+액세스를 다시 사용 설정하려면 Blaze 요금제로 업그레이드하세요.
+
+기본 외의 인스턴스와 버킷에서 데이터를 삭제해야 하지만 Spark 요금제를 유지하려면 Firebase 지원팀에 문의하세요.
+
+신규 또는 기존 Cloud Functions를 새로 배포할 수 없습니다.
+
+제품에 따라 Spark 요금제와 Blaze 요금제로 제공되는 무료 사용 할당량이 다를 수 있습니다. 자세한 내용은 이 FAQ를 참조하세요.
+
+## 다음 단계
+여러 가지 특정 상황, 특히 Cloud Functions for Firebase 관련 청구에 대한 답변은 Firebase 가격 책정 FAQ를 참조하세요.
+
+코드 테스트, 사용량 및 지출 수준 모니터링, 예산 알림 이메일 설정을 통해 예상치 못한 청구를 피하는 방법을 알아보세요.

@@ -1,0 +1,62 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations/list?hl=ko
+
+## 본문
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.
+
+GET https://firestore.googleapis.com/v1/{name=projects/*/databases/*}/operations
+
+The URL uses gRPC Transcoding syntax.
+
+The request body must be empty.
+
+The response message for Operations.ListOperations.
+
+If successful, the response body contains data with the following structure:
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| name | string The name of the operation's parent resource. |
+
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| filter | string The standard list filter. |
+| pageSize | integer The standard list page size. |
+| pageToken | string The standard list page token. |
+
+| JSON representation |
+| --- |
+| JSON representation |
+| { "operations": [ { object (Operation) } ], "nextPageToken": string } |
+
+| Fields | |
+| --- | --- |
+| Fields | |
+| operations[] | object (Operation) A list of operations that matches the specified filter in the request. |
+| nextPageToken | string The standard List next-page token. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+UNIMPLEMENTED
+
+언어: 코드 · 셀#2
+GET https://firestore.googleapis.com/v1/{name=projects/*/databases/*}/operations
+
+언어: 코드 · 셀#3
+Operations.ListOperations
+
+언어: 코드 · 셀#4
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#5
+https://www.googleapis.com/auth/cloud-platform

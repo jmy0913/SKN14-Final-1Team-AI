@@ -1,0 +1,268 @@
+Source URL: https://firebase.google.com/docs/auth/ios/manage-users?hl=ko
+
+## 사용자 생성
+Firebase 프로젝트에서 신규 사용자를 생성할 때는 createUser 메서드를 호출하는 방법과 Google 로그인 또는 Facebook 로그인과 같은 제휴 ID 공급업체를 이용해 사용자의 최초 로그인을 처리하는 방법이 있습니다.
+
+또한 Firebase Console '인증' 섹션의 '사용자' 페이지에서 비밀번호 인증을 사용하는 신규 사용자를 생성할 수도 있습니다.
+
+## 현재 로그인한 사용자 가져오기
+현재 사용자를 가져올 때 권장하는 방법은 다음과 같이 Auth 객체에 리스너를 설정하는 것입니다.
+
+리스너를 사용하면 현재 사용자를 가져올 때 Auth 객체가 중간 단계(초기화 등)인 상황이 발생하지 않습니다.
+
+currentUser 속성을 사용하여 현재 로그인한 사용자를 가져올 수도 있습니다. 사용자가 로그인 상태가 아니라면 currentUser 값이 null입니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+handle = Auth.auth().addStateDidChangeListener { auth, user in
+ // ...
+}
+
+언어: Objective-C · 셀#1
+self.handle = [[FIRAuth auth]
+ addAuthStateDidChangeListener:^(FIRAuth *_Nonnull auth, FIRUser *_Nullable user) {
+ // ...
+ }];
+
+언어: Swift · 셀#1
+if Auth.auth().currentUser != nil {
+ // User is signed in.
+ // ...
+} else {
+ // No user is signed in.
+ // ...
+}
+
+언어: Objective-C · 셀#1
+if ([FIRAuth auth].currentUser) {
+ // User is signed in.
+ // ...
+} else {
+ // No user is signed in.
+ // ...
+}
+
+## 사용자 프로필 가져오기
+사용자의 프로필 정보를 가져오려면 FIRUser 인스턴스의 속성을 사용합니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+let user = Auth.auth().currentUser
+if let user = user {
+ // The user's ID, unique to the Firebase project.
+ // Do NOT use this value to authenticate with your backend server,
+ // if you have one. Use getTokenWithCompletion:completion: instead.
+ let uid = user.uid
+ let email = user.email
+ let photoURL = user.photoURL
+ var multiFactorString = "MultiFactor: "
+ for info in user.multiFactor.enrolledFactors {
+ multiFactorString += info.displayName ?? "[DispayName]"
+ multiFactorString += " "
+ }
+ // ...
+}
+
+언어: Objective-C · 셀#1
+FIRUser *user = [FIRAuth auth].currentUser;
+if (user) {
+ // The user's ID, unique to the Firebase project.
+ // Do NOT use this value to authenticate with your backend server,
+ // if you have one. Use getTokenWithCompletion:completion: instead.
+ NSString *email = user.email;
+ NSString *uid = user.uid;
+ NSMutableString *multiFactorString = [NSMutableString stringWithFormat:@"MultiFactor: "];
+ for (FIRMultiFactorInfo *info in user.multiFactor.enrolledFactors) {
+ [multiFactorString appendString:info.displayName];
+ [multiFactorString appendString:@" "];
+ }
+ NSURL *photoURL = user.photoURL;
+ // ...
+}
+
+## 제공업체의 사용자 프로필 정보 가져오기
+사용자에게 연결된 로그인 제공업체로부터 프로필 정보를 가져오려면 providerData 속성을 사용합니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+let userInfo = Auth.auth().currentUser?.providerData[indexPath.row]
+cell?.textLabel?.text = userInfo?.providerID
+// Provider-specific UID
+cell?.detailTextLabel?.text = userInfo?.uid
+
+언어: Objective-C · 셀#1
+id<FIRUserInfo> userInfo = [FIRAuth auth].currentUser.providerData[indexPath.row];
+cell.textLabel.text = [userInfo providerID];
+// Provider-specific UID
+cell.detailTextLabel.text = [userInfo uid];
+
+## 사용자 프로필 업데이트하기
+사용자의 표시 이름 및 프로필 사진 URL 등의 기본 프로필 정보를 업데이트할 때는 UserProfileChangeRequest 클래스를 사용합니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+let changeRequest = Auth.auth().currentUser?.createProfileChangeRequest()
+changeRequest?.displayName = displayName
+changeRequest?.commitChanges { error in
+ // ...
+}
+
+언어: Objective-C · 셀#1
+FIRUserProfileChangeRequest *changeRequest = [[FIRAuth auth].currentUser profileChangeRequest];
+changeRequest.displayName = userInput;
+[changeRequest commitChangesWithCompletion:^(NSError *_Nullable error) {
+ // ...
+}];
+
+## 사용자 이메일 주소 설정하기
+updateEmail 메서드로 사용자의 이메일 주소를 설정할 수 있습니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+Auth.auth().currentUser?.updateEmail(to: email) { error in
+ // ...
+}
+
+언어: Objective-C · 셀#1
+[[FIRAuth auth].currentUser updateEmail:userInput completion:^(NSError *_Nullable error) {
+ // ...
+}];
+
+## 사용자에게 인증 메일 보내기
+sendEmailVerificationWithCompletion: 메서드로 사용자에게 주소 인증 메일을 보낼 수 있습니다. 예를 들면 다음과 같습니다.
+
+또한 Firebase Console '인증' 섹션의 '이메일 템플릿' 페이지에서 이메일 템플릿을 맞춤설정할 수 있습니다. Firebase 고객센터의 이메일 템플릿 항목을 참조하세요.
+
+인증 메일을 보낼 때 연결 URL을 통해 상태를 전달하여 앱으로 다시 리디렉션할 수도 있습니다.
+
+또한 이메일을 보내기 전에 인증 인스턴스의 언어 코드를 업데이트하면 인증 메일을 현지화할 수 있습니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+Auth.auth().currentUser?.sendEmailVerification { error in
+ // ...
+}
+
+언어: Objective-C · 셀#1
+[[FIRAuth auth].currentUser sendEmailVerificationWithCompletion:^(NSError *_Nullable error) {
+ // ...
+}];
+
+언어: Swift · 셀#1
+Auth.auth().languageCode = "fr"
+// To apply the default app language instead of explicitly setting it.
+// Auth.auth().useAppLanguage()
+
+언어: Objective-C · 셀#1
+[FIRAuth auth].languageCode = @"fr";
+// To apply the default app language instead of explicitly setting it.
+// [[FIRAuth auth] useAppLanguage];
+
+## 사용자 비밀번호 설정하기
+updatePassword 메서드로 사용자의 비밀번호를 설정할 수 있습니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+Auth.auth().currentUser?.updatePassword(to: password) { error in
+ // ...
+}
+
+언어: Objective-C · 셀#1
+[[FIRAuth auth].currentUser updatePassword:userInput completion:^(NSError *_Nullable error) {
+ // ...
+}];
+
+## 비밀번호 재설정 이메일 보내기
+sendPasswordReset 메서드로 사용자에게 비밀번호 재설정 이메일을 보낼 수 있습니다. 예를 들면 다음과 같습니다.
+
+또한 Firebase Console '인증' 섹션의 '이메일 템플릿' 페이지에서 이메일 템플릿을 맞춤설정할 수 있습니다. Firebase 고객센터의 이메일 템플릿 항목을 참조하세요.
+
+비밀번호 재설정 이메일을 보낼 때 연결 URL을 통해 상태를 전달하여 앱으로 다시 리디렉션할 수도 있습니다.
+
+또한 이메일을 보내기 전에 인증 인스턴스의 언어 코드를 업데이트하면 비밀번호 재설정 이메일을 현지화할 수 있습니다. 예를 들면 다음과 같습니다.
+
+또한 Firebase Console에서 비밀번호 재설정 이메일을 보낼 수도 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+Auth.auth().sendPasswordReset(withEmail: email) { error in
+ // ...
+}
+
+언어: Objective-C · 셀#1
+[[FIRAuth auth] sendPasswordResetWithEmail:userInput completion:^(NSError *_Nullable error) {
+ // ...
+}];
+
+언어: Swift · 셀#1
+Auth.auth().languageCode = "fr"
+// To apply the default app language instead of explicitly setting it.
+// Auth.auth().useAppLanguage()
+
+언어: Objective-C · 셀#1
+[FIRAuth auth].languageCode = @"fr";
+// To apply the default app language instead of explicitly setting it.
+// [[FIRAuth auth] useAppLanguage];
+
+## 사용자 삭제하기
+delete 메서드로 사용자 계정을 삭제할 수 있습니다. 예를 들면 다음과 같습니다.
+
+또한 Firebase Console '인증' 섹션의 '사용자' 페이지에서 사용자를 삭제할 수도 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+let user = Auth.auth().currentUser
+
+user?.delete { error in
+ if let error = error {
+ // An error happened.
+ } else {
+ // Account deleted.
+ }
+}
+
+언어: Objective-C · 셀#1
+FIRUser *user = [FIRAuth auth].currentUser;
+
+[user deleteWithCompletion:^(NSError *_Nullable error) {
+ if (error) {
+ // An error happened.
+ } else {
+ // Account deleted.
+ }
+}];
+
+## 사용자 재인증하기
+계정 삭제, 기본 이메일 주소 설정, 비밀번호 변경과 같이 보안에 민감한 작업을 하려면 사용자가 최근에 로그인한 적이 있어야 합니다. 이런 작업을 할 때 사용자가 너무 오래 전에 로그인했다면 FIRAuthErrorCodeCredentialTooOld 오류가 발생하면서 작업이 실패합니다. 이때에는 사용자에게 새로운 로그인 인증 정보를 받은 다음 이 정보를 reauthenticate에 전달하여 사용자를 재인증해야 합니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+let user = Auth.auth().currentUser
+var credential: AuthCredential
+
+// Prompt the user to re-provide their sign-in credentials
+
+user?.reauthenticate(with: credential) { error in
+ if let error = error {
+ // An error happened.
+ } else {
+ // User re-authenticated.
+ }
+}
+
+언어: Objective-C · 셀#1
+FIRUser *user = [FIRAuth auth].currentUser;
+FIRAuthCredential *credential;
+
+// Prompt the user to re-provide their sign-in credentials
+
+[user reauthenticateWithCredential:credential completion:^(NSError *_Nullable error) {
+ if (error) {
+ // An error happened.
+ } else {
+ // User re-authenticated.
+ }
+}];
+
+## 사용자 계정 가져오기
+Firebase CLI의 auth:import 명령어를 사용하여 파일에서 Firebase 프로젝트로 사용자 계정을 가져올 수 있습니다. 예를 들면 다음과 같습니다.

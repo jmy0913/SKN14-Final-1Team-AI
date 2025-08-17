@@ -1,0 +1,31 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields/get?hl=ko
+
+## 본문
+Gets the metadata and configuration for a Field.
+
+GET https://firestore.googleapis.com/v1beta2/{name=projects/*/databases/*/collectionGroups/*/fields/*}
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+A name of the form projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}/fields/{field_id}
+
+The request body must be empty.
+
+If successful, the response body contains an instance of Field.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| name | string
+
+A name of the form projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}/fields/{field_id} |

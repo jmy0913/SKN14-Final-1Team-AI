@@ -1,0 +1,42 @@
+Source URL: https://cloud.google.com/firestore/native/docs/query-explain-report-reference?hl=ko
+
+## 서문
+다음 값은 Firestore Query Explain으로 수행된 작업의 결과로 반환됩니다.
+
+## 계획 레코드
+### 표
+| 키 | 유형 | 필드 변경 가능성 | 설명 |
+| --- | --- | --- | --- |
+| indexes_used | 일반 구조체 목록 | 있음. 구조체 응답의 내용은 변경될 수 있습니다. | 이 쿼리에 대해 선택된 색인의 목록입니다. 아래를 참조하세요. |
+
+## 사용된 색인
+사용된 색인의 내용은 네이티브 모드의 Firestore가 발전함에 따라 변경될 수 있습니다.
+
+### 표
+| 키 | 유형 | 설명 |
+| --- | --- | --- |
+| 쿼리 범위 | 문자열 | 쿼리가 실행되는 범위입니다. 예를 들면 Collection, Collection Group, Includes Ancestors입니다. |
+| 속성 | 문자열 | 한 형식의 색인 필드입니다. 예: (age ASC, __name__ ASC) |
+
+## 실행 통계
+쿼리의 집계 실행 통계입니다.
+
+### 표
+| 키 | 유형 | 필드 변경 가능성 | 설명 |
+| --- | --- | --- | --- |
+| results_returned | long | 아니요 | 문서, 프로젝션, 집계 결과, 키를 포함하여 반환된 총 결과 수입니다. |
+| execution_duration | 기간 | 없음 | 백엔드에서 쿼리를 실행하는 데 소요된 총 시간입니다. |
+| read_operations | long | 없음 | 청구 가능한 총 읽기 작업 수입니다. |
+| debug_stats | 일반 구조체 | 있음. 구조체 응답의 내용은 변경될 수 있습니다. | 쿼리 실행의 디버깅 통계입니다. 아래를 참조하세요. |
+
+## 디버그 통계
+다음 결과는 사용 사례를 디버깅하고 원시 통계(선택적)를 분석하는 데 유용합니다.
+
+디버그 통계의 내용은 네이티브 모드의 Firestore가 발전함에 따라 변경될 수 있습니다.
+
+### 표
+| 키 | 유형 | 설명 |
+| --- | --- | --- |
+| index_entries_scanned | 문자열 | 쿼리 중에 검사한 총 색인 항목 수입니다. |
+| documents_scanned | 문자열 | 쿼리 중에 스캔한 총 문서 수입니다. |
+| billing_details | 일반 구조체 | 'documents_billable', 'index_entries_billable', 'knn_vector_index_entries_billable', 'min_query_cost'와 같은 측정항목을 포함한 결제 세부정보입니다. |

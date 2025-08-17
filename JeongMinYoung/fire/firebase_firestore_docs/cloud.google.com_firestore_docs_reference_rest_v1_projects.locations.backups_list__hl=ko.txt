@@ -1,0 +1,89 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups/list?hl=ko
+
+## 본문
+Lists all the backups.
+
+GET https://firestore.googleapis.com/v1/{parent=projects/*/locations/*}/backups
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+Required. The location to list backups from.
+
+Format is projects/{project}/locations/{location}. Use {location} = '-' to list backups from all locations for the given project. This allows listing backups from a single location or from all locations.
+
+An expression that filters the list of returned backups.
+
+A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string, a number, or a boolean. The comparison operator must be one of: <, >, <=, >=, !=, =, or :. Colon : is the contains operator. Filter rules are not case sensitive.
+
+The following fields in the Backup are eligible for filtering:
+
+databaseUid (supports = only)
+
+The request body must be empty.
+
+The response for FirestoreAdmin.ListBackups.
+
+If successful, the response body contains data with the following structure:
+
+object (Backup)
+
+List of all backups for the project.
+
+List of locations that existing backups were not able to be fetched from.
+
+Instead of failing the entire requests when a single location is unreachable, this response returns a partial result set and list of locations unable to be reached here. The request can be retried against a single location to get a concrete error.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| parent | string
+
+Required. The location to list backups from.
+
+Format is projects/{project}/locations/{location}. Use {location} = '-' to list backups from all locations for the given project. This allows listing backups from a single location or from all locations. |
+
+| Parameters |
+| --- |
+| filter | string
+
+An expression that filters the list of returned backups.
+
+A filter expression consists of a field name, a comparison operator, and a value for filtering. The value must be a string, a number, or a boolean. The comparison operator must be one of: <, >, <=, >=, !=, =, or :. Colon : is the contains operator. Filter rules are not case sensitive.
+
+The following fields in the Backup are eligible for filtering:
+
+databaseUid (supports = only) |
+
+| JSON representation |
+| --- |
+| {
+  "backups": [
+    {
+      object (Backup)
+    }
+  ],
+  "unreachable": [
+    string
+  ]
+} |
+
+| Fields |
+| --- |
+| backups[] | object (Backup)
+
+List of all backups for the project. |
+| unreachable[] | string
+
+List of locations that existing backups were not able to be fetched from.
+
+Instead of failing the entire requests when a single location is unreachable, this response returns a partial result set and list of locations unable to be reached here. The request can be retried against a single location to get a concrete error. |

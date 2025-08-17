@@ -1,0 +1,61 @@
+Source URL: https://firebase.google.com/docs/functions?hl=ko
+
+## 서문
+이미 Google Cloud에서 Cloud Functions를 사용하고 계신가요? Firebase를 사용하면 얼마나 유용할지 자세히 알아보세요.
+
+시작하기 사용 사례
+
+## 주요 기능
+작성한 함수는 Firebase 인증 트리거에서 Cloud Storage 트리거에 이르기까지 다양한 Firebase 및 Google Cloud 기능에서 생성된 이벤트에 응답할 수 있습니다.
+
+### 표
+| Firebase 기능을 통합하고 Firebase를 Google Cloud에 연결합니다. | 작성한 함수는 Firebase 인증 트리거에서 Cloud Storage 트리거에 이르기까지 다양한 Firebase 및 Google Cloud 기능에서 생성된 이벤트에 응답할 수 있습니다.
+
+Admin SDK와 Cloud Functions를 함께 사용하여 여러 Firebase 기능을 통합하고, 자체 웹훅을 작성하여 타사 서비스와 통합합니다. Cloud Functions는 상용구 코드를 최소화하므로 함수 내에서 보다 간편하게 Firebase 및 Google Cloud를 사용할 수 있습니다. |
+| --- | --- |
+| 유지보수 불필요 | 명령줄의 명령어 하나만 입력하면 Google 서버에 JavaScript, TypeScript 또는 Python 코드가 배포됩니다. 코드가 배포되면 Firebase에서 사용자의 사용량 패턴에 맞게 자동으로 컴퓨팅 리소스의 크기를 조절합니다. 사용자 인증 정보, 서버 구성, 신규 서버 프로비저닝, 이전 서버 해제 등의 작업이 불필요합니다. |
+| 로직을 비공개로 안전하게 유지 | 대부분의 경우 개발자는 클라이언트 측에서 조작할 수 없도록 서버에서 애플리케이션 로직을 제어하는 것을 선호합니다. 또한 코드의 리버스 엔지니어링을 허용하지 않는 것이 좋을 수도 있습니다. Cloud Functions는 클라이언트와 완전히 격리되므로 비공개로 유지되며 항상 개발자가 원하는 방식 그대로 작업을 수행합니다. |
+
+## 기본 원리
+함수를 작성하고 배포하면 Google 서버에서 즉시 함수를 관리하기 시작합니다. HTTP 요청, Admin SDK 또는 예약된 작업으로 직접 함수를 실행하거나, 백그라운드 함수의 경우 Google 서버에서 이벤트를 리슨하고 함수가 트리거되면 실행합니다.
+
+부하가 증가하거나 감소하면 Google에서 함수를 실행하는 데 필요한 가상 서버 인스턴스의 개수를 신속하게 조절하여 대응합니다. 각 함수는 별도로 자체 구성 및 환경에서 실행됩니다.
+
+## 백그라운드 함수의 수명 주기
+Cloud Firestore와 같은 이벤트 공급자를 선택하고 함수를 실행할 조건을 정의하여 새 함수의 코드를 작성합니다.
+
+함수를 배포하는 경우
+Firebase CLI로 함수 코드의 .zip 보관 파일을 만든 다음 Cloud Functions에서 프로젝트에 Artifact Registry 저장소(프리픽스: gcf-artifacts)를 만들기 전에 Cloud Storage 버킷(gcf-sources로 시작됨)에 업로드합니다.
+Cloud Build로 함수 코드를 검색하고 함수 소스를 빌드합니다. Google Cloud 콘솔에서 Cloud Build 로그를 볼 수 있습니다.
+빌드된 함수 코드의 컨테이너 이미지가 프로젝트의 비공개 Artifact Registry 저장소(gcf-artifacts라고 함)에 업로드되며 새 함수가 롤아웃됩니다.
+
+Firebase CLI로 함수 코드의 .zip 보관 파일을 만든 다음 Cloud Functions에서 프로젝트에 Artifact Registry 저장소(프리픽스: gcf-artifacts)를 만들기 전에 Cloud Storage 버킷(gcf-sources로 시작됨)에 업로드합니다.
+
+Cloud Build로 함수 코드를 검색하고 함수 소스를 빌드합니다. Google Cloud 콘솔에서 Cloud Build 로그를 볼 수 있습니다.
+
+빌드된 함수 코드의 컨테이너 이미지가 프로젝트의 비공개 Artifact Registry 저장소(gcf-artifacts라고 함)에 업로드되며 새 함수가 롤아웃됩니다.
+
+이벤트 공급자가 함수의 조건과 일치하는 이벤트를 생성하면 코드가 호출됩니다. 함수에 Firebase Admin SDK를 사용하여 다른 Firebase 서비스에 액세스하는 데 사용할 수 있는 서비스 계정이 연결되어 있습니다.
+
+함수가 다수의 이벤트를 처리 중인 경우 Google에서 작업을 신속하게 처리하기 위해 인스턴스를 더 만듭니다. 함수가 유휴 상태면 인스턴스가 정리됩니다.
+
+업데이트된 코드를 배포하여 함수를 업데이트하면 이전 버전의 인스턴스가 Artifact Registry의 빌드 아티팩트와 함께 정리되고 새 인스턴스로 교체됩니다.
+
+함수를 삭제하면 Artifact Registry의 관련 빌드 아티팩트와 함께 모든 인스턴스 및 zip 보관 파일이 정리됩니다. 함수와 이벤트 공급자 간의 연결이 삭제됩니다.
+
+백그라운드 함수가 있는 이벤트를 리스닝하는 것 외에도 HTTP 요청 또는 클라이언트의 호출을 사용하여 직접 함수를 호출할 수 있습니다. Admin SDK를 통해 고정된 일정에 따라 함수를 트리거하거나 작업 함수를 큐에 추가할 수도 있습니다.
+
+## 구현 경로
+### 표
+|   | Cloud Functions 설정 | Firebase CLI를 설치하고 Firebase 프로젝트에서 Cloud Functions를 초기화합니다. |
+| --- | --- | --- |
+|  | 함수 작성 | JavaScript 코드, TypeScript 코드 또는 Python 코드를 작성하여 Firebase 서비스, Google Cloud 서비스 또는 기타 이벤트 제공자의 이벤트를 처리합니다. |
+|  | 함수 테스트 | 로컬 에뮬레이터를 사용하여 함수를 테스트합니다. |
+|  | 배포 및 모니터링 | 사용한 만큼만 지불하는 Blaze 요금제로 프로젝트를 업그레이드하고 Firebase CLI를 사용하여 함수를 배포합니다. 그런 다음 Google Cloud 콘솔을 사용하여 로그를 확인하고 검색할 수 있습니다. |
+
+## 다음 단계
+함수 설정, 생성, 배포 시작하기
+
+함수로 수행할 수 있는 작업 자세히 알아보기
+
+Cloud Functions codelab사용해 보기

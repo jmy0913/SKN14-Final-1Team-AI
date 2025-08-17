@@ -1,0 +1,10 @@
+Source URL: https://cloud.google.com/firestore/native/docs/solutions/bigquery?hl=ko
+
+## 서문
+BigQuery는 방대한 양의 데이터를 분석할 수 있는 페타바이트 규모의 경제적인 완전 관리형 분석 데이터 웨어하우스입니다. 다음 Firebase Extensions를 사용하여 Firestore와 BigQuery를 연결할 수 있습니다.
+
+## BigQuery에 Firestore 데이터 스트리밍
+Firestore 컬렉션에서 BigQuery로 실시간 증분 업데이트를 전송합니다. 자세히 알아보기
+
+## BigQuery 쿼리 결과를 Firestore로 내보내기
+실시간 전송을 위해 Firestore에서 BigQuery 쿼리 결과를 예약하고 내보내세요. 자세히 알아보기

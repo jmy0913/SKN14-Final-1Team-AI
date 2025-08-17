@@ -1,0 +1,74 @@
+Source URL: https://firebase.google.com/docs/samples?hl=ko
+
+## 본문
+모든 특징
+
+A/B 테스팅
+
+AdMob
+
+분석
+
+인증
+
+Cloud Firestore
+
+Cloud Functions
+
+클라우드 메시징
+
+Cloud Storage
+
+Crashlytics
+
+Genkit
+
+호스팅
+
+Performance Monitoring
+
+실시간 데이터베이스
+
+원격 구성
+
+Test Lab
+
+Firebase AI Logic
+
+모든 플랫폼
+
+iOS+
+
+Android
+
+웹
+
+### 표
+| 제목 | 설명 | _platforms | 링크 |
+| --- | --- | --- | --- |
+| 제목 | 설명 | _platforms | 링크 |
+| A/B Testing | A/B Testing 빠른 시작 | iOS+ | plat_ios |
+| AdMob | AdMob 빠른 시작 | iOS+, Android, Unity, C++ | plat_ios plat_android plat_unity plat_cpp |
+| Analytics | Analytics 빠른 시작 | iOS+, Android, Unity, C++ | plat_ios plat_android plat_unity plat_cpp |
+| Authentication | Authentication 빠른 시작 | iOS+, Android, 웹, Flutter, Unity, C++ | plat_ios plat_android plat_web plat_flutter plat_unity plat_cpp |
+| Cloud Firestore | Cloud Firestore 빠른 시작 | iOS+, Android, 웹, Flutter, Unity | plat_ios plat_android plat_web plat_flutter plat_unity |
+| Cloud Functions | Cloud Functions 빠른 시작 | 웹 | gmp_functions |
+| Cloud Messaging | Cloud Messaging 빠른 시작 | iOS+, Android, 웹, Unity, C++ | plat_ios plat_android plat_web plat_unity plat_cpp |
+| Cloud Storage | Cloud Storage 빠른 시작 | iOS+, Android, 웹, Flutter, Unity, C++ | plat_ios plat_android plat_web plat_flutter plat_unity plat_cpp |
+| Crashlytics | Crashlytics 빠른 시작 | iOS+, Android, Flutter, Unity | plat_ios plat_android plat_flutter plat_unity |
+| Firebase AI Logic 1 | Firebase AI Logic 빠른 시작 | iOS+, Android, 웹, Flutter, Unity | plat_ios plat_android plat_web plat_flutter plat_unity |
+| Genkit | Genkit 샘플 앱 | NodeJS | plat_node |
+| Performance Monitoring | Performance Monitoring 빠른 시작 | iOS+, Android | plat_ios plat_android |
+| Realtime Database | Realtime Database 빠른 시작 | iOS+, Android, 웹, Unity, C++, Java, NodeJS | plat_ios plat_android plat_web plat_unity plat_cpp plat_java plat_node |
+| Remote Config | Remote Config 빠른 시작 | iOS+, Android, Unity, C++ | plat_ios plat_android plat_unity plat_cpp |
+
+| 제목 | _features | 설명 | _platforms | 링크 |
+| --- | --- | --- | --- | --- |
+| 제목 | _features | 설명 | _platforms | 링크 |
+| MechaHamster: Level Up with Firebase Edition Analytics, Remote Config, Crashlytics | Analytics, Remote Config, Crashlytics | 이 버전의 MechaHamster에는 Firebase가 아직 통합되어 있지 않으므로 Firebase 기능을 직접 추가하는 방법을 배울 수 있습니다. | Unity | plat_unity |
+
+| 제목 | _features | 설명 | _platforms | 링크 |
+| --- | --- | --- | --- | --- |
+| 제목 | _features | 설명 | _platforms | 링크 |
+| FriendlyChat Analytics, Realtime Database, Authentication, Hosting, Cloud Storage, AdMob, Crashlytics, Cloud Messaging, Cloud Functions, Performance Monitoring | Analytics, Realtime Database, Authentication, Hosting, Cloud Storage, AdMob, Crashlytics, Cloud Messaging, Cloud Functions, Performance Monitoring | 채팅 앱을 개발하면서 Firebase를 사용하는 방법을 알아봅니다. GitHub에서 소스를 살펴보세요. | iOS+, Android, 웹 | plat_ios plat_android plat_web gmp_functions |
+| FriendlyEats Cloud Firestore | Cloud Firestore | 맛집 추천 앱을 개발하면서 Cloud Firestore를 사용하는 방법을 알아봅니다. GitHub에서 소스를 살펴보세요. | iOS+, Android, 웹 | plat_ios plat_android plat_web |

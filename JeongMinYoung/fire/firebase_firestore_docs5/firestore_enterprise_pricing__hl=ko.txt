@@ -1,0 +1,142 @@
+Source URL: https://cloud.google.com/firestore/enterprise/pricing?hl=ko
+
+## 본문
+This document explains pricing details for Firestore Enterprise edition. For Standard edition pricing, see Firestore pricing.
+
+When you use Firestore Enterprise edition, you are charged for the following:
+
+Read Units, representing the data processed (documents or indexes) when you read data from your database, calculated in 4 KiB tranches.
+
+Write Units, representing the data processed when you write data into your database, calculated in 1 KiB tranches.
+
+The amount of storage that your database uses, including overhead for metadata and indexes.
+
+The amount of network bandwidth that you use.
+
+Storage and bandwidth usage are calculated in gibibytes (GiB), where 1 GiB = 230 bytes. All charges accrue daily.
+
+The following sections provide details about how you are charged for your Firestore Enterprise edition usage.
+
+Firestore offers a free tier that lets you get started with no cost. The free tier amounts are listed in the following table.
+
+Free tier amounts are applied daily and reset around midnight Pacific time.
+
+The free tier applies to only one Firestore database per project. The first database that is created in a project without a free tier database will get the free tier. If the database with the free tier applied is deleted, the next database created will receive the free tier.
+
+The following operations and features do not include free usage:
+
+Managed deletes
+
+PITR data
+
+Backup data
+
+Restore operations
+
+Clone operations
+
+If you pay in a currency other than USD, the prices listed in your currency on Cloud Platform SKUs apply.
+
+Read operations are charged in Read Units, which reflect the data processed to satisfy the query, measured in 4 KiB tranches.
+
+Write and delete operations are charged in Write Units, which reflect the data processed to perform the operation, measured in 1 KiB tranches.
+
+Charges for read, write and delete operations have some nuances that you should keep in mind. The following sections explain these nuances in detail.
+
+Read Operations
+
+Most read operations entail either performing a point read of a specific document based on an identifier or scanning a range of data . Read operations consume read units.
+
+Point read operations are charged based on the data read, rounded up in 4 KiB tranches. For example, looking up a document by ID with a 3 KiB document will be rounded up to 4 KiB and charged 1 read unit.
+
+Scan operations involve reading continuous ranges of data. The amount of data read during scan operations depends on considerations such as the shape of the data itself, the availability of indexes, and the complexity of the query plan. The total amount of continuous data scanned is summed together and billed as read units in 4 KiB tranches.
+
+Queries are charged based on the amount of data (indexes and/or documents) read to process the query, which might exceed the data returned.
+
+A minimum cost of 1 read unit applies to all read operations.
+
+Firestore Query Explain can help you understand how each query is processed and billed.
+
+Write Operations
+
+Write operations include the creation of new documents and the update of existing ones. Write operations consume write units.
+
+Creating a new document is charged based on the size of the document created and the size of the index entries being written. Each document or index entry written is charged based on the individual item written rounded up to the nearest 1KiB.
+
+Updating a document entails reading data to find the document being updated, evaluating the changes to be performed on the document itself and corresponding indexes, and then writing these changes to the database. The document size being charged is the largest between the sizes before and after the update, and charges are incurred for the index entries that need to be updated and deleted. The total amount of data involved in the update as described above is charged as write units in 1 KiB tranches.
+
+Delete Operations
+
+Delete operations are charged based on the size of the document and corresponding index entries being deleted. Each item deleted is charged as write units in 1 KiB tranches.
+
+To see how Firestore Enterprise edition billing costs accrue using real-world examples, see the Pricing Examples page.
+
+Firestore Query Explain can help you understand the attributed cost for a query. If only the query plan is retrieved, a minimum cost of one read unit applies. If a query plan is retrieved and the query is executed, the cost of the query applies.
+
+Database storage size You are charged for the amount of data that you store in Firestore, including storage overhead. The amount of overhead includes metadata and indexes.
+
+Each document stored in Firestore requires the following metadata:
+
+The document ID, including the collection ID and the document name.
+
+The name and value of each field. Because Firestore is schemaless, the name of each field in a document must be stored with the field value.
+
+Any indexes that refer to the document. Each index entry contains the collection ID; any number of field values, depending on the index definition; and the document name.
+
+Storage costs are in GiB/month and calculated daily. Firestore measures the database size daily. Over the period of a month, these sample points are averaged to calculate the database storage size. This average value is multiplied by the unit price of storage (GiB-month).
+
+Learn how Firestore storage is calculated at Storage Size Calculations.
+
+If you enable PITR, you are charged for the storage of PITR data. The overall cost of PiTR data storage is similar to the storage cost of the database.
+
+Storage costs for PITR are in GiB/month and calculated daily. Firestore measures the database size daily. Over the period of a month, sample points are averaged to calculate the database storage size. This average value is multiplied by the unit price of PITR (GiB-month).
+
+For example, if the average size of your database during a month is 1 GiB and PITR is enabled for the whole month, then the billable PITR data size is also 1 GiB (because the PITR data size is proportional to the database size).
+
+Minimum billing: You may be charged up to 1 day of PITR storage cost even if you disable PITR within a day after enablement.
+
+If you enable backups, you are charged for the storage of your database backups. The storage size for a backup is equal to the storage size of the database when the backup was taken.
+
+Storage costs for backups are in GiB/month. Over the period of a month, the number of days for which each backup is retained, averaged over the month is also calculated. The cost of each backup is calculated using the storage size of the backup multiplied by the proportion of the month the backup is retained, multiplied by the unit price. Day boundaries are defined by the America/Los_Angeles time zone for billing purposes.
+
+When you perform a restore operation, Firestore measures the size of the backup for the restore operation. The size of the backup is multiplied by the unit price of restore operations (GiB).
+
+You are charged for the network bandwidth used by your Firestore Enterprise edition requests, as shown in the following sections. The network bandwidth cost of a Firestore Enterprise edition request depends on the request’s response size, the location of your Firestore Enterprise edition database, and the destination of the response.
+
+Firestore Enterprise edition calculates response size based on a serialized message format. Protocol overhead, such as SSL overhead, does not count towards network bandwidth usage. Requests denied by your Firestore Security Rules do not count towards network bandwidth usage.
+
+To learn how much network bandwidth you have used, you can use the Google Cloud console to export your billing data to a file.
+
+For requests that originate within Google Cloud Platform (for example, from an application running on Google Compute Engine), you are charged as follows:
+
+You will be charged for internet data transfer for the following:
+
+Google Cloud requests between regions, not including traffic between US regions.
+
+Requests from outside of Google Cloud (for example, from a user's mobile device).
+
+To manage your spending, set monthly budgets and alerts.
+
+Google Cloud allows you to set a monthly budget for all Google Cloud services. Use a monthly budget to monitor your overall Google Cloud costs, including your network bandwidth costs for Firestore. After you set a budget, you can set alerts, which cause you to receive email notifications as your costs grow closer to your budget.
+
+Important: Requests to Firestore and other Google Cloud services will succeed even if you have exceeded your monthly Google Cloud budget. It is your responsibility to change your usage patterns so that you stay within your Google Cloud budget.
+
+Follow these instructions to set a monthly budget and create alerts in the Google Cloud console.
+
+### 표
+| Free tier | Amount |
+| --- | --- |
+| Free tier | Amount |
+| Stored data | 1 GiB |
+| Reads units | 50,000 per day |
+| Write units | 40,000 per day |
+| Outbound data transfer | 10 GiB per month |
+
+| Traffic type | Price |
+| --- | --- |
+| Traffic type | Price |
+| Inbound data transfer | Free |
+| Data transfer within a region | Free |
+| Data transfer between regions in the same multi-region | Free |
+| Data transfer between regions within the US (per GiB) | $0.01 (first 10 GiB per month are free) |
+| Data transfer between regions, not including traffic between US regions | Google Cloud Platform outbound internet data transfer rates |

@@ -1,0 +1,79 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.operations/list?hl=ko
+
+## 본문
+Lists operations that match the specified filter in the request. If the server doesn't support this method, it returns UNIMPLEMENTED.
+
+GET https://firestore.googleapis.com/v1/{name=projects/*/databases/*}/operations
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+The name of the operation's parent resource.
+
+The standard list filter.
+
+integer
+
+The standard list page size.
+
+The standard list page token.
+
+The request body must be empty.
+
+The response message for Operations.ListOperations.
+
+If successful, the response body contains data with the following structure:
+
+object (Operation)
+
+A list of operations that matches the specified filter in the request.
+
+The standard List next-page token.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| name | string
+
+The name of the operation's parent resource. |
+
+| Parameters |
+| --- |
+| filter | string
+
+The standard list filter. |
+| pageSize | integer
+
+The standard list page size. |
+| pageToken | string
+
+The standard list page token. |
+
+| JSON representation |
+| --- |
+| {
+  "operations": [
+    {
+      object (Operation)
+    }
+  ],
+  "nextPageToken": string
+} |
+
+| Fields |
+| --- |
+| operations[] | object (Operation)
+
+A list of operations that matches the specified filter in the request. |
+| nextPageToken | string
+
+The standard List next-page token. |

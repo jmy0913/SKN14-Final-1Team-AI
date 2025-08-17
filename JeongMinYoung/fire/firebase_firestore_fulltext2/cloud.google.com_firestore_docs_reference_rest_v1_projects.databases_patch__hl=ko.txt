@@ -1,0 +1,47 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/patch?hl=ko
+
+## 본문
+Updates a database.
+
+PATCH https://firestore.googleapis.com/v1/{database.name=projects/*/databases/*}
+
+The URL uses gRPC Transcoding syntax.
+
+The request body contains an instance of Database.
+
+If successful, the response body contains an instance of Operation.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| database.name | string The resource name of the Database. Format: projects/{project}/databases/{database} |
+
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| updateMask | string (FieldMask format) The list of fields to be updated. This is a comma-separated list of fully qualified names of fields. Example: "user.displayName,photo". |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+PATCH https://firestore.googleapis.com/v1/{database.name=projects/*/databases/*}
+
+언어: 코드 · 셀#2
+Database
+
+언어: 코드 · 셀#3
+Operation
+
+언어: 코드 · 셀#4
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#5
+https://www.googleapis.com/auth/cloud-platform

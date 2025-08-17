@@ -1,0 +1,382 @@
+Source URL: https://firebase.google.com/docs/auth/android/manage-users?hl=ko
+
+## 사용자 생성
+Firebase 프로젝트에서 신규 사용자를 생성할 때는 createUserWithEmailAndPassword 메서드를 호출하는 방법과 Google 로그인 또는 Facebook 로그인과 같은 제휴 ID 공급업체를 이용해 사용자의 최초 로그인을 처리하는 방법이 있습니다.
+
+또한 Firebase Console '인증' 섹션의 '사용자' 페이지에서 비밀번호 인증을 사용하는 신규 사용자를 생성할 수도 있습니다.
+
+## 현재 로그인한 사용자 가져오기
+현재 사용자를 가져올 때 권장하는 방법은 getCurrentUser 메서드를 호출하는 것입니다. 로그인한 사용자가 없으면 getCurrentUser는 null을 반환합니다.
+
+getCurrentUser가 null이 아닌 FirebaseUser를 반환하지만 기본 토큰이 유효하지 않은 경우가 있습니다. 예를 들어 사용자가 다른 기기에서 삭제되었는데 로컬 토큰을 새로고침하지 않은 경우가 여기에 해당합니다. 이 경우 유효한 사용자 getCurrentUser를 가져올 수 있지만, 인증 리소스에 대한 후속 호출이 실패합니다.
+
+인증 객체의 초기화가 완료되지 않은 경우에도 getCurrentUser가 null을 반환할 수 있습니다.
+
+AuthStateListener를 연결하면 기본 토큰의 상태가 변경될 때마다 콜백이 호출됩니다. 이를 통해 위에서 설명한 것과 같은 특이한 사례에 대처할 수 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+val user = Firebase.auth.currentUser
+if (user != null) {
+ // User is signed in
+} else {
+ // No user is signed in
+}
+MainActivity.kt
+
+언어: Java · 셀#1
+FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+if (user != null) {
+ // User is signed in
+} else {
+ // No user is signed in
+}
+MainActivity.java
+
+## 사용자 프로필 가져오기
+사용자의 프로필 정보를 가져오려면 FirebaseUser 인스턴스의 접근자 메서드를 사용합니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+val user = Firebase.auth.currentUser
+user?.let {
+ // Name, email address, and profile photo Url
+ val name = it.displayName
+ val email = it.email
+ val photoUrl = it.photoUrl
+
+ // Check if user's email is verified
+ val emailVerified = it.isEmailVerified
+
+ // The user's ID, unique to the Firebase project. Do NOT use this value to
+ // authenticate with your backend server, if you have one. Use
+ // FirebaseUser.getIdToken() instead.
+ val uid = it.uid
+}
+MainActivity.kt
+
+언어: Java · 셀#1
+FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+if (user != null) {
+ // Name, email address, and profile photo Url
+ String name = user.getDisplayName();
+ String email = user.getEmail();
+ Uri photoUrl = user.getPhotoUrl();
+
+ // Check if user's email is verified
+ boolean emailVerified = user.isEmailVerified();
+
+ // The user's ID, unique to the Firebase project. Do NOT use this value to
+ // authenticate with your backend server, if you have one. Use
+ // FirebaseUser.getIdToken() instead.
+ String uid = user.getUid();
+}
+MainActivity.java
+
+## 제공업체의 사용자 프로필 정보 가져오기
+사용자에게 연결된 로그인 제공업체로부터 프로필 정보를 가져오려면 getProviderData 메서드를 사용합니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+val user = Firebase.auth.currentUser
+user?.let {
+ for (profile in it.providerData) {
+ // Id of the provider (ex: google.com)
+ val providerId = profile.providerId
+
+ // UID specific to the provider
+ val uid = profile.uid
+
+ // Name, email address, and profile photo Url
+ val name = profile.displayName
+ val email = profile.email
+ val photoUrl = profile.photoUrl
+ }
+}
+MainActivity.kt
+
+언어: Java · 셀#1
+FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+if (user != null) {
+ for (UserInfo profile : user.getProviderData()) {
+ // Id of the provider (ex: google.com)
+ String providerId = profile.getProviderId();
+
+ // UID specific to the provider
+ String uid = profile.getUid();
+
+ // Name, email address, and profile photo Url
+ String name = profile.getDisplayName();
+ String email = profile.getEmail();
+ Uri photoUrl = profile.getPhotoUrl();
+ }
+}
+MainActivity.java
+
+## 사용자 프로필 업데이트
+사용자의 표시 이름 및 프로필 사진 URL 등의 기본 프로필 정보를 업데이트할 때는 updateProfile 메서드를 사용합니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+val user = Firebase.auth.currentUser
+
+val profileUpdates = userProfileChangeRequest {
+ displayName = "Jane Q. User"
+ photoUri = Uri.parse("https://example.com/jane-q-user/profile.jpg")
+}
+
+user!!.updateProfile(profileUpdates)
+ .addOnCompleteListener { task ->
+ if (task.isSuccessful) {
+ Log.d(TAG, "User profile updated.")
+ }
+ }
+MainActivity.kt
+
+언어: Java · 셀#1
+FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
+ .setDisplayName("Jane Q. User")
+ .setPhotoUri(Uri.parse("https://example.com/jane-q-user/profile.jpg"))
+ .build();
+
+user.updateProfile(profileUpdates)
+ .addOnCompleteListener(new OnCompleteListener<Void>() {
+ @Override
+ public void onComplete(@NonNull Task<Void> task) {
+ if (task.isSuccessful()) {
+ Log.d(TAG, "User profile updated.");
+ }
+ }
+ });
+MainActivity.java
+
+## 사용자 이메일 주소 설정
+updateEmail 메서드로 사용자의 이메일 주소를 설정할 수 있습니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+val user = Firebase.auth.currentUser
+
+user!!.updateEmail("user@example.com")
+ .addOnCompleteListener { task ->
+ if (task.isSuccessful) {
+ Log.d(TAG, "User email address updated.")
+ }
+ }
+MainActivity.kt
+
+언어: Java · 셀#1
+FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+user.updateEmail("user@example.com")
+ .addOnCompleteListener(new OnCompleteListener<Void>() {
+ @Override
+ public void onComplete(@NonNull Task<Void> task) {
+ if (task.isSuccessful()) {
+ Log.d(TAG, "User email address updated.");
+ }
+ }
+ });
+MainActivity.java
+
+## 사용자에게 인증 메일 보내기
+sendEmailVerification 메서드로 사용자에게 주소 인증 메일을 보낼 수 있습니다. 예를 들면 다음과 같습니다.
+
+또한 Firebase Console '인증' 섹션의 '이메일 템플릿' 페이지에서 이메일 템플릿을 맞춤설정할 수 있습니다. Firebase 고객센터의 이메일 템플릿 항목을 참조하세요.
+
+인증 메일을 보낼 때 연결 URL을 통해 상태를 전달하여 앱으로 다시 리디렉션할 수도 있습니다.
+
+또한 이메일을 보내기 전에 인증 인스턴스의 언어 코드를 업데이트하면 인증 메일을 현지화할 수 있습니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+val user = Firebase.auth.currentUser
+
+user!!.sendEmailVerification()
+ .addOnCompleteListener { task ->
+ if (task.isSuccessful) {
+ Log.d(TAG, "Email sent.")
+ }
+ }
+MainActivity.kt
+
+언어: Java · 셀#1
+FirebaseAuth auth = FirebaseAuth.getInstance();
+FirebaseUser user = auth.getCurrentUser();
+
+user.sendEmailVerification()
+ .addOnCompleteListener(new OnCompleteListener<Void>() {
+ @Override
+ public void onComplete(@NonNull Task<Void> task) {
+ if (task.isSuccessful()) {
+ Log.d(TAG, "Email sent.");
+ }
+ }
+ });
+MainActivity.java
+
+언어: Kotlin · 셀#1
+auth.setLanguageCode("fr")
+// To apply the default app language instead of explicitly setting it.
+// auth.useAppLanguage()
+MainActivity.kt
+
+언어: Java · 셀#1
+auth.setLanguageCode("fr");
+// To apply the default app language instead of explicitly setting it.
+// auth.useAppLanguage();
+MainActivity.java
+
+## 사용자 비밀번호 설정
+updatePassword 메서드로 사용자의 비밀번호를 설정할 수 있습니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+val user = Firebase.auth.currentUser
+val newPassword = "SOME-SECURE-PASSWORD"
+
+user!!.updatePassword(newPassword)
+ .addOnCompleteListener { task ->
+ if (task.isSuccessful) {
+ Log.d(TAG, "User password updated.")
+ }
+ }
+MainActivity.kt
+
+언어: Java · 셀#1
+FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+String newPassword = "SOME-SECURE-PASSWORD";
+
+user.updatePassword(newPassword)
+ .addOnCompleteListener(new OnCompleteListener<Void>() {
+ @Override
+ public void onComplete(@NonNull Task<Void> task) {
+ if (task.isSuccessful()) {
+ Log.d(TAG, "User password updated.");
+ }
+ }
+ });
+MainActivity.java
+
+## 비밀번호 재설정 이메일 보내기
+sendPasswordResetEmail 메서드로 사용자에게 비밀번호 재설정 이메일을 보낼 수 있습니다. 예를 들면 다음과 같습니다.
+
+또한 Firebase Console '인증' 섹션의 '이메일 템플릿' 페이지에서 이메일 템플릿을 맞춤설정할 수 있습니다. Firebase 고객센터의 이메일 템플릿 항목을 참조하세요.
+
+비밀번호 재설정 이메일을 보낼 때 연결 URL을 통해 상태를 전달하여 앱으로 다시 리디렉션할 수도 있습니다.
+
+또한 이메일을 보내기 전에 인증 인스턴스의 언어 코드를 업데이트하면 비밀번호 재설정 이메일을 현지화할 수 있습니다. 예를 들면 다음과 같습니다.
+
+또한 Firebase Console에서 비밀번호 재설정 이메일을 보낼 수도 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+val emailAddress = "user@example.com"
+
+Firebase.auth.sendPasswordResetEmail(emailAddress)
+ .addOnCompleteListener { task ->
+ if (task.isSuccessful) {
+ Log.d(TAG, "Email sent.")
+ }
+ }
+MainActivity.kt
+
+언어: Java · 셀#1
+FirebaseAuth auth = FirebaseAuth.getInstance();
+String emailAddress = "user@example.com";
+
+auth.sendPasswordResetEmail(emailAddress)
+ .addOnCompleteListener(new OnCompleteListener<Void>() {
+ @Override
+ public void onComplete(@NonNull Task<Void> task) {
+ if (task.isSuccessful()) {
+ Log.d(TAG, "Email sent.");
+ }
+ }
+ });
+MainActivity.java
+
+언어: Kotlin · 셀#1
+auth.setLanguageCode("fr")
+// To apply the default app language instead of explicitly setting it.
+// auth.useAppLanguage()
+MainActivity.kt
+
+언어: Java · 셀#1
+auth.setLanguageCode("fr");
+// To apply the default app language instead of explicitly setting it.
+// auth.useAppLanguage();
+MainActivity.java
+
+## 사용자 삭제하기
+delete 메서드로 사용자 계정을 삭제할 수 있습니다. 예를 들면 다음과 같습니다.
+
+또한 Firebase Console '인증' 섹션의 '사용자' 페이지에서 사용자를 삭제할 수도 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+val user = Firebase.auth.currentUser!!
+
+user.delete()
+ .addOnCompleteListener { task ->
+ if (task.isSuccessful) {
+ Log.d(TAG, "User account deleted.")
+ }
+ }
+MainActivity.kt
+
+언어: Java · 셀#1
+FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+user.delete()
+ .addOnCompleteListener(new OnCompleteListener<Void>() {
+ @Override
+ public void onComplete(@NonNull Task<Void> task) {
+ if (task.isSuccessful()) {
+ Log.d(TAG, "User account deleted.");
+ }
+ }
+ });
+MainActivity.java
+
+## 사용자 재인증하기
+계정 삭제, 기본 이메일 주소 설정, 비밀번호 변경과 같이 보안에 민감한 작업을 하려면 사용자가 최근에 로그인한 적이 있어야 합니다. 이런 작업을 수행할 때 사용자가 너무 오래 전에 로그인했다면 작업이 실패하고 FirebaseAuthRecentLoginRequiredException이 발생합니다. 이때에는 사용자에게 새로운 로그인 인증 정보를 받은 다음 이 정보를 reauthenticate에 전달하여 사용자를 재인증해야 합니다. 예를 들면 다음과 같습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+val user = Firebase.auth.currentUser!!
+
+// Get auth credentials from the user for re-authentication. The example below shows
+// email and password credentials but there are multiple possible providers,
+// such as GoogleAuthProvider or FacebookAuthProvider.
+val credential = EmailAuthProvider
+ .getCredential("user@example.com", "password1234")
+
+// Prompt the user to re-provide their sign-in credentials
+user.reauthenticate(credential)
+ .addOnCompleteListener { Log.d(TAG, "User re-authenticated.") }
+MainActivity.kt
+
+언어: Java · 셀#1
+FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+// Get auth credentials from the user for re-authentication. The example below shows
+// email and password credentials but there are multiple possible providers,
+// such as GoogleAuthProvider or FacebookAuthProvider.
+AuthCredential credential = EmailAuthProvider
+ .getCredential("user@example.com", "password1234");
+
+// Prompt the user to re-provide their sign-in credentials
+user.reauthenticate(credential)
+ .addOnCompleteListener(new OnCompleteListener<Void>() {
+ @Override
+ public void onComplete(@NonNull Task<Void> task) {
+ Log.d(TAG, "User re-authenticated.");
+ }
+ });
+MainActivity.java
+
+## 사용자 계정 가져오기
+Firebase CLI의 auth:import 명령어를 사용하여 파일에서 Firebase 프로젝트로 사용자 계정을 가져올 수 있습니다. 예를 들면 다음과 같습니다.

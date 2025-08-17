@@ -1,0 +1,116 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/batchWrite?hl=ko
+
+## 본문
+Applies a batch of write operations.
+
+The documents.batchWrite method does not apply the write operations atomically and can apply them out of order. Method does not allow more than one write per document. Each write succeeds or fails independently. See the BatchWriteResponse for the success status of each write.
+
+If you require an atomically applied set of writes, use documents.commit instead.
+
+POST https://firestore.googleapis.com/v1/{database=projects/*/databases/*}/documents:batchWrite
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+Required. The database name. In the format: projects/{projectId}/databases/{databaseId}.
+
+The request body contains data with the following structure:
+
+object (Write)
+
+The writes to apply.
+
+Method does not apply writes atomically and does not guarantee ordering. Each write succeeds or fails independently. You cannot write to the same document more than once per request.
+
+map (key: string, value: string)
+
+Labels associated with this batch write.
+
+An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+
+The response from Firestore.BatchWrite.
+
+If successful, the response body contains data with the following structure:
+
+object (WriteResult)
+
+The result of applying the writes.
+
+This i-th write result corresponds to the i-th write in the request.
+
+object (Status)
+
+The status of applying the writes.
+
+This i-th write status corresponds to the i-th write in the request.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| database | string
+
+Required. The database name. In the format: projects/{projectId}/databases/{databaseId}. |
+
+| JSON representation |
+| --- |
+| {
+  "writes": [
+    {
+      object (Write)
+    }
+  ],
+  "labels": {
+    string: string,
+    ...
+  }
+} |
+
+| Fields |
+| --- |
+| writes[] | object (Write)
+
+The writes to apply.
+
+Method does not apply writes atomically and does not guarantee ordering. Each write succeeds or fails independently. You cannot write to the same document more than once per request. |
+| labels | map (key: string, value: string)
+
+Labels associated with this batch write.
+
+An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. |
+
+| JSON representation |
+| --- |
+| {
+  "writeResults": [
+    {
+      object (WriteResult)
+    }
+  ],
+  "status": [
+    {
+      object (Status)
+    }
+  ]
+} |
+
+| Fields |
+| --- |
+| writeResults[] | object (WriteResult)
+
+The result of applying the writes.
+
+This i-th write result corresponds to the i-th write in the request. |
+| status[] | object (Status)
+
+The status of applying the writes.
+
+This i-th write status corresponds to the i-th write in the request. |

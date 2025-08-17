@@ -1,0 +1,35 @@
+Source URL: https://cloud.google.com/firestore/native/docs/editions-overview?hl=ko
+
+## 서문
+이 페이지에서는 Firestore 버전과 주요 기능을 설명합니다. Firestore는 다음 버전으로 제공됩니다.
+
+Standard edition: 다양한 프로그래밍 언어를 위한 유연한 SDK, 실시간 및 오프라인 지원, 단일 및 다중 지역 구성의 고가용성, 원활한 자동 확장을 갖춘 편리한 서버리스 운영 모델 등 문서 데이터베이스로서의 포괄적인 기능을 제공합니다.
+
+Enterprise 버전 (프리뷰): MongoDB 호환성 및 더 많은 기능과 더 높은 한도를 지원하는 새로운 쿼리 엔진을 제공합니다.
+
+## 버전 기능
+다음 표에는 각 버전에서 제공되는 기능이 요약되어 있습니다.
+
+Key Visualizer
+
+쿼리 설명
+
+쿼리 통계
+
+Key Visualizer event
+
+예약 백업
+
+point-in-time recovery
+
+point-in-time recovery event
+
+Google-owned and Google-managed encryption key
+
+고객 관리 암호화 키
+
+## 필요한 조치
+Firestore 데이터베이스 버전을 선택하지 않은 경우 사용자가 별도로 변경하지 않아도 Standard 버전으로 자동 업그레이드됩니다. 새 Firestore Enterprise 버전 데이터베이스를 만들려면 MongoDB 호환성을 갖춘 Firestore 데이터베이스 만들기에 설명된 단계를 따르세요.
+
+## 가격 책정
+Firestore 버전 가격 책정에 대한 자세한 내용은 Enterprise 버전 및 Standard 버전 가격 책정 페이지를 참고하세요.

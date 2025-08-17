@@ -1,0 +1,13 @@
+Source URL: https://developers.google.com/people/api/rest/v1/contactGroups.members?hl=ko
+
+## 본문
+리소스
+
+메서드
+
+이 리소스에는 영구 데이터가 연결되어 있지 않습니다.
+
+### 표
+| 방법 | 경로 | 설명 |
+| --- | --- | --- |
+| modify | | 인증된 사용자가 소유한 연락처 그룹의 구성원을 수정합니다. |

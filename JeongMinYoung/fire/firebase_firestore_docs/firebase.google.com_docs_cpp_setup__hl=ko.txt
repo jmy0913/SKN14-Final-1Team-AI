@@ -1,0 +1,291 @@
+Source URL: https://firebase.google.com/docs/cpp/setup?hl=ko
+
+## 서문
+Firebase SDK를 기반으로 C++ 인터페이스를 제공하는 Firebase C++ SDK를 사용하여 C++ 게임을 업그레이드하세요.
+
+플랫폼 네이티브 코드를 작성할 필요 없이 C++ 코드만으로 Firebase에 액세스하세요. 또한 Firebase SDK는 Firebase에서 사용하는 여러 언어별 관용구를 C++ 개발자에게 보다 친숙한 인터페이스로 변환합니다.
+
+Firebase 게임 페이지에서 Firebase로 게임을 업그레이드하는 방법을 자세히 알아보세요.
+
+C++ 프로젝트에 Firebase를 이미 추가하셨나요? Firebase C++ SDK의 최신 버전을 사용하고 있는지 확인합니다.
+
+이 가이드의 플랫폼별 안내를 보려면 아래에서 플랫폼 탭을 선택하세요.
+
+iOS, Android 플랫폼 모두에서 게임을 출시하려는 경우: 우선 C++ 프로젝트의 빌드 타겟을 하나만 등록하고, 이후에 설정 워크플로로 돌아와서 다른 빌드 타겟을 등록할 수 있습니다.
+
+## 기본 요건
+다음을 설치합니다.
+
+Xcode 16.2 이상
+CocoaPods 1.12.0 이상
+
+다음을 설치합니다.
+
+Xcode 16.2 이상
+
+CocoaPods 1.12.0 이상
+
+프로젝트가 다음 버전 이상의 플랫폼을 타겟팅하는지 확인합니다.
+
+iOS 13
+tvOS 13
+
+프로젝트가 다음 버전 이상의 플랫폼을 타겟팅하는지 확인합니다.
+
+iOS 13
+
+tvOS 13
+
+실제 기기를 설정하거나 시뮬레이터를 사용하여 앱을 실행합니다.
+
+Cloud Messaging을 사용하시겠어요?
+
+실제 기기를 설정하거나 시뮬레이터를 사용하여 앱을 실행합니다.
+
+Cloud Messaging을 사용하시겠어요?
+
+Apple 플랫폼에서 Cloud Messaging을 사용하려면 다음 기본 요건을 충족해야 합니다.
+
+실제 Apple 기기를 설정합니다.
+Apple 개발자 계정의 Apple 푸시 알림 인증 키를 가져옵니다.
+Xcode의 App(앱) > Capabilities(기능)에서 푸시 알림을 사용 설정합니다.
+
+Apple 플랫폼에서 Cloud Messaging을 사용하려면 다음 기본 요건을 충족해야 합니다.
+
+실제 Apple 기기를 설정합니다.
+
+Apple 개발자 계정의 Apple 푸시 알림 인증 키를 가져옵니다.
+
+Xcode의 App(앱) > Capabilities(기능)에서 푸시 알림을 사용 설정합니다.
+
+Google 계정을 사용하여 Firebase에 로그인합니다.
+
+## 2단계: Firebase 프로젝트 만들기
+C++ 프로젝트에 Firebase를 추가하려면 우선 C++ 프로젝트에 연결할 Firebase 프로젝트를 만들어야 합니다. Firebase 프로젝트에 대한 자세한 내용은 Firebase 프로젝트 이해를 참조하세요.
+
+Firebase 프로젝트 만들기
+
+Firebase Console에서 프로젝트 추가를 클릭합니다.
+
+ 기존 Google Cloud 프로젝트에 Firebase 리소스를 추가하려면 프로젝트 이름을 입력하거나 드롭다운 메뉴에서 선택합니다.
+
+ 새 프로젝트를 만들려면 프로젝트 이름을 입력합니다. 필요한 경우 프로젝트 이름 아래에 표시되는 프로젝트 ID를 수정할 수도 있습니다.
+
+ Firebase는 지정된 이름을 토대로 Firebase 프로젝트의 고유 ID를 생성합니다. Firebase에서 프로젝트의 리소스를 프로비저닝한 후에는 프로젝트 ID를 수정할 수 없으므로 이 프로젝트 ID를 수정하려면 지금 수정해야 합니다. Firebase에서 프로젝트 ID가 어떻게 사용되는지를 알아보려면 Firebase 프로젝트 이해를 참조하세요.
+
+Firebase Console에서 프로젝트 추가를 클릭합니다.
+
+기존 Google Cloud 프로젝트에 Firebase 리소스를 추가하려면 프로젝트 이름을 입력하거나 드롭다운 메뉴에서 선택합니다.
+
+새 프로젝트를 만들려면 프로젝트 이름을 입력합니다. 필요한 경우 프로젝트 이름 아래에 표시되는 프로젝트 ID를 수정할 수도 있습니다.
+
+ Firebase는 지정된 이름을 토대로 Firebase 프로젝트의 고유 ID를 생성합니다. Firebase에서 프로젝트의 리소스를 프로비저닝한 후에는 프로젝트 ID를 수정할 수 없으므로 이 프로젝트 ID를 수정하려면 지금 수정해야 합니다. Firebase에서 프로젝트 ID가 어떻게 사용되는지를 알아보려면 Firebase 프로젝트 이해를 참조하세요.
+
+새 프로젝트를 만들려면 프로젝트 이름을 입력합니다. 필요한 경우 프로젝트 이름 아래에 표시되는 프로젝트 ID를 수정할 수도 있습니다.
+
+메시지가 표시되면 Firebase 약관을 검토하고 이에 동의합니다.
+
+계속을 클릭합니다.
+
+(선택사항) Firebase A/B Testing, Cloud Messaging, Crashlytics, In-App Messaging, Remote Config(맞춤설정 포함) 등 Firebase 제품의 사용 환경을 최적화하려면 프로젝트에 Google Analytics를 설정합니다.
+
+ 기존 Google Analytics 계정을 선택하거나 새 계정을 만듭니다. 새 계정을 만드는 경우 Analytics 보고 위치를 선택한 후 프로젝트의 데이터 공유 설정 및 Google Analytics 약관에 동의합니다.
+ 나중에 언제든지 settings 프로젝트 설정의 통합 탭에서 Google Analytics를 설정할 수 있습니다.
+
+(선택사항) Firebase A/B Testing, Cloud Messaging, Crashlytics, In-App Messaging, Remote Config(맞춤설정 포함) 등 Firebase 제품의 사용 환경을 최적화하려면 프로젝트에 Google Analytics를 설정합니다.
+
+기존 Google Analytics 계정을 선택하거나 새 계정을 만듭니다. 새 계정을 만드는 경우 Analytics 보고 위치를 선택한 후 프로젝트의 데이터 공유 설정 및 Google Analytics 약관에 동의합니다.
+
+프로젝트 만들기(또는 기존 Google Cloud 프로젝트에 Firebase를 추가하는 경우에는 Firebase 추가)를 클릭합니다.
+
+Firebase에서 Firebase 프로젝트용 리소스를 자동으로 프로비저닝합니다. 프로세스가 완료되면 Firebase Console에서 Firebase 프로젝트의 개요 페이지로 이동됩니다.
+
+## 3단계: Firebase에 앱 등록
+Apple 앱에서 Firebase를 사용하려면 Firebase 프로젝트에 앱을 등록해야 합니다. 앱 등록이란 보통 프로젝트에 앱을 '추가'하는 것을 의미합니다.
+
+Firebase 콘솔로 이동
+
+프로젝트 개요 페이지 중앙에 있는 iOS+ 아이콘을 클릭하여 설정 워크플로를 시작합니다.
+
+Firebase 프로젝트에 앱을 이미 추가한 경우 앱 추가를 클릭하여 플랫폼 옵션을 표시합니다.
+
+프로젝트 개요 페이지 중앙에 있는 iOS+ 아이콘을 클릭하여 설정 워크플로를 시작합니다.
+
+Firebase 프로젝트에 앱을 이미 추가한 경우 앱 추가를 클릭하여 플랫폼 옵션을 표시합니다.
+
+번들 ID 필드에 앱의 번들 ID를 입력합니다.
+
+번들 ID는 무엇이며 어디에서 찾을 수 있나요?
+
+앱에서 실제로 사용 중인 번들 ID를 입력해야 합니다. 번들 ID 값은 대소문자를 구분하며 Firebase 프로젝트에 등록한 후에는 해당 Firebase Apple 앱의 번들 ID 값을 변경할 수 없습니다.
+
+번들 ID 필드에 앱의 번들 ID를 입력합니다.
+
+번들 ID는 무엇이며 어디에서 찾을 수 있나요?
+
+번들 ID는 Apple 생태계에서 애플리케이션을 고유하게 식별하는 역할을 합니다.
+번들 ID 찾기: Xcode에서 프로젝트를 열고 프로젝트 탐색기에서 최상위 앱을 선택한 다음 General(일반) 탭을 선택합니다.
+
+Bundle Identifier(번들 식별자) 필드의 값이 번들 ID입니다(예: com.yourcompany.yourproject).
+번들 ID 값은 대소문자를 구분하며 Firebase 프로젝트에 등록한 후에는 해당 Firebase 앱의 번들 ID 값을 변경할 수 없습니다.
+
+번들 ID는 Apple 생태계에서 애플리케이션을 고유하게 식별하는 역할을 합니다.
+
+번들 ID 찾기: Xcode에서 프로젝트를 열고 프로젝트 탐색기에서 최상위 앱을 선택한 다음 General(일반) 탭을 선택합니다.
+
+Bundle Identifier(번들 식별자) 필드의 값이 번들 ID입니다(예: com.yourcompany.yourproject).
+
+번들 ID 찾기: Xcode에서 프로젝트를 열고 프로젝트 탐색기에서 최상위 앱을 선택한 다음 General(일반) 탭을 선택합니다.
+
+Bundle Identifier(번들 식별자) 필드의 값이 번들 ID입니다(예: com.yourcompany.yourproject).
+
+번들 ID 값은 대소문자를 구분하며 Firebase 프로젝트에 등록한 후에는 해당 Firebase 앱의 번들 ID 값을 변경할 수 없습니다.
+
+(선택사항) 다른 앱 정보(앱 닉네임 및 App Store ID)를 입력합니다.
+
+Firebase에서 앱 닉네임과 App Store ID는 어떻게 사용되나요?
+
+(선택사항) 다른 앱 정보(앱 닉네임 및 App Store ID)를 입력합니다.
+
+Firebase에서 앱 닉네임과 App Store ID는 어떻게 사용되나요?
+
+앱 닉네임: 닉네임은 편의상 지정하는 내부용 식별자로 Firebase 콘솔에서 본인만 볼 수 있습니다.
+App Store ID: Firebase Dynamic Links에서 사용자를 App Store 페이지로 리디렉션하고 Google Analytics에서 Google Ads로 전환 이벤트를 가져오는 데 사용됩니다.
+앱에 아직 App Store ID가 없으면 나중에 프로젝트 설정에서 ID를 추가할 수 있습니다.
+
+앱 닉네임: 닉네임은 편의상 지정하는 내부용 식별자로 Firebase 콘솔에서 본인만 볼 수 있습니다.
+
+App Store ID: Firebase Dynamic Links에서 사용자를 App Store 페이지로 리디렉션하고 Google Analytics에서 Google Ads로 전환 이벤트를 가져오는 데 사용됩니다.
+앱에 아직 App Store ID가 없으면 나중에 프로젝트 설정에서 ID를 추가할 수 있습니다.
+
+앱 등록을 클릭합니다.
+
+## 4단계: Firebase 구성 파일 추가
+GoogleService-Info.plist 다운로드를 클릭하여 Firebase Apple 플랫폼 구성 파일을 가져옵니다.
+
+이 구성 파일에 대해 알아야 할 사항은 무엇인가요?
+
+GoogleService-Info.plist 다운로드를 클릭하여 Firebase Apple 플랫폼 구성 파일을 가져옵니다.
+
+이 구성 파일에 대해 알아야 할 사항은 무엇인가요?
+
+Firebase 구성 파일에는 고유하지만 보안 비밀은 아닌 프로젝트 및 앱 식별자가 있습니다. 이 구성 파일에 대한 자세한 내용은 Firebase 프로젝트 이해를 참조하세요.
+언제든지 다시 Firebase 구성 파일을 다운로드할 수 있습니다.
+구성 파일 이름에 (2)와 같은 문자가 추가되지 않았는지 확인합니다.
+
+Firebase 구성 파일에는 고유하지만 보안 비밀은 아닌 프로젝트 및 앱 식별자가 있습니다. 이 구성 파일에 대한 자세한 내용은 Firebase 프로젝트 이해를 참조하세요.
+
+언제든지 다시 Firebase 구성 파일을 다운로드할 수 있습니다.
+
+구성 파일 이름에 (2)와 같은 문자가 추가되지 않았는지 확인합니다.
+
+IDE에서 C++ 프로젝트를 열고 구성 파일을 C++ 프로젝트의 루트로 드래그합니다.
+
+메시지가 표시되면 선택하여 모든 대상에 구성 파일을 추가합니다.
+
+Firebase Console에서 설정 태스크를 마쳤습니다. 아래의 Firebase C++ SDK 추가로 진행하세요.
+
+## 5단계: Firebase C++ SDK 추가
+이 섹션의 단계는 지원되는 Firebase 제품을 Firebase C++ 프로젝트에 추가하는 방법의 예시입니다.
+
+Firebase C++ SDK를 다운로드한 후 원하는 위치에 SDK 압축을 풉니다.
+
+Firebase C++ SDK는 플랫폼별로 제공되지 않지만 플랫폼별 라이브러리를 포함합니다.
+
+Firebase C++ SDK를 다운로드한 후 원하는 위치에 SDK 압축을 풉니다.
+
+Firebase C++ SDK는 플랫폼별로 제공되지 않지만 플랫폼별 라이브러리를 포함합니다.
+
+압축을 푼 SDK에서 Firebase pod를 추가합니다.
+
+Podfile이 없으면 만듭니다.
+
+cd your-app-directory
+pod init
+
+앱에서 사용할 Firebase 포드를 Podfile에 추가합니다.
+
+Analytics 사용 설정됨
+Analytics 사용 설정되지 않음
+# Add the pods for the Firebase products you want to use in your app
+# For example, to use Firebase Authentication and Firebase Realtime Database
+pod 'FirebaseAuth'
+pod 'FirebaseDatabase'
+
+포드를 설치하고 Xcode에서 .xcworkspace 파일을 엽니다.
+
+pod install
+open your-app.xcworkspace
+
+압축을 푼 SDK에서 Firebase pod를 추가합니다.
+
+Podfile이 없으면 만듭니다.
+
+cd your-app-directory
+pod init
+
+Podfile이 없으면 만듭니다.
+
+앱에서 사용할 Firebase 포드를 Podfile에 추가합니다.
+
+Analytics 사용 설정됨
+Analytics 사용 설정되지 않음
+# Add the pods for the Firebase products you want to use in your app
+# For example, to use Firebase Authentication and Firebase Realtime Database
+pod 'FirebaseAuth'
+pod 'FirebaseDatabase'
+
+앱에서 사용할 Firebase 포드를 Podfile에 추가합니다.
+
+포드를 설치하고 Xcode에서 .xcworkspace 파일을 엽니다.
+
+pod install
+open your-app.xcworkspace
+
+포드를 설치하고 Xcode에서 .xcworkspace 파일을 엽니다.
+
+압축을 푼 SDK에서 Firebase 프레임워크를 추가합니다.
+
+일반적으로 이러한 프레임워크를 가장 쉽게 추가하는 방법은 Finder 창에서 Xcode의 Project Navigator(프로젝트 탐색기) 창으로 드래그하는 것입니다. 이 창은 기본적으로 가장 왼쪽에 있으며 Xcode 왼쪽 상단의 파일 아이콘을 클릭해도 나타납니다.
+
+Firebase 제품을 사용하는 데 필요한 Firebase C++ 프레임워크 firebase.framework를 추가합니다.
+
+사용할 각 Firebase 제품의 프레임워크를 추가합니다. 예를 들어 Firebase Authentication을 사용하려면 firebase_auth.framework를 추가합니다.
+
+중요: 포드 프로젝트가 아닌 본인의 프로젝트에 프레임워크를 추가해야 합니다.
+
+압축을 푼 SDK에서 Firebase 프레임워크를 추가합니다.
+
+일반적으로 이러한 프레임워크를 가장 쉽게 추가하는 방법은 Finder 창에서 Xcode의 Project Navigator(프로젝트 탐색기) 창으로 드래그하는 것입니다. 이 창은 기본적으로 가장 왼쪽에 있으며 Xcode 왼쪽 상단의 파일 아이콘을 클릭해도 나타납니다.
+
+Firebase 제품을 사용하는 데 필요한 Firebase C++ 프레임워크 firebase.framework를 추가합니다.
+
+사용할 각 Firebase 제품의 프레임워크를 추가합니다. 예를 들어 Firebase Authentication을 사용하려면 firebase_auth.framework를 추가합니다.
+
+Firebase 콘솔로 돌아가서 설정 워크플로에서 다음을 클릭합니다.
+
+Analytics를 추가한 경우 앱을 실행하여 Firebase를 성공적으로 통합했다는 확인을 Firebase에 보냅니다. 그렇지 않으면 이 확인 단계를 건너뛰어도 됩니다.
+
+기기 로그에 초기화가 완료되었다는 Firebase 확인이 표시됩니다. 네트워크 액세스가 가능한 에뮬레이터에서 앱을 실행한 경우 Firebase Console에 앱이 연결되었다는 알림이 표시됩니다.
+
+Analytics를 추가한 경우 앱을 실행하여 Firebase를 성공적으로 통합했다는 확인을 Firebase에 보냅니다. 그렇지 않으면 이 확인 단계를 건너뛰어도 됩니다.
+
+기기 로그에 초기화가 완료되었다는 Firebase 확인이 표시됩니다. 네트워크 액세스가 가능한 에뮬레이터에서 앱을 실행한 경우 Firebase Console에 앱이 연결되었다는 알림이 표시됩니다.
+
+이제 준비가 끝났습니다. Firebase 제품을 사용하기 위한 C++ 앱 등록 및 구성 작업을 마쳤습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Analytics 사용 설정됨 · 셀#1
+# Add the Firebase pod for Google Analytics
+pod 'FirebaseAnalytics'
+
+# Add the pods for any other Firebase products you want to use in your app
+# For example, to use Firebase Authentication and Firebase Realtime Database
+pod 'FirebaseAuth'
+pod 'FirebaseDatabase'
+
+언어: Analytics 사용 설정되지 않음 · 셀#1
+# Add the pods for the Firebase products you want to use in your app
+# For example, to use Firebase Authentication and Firebase Realtime Database
+pod 'FirebaseAuth'
+pod 'FirebaseDatabase'

@@ -1,0 +1,32 @@
+Source URL: https://developers.google.com/people/api/rest/v1/BatchUpdateContactsErrorDetails?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다. Google Workspace People API 참고자료 BatchUpdateContactsErrorDetails 컬렉션을 사용해 정리하기 내 환경설정을 기준으로 콘텐츠를 저장하고 분류하세요. JSON 표현 people.batchUpdateContacts 작업에서 요청이 실패할 때 오류 세부정보를 기록하는 메시지입니다. JSON 표현 일괄 업데이트 실패의 원인이 된 연락처를 클라이언트가 식별할 수 있도록 세부 정보를 제공합니다. 연락처 ID가 표시되지 않으면 연락처가 성공적으로 업데이트된 것입니다. 아래 지도에서: 의 리소스 이름 / 연락처 ID입니다. 값은 상태입니다. 에는 연락처의 오류 목록이 포함됩니다. 쌍 목록을 포함하는 객체입니다. 예:
+
+=== 코드 ===
+{
+  "contactErrors": {
+    string: {
+      object (Status)
+    },
+    ...
+  }
+}
+
+=== 코드 ===
+contactErrors
+
+=== 코드 ===
+map (key: string, value: object (Status))
+
+=== 코드 ===
+BatchUpdateContactsRequest.contacts
+
+=== 코드 ===
+google.rpc.Status.details
+
+=== 코드 ===
+"key": value
+
+=== 코드 ===
+{ "name": "wrench", "mass": "1.3kg", "count": "3" }

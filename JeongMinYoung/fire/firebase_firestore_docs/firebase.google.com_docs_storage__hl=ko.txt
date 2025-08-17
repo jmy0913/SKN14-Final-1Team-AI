@@ -1,0 +1,53 @@
+Source URL: https://firebase.google.com/docs/storage?hl=ko
+
+## 서문
+빠르고 안전한 Google Cloud 인프라를 기반으로 하는 Cloud Storage for Firebase는 사진, 동영상 등의 사용자 제작 콘텐츠를 저장하고 제공해야 하는 앱 개발자를 위해 만들어졌습니다.
+
+이 클라이언트 SDK를 사용하여 이미지, 오디오, 동영상 등의 사용자 제작 콘텐츠를 저장할 수 있습니다. 서버에서 Firebase Admin SDK를 사용하여 버킷을 관리하고, 다운로드 URL을 생성할 수 있으며, Google Cloud Storage API를 사용하여 파일에 액세스할 수 있습니다.
+
+시작할 준비가 되셨나요? 플랫폼을 선택하세요.
+
+iOS+ Android 웹 Flutter
+
+Unity C++
+
+## 주요 기능
+### 표
+| 견고한 작업 | Cloud Storage용 Firebase SDK는 네트워크 품질과 관계없이 업로드 및 다운로드를 수행합니다. 업로드 및 다운로드가 중지된 위치부터 다시 시작되므로 사용자의 시간과 대역폭이 절약됩니다. |
+| --- | --- |
+| 강력한 보안 | Cloud Storage용 Firebase SDK는 Firebase Authentication과 통합되어 개발자에게 간단하고 직관적인 인증을 제공합니다. 선언적 보안 모델을 사용하여 파일 이름, 크기, 콘텐츠 유형 및 기타 메타데이터를 기준으로 액세스를 허용할 수 있습니다. |
+| 높은 확장성 | Cloud Storage는 앱 사용자가 급증할 때 엑사바이트급 규모로 확장이 가능하도록 설계되었습니다. Spotify, Google 포토 같은 앱에 사용되는 것과 동일한 인프라로 프로토타입부터 프로덕션까지 원활하게 성장할 수 있습니다. |
+
+## 기본 원리
+개발자는 Cloud Storage용 Firebase SDK를 사용하여 파일을 업로드하고 클라이언트에서 직접 다운로드합니다. 네트워크 연결 상태가 좋지 못하면 클라이언트는 중단된 위치부터 작업을 재시도하여 사용자의 시간과 대역폭을 절약해 줍니다.
+
+Cloud Storage for Firebase는 Google Cloud Storage 버킷에 파일을 저장하므로 Firebase와 Google Cloud를 통해 파일에 액세스할 수 있습니다. 이렇게 하면 Cloud Storage용 Firebase SDK를 통해 모바일 클라이언트에서 유연하게 파일을 업로드하고 다운로드할 수 있습니다. 또한 Google Cloud Storage API를 사용하여 이미지 필터링이나 동영상 트랜스코딩과 같은 서버 측 처리를 수행할 수 있습니다. Cloud Storage는 자동으로 확장되므로 다른 제공업체로 마이그레이션할 필요가 없습니다. Google Cloud와의 통합에 따르는 모든 혜택을 알아보세요.
+
+Cloud Storage용 Firebase SDK는 Firebase Authentication과 원활하게 통합되어 사용자를 식별하며, 개별 파일이나 파일 그룹에 대해 액세스 제어를 설정하는 선언적 보안 언어가 제공되므로 개발자는 파일을 공개 또는 비공개로 자유롭게 설정할 수 있습니다.
+
+## 구현 경로
+### 표
+|   | Cloud Storage용 Firebase SDK를 통합합니다. | Gradle, CocoaPods 또는 스크립트 포함을 통해 클라이언트를 빠르게 통합합니다. |
+| --- | --- | --- |
+|  | 참조 만들기 | 업로드, 다운로드 또는 삭제할 파일의 경로를 참조합니다. 예를 들면 'images/mountains.png'와 같습니다. |
+|  | 업로드 또는 다운로드 | 메모리 또는 디스크에 기본 형식으로 업로드 또는 다운로드합니다. |
+|  | 파일 보안 설정 | Cloud Storage용 Firebase Security Rules를 사용하여 파일의 보안을 설정합니다. |
+|  | (선택사항) 다운로드 URL 생성 및 공유 | Firebase Admin SDK를 사용하여 사용자가 객체를 다운로드할 수 있도록 공유 가능한 URL을 생성합니다. |
+
+## 다른 유형의 데이터 저장
+Cloud Firestore는 Firebase 및 Google Cloud의 모바일, 웹, 서버 개발에 사용되는 유연하고 확장 가능한 데이터베이스입니다.
+
+Firebase Realtime Database는 게임 상태 또는 채팅 메시지와 같은 JSON 애플리케이션 데이터를 저장하고 연결된 모든 기기에서 변경사항을 즉시 동기화합니다. 데이터베이스 옵션 간 차이점을 자세히 알아보려면 데이터베이스 선택: Cloud Firestore 또는 Realtime Database를 참고하세요.
+
+Firebase Remote Config는 개발자가 지정한 키-값 쌍을 저장하여 사용자가 업데이트를 다운로드할 필요 없이 앱의 동작과 모양을 변경합니다.
+
+Firebase Hosting은 웹사이트의 HTML, CSS, JavaScript 및 개발자가 제공하는 그래픽, 글꼴, 아이콘 등의 기타 애셋을 호스팅합니다.
+
+## 다음 단계
+iOS, Android, 웹, C++ 또는 Unity의 빠른 시작을 참조하여 첫 번째 파일을 Cloud Storage에 업로드합니다.
+
+Apple, Android, 웹, C++ 또는 Unity 앱에 Cloud Storage를 추가합니다.
+
+Cloud Storage용 Firebase Security Rules를 사용하여 파일 보안을 설정하는 방법을 확인합니다.
+
+Google Cloud와 통합하여 이미지 인식 또는 음성 텍스트 변환 등의 강력한 새 기능을 추가합니다.

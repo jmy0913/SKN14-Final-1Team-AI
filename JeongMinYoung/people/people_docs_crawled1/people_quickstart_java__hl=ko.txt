@@ -1,0 +1,206 @@
+Source URL: https://developers.google.com/people/quickstart/java?hl=ko
+
+# 자바 빠른 시작
+bookmark_border
+
+## 1. 목표
+
+환경을 설정합니다.
+샘플을 설정합니다.
+샘플을 실행합니다.
+
+## 2. 기본 요건
+
+Java 11 이상
+Gradle 7.0 이상
+Google Cloud 프로젝트.
+
+API 액세스가 사용 설정된 Google Workspace 도메인
+관리자 권한이 있는 해당 도메인의 Google 계정
+
+## 3. 환경 설정
+
+이 빠른 시작을 완료하려면 환경을 설정하세요.
+
+## 3.1. API 사용 설정
+
+Google Cloud 콘솔에서 People API를 사용 설정합니다.
+API 사용 설정
+
+## 3.2. OAuth 동의 화면 구성
+
+새 Google Cloud 프로젝트를 사용하여 이 빠른 시작을 완료하는 경우 OAuth 동의 화면을 구성합니다. Cloud 프로젝트에서 이 단계를 이미 완료했다면 다음 섹션으로 건너뜁니다.
+
+Google Cloud 콘솔에서 메뉴 menu > > 브랜딩으로 이동합니다.
+브랜딩으로 이동
+을 이미 구성한 경우 브랜딩, 잠재고객, 데이터 액세스에서 다음 OAuth 동의 화면 설정을 구성할 수 있습니다. 아직 구성되지 않음이라는 메시지가 표시되면 시작하기를 클릭합니다.
+앱 정보의 앱 이름에 앱 이름을 입력합니다.
+사용자 지원 이메일에서 사용자가 동의에 대해 문의할 수 있는 지원 이메일 주소를 선택합니다.
+다음을 클릭합니다.
+시청자층에서 내부를 선택합니다.
+다음을 클릭합니다.
+연락처 정보에서 프로젝트 변경사항에 대한 알림을 받을 수 있는 이메일 주소를 입력합니다.
+다음을 클릭합니다.
+완료에서 Google API 서비스 사용자 데이터 정책을 검토하고 동의하는 경우 Google API 서비스: 사용자 데이터 정책에 동의합니다를 선택합니다.
+계속을 클릭합니다.
+만들기를 클릭합니다.
+지금은 범위를 추가하지 않아도 됩니다. 향후 Google Workspace 조직 외부에서 사용할 앱을 만들 때는 사용자 유형을 외부로 변경해야 합니다. 그런 다음 앱에 필요한 승인 범위를 추가합니다. 자세한 내용은 OAuth 동의 구성 가이드를 참고하세요.
+
+## 3.3. 데스크톱 애플리케이션의 사용자 인증 정보 승인
+
+Google Cloud 콘솔에서 메뉴 menu > > 클라이언트로 이동합니다.
+클라이언트로 이동
+클라이언트 만들기를 클릭합니다.
+애플리케이션 유형 > 데스크톱 앱을 클릭합니다.
+이름 필드에 사용자 인증 정보의 이름을 입력합니다. 이 이름은 Google Cloud 콘솔에만 표시됩니다.
+만들기를 클릭합니다.
+새로 만든 사용자 인증 정보가 'OAuth 2.0 클라이언트 ID' 아래에 표시됩니다.
+다운로드한 JSON 파일을 credentials.json로 저장하고 파일을 작업 디렉터리로 이동합니다.
+
+## 4. 작업공간 준비
+
+작업 디렉터리에서 새 프로젝트 구조를 만듭니다.
+gradle init --type basic
+mkdir -p src/main/java src/main/resources 
+src/main/resources/ 디렉터리에서 이전에 다운로드한 credentials.json 파일을 복사합니다.
+기본 build.gradle 파일을 열고 콘텐츠를 다음 코드로 바꿉니다.
+people/quickstart/build.gradle
+GitHub에서 보기
+apply plugin: 'java'
+apply plugin: 'application'
+
+mainClassName = 'PeopleQuickstart'
+sourceCompatibility = 11
+targetCompatibility = 11
+
+version = '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.api-client:google-api-client:2.0.0'
+    implementation 'com.google.oauth-client:google-oauth-client-jetty:1.34.1'
+    implementation 'com.google.apis:google-api-services-people:v1-rev20220531-2.0.0'
+}
+
+## 5. 샘플 설정
+
+src/main/java/ 디렉터리에서 build.gradle 파일의 mainClassName 값과 일치하는 이름의 새 Java 파일을 만듭니다.
+새 Java 파일에 다음 코드를 포함합니다.
+people/quickstart/src/main/java/PeopleQuickstart.java
+GitHub에서 보기
+import com.google.api.client.auth.oauth2.Credential;
+import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp;
+import com.google.api.client.extensions.jetty.auth.oauth2.LocalServerReceiver;
+import com.google.api.client.googleapis.auth.oauth2.GoogleAuthorizationCodeFlow;
+import com.google.api.client.googleapis.auth.oauth2.GoogleClientSecrets;
+import com.google.api.client.googleapis.javanet.GoogleNetHttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.gson.GsonFactory;
+import com.google.api.client.util.store.FileDataStoreFactory;
+import com.google.api.services.people.v1.PeopleService;
+import com.google.api.services.people.v1.PeopleServiceScopes;
+import com.google.api.services.people.v1.model.ListConnectionsResponse;
+import com.google.api.services.people.v1.model.Name;
+import com.google.api.services.people.v1.model.Person;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.security.GeneralSecurityException;
+import java.util.Arrays;
+import java.util.List;
+
+public class PeopleQuickstart {
+  private static final String APPLICATION_NAME = "Google People API Java Quickstart";
+  private static final JsonFactory JSON_FACTORY = GsonFactory.getDefaultInstance();
+  private static final String TOKENS_DIRECTORY_PATH = "tokens";
+
+  /**
+   * Global instance of the scopes required by this quickstart.
+   * If modifying these scopes, delete your previously saved tokens/ folder.
+   */
+  private static final List<String> SCOPES = Arrays.asList(PeopleServiceScopes.CONTACTS_READONLY);
+  private static final String CREDENTIALS_FILE_PATH = "/credentials.json";
+
+  /**
+   * Creates an authorized Credential object.
+   *
+   * @param HTTP_TRANSPORT The network HTTP Transport.
+   * @return An authorized Credential object.
+   * @throws IOException If the credentials.json file cannot be found.
+   */
+  private static Credential getCredentials(final NetHttpTransport HTTP_TRANSPORT)
+      throws IOException {
+    // Load client secrets.
+    InputStream in = PeopleQuickstart.class.getResourceAsStream(CREDENTIALS_FILE_PATH);
+    if (in == null) {
+      throw new FileNotFoundException("Resource not found: " + CREDENTIALS_FILE_PATH);
+    }
+    GoogleClientSecrets clientSecrets =
+        GoogleClientSecrets.load(JSON_FACTORY, new InputStreamReader(in));
+
+    // Build flow and trigger user authorization request.
+    GoogleAuthorizationCodeFlow flow = new GoogleAuthorizationCodeFlow.Builder(
+        HTTP_TRANSPORT, JSON_FACTORY, clientSecrets, SCOPES)
+        .setDataStoreFactory(new FileDataStoreFactory(new java.io.File(TOKENS_DIRECTORY_PATH)))
+        .setAccessType("offline")
+        .build();
+    LocalServerReceiver receiver = new LocalServerReceiver.Builder().setPort(8888).build();
+    return new AuthorizationCodeInstalledApp(flow, receiver).authorize("user");
+  }
+
+  public static void main(String... args) throws IOException, GeneralSecurityException {
+    // Build a new authorized API client service.
+    final NetHttpTransport HTTP_TRANSPORT = GoogleNetHttpTransport.newTrustedTransport();
+    PeopleService service =
+        new PeopleService.Builder(HTTP_TRANSPORT, JSON_FACTORY, getCredentials(HTTP_TRANSPORT))
+            .setApplicationName(APPLICATION_NAME)
+            .build();
+
+    // Request 10 connections.
+    ListConnectionsResponse response = service.people().connections()
+        .list("people/me")
+        .setPageSize(10)
+        .setPersonFields("names,emailAddresses")
+        .execute();
+
+    // Print display name of connections if available.
+    List<Person> connections = response.getConnections();
+    if (connections != null && connections.size() > 0) {
+      for (Person person : connections) {
+        List<Name> names = person.getNames();
+        if (names != null && names.size() > 0) {
+          System.out.println("Name: " + person.getNames().get(0)
+              .getDisplayName());
+        } else {
+          System.out.println("No names available for connection.");
+        }
+      }
+    } else {
+      System.out.println("No connections found.");
+    }
+  }
+}
+
+## 6. 샘플 실행
+
+샘플을 실행합니다.
+gradle run
+
+샘플을 처음 실행하면 액세스 권한을 승인하라는 메시지가 표시됩니다.
+아직 Google 계정에 로그인하지 않았다면 메시지가 표시될 때 로그인합니다. 여러 계정에 로그인되어 있는 경우 승인에 사용할 계정을 하나 선택합니다.
+수락을 클릭합니다.
+Java 애플리케이션이 실행되고 People API를 호출합니다.
+승인 정보는 파일 시스템에 저장되므로 다음에 샘플 코드를 실행할 때는 승인 메시지가 표시되지 않습니다.
+
+## 7. 다음 단계
+
+인증 및 승인 문제 해결
+People API 참조 문서
+Java용 Google API 클라이언트 문서
+People API Javadoc 문서

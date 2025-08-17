@@ -1,0 +1,25 @@
+Source URL: https://developers.google.com/people/api/rest/v1/ReadSourceType?hl=ko
+
+## Fallback (article.innerText)
+이 페이지는 Cloud Translation API를 통해 번역되었습니다.
+홈
+제품
+Google Workspace
+People API
+참고자료
+ReadSourceType
+bookmark_border
+
+응답에 반환할 데이터 소스 유형입니다.
+
+열거형
+READ_SOURCE_TYPE_UNSPECIFIED
+지정되지 않았습니다.
+READ_SOURCE_TYPE_PROFILE
+SourceType.ACCOUNT, SourceType.DOMAIN_PROFILE, SourceType.PROFILE를 반환합니다.
+READ_SOURCE_TYPE_CONTACT
+SourceType.CONTACT를 반환합니다.
+READ_SOURCE_TYPE_DOMAIN_CONTACT
+SourceType.DOMAIN_CONTACT를 반환합니다.
+READ_SOURCE_TYPE_OTHER_CONTACT
+SourceType.OTHER_CONTACT를 반환합니다.

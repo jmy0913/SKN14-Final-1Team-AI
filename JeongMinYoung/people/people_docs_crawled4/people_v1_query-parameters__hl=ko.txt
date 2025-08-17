@@ -1,0 +1,5 @@
+Source URL: https://developers.google.com/people/v1/query-parameters?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다. Google Workspace People API 참고자료 표준 쿼리 매개변수 컬렉션을 사용해 정리하기 내 환경설정을 기준으로 콘텐츠를 저장하고 분류하세요. 모든 People API 작업에 적용되는 쿼리 매개변수는 시스템 매개변수 에 문서화되어 있습니다.
+

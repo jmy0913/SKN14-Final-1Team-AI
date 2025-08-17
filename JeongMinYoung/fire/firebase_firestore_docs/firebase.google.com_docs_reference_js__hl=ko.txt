@@ -1,0 +1,19 @@
+Source URL: https://firebase.google.com/docs/reference/js?hl=ko
+
+## Packages
+### 표
+| Package | Description |
+| --- | --- |
+| @firebase/ai | The Firebase AI Web SDK. |
+| @firebase/analytics | The Firebase Analytics Web SDK. This SDK does not work in a Node.js environment. |
+| @firebase/app | Firebase App |
+| @firebase/app-check | The Firebase App Check Web SDK. |
+| @firebase/auth | Firebase Authentication |
+| @firebase/database | Firebase Realtime Database |
+| @firebase/firestore | Cloud Firestore |
+| @firebase/functions | Cloud Functions for Firebase |
+| @firebase/installations | The Firebase Installations Web SDK. This SDK does not work in a Node.js environment. |
+| @firebase/messaging | The Firebase Cloud Messaging Web SDK. This SDK does not work in a Node.js environment. |
+| @firebase/performance | The Firebase Performance Monitoring Web SDK. This SDK does not work in a Node.js environment. |
+| @firebase/remote-config | The Firebase Remote Config Web SDK. This SDK does not work in a Node.js environment. |
+| @firebase/storage | Cloud Storage for Firebase |

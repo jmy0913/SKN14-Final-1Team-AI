@@ -1,0 +1,4 @@
+Source URL: https://firebase.google.com/docs/firestore/query-data/queries?hl=ko
+
+## 서문
+Cloud Firestore는 컬렉션 또는 컬렉션 그룹에서 검색할 문서를 지정할 수 있는 강력한 쿼리 기능을 제공합니다. 데이터 가져오기 및 실시간 업데이트 가져오기의 설명대로 이러한 쿼리를 get() 또는 addSnapshotListener()와 함께 사용할 수도 있습니다.

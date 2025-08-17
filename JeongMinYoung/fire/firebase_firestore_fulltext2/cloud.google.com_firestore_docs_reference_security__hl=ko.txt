@@ -1,0 +1,65 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/security?hl=ko
+
+## 본문
+Firebase Security Rules provide access control and data validation in a simple yet expressive language. They are used to secure products such as Cloud Storage and Cloud Firestore.
+
+This documentation is divided into two sections:
+
+Interfaces - data types common to all products that use Security Rules.
+
+Namespaces - data types and functions that are product or context specific.
+
+Primitive type representing a boolean value, true or false.
+
+Type representing a sequence of bytes.
+
+Time duration with nanosecond accuracy.
+
+Primitive type representing a 64-bit IEEE floating point number.
+
+Primitive data type representing a signed 64-bit integer value.
+
+Latitude and longitude geopoint.
+
+Heterogeneous list of items.
+
+Key-value mapping.
+
+Object representing the difference between rules.Map objects.
+
+A value of type Integer or type Float.
+
+Directory-like pattern for the location of a resource.
+
+Unordered, heterogeneous list of unique items.
+
+Primitive type representing a string value.
+
+Timestamp in UTC with nanosecond accuracy.
+
+Security Rules language debug statement
+
+Globally available duration functions.
+
+Variables and functions available in Cloud Firestore rules.
+
+Globally available hashing functions.
+
+Globally available latitude-longitude functions.
+
+Globally available mathematical functions.
+
+Globally available timestamp functions.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+true
+
+언어: 코드 · 셀#2
+false
+
+언어: 코드 · 셀#3
+Integer
+
+언어: 코드 · 셀#4
+Float

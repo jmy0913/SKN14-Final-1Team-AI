@@ -1,0 +1,10 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/Shared.Types/LocationMetadata?hl=ko
+
+## 본문
+This type has no fields.
+
+The metadata message for google.cloud.location.Location.metadata.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+google.cloud.location.Location.metadata

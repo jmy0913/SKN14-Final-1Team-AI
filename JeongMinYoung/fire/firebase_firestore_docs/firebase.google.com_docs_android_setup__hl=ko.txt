@@ -1,0 +1,570 @@
+Source URL: https://firebase.google.com/docs/android/setup?hl=ko
+
+## 기본 요건
+Android 스튜디오를 설치하거나 최신 버전으로 업데이트합니다.
+
+프로젝트가 다음 요구사항을 충족하는지 확인합니다(일부 제품의 경우 더 엄격한 요구사항이 적용될 수 있음).
+
+API 수준 21(Lollipop) 이상 타겟팅
+Android 5.0 이상 사용
+다음 버전 요구사항을 충족하는 Jetpack(AndroidX) 사용
+com.android.tools.build:gradle v7.3.0 이상
+compileSdkVersion 28 이상
+
+프로젝트가 다음 요구사항을 충족하는지 확인합니다(일부 제품의 경우 더 엄격한 요구사항이 적용될 수 있음).
+
+API 수준 21(Lollipop) 이상 타겟팅
+
+Android 5.0 이상 사용
+
+다음 버전 요구사항을 충족하는 Jetpack(AndroidX) 사용
+com.android.tools.build:gradle v7.3.0 이상
+compileSdkVersion 28 이상
+
+com.android.tools.build:gradle v7.3.0 이상
+
+compileSdkVersion 28 이상
+
+실제 기기를 설정하거나 에뮬레이터를 사용하여 앱을 실행합니다.
+Google Play 서비스에 대한 종속성이 있는 Firebase SDK를 사용하려면 기기 또는 에뮬레이터에 Google Play 서비스가 설치되어 있어야 합니다.
+
+Google 계정을 사용하여 Firebase에 로그인합니다.
+
+Android 프로젝트가 준비되지 않았다면 빠른 시작 샘플 중 하나를 다운로드하여 Firebase 제품을 사용해 볼 수 있습니다.
+
+다음 옵션 중 하나를 사용하여 Android 앱을 Firebase에 연결할 수 있습니다.
+
+옵션 1: (권장) Firebase Console 설정 워크플로를 사용합니다.
+
+옵션 2: Android 스튜디오 Firebase Assistant를 사용합니다(추가 구성이 필요할 수 있음).
+
+## 옵션 1: Firebase Console을 사용하여 Firebase 추가
+앱에 Firebase를 추가하려면 Firebase Console과 열려 있는 Android 프로젝트 모두에서 태스크를 수행해야 합니다(예: Console에서 Firebase 구성 파일을 다운로드한 후 Android 프로젝트로 이동).
+
+## 1단계: Firebase 프로젝트 만들기
+Firebase를 Android 앱에 추가하려면 먼저 Android 앱에 연결할 Firebase 프로젝트를 만드세요. Firebase 프로젝트에 대한 자세한 내용은 Firebase 프로젝트 이해를 참조하세요.
+
+Firebase 프로젝트 만들기
+
+Firebase Console에서 프로젝트 추가를 클릭합니다.
+
+ 기존 Google Cloud 프로젝트에 Firebase 리소스를 추가하려면 프로젝트 이름을 입력하거나 드롭다운 메뉴에서 선택합니다.
+
+ 새 프로젝트를 만들려면 프로젝트 이름을 입력합니다. 필요한 경우 프로젝트 이름 아래에 표시되는 프로젝트 ID를 수정할 수도 있습니다.
+
+ Firebase는 지정된 이름을 토대로 Firebase 프로젝트의 고유 ID를 생성합니다. Firebase에서 프로젝트의 리소스를 프로비저닝한 후에는 프로젝트 ID를 수정할 수 없으므로 이 프로젝트 ID를 수정하려면 지금 수정해야 합니다. Firebase에서 프로젝트 ID가 어떻게 사용되는지를 알아보려면 Firebase 프로젝트 이해를 참조하세요.
+
+Firebase Console에서 프로젝트 추가를 클릭합니다.
+
+기존 Google Cloud 프로젝트에 Firebase 리소스를 추가하려면 프로젝트 이름을 입력하거나 드롭다운 메뉴에서 선택합니다.
+
+새 프로젝트를 만들려면 프로젝트 이름을 입력합니다. 필요한 경우 프로젝트 이름 아래에 표시되는 프로젝트 ID를 수정할 수도 있습니다.
+
+ Firebase는 지정된 이름을 토대로 Firebase 프로젝트의 고유 ID를 생성합니다. Firebase에서 프로젝트의 리소스를 프로비저닝한 후에는 프로젝트 ID를 수정할 수 없으므로 이 프로젝트 ID를 수정하려면 지금 수정해야 합니다. Firebase에서 프로젝트 ID가 어떻게 사용되는지를 알아보려면 Firebase 프로젝트 이해를 참조하세요.
+
+새 프로젝트를 만들려면 프로젝트 이름을 입력합니다. 필요한 경우 프로젝트 이름 아래에 표시되는 프로젝트 ID를 수정할 수도 있습니다.
+
+메시지가 표시되면 Firebase 약관을 검토하고 이에 동의합니다.
+
+계속을 클릭합니다.
+
+(선택사항) Firebase A/B Testing, Cloud Messaging, Crashlytics, In-App Messaging, Remote Config(맞춤설정 포함) 등 Firebase 제품의 사용 환경을 최적화하려면 프로젝트에 Google Analytics를 설정합니다.
+
+ 기존 Google Analytics 계정을 선택하거나 새 계정을 만듭니다. 새 계정을 만드는 경우 Analytics 보고 위치를 선택한 후 프로젝트의 데이터 공유 설정 및 Google Analytics 약관에 동의합니다.
+ 나중에 언제든지 settings 프로젝트 설정의 통합 탭에서 Google Analytics를 설정할 수 있습니다.
+
+(선택사항) Firebase A/B Testing, Cloud Messaging, Crashlytics, In-App Messaging, Remote Config(맞춤설정 포함) 등 Firebase 제품의 사용 환경을 최적화하려면 프로젝트에 Google Analytics를 설정합니다.
+
+기존 Google Analytics 계정을 선택하거나 새 계정을 만듭니다. 새 계정을 만드는 경우 Analytics 보고 위치를 선택한 후 프로젝트의 데이터 공유 설정 및 Google Analytics 약관에 동의합니다.
+
+프로젝트 만들기(또는 기존 Google Cloud 프로젝트에 Firebase를 추가하는 경우에는 Firebase 추가)를 클릭합니다.
+
+Firebase에서 Firebase 프로젝트용 리소스를 자동으로 프로비저닝합니다. 프로세스가 완료되면 Firebase Console에서 Firebase 프로젝트의 개요 페이지로 이동됩니다.
+
+## 2단계: Firebase에 앱 등록
+Android 앱에서 Firebase를 사용하려면 Firebase 프로젝트에 앱을 등록해야 합니다. 앱 등록이란 보통 프로젝트에 앱을 '추가'하는 것을 의미합니다.
+
+Firebase 콘솔로 이동
+
+프로젝트 개요 페이지 중앙에 있는 Android 아이콘(plat_android) 또는 앱 추가를 클릭하여 설정 워크플로를 시작합니다.
+
+Android 패키지 이름 필드에 앱의 패키지 이름을 입력합니다.
+
+패키지 이름은 무엇이며 어디에서 찾을 수 있나요?
+
+앱에서 실제로 사용 중인 패키지 이름을 입력해야 합니다. 패키지 이름 값은 대소문자를 구분하며 Firebase 프로젝트에 등록한 후에는 해당 Firebase Android 앱의 패키지 이름을 변경할 수 없습니다.
+
+Android 패키지 이름 필드에 앱의 패키지 이름을 입력합니다.
+
+패키지 이름은 무엇이며 어디에서 찾을 수 있나요?
+
+패키지 이름은 기기와 Google Play 스토어에서 앱을 고유하게 식별하는 역할을 합니다.
+패키지 이름을 애플리케이션 ID라고도 합니다.
+모듈(앱 수준) Gradle 파일(일반적으로 app/build.gradle)에서 앱의 패키지 이름(패키지 이름 예시: com.yourcompany.yourproject)을 찾습니다.
+패키지 이름 값은 대소문자를 구분하며 Firebase 프로젝트에 등록한 후에는 해당 Firebase Android 앱의 패키지 이름을 변경할 수 없습니다.
+
+패키지 이름은 기기와 Google Play 스토어에서 앱을 고유하게 식별하는 역할을 합니다.
+
+패키지 이름을 애플리케이션 ID라고도 합니다.
+
+모듈(앱 수준) Gradle 파일(일반적으로 app/build.gradle)에서 앱의 패키지 이름(패키지 이름 예시: com.yourcompany.yourproject)을 찾습니다.
+
+패키지 이름 값은 대소문자를 구분하며 Firebase 프로젝트에 등록한 후에는 해당 Firebase Android 앱의 패키지 이름을 변경할 수 없습니다.
+
+(선택사항) 다른 앱 정보(앱 닉네임 및 디버그 서명 인증서 SHA-1)를 입력합니다.
+
+Firebase에서 앱 닉네임과 디버그 서명 인증서 SHA-1은 어떻게 사용되나요?
+
+(선택사항) 다른 앱 정보(앱 닉네임 및 디버그 서명 인증서 SHA-1)를 입력합니다.
+
+Firebase에서 앱 닉네임과 디버그 서명 인증서 SHA-1은 어떻게 사용되나요?
+
+앱 닉네임: 닉네임은 편의상 지정하는 내부용 식별자로 Firebase 콘솔에서 본인만 볼 수 있습니다.
+디버그 서명 인증서 SHA-1: SHA-1 해시는 Firebase Authentication(Google 로그인 또는 전화번호 로그인을 사용하는 경우) 및 Firebase Dynamic Links에 필요합니다.
+
+앱 닉네임: 닉네임은 편의상 지정하는 내부용 식별자로 Firebase 콘솔에서 본인만 볼 수 있습니다.
+
+디버그 서명 인증서 SHA-1: SHA-1 해시는 Firebase Authentication(Google 로그인 또는 전화번호 로그인을 사용하는 경우) 및 Firebase Dynamic Links에 필요합니다.
+
+앱 등록을 클릭합니다.
+
+## 3단계: Firebase 구성 파일 추가
+앱의 Firebase 구성 파일(google-services.json)을 다운로드한 후 코드베이스에 추가합니다.
+
+google-services.json 다운로드를 클릭하여 앱의 Firebase 구성 파일을 가져옵니다.
+
+구성 파일을 앱의 모듈(앱 수준) 루트 디렉터리로 이동합니다.
+
+이 구성 파일에 대해 알아야 할 사항은 무엇인가요?
+
+앱의 Firebase 구성 파일(google-services.json)을 다운로드한 후 코드베이스에 추가합니다.
+
+google-services.json 다운로드를 클릭하여 앱의 Firebase 구성 파일을 가져옵니다.
+
+구성 파일을 앱의 모듈(앱 수준) 루트 디렉터리로 이동합니다.
+
+이 구성 파일에 대해 알아야 할 사항은 무엇인가요?
+
+Firebase 구성 파일에는 고유하지만 보안 비밀은 아닌 프로젝트 및 앱 식별자가 있습니다. 이 구성 파일에 대한 자세한 내용은 Firebase 프로젝트 이해를 참조하세요.
+언제든지 다시 Firebase 구성 파일을 다운로드할 수 있습니다.
+구성 파일 이름에 (2)와 같은 문자가 추가되지 않았는지 확인합니다.
+
+Firebase 구성 파일에는 고유하지만 보안 비밀은 아닌 프로젝트 및 앱 식별자가 있습니다. 이 구성 파일에 대한 자세한 내용은 Firebase 프로젝트 이해를 참조하세요.
+
+언제든지 다시 Firebase 구성 파일을 다운로드할 수 있습니다.
+
+구성 파일 이름에 (2)와 같은 문자가 추가되지 않았는지 확인합니다.
+
+Firebase SDK가 google-services.json 구성 파일의 값에 액세스할 수 있으려면 Google 서비스 Gradle 플러그인(google-services)이 필요합니다.
+
+루트 수준(프로젝트 수준) Gradle 파일(<project>/build.gradle.kts 또는 <project>/build.gradle)에서 Google 서비스 플러그인을 종속 항목으로 추가합니다.
+
+Kotlin
+Groovy
+아직도 buildscript 구문을 사용하시나요? 해당 구문을 사용하여 Firebase 플러그인을 추가하는 방법을 알아보세요.
+plugins {
+ id("com.android.application") version "7.3.0" apply false
+ // ...
+
+ // Add the dependency for the Google services Gradle plugin
+ id("com.google.gms.google-services") version "4.4.3" apply false
+}
+
+모듈(앱 수준) Gradle 파일(일반적으로 <project>/<app-module>/build.gradle.kts 또는 <project>/<app-module>/build.gradle)에서 Google 서비스 플러그인을 추가합니다.
+
+Kotlin
+Groovy
+plugins {
+ id("com.android.application")
+
+ // Add the Google services Gradle plugin
+ id("com.google.gms.google-services")
+ // ...
+}
+
+Firebase SDK가 google-services.json 구성 파일의 값에 액세스할 수 있으려면 Google 서비스 Gradle 플러그인(google-services)이 필요합니다.
+
+루트 수준(프로젝트 수준) Gradle 파일(<project>/build.gradle.kts 또는 <project>/build.gradle)에서 Google 서비스 플러그인을 종속 항목으로 추가합니다.
+
+Kotlin
+Groovy
+아직도 buildscript 구문을 사용하시나요? 해당 구문을 사용하여 Firebase 플러그인을 추가하는 방법을 알아보세요.
+plugins {
+ id("com.android.application") version "7.3.0" apply false
+ // ...
+
+ // Add the dependency for the Google services Gradle plugin
+ id("com.google.gms.google-services") version "4.4.3" apply false
+}
+
+루트 수준(프로젝트 수준) Gradle 파일(<project>/build.gradle.kts 또는 <project>/build.gradle)에서 Google 서비스 플러그인을 종속 항목으로 추가합니다.
+
+모듈(앱 수준) Gradle 파일(일반적으로 <project>/<app-module>/build.gradle.kts 또는 <project>/<app-module>/build.gradle)에서 Google 서비스 플러그인을 추가합니다.
+
+Kotlin
+Groovy
+plugins {
+ id("com.android.application")
+
+ // Add the Google services Gradle plugin
+ id("com.google.gms.google-services")
+ // ...
+}
+
+모듈(앱 수준) Gradle 파일(일반적으로 <project>/<app-module>/build.gradle.kts 또는 <project>/<app-module>/build.gradle)에서 Google 서비스 플러그인을 추가합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Kotlin · 셀#1
+plugins {
+ id("com.android.application") version "7.3.0" apply false
+ // ...
+
+ // Add the dependency for the Google services Gradle plugin
+ id("com.google.gms.google-services") version "4.4.3" apply false
+}
+
+언어: Groovy · 셀#1
+plugins {
+ id 'com.android.application' version '7.3.0' apply false
+ // ...
+
+ // Add the dependency for the Google services Gradle plugin
+ id 'com.google.gms.google-services' version '4.4.3' apply false
+}
+
+언어: Kotlin · 셀#1
+plugins {
+ id("com.android.application")
+
+ // Add the Google services Gradle plugin
+ id("com.google.gms.google-services")
+ // ...
+}
+
+언어: Groovy · 셀#1
+plugins {
+ id 'com.android.application'
+
+ // Add the Google services Gradle plugin
+ id 'com.google.gms.google-services'
+ // ...
+}
+
+## 4단계: 앱에 Firebase SDK 추가
+모듈(앱 수준) Gradle 파일(일반적으로 <project>/<app-module>/build.gradle.kts 또는 <project>/<app-module>/build.gradle)에 앱에서 사용하려는 Firebase 제품의 종속 항목을 추가합니다. 라이브러리 버전 관리 제어에는 Firebase Android BoM을 사용하는 것이 좋습니다.
+
+Analytics 사용 설정됨
+Analytics 사용 설정되지 않음
+dependencies {
+ // ...
+
+ // Import the Firebase BoM
+ implementation(platform("com.google.firebase:firebase-bom:34.1.0"))
+
+ // When using the BoM, you don't specify versions in Firebase library dependencies
+
+ // Add the dependency for the Firebase SDK for Google Analytics
+ implementation("com.google.firebase:firebase-analytics")
+
+ // TODO: Add the dependencies for any other Firebase products you want to use
+ // See https://firebase.google.com/docs/android/setup#available-libraries
+ // For example, add the dependencies for Firebase Authentication and Cloud Firestore
+ implementation("com.google.firebase:firebase-auth")
+ implementation("com.google.firebase:firebase-firestore")
+}
+
+Firebase Android BoM을 사용하면 앱에서 항상 호환되는 Firebase Android 라이브러리 버전을 사용합니다.
+
+모듈(앱 수준) Gradle 파일(일반적으로 <project>/<app-module>/build.gradle.kts 또는 <project>/<app-module>/build.gradle)에 앱에서 사용하려는 Firebase 제품의 종속 항목을 추가합니다. 라이브러리 버전 관리 제어에는 Firebase Android BoM을 사용하는 것이 좋습니다.
+
+사용하려는 제품의 종속 항목을 추가한 후 Android 프로젝트를 Gradle 파일과 동기화합니다.
+
+ 커스텀 지원 호출 및 디슈가링 사용 설정과 관련된 빌드 실패가 발생하는 경우 해결 방법은 다음과 같습니다.
+
+사용하려는 제품의 종속 항목을 추가한 후 Android 프로젝트를 Gradle 파일과 동기화합니다.
+
+커스텀 지원 호출 및 디슈가링 사용 설정과 관련된 빌드 실패가 발생하는 경우 해결 방법은 다음과 같습니다.
+
+Android Gradle 플러그인(AGP) v4.2 이하를 사용하는 Gradle 빌드에서는 Java 8 지원을 사용 설정해야 합니다. 그렇지 않으면 Firebase SDK를 추가할 때 이러한 Android 프로젝트에 빌드 실패가 발생합니다.
+
+빌드 실패를 해결하려면 다음 두 가지 옵션 중 하나를 수행하면 됩니다.
+
+오류 메시지에 나열된 compileOptions를 앱 수준 build.gradle.kts 또는 build.gradle 파일에 추가합니다.
+Android 프로젝트의 minSdk을 26 이상으로 높입니다.
+
+이 빌드 실패에 대한 자세한 내용은 이 FAQ를 참조하세요.
+
+Android Gradle 플러그인(AGP) v4.2 이하를 사용하는 Gradle 빌드에서는 Java 8 지원을 사용 설정해야 합니다. 그렇지 않으면 Firebase SDK를 추가할 때 이러한 Android 프로젝트에 빌드 실패가 발생합니다.
+
+빌드 실패를 해결하려면 다음 두 가지 옵션 중 하나를 수행하면 됩니다.
+
+오류 메시지에 나열된 compileOptions를 앱 수준 build.gradle.kts 또는 build.gradle 파일에 추가합니다.
+
+Android 프로젝트의 minSdk을 26 이상으로 높입니다.
+
+이 빌드 실패에 대한 자세한 내용은 이 FAQ를 참조하세요.
+
+작업이 끝났습니다. 권장되는 다음 단계를 확인할 수 있는 섹션으로 건너뛸 수 있습니다.
+
+하지만 설정하는 데 문제가 있으면 Android 문제 해결 및 FAQ를 방문하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Analytics 사용 설정됨 · 셀#1
+dependencies {
+ // ...
+
+ // Import the Firebase BoM
+ implementation(platform("com.google.firebase:firebase-bom:34.1.0"))
+
+ // When using the BoM, you don't specify versions in Firebase library dependencies
+
+ // Add the dependency for the Firebase SDK for Google Analytics
+ implementation("com.google.firebase:firebase-analytics")
+
+ // TODO: Add the dependencies for any other Firebase products you want to use
+ // See https://firebase.google.com/docs/android/setup#available-libraries
+ // For example, add the dependencies for Firebase Authentication and Cloud Firestore
+ implementation("com.google.firebase:firebase-auth")
+ implementation("com.google.firebase:firebase-firestore")
+}
+
+언어: Analytics 사용 설정되지 않음 · 셀#1
+dependencies {
+ // ...
+
+ // Import the Firebase BoM
+ implementation(platform("com.google.firebase:firebase-bom:34.1.0"))
+
+ // When using the BoM, you don't specify versions in Firebase library dependencies
+
+ // TODO: Add the dependencies for Firebase products you want to use
+ // See https://firebase.google.com/docs/android/setup#available-libraries
+ // For example, add the dependencies for Firebase Authentication and Cloud Firestore
+ implementation("com.google.firebase:firebase-auth")
+ implementation("com.google.firebase:firebase-firestore")
+}
+
+## 옵션 2: Firebase Assistant를 사용하여 Firebase 추가
+Firebase Assistant는 Firebase 프로젝트에 앱을 등록하고 필요한 Firebase 파일, 플러그인, 종속 항목을 Android 프로젝트에 추가하며, 이 모든 작업을 Android 스튜디오 안에서 할 수 있습니다.
+
+Android 스튜디오에서 Android 프로젝트를 열고 최신 버전의 Android 스튜디오 및 Firebase Assistant를 사용하고 있는지 확인합니다.
+
+Windows/Linux: Help(도움말) > Check for updates(업데이트 확인)
+macOS: Android 스튜디오 > Check for updates(업데이트 확인)
+
+Android 스튜디오에서 Android 프로젝트를 열고 최신 버전의 Android 스튜디오 및 Firebase Assistant를 사용하고 있는지 확인합니다.
+
+Windows/Linux: Help(도움말) > Check for updates(업데이트 확인)
+
+macOS: Android 스튜디오 > Check for updates(업데이트 확인)
+
+Firebase Assistant에서 도구 > Firebase를 엽니다.
+
+Assistant 창에서 앱에 추가할 Firebase 제품을 선택합니다. 해당 섹션을 펼친 후 튜토리얼 링크(예: Analytics > 애널리틱스 이벤트 로깅)를 클릭합니다.
+
+Firebase에 연결을 클릭하여 Android 프로젝트를 Firebase에 연결합니다.
+
+이 워크플로는 어떤 역할을 하나요?
+
+버튼을 클릭하여 원하는 Firebase 제품을 추가합니다(예: 앱에 Analytics 추가).
+
+Assistant 창에서 앱에 추가할 Firebase 제품을 선택합니다. 해당 섹션을 펼친 후 튜토리얼 링크(예: Analytics > 애널리틱스 이벤트 로깅)를 클릭합니다.
+
+Firebase에 연결을 클릭하여 Android 프로젝트를 Firebase에 연결합니다.
+
+이 워크플로는 어떤 역할을 하나요?
+
+Firebase에 연결을 클릭하여 Android 프로젝트를 Firebase에 연결합니다.
+
+이 워크플로는 어떤 역할을 하나요?
+
+이 워크플로는 앱의 패키지 이름을 사용하여 새 Firebase Android 앱을 자동으로 만듭니다.
+기존의 Firebase 프로젝트 또는 새 프로젝트에서 이 새 Firebase Android 앱을 만들 수 있습니다.
+
+다음은 Firebase 프로젝트 설정에 관한 몇 가지 팁입니다.
+
+여러 변형을 처리하는 방법을 비롯하여 앱을 Firebase 프로젝트에 추가하는 방법을 자세히 알아보려면 권장사항을 확인하세요.
+새 프로젝트를 만들 경우 여러 Firebase 제품을 사용하여 사용 환경을 최적화할 수 있도록 프로젝트에 Google Analytics를 설정하는 것이 좋습니다.
+
+이 워크플로는 Firebase 프로젝트의 Android 구성 파일(google-services.json)도 앱의 모듈(앱 수준) 디렉터리에 추가합니다.
+참고: Firebase 구성 파일에는 고유하지만 보안 비밀은 아닌 프로젝트 식별자가 있습니다. 이 구성 파일에 대한 자세한 내용은 Firebase 프로젝트 이해를 참조하세요.
+
+이 워크플로는 앱의 패키지 이름을 사용하여 새 Firebase Android 앱을 자동으로 만듭니다.
+기존의 Firebase 프로젝트 또는 새 프로젝트에서 이 새 Firebase Android 앱을 만들 수 있습니다.
+
+다음은 Firebase 프로젝트 설정에 관한 몇 가지 팁입니다.
+
+여러 변형을 처리하는 방법을 비롯하여 앱을 Firebase 프로젝트에 추가하는 방법을 자세히 알아보려면 권장사항을 확인하세요.
+새 프로젝트를 만들 경우 여러 Firebase 제품을 사용하여 사용 환경을 최적화할 수 있도록 프로젝트에 Google Analytics를 설정하는 것이 좋습니다.
+
+이 워크플로는 앱의 패키지 이름을 사용하여 새 Firebase Android 앱을 자동으로 만듭니다.
+기존의 Firebase 프로젝트 또는 새 프로젝트에서 이 새 Firebase Android 앱을 만들 수 있습니다.
+
+다음은 Firebase 프로젝트 설정에 관한 몇 가지 팁입니다.
+
+여러 변형을 처리하는 방법을 비롯하여 앱을 Firebase 프로젝트에 추가하는 방법을 자세히 알아보려면 권장사항을 확인하세요.
+
+새 프로젝트를 만들 경우 여러 Firebase 제품을 사용하여 사용 환경을 최적화할 수 있도록 프로젝트에 Google Analytics를 설정하는 것이 좋습니다.
+
+이 워크플로는 Firebase 프로젝트의 Android 구성 파일(google-services.json)도 앱의 모듈(앱 수준) 디렉터리에 추가합니다.
+참고: Firebase 구성 파일에는 고유하지만 보안 비밀은 아닌 프로젝트 식별자가 있습니다. 이 구성 파일에 대한 자세한 내용은 Firebase 프로젝트 이해를 참조하세요.
+
+이 워크플로는 Firebase 프로젝트의 Android 구성 파일(google-services.json)도 앱의 모듈(앱 수준) 디렉터리에 추가합니다.
+
+버튼을 클릭하여 원하는 Firebase 제품을 추가합니다(예: 앱에 Analytics 추가).
+
+앱을 동기화하여 모든 종속 항목에 필요한 버전이 있는지 확인합니다.
+
+Assistant 창에서 선택한 Firebase 제품에 대한 나머지 설정 안내를 따릅니다.
+
+Firebase Assistant를 통해 원하는 만큼 다른 Firebase 제품을 추가합니다.
+
+라이브러리 버전을 더 편리하게 관리하고 싶으세요?
+Firebase Android BoM을 사용하면 Firebase 라이브러리 버전을 관리하고 앱에서 항상 호환되는 라이브러리 버전을 사용할 수 있습니다.
+
+작업이 끝났습니다. 권장되는 다음 단계를 확인해 보세요.
+
+하지만 설정하는 데 문제가 있으면 Android 문제 해결 및 FAQ를 방문하세요.
+
+## 사용 가능한 라이브러리
+이 섹션에는 Android에서 지원되는 Firebase 제품과 해당 Gradle 종속 항목 목록이 나와 있습니다. 다음 Firebase Android 라이브러리에 대해 자세히 알아보세요.
+
+참고 문서(Kotlin | Java)
+
+Firebase Android SDK GitHub 저장소
+
+Firebase Android BoM을 사용하면 Gradle 빌드 구성 파일에서 Firebase 라이브러리 종속 항목을 선언할 때 개별 라이브러리 버전을 지정하지 않습니다.
+
+최신 Firebase BoM 버전에는 각 Firebase Android 라이브러리의 최신 버전이 포함됩니다. 특정 BoM 버전에 매핑되는 라이브러리 버전을 알아보려면 해당 BoM 버전의 출시 노트를 참조하세요.
+
+Firebase KTX 모듈
+
+2025년 7월부터 KTX 모듈의 새 버전이 출시되지 않고 Firebase Android BoM(v34.0.0)에서 KTX 라이브러리가 삭제되었습니다.
+
+2023년 10월에 Kotlin 확장 프로그램(KTX) API가 각각의 기본 모듈에 추가되었습니다. 예를 들어 firebase-perf-ktx의 모든 API는 com.google.firebase.perf 패키지 아래 firebase-perf에 추가되었습니다.
+ 이 변경사항으로 인해 Kotlin 개발자는 이제 KTX 모듈 대신 기본 모듈을 사용해야 합니다(Firebase BoM v32.5.0 이상 또는 BoM v32.5.0 이상에 나열된 기본 모듈 버전을 사용하는 경우).
+
+이전에 출시된 KTX 모듈에서 KTX API를 사용하는 경우 대신 기본 모듈에서 KTX API를 사용하도록 앱을 마이그레이션하는 것이 좋습니다. 자세한 내용은 이 이니셔티브에 대한 FAQ를 참조하세요.
+
+Firebase ML Kit 라이브러리
+
+1 Firebase AI Logic은 이전에 com.google.firebase:firebase-vertexai 패키지와 함께 'Vertex AI in Firebase'라고 불렸습니다.
+
+### 표
+| 서비스 또는 제품 | Gradle 종속 항목 | 최신
+버전 | Analytics 추가? |
+| --- | --- | --- | --- |
+| Firebase Android BoM
+(Bill of Materials) | com.google.firebase:firebase-bom
+
+
+최신 Firebase BoM 버전에는 각 Firebase Android 라이브러리의 최신 버전이 포함됩니다. 특정 BoM 버전에 매핑되는 라이브러리 버전을 알아보려면 해당 BoM 버전의 출시 노트를 참조하세요. | 34.1.0 |  |
+| AdMob | com.google.android.gms:play-services-ads | 24.5.0 |  |
+| Firebase AI Logic 1 | com.google.firebase:firebase-ai | 17.1.0 |  |
+| Analytics | com.google.firebase:firebase-analytics | 23.0.0 |  |
+| App Check 커스텀 제공자 | com.google.firebase:firebase-appcheck | 19.0.0 |  |
+| App Check 디버그 제공자 | com.google.firebase:firebase-appcheck-debug | 19.0.0 |  |
+| App Check Play Integrity 제공자 | com.google.firebase:firebase-appcheck-playintegrity | 19.0.0 |  |
+| App Distribution | com.google.firebase:firebase-appdistribution | 16.0.0-beta16 |  |
+| App Distribution API | com.google.firebase:firebase-appdistribution-api | 16.0.0-beta16 |  |
+| App Distribution 플러그인 | com.google.firebase:firebase-appdistribution-gradle | 5.1.1 |  |
+| Authentication | com.google.firebase:firebase-auth | 24.0.1 |  |
+| Cloud Firestore | com.google.firebase:firebase-firestore | 26.0.0 |  |
+| Cloud Functions for Firebase Client SDK | com.google.firebase:firebase-functions | 22.0.0 |  |
+| Cloud Messaging | com.google.firebase:firebase-messaging | 25.0.0 |  |
+| Cloud Storage | com.google.firebase:firebase-storage | 22.0.0 |  |
+| Crashlytics | com.google.firebase:firebase-crashlytics | 20.0.0 |  |
+| Crashlytics NDK | com.google.firebase:firebase-crashlytics-ndk | 20.0.0 |  |
+| Crashlytics 플러그인 | com.google.firebase:firebase-crashlytics-gradle | 3.0.6 |  |
+| Data Connect | com.google.firebase:firebase-dataconnect | 17.0.0 |  |
+| 동적 기능 모듈 지원 | com.google.firebase:firebase-dynamic-module-support | 16.0.0-beta04 |  |
+| Dynamic Links | com.google.firebase:firebase-dynamic-links | 22.1.0 |  |
+| In-App Messaging | com.google.firebase:firebase-inappmessaging | 22.0.0 | (필수) |
+| In-App Messaging 디스플레이 | com.google.firebase:firebase-inappmessaging-display | 22.0.0 | (필수) |
+| Firebase 설치 | com.google.firebase:firebase-installations | 19.0.0 |  |
+| Firebase ML Model Downloader API | com.google.firebase:firebase-ml-modeldownloader | 26.0.0 |  |
+| Performance Monitoring | com.google.firebase:firebase-perf | 22.0.0 |  |
+| Performance Monitoring 플러그인 | com.google.firebase:perf-plugin | 2.0.1 |  |
+| Realtime Database | com.google.firebase:firebase-database | 22.0.0 |  |
+| Remote Config | com.google.firebase:firebase-config | 23.0.0 |  |
+| Google Play 서비스 플러그인 | com.google.gms:google-services | 4.4.3 |  |
+| 지원 중단된 라이브러리 |
+| App Check SafetyNet 제공자 | com.google.firebase:firebase-appcheck-safetynet | 16.1.2 |  |
+| App Indexing | com.google.firebase:firebase-appindexing | 20.0.0 |  |
+| Firebase KTX 모듈 |
+| Analytics | com.google.firebase:firebase-analytics-ktx | 22.5.0 |  |
+| App Check 커스텀 제공자 | com.google.firebase:firebase-appcheck-ktx | 18.0.0 |  |
+| App Distribution API | com.google.firebase:firebase-appdistribution-api-ktx | 16.0.0-beta15 |  |
+| Authentication | com.google.firebase:firebase-auth-ktx | 23.2.1 |  |
+| Cloud Firestore | com.google.firebase:firebase-firestore-ktx | 25.1.4 |  |
+| Cloud Functions for Firebase Client SDK | com.google.firebase:firebase-functions-ktx | 21.2.1 |  |
+| Cloud Messaging | com.google.firebase:firebase-messaging-ktx | 24.1.2 |  |
+| Cloud Storage | com.google.firebase:firebase-storage-ktx | 21.0.2 |  |
+| Crashlytics | com.google.firebase:firebase-crashlytics-ktx | 19.4.4 |  |
+| Dynamic Links | com.google.firebase:firebase-dynamic-links-ktx | 22.1.0 |  |
+| In-App Messaging | com.google.firebase:firebase-inappmessaging-ktx | 21.0.2 | (필수) |
+| In-App Messaging 디스플레이 | com.google.firebase:firebase-inappmessaging-display-ktx | 21.0.2 | (필수) |
+| Firebase 설치 | com.google.firebase:firebase-installations-ktx | 18.0.0 |  |
+| Firebase ML Model Downloader API | com.google.firebase:firebase-ml-modeldownloader-ktx | 25.0.1 |  |
+| Performance Monitoring | com.google.firebase:firebase-perf-ktx | 21.0.5 |  |
+| Realtime Database | com.google.firebase:firebase-database-ktx | 21.0.0 |  |
+| Remote Config | com.google.firebase:firebase-config-ktx | 22.1.2 |  |
+| Firebase ML Kit 라이브러리 |
+| Firebase ML Custom Model API | com.google.firebase:firebase-ml-model-interpreter | 22.0.4 |  |
+| Firebase ML Vision API | com.google.firebase:firebase-ml-vision | 24.1.0 |  |
+| Firebase ML: 이미지 라벨 지정 모델 | com.google.firebase:firebase-ml-vision-image-label-model | 20.0.2 |  |
+| Firebase ML: 객체 감지 및 추적 모델 | com.google.firebase:firebase-ml-vision-object-detection-model | 19.0.6 |  |
+| Firebase ML: 얼굴 인식 모델 | com.google.firebase:firebase-ml-vision-face-model | 20.0.2 |  |
+| Firebase ML: 바코드 스캔 모델 | com.google.firebase:firebase-ml-vision-barcode-model | 16.1.2 |  |
+| Firebase ML: AutoML Vision Edge API | com.google.firebase:firebase-ml-vision-automl | 18.0.6 |  |
+| Firebase ML: Natural Language API | com.google.firebase:firebase-ml-natural-language | 22.0.1 |  |
+| Firebase ML: 언어 식별 모델 | com.google.firebase:firebase-ml-natural-language-language-id-model | 20.0.8 |  |
+| Firebase ML: 번역 모델 | com.google.firebase:firebase-ml-natural-language-translate-model | 20.0.9 |  |
+| Firebase ML: 스마트 답장 모델 | com.google.firebase:firebase-ml-natural-language-smart-reply-model | 20.0.8 |  |
+
+## 다음 단계
+앱에 Firebase 서비스 추가:
+
+Firebase AI Logic을 사용하여 Gemini 및 Imagen 모델로 생성형 AI 기능을 빌드합니다.
+
+Analytics로 사용자 행동을 파악합니다.
+
+Authentication으로 사용자 인증 흐름을 설정합니다.
+
+Cloud Firestore 또는 Realtime Database로 사용자 정보와 같은 데이터를 저장합니다.
+
+Cloud Storage로 사진, 동영상과 같은 파일을 저장합니다.
+
+Cloud Functions로 보안 환경에서 실행되는 백엔드 코드를 트리거합니다.
+
+Cloud Messaging으로 알림을 전송합니다.
+
+Crashlytics로 앱이 비정상 종료된 시점과 이유를 조사합니다.
+
+Firebase 알아보기:
+
+Firebase 프로젝트 및 권장사항에 대한 자세한 내용은 Firebase 프로젝트 이해를 참조하세요.
+
+Firebase와 Android 개발과 관련하여 익숙하지 않거나 특정 개념에 대해 궁금한 점이 있으면 Android 및 Firebase 자세히 알아보기를 참조하세요.
+
+샘플 Firebase 앱을 살펴봅니다.
+
+Firebase Android Codelab에서 사용 방법을 실습합니다.
+
+주말 동안 배우는 Firebase 과정을 진행합니다.
+
+앱 출시 준비
+
+Google Cloud 콘솔에서 프로젝트의 예산 알림을 설정합니다.
+Firebase 콘솔에서 사용량 및 결제 대시보드를 모니터링하여 여러 Firebase 서비스에서 프로젝트 사용량을 전체적으로 파악합니다.
+Firebase 출시 체크리스트를 검토합니다.
+
+앱 출시 준비
+
+Google Cloud 콘솔에서 프로젝트의 예산 알림을 설정합니다.
+
+Firebase 콘솔에서 사용량 및 결제 대시보드를 모니터링하여 여러 Firebase 서비스에서 프로젝트 사용량을 전체적으로 파악합니다.
+
+Firebase 출시 체크리스트를 검토합니다.
+
+Firebase와 Android 프로젝트에 문제가 있나요? Android 문제 해결 및 FAQ를 방문하세요.

@@ -1,0 +1,222 @@
+Source URL: https://developers.google.com/people/api/rest/v1/people/updateContactPhoto?hl=ko
+
+## Fallback (article.innerText)
+기본 콘텐츠로 건너뛰기
+
+developers.google.com 은(는) 서비스 제공 및 서비스 품질 개선과 트래픽 분석을 위해 쿠키를 사용합니다. 동의 시 광고를 게재하고 표시되는 콘텐츠 및 광고를 맞춤설정하는 데도 쿠키가 사용됩니다. 자세히 알아보세요.
+
+동의함
+나중에
+people
+People API
+/
+로그인
+가이드
+참고자료
+지원
+개요
+REST 리소스
+연락처 그룹
+contactGroups.members
+기타 연락처
+사람
+개요
+batchCreateContacts
+일괄 삭제 연락처
+일괄 업데이트 연락처
+연락처 만들기
+연락처 삭제
+연락처 사진 삭제
+get
+getBatchGet
+목록 디렉터리 사용자
+연락처 검색
+검색 디렉터리 사용자
+연락처 업데이트
+연락처 사진 업데이트
+People.connections
+유형
+BatchCreateContactsErrorDetails
+BatchUpdateContactsErrorDetails
+디렉터리 병합 소스 유형
+디렉터리 소스 유형
+개인 응답
+소스 유형 읽기
+요청 마스크
+SearchResponse
+상태
+표준 기능
+쿼리 매개변수
+클라이언트 라이브러리 참조
+브라우저
+Go
+Java
+.NET
+Node.js
+PHP
+Python
+Ruby
+ 이 페이지는 Cloud Translation API를 통해 번역되었습니다.
+홈
+제품
+Google Workspace
+People API
+참고자료
+Method: people.updateContactPhoto
+bookmark_border
+이 페이지의 내용
+HTTP 요청
+경로 매개변수
+요청 본문
+응답 본문
+승인 범위
+
+연락처 사진 업데이트
+
+지연 시간 증가 및 실패를 방지하려면 동일한 사용자에 대한 변형 요청을 순차적으로 전송해야 합니다.
+
+HTTP 요청
+
+PATCH https://people.googleapis.com/v1/{resourceName=people/*}:updateContactPhoto
+
+URL은 gRPC 트랜스코딩 구문을 사용합니다.
+
+경로 매개변수
+매개변수
+resourceName
+
+string
+
+필수 항목입니다. 사람 리소스 이름
+
+요청 본문
+
+요청 본문에는 다음과 같은 구조의 데이터가 포함됩니다.
+
+JSON 표현
+
+{
+ "photoBytes": string,
+ "personFields": string,
+ "sources": [
+ enum (ReadSourceType)
+ ]
+}
+입력란
+photoBytes
+
+string (bytes format)
+
+필수 항목입니다. 원본 사진 바이트
+
+base64 인코딩 문자열입니다.
+
+personFields
+
+string (FieldMask format)
+
+선택사항입니다. 개인에서 반환되는 필드를 제한하는 필드 마스크. 여러 입력란은 쉼표로 구분하여 지정할 수 있습니다. 설정하지 않으면 기본값은 비어 있음으로, post mutt get을 건너뜁니다. 유효한 값은 다음과 같습니다.
+
+addresses
+ageRanges
+전기
+생일
+calendarUrls
+clientData
+coverPhotos
+emailAddresses
+이벤트
+externalIds
+성별
+imClients
+관심분야
+locales
+위치
+멤버십
+metadata
+miscKeywords
+names
+닉네임
+직업
+organizations
+phoneNumbers
+사진
+관계
+sipAddresses
+기술
+urls
+userDefined
+
+sources[]
+
+enum (ReadSourceType)
+
+선택사항입니다. 반환할 소스 유형의 마스크. 설정하지 않으면 기본값은 READ_SOURCE_TYPE_CONTACT 및 READ_SOURCE_TYPE_PROFILE입니다.
+
+응답 본문
+
+연락처 사진 업데이트에 대한 응답입니다.
+
+성공할 경우 응답 본문에 다음 구조의 데이터가 포함됩니다.
+
+JSON 표현
+
+{
+ "person": {
+ object (Person)
+ }
+}
+입력란
+person
+
+object (Person)
+
+UpdateContactPhotoRequest에 personFields가 설정된 경우 업데이트된 사용자이며, 그렇지 않은 경우에는 설정되지 않습니다.
+
+승인 범위
+
+다음 OAuth 범위가 필요합니다.
+
+https://www.googleapis.com/auth/contacts
+
+자세한 내용은 승인 가이드를 참조하세요.
+
+달리 명시되지 않는 한 이 페이지의 콘텐츠에는 Creative Commons Attribution 4.0 라이선스에 따라 라이선스가 부여되며, 코드 샘플에는 Apache 2.0 라이선스에 따라 라이선스가 부여됩니다. 자세한 내용은 Google Developers 사이트 정책을 참조하세요. 자바는 Oracle 및/또는 Oracle 계열사의 등록 상표입니다.
+
+최종 업데이트: 2024-08-06(UTC)
+
+Stack Overflow
+google-people 태그로 질문하기
+약관
+Google API 서비스: 사용자 데이터 정책
+프로그램
+Google Developer Program
+Google Developer Groups
+Google Developer Experts
+Accelerators
+Women Techmakers
+Google Cloud & NVIDIA
+개발자 콘솔
+Google API Console
+Google Cloud Platform Console
+Google Play Console
+Firebase Console
+Actions on Google Console
+Cast SDK Developer Console
+Chrome Web Store Dashboard
+Google Home Developer Console
+Android
+Chrome
+Firebase
+Google Cloud Platform
+Google AI
+모든 제품
+약관
+개인정보처리방침
+쿠키 관리
+Google Developers 뉴스레터 신청
+구독
+정보
+채팅
+API
+사용해 보기

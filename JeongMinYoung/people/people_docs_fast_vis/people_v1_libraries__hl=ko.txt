@@ -1,0 +1,157 @@
+Source URL: https://developers.google.com/people/v1/libraries?hl=ko
+
+## 본문
+=== 코드/텍스트 탭 수집 ===
+언어: Go · 셀#1
+최신 Go용 People API 클라이언트 라이브러리 (알파)를 다운로드하세요. 클라이언트 라이브러리의 개발자 가이드를 읽어 보세요.
+
+언어: 자바 · 셀#1
+pom.xml
+
+언어: 자바스크립트 · 셀#1
+클라이언트 라이브러리의 개발자 가이드를 읽어 보세요.
+
+언어: .NET · 셀#1
+이 페이지에는 다음을 사용하여 People API를 시작하는 방법에 대한 정보가 포함되어 있습니다. .NET용 Google API 클라이언트 라이브러리에 오신 것을 환영합니다. 자세한 내용은 다음 문서를 참고하세요.
+
+People API용 .NET 참조 문서 찾아보기
+.NET용 Google API 클라이언트 라이브러리 개발자 가이드 읽기
+People API용 API 탐색기를 사용하여 브라우저에서 이 API와 상호작용
+라이브러리 다운로드하기
+
+NuGet 패키지: Google.Apis를 설치합니다.
+
+언어: Node.js · 셀#1
+최신 Node.js용 People API 클라이언트 라이브러리를 가져옵니다. 클라이언트 라이브러리의 개발자 가이드를 읽어 보세요.
+
+언어: Obj-C · 셀#1
+최신 Objective-C용 People API 클라이언트 라이브러리를 가져옵니다. 클라이언트 라이브러리의 개발자 가이드를 읽어 보세요.
+
+언어: PHP · 셀#1
+최신 PHP용 People API 클라이언트 라이브러리를 가져옵니다. 클라이언트 라이브러리의 개발자 가이드를 읽어 보세요.
+
+언어: Python · 셀#1
+sudo
+
+언어: Python · 셀#2
+pip install --upgrade google-api-python-client
+
+언어: Python · 셀#3
+easy_install --upgrade google-api-python-client
+
+언어: Python · 셀#4
+python setup.py install
+
+언어: Ruby · 셀#1
+google-api-client
+
+언어: Ruby · 셀#2
+sudo
+
+언어: Ruby · 셀#3
+RubyGems
+
+언어: Ruby · 셀#4
+gem install google-api-client
+
+언어: Ruby · 셀#5
+gem update -y google-api-client
+
+언어: Go · 셀#1
+Go
+자바
+자바스크립트
+.NET
+Node.js
+Obj-C
+PHP
+Python
+Ruby
+
+언어: 자바 · 셀#1
+Go
+자바
+자바스크립트
+.NET
+Node.js
+Obj-C
+PHP
+Python
+Ruby
+
+언어: 자바스크립트 · 셀#1
+Go
+자바
+자바스크립트
+.NET
+Node.js
+Obj-C
+PHP
+Python
+Ruby
+
+언어: .NET · 셀#1
+Go
+자바
+자바스크립트
+.NET
+Node.js
+Obj-C
+PHP
+Python
+Ruby
+
+언어: Node.js · 셀#1
+Go
+자바
+자바스크립트
+.NET
+Node.js
+Obj-C
+PHP
+Python
+Ruby
+
+언어: Obj-C · 셀#1
+Go
+자바
+자바스크립트
+.NET
+Node.js
+Obj-C
+PHP
+Python
+Ruby
+
+언어: PHP · 셀#1
+Go
+자바
+자바스크립트
+.NET
+Node.js
+Obj-C
+PHP
+Python
+Ruby
+
+언어: Python · 셀#1
+Go
+자바
+자바스크립트
+.NET
+Node.js
+Obj-C
+PHP
+Python
+Ruby
+
+언어: Ruby · 셀#1
+Go
+자바
+자바스크립트
+.NET
+Node.js
+Obj-C
+PHP
+Python
+Ruby

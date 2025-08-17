@@ -1,0 +1,29 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1beta1/FieldReference?hl=ko
+
+## 본문
+A reference to a field in a document, ex: stats.operations.
+
+string
+
+A reference to a field in a document.
+
+Requires:
+
+MUST be a dot-delimited (.) string of segments, where each segment conforms to document field name limitations.
+
+### 표
+| JSON representation |
+| --- |
+| {
+  "fieldPath": string
+} |
+
+| Fields |
+| --- |
+| fieldPath | string
+
+A reference to a field in a document.
+
+Requires:
+
+MUST be a dot-delimited (.) string of segments, where each segment conforms to document field name limitations. |

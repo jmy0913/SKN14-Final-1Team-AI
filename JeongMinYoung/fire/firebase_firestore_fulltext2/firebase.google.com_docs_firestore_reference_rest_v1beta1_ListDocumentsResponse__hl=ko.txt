@@ -1,0 +1,20 @@
+Source URL: https://firebase.google.com/docs/firestore/reference/rest/v1beta1/ListDocumentsResponse?hl=ko
+
+## 본문
+The response for Firestore.ListDocuments.
+
+### 표
+| JSON representation |
+| --- |
+| JSON representation |
+| { "documents": [ { object (Document) } ], "nextPageToken": string } |
+
+| Fields | |
+| --- | --- |
+| Fields | |
+| documents[] | object (Document) The Documents found. |
+| nextPageToken | string A token to retrieve the next page of documents. If this field is omitted, there are no subsequent pages. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+Firestore.ListDocuments

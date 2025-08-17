@@ -1,0 +1,25 @@
+Source URL: https://developers.google.com/people?hl=ko
+
+# 소개
+bookmark_border
+
+## 1. 사용자 정보의 병합된 뷰
+
+People API가 읽는 사용자 정보는 다음 조건에 따라 다양한 소스에서 병합됩니다.
+
+소스 조건
+공개 Google 프로필 데이터 항상을 탭합니다.
+Google Workspace 도메인 프로필 데이터 도메인 관리자가 도메인 범위 데이터의 외부 연락처 및 프로필 공유를 사용 설정하여 directory.readonly 범위를 부여했습니다.
+인증된 사용자의 비공개 프로필 정보 profile 범위 중 하나가 부여되었습니다.
+인증된 사용자의 연락처는 contacts 범위가 부여되었습니다.
+
+## 2. 병합된 개인 데이터 이해
+
+사람에 대한 데이터는 한 가지 기본 소스 유형에서 파생됩니다. 인증된 이메일 주소, 전화번호 또는 프로필 URL을 통해 소스가 연결된 경우 다른 소스의 데이터는 이 데이터와 병합됩니다. 사람을 구성하는 방법은 다음과 같습니다.
+
+기본 출처 연락처 프로필 Google Workspace 도메인 프로필 Google Workspace 도메인 연락처 사용
+Contact 1 0+ 0+ 0+ 대부분의 엔드포인트에 대해 반환됨
+프로필 0+ 1 0 또는 1 0 로그인한 사용자의 사용자를 가져오거나 다른 사용자의 Google 계정으로 사용자를 가져오는 데 사용되는 경우 people.get에 반환됩니다.
+도메인 연락처 0+ 0 0 1 people.listDirectoryPeople 또는 people.searchDirectoryPeople에서 반환됩니다.
+
+연락처 기반의 사용자만 변형 엔드포인트로 수정할 수 있습니다. 프로필 및 도메인 연락처 변형은 지원되지 않습니다.

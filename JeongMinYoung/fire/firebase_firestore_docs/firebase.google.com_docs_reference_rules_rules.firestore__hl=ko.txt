@@ -1,0 +1,81 @@
+Source URL: https://firebase.google.com/docs/reference/rules/rules.firestore?hl=ko
+
+## 본문
+Context specific variables and methods for Cloud Firestore security rules.
+
+Functions in this namespace are only available inside service cloud.firestore { ... } blocks and do not need to be prefixed when used (get() not firestore.get()).
+
+The incoming request context for a Firestore operation.
+
+The Firestore document being read or written.
+
+non-null rules.firestore.Request
+
+The request context, including authentication information and pending data.
+
+non-null rules.firestore.Resource
+
+The resource being read or written.
+
+exists(path) returns rules.Boolean
+
+Check if a document exists.
+
+path
+
+rules.Path
+
+The path.
+
+Value must not be null.
+
+Returns
+
+non-null rules.Boolean true if the resource exists.
+
+existsAfter(path) returns rules.Boolean
+
+Check if a document exists, assuming the current request succeeds. Equivalent to getAfter(path) != null.
+
+get(path) returns rules.firestore.Resource
+
+Get the contents of a firestore document.
+
+non-null rules.firestore.Resource the document, or null if it does not exist.
+
+getAfter(path) returns rules.firestore.Resource
+
+Get the projected contents of a document. The document is returned as if the current request had succeeded. Useful for validating documents that are part of a batched write or transaction.
+
+### 표
+| Parameter |
+| --- |
+| path | rules.Path
+
+The path.
+
+Value must not be null. |
+
+| Parameter |
+| --- |
+| path | rules.Path
+
+The path.
+
+Value must not be null. |
+
+| Parameter |
+| --- |
+| path | rules.Path
+
+The path.
+
+Value must not be null. |
+
+| Parameter |
+| --- |
+| path | rules.Path
+
+The path.
+
+Value must not be null. |

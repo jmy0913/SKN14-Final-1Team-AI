@@ -1,0 +1,13 @@
+Source URL: https://developers.google.com/people/api/rest/v1/DirectorySourceType?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다. Google Workspace People API 참고자료 DirectorySourceType 컬렉션을 사용해 정리하기 내 환경설정을 기준으로 콘텐츠를 저장하고 분류하세요. 디렉터리 응답에서 반환할 데이터 소스 유형입니다. 지정되지 않았습니다. Google Workspace 도메인 공유 연락처 Google Workspace 도메인 프로필
+
+=== 코드 ===
+DIRECTORY_SOURCE_TYPE_UNSPECIFIED
+
+=== 코드 ===
+DIRECTORY_SOURCE_TYPE_DOMAIN_CONTACT
+
+=== 코드 ===
+DIRECTORY_SOURCE_TYPE_DOMAIN_PROFILE

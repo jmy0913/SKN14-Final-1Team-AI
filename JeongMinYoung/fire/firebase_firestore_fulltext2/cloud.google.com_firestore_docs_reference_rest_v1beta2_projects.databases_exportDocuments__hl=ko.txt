@@ -1,0 +1,50 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases/exportDocuments?hl=ko
+
+## 본문
+Exports a copy of all or a subset of documents from Google Cloud Firestore to another storage system, such as Google Cloud Storage. Recent updates to documents may not be reflected in the export. The export occurs in the background and its progress can be monitored and managed via the Operation resource that is created. The output of an export may only be used once the associated operation is done. If an export operation is cancelled before completion it may leave partial data behind in Google Cloud Storage.
+
+POST https://firestore.googleapis.com/v1beta2/{name=projects/*/databases/*}:exportDocuments
+
+The URL uses gRPC Transcoding syntax.
+
+The request body contains data with the following structure:
+
+If successful, the response body contains an instance of Operation.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| name | string Database to export. Should be of the form: projects/{projectId}/databases/{databaseId}. |
+
+| JSON representation |
+| --- |
+| JSON representation |
+| { "collectionIds": [ string ], "outputUriPrefix": string } |
+
+| Fields | |
+| --- | --- |
+| Fields | |
+| collectionIds[] | string Which collection ids to export. Unspecified means all collections. |
+| outputUriPrefix | string The output URI. Currently only supports Google Cloud Storage URIs of the form: gs://BUCKET_NAME[/NAMESPACE_PATH], where BUCKET_NAME is the name of the Google Cloud Storage bucket and NAMESPACE_PATH is an optional Google Cloud Storage namespace path. When choosing a name, be sure to consider Google Cloud Storage naming guidelines: https://cloud.google.com/storage/docs/naming. If the URI is a bucket (without a namespace path), a prefix will be generated based on the start time. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+POST https://firestore.googleapis.com/v1beta2/{name=projects/*/databases/*}:exportDocuments
+
+언어: 코드 · 셀#2
+Operation
+
+언어: 코드 · 셀#3
+https://www.googleapis.com/auth/datastore
+
+언어: 코드 · 셀#4
+https://www.googleapis.com/auth/cloud-platform

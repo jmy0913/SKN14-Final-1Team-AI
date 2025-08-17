@@ -1,0 +1,105 @@
+Source URL: https://cloud.google.com/firestore/docs/reliability-recommender?hl=ko
+
+## 서문
+안정성 추천자는 다음 권장사항 하위유형을 지원합니다.
+
+예약된 백업 사용 설정
+
+PITR 사용 설정
+
+이는 재해 복구 계획의 일부로, 실수로 인한 데이터 삭제 또는 수정과 같은 데이터 재해로부터 데이터를 보호합니다.
+
+이 문서에서는 데이터베이스의 안정성을 개선하기 위해 권장사항 및 통계를 사용 설정하고 보는 방법을 설명합니다.
+
+## 시작하기 전에
+Firestore 안정성 권장사항 및 통계를 보려면 먼저 다음을 수행하세요.
+
+API 사용 설정에 설명된 대로 Recommender API를 사용 설정합니다.
+
+충분한 권한이 있는지 확인합니다. 필요한 권한을 제공하는 다음 역할 중 하나가 있어야 합니다.
+
+작업에 대한 설명	역할
+권장사항/통계 보기	roles/recommender.firestoredatabasereliabilityViewer
+권장사항/통계 보기 및 업데이트(닫기)	roles/recommender.firestoredatabasereliabilityAdmin
+투명성 및 제어 센터의 권장사항/통계를 선택 해제합니다. 자세한 내용은 선택 해제를 참조하세요.	roles/dataprocessing.admin
+
+이러한 추천자 역할은 다음과 같은 API 권한을 제공합니다.
+
+역할	포함된 권한
+roles/recommender.firestoredatabasereliabilityViewer	recommender.firestoreDatabaseReliabilityRecommendations.get
+recommender.firestoreDatabaseReliabilityRecommendations.list
+recommender.firestoreDatabaseReliabilityInsights.get
+recommender.firestoreDatabaseReliabilityInsights.list
+roles/recommender.firestoredatabasereliabilityAdmin	roles/recommender.firestoredatabasereliabilityViewer 권한과 다음 권한 추가
+recommender.firestoreDatabaseReliabilityRecommendations.update
+recommender.firestoreDatabaseReliabilityInsights.update
+
+역할과 액세스 권한 부여에 대한 자세한 내용은 다음을 참조하세요.
+
+역할 이해
+프로젝트, 폴더, 조직에 대한 액세스 관리
+
+충분한 권한이 있는지 확인합니다. 필요한 권한을 제공하는 다음 역할 중 하나가 있어야 합니다.
+
+이러한 추천자 역할은 다음과 같은 API 권한을 제공합니다.
+
+역할과 액세스 권한 부여에 대한 자세한 내용은 다음을 참조하세요.
+
+역할 이해
+
+프로젝트, 폴더, 조직에 대한 액세스 관리
+
+### 표
+| 작업에 대한 설명 | 역할 |
+| --- | --- |
+| 권장사항/통계 보기 | roles/recommender.firestoredatabasereliabilityViewer |
+| 권장사항/통계 보기 및 업데이트(닫기) | roles/recommender.firestoredatabasereliabilityAdmin |
+| 투명성 및 제어 센터의 권장사항/통계를 선택 해제합니다. 자세한 내용은 선택 해제를 참조하세요. | roles/dataprocessing.admin |
+
+| 역할 | 포함된 권한 |
+| --- | --- |
+| roles/recommender.firestoredatabasereliabilityViewer | recommender.firestoreDatabaseReliabilityRecommendations.get
+recommender.firestoreDatabaseReliabilityRecommendations.list
+recommender.firestoreDatabaseReliabilityInsights.get
+recommender.firestoreDatabaseReliabilityInsights.list |
+| roles/recommender.firestoredatabasereliabilityAdmin | roles/recommender.firestoredatabasereliabilityViewer 권한과 다음 권한 추가
+recommender.firestoreDatabaseReliabilityRecommendations.update
+recommender.firestoreDatabaseReliabilityInsights.update |
+
+## 추천 보기
+다양한 방법으로 안정성 권장사항을 나열할 수 있습니다.
+
+비어 있지 않고 사용 중인 데이터베이스에 예약된 백업 또는 PITR이 사용 설정되지 않은 경우에만 안정성 권장사항을 볼 수 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud CLI · 셀#1
+gcloud recommender recommendations list \
+ --project=PROJECT_ID \
+ --location=LOCATION \
+ --recommender=google.firestore.database.<var>RECOMMENDER</var>
+
+언어: Recommender API · 셀#1
+curl -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+ -H "x-goog-user-project: PROJECT_ID" \
+ "https://recommender.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/recommenders/google.firestore.database.RECOMMENDER/recommendations"
+
+## 통계 보기
+다양한 방식으로 재해 복구 계획에 대한 통계와 자세한 권장사항을 확인할 수 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: gcloud CLI · 셀#1
+gcloud recommender insights list \
+ --project=PROJECT_ID \
+ --location=LOCATION \
+ --insight-type=google.firestore.database.INSIGHT_TYPE
+
+언어: Recommender API · 셀#1
+curl -H "Authorization: Bearer $(gcloud auth print-access-token)" \
+
+"https://recommender.googleapis.com/v1/projects/PROJECT_ID/locations/LOCATION/insightTypes/google.firestore.database.INSIGHT_TYPE/insights"
+
+## 권장사항 적용
+재해 복구 계획 개선 방법에 대한 자세한 내용은 재해 복구 계획을 참조하세요.
+
+## 가격 책정
+안정성 권장사항 및 통계는 무료로 제공됩니다. 다른 가격 등급에 대한 자세한 내용은 추천자 가격 책정을 참조하세요.

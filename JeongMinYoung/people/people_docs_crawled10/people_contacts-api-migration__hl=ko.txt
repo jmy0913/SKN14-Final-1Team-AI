@@ -1,0 +1,606 @@
+Source URL: https://developers.google.com/people/contacts-api-migration?hl=ko
+
+기타 연락처
+
+관리자는 새로운 범위를 통해 '기타 연락처'에 대한 읽기 전용 권한을 갖습니다. '기타 연락처'로 변경/쓰기 신호를 다시 전송하는 기능은 지원되지 않으므로, 사용자가 데이터 필드를 업데이트하려면 기타 연락처를 내 연락처로 추가해야 합니다.
+
+관리자는 새로운 범위를 통해 '기타 연락처'에 대한 읽기 전용 권한을 갖습니다. '기타 연락처'로 변경/쓰기 신호를 다시 전송하는 기능은 지원되지 않으므로, 사용자가 데이터 필드를 업데이트하려면 기타 연락처를 내 연락처로 추가해야 합니다.
+
+관리자는 새로운 범위를 통해 '기타 연락처'에 대한 읽기 전용 권한을 갖습니다.
+
+API를 통해 '기타 연락처'의 기본 연락처 정보만 읽을 수 있습니다. 예: 이름, 이메일 주소, 전화번호
+
+API를 통해 '기타 연락처'의 기본 연락처 정보만 읽을 수 있습니다. 예: 이름, 이메일 주소, 전화번호
+
+API를 통해 '기타 연락처'의 기본 연락처 정보만 읽을 수 있습니다.
+
+개인 연락처에 액세스하려면 다음 단계를 따르세요. https://www.googleapis.com/auth/contacts
+
+디렉터리 정보에 액세스하려면 다음 명령어를 사용하세요. https://www.googleapis.com/auth/directory.readonly
+
+참고:
+
+Domain Shared Contacts API는 이러한 변경사항의 영향을 받지 않습니다.
+
+Domain Shared Contacts API
+
+연락처 입력란 사용자 필드
+atom:content 전기
+atom:link rel='http://schemas.google.com/contacts/2008/rel#photo' 사진
+atom:title names
+gContact:결제정보 miscKeyword (type=OUTLOOK_BILLING_INFORMATION)
+gContact:생일 생일
+gContact:calendarLink calendarUrls
+gContact:directoryServer miscKeyword (type=OUTLOOK_DIRECTORY_SERVER)
+gContact:event 이벤트
+gContact:extendedProperty clientData
+gContact:externalId externalIds
+gContact:fileAs) fileAses
+gContact:gender 성별
+gContact:groupMembershipInfo memberships.contactGroupMembership
+gContact:취미 관심분야
+gContact:이니셜 지원 중단됨 닉네임 (type=INITIALS)
+gContact:jot type='home' miscKeyword (유형=HOME)
+gContact:jot type='키워드' miscKeyword (type=OUTLOOK_KEYWORD)
+gContact:jot type='other' miscKeyword (유형=OTHER)
+gContact:jot type='사용자' miscKeyword (type=OUTLOOK_USER)
+gContact:jot type='업무' miscKeyword (유형=WORK)
+gContact:language 언어
+gContact:maidenName 지원 중단됨 닉네임 (유형=MAIDEN_NAME)
+gContact:mileage miscKeyword (type=OUTLOOK_MILEAGE)
+gContact:nickname 닉네임 (유형=DEFAULT)
+gContact:직업 직업
+gContact:우선순위 miscKeyword (type=OUTLOOK_PRIORITY)
+gContact:relation 관계
+gContact:민감도 miscKeyword (type=OUTLOOK_SENSITIVITY)
+gContact:shortName 지원 중단됨 닉네임 (유형=SHORT_NAME)
+gContact:subject misc키워드 (유형=OUTLOOK_SUBJECT)
+gContact:userDefinedField userDefined
+gContact:website urls
+gContact:yomiName names.phonetic_full_name
+gd:삭제됨 metadata.deleted
+gd:email emailAddresses
+gd:im imClients
+gd:조직 organizations
+gd:phoneNumber phoneNumbers
+gd:postalAddress addresses.formattedValue
+gd:where 주택
+gd:structuredPostalAddress 주소
+
+연락처 입력란 사용자 필드
+
+연락처 입력란 사용자 필드
+
+연락처 입력란
+
+사용자 필드
+
+atom:content 전기
+atom:link rel='http://schemas.google.com/contacts/2008/rel#photo' 사진
+atom:title names
+gContact:결제정보 miscKeyword (type=OUTLOOK_BILLING_INFORMATION)
+gContact:생일 생일
+gContact:calendarLink calendarUrls
+gContact:directoryServer miscKeyword (type=OUTLOOK_DIRECTORY_SERVER)
+gContact:event 이벤트
+gContact:extendedProperty clientData
+gContact:externalId externalIds
+gContact:fileAs) fileAses
+gContact:gender 성별
+gContact:groupMembershipInfo memberships.contactGroupMembership
+gContact:취미 관심분야
+gContact:이니셜 지원 중단됨 닉네임 (type=INITIALS)
+gContact:jot type='home' miscKeyword (유형=HOME)
+gContact:jot type='키워드' miscKeyword (type=OUTLOOK_KEYWORD)
+gContact:jot type='other' miscKeyword (유형=OTHER)
+gContact:jot type='사용자' miscKeyword (type=OUTLOOK_USER)
+gContact:jot type='업무' miscKeyword (유형=WORK)
+gContact:language 언어
+gContact:maidenName 지원 중단됨 닉네임 (유형=MAIDEN_NAME)
+gContact:mileage miscKeyword (type=OUTLOOK_MILEAGE)
+gContact:nickname 닉네임 (유형=DEFAULT)
+gContact:직업 직업
+gContact:우선순위 miscKeyword (type=OUTLOOK_PRIORITY)
+gContact:relation 관계
+gContact:민감도 miscKeyword (type=OUTLOOK_SENSITIVITY)
+gContact:shortName 지원 중단됨 닉네임 (유형=SHORT_NAME)
+gContact:subject misc키워드 (유형=OUTLOOK_SUBJECT)
+gContact:userDefinedField userDefined
+gContact:website urls
+gContact:yomiName names.phonetic_full_name
+gd:삭제됨 metadata.deleted
+gd:email emailAddresses
+gd:im imClients
+gd:조직 organizations
+gd:phoneNumber phoneNumbers
+gd:postalAddress addresses.formattedValue
+gd:where 주택
+gd:structuredPostalAddress 주소
+
+atom:content 전기
+
+atom:content
+
+전기
+
+전기
+
+atom:link rel='http://schemas.google.com/contacts/2008/rel#photo' 사진
+
+atom:link rel='http://schemas.google.com/contacts/2008/rel#photo'
+
+사진
+
+사진
+
+atom:title names
+
+atom:title
+
+names
+
+names
+
+gContact:결제정보 miscKeyword (type=OUTLOOK_BILLING_INFORMATION)
+
+gContact:결제정보
+
+miscKeyword (type=OUTLOOK_BILLING_INFORMATION)
+
+miscKeyword (type=OUTLOOK_BILLING_INFORMATION)
+
+gContact:생일 생일
+
+gContact:생일
+
+생일
+
+생일
+
+gContact:calendarLink calendarUrls
+
+gContact:calendarLink
+
+calendarUrls
+
+calendarUrls
+
+gContact:directoryServer miscKeyword (type=OUTLOOK_DIRECTORY_SERVER)
+
+gContact:directoryServer
+
+miscKeyword (type=OUTLOOK_DIRECTORY_SERVER)
+
+miscKeyword (type=OUTLOOK_DIRECTORY_SERVER)
+
+gContact:event 이벤트
+
+gContact:event
+
+이벤트
+
+이벤트
+
+gContact:extendedProperty clientData
+
+gContact:extendedProperty
+
+clientData
+
+clientData
+
+gContact:externalId externalIds
+
+gContact:externalId
+
+externalIds
+
+externalIds
+
+gContact:fileAs) fileAses
+
+gContact:fileAs)
+
+fileAses
+
+fileAses
+
+gContact:gender 성별
+
+gContact:gender
+
+성별
+
+성별
+
+gContact:groupMembershipInfo memberships.contactGroupMembership
+
+gContact:groupMembershipInfo
+
+memberships.contactGroupMembership
+
+memberships.contactGroupMembership
+
+gContact:취미 관심분야
+
+gContact:취미
+
+관심분야
+
+관심분야
+
+gContact:이니셜 지원 중단됨 닉네임 (type=INITIALS)
+
+gContact:이니셜
+
+지원 중단됨 닉네임 (type=INITIALS)
+
+지원 중단됨
+
+닉네임 (type=INITIALS)
+
+gContact:jot type='home' miscKeyword (유형=HOME)
+
+gContact:jot type='home'
+
+miscKeyword (유형=HOME)
+
+miscKeyword (유형=HOME)
+
+gContact:jot type='키워드' miscKeyword (type=OUTLOOK_KEYWORD)
+
+gContact:jot type='키워드'
+
+miscKeyword (type=OUTLOOK_KEYWORD)
+
+miscKeyword (type=OUTLOOK_KEYWORD)
+
+gContact:jot type='other' miscKeyword (유형=OTHER)
+
+gContact:jot type='other'
+
+miscKeyword (유형=OTHER)
+
+miscKeyword (유형=OTHER)
+
+gContact:jot type='사용자' miscKeyword (type=OUTLOOK_USER)
+
+gContact:jot type='사용자'
+
+miscKeyword (type=OUTLOOK_USER)
+
+miscKeyword (type=OUTLOOK_USER)
+
+gContact:jot type='업무' miscKeyword (유형=WORK)
+
+gContact:jot type='업무'
+
+miscKeyword (유형=WORK)
+
+miscKeyword (유형=WORK)
+
+gContact:language 언어
+
+gContact:language
+
+언어
+
+언어
+
+gContact:maidenName 지원 중단됨 닉네임 (유형=MAIDEN_NAME)
+
+gContact:maidenName
+
+지원 중단됨 닉네임 (유형=MAIDEN_NAME)
+
+지원 중단됨
+
+닉네임 (유형=MAIDEN_NAME)
+
+gContact:mileage miscKeyword (type=OUTLOOK_MILEAGE)
+
+gContact:mileage
+
+miscKeyword (type=OUTLOOK_MILEAGE)
+
+miscKeyword (type=OUTLOOK_MILEAGE)
+
+gContact:nickname 닉네임 (유형=DEFAULT)
+
+gContact:nickname
+
+닉네임 (유형=DEFAULT)
+
+닉네임 (유형=DEFAULT)
+
+gContact:직업 직업
+
+gContact:직업
+
+직업
+
+직업
+
+gContact:우선순위 miscKeyword (type=OUTLOOK_PRIORITY)
+
+gContact:우선순위
+
+miscKeyword (type=OUTLOOK_PRIORITY)
+
+miscKeyword (type=OUTLOOK_PRIORITY)
+
+gContact:relation 관계
+
+gContact:relation
+
+관계
+
+관계
+
+gContact:민감도 miscKeyword (type=OUTLOOK_SENSITIVITY)
+
+gContact:민감도
+
+miscKeyword (type=OUTLOOK_SENSITIVITY)
+
+miscKeyword (type=OUTLOOK_SENSITIVITY)
+
+gContact:shortName 지원 중단됨 닉네임 (유형=SHORT_NAME)
+
+gContact:shortName
+
+지원 중단됨 닉네임 (유형=SHORT_NAME)
+
+지원 중단됨
+
+닉네임 (유형=SHORT_NAME)
+
+gContact:subject misc키워드 (유형=OUTLOOK_SUBJECT)
+
+gContact:subject
+
+misc키워드 (유형=OUTLOOK_SUBJECT)
+
+misc키워드 (유형=OUTLOOK_SUBJECT)
+
+gContact:userDefinedField userDefined
+
+gContact:userDefinedField
+
+userDefined
+
+userDefined
+
+gContact:website urls
+
+gContact:website
+
+urls
+
+urls
+
+gContact:yomiName names.phonetic_full_name
+
+gContact:yomiName
+
+names.phonetic_full_name
+
+names.phonetic_full_name
+
+gd:삭제됨 metadata.deleted
+
+gd:삭제됨
+
+metadata.deleted
+
+metadata.deleted
+
+gd:email emailAddresses
+
+gd:email
+
+emailAddresses
+
+emailAddresses
+
+gd:im imClients
+
+gd:im
+
+imClients
+
+imClients
+
+gd:조직 organizations
+
+gd:조직
+
+organizations
+
+organizations
+
+gd:phoneNumber phoneNumbers
+
+gd:phoneNumber
+
+phoneNumbers
+
+phoneNumbers
+
+gd:postalAddress addresses.formattedValue
+
+gd:postalAddress
+
+addresses.formattedValue
+
+addresses.formattedValue
+
+gd:where 주택
+
+gd:where
+
+주택
+
+주택
+
+gd:structuredPostalAddress 주소
+
+gd:structuredPostalAddress
+
+주소
+
+주소
+
+특정 연락처 한 개 읽기 people.get
+
+people.get
+
+특정 연락처 여러 개 읽기 people.getBatchGet
+
+people.getBatchGet
+
+people.connections.list를 사용하여 연락처 읽기
+
+people.connections.list
+
+people.createContact를 사용하여 연락처 만들기
+
+people.createContact
+
+people.updateContact를 사용하여 기존 연락처를 업데이트합니다.
+
+people.updateContact
+
+people.deleteContact를 사용하여 연락처를 삭제합니다.
+
+people.deleteContact
+
+people.updateContactPhoto를 사용하여 연락처 사진을 업데이트합니다.
+
+people.updateContactPhoto
+
+people.deleteContactPhoto를 사용하여 연락처 사진을 삭제합니다.
+
+people.deleteContactPhoto
+
+otherContacts.list를 사용하여 다른 연락처를 읽습니다.
+
+otherContacts.list
+
+otherContacts.copyOtherContactToMyContactsGroup를 사용하여 다른 연락처를 복사합니다.
+
+otherContacts.copyOtherContactToMyContactsGroup
+
+모든 디렉터리 연락처 및 프로필을 나열합니다. people.listDirectoryPeople
+
+people.listDirectoryPeople
+
+디렉터리 연락처 및 프로필을 검색합니다. people.searchDirectoryPeople.
+
+people.searchDirectoryPeople
+
+Contacts API 연락처 그룹 필드 People API 연락처 그룹 필드
+atom:업데이트됨 metadata.updateTime
+atom:title name
+atom:content name
+gd:삭제됨 metadata.deleted
+systemGroup groupType=SYSTEM_CONTACT_GROUP
+
+Contacts API 연락처 그룹 필드 People API 연락처 그룹 필드
+
+Contacts API 연락처 그룹 필드 People API 연락처 그룹 필드
+
+Contacts API 연락처 그룹 필드
+
+People API 연락처 그룹 필드
+
+atom:업데이트됨 metadata.updateTime
+atom:title name
+atom:content name
+gd:삭제됨 metadata.deleted
+systemGroup groupType=SYSTEM_CONTACT_GROUP
+
+atom:업데이트됨 metadata.updateTime
+
+atom:업데이트됨
+
+metadata.updateTime
+
+metadata.updateTime
+
+atom:title name
+
+atom:title
+
+name
+
+name
+
+atom:content name
+
+atom:content
+
+name
+
+name
+
+gd:삭제됨 metadata.deleted
+
+gd:삭제됨
+
+metadata.deleted
+
+metadata.deleted
+
+systemGroup groupType=SYSTEM_CONTACT_GROUP
+
+systemGroup
+
+groupType=SYSTEM_CONTACT_GROUP
+
+groupType=SYSTEM_CONTACT_GROUP
+
+people.contactGroups.get를 사용하여 특정 연락처 그룹 가져오기
+
+people.contactGroups.get
+
+people.contactGroups.list를 사용하여 연락처 그룹 나열
+
+people.contactGroups.list
+
+people.contactGroups.create을(를) 사용하여 연락처 그룹 만들기
+
+people.contactGroups.create
+
+people.contactGroups.update를 사용하여 연락처 그룹 업데이트
+
+people.contactGroups.update
+
+people.contactGroups.delete를 사용하여 연락처 그룹 삭제
+
+people.contactGroups.delete
+
+people.contactGroups.members.modify를 사용하여 연락처 그룹에서 연락처 추가 또는 삭제
+참고: people.updateContact을 사용하여 연락처의 memberships 필드를 업데이트하여 연락처 그룹 멤버십을 수정할 수도 있습니다.
+
+people.contactGroups.members.modify를 사용하여 연락처 그룹에서 연락처 추가 또는 삭제
+
+people.contactGroups.members.modify
+
+참고: people.updateContact을 사용하여 연락처의 memberships 필드를 업데이트하여 연락처 그룹 멤버십을 수정할 수도 있습니다.
+
+참고:
+
+people.updateContact을 사용하여 연락처의 memberships 필드를 업데이트하여 연락처 그룹 멤버십을 수정할 수도 있습니다.
+
+people.updateContact
+
+요청 승인
+
+Apps Script의 경우 고급 사용자 서비스를 참고하세요.
+
+고급 사용자 서비스
+
+지원되는 다른 언어는 클라이언트 라이브러리 설치를 참고하세요.
+
+클라이언트 라이브러리 설치

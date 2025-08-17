@@ -1,0 +1,70 @@
+Source URL: https://developers.google.com/people/api/rest/v1/SearchResponse?hl=ko
+
+## 본문
+JSON 표현
+
+SearchResult
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+특정 쿼리가 지정된 인증된 사용자의 검색 요청에 대한 응답입니다.
+
+object (SearchResult)
+
+요청 결과입니다.
+
+검색어의 결과입니다.
+
+object (Person)
+
+일치하는 인물입니다.
+
+### 표
+| JSON 표현 |
+| --- |
+| {
+ "results": [
+ {
+ object (SearchResult)
+ }
+ ]
+} |
+
+| 필드 | |
+| --- | --- |
+| results[] | object (SearchResult)
+
+요청 결과입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "person": {
+ object (Person)
+ }
+} |
+
+| 필드 | |
+| --- | --- |
+| person | object (Person)
+
+일치하는 인물입니다. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+results[]
+
+언어: 코드 · 셀#2
+object (SearchResult)
+
+언어: 코드 · 셀#3
+SearchResult
+
+언어: 코드 · 셀#4
+person
+
+언어: 코드 · 셀#5
+object (Person)
+
+언어: 코드 · 셀#6
+Person

@@ -1,0 +1,20 @@
+Source URL: https://cloud.google.com/firestore/native/docs/tutorials?hl=ko
+
+## 본문
+Android Friendly Eats
+
+Firestore 및 Android를 사용하여 레스토랑 추천 서비스를 빌드합니다.
+
+Firestore 및 Android를 사용하여 레스토랑 추천 서비스를 빌드합니다.
+
+iOS Friendly Eats
+
+Firestore 및 iOS를 사용하여 레스토랑 추천 서비스를 빌드합니다.
+
+Firestore 및 iOS를 사용하여 레스토랑 추천 서비스를 빌드합니다.
+
+Web Friendly Eats
+
+Firestore 웹 SDK를 사용하여 레스토랑 추천 서비스를 빌드합니다.
+
+Firestore 웹 SDK를 사용하여 레스토랑 추천 서비스를 빌드합니다.

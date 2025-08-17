@@ -1,0 +1,38 @@
+Source URL: https://cloud.google.com/firestore/native/docs/resources?hl=ko
+
+## 본문
+가격 책정
+
+샘플 채팅 앱의 Firestore 가격을 비롯한 Firestore의 가격 책정 세부정보
+
+샘플 채팅 앱의 Firestore 가격을 비롯한 Firestore의 가격 책정 세부정보
+
+할당량 및 한도
+
+Firestore 리소스의 사용 정책
+
+Firestore 리소스의 사용 정책
+
+출시 노트
+
+Firestore의 프로덕션 업데이트
+
+Firestore의 프로덕션 업데이트
+
+위치
+
+Firestore를 사용할 수 있는 위치입니다.
+
+Firestore를 사용할 수 있는 위치입니다.
+
+지원
+
+Firestore에 대해 추가적인 도움을 받는 방법입니다.
+
+Firestore에 대해 추가적인 도움을 받는 방법입니다.
+
+서비스수준계약
+
+Firestore의 현재 서비스수준계약 (SLA)입니다.
+
+Firestore의 현재 서비스수준계약 (SLA)입니다.

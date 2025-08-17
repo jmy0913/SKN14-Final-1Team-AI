@@ -1,0 +1,70 @@
+Source URL: https://firebase.google.com/docs/web/alt-setup?hl=ko
+
+## 본문
+대부분의 Firebase 웹 앱에서는 npm을 통한 SDK를 사용하는 것이 좋습니다. 그러나 Firebase는 특별한 요구사항이 있는 사용자를 위해 SDK를 추가할 수 있는 또 다른 방법을 제공합니다. 바로 아래와 같은 방법이며 이 페이지에서 자세한 설정 안내를 제공합니다.
+
+CDN(콘텐츠 전송 네트워크)
+
+Node.js 앱용 npm
+
+이러한 메서드를 통해 사용 가능한 라이브러리를 앱에 추가할 수 있습니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: CDN에서 추가 · 셀#1
+<body>
+ <!-- Insert this script at the bottom of the HTML, but before you use any Firebase services -->
+ <script type="module">
+ import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js'
+
+ // If you enabled Analytics in your project, add the Firebase SDK for Google Analytics
+ import { getAnalytics } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-analytics.js'
+
+ // Add Firebase products that you want to use
+ import { getAuth } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-auth.js'
+ import { getFirestore } from 'https://www.gstatic.com/firebasejs/12.1.0/firebase-firestore.js'
+ </script>
+</body>
+
+언어: CDN에서 추가 · 셀#2
+<body>
+ <script type="module">
+ // ...
+
+ // TODO: Replace the following with your app's Firebase configuration
+ const firebaseConfig = {
+ // ...
+ };
+
+ // Initialize Firebase
+ const app = initializeApp(firebaseConfig);
+ </script>
+</body>
+
+언어: Node.js 앱 · 셀#1
+// Firebase App (the core Firebase SDK) is always required and
+// must be listed before other Firebase SDKs
+var firebase = require("firebase/app");
+
+// Add the Firebase products that you want to use
+require("firebase/auth");
+require("firebase/firestore");
+
+언어: Node.js 앱 · 셀#2
+// Firebase App (the core Firebase SDK) is always required and
+// must be listed before other Firebase SDKs
+import firebase from "firebase/app";
+
+// Add the Firebase services that you want to use
+import "firebase/auth";
+import "firebase/firestore";
+
+언어: Node.js 앱 · 셀#3
+import { initializeApp } from 'firebase/app';
+
+// TODO: Replace the following with your app's Firebase configuration
+const firebaseConfig = {
+ //...
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);

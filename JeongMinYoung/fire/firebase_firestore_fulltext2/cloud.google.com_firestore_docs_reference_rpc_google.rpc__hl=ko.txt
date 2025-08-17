@@ -1,0 +1,20 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rpc/google.rpc?hl=ko
+
+## 본문
+Status (message)
+
+The Status type defines a logical error model that is suitable for different programming environments, including REST APIs and RPC APIs. It is used by gRPC. Each Status message contains three pieces of data: error code, error message, and error details.
+
+You can find out more about this error model and how to work with it in the API Design Guide.
+
+### 표
+| Fields | |
+| --- | --- |
+| Fields | |
+| code | int32 The status code, which should be an enum value of google.rpc.Code. |
+| message | string A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. |
+| details[] | Any A list of messages that carry the error details. There is a common set of message types for APIs to use. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+Status

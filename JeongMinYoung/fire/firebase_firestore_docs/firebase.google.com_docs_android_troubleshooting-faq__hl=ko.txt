@@ -1,0 +1,128 @@
+Source URL: https://firebase.google.com/docs/android/troubleshooting-faq?hl=ko
+
+## 본문
+이 페이지에서는 Firebase 사용 시 발생할 수 있는 Android 관련 문제 해결 방법과 팁을 제공합니다.
+
+아래에서 찾을 수 없는 다른 문제나 어려운 점이 있으신가요? Firebase 전체 FAQ 또는 제품별 FAQ를 살펴보려면 기본 Firebase FAQ를 확인하세요.
+
+Firebase Android SDK GitHub 저장소에서 보고된 문제 및 문제 해결의 최신 목록을 확인할 수도 있습니다. 자신이 경험한 Firebase Android SDK 관련 문제도 이 저장소에 보고하는 것이 좋습니다.
+
+이 오류는 Firebase BoM을 사용하고 KTX 모듈을 제품 라이브러리 종속 항목으로 지정했기 때문에 발생했을 수 있습니다.
+
+2025년 7월부터 KTX 모듈의 새 버전이 출시되지 않고 Firebase Android BoM(v34.0.0)에서 KTX 라이브러리가 삭제되었습니다.
+
+이전에 출시된 KTX 모듈에서 KTX API를 사용하는 경우 대신 기본 모듈에서 KTX API를 사용하도록 앱을 마이그레이션하는 것이 좋습니다. 자세한 내용은 이 이니셔티브에 대한 FAQ를 참조하세요.
+
+SHA-1 정보는 Firebase Authentication(Google 로그인 또는 전화번호 로그인을 사용하는 경우) 및 Firebase Dynamic Links에 필요합니다. 이러한 기능을 사용하지 않는 경우 SHA-1을 제공할 필요가 없습니다.
+
+이 오류는 지정된 패키지 이름과 SHA-1의 OAuth 2.0 클라이언트 ID가 다른 Firebase 또는 Google Cloud 프로젝트에 포함된 사실이 감지되면 발생합니다. 이 오류를 해결하는 방법을 알아보세요.
+
+이 오류는 일반적으로 앱에 Google Maven 저장소에 대한 참조가 하나 이상 누락되었음을 의미합니다. Gradle 구성 파일에 Google의 Maven 저장소(google())를 포함해야 합니다.
+
+프로젝트에서 plugins 구문을 사용하는 경우 settings.gradle.kts 또는 settings.gradle 파일의 plugins 섹션에 이 구문을 포함합니다.
+
+프로젝트에서 buildscript 구문을 사용하는 경우 프로젝트 수준 build.gradle.kts 또는 build.gradle 파일의 buildscript 및 allprojects 섹션 모두에 구문을 포함합니다.
+
+2021년 5월(Firebase BoM v28.0.0), Firebase에서는 모든 Android 라이브러리에 대한 디슈가링을 중지했습니다(출시 노트 참조).
+
+이러한 변경으로 인해 Android Gradle 플러그인(AGP) v4.2 이하를 사용하는 Gradle 빌드에서는 자바 8 지원을 사용 설정해야 합니다. 그렇지 않으면 Firebase SDK를 추가할 때 이러한 Android 프로젝트에 다음과 같은 빌드 실패가 발생합니다.
+
+빌드 실패를 해결하려면 다음 두 가지 옵션 중 하나를 수행하면 됩니다.
+
+오류 메시지에 나열된 compileOptions를 앱 수준 build.gradle.kts 또는 build.gradle 파일에 추가합니다.
+
+Android 프로젝트의 minSdkVersion을 26 이상으로 높입니다.
+
+이런 상황이 발생하는 2가지 이유는 지원 이메일을 제공하지 않았거나 SHA 키가 없는 경우입니다. 이 오류를 해결하려면 다음 조건이 모두 true인지 확인하세요.
+
+지원 이메일을 Firebase Console의 프로젝트 일반 설정에 추가했습니다.
+
+출시 버전/프로덕션 키 저장소에 있는 SHA-1 인증서 지문을 Firebase Console의 Firebase Android 앱에 추가했습니다(settings 프로젝트 설정으로 이동하여 내 앱까지 아래로 스크롤한 후 Android 앱 선택).
+
+Google Play Console에 있는 SHA-1 인증서 지문을 Firebase Console의 Firebase Android 앱에 추가했습니다(settings 프로젝트 설정으로 이동하여 내 앱까지 아래로 스크롤한 후 Android 앱 선택).
+
+Firebase에는 다음과 같은 Gradle 플러그인이 있습니다.
+
+buildscript 구문을 계속 사용하는 Android 프로젝트에 Firebase 플러그인을 추가하는 방법은 다음과 같습니다.
+
+루트 수준(프로젝트 수준) Gradle 파일(<project>/build.gradle.kts 또는 <project>/build.gradle)에서 Maven 좌표를 사용하여 플러그인을 종속 항목으로 추가합니다.
+
+KotlinGroovy
+ 더보기
+
+ buildscript {
+
+ repositories {
+ // Make sure that you have the following two repositories
+ google() // Google's Maven repository
+ mavenCentral() // Maven Central repository
+ }
+
+ dependencies {
+ ...
+
+ // Add the Maven coordinates and latest version of the plugin
+ classpath ("PLUGIN_MAVEN_COORDINATES:PLUGIN_VERSION")
+ }
+}
+
+allprojects {
+ ...
+
+ repositories {
+ // Make sure that you have the following two repositories
+ google() // Google's Maven repository
+ mavenCentral() // Maven Central repository
+ }
+}
+
+buildscript {
+
+ repositories {
+ // Make sure that you have the following two repositories
+ google() // Google's Maven repository
+ mavenCentral() // Maven Central repository
+ }
+
+ dependencies {
+ ...
+
+ // Add the Maven coordinates and latest version of the plugin
+ classpath 'PLUGIN_MAVEN_COORDINATES:PLUGIN_VERSION'
+ }
+}
+
+allprojects {
+ ...
+
+ repositories {
+ // Make sure that you have the following two repositories
+ google() // Google's Maven repository
+ mavenCentral() // Maven Central repository
+ }
+}
+
+루트 수준(프로젝트 수준) Gradle 파일(<project>/build.gradle.kts 또는 <project>/build.gradle)에서 Maven 좌표를 사용하여 플러그인을 종속 항목으로 추가합니다.
+
+모듈(앱 수준) Gradle 파일(일반적으로 <project>/<app-module>/build.gradle.kts 또는 <project>/<app-module>/build.gradle)에서 플러그인 ID를 사용하여 플러그인을 추가합니다.
+
+KotlinGroovy
+ 더보기
+
+ plugins {
+ id("com.android.application")
+
+ // Add the ID of the plugin
+ id("FIREBASE_PLUGIN_ID")
+ ...
+}
+
+plugins {
+ id 'com.android.application'
+
+ // Add the ID of the plugin
+ id 'FIREBASE_PLUGIN_ID'
+ ...
+}
+
+모듈(앱 수준) Gradle 파일(일반적으로 <project>/<app-module>/build.gradle.kts 또는 <project>/<app-module>/build.gradle)에서 플러그인 ID를 사용하여 플러그인을 추가합니다.

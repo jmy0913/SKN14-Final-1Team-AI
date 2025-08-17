@@ -1,0 +1,182 @@
+Source URL: https://firebase.google.com/docs/auth/ios/start?hl=ko
+
+## 서문
+Firebase Authentication을 사용하면 사용자가 앱에 로그인할 때 이메일 주소와 비밀번호를 통한 로그인 방법이나 Google 로그인, Facebook 로그인과 같은 제휴 ID 공급업체를 통한 로그인 등 1개 이상의 로그인 방법을 사용하여 로그인할 수 있습니다. 이 튜토리얼에서는 Firebase Authentication을 시작할 수 있도록 앱에 이메일 주소와 비밀번호를 통한 로그인을 추가하는 방법을 보여줍니다.
+
+## Firebase에 앱 연결
+Firebase SDK를 설치합니다.
+
+Firebase Console에서 Firebase 프로젝트에 앱을 추가합니다.
+
+## 앱에 Firebase Authentication 추가
+Swift Package Manager를 사용해 Firebase 종속 항목을 설치하고 관리하세요.
+
+앱 프로젝트를 연 상태로 Xcode에서 File(파일) > Add Packages(패키지 추가)로 이동합니다.
+
+메시지가 표시되면 Firebase Apple 플랫폼 SDK 저장소를 추가합니다.
+
+Firebase Authentication 라이브러리를 선택합니다.
+
+타겟 빌드 설정의 Other Linker Flags(기타 링커 플래그) 섹션에 -ObjC 플래그를 추가합니다.
+
+완료되면 Xcode가 백그라운드에서 자동으로 종속 항목을 확인하고 다운로드하기 시작합니다.
+
+## (선택사항) Firebase Local Emulator Suite으로 프로토타입 제작 및 테스트
+앱에서 사용자를 인증하는 방법을 설명하기 전에 Authentication 기능의 프로토타입을 제작하고 테스트하는 데 사용할 수 있는 도구 모음인 Firebase Local Emulator Suite을 소개하겠습니다. 사용할 인증 기술과 제공업체를 결정하거나, Authentication 및 Firebase Security Rules을 사용하는 공개 및 비공개 데이터가 포함된 다양한 데이터 모델을 사용해 보거나, 로그인 UI 디자인의 프로토타입을 제작하는 경우 라이브 서비스를 배포하지 않고 로컬에서 작업할 수 있다는 것은 획기적인 아이디어입니다.
+
+Authentication 에뮬레이터는 Local Emulator Suite의 일부이며 앱에서 에뮬레이션된 데이터베이스 콘텐츠와 구성은 물론 필요에 따라 에뮬레이션된 프로젝트 리소스(함수, 기타 데이터베이스, 보안 규칙)와 상호작용할 수 있게 해줍니다.
+
+Authentication 에뮬레이터를 사용하려면 다음 몇 단계만 거치면 됩니다.
+
+에뮬레이터에 연결하려면 앱의 테스트 구성에 코드 줄을 추가합니다.
+
+로컬 프로젝트 디렉터리의 루트에서 firebase emulators:start를 실행합니다.
+
+대화형 프로토타입 제작에는 Local Emulator Suite UI를, 비대화형 테스트에는 Authentication 에뮬레이터 REST API를 사용합니다.
+
+자세한 안내는 Authentication 에뮬레이터에 앱 연결을 참조하세요. 자세한 내용은 Local Emulator Suite 소개를 참조하세요.
+
+이제 사용자 인증 방법을 계속 살펴보겠습니다.
+
+## Firebase SDK 초기화
+우선 앱 대리자에서 Firebase SDK를 가져옵니다.
+
+그런 다음 application:didFinishLaunchingWithOptions: 메서드에서 FirebaseApp 객체를 초기화합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+import FirebaseCore
+AppDelegate.swift
+
+언어: Objective-C · 셀#1
+@import FirebaseCore;
+AppDelegate.m
+
+언어: Swift · 셀#1
+// Use Firebase library to configure APIs
+FirebaseApp.configure()
+AppDelegate.swift
+
+언어: Objective-C · 셀#1
+// Use Firebase library to configure APIs
+[FIRApp configure];
+AppDelegate.m
+
+## 인증 상태 수신 대기
+각각의 앱 뷰에서 앱에 로그인한 사용자에 대한 정보를 얻기 위해 FIRAuth 객체와 리스너를 연결합니다. 이 리스너는 사용자의 로그인 상태가 변경될 때마다 호출됩니다.
+
+뷰 컨트롤러의 viewWillAppear 메서드에서 리스너를 연결합니다.
+
+뷰 컨트롤러의 viewWillDisappear 메서드에서 리스너를 분리합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+handle = Auth.auth().addStateDidChangeListener { auth, user in
+ // ...
+}
+MainViewController.swift
+
+언어: Objective-C · 셀#1
+self.handle = [[FIRAuth auth]
+ addAuthStateDidChangeListener:^(FIRAuth *_Nonnull auth, FIRUser *_Nullable user) {
+ // ...
+ }];
+MainViewController.m
+
+언어: Swift · 셀#1
+Auth.auth().removeStateDidChangeListener(handle!)
+MainViewController.swift
+
+언어: Objective-C · 셀#1
+[[FIRAuth auth] removeAuthStateDidChangeListener:_handle];
+MainViewController.m
+
+## 신규 사용자 가입
+신규 사용자가 자신의 이메일 주소와 비밀번호를 사용해 앱에 가입할 수 있는 양식을 만듭니다. 사용자가 양식을 작성하면 사용자가 입력한 이메일 주소와 비밀번호의 유효성을 검사한 후 createUser 메서드에 전달합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+Auth.auth().createUser(withEmail: email, password: password) { authResult, error in
+ // ...
+}
+EmailViewController.swift
+
+언어: Objective-C · 셀#1
+[[FIRAuth auth] createUserWithEmail:email
+ password:password
+ completion:^(FIRAuthDataResult * _Nullable authResult,
+ NSError * _Nullable error) {
+ // ...
+}];
+EmailViewController.m
+
+## 기존 사용자 로그인
+기존 사용자가 자신의 이메일 주소와 비밀번호를 사용해 로그인할 수 있는 양식을 만듭니다. 사용자가 양식을 작성하면 signIn 메서드를 호출합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+Auth.auth().signIn(withEmail: email, password: password) { [weak self] authResult, error in
+ guard let strongSelf = self else { return }
+ // ...
+}
+EmailViewController.swift
+
+언어: Objective-C · 셀#1
+[[FIRAuth auth] signInWithEmail:self->_emailField.text
+ password:self->_passwordField.text
+ completion:^(FIRAuthDataResult * _Nullable authResult,
+ NSError * _Nullable error) {
+ // ...
+}];
+EmailViewController.m
+
+## 사용자 정보 가져오기
+사용자가 로그인되면 사용자에 대한 정보를 가져올 수 있습니다. 예를 들어 인증 상태 리스너에서 다음을 수행합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Swift · 셀#1
+if let user = user {
+ // The user's ID, unique to the Firebase project.
+ // Do NOT use this value to authenticate with your backend server,
+ // if you have one. Use getTokenWithCompletion:completion: instead.
+ let uid = user.uid
+ let email = user.email
+ let photoURL = user.photoURL
+ var multiFactorString = "MultiFactor: "
+ for info in user.multiFactor.enrolledFactors {
+ multiFactorString += info.displayName ?? "[DispayName]"
+ multiFactorString += " "
+ }
+ // ...
+}
+MainViewController.swift
+
+언어: Objective-C · 셀#1
+if (user) {
+ // The user's ID, unique to the Firebase project.
+ // Do NOT use this value to authenticate with your backend server,
+ // if you have one. Use getTokenWithCompletion:completion: instead.
+ NSString *email = user.email;
+ NSString *uid = user.uid;
+ NSMutableString *multiFactorString = [NSMutableString stringWithFormat:@"MultiFactor: "];
+ for (FIRMultiFactorInfo *info in user.multiFactor.enrolledFactors) {
+ [multiFactorString appendString:info.displayName];
+ [multiFactorString appendString:@" "];
+ }
+ NSURL *photoURL = user.photoURL;
+ // ...
+}
+MainViewController.m
+
+## 다음 단계
+다른 ID 공급업체 및 익명 게스트 계정에 대한 지원을 추가하는 방법을 알아보세요.
+
+Google 로그인
+
+Facebook 로그인
+
+Twitter 로그인
+
+GitHub 로그인
+
+익명 로그인

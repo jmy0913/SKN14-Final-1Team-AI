@@ -1,0 +1,15 @@
+Source URL: https://developers.google.com/people/v1/troubleshoot-authentication-authorization?hl=ko
+
+인증 절차
+
+고급 > {프로젝트 이름}(안전하지 않음)으로 이동
+
+사용자 인증 정보 만들기
+
+갱신 토큰 만료
+
+서드 파티 쿠키 및 데이터 스토리지
+
+참고:
+
+자체 앱에서는 사용자에게 서드 파티 쿠키 및 데이터 저장소를 사용 설정하거나 accounts.google.com에 대한 예외를 추가하도록 안내해야 합니다.

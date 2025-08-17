@@ -1,0 +1,46 @@
+*./people_docs
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# 가상환경
+.env
+.venv/
+env/
+venv/
+
+# 설정/환경 파일
+*.env
+*.ini
+*.cfg
+*.toml
+*.log
+
+# IDE/에디터
+.vscode/
+.idea/
+*.swp
+*~
+*.sublime-project
+*.sublime-workspace
+
+# 배포/빌드 결과물
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# OS 자동 생성 파일
+.DS_Store
+Thumbs.db
+
+# 테스트/커버리지
+.coverage
+coverage/
+htmlcov/
+.pytest_cache/

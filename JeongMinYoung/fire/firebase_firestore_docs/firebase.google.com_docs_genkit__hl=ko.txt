@@ -1,0 +1,369 @@
+Source URL: https://firebase.google.com/docs/genkit?hl=ko
+
+## 본문
+Introduction
+
+Genkit JS
+Get started
+Developer tools
+MCP Server
+Tutorials
+Chat with a PDF
+Summarize YouTube videos
+Agentic barista Angular app
+Building AI workflows
+Generating content
+Passing information through context
+Creating flows
+Managing prompts with Dotprompt
+Persistent chat sessions
+Tool calling
+Pause generation using interrupts
+Retrieval-augmented generation (RAG)
+Multi-agent systems
+Evaluation
+Observe local metrics
+Error Types
+Deploying AI workflows
+Deploy with Firebase
+Deploy with Cloud Run
+Deploy to any Node.js platform
+Authorization and integrity
+Accessing flows from the client
+Observing AI workflows
+Getting Started
+Authentication
+Advanced Configuration
+Telemetry Collection
+Troubleshooting
+Plugins
+Google AI
+Vertex AI
+Firebase
+OpenAI
+xAI
+DeepSeek
+OpenAI-Compatible
+Ollama
+MCP
+Express
+LanceDB
+Astra DB
+Auth0 AI
+ChromaDB
+Neo4j
+pgvector
+Cloud SQL for PostgreSQL
+Pinecone
+MCP Toolbox
+Templates
+pgvector Retriever
+Framework Integrations
+Using Genkit with Next.js
+Using Genkit with Angular
+Writing plugins
+Overview
+Writing an Evaluator Plugin
+Community
+Connect with us
+Reference
+API reference
+API stability channels
+
+Get started
+
+Developer tools
+
+MCP Server
+
+Tutorials
+Chat with a PDF
+Summarize YouTube videos
+Agentic barista Angular app
+
+Chat with a PDF
+
+Summarize YouTube videos
+
+Agentic barista Angular app
+
+Building AI workflows
+Generating content
+Passing information through context
+Creating flows
+Managing prompts with Dotprompt
+Persistent chat sessions
+Tool calling
+Pause generation using interrupts
+Retrieval-augmented generation (RAG)
+Multi-agent systems
+Evaluation
+Observe local metrics
+Error Types
+
+Generating content
+
+Passing information through context
+
+Creating flows
+
+Managing prompts with Dotprompt
+
+Persistent chat sessions
+
+Tool calling
+
+Pause generation using interrupts
+
+Retrieval-augmented generation (RAG)
+
+Multi-agent systems
+
+Evaluation
+
+Observe local metrics
+
+Error Types
+
+Deploying AI workflows
+Deploy with Firebase
+Deploy with Cloud Run
+Deploy to any Node.js platform
+Authorization and integrity
+Accessing flows from the client
+
+Deploy with Firebase
+
+Deploy with Cloud Run
+
+Deploy to any Node.js platform
+
+Authorization and integrity
+
+Accessing flows from the client
+
+Observing AI workflows
+Getting Started
+Authentication
+Advanced Configuration
+Telemetry Collection
+Troubleshooting
+
+Getting Started
+
+Authentication
+
+Advanced Configuration
+
+Telemetry Collection
+
+Troubleshooting
+
+Plugins
+Google AI
+Vertex AI
+Firebase
+OpenAI
+xAI
+DeepSeek
+OpenAI-Compatible
+Ollama
+MCP
+Express
+LanceDB
+Astra DB
+Auth0 AI
+ChromaDB
+Neo4j
+pgvector
+Cloud SQL for PostgreSQL
+Pinecone
+MCP Toolbox
+
+Google AI
+
+Vertex AI
+
+Firebase
+
+OpenAI
+
+xAI
+
+DeepSeek
+
+OpenAI-Compatible
+
+Ollama
+
+MCP
+
+Express
+
+LanceDB
+
+Astra DB
+
+Auth0 AI
+
+ChromaDB
+
+Neo4j
+
+pgvector
+
+Cloud SQL for PostgreSQL
+
+Pinecone
+
+MCP Toolbox
+
+Templates
+pgvector Retriever
+
+pgvector Retriever
+
+Framework Integrations
+Using Genkit with Next.js
+Using Genkit with Angular
+
+Using Genkit with Next.js
+
+Using Genkit with Angular
+
+Writing plugins
+Overview
+Writing an Evaluator Plugin
+
+Overview
+
+Writing an Evaluator Plugin
+
+Community
+Connect with us
+
+Connect with us
+
+Reference
+API reference
+API stability channels
+
+API reference
+
+API stability channels
+
+Genkit Go
+
+Building AI workflows Generating content Creating flows Managing prompts with Dotprompt Tool calling Retrieval-augmented generation (RAG) Evaluation Observability & monitoring
+
+Observability & monitoring
+
+Deploying AI workflows Deploy with Cloud Run Deploy with any hosting service
+
+Deploy with any hosting service
+
+Writing plugins Overview Writing a model plugin Writing a telemetry plugin
+
+Writing a model plugin
+
+Writing a telemetry plugin
+
+Plugins Google Generative AI Google Cloud Firebase MCP (Model Context Protocol) Ollama OpenAI-Compatible APIs pgvector AlloyDB for PostgreSQL Cloud SQl for PostgreSQL Pinecone Partner & 3P Plugins Overview
+
+Google Generative AI
+
+Google Cloud
+
+MCP (Model Context Protocol)
+
+OpenAI-Compatible APIs
+
+AlloyDB for PostgreSQL
+
+Cloud SQl for PostgreSQL
+
+Partner & 3P Plugins Overview
+
+Reference API Reference
+
+API Reference
+
+Genkit Python
+
+Deploy with Flask
+
+Generating content with AI models
+
+Defining AI workflows
+
+Tool (function) calling
+
+Tool interrupts
+
+Plugins Google GenAI Firestore Vector Store Ollama Dev Local Vector Store
+
+Google GenAI
+
+Firestore Vector Store
+
+Dev Local Vector Store
+
+Explore & build with Genkit
+
+Key capabilities
+
+How does it work?
+
+Implementation path
+
+Get started with:
+
+Genkit is an open-source framework for building full-stack AI-powered applications, built and used in production by Google.
+
+It offers a unified interface for integrating AI models from many model providers, so you can use the best models for your needs. Rapidly build and deploy production-ready chatbots, automations, and recommendation systems using streamlined APIs for multimodal content, structured outputs, tool calling, and agentic workflows.
+
+Get started with just a few lines of code:
+
+Play with AI sample apps, with visualizations of the Genkit code that powers them, at no cost to you.
+
+Explore Genkit by Example
+
+Create your own AI-powered feature in minutes with our “Get started” guide.
+
+Genkit simplifies AI integration with an open-source SDK and unified APIs that work across various model providers and programming languages. It abstracts away complexity so you can focus on delivering great user experiences.
+
+Some key features offered by Genkit include:
+
+Text and image generation
+
+Type-safe, structured data generation
+
+Prompt templating
+
+Persisted chat interfaces
+
+AI workflows
+
+AI-powered data retrieval (RAG)
+
+Genkit is designed for server-side deployment in multiple language environments, and also provides seamless client-side integration through dedicated helpers and client SDKs.
+
+Join us on Discord – Get help, share ideas, and chat with other developers.
+
+Contribute on GitHub – Report bugs, suggest features, or explore the source code.
+
+### 표
+| Broad AI model support | Use a unified interface to integrate with hundreds of models from providers like Google, OpenAI, Anthropic, Ollama, and more. Explore, compare, and use the best models for your needs. |
+| --- | --- |
+| Simplified AI development | Use streamlined APIs to build AI features with structured output, agentic tool calling, context-aware generation, multi-modal input/output, and more. Genkit handles the complexity of AI development, so you can build and iterate faster. |
+| Web and mobile ready | Integrate seamlessly with frameworks and platforms including Next.js, React, Angular, iOS, Android, using purpose-built client SDKs and helpers. |
+| Cross-language support | Build with the language that best fits your project. Genkit provides SDKs for JavaScript/TypeScript, Go, and Python with consistent APIs and capabilities across all supported languages. |
+| Deploy anywhere | Deploy AI logic to any environment that supports your chosen programming language, such as Cloud Functions for Firebase, Google Cloud Run, or third-party platforms, with or without Google services. |
+| Developer tools | Accelerate AI development with a purpose-built, local CLI and Developer UI. Test prompts and flows against individual inputs or datasets, compare outputs from different models, debug with detailed execution traces, and use immediate visual feedback to iterate rapidly on prompts. |
+| Production monitoring | Ship AI features with confidence using comprehensive production monitoring. Track model performance, and request volumes, latency, and error rates in a purpose-built dashboard. Identify issues quickly with detailed observability metrics, and ensure your AI features meet quality and performance targets in real-world usage. |
+
+|   | Choose your language and model provider | Select the Genkit SDK for your preferred language (JavaScript/TypeScript, Go, or Python). Choose a model provider like Google Gemini or Anthropic, and get an API key. Some providers, like Vertex AI, may rely on a different means of authentication. |
+| --- | --- | --- |
+|  | Install the SDK and initialize | Install the Genkit SDK, model-provider package of your choice, and the Genkit CLI. Import the Genkit and provider packages and initialize Genkit with the provider API key. |
+|  | Write and test AI features | Use the Genkit SDK to build AI features for your use case, from basic text generation to complex multi-step workflows and agents. Use the CLI and Developer UI to help you rapidly test and iterate. |
+|  | Deploy and monitor | Deploy your AI features to Firebase, Google Cloud Run, or any environment that supports your chosen programming language. Integrate them into your app, and monitor them in production in the Firebase console. |

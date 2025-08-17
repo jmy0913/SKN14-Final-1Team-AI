@@ -1,0 +1,17 @@
+Source URL: https://developers.google.com/people/api/rest/v1/DirectoryMergeSourceType?hl=ko
+
+## 본문
+디렉터리 사용자로 병합할 데이터 소스 유형입니다.
+
+### 표
+| 열거형 | |
+| --- | --- |
+| DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED | 지정되지 않았습니다. |
+| DIRECTORY_MERGE_SOURCE_TYPE_CONTACT | 사용자 소유 연락처 |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+DIRECTORY_MERGE_SOURCE_TYPE_UNSPECIFIED
+
+언어: 코드 · 셀#2
+DIRECTORY_MERGE_SOURCE_TYPE_CONTACT

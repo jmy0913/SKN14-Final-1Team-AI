@@ -1,0 +1,22 @@
+Source URL: https://developers.google.com/people/api/rest/v1/contactGroups.members?hl=ko
+
+## Fallback (article.innerText)
+이 페이지는 Cloud Translation API를 통해 번역되었습니다.
+홈
+제품
+Google Workspace
+People API
+참고자료
+REST Resource: contactGroups.members
+bookmark_border
+이 페이지의 내용
+리소스
+방법
+modify
+리소스
+
+이 리소스에는 영구 데이터가 연결되어 있지 않습니다.
+
+방법
+modify
+인증된 사용자가 소유한 연락처 그룹의 구성원을 수정합니다.

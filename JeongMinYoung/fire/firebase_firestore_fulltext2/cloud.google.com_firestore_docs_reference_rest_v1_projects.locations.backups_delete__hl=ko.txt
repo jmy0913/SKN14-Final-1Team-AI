@@ -1,0 +1,26 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.locations.backups/delete?hl=ko
+
+## 본문
+Deletes a backup.
+
+DELETE https://firestore.googleapis.com/v1/{name=projects/*/locations/*/backups/*}
+
+The URL uses gRPC Transcoding syntax.
+
+The request body must be empty.
+
+If successful, the response body is an empty JSON object.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters | |
+| --- | --- |
+| Parameters | |
+| name | string Required. Name of the backup to delete. format is projects/{project}/locations/{location}/backups/{backup}. |

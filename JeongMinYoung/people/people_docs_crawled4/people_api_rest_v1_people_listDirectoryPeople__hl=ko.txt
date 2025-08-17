@@ -1,0 +1,5 @@
+Source URL: https://developers.google.com/people/api/rest/v1/people/listDirectoryPeople?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다.
+

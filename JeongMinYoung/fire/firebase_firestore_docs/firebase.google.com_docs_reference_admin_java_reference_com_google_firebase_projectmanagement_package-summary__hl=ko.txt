@@ -1,0 +1,17 @@
+Source URL: https://firebase.google.com/docs/reference/admin/java/reference/com/google/firebase/projectmanagement/package-summary?hl=ko
+
+## 본문
+### 표
+| AndroidApp | An instance of this class is a reference to an Android App within a Firebase Project; it can be used to query detailed information about the App, modify the display name of the App, or download the configuration file for the App. |
+| --- | --- |
+| AndroidAppMetadata | Contains detailed information about an Android App. |
+| FirebaseProjectManagement | This class is the entry point for all Firebase Project Management actions. |
+| IosApp | An instance of this class is a reference to an iOS App within a Firebase Project; it can be used to query detailed information about the App, modify the display name of the App, or download the configuration file for the App. |
+| IosAppMetadata | Contains detailed information about an iOS App. |
+| ShaCertificate | Information about an SHA certificate associated with an Android app. |
+
+| ShaCertificateType | Enum denoting types of SHA certificates currently supported by Firebase. |
+| --- | --- |
+
+| FirebaseProjectManagementException | An exception encountered while interacting with the Firebase Project Management Service. |
+| --- | --- |

@@ -1,0 +1,59 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases.documents/createDocument?hl=ko
+
+## 본문
+Creates a new document.
+
+POST https://firestore.googleapis.com/v1/{parent=projects/*/databases/*/documents/**}/{collectionId}
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+Required. The parent resource. For example: projects/{projectId}/databases/{databaseId}/documents or projects/{projectId}/databases/{databaseId}/documents/chatrooms/{chatroom_id}
+
+Required. The collection ID, relative to parent, to list. For example: chatrooms.
+
+The client-assigned document ID to use for this document.
+
+Optional. If not specified, an ID will be assigned by the service.
+
+object (DocumentMask)
+
+The fields to return. If not set, returns all fields.
+
+If the document has a field that is not present in this mask, that field will not be returned in the response.
+
+The request body contains an instance of Document.
+
+If successful, the response body contains an instance of Document.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| parent | string
+
+Required. The parent resource. For example: projects/{projectId}/databases/{databaseId}/documents or projects/{projectId}/databases/{databaseId}/documents/chatrooms/{chatroom_id} |
+| collectionId | string
+
+Required. The collection ID, relative to parent, to list. For example: chatrooms. |
+
+| Parameters |
+| --- |
+| documentId | string
+
+The client-assigned document ID to use for this document.
+
+Optional. If not specified, an ID will be assigned by the service. |
+| mask | object (DocumentMask)
+
+The fields to return. If not set, returns all fields.
+
+If the document has a field that is not present in this mask, that field will not be returned in the response. |

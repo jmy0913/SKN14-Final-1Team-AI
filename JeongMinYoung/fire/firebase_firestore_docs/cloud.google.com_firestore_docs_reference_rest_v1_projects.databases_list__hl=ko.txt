@@ -1,0 +1,75 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1/projects.databases/list?hl=ko
+
+## 본문
+List all the databases in the project.
+
+GET https://firestore.googleapis.com/v1/{parent=projects/*}/databases
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+Required. A parent name of the form projects/{projectId}
+
+boolean
+
+If true, also returns deleted resources.
+
+The request body must be empty.
+
+The list of databases for a project.
+
+If successful, the response body contains data with the following structure:
+
+object (Database)
+
+The databases in the project.
+
+In the event that data about individual databases cannot be listed they will be recorded here.
+
+An example entry might be: projects/some_project/locations/some_location This can happen if the Cloud Region that the Database resides in is currently unavailable. In this case we can't fetch all the details about the database. You may be able to get a more detailed error message (or possibly fetch the resource) by sending a 'Get' request for the resource or a 'List' request for the specific location.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| parent | string
+
+Required. A parent name of the form projects/{projectId} |
+
+| Parameters |
+| --- |
+| showDeleted | boolean
+
+If true, also returns deleted resources. |
+
+| JSON representation |
+| --- |
+| {
+  "databases": [
+    {
+      object (Database)
+    }
+  ],
+  "unreachable": [
+    string
+  ]
+} |
+
+| Fields |
+| --- |
+| databases[] | object (Database)
+
+The databases in the project. |
+| unreachable[] | string
+
+In the event that data about individual databases cannot be listed they will be recorded here.
+
+An example entry might be: projects/some_project/locations/some_location This can happen if the Cloud Region that the Database resides in is currently unavailable. In this case we can't fetch all the details about the database. You may be able to get a more detailed error message (or possibly fetch the resource) by sending a 'Get' request for the resource or a 'List' request for the specific location. |

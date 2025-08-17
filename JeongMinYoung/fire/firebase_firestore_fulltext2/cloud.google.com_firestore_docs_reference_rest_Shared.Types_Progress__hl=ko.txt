@@ -1,0 +1,20 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/Shared.Types/Progress?hl=ko
+
+## 본문
+Describes the progress of the operation. Unit of work is generic and must be interpreted based on where Progress is used.
+
+### 표
+| JSON representation |
+| --- |
+| JSON representation |
+| { "estimatedWork": string, "completedWork": string } |
+
+| Fields | |
+| --- | --- |
+| Fields | |
+| estimatedWork | string (int64 format) The amount of work estimated. |
+| completedWork | string (int64 format) The amount of work completed. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+Progress

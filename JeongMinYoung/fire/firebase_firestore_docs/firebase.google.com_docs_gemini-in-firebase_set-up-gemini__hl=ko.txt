@@ -1,0 +1,202 @@
+Source URL: https://firebase.google.com/docs/gemini-in-firebase/set-up-gemini?hl=ko
+
+## 서문
+Firebase의 Gemini를 사용하려면 먼저 Firebase Console에서 Gemini를 사용 설정해야 합니다. Firebase의 Gemini는 사용자 및 프로젝트별로 사용 설정되며 사용 설정 여부는 사용자 유형 및 요금제에 따라 다릅니다.
+
+Google Workspace(이전 명칭: G Suite) 사용자인 경우 Firebase의 Gemini가 Gemini Code Assist에 포함되어 있습니다. 관리자는 Firebase Console에서 직접 Gemini Code Assist 구독을 구매하고 사용 설정할 수 있습니다. Gemini Code Assist 설정에서 자세히 알아보세요.
+
+개별 사용자인 경우 Firebase의 Gemini를 무료로 사용하거나 컨텍스트 인지 및 메시지 캠페인 통계를 제공하는 Gemini Code Assist 구독과 함께 사용할 수 있습니다.
+
+Firebase의 Gemini(무료)와 Gemini Code Assist 구독이 포함된 Firebase의 Gemini는 서비스 약관이 다릅니다. Firebase의 Gemini에서 사용자 데이터를 사용하는 방법에서 자세히 알아보세요.
+
+## 필수 권한
+Firebase의 Gemini 기능을 사용 설정하고 사용하려면 특정 IAM 역할 및 권한이 필요합니다.
+
+소유자 또는 편집자 IAM 역할이 있는 프로젝트 구성원은 Firebase의 Gemini를 사용 설정하고 기능을 사용할 수 있습니다.
+
+프로젝트 뷰어는 Firebase의 Gemini를 사용 설정할 수 없지만 Gemini for Google Cloud 사용자 역할이 할당된 경우 Firebase의 Gemini 채팅, 도움말, Crashlytics의 AI 지원을 비롯한 기능을 사용할 수 있습니다.
+
+프로젝트가 Google Workspace(이전 명칭: G Suite)의 일부인 경우 Google Workspace 관리자가 사용 설정해야 합니다.
+
+프로젝트 구성원에게 Gemini for Google Cloud 사용자 역할을 할당하는 방법을 알아봅니다. 프로젝트 소유자만 IAM 역할을 수정할 수 있습니다.
+
+Firebase Console에서 settings 프로젝트 설정을 선택한 다음 사용자 및 권한을 선택합니다.
+
+관련 프로젝트 구성원 행을 찾습니다.
+
+more_vert 옵션 더보기를 클릭한 다음 액세스 수정을 선택합니다.
+
+역할을 펼치고 Gemini for Google Cloud 사용자를 선택한 다음 완료를 클릭합니다.
+
+역할 업데이트를 클릭하여 변경사항을 저장합니다. 사용자에게 적용할 새 역할을 적용하기까지 1~2분 정도 걸릴 수 있습니다.
+
+## Firebase의 Gemini 설정
+계정에 필요한 권한이 있는지 확인한 후 프로젝트의 Firebase의 Gemini를 사용 설정할 수 있습니다.
+
+프로젝트에 Firebase의 Gemini 사용량을 사용 설정하려면 다음을 수행합니다.
+
+프로젝트 소유자 또는 편집자가 Firebase Console을 열고 프로젝트를 선택한 다음 오른쪽 상단 콘솔 메뉴에 있는 ✦Firebase의 Gemini를 클릭합니다.
+
+Gemini 창이 표시됩니다.
+
+프로젝트 소유자 또는 편집자가 Firebase Console을 열고 프로젝트를 선택한 다음 오른쪽 상단 콘솔 메뉴에 있는 ✦Firebase의 Gemini를 클릭합니다.
+
+Gemini 창이 표시됩니다.
+
+표시되는 정보를 검토하고 시작하기를 클릭합니다.
+
+원하는 경우 프로젝트의 다른 사용자를 위해 Firebase의 Gemini를 사용 설정합니다. settings프로젝트 설정에서 사용자 및 권한을 선택하고 추가 사용자에게 Gemini for Google Cloud 역할을 할당합니다.
+
+도움말: Google Cloud 콘솔 또는 gcloud CLI에서 IAM을 사용하여 사용자에게 Gemini for Google Cloud 역할을 할당할 수도 있습니다.
+
+원하는 경우 프로젝트의 다른 사용자를 위해 Firebase의 Gemini를 사용 설정합니다. settings프로젝트 설정에서 사용자 및 권한을 선택하고 추가 사용자에게 Gemini for Google Cloud 역할을 할당합니다.
+
+이제 Firebase의 Gemini로 Firebase 개발을 가속화할 준비가 되었습니다. Firebase Console에서 Gemini 사용해 보기에서 Firebase의 Gemini와 상호작용하는 방법을 자세히 알아보세요.
+
+Gemini Code Assist 구독으로 Firebase의 Gemini를 사용하려면 Gemini Code Assist 구독으로 Firebase의 Gemini 사용으로 이동하여 설정 안내를 따르세요.
+
+## Gemini Code Assist 구독이 포함된 Firebase의 Gemini
+Gemini Code Assist 구독을 구매하면 Firebase의 Gemini를 사용할 수 있습니다. Gemini Code Assist를 사용 설정하려면 구독을 구매하고 개별 사용자에게 라이선스를 할당해야 합니다.
+
+Gemini 관리자를 사용하여 Firebase Console 또는 Google Cloud 콘솔을 통해 Gemini Code Assist를 사용 설정할 수 있습니다.
+
+다음 섹션에서는 Gemini Code Assist를 구매하고 사용자에게 라이선스를 할당하는 방법을 설명합니다.
+
+## Gemini Code Assist 구매 및 라이선스 할당
+구매하기 전에 Google Cloud 결제 계정이 있어야 하며 해당 계정의 결제 관리자여야 합니다. Cloud Billing 계정이 없는 경우 새 셀프 서비스 Cloud Billing 계정 만들기의 안내를 따르세요.
+
+Gemini Code Assist 구독을 구매하고 라이선스를 할당하려면 다음 단계를 따르세요.
+
+✦Firebase의 Gemini를 클릭하여 Gemini 창을 엽니다.
+
+사용자 유형에 따라 다음 안내를 따르세요.
+표시되는 정보 메모에서 구독 구매를 클릭합니다.
+Gemini로 더 많은 작업을 하고 싶으신가요? 배너에서 Gemini Code Assist 사용해 보기를 클릭합니다.
+
+표시되는 정보 메모에서 구독 구매를 클릭합니다.
+
+Gemini로 더 많은 작업을 하고 싶으신가요? 배너에서 Gemini Code Assist 사용해 보기를 클릭합니다.
+
+구매하려는 Gemini Code Assist 구독 유형을 선택한 다음 시작하기를 클릭합니다. Gemini Code Assist 버전 비교에서 Standard 버전과 Enterprise 버전의 차이점에 대해 자세히 알아보세요.
+
+계속을 클릭합니다.
+
+구독을 구매하는 데 사용할 Cloud Billing 계정을 선택합니다.
+
+구매할 Gemini Code Assist 구독 유형을 선택한 다음 계속을 클릭합니다.
+
+구독 구성에서 다음을 포함하여 필드를 작성해 구독을 구성합니다.
+구독 표시 이름
+라이선스 수. 라이선스는 사용자별로 할당되므로 Gemini Code Assist 및 Firebase의 Gemini 기능에 액세스해야 하는 모든 사용자를 위해 충분한 수의 라이선스를 구매해야 합니다. Enterprise 버전을 구매하는 경우 라이선스를 10개 이상 구매해야 합니다.
+구독 기간(월간 또는 연간). 연간 구독의 경우 할인율이 적용되며 수시 입금이 아닌 월별로 청구됩니다. Gemini Code Assist 요금제에 대해 자세히 알아보려면 Gemini Code Assist 가격 책정을 참조하세요.
+약정 기간(월간 또는 연간)이 종료된 후 자동 구독 갱신. 자동 갱신을 사용하면 구독 및 라이선스가 활성 상태로 유지됩니다. 구독이 자동 갱신되지 않으면 현재 기간 종료 시 구독이 종료되며 구매 프로세스를 다시 진행하고 라이선스를 재할당해야 합니다.
+
+구독 표시 이름
+
+라이선스 수. 라이선스는 사용자별로 할당되므로 Gemini Code Assist 및 Firebase의 Gemini 기능에 액세스해야 하는 모든 사용자를 위해 충분한 수의 라이선스를 구매해야 합니다. Enterprise 버전을 구매하는 경우 라이선스를 10개 이상 구매해야 합니다.
+
+구독 기간(월간 또는 연간). 연간 구독의 경우 할인율이 적용되며 수시 입금이 아닌 월별로 청구됩니다. Gemini Code Assist 요금제에 대해 자세히 알아보려면 Gemini Code Assist 가격 책정을 참조하세요.
+
+약정 기간(월간 또는 연간)이 종료된 후 자동 구독 갱신. 자동 갱신을 사용하면 구독 및 라이선스가 활성 상태로 유지됩니다. 구독이 자동 갱신되지 않으면 현재 기간 종료 시 구독이 종료되며 구매 프로세스를 다시 진행하고 라이선스를 재할당해야 합니다.
+
+구독을 확인하려면 계속을 클릭합니다.
+
+구독 세부정보를 검토하고 약관에 동의하는 경우 구매 약관에 동의합니다를 선택한 후 구매 완료를 선택합니다.
+
+다음으로 각 사용자에게 라이선스를 할당해야 합니다. 다음: Gemini 라이선스 할당 관리를 클릭하고 라이선스 할당으로 진행합니다.
+
+라이선스 사용자 추가를 클릭합니다. 사용자 선택 대화상자가 표시됩니다. 특정 사용자를 검색하려면 검색창에 사용자 이름을 입력합니다.
+
+목록에서 사용자를 한 명 이상 선택한 후 다음을 클릭합니다.
+
+'라이선스 할당'을 클릭합니다.
+
+도움말: 원하는 경우 개별 사용자에게 라이선스를 할당하는 대신 자동 라이선스 할당을 사용 설정할 수 있습니다. 이렇게 하면 이 결제 계정의 라이선스를 직접 할당할 수 있는 권한이 있는 사용자에게 라이선스가 자동으로 할당됩니다. 비활성 사용자의 라이선스를 할당 해제하도록 만료일을 설정할 수도 있습니다. Gemini Code Assist 라이선스 자동 할당에서 자세히 알아보세요.
+
+'라이선스 할당'을 클릭합니다.
+
+라이선스 할당을 완료한 후 Firebase Console로 돌아가 완료를 클릭합니다.
+
+## Gemini Code Assist 구독 관리
+이미 Gemini Code Assist 구독 구매 흐름을 완료한 경우 Firebase Console에서 Gemini Code Assist 구독을 관리하고 라이선스를 할당할 수 있습니다.
+
+구독을 관리하고 Gemini Code Assist 라이선스를 할당하려면 다음 단계를 따르세요.
+
+Firebase Console에서 settings프로젝트 설정 > 사용량 및 결제 > 구독을 선택합니다.
+
+구독 관리에서 구독 링크를 클릭합니다.
+
+표시되는 창에서 라이선스 관리를 클릭합니다. Gemini Code Assist 라이선스 관리 및 구독 설정이 Google Cloud 콘솔에서 열립니다.
+
+라이선스가 부여된 사용자를 추가하려면 다음 단계를 따르세요.
+
+라이선스 사용자 추가를 클릭합니다. 사용자 선택 대화상자가 표시됩니다. 특정 사용자를 검색하려면 검색창에 사용자 이름을 입력합니다.
+목록에서 사용자를 한 명 이상 선택한 후 다음을 클릭합니다.
+'라이선스 할당'을 클릭합니다.
+도움말: 원하는 경우 개별 사용자에게 라이선스를 할당하는 대신 자동 라이선스 할당을 사용 설정할 수 있습니다. 이렇게 하면 이 결제 계정의 라이선스를 직접 할당할 수 있는 권한이 있는 사용자에게 라이선스가 자동으로 할당됩니다. 만료일을 설정하여 비활성 사용자의 라이선스를 할당 해제할 수도 있습니다. Gemini Code Assist 라이선스 자동 할당에서 자세히 알아보세요.
+
+라이선스가 부여된 사용자를 추가하려면 다음 단계를 따르세요.
+
+라이선스 사용자 추가를 클릭합니다. 사용자 선택 대화상자가 표시됩니다. 특정 사용자를 검색하려면 검색창에 사용자 이름을 입력합니다.
+
+목록에서 사용자를 한 명 이상 선택한 후 다음을 클릭합니다.
+
+'라이선스 할당'을 클릭합니다.
+
+라이선스 할당을 해제하려면 다음 단계를 따르세요.
+
+할당 해제할 사용자를 선택한 다음 라이선스 할당 해제를 클릭합니다.
+
+라이선스 할당을 해제하려면 다음 단계를 따르세요.
+
+할당 해제할 사용자를 선택한 다음 라이선스 할당 해제를 클릭합니다.
+
+구독을 변경하려면 구독 설정 탭을 클릭한 다음 구독 수정을 클릭합니다.
+
+Gemini Code Assist 구독을 선택한 다음 계속을 클릭합니다.
+
+그런 다음 다음과 같은 구독 설정을 업데이트할 수 있습니다.
+
+구독 표시 이름
+라이선스 수. 라이선스는 사용자별로 할당되므로 Gemini Code Assist 및 Firebase의 Gemini 기능에 액세스해야 하는 모든 사용자를 위해 충분한 수의 라이선스를 구매해야 합니다. Enterprise 버전을 구매하는 경우 라이선스를 10개 이상 구매해야 합니다.
+구독 기간(월간 또는 연간). 연간 구독의 경우 할인율이 적용되며 수시 입금이 아닌 월별로 청구됩니다. Gemini Code Assist 요금제에 대해 자세히 알아보려면 Gemini Code Assist 가격 책정을 참조하세요.
+약정 기간(월간 또는 연간)이 종료된 후 자동 구독 갱신. 자동 갱신을 사용하면 구독 및 라이선스가 활성 상태로 유지됩니다. 구독이 자동 갱신되지 않으면 현재 기간 종료 시 구독이 종료되며 구매 프로세스를 다시 진행하고 라이선스를 재할당해야 합니다.
+
+그런 다음 다음과 같은 구독 설정을 업데이트할 수 있습니다.
+
+구독 표시 이름
+
+라이선스 수. 라이선스는 사용자별로 할당되므로 Gemini Code Assist 및 Firebase의 Gemini 기능에 액세스해야 하는 모든 사용자를 위해 충분한 수의 라이선스를 구매해야 합니다. Enterprise 버전을 구매하는 경우 라이선스를 10개 이상 구매해야 합니다.
+
+구독 기간(월간 또는 연간). 연간 구독의 경우 할인율이 적용되며 수시 입금이 아닌 월별로 청구됩니다. Gemini Code Assist 요금제에 대해 자세히 알아보려면 Gemini Code Assist 가격 책정을 참조하세요.
+
+약정 기간(월간 또는 연간)이 종료된 후 자동 구독 갱신. 자동 갱신을 사용하면 구독 및 라이선스가 활성 상태로 유지됩니다. 구독이 자동 갱신되지 않으면 현재 기간 종료 시 구독이 종료되며 구매 프로세스를 다시 진행하고 라이선스를 재할당해야 합니다.
+
+계속을 클릭합니다.
+
+약관에 동의하면 구매 약관에 동의합니다를 클릭하고 변경사항 저장을 클릭합니다.
+
+## Firebase의 Gemini 사용 중지
+Firebase의 Gemini를 비롯한 모든 Gemini for Google Cloud 제품과 지원하는 기능(예:Crashlytics의 AI 지원)을 사용 중지하려면 Gemini for Google Cloud API 사용 중지를 참조하세요. 또는 특정 사용자의 액세스를 제한할 수 있습니다.
+
+특정 사용자의 액세스 권한을 제한하려면 각 사용자에서 Gemini for Google Cloud 사용자 역할을 삭제하면 됩니다.
+
+Firebase Console에서 settings프로젝트 설정을 열고 사용자 및 권한을 선택한 다음 업데이트할 각 사용자의 Gemini for Google Cloud 역할을 삭제합니다.
+
+Gemini Code Assist를 사용 중지하려면 Gemini Code Assist 사용 중지의 안내를 따르세요.
+
+## Firebase의 Gemini 문제 해결
+✦Firebase의 Gemini가 Firebase Console에 표시되지 않는 경우 다음 단계를 따르세요.
+
+Google Cloud 콘솔에서 Gemini for Google Cloud API가 사용 설정되어 있는지 확인합니다.
+
+액세스 권한을 부여하려는 사용자에게 IAM의 Cloud AI 컴패니언 사용자 역할이 할당되었는지 확인합니다.
+
+Gemini Code Assist를 사용하는 경우 영향을 받는 사용자에게 라이선스가 할당되었는지 확인합니다.
+
+'현재 Gemini Code Assist 라이선스가 없습니다'라는 메시지가 표시되면 Google Workspace 사용자이며 Firebase의 Gemini를 사용하려면 Gemini Code Assist 구독이 필요하다는 의미입니다. Gemini Code Assist 구독으로 Firebase의 Gemini 사용에서 자세히 알아보세요.
+
+## 다음 단계
+Firebase Console에서 Gemini 사용해 보기
+
+프롬프트 최적화 자세히 알아보기

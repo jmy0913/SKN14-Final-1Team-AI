@@ -1,0 +1,71 @@
+Source URL: https://firebase.google.com/docs/android/android-play-services?hl=ko
+
+## 서문
+일부 Firebase Android SDK는 Google Play services에 종속되므로 Google Play services가 설치된 기기와 에뮬레이터에서만 실행됩니다. 이러한 Firebase SDK는 기기의 Google Play services 백그라운드 서비스와 통신하여 최신 버전의 안전하고 가벼운 API를 앱에 제공합니다. Amazon Kindle Fire 기기와 같은 특정 Android 기기나 일부 리전에서 판매되는 기기에는 Google Play services가 설치되어 있지 않습니다.
+
+## 어떤 Firebase Android SDK에 Google Play services가 필요한가요?
+Firebase SDK는 다음 3가지 카테고리로 나눌 수 있습니다.
+
+Play services 필수: 이러한 SDK를 사용하려면 Google Play services가 필요합니다. 그렇지 않으면 어떠한 기능도 작동하지 않습니다.
+
+Play services 권장: 모든 기능을 사용하려면 Google Play services가 필요하지만 Google Play services가 없어도 대부분의 기능이 계속 제공되는 SDK입니다.
+
+Play services 필요 없음: Google Play services가 없어도 모든 기능이 작동하는 SDK입니다.
+
+아래 표의 정보는 각 SDK의 최신 출시 버전에만 적용됩니다. 일부 이전 버전에는 더 엄격한 요구사항이 적용될 수 있습니다.
+
+## Google Play services 필수 아님
+1 Firebase AI Logic은 이전에 com.google.firebase:firebase-vertexai 패키지와 함께 'Vertex AI in Firebase'라고 불렸습니다.
+
+### 표
+| 제품 | 라이브러리 | Google Play services 필수 여부 |
+| --- | --- | --- |
+| Firebase AI Logic 1 | com.google.firebase:firebase-ai:17.1.0 | 필수 아님 |
+| App Check 커스텀 및 디버그 제공자 | com.google.firebase:firebase-appcheck:19.0.0
+com.google.firebase:firebase-appcheck-ktx:18.0.0
+com.google.firebase:firebase-appcheck-debug:19.0.0 | 필수 아님 |
+| App Distribution API | com.google.firebase:firebase-appdistribution-api:16.0.0-beta16
+com.google.firebase:firebase-appdistribution-api-ktx:16.0.0-beta15 | 필수 아님 |
+| App Distribution | com.google.firebase:firebase-appdistribution:16.0.0-beta16 | 필수 아님 |
+| Authentication | com.google.firebase:firebase-auth:24.0.1
+com.google.firebase:firebase-auth-ktx:23.2.1 | 필수 아님 |
+| Cloud Firestore | com.google.firebase:firebase-firestore:26.0.0
+com.google.firebase:firebase-firestore-ktx:25.1.4 | 필수 아님 |
+| Cloud Functions for Firebase Client SDK | com.google.firebase:firebase-functions:22.0.0
+com.google.firebase:firebase-functions-ktx:21.2.1 | 필수 아님 |
+| Cloud Storage for Firebase | com.google.firebase:firebase-storage:22.0.0
+com.google.firebase:firebase-storage-ktx:21.0.2 | 필수 아님 |
+| Crashlytics | com.google.firebase:firebase-crashlytics:20.0.0
+com.google.firebase:firebase-crashlytics-ktx:19.4.4 | 필수 아님 |
+| Data Connect | com.google.firebase:firebase-dataconnect:17.0.0 | 필수 아님 |
+| In-App Messaging | com.google.firebase:firebase-inappmessaging:22.0.0
+com.google.firebase:firebase-inappmessaging-ktx:21.0.2 | 필수 아님 |
+| In-App Messaging 디스플레이 | com.google.firebase:firebase-inappmessaging-display:22.0.0
+com.google.firebase:firebase-inappmessaging-display-ktx:21.0.2 | 필수 아님 |
+| Firebase 설치 | com.google.firebase:firebase-installations:19.0.0
+com.google.firebase:firebase-installations-ktx:18.0.0 | 필수 아님 |
+| Performance Monitoring | com.google.firebase:firebase-perf:22.0.0
+com.google.firebase:firebase-perf-ktx:21.0.5 | 필수 아님 |
+| Realtime Database | com.google.firebase:firebase-database:22.0.0
+com.google.firebase:firebase-database-ktx:21.0.0 | 필수 아님 |
+| Remote Config | com.google.firebase:firebase-config:23.0.0
+com.google.firebase:firebase-config-ktx:22.1.2 | 필수 아님 |
+
+## Google Play services 필수 또는 권장
+2 Google 애널리틱스용 Firebase SDK는 모든 기기에서 이벤트를 보낼 수 있지만 인구통계와 같은 일부 자동 통계는 Google Play services가 설치된 기기에서만 사용할 수 있습니다.
+
+### 표
+| 제품 | 라이브러리 | Google Play services 필수 여부 |
+| --- | --- | --- |
+| AdMob | com.google.android.gms:play-services-ads:24.5.0 | 권장2 |
+| Analytics | com.google.firebase:firebase-analytics:23.0.0
+com.google.firebase:firebase-analytics-ktx:22.5.0 | 권장2 |
+| App Check Play Integrity 제공자 | com.google.firebase:firebase-appcheck-playintegrity:19.0.0 | 필수 |
+| App Check SafetyNet 제공자 | com.google.firebase:firebase-appcheck-safetynet:16.1.2 | 필수 |
+| App Indexing | com.google.firebase:firebase-appindexing:20.0.0 | 필수 |
+| Cloud Messaging | com.google.firebase:firebase-messaging:25.0.0
+com.google.firebase:firebase-messaging-ktx:24.1.2 | 필수 |
+| Dynamic Links | com.google.firebase:firebase-dynamic-links:22.1.0
+com.google.firebase:firebase-dynamic-links-ktx:22.1.0 | 필수 |
+| Firebase ML 비전 | com.google.firebase:firebase-ml-vision:24.1.0 | 필수 |
+| Firebase ML 커스텀 모델 | com.google.firebase:firebase-ml-model-interpreter:22.0.4 | 필수 |

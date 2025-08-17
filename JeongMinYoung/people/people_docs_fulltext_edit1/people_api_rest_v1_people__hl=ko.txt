@@ -1,0 +1,3814 @@
+Source URL: https://developers.google.com/people/api/rest/v1/people?hl=ko
+
+## 본문
+리소스: Person
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+ PersonMetadata
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 출처
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ SourceType
+ ProfileMetadata
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ ObjectType
+ UserType
+ 주소
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ FieldMetadata
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ AgeRange
+ AgeRangeType
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 자서전
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ ContentType
+ 생일
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 날짜
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ BraggingRights
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ CalendarUrl
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ ClientData
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ CoverPhoto
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ EmailAddress
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 이벤트
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ ExternalId
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ FileAs
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 성별
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ ImClient
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 관심분야
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 언어
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 위치
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 멤버십
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ ContactGroupMembership
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ DomainMembership
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ MiscKeyword
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ KeywordType
+ 이름
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 닉네임
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ NicknameType
+ 직업
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 조직
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ PhoneNumber
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 사진
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 관계
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ RelationshipInterest
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ RelationshipStatus
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 거주지
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ SipAddress
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 기술
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ 소개 문구
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ URL
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ UserDefined
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+JSON 표현
+
+PersonMetadata
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+출처
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+SourceType
+
+ProfileMetadata
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ObjectType
+
+UserType
+
+주소
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+FieldMetadata
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+AgeRange
+
+AgeRangeType
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+자서전
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ContentType
+
+생일
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+날짜
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+BraggingRights
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+CalendarUrl
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ClientData
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+CoverPhoto
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+EmailAddress
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+이벤트
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ExternalId
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+FileAs
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+성별
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ImClient
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+관심분야
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+언어
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+위치
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+멤버십
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+ContactGroupMembership
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+DomainMembership
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+MiscKeyword
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+KeywordType
+
+이름
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+닉네임
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+NicknameType
+
+직업
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+조직
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+PhoneNumber
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+사진
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+관계
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+RelationshipInterest
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+RelationshipStatus
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+거주지
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+SipAddress
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+기술
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+소개 문구
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+URL
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+UserDefined
+ <ph type="x-smartling-placeholder"></ph>
+ JSON 표현
+
+메서드
+
+인증된 사용자의 연락처 및 프로필 데이터 등 다양한 데이터 소스에서 병합된 사람에 대한 정보입니다.
+
+대부분의 필드에는 여러 개의 항목이 포함될 수 있습니다. 필드의 항목에는 순서가 보장되지 않지만 비어 있지 않은 각 필드에는 metadata.primary가 true로 설정된 필드가 정확히 한 개 있습니다.
+
+string
+
+서버에서 할당한 사람의 리소스 이름입니다. people/{person_id} 형식의 ASCII 문자열.
+
+리소스의 HTTP 항목 태그. 웹 캐시 유효성 검사에 사용됩니다.
+
+object (PersonMetadata)
+
+출력 전용입니다. 사람에 대한 메타데이터입니다.
+
+object (Address)
+
+개인의 상세 주소입니다.
+
+enum (AgeRange)
+
+이 항목은 지원 중단되었습니다.
+
+출력 전용입니다. 지원 중단됨 (대신 person.ageRanges 사용)
+
+개인의 연령대입니다.
+
+object (AgeRangeType)
+
+출력 전용입니다. 개인의 연령대입니다.
+
+object (Biography)
+
+사용자의 전기입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+
+object (Birthday)
+
+사용자의 생일입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+
+object (BraggingRights)
+
+지원 중단됨: 데이터가 반환되지 않습니다. 자신의 자랑거리입니다.
+
+object (CalendarUrl)
+
+사용자의 캘린더 URL입니다.
+
+object (ClientData)
+
+개인의 클라이언트 데이터입니다.
+
+object (CoverPhoto)
+
+출력 전용입니다. 해당 인물의 표지 사진
+
+object (EmailAddress)
+
+사용자의 이메일 주소입니다. people.connections.list 및 otherContacts.list의 경우 이메일 주소 수가 100개로 제한됩니다. 한 사람에게 더 많은 이메일 주소가 있다면 people.getBatchGet를 호출하여 전체 집합을 가져올 수 있습니다.
+
+object (Event)
+
+사용자의 일정입니다.
+
+object (ExternalId)
+
+사용자의 외부 ID입니다.
+
+object (FileAs)
+
+사용자의 file-ases입니다.
+
+object (Gender)
+
+사용자의 성별입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+
+object (ImClient)
+
+사용자의 채팅 메시지 클라이언트입니다.
+
+object (Interest)
+
+개인의 관심분야입니다.
+
+object (Locale)
+
+사용자의 언어 환경설정입니다.
+
+object (Location)
+
+개인의 위치
+
+object (Membership)
+
+사용자의 그룹 회원 정보입니다.
+
+object (MiscKeyword)
+
+개인의 기타 키워드입니다.
+
+object (Name)
+
+사용자의 이름입니다. 이 필드는 연락처 소스의 싱글톤입니다.
+
+object (Nickname)
+
+사용자의 닉네임입니다.
+
+object (Occupation)
+
+개인의 직업입니다.
+
+object (Organization)
+
+개인의 과거 또는 현재 조직입니다.
+
+object (PhoneNumber)
+
+사용자의 전화번호입니다. people.connections.list 및 otherContacts.list의 경우 전화번호 수가 100개로 제한됩니다. 사람의 전화번호가 더 많은 경우 people.getBatchGet를 호출하여 전체 세트를 가져올 수 있습니다.
+
+object (Photo)
+
+출력 전용입니다. 해당 사용자의 사진입니다.
+
+object (Relation)
+
+그 사람의 관계입니다.
+
+object (RelationshipInterest)
+
+출력 전용입니다. 지원 중단됨: 데이터가 반환되지 않습니다. 개인의 관계에 대한 관심분야입니다.
+
+object (RelationshipStatus)
+
+출력 전용입니다. 지원 중단됨: 데이터는 반환되지 않습니다. 개인의 관계 상태입니다.
+
+object (Residence)
+
+지원 중단됨: (대신 person.locations 사용) 사용자의 거주지입니다.
+
+object (SipAddress)
+
+사용자의 SIP 주소입니다.
+
+object (Skill)
+
+개인의 기술입니다.
+
+object (Tagline)
+
+출력 전용입니다. 지원 중단됨: 데이터가 반환되지 않습니다. 개인의 태그라인입니다.
+
+object (Url)
+
+사람과 관련된 URL입니다.
+
+object (UserDefined)
+
+개인의 사용자 정의 데이터입니다.
+
+사람에 관한 메타데이터입니다.
+
+object (Source)
+
+개인에 대한 데이터 소스입니다.
+
+출력 전용입니다. 이 사용자가 보유한 이전 리소스 이름입니다. 동기화 토큰이 포함된 people.connections.list 요청에 대해서만 채워집니다.
+
+리소스 이름은 확인된 이메일, 인증된 전화번호 또는 프로필 URL과 같이 연락처와 프로필을 연결하는 필드를 추가하거나 삭제할 때 변경될 수 있습니다.
+
+출력 전용입니다. 이 리소스에 연결된 사용자의 리소스 이름입니다.
+
+boolean
+
+출력 전용입니다. 사람 리소스가 삭제되었으면 true입니다. people.connections.list 및 otherContacts.list 동기화 요청에 대해서만 채워집니다.
+
+enum (ObjectType)
+
+출력 전용입니다. 지원 중단됨 (대신 person.metadata.sources.profileMetadata.objectType 사용)
+
+사람 객체의 유형입니다.
+
+필드의 소스입니다.
+
+enum (SourceType)
+
+소스 유형입니다.
+
+서버에서 생성한 소스 유형 내의 고유 식별자입니다.
+
+person.metadata.sources에만 채워집니다.
+
+소스의 HTTP 항목 태그. 웹 캐시 유효성 검사에 사용됩니다.
+
+string (Timestamp format)
+
+출력 전용입니다. person.metadata.sources에만 채워집니다.
+
+이 소스의 최종 업데이트 타임스탬프입니다.
+
+RFC3339 UTC 'Zulu' 형식의 타임스탬프입니다(나노초 단위, 소수점 이하 9자리). 예를 들면 "2014-10-02T15:01:23Z" 및 "2014-10-02T15:01:23.045123456Z"입니다.
+
+통합 필드 metadata. person.metadata.sources에만 채워집니다.
+
+소스에 대한 메타데이터입니다. metadata는 다음 중 하나여야 합니다.
+
+object (ProfileMetadata)
+
+PROFILE 유형의 소스에 대한 메타데이터입니다.
+
+소스의 유형입니다.
+
+프로필에 대한 메타데이터입니다.
+
+출력 전용입니다. 프로필 객체 유형입니다.
+
+enum (UserType)
+
+출력 전용입니다. 사용자 입력
+
+사용자 유형입니다.
+
+개인의 실제 주소입니다. 사서함일 수도 있습니다. 주소를 입력해야 합니다. 모든 입력란은 선택사항입니다.
+
+object (FieldMetadata)
+
+주소에 대한 메타데이터입니다.
+
+주소의 구조화되지 않은 값입니다. 사용자가 설정하지 않으면 구조화된 값에서 자동으로 구성됩니다.
+
+주소 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+home
+
+work
+
+other
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 주소의 유형입니다.
+
+P.O. 있습니다.
+
+상세 주소입니다.
+
+주소의 확장된 주소입니다. 예를 들어 아파트 동호수를 입력할 수 있습니다.
+
+주소의 도시입니다.
+
+주소의 지역입니다. 예를 들어 주 또는 도입니다.
+
+주소의 우편번호입니다.
+
+주소의 국가입니다.
+
+주소의 ISO 3166-1 alpha-2 국가 코드입니다.
+
+필드에 관한 메타데이터입니다.
+
+출력 전용입니다. 필드가 개인의 모든 소스에 대한 기본 필드인 경우 참입니다. 각 사용자는 primary가 true로 설정된 필드를 최대 1개 보유할 수 있습니다.
+
+필드가 source의 기본 필드인 경우 true입니다. 각 소스에는 sourcePrimary가 true로 설정된 필드가 최대 1개 있어야 합니다.
+
+출력 전용입니다. 필드가 인증된 경우 true이고, 필드가 확인되지 않은 경우 false입니다. 확인된 필드는 일반적으로 사용자가 소유한 것으로 확인된 이름, 이메일 주소, 전화번호 또는 웹사이트입니다.
+
+지원 중단됨 (대신 person.ageRanges 사용)
+
+사람의 연령대입니다.
+
+연령대에 관한 메타데이터입니다.
+
+연령대입니다.
+
+개인의 짧은 약력입니다.
+
+약력에 관한 메타데이터입니다.
+
+짧은 약력
+
+enum (ContentType)
+
+약력의 콘텐츠 유형입니다.
+
+콘텐츠 유형입니다.
+
+사용자의 생일입니다. date 및 text 필드 중 하나 이상이 지정됩니다. date 및 text 필드는 일반적으로 동일한 날짜를 나타내지만 보장되지는 않습니다. 클라이언트는 생일을 변경할 때 항상 date 필드를 설정해야 합니다.
+
+생일에 대한 메타데이터입니다.
+
+object (Date)
+
+생일의 구조화된 날짜입니다.
+
+설정된 경우 date 필드를 사용하는 것이 좋습니다.
+
+사용자의 생일을 나타내는 자유 형식의 문자열입니다. 이 값은 검증되지 않습니다.
+
+생일과 같은 전체 또는 부분 달력 날짜를 나타냅니다. 시간과 시간대는 아무 곳으로 지정되거나 중요하지 않습니다. 날짜는 그레고리력을 기준으로 합니다. 이는 다음 중 하나를 나타낼 수 있습니다.
+
+연도, 월, 일 값이 0이 아닌 전체 날짜
+
+월과 일, 연도는 0(예: 기념일)
+
+연도만, 월과 일은 0
+
+연도와 월, 일은 0(예: 신용카드 만료일)
+
+관련 유형:
+
+google.type.TimeOfDay
+
+google.type.DateTime
+
+google.protobuf.Timestamp
+
+integer
+
+날짜의 연도입니다. 1~9999 사이여야 하며, 연도 없이 날짜를 지정하려면 0이어야 합니다.
+
+연도의 월입니다. 1~12 사이여야 하며, 월과 일 없이 연도를 지정하려면 0이어야 합니다.
+
+월의 일입니다. 1~31 사이여야 하고 해당 연도 및 월에 유효해야 합니다. 또는 연도만 지정하거나 일이 중요하지 않아 연도와 월을 지정하려면 0이어야 합니다.
+
+지원 중단됨: 데이터가 반환되지 않습니다. 개인의 자랑거리입니다.
+
+자랑거리에 대한 메타데이터입니다.
+
+자랑거리 예: climbed mount everest
+
+캘린더 URL에 대한 메타데이터입니다.
+
+캘린더 URL입니다.
+
+캘린더 URL의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+freeBusy
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 캘린더 URL의 유형입니다.
+
+클라이언트가 채우는 임의의 클라이언트 데이터입니다. 중복된 키와 값이 허용됩니다.
+
+클라이언트 데이터에 대한 메타데이터입니다.
+
+클라이언트가 지정한 클라이언트 데이터 키입니다.
+
+클라이언트 데이터의 클라이언트 지정 값입니다.
+
+인물의 표지 사진입니다. 프로필 페이지에 표시되는 큰 이미지로, 자신이 누구인지 또는 무엇에 관심이 있는지를 나타냅니다.
+
+표지 사진에 대한 메타데이터입니다.
+
+표지 사진의 URL입니다.
+
+표지 사진이 기본 표지 사진이면 true이고, 표지 사진이 사용자가 제공한 표지 사진인 경우 false입니다.
+
+개인의 이메일 주소입니다.
+
+이메일 주소에 대한 메타데이터입니다.
+
+이메일 주소입니다.
+
+이메일 주소의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 이메일 주소의 유형입니다.
+
+이메일의 표시 이름입니다.
+
+사람과 관련된 이벤트입니다.
+
+이벤트에 대한 메타데이터입니다.
+
+이벤트 날짜입니다.
+
+이벤트 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+anniversary
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 이벤트의 유형입니다.
+
+사람과 관련된 외부 법인의 식별자입니다.
+
+외부 ID에 대한 메타데이터입니다.
+
+외부 ID의 값입니다.
+
+외부 ID의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+account
+
+customer
+
+loginId
+
+network
+
+organization
+
+목록에서 사용자를 정렬할 때 사용해야 하는 이름입니다.
+
+as a file-as에 대한 메타데이터입니다.
+
+file-as 값
+
+개인의 성별입니다.
+
+성별에 대한 메타데이터입니다.
+
+개인의 성별입니다. 성별은 맞춤설정하거나 다음과 같은 사전 정의된 값 중 하나일 수 있습니다.
+
+male
+
+female
+
+unspecified
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 성별의 값입니다. 지정되지 않았거나 커스텀 값이 현지화되지 않았습니다.
+
+사람을 호칭하는 데 사용할 호칭을 위한 자유 형식 텍스트 입력란입니다. 일반적인 값은 다음과 같습니다.
+
+he/him
+
+she/her
+
+they/them
+
+개인의 채팅 클라이언트입니다.
+
+메신저 클라이언트에 대한 메타데이터입니다.
+
+메신저 클라이언트에서 사용되는 사용자 이름입니다.
+
+메신저 클라이언트의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 번역 및 형식이 지정된 IM 클라이언트의 유형입니다.
+
+메신저 클라이언트의 프로토콜입니다. 프로토콜은 커스텀 값 또는 다음과 같은 사전 정의된 값 중 하나일 수 있습니다.
+
+aim
+
+msn
+
+yahoo
+
+skype
+
+qq
+
+googleTalk
+
+icq
+
+jabber
+
+netMeeting
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 형식이 지정된 메신저 클라이언트의 프로토콜입니다.
+
+개인의 관심분야 중 하나입니다.
+
+관심분야에 대한 메타데이터입니다.
+
+이해관계 예: stargazing
+
+언어에 대한 메타데이터입니다.
+
+언어를 나타내는 올바른 형식의 IETF BCP 47 언어 태그입니다.
+
+개인의 위치입니다.
+
+위치에 대한 메타데이터입니다.
+
+위치의 자유 형식 값입니다.
+
+위치의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+desk
+
+grewUp
+
+위치가 현재 위치인지 여부입니다.
+
+건물 식별자입니다.
+
+층 이름 또는 번호입니다.
+
+floor_name의 층 섹션
+
+개별 데스크 위치입니다.
+
+사용자의 그룹 멤버십입니다. 연락처 그룹 멤버십만 수정할 수 있습니다.
+
+멤버십에 대한 메타데이터입니다.
+
+object (ContactGroupMembership)
+
+연락처 그룹 멤버십입니다.
+
+object (DomainMembership)
+
+출력 전용입니다. 도메인 멤버십입니다.
+
+Google 주소록 그룹 멤버십
+
+출력 전용입니다. 연락처 그룹 멤버십의 연락처 그룹 ID입니다.
+
+서버에서 할당한 연락처 그룹의 리소스 이름입니다. contactGroups/{contactGroupId} 형식의 ASCII 문자열. contactGroupResourceName만 멤버십을 수정하는 데 사용할 수 있습니다. 모든 연락처 그룹 멤버십은 삭제할 수 있지만 사용자 그룹 또는 'myContacts'만 삭제할 수 있습니다. 또는 '별표표시함' 시스템 그룹 멤버십을 추가할 수 있습니다. 연락처에는 항상 하나 이상의 연락처 그룹 회원이 있어야 합니다.
+
+Google Workspace 도메인 멤버십.
+
+사용자가 뷰어의 Google Workspace 도메인에 속한 경우 참입니다.
+
+기타 키워드에 대한 메타데이터입니다.
+
+기타 키워드의 값입니다.
+
+enum (KeywordType)
+
+기타 키워드 유형입니다.
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 기타 키워드의 유형입니다.
+
+기타 키워드의 유형입니다.
+
+사람의 이름입니다. 이름이 한명명인 경우 성이 비어 있습니다.
+
+이름에 대한 메타데이터입니다.
+
+출력 전용입니다. 뷰어의 계정 또는 Accept-Language HTTP 헤더에서 지정한 언어에 따라 형식이 지정된 표시 이름입니다.
+
+출력 전용입니다. 먼저 뷰어의 계정 또는 Accept-Language HTTP 헤더에서 지정한 언어에 따라 형식이 지정된 성을 포함하는 표시 이름입니다.
+
+자유 형식의 이름 값입니다.
+
+성입니다.
+
+지정된 이름입니다.
+
+중간 이름
+
+경어 접두사(예: Mrs. 또는 Dr.)
+
+경어 접미사(예: Jr.)
+
+발음 그대로 입력하세요.
+
+성의 철자를 그대로 표기합니다.
+
+주어진 이름입니다.
+
+들리는 대로 철자를 입력하세요.
+
+들리는 대로 표기된 경어 접두사입니다.
+
+들리는 대로 표기된 경어 접미사입니다.
+
+사람의 닉네임입니다.
+
+닉네임에 대한 메타데이터입니다.
+
+닉네임입니다.
+
+enum (NicknameType)
+
+닉네임의 유형입니다.
+
+결혼 전 성 또는 출생 성 결혼으로 인해 성이 변경된 경우 사용됩니다.
+
+이니셜
+
+Google+ 프로필 닉네임
+
+소속사 또는 기타 이름 예: Dr. Smith.
+
+개인 이름의 짧은 버전입니다.
+
+직업에 관한 메타데이터입니다.
+
+직업 예: carpenter
+
+개인의 과거 또는 현재 조직입니다. 중복 기간은 허용됩니다.
+
+조직에 관한 메타데이터입니다.
+
+조직의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+school
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환되고 형식이 지정된 조직의 유형입니다.
+
+사용자가 조직에 가입한 시작일입니다.
+
+사용자가 조직을 떠난 종료일입니다.
+
+조직이 개인의 현재 조직인 경우 참입니다. 조직이 과거 조직인 경우 false입니다.
+
+조직의 이름입니다.
+
+조직의 이름(소리나는 대로)입니다.
+
+조직 내 개인의 부서입니다.
+
+개인의 조직 내 직책입니다.
+
+개인의 조직 내 직무 설명입니다.
+
+조직과 관련된 상징 주식 종목 기호, 약어, 두문자어를 예로 들 수 있습니다.
+
+조직과 연결된 도메인 이름 예: google.com
+
+직원이 근무하는 조직 사무실의 위치입니다.
+
+조직의 개인 비용 센터입니다.
+
+조직 내 개인의 풀타임에 상응하는 밀리초 (100,000 = 100%)입니다.
+
+사람의 전화번호입니다.
+
+전화번호에 대한 메타데이터입니다.
+
+전화번호입니다.
+
+출력 전용입니다. 전화번호의 표준화된 ITU-T E.164 형식입니다.
+
+전화번호 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+mobile
+
+homeFax
+
+workFax
+
+otherFax
+
+pager
+
+workMobile
+
+workPager
+
+main
+
+googleVoice
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 번역되고 형식이 지정된 전화번호 유형입니다.
+
+인물 사진입니다. 다른 사람이 사람을 알아볼 수 있도록 이름 옆에 사진이 표시됩니다.
+
+사진에 대한 메타데이터입니다.
+
+사진의 URL입니다. URL 끝에 쿼리 매개변수 sz={size}를 추가하여 원하는 크기를 변경할 수 있습니다. 여기서 {size}는 픽셀 단위의 크기입니다. 예: https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50
+
+사진이 기본 사진이면 true이고, 사진이 사용자 제공 사진인 경우 false입니다.
+
+한 사람과 다른 사람의 관계입니다.
+
+관계에 대한 메타데이터입니다.
+
+이 관계가 참조하는 다른 사람의 이름입니다.
+
+상대와 상대방 사이의 관계입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+spouse
+
+child
+
+mother
+
+father
+
+parent
+
+brother
+
+sister
+
+friend
+
+relative
+
+domesticPartner
+
+manager
+
+assistant
+
+referredBy
+
+partner
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더에 지정된 로케일로 변환되고 형식이 지정된 관계의 유형입니다.
+
+지원 중단됨: 데이터가 반환되지 않습니다. 개인의 관계에 대한 관심분야입니다.
+
+관계 관심분야에 대한 메타데이터입니다.
+
+그 사람이 찾고 있는 관계의 종류입니다. 값은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+date
+
+relationship
+
+networking
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더에 지정된 언어로 번역되고 형식이 지정된 관계 관심 값입니다.
+
+지원 중단됨: 개인의 관계 상태는 반환되지 않습니다.
+
+관계 상태에 대한 메타데이터입니다.
+
+연애/결혼 상태 값은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+single
+
+inARelationship
+
+engaged
+
+married
+
+itsComplicated
+
+openRelationship
+
+widowed
+
+inDomesticPartnership
+
+inCivilUnion
+
+출력 전용입니다. 보기 권한 사용자의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 관계 상태의 값입니다.
+
+지원 중단됨: person.locations를 대신 사용하세요. 개인의 과거 또는 현재 거주지입니다.
+
+주택에 관한 메타데이터입니다.
+
+거주지 주소입니다.
+
+해당 거주지가 개인의 현재 거주지인 경우 참입니다. 거짓으로 간주됩니다.
+
+사용자의 SIP 주소입니다. 세션 초기 프로토콜 주소는 인터넷을 통해 음성 또는 영상 통화를 하기 위해 VoIP 통신에 사용됩니다.
+
+SIP 주소에 관한 메타데이터입니다.
+
+RFC 3261 19.1 SIP URI 형식의 SIP 주소입니다.
+
+SIP 주소의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 SIP 주소의 유형입니다.
+
+그 사람이 가진 스킬입니다.
+
+스킬에 대한 메타데이터입니다.
+
+스킬, 예: underwater basket weaving
+
+지원 중단됨: 데이터가 반환되지 않습니다. 개인에 대한 1줄의 간단한 설명입니다.
+
+소개 문구에 관한 메타데이터입니다.
+
+소개 문구
+
+개인과 연결된 URL입니다.
+
+URL에 대한 메타데이터입니다.
+
+URL입니다.
+
+URL 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+blog
+
+profile
+
+homePage
+
+ftp
+
+reservations
+
+appInstallPage: Currents 애플리케이션의 웹사이트입니다.
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 번역되고 형식이 지정된 URL 유형입니다.
+
+최종 사용자가 채우는 임의 사용자 데이터입니다.
+
+사용자 정의 데이터에 대한 메타데이터입니다.
+
+사용자 정의 데이터의 최종 사용자 지정 키입니다.
+
+사용자 정의 데이터의 최종 사용자 지정 값입니다.
+
+새 연락처를 일괄적으로 생성하고 새로운 연락처에 대한 PersonResponses를
+
+지연 시간 및 실패 증가를 방지하려면 동일한 사용자에 대한 변형 요청을 순차적으로 전송해야 합니다.
+
+### 표
+| JSON 표현 |
+| --- |
+| {
+ "resourceName": string,
+ "etag": string,
+ "metadata": {
+ object (PersonMetadata)
+ },
+ "addresses": [
+ {
+ object (Address)
+ }
+ ],
+ "ageRange": enum (AgeRange),
+ "ageRanges": [
+ {
+ object (AgeRangeType)
+ }
+ ],
+ "biographies": [
+ {
+ object (Biography)
+ }
+ ],
+ "birthdays": [
+ {
+ object (Birthday)
+ }
+ ],
+ "braggingRights": [
+ {
+ object (BraggingRights)
+ }
+ ],
+ "calendarUrls": [
+ {
+ object (CalendarUrl)
+ }
+ ],
+ "clientData": [
+ {
+ object (ClientData)
+ }
+ ],
+ "coverPhotos": [
+ {
+ object (CoverPhoto)
+ }
+ ],
+ "emailAddresses": [
+ {
+ object (EmailAddress)
+ }
+ ],
+ "events": [
+ {
+ object (Event)
+ }
+ ],
+ "externalIds": [
+ {
+ object (ExternalId)
+ }
+ ],
+ "fileAses": [
+ {
+ object (FileAs)
+ }
+ ],
+ "genders": [
+ {
+ object (Gender)
+ }
+ ],
+ "imClients": [
+ {
+ object (ImClient)
+ }
+ ],
+ "interests": [
+ {
+ object (Interest)
+ }
+ ],
+ "locales": [
+ {
+ object (Locale)
+ }
+ ],
+ "locations": [
+ {
+ object (Location)
+ }
+ ],
+ "memberships": [
+ {
+ object (Membership)
+ }
+ ],
+ "miscKeywords": [
+ {
+ object (MiscKeyword)
+ }
+ ],
+ "names": [
+ {
+ object (Name)
+ }
+ ],
+ "nicknames": [
+ {
+ object (Nickname)
+ }
+ ],
+ "occupations": [
+ {
+ object (Occupation)
+ }
+ ],
+ "organizations": [
+ {
+ object (Organization)
+ }
+ ],
+ "phoneNumbers": [
+ {
+ object (PhoneNumber)
+ }
+ ],
+ "photos": [
+ {
+ object (Photo)
+ }
+ ],
+ "relations": [
+ {
+ object (Relation)
+ }
+ ],
+ "relationshipInterests": [
+ {
+ object (RelationshipInterest)
+ }
+ ],
+ "relationshipStatuses": [
+ {
+ object (RelationshipStatus)
+ }
+ ],
+ "residences": [
+ {
+ object (Residence)
+ }
+ ],
+ "sipAddresses": [
+ {
+ object (SipAddress)
+ }
+ ],
+ "skills": [
+ {
+ object (Skill)
+ }
+ ],
+ "taglines": [
+ {
+ object (Tagline)
+ }
+ ],
+ "urls": [
+ {
+ object (Url)
+ }
+ ],
+ "userDefined": [
+ {
+ object (UserDefined)
+ }
+ ]
+} |
+
+| 필드 | |
+| --- | --- |
+| resourceName | string
+
+서버에서 할당한 사람의 리소스 이름입니다. people/{person_id} 형식의 ASCII 문자열. |
+| etag | string
+
+리소스의 HTTP 항목 태그. 웹 캐시 유효성 검사에 사용됩니다. |
+| metadata | object (PersonMetadata)
+
+출력 전용입니다. 사람에 대한 메타데이터입니다. |
+| addresses[] | object (Address)
+
+개인의 상세 주소입니다. |
+| ageRange
+(deprecated) | enum (AgeRange)
+
+이 항목은 지원 중단되었습니다.
+
+출력 전용입니다. 지원 중단됨 (대신 person.ageRanges 사용)
+
+개인의 연령대입니다. |
+| ageRanges[] | object (AgeRangeType)
+
+출력 전용입니다. 개인의 연령대입니다. |
+| biographies[] | object (Biography)
+
+사용자의 전기입니다. 이 필드는 연락처 소스의 싱글톤입니다. |
+| birthdays[] | object (Birthday)
+
+사용자의 생일입니다. 이 필드는 연락처 소스의 싱글톤입니다. |
+| braggingRights[]
+(deprecated) | object (BraggingRights)
+
+이 항목은 지원 중단되었습니다.
+
+지원 중단됨: 데이터가 반환되지 않습니다. 자신의 자랑거리입니다. |
+| calendarUrls[] | object (CalendarUrl)
+
+사용자의 캘린더 URL입니다. |
+| clientData[] | object (ClientData)
+
+개인의 클라이언트 데이터입니다. |
+| coverPhotos[] | object (CoverPhoto)
+
+출력 전용입니다. 해당 인물의 표지 사진 |
+| emailAddresses[] | object (EmailAddress)
+
+사용자의 이메일 주소입니다. people.connections.list 및 otherContacts.list의 경우 이메일 주소 수가 100개로 제한됩니다. 한 사람에게 더 많은 이메일 주소가 있다면 people.getBatchGet를 호출하여 전체 집합을 가져올 수 있습니다. |
+| events[] | object (Event)
+
+사용자의 일정입니다. |
+| externalIds[] | object (ExternalId)
+
+사용자의 외부 ID입니다. |
+| fileAses[] | object (FileAs)
+
+사용자의 file-ases입니다. |
+| genders[] | object (Gender)
+
+사용자의 성별입니다. 이 필드는 연락처 소스의 싱글톤입니다. |
+| imClients[] | object (ImClient)
+
+사용자의 채팅 메시지 클라이언트입니다. |
+| interests[] | object (Interest)
+
+개인의 관심분야입니다. |
+| locales[] | object (Locale)
+
+사용자의 언어 환경설정입니다. |
+| locations[] | object (Location)
+
+개인의 위치 |
+| memberships[] | object (Membership)
+
+사용자의 그룹 회원 정보입니다. |
+| miscKeywords[] | object (MiscKeyword)
+
+개인의 기타 키워드입니다. |
+| names[] | object (Name)
+
+사용자의 이름입니다. 이 필드는 연락처 소스의 싱글톤입니다. |
+| nicknames[] | object (Nickname)
+
+사용자의 닉네임입니다. |
+| occupations[] | object (Occupation)
+
+개인의 직업입니다. |
+| organizations[] | object (Organization)
+
+개인의 과거 또는 현재 조직입니다. |
+| phoneNumbers[] | object (PhoneNumber)
+
+사용자의 전화번호입니다. people.connections.list 및 otherContacts.list의 경우 전화번호 수가 100개로 제한됩니다. 사람의 전화번호가 더 많은 경우 people.getBatchGet를 호출하여 전체 세트를 가져올 수 있습니다. |
+| photos[] | object (Photo)
+
+출력 전용입니다. 해당 사용자의 사진입니다. |
+| relations[] | object (Relation)
+
+그 사람의 관계입니다. |
+| relationshipInterests[]
+(deprecated) | object (RelationshipInterest)
+
+이 항목은 지원 중단되었습니다.
+
+출력 전용입니다. 지원 중단됨: 데이터가 반환되지 않습니다. 개인의 관계에 대한 관심분야입니다. |
+| relationshipStatuses[]
+(deprecated) | object (RelationshipStatus)
+
+이 항목은 지원 중단되었습니다.
+
+출력 전용입니다. 지원 중단됨: 데이터는 반환되지 않습니다. 개인의 관계 상태입니다. |
+| residences[]
+(deprecated) | object (Residence)
+
+이 항목은 지원 중단되었습니다.
+
+지원 중단됨: (대신 person.locations 사용) 사용자의 거주지입니다. |
+| sipAddresses[] | object (SipAddress)
+
+사용자의 SIP 주소입니다. |
+| skills[] | object (Skill)
+
+개인의 기술입니다. |
+| taglines[]
+(deprecated) | object (Tagline)
+
+이 항목은 지원 중단되었습니다.
+
+출력 전용입니다. 지원 중단됨: 데이터가 반환되지 않습니다. 개인의 태그라인입니다. |
+| urls[] | object (Url)
+
+사람과 관련된 URL입니다. |
+| userDefined[] | object (UserDefined)
+
+개인의 사용자 정의 데이터입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "sources": [
+ {
+ object (Source)
+ }
+ ],
+ "previousResourceNames": [
+ string
+ ],
+ "linkedPeopleResourceNames": [
+ string
+ ],
+ "deleted": boolean,
+ "objectType": enum (ObjectType)
+} |
+
+| 필드 | |
+| --- | --- |
+| sources[] | object (Source)
+
+개인에 대한 데이터 소스입니다. |
+| previousResourceNames[] | string
+
+출력 전용입니다. 이 사용자가 보유한 이전 리소스 이름입니다. 동기화 토큰이 포함된 people.connections.list 요청에 대해서만 채워집니다.
+
+리소스 이름은 확인된 이메일, 인증된 전화번호 또는 프로필 URL과 같이 연락처와 프로필을 연결하는 필드를 추가하거나 삭제할 때 변경될 수 있습니다. |
+| linkedPeopleResourceNames[] | string
+
+출력 전용입니다. 이 리소스에 연결된 사용자의 리소스 이름입니다. |
+| deleted | boolean
+
+출력 전용입니다. 사람 리소스가 삭제되었으면 true입니다. people.connections.list 및 otherContacts.list 동기화 요청에 대해서만 채워집니다. |
+| objectType
+(deprecated) | enum (ObjectType)
+
+이 항목은 지원 중단되었습니다.
+
+출력 전용입니다. 지원 중단됨 (대신 person.metadata.sources.profileMetadata.objectType 사용)
+
+사람 객체의 유형입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "type": enum (SourceType),
+ "id": string,
+ "etag": string,
+ "updateTime": string,
+
+ // Union field metadata can be only one of the following:
+ "profileMetadata": {
+ object (ProfileMetadata)
+ }
+ // End of list of possible types for union field metadata.
+} |
+
+| 필드 | |
+| --- | --- |
+| type | enum (SourceType)
+
+소스 유형입니다. |
+| id | string
+
+서버에서 생성한 소스 유형 내의 고유 식별자입니다. |
+| etag | string
+
+person.metadata.sources에만 채워집니다.
+
+소스의 HTTP 항목 태그. 웹 캐시 유효성 검사에 사용됩니다. |
+| updateTime | string (Timestamp format)
+
+출력 전용입니다. person.metadata.sources에만 채워집니다.
+
+이 소스의 최종 업데이트 타임스탬프입니다.
+
+RFC3339 UTC 'Zulu' 형식의 타임스탬프입니다(나노초 단위, 소수점 이하 9자리). 예를 들면 "2014-10-02T15:01:23Z" 및 "2014-10-02T15:01:23.045123456Z"입니다. |
+| 통합 필드 metadata. person.metadata.sources에만 채워집니다.
+
+소스에 대한 메타데이터입니다. metadata는 다음 중 하나여야 합니다. | |
+| profileMetadata | object (ProfileMetadata)
+
+출력 전용입니다. person.metadata.sources에만 채워집니다.
+
+PROFILE 유형의 소스에 대한 메타데이터입니다. |
+
+| 열거형 | |
+| --- | --- |
+| SOURCE_TYPE_UNSPECIFIED | 지정되지 않았습니다. |
+| ACCOUNT | Google 계정 |
+| PROFILE | Google 프로필. https://profiles.google.com/{id}에서 프로필을 확인할 수 있으며 여기서 {id}는 소스 ID입니다. |
+| DOMAIN_PROFILE | Google Workspace 도메인 프로필. |
+| CONTACT | Google 연락처: https://contact.google.com/{id}에서 연락처를 확인할 수 있으며 여기서 {id}는 소스 ID입니다. |
+| OTHER_CONTACT | Google '기타 연락처'. |
+| DOMAIN_CONTACT | Google Workspace 도메인 공유 연락처. |
+
+| JSON 표현 |
+| --- |
+| {
+ "objectType": enum (ObjectType),
+ "userTypes": [
+ enum (UserType)
+ ]
+} |
+
+| 필드 | |
+| --- | --- |
+| objectType | enum (ObjectType)
+
+출력 전용입니다. 프로필 객체 유형입니다. |
+| userTypes[] | enum (UserType)
+
+출력 전용입니다. 사용자 입력 |
+
+| 열거형 | |
+| --- | --- |
+| OBJECT_TYPE_UNSPECIFIED | 지정되지 않았습니다. |
+| PERSON | 사람입니다. |
+| PAGE | Currents 페이지. |
+
+| 열거형 | |
+| --- | --- |
+| USER_TYPE_UNKNOWN | 사용자 유형을 알 수 없습니다. |
+| GOOGLE_USER | 사용자가 Google 사용자입니다. |
+| GPLUS_USER | 사용자가 Currents 사용자입니다. |
+| GOOGLE_APPS_USER | 사용자가 Google Workspace 사용자입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "formattedValue": string,
+ "type": string,
+ "formattedType": string,
+ "poBox": string,
+ "streetAddress": string,
+ "extendedAddress": string,
+ "city": string,
+ "region": string,
+ "postalCode": string,
+ "country": string,
+ "countryCode": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+주소에 대한 메타데이터입니다. |
+| formattedValue | string
+
+주소의 구조화되지 않은 값입니다. 사용자가 설정하지 않으면 구조화된 값에서 자동으로 구성됩니다. |
+| type | string
+
+주소 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+home
+work
+other |
+| formattedType | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 주소의 유형입니다. |
+| poBox | string
+
+P.O. 있습니다. |
+| streetAddress | string
+
+상세 주소입니다. |
+| extendedAddress | string
+
+주소의 확장된 주소입니다. 예를 들어 아파트 동호수를 입력할 수 있습니다. |
+| city | string
+
+주소의 도시입니다. |
+| region | string
+
+주소의 지역입니다. 예를 들어 주 또는 도입니다. |
+| postalCode | string
+
+주소의 우편번호입니다. |
+| country | string
+
+주소의 국가입니다. |
+| countryCode | string
+
+주소의 ISO 3166-1 alpha-2 국가 코드입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "primary": boolean,
+ "sourcePrimary": boolean,
+ "verified": boolean,
+ "source": {
+ object (Source)
+ }
+} |
+
+| 필드 | |
+| --- | --- |
+| primary | boolean
+
+출력 전용입니다. 필드가 개인의 모든 소스에 대한 기본 필드인 경우 참입니다. 각 사용자는 primary가 true로 설정된 필드를 최대 1개 보유할 수 있습니다. |
+| sourcePrimary | boolean
+
+필드가 source의 기본 필드인 경우 true입니다. 각 소스에는 sourcePrimary가 true로 설정된 필드가 최대 1개 있어야 합니다. |
+| verified | boolean
+
+출력 전용입니다. 필드가 인증된 경우 true이고, 필드가 확인되지 않은 경우 false입니다. 확인된 필드는 일반적으로 사용자가 소유한 것으로 확인된 이름, 이메일 주소, 전화번호 또는 웹사이트입니다. |
+| source | object (Source)
+
+필드의 소스입니다. |
+
+| 열거형 | |
+| --- | --- |
+| AGE_RANGE_UNSPECIFIED | 지정되지 않았습니다. |
+| LESS_THAN_EIGHTEEN | 만 18세 미만입니다. |
+| EIGHTEEN_TO_TWENTY | 18에서 22 사이입니다. |
+| TWENTY_ONE_OR_OLDER | 만 21세 이상. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "ageRange": enum (AgeRange)
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+연령대에 관한 메타데이터입니다. |
+| ageRange | enum (AgeRange)
+
+연령대입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "value": string,
+ "contentType": enum (ContentType)
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+약력에 관한 메타데이터입니다. |
+| value | string
+
+짧은 약력 |
+| contentType | enum (ContentType)
+
+약력의 콘텐츠 유형입니다. |
+
+| 열거형 | |
+| --- | --- |
+| CONTENT_TYPE_UNSPECIFIED | 지정되지 않았습니다. |
+| TEXT_PLAIN | 일반 텍스트 |
+| TEXT_HTML | HTML 텍스트입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "date": {
+ object (Date)
+ },
+ "text": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+생일에 대한 메타데이터입니다. |
+| date | object (Date)
+
+생일의 구조화된 날짜입니다. |
+| text
+(deprecated) | string
+
+이 항목은 지원 중단되었습니다.
+
+설정된 경우 date 필드를 사용하는 것이 좋습니다.
+
+사용자의 생일을 나타내는 자유 형식의 문자열입니다. 이 값은 검증되지 않습니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "year": integer,
+ "month": integer,
+ "day": integer
+} |
+
+| 필드 | |
+| --- | --- |
+| year | integer
+
+날짜의 연도입니다. 1~9999 사이여야 하며, 연도 없이 날짜를 지정하려면 0이어야 합니다. |
+| month | integer
+
+연도의 월입니다. 1~12 사이여야 하며, 월과 일 없이 연도를 지정하려면 0이어야 합니다. |
+| day | integer
+
+월의 일입니다. 1~31 사이여야 하고 해당 연도 및 월에 유효해야 합니다. 또는 연도만 지정하거나 일이 중요하지 않아 연도와 월을 지정하려면 0이어야 합니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "value": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+자랑거리에 대한 메타데이터입니다. |
+| value | string
+
+자랑거리 예: climbed mount everest |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "url": string,
+ "type": string,
+ "formattedType": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+캘린더 URL에 대한 메타데이터입니다. |
+| url | string
+
+캘린더 URL입니다. |
+| type | string
+
+캘린더 URL의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+home
+freeBusy
+work |
+| formattedType | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 캘린더 URL의 유형입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "key": string,
+ "value": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+클라이언트 데이터에 대한 메타데이터입니다. |
+| key | string
+
+클라이언트가 지정한 클라이언트 데이터 키입니다. |
+| value | string
+
+클라이언트 데이터의 클라이언트 지정 값입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "url": string,
+ "default": boolean
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+표지 사진에 대한 메타데이터입니다. |
+| url | string
+
+표지 사진의 URL입니다. |
+| default | boolean
+
+표지 사진이 기본 표지 사진이면 true이고, 표지 사진이 사용자가 제공한 표지 사진인 경우 false입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "value": string,
+ "type": string,
+ "formattedType": string,
+ "displayName": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+이메일 주소에 대한 메타데이터입니다. |
+| value | string
+
+이메일 주소입니다. |
+| type | string
+
+이메일 주소의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+home
+work
+other |
+| formattedType | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 이메일 주소의 유형입니다. |
+| displayName | string
+
+이메일의 표시 이름입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "date": {
+ object (Date)
+ },
+ "type": string,
+ "formattedType": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+이벤트에 대한 메타데이터입니다. |
+| date | object (Date)
+
+이벤트 날짜입니다. |
+| type | string
+
+이벤트 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+anniversary
+other |
+| formattedType | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 이벤트의 유형입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "value": string,
+ "type": string,
+ "formattedType": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+외부 ID에 대한 메타데이터입니다. |
+| value | string
+
+외부 ID의 값입니다. |
+| type | string
+
+외부 ID의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+account
+customer
+loginId
+network
+organization |
+| formattedType | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 이벤트의 유형입니다. |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+as a file-as에 대한 메타데이터입니다. |
+| value | string
+
+file-as 값 |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "value": string,
+ "formattedValue": string,
+ "addressMeAs": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+성별에 대한 메타데이터입니다. |
+| value | string
+
+개인의 성별입니다. 성별은 맞춤설정하거나 다음과 같은 사전 정의된 값 중 하나일 수 있습니다.
+
+male
+female
+unspecified |
+| formattedValue | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 성별의 값입니다. 지정되지 않았거나 커스텀 값이 현지화되지 않았습니다. |
+| addressMeAs | string
+
+사람을 호칭하는 데 사용할 호칭을 위한 자유 형식 텍스트 입력란입니다. 일반적인 값은 다음과 같습니다.
+
+he/him
+she/her
+they/them |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "username": string,
+ "type": string,
+ "formattedType": string,
+ "protocol": string,
+ "formattedProtocol": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+메신저 클라이언트에 대한 메타데이터입니다. |
+| username | string
+
+메신저 클라이언트에서 사용되는 사용자 이름입니다. |
+| type | string
+
+메신저 클라이언트의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+home
+work
+other |
+| formattedType | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 번역 및 형식이 지정된 IM 클라이언트의 유형입니다. |
+| protocol | string
+
+메신저 클라이언트의 프로토콜입니다. 프로토콜은 커스텀 값 또는 다음과 같은 사전 정의된 값 중 하나일 수 있습니다.
+
+aim
+msn
+yahoo
+skype
+qq
+googleTalk
+icq
+jabber
+netMeeting |
+| formattedProtocol | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 형식이 지정된 메신저 클라이언트의 프로토콜입니다. |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+관심분야에 대한 메타데이터입니다. |
+| value | string
+
+이해관계 예: stargazing |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+언어에 대한 메타데이터입니다. |
+| value | string
+
+언어를 나타내는 올바른 형식의 IETF BCP 47 언어 태그입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "value": string,
+ "type": string,
+ "current": boolean,
+ "buildingId": string,
+ "floor": string,
+ "floorSection": string,
+ "deskCode": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+위치에 대한 메타데이터입니다. |
+| value | string
+
+위치의 자유 형식 값입니다. |
+| type | string
+
+위치의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+desk
+grewUp |
+| current | boolean
+
+위치가 현재 위치인지 여부입니다. |
+| buildingId | string
+
+건물 식별자입니다. |
+| floor | string
+
+층 이름 또는 번호입니다. |
+| floorSection | string
+
+floor_name의 층 섹션 |
+| deskCode | string
+
+개별 데스크 위치입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+
+ // Union field membership can be only one of the following:
+ "contactGroupMembership": {
+ object (ContactGroupMembership)
+ },
+ "domainMembership": {
+ object (DomainMembership)
+ }
+ // End of list of possible types for union field membership.
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+멤버십에 대한 메타데이터입니다. |
+| 통합 필드 membership. 멤버십입니다. membership은 다음 중 하나여야 합니다. | |
+| contactGroupMembership | object (ContactGroupMembership)
+
+연락처 그룹 멤버십입니다. |
+| domainMembership | object (DomainMembership)
+
+출력 전용입니다. 도메인 멤버십입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "contactGroupId": string,
+ "contactGroupResourceName": string
+} |
+
+| 필드 | |
+| --- | --- |
+| contactGroupId
+(deprecated) | string
+
+이 항목은 지원 중단되었습니다.
+
+출력 전용입니다. 연락처 그룹 멤버십의 연락처 그룹 ID입니다. |
+| contactGroupResourceName | string
+
+서버에서 할당한 연락처 그룹의 리소스 이름입니다. contactGroups/{contactGroupId} 형식의 ASCII 문자열. contactGroupResourceName만 멤버십을 수정하는 데 사용할 수 있습니다. 모든 연락처 그룹 멤버십은 삭제할 수 있지만 사용자 그룹 또는 'myContacts'만 삭제할 수 있습니다. 또는 '별표표시함' 시스템 그룹 멤버십을 추가할 수 있습니다. 연락처에는 항상 하나 이상의 연락처 그룹 회원이 있어야 합니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "inViewerDomain": boolean
+} |
+
+| 필드 | |
+| --- | --- |
+| inViewerDomain | boolean
+
+사용자가 뷰어의 Google Workspace 도메인에 속한 경우 참입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "value": string,
+ "type": enum (KeywordType),
+ "formattedType": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+기타 키워드에 대한 메타데이터입니다. |
+| value | string
+
+기타 키워드의 값입니다. |
+| type | enum (KeywordType)
+
+기타 키워드 유형입니다. |
+| formattedType | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 기타 키워드의 유형입니다. |
+
+| 열거형 | |
+| --- | --- |
+| TYPE_UNSPECIFIED | 지정되지 않았습니다. |
+| OUTLOOK_BILLING_INFORMATION | 결제 정보를 위한 Outlook 필드입니다. |
+| OUTLOOK_DIRECTORY_SERVER | 디렉터리 서버의 Outlook 필드입니다. |
+| OUTLOOK_KEYWORD | 키워드의 Outlook 필드입니다. |
+| OUTLOOK_MILEAGE | 마일리지를 확인하는 Outlook 필드입니다. |
+| OUTLOOK_PRIORITY | 우선순위를 위한 Outlook 필드입니다. |
+| OUTLOOK_SENSITIVITY | 민감도에 대한 Outlook 필드입니다. |
+| OUTLOOK_SUBJECT | 제목의 Outlook 필드입니다. |
+| OUTLOOK_USER | 사용자의 Outlook 필드입니다. |
+| HOME | 홈. |
+| WORK | 직장으로 이동합니다. |
+| OTHER | 기타. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "displayName": string,
+ "displayNameLastFirst": string,
+ "unstructuredName": string,
+ "familyName": string,
+ "givenName": string,
+ "middleName": string,
+ "honorificPrefix": string,
+ "honorificSuffix": string,
+ "phoneticFullName": string,
+ "phoneticFamilyName": string,
+ "phoneticGivenName": string,
+ "phoneticMiddleName": string,
+ "phoneticHonorificPrefix": string,
+ "phoneticHonorificSuffix": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+이름에 대한 메타데이터입니다. |
+| displayName | string
+
+출력 전용입니다. 뷰어의 계정 또는 Accept-Language HTTP 헤더에서 지정한 언어에 따라 형식이 지정된 표시 이름입니다. |
+| displayNameLastFirst | string
+
+출력 전용입니다. 먼저 뷰어의 계정 또는 Accept-Language HTTP 헤더에서 지정한 언어에 따라 형식이 지정된 성을 포함하는 표시 이름입니다. |
+| unstructuredName | string
+
+자유 형식의 이름 값입니다. |
+| familyName | string
+
+성입니다. |
+| givenName | string
+
+지정된 이름입니다. |
+| middleName | string
+
+중간 이름 |
+| honorificPrefix | string
+
+경어 접두사(예: Mrs. 또는 Dr.) |
+| honorificSuffix | string
+
+경어 접미사(예: Jr.) |
+| phoneticFullName | string
+
+발음 그대로 입력하세요. |
+| phoneticFamilyName | string
+
+성의 철자를 그대로 표기합니다. |
+| phoneticGivenName | string
+
+주어진 이름입니다. |
+| phoneticMiddleName | string
+
+들리는 대로 철자를 입력하세요. |
+| phoneticHonorificPrefix | string
+
+들리는 대로 표기된 경어 접두사입니다. |
+| phoneticHonorificSuffix | string
+
+들리는 대로 표기된 경어 접미사입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "value": string,
+ "type": enum (NicknameType)
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+닉네임에 대한 메타데이터입니다. |
+| value | string
+
+닉네임입니다. |
+| type | enum (NicknameType)
+
+닉네임의 유형입니다. |
+
+| 열거형 | |
+| --- | --- |
+| DEFAULT | 일반적인 닉네임입니다. |
+| MAIDEN_NAME | 결혼 전 성 또는 출생 성 결혼으로 인해 성이 변경된 경우 사용됩니다.
+
+이 항목은 지원 중단되었습니다. |
+| INITIALS | 이니셜
+
+이 항목은 지원 중단되었습니다. |
+| GPLUS | Google+ 프로필 닉네임
+
+이 항목은 지원 중단되었습니다. |
+| OTHER_NAME | 소속사 또는 기타 이름 예: Dr. Smith.
+
+이 항목은 지원 중단되었습니다. |
+| ALTERNATE_NAME | 다른 사람의 이름을 아는 사람입니다. |
+| SHORT_NAME | 개인 이름의 짧은 버전입니다.
+
+이 항목은 지원 중단되었습니다. |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+직업에 관한 메타데이터입니다. |
+| value | string
+
+직업 예: carpenter |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "type": string,
+ "formattedType": string,
+ "startDate": {
+ object (Date)
+ },
+ "endDate": {
+ object (Date)
+ },
+ "current": boolean,
+ "name": string,
+ "phoneticName": string,
+ "department": string,
+ "title": string,
+ "jobDescription": string,
+ "symbol": string,
+ "domain": string,
+ "location": string,
+ "costCenter": string,
+ "fullTimeEquivalentMillipercent": integer
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+조직에 관한 메타데이터입니다. |
+| type | string
+
+조직의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+work
+school |
+| formattedType | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환되고 형식이 지정된 조직의 유형입니다. |
+| startDate | object (Date)
+
+사용자가 조직에 가입한 시작일입니다. |
+| endDate | object (Date)
+
+사용자가 조직을 떠난 종료일입니다. |
+| current | boolean
+
+조직이 개인의 현재 조직인 경우 참입니다. 조직이 과거 조직인 경우 false입니다. |
+| name | string
+
+조직의 이름입니다. |
+| phoneticName | string
+
+조직의 이름(소리나는 대로)입니다. |
+| department | string
+
+조직 내 개인의 부서입니다. |
+| title | string
+
+개인의 조직 내 직책입니다. |
+| jobDescription | string
+
+개인의 조직 내 직무 설명입니다. |
+| symbol | string
+
+조직과 관련된 상징 주식 종목 기호, 약어, 두문자어를 예로 들 수 있습니다. |
+| domain | string
+
+조직과 연결된 도메인 이름 예: google.com |
+| location | string
+
+직원이 근무하는 조직 사무실의 위치입니다. |
+| costCenter | string
+
+조직의 개인 비용 센터입니다. |
+| fullTimeEquivalentMillipercent | integer
+
+조직 내 개인의 풀타임에 상응하는 밀리초 (100,000 = 100%)입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "value": string,
+ "canonicalForm": string,
+ "type": string,
+ "formattedType": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+전화번호에 대한 메타데이터입니다. |
+| value | string
+
+전화번호입니다. |
+| canonicalForm | string
+
+출력 전용입니다. 전화번호의 표준화된 ITU-T E.164 형식입니다. |
+| type | string
+
+전화번호 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+home
+work
+mobile
+homeFax
+workFax
+otherFax
+pager
+workMobile
+workPager
+main
+googleVoice
+other |
+| formattedType | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 번역되고 형식이 지정된 전화번호 유형입니다. |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+사진에 대한 메타데이터입니다. |
+| url | string
+
+사진의 URL입니다. URL 끝에 쿼리 매개변수 sz={size}를 추가하여 원하는 크기를 변경할 수 있습니다. 여기서 {size}는 픽셀 단위의 크기입니다. 예: https://lh3.googleusercontent.com/-T_wVWLlmg7w/AAAAAAAAAAI/AAAAAAAABa8/00gzXvDBYqw/s100/photo.jpg?sz=50 |
+| default | boolean
+
+사진이 기본 사진이면 true이고, 사진이 사용자 제공 사진인 경우 false입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "person": string,
+ "type": string,
+ "formattedType": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+관계에 대한 메타데이터입니다. |
+| person | string
+
+이 관계가 참조하는 다른 사람의 이름입니다. |
+| type | string
+
+상대와 상대방 사이의 관계입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+spouse
+child
+mother
+father
+parent
+brother
+sister
+friend
+relative
+domesticPartner
+manager
+assistant
+referredBy
+partner |
+| formattedType | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더에 지정된 로케일로 변환되고 형식이 지정된 관계의 유형입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "value": string,
+ "formattedValue": string
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+관계 관심분야에 대한 메타데이터입니다. |
+| value | string
+
+그 사람이 찾고 있는 관계의 종류입니다. 값은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+friend
+date
+relationship
+networking |
+| formattedValue | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더에 지정된 언어로 번역되고 형식이 지정된 관계 관심 값입니다. |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+관계 상태에 대한 메타데이터입니다. |
+| value | string
+
+연애/결혼 상태 값은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+single
+inARelationship
+engaged
+married
+itsComplicated
+openRelationship
+widowed
+inDomesticPartnership
+inCivilUnion |
+| formattedValue | string
+
+출력 전용입니다. 보기 권한 사용자의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 관계 상태의 값입니다. |
+
+| JSON 표현 |
+| --- |
+| {
+ "metadata": {
+ object (FieldMetadata)
+ },
+ "value": string,
+ "current": boolean
+} |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+주택에 관한 메타데이터입니다. |
+| value | string
+
+거주지 주소입니다. |
+| current | boolean
+
+해당 거주지가 개인의 현재 거주지인 경우 참입니다. 거짓으로 간주됩니다. |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+SIP 주소에 관한 메타데이터입니다. |
+| value | string
+
+RFC 3261 19.1 SIP URI 형식의 SIP 주소입니다. |
+| type | string
+
+SIP 주소의 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+home
+work
+mobile
+other |
+| formattedType | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 변환 및 형식이 지정된 SIP 주소의 유형입니다. |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+스킬에 대한 메타데이터입니다. |
+| value | string
+
+스킬, 예: underwater basket weaving |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+소개 문구에 관한 메타데이터입니다. |
+| value | string
+
+소개 문구 |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+URL에 대한 메타데이터입니다. |
+| value | string
+
+URL입니다. |
+| type | string
+
+URL 유형입니다. 유형은 커스텀 값 또는 다음 사전 정의된 값 중 하나일 수 있습니다.
+
+home
+work
+blog
+profile
+homePage
+ftp
+reservations
+appInstallPage: Currents 애플리케이션의 웹사이트입니다.
+other |
+| formattedType | string
+
+출력 전용입니다. 뷰어의 계정 언어 또는 Accept-Language HTTP 헤더 언어로 번역되고 형식이 지정된 URL 유형입니다. |
+
+| 필드 | |
+| --- | --- |
+| metadata | object (FieldMetadata)
+
+사용자 정의 데이터에 대한 메타데이터입니다. |
+| key | string
+
+사용자 정의 데이터의 최종 사용자 지정 키입니다. |
+| value | string
+
+사용자 정의 데이터의 최종 사용자 지정 값입니다. |
+
+| 메서드 | |
+| --- | --- |
+| batchCreateContacts | 새 연락처를 일괄적으로 생성하고 새로운 연락처에 대한 PersonResponses를
+
+지연 시간 및 실패 증가를 방지하려면 동일한 사용자에 대한 변형 요청을 순차적으로 전송해야 합니다. |
+| batchDeleteContacts | 연락처 일괄 삭제 |
+| batchUpdateContacts | 연락처를 일괄적으로 업데이트하고 업데이트된 연락처에 대한 리소스 이름 맵을 PersonResponses에 반환합니다. |
+| createContact | 새 연락처를 만들고 해당 연락처의 사람 리소스를 반환합니다. |
+| deleteContact | 담당자 삭제 |
+| deleteContactPhoto | 연락처 사진 삭제 |
+| get | 리소스 이름을 지정하여 사람에 대한 정보를 제공합니다. |
+| getBatchGet | 요청된 리소스 이름 목록을 지정하여 특정 사용자 목록에 대한 정보를 제공합니다. |
+| listDirectoryPeople | 인증된 사용자의 도메인 디렉터리에 있는 도메인 프로필 및 도메인 연락처 목록을 제공합니다. |
+| searchContacts | 인증된 사용자의 그룹화된 연락처 중 검색어와 일치하는 연락처 목록을 제공합니다. |
+| searchDirectoryPeople | 인증된 사용자의 도메인 디렉터리에서 검색어와 일치하는 도메인 프로필 및 도메인 연락처 목록을 제공합니다. |
+| updateContact | 기존 담당자의 연락처 데이터를 업데이트합니다. |
+| updateContactPhoto | 연락처 사진을 업데이트합니다. |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+metadata.primary
+
+언어: 코드 · 셀#2
+resourceName
+
+언어: 코드 · 셀#3
+string
+
+언어: 코드 · 셀#4
+people/{person_id}
+
+언어: 코드 · 셀#5
+etag
+
+언어: 코드 · 셀#6
+metadata
+
+언어: 코드 · 셀#7
+object (PersonMetadata)
+
+언어: 코드 · 셀#8
+PersonMetadata
+
+언어: 코드 · 셀#9
+addresses[]
+
+언어: 코드 · 셀#10
+object (Address)
+
+언어: 코드 · 셀#11
+Address
+
+언어: 코드 · 셀#12
+ageRange
+(deprecated)
+
+언어: 코드 · 셀#13
+enum (AgeRange)
+
+언어: 코드 · 셀#14
+AgeRange
+
+언어: 코드 · 셀#15
+person.ageRanges
+
+언어: 코드 · 셀#16
+ageRanges[]
+
+언어: 코드 · 셀#17
+object (AgeRangeType)
+
+언어: 코드 · 셀#18
+AgeRangeType
+
+언어: 코드 · 셀#19
+biographies[]
+
+언어: 코드 · 셀#20
+object (Biography)
+
+언어: 코드 · 셀#21
+Biography
+
+언어: 코드 · 셀#22
+birthdays[]
+
+언어: 코드 · 셀#23
+object (Birthday)
+
+언어: 코드 · 셀#24
+Birthday
+
+언어: 코드 · 셀#25
+braggingRights[]
+(deprecated)
+
+언어: 코드 · 셀#26
+object (BraggingRights)
+
+언어: 코드 · 셀#27
+BraggingRights
+
+언어: 코드 · 셀#28
+calendarUrls[]
+
+언어: 코드 · 셀#29
+object (CalendarUrl)
+
+언어: 코드 · 셀#30
+CalendarUrl
+
+언어: 코드 · 셀#31
+clientData[]
+
+언어: 코드 · 셀#32
+object (ClientData)
+
+언어: 코드 · 셀#33
+ClientData
+
+언어: 코드 · 셀#34
+coverPhotos[]
+
+언어: 코드 · 셀#35
+object (CoverPhoto)
+
+언어: 코드 · 셀#36
+CoverPhoto
+
+언어: 코드 · 셀#37
+emailAddresses[]
+
+언어: 코드 · 셀#38
+object (EmailAddress)
+
+언어: 코드 · 셀#39
+EmailAddress
+
+언어: 코드 · 셀#40
+people.connections.list
+
+언어: 코드 · 셀#41
+otherContacts.list
+
+언어: 코드 · 셀#42
+people.getBatchGet
+
+언어: 코드 · 셀#43
+events[]
+
+언어: 코드 · 셀#44
+object (Event)
+
+언어: 코드 · 셀#45
+Event
+
+언어: 코드 · 셀#46
+externalIds[]
+
+언어: 코드 · 셀#47
+object (ExternalId)
+
+언어: 코드 · 셀#48
+ExternalId
+
+언어: 코드 · 셀#49
+fileAses[]
+
+언어: 코드 · 셀#50
+object (FileAs)
+
+언어: 코드 · 셀#51
+FileAs
+
+언어: 코드 · 셀#52
+genders[]
+
+언어: 코드 · 셀#53
+object (Gender)
+
+언어: 코드 · 셀#54
+Gender
+
+언어: 코드 · 셀#55
+imClients[]
+
+언어: 코드 · 셀#56
+object (ImClient)
+
+언어: 코드 · 셀#57
+ImClient
+
+언어: 코드 · 셀#58
+interests[]
+
+언어: 코드 · 셀#59
+object (Interest)
+
+언어: 코드 · 셀#60
+Interest
+
+언어: 코드 · 셀#61
+locales[]
+
+언어: 코드 · 셀#62
+object (Locale)
+
+언어: 코드 · 셀#63
+Locale
+
+언어: 코드 · 셀#64
+locations[]
+
+언어: 코드 · 셀#65
+object (Location)
+
+언어: 코드 · 셀#66
+Location
+
+언어: 코드 · 셀#67
+memberships[]
+
+언어: 코드 · 셀#68
+object (Membership)
+
+언어: 코드 · 셀#69
+Membership
+
+언어: 코드 · 셀#70
+miscKeywords[]
+
+언어: 코드 · 셀#71
+object (MiscKeyword)
+
+언어: 코드 · 셀#72
+MiscKeyword
+
+언어: 코드 · 셀#73
+names[]
+
+언어: 코드 · 셀#74
+object (Name)
+
+언어: 코드 · 셀#75
+Name
+
+언어: 코드 · 셀#76
+nicknames[]
+
+언어: 코드 · 셀#77
+object (Nickname)
+
+언어: 코드 · 셀#78
+Nickname
+
+언어: 코드 · 셀#79
+occupations[]
+
+언어: 코드 · 셀#80
+object (Occupation)
+
+언어: 코드 · 셀#81
+Occupation
+
+언어: 코드 · 셀#82
+organizations[]
+
+언어: 코드 · 셀#83
+object (Organization)
+
+언어: 코드 · 셀#84
+Organization
+
+언어: 코드 · 셀#85
+phoneNumbers[]
+
+언어: 코드 · 셀#86
+object (PhoneNumber)
+
+언어: 코드 · 셀#87
+PhoneNumber
+
+언어: 코드 · 셀#88
+photos[]
+
+언어: 코드 · 셀#89
+object (Photo)
+
+언어: 코드 · 셀#90
+Photo
+
+언어: 코드 · 셀#91
+relations[]
+
+언어: 코드 · 셀#92
+object (Relation)
+
+언어: 코드 · 셀#93
+Relation
+
+언어: 코드 · 셀#94
+relationshipInterests[]
+(deprecated)
+
+언어: 코드 · 셀#95
+object (RelationshipInterest)
+
+언어: 코드 · 셀#96
+RelationshipInterest
+
+언어: 코드 · 셀#97
+relationshipStatuses[]
+(deprecated)
+
+언어: 코드 · 셀#98
+object (RelationshipStatus)
+
+언어: 코드 · 셀#99
+RelationshipStatus
+
+언어: 코드 · 셀#100
+residences[]
+(deprecated)
+
+언어: 코드 · 셀#101
+object (Residence)
+
+언어: 코드 · 셀#102
+Residence
+
+언어: 코드 · 셀#103
+person.locations
+
+언어: 코드 · 셀#104
+sipAddresses[]
+
+언어: 코드 · 셀#105
+object (SipAddress)
+
+언어: 코드 · 셀#106
+SipAddress
+
+언어: 코드 · 셀#107
+skills[]
+
+언어: 코드 · 셀#108
+object (Skill)
+
+언어: 코드 · 셀#109
+Skill
+
+언어: 코드 · 셀#110
+taglines[]
+(deprecated)
+
+언어: 코드 · 셀#111
+object (Tagline)
+
+언어: 코드 · 셀#112
+Tagline
+
+언어: 코드 · 셀#113
+urls[]
+
+언어: 코드 · 셀#114
+object (Url)
+
+언어: 코드 · 셀#115
+Url
+
+언어: 코드 · 셀#116
+userDefined[]
+
+언어: 코드 · 셀#117
+object (UserDefined)
+
+언어: 코드 · 셀#118
+UserDefined
+
+언어: 코드 · 셀#119
+sources[]
+
+언어: 코드 · 셀#120
+object (Source)
+
+언어: 코드 · 셀#121
+Source
+
+언어: 코드 · 셀#122
+previousResourceNames[]
+
+언어: 코드 · 셀#123
+linkedPeopleResourceNames[]
+
+언어: 코드 · 셀#124
+deleted
+
+언어: 코드 · 셀#125
+boolean
+
+언어: 코드 · 셀#126
+objectType
+(deprecated)
+
+언어: 코드 · 셀#127
+enum (ObjectType)
+
+언어: 코드 · 셀#128
+ObjectType
+
+언어: 코드 · 셀#129
+person.metadata.sources.profileMetadata.objectType
+
+언어: 코드 · 셀#130
+type
+
+언어: 코드 · 셀#131
+enum (SourceType)
+
+언어: 코드 · 셀#132
+SourceType
+
+언어: 코드 · 셀#133
+id
+
+언어: 코드 · 셀#134
+person.metadata.sources
+
+언어: 코드 · 셀#135
+updateTime
+
+언어: 코드 · 셀#136
+string (Timestamp format)
+
+언어: 코드 · 셀#137
+Timestamp
+
+언어: 코드 · 셀#138
+"2014-10-02T15:01:23Z"
+
+언어: 코드 · 셀#139
+"2014-10-02T15:01:23.045123456Z"
+
+언어: 코드 · 셀#140
+profileMetadata
+
+언어: 코드 · 셀#141
+object (ProfileMetadata)
+
+언어: 코드 · 셀#142
+ProfileMetadata
+
+언어: 코드 · 셀#143
+SOURCE_TYPE_UNSPECIFIED
+
+언어: 코드 · 셀#144
+ACCOUNT
+
+언어: 코드 · 셀#145
+PROFILE
+
+언어: 코드 · 셀#146
+DOMAIN_PROFILE
+
+언어: 코드 · 셀#147
+CONTACT
+
+언어: 코드 · 셀#148
+OTHER_CONTACT
+
+언어: 코드 · 셀#149
+DOMAIN_CONTACT
+
+언어: 코드 · 셀#150
+objectType
+
+언어: 코드 · 셀#151
+userTypes[]
+
+언어: 코드 · 셀#152
+enum (UserType)
+
+언어: 코드 · 셀#153
+UserType
+
+언어: 코드 · 셀#154
+OBJECT_TYPE_UNSPECIFIED
+
+언어: 코드 · 셀#155
+PERSON
+
+언어: 코드 · 셀#156
+PAGE
+
+언어: 코드 · 셀#157
+USER_TYPE_UNKNOWN
+
+언어: 코드 · 셀#158
+GOOGLE_USER
+
+언어: 코드 · 셀#159
+GPLUS_USER
+
+언어: 코드 · 셀#160
+GOOGLE_APPS_USER
+
+언어: 코드 · 셀#161
+object (FieldMetadata)
+
+언어: 코드 · 셀#162
+FieldMetadata
+
+언어: 코드 · 셀#163
+formattedValue
+
+언어: 코드 · 셀#164
+home
+
+언어: 코드 · 셀#165
+work
+
+언어: 코드 · 셀#166
+other
+
+언어: 코드 · 셀#167
+formattedType
+
+언어: 코드 · 셀#168
+Accept-Language
+
+언어: 코드 · 셀#169
+poBox
+
+언어: 코드 · 셀#170
+streetAddress
+
+언어: 코드 · 셀#171
+extendedAddress
+
+언어: 코드 · 셀#172
+city
+
+언어: 코드 · 셀#173
+region
+
+언어: 코드 · 셀#174
+postalCode
+
+언어: 코드 · 셀#175
+country
+
+언어: 코드 · 셀#176
+countryCode
+
+언어: 코드 · 셀#177
+primary
+
+언어: 코드 · 셀#178
+sourcePrimary
+
+언어: 코드 · 셀#179
+source
+
+언어: 코드 · 셀#180
+verified
+
+언어: 코드 · 셀#181
+AGE_RANGE_UNSPECIFIED
+
+언어: 코드 · 셀#182
+LESS_THAN_EIGHTEEN
+
+언어: 코드 · 셀#183
+EIGHTEEN_TO_TWENTY
+
+언어: 코드 · 셀#184
+TWENTY_ONE_OR_OLDER
+
+언어: 코드 · 셀#185
+ageRange
+
+언어: 코드 · 셀#186
+value
+
+언어: 코드 · 셀#187
+contentType
+
+언어: 코드 · 셀#188
+enum (ContentType)
+
+언어: 코드 · 셀#189
+ContentType
+
+언어: 코드 · 셀#190
+CONTENT_TYPE_UNSPECIFIED
+
+언어: 코드 · 셀#191
+TEXT_PLAIN
+
+언어: 코드 · 셀#192
+TEXT_HTML
+
+언어: 코드 · 셀#193
+date
+
+언어: 코드 · 셀#194
+text
+
+언어: 코드 · 셀#195
+object (Date)
+
+언어: 코드 · 셀#196
+Date
+
+언어: 코드 · 셀#197
+text
+(deprecated)
+
+언어: 코드 · 셀#198
+google.type.TimeOfDay
+
+언어: 코드 · 셀#199
+google.type.DateTime
+
+언어: 코드 · 셀#200
+google.protobuf.Timestamp
+
+언어: 코드 · 셀#201
+year
+
+언어: 코드 · 셀#202
+integer
+
+언어: 코드 · 셀#203
+month
+
+언어: 코드 · 셀#204
+day
+
+언어: 코드 · 셀#205
+climbed mount everest
+
+언어: 코드 · 셀#206
+url
+
+언어: 코드 · 셀#207
+freeBusy
+
+언어: 코드 · 셀#208
+key
+
+언어: 코드 · 셀#209
+default
+
+언어: 코드 · 셀#210
+displayName
+
+언어: 코드 · 셀#211
+anniversary
+
+언어: 코드 · 셀#212
+account
+
+언어: 코드 · 셀#213
+customer
+
+언어: 코드 · 셀#214
+loginId
+
+언어: 코드 · 셀#215
+network
+
+언어: 코드 · 셀#216
+organization
+
+언어: 코드 · 셀#217
+male
+
+언어: 코드 · 셀#218
+female
+
+언어: 코드 · 셀#219
+unspecified
+
+언어: 코드 · 셀#220
+addressMeAs
+
+언어: 코드 · 셀#221
+he
+
+언어: 코드 · 셀#222
+him
+
+언어: 코드 · 셀#223
+she
+
+언어: 코드 · 셀#224
+her
+
+언어: 코드 · 셀#225
+they
+
+언어: 코드 · 셀#226
+them
+
+언어: 코드 · 셀#227
+username
+
+언어: 코드 · 셀#228
+protocol
+
+언어: 코드 · 셀#229
+aim
+
+언어: 코드 · 셀#230
+msn
+
+언어: 코드 · 셀#231
+yahoo
+
+언어: 코드 · 셀#232
+skype
+
+언어: 코드 · 셀#233
+qq
+
+언어: 코드 · 셀#234
+googleTalk
+
+언어: 코드 · 셀#235
+icq
+
+언어: 코드 · 셀#236
+jabber
+
+언어: 코드 · 셀#237
+netMeeting
+
+언어: 코드 · 셀#238
+formattedProtocol
+
+언어: 코드 · 셀#239
+stargazing
+
+언어: 코드 · 셀#240
+desk
+
+언어: 코드 · 셀#241
+grewUp
+
+언어: 코드 · 셀#242
+current
+
+언어: 코드 · 셀#243
+buildingId
+
+언어: 코드 · 셀#244
+floor
+
+언어: 코드 · 셀#245
+floorSection
+
+언어: 코드 · 셀#246
+floor_name
+
+언어: 코드 · 셀#247
+deskCode
+
+언어: 코드 · 셀#248
+membership
+
+언어: 코드 · 셀#249
+contactGroupMembership
+
+언어: 코드 · 셀#250
+object (ContactGroupMembership)
+
+언어: 코드 · 셀#251
+ContactGroupMembership
+
+언어: 코드 · 셀#252
+domainMembership
+
+언어: 코드 · 셀#253
+object (DomainMembership)
+
+언어: 코드 · 셀#254
+DomainMembership
+
+언어: 코드 · 셀#255
+contactGroupId
+(deprecated)
+
+언어: 코드 · 셀#256
+contactGroupResourceName
+
+언어: 코드 · 셀#257
+contactGroups/{contactGroupId}
+
+언어: 코드 · 셀#258
+inViewerDomain
+
+언어: 코드 · 셀#259
+enum (KeywordType)
+
+언어: 코드 · 셀#260
+KeywordType
+
+언어: 코드 · 셀#261
+TYPE_UNSPECIFIED
+
+언어: 코드 · 셀#262
+OUTLOOK_BILLING_INFORMATION
+
+언어: 코드 · 셀#263
+OUTLOOK_DIRECTORY_SERVER
+
+언어: 코드 · 셀#264
+OUTLOOK_KEYWORD
+
+언어: 코드 · 셀#265
+OUTLOOK_MILEAGE
+
+언어: 코드 · 셀#266
+OUTLOOK_PRIORITY
+
+언어: 코드 · 셀#267
+OUTLOOK_SENSITIVITY
+
+언어: 코드 · 셀#268
+OUTLOOK_SUBJECT
+
+언어: 코드 · 셀#269
+OUTLOOK_USER
+
+언어: 코드 · 셀#270
+HOME
+
+언어: 코드 · 셀#271
+WORK
+
+언어: 코드 · 셀#272
+OTHER
+
+언어: 코드 · 셀#273
+displayNameLastFirst
+
+언어: 코드 · 셀#274
+unstructuredName
+
+언어: 코드 · 셀#275
+familyName
+
+언어: 코드 · 셀#276
+givenName
+
+언어: 코드 · 셀#277
+middleName
+
+언어: 코드 · 셀#278
+honorificPrefix
+
+언어: 코드 · 셀#279
+Mrs.
+
+언어: 코드 · 셀#280
+Dr.
+
+언어: 코드 · 셀#281
+honorificSuffix
+
+언어: 코드 · 셀#282
+Jr.
+
+언어: 코드 · 셀#283
+phoneticFullName
+
+언어: 코드 · 셀#284
+phoneticFamilyName
+
+언어: 코드 · 셀#285
+phoneticGivenName
+
+언어: 코드 · 셀#286
+phoneticMiddleName
+
+언어: 코드 · 셀#287
+phoneticHonorificPrefix
+
+언어: 코드 · 셀#288
+phoneticHonorificSuffix
+
+언어: 코드 · 셀#289
+enum (NicknameType)
+
+언어: 코드 · 셀#290
+NicknameType
+
+언어: 코드 · 셀#291
+DEFAULT
+
+언어: 코드 · 셀#292
+MAIDEN_NAME
+
+언어: 코드 · 셀#293
+INITIALS
+
+언어: 코드 · 셀#294
+GPLUS
+
+언어: 코드 · 셀#295
+OTHER_NAME
+
+언어: 코드 · 셀#296
+Dr. Smith.
+
+언어: 코드 · 셀#297
+ALTERNATE_NAME
+
+언어: 코드 · 셀#298
+SHORT_NAME
+
+언어: 코드 · 셀#299
+carpenter
+
+언어: 코드 · 셀#300
+school
+
+언어: 코드 · 셀#301
+startDate
+
+언어: 코드 · 셀#302
+endDate
+
+언어: 코드 · 셀#303
+name
+
+언어: 코드 · 셀#304
+phoneticName
+
+언어: 코드 · 셀#305
+department
+
+언어: 코드 · 셀#306
+title
+
+언어: 코드 · 셀#307
+jobDescription
+
+언어: 코드 · 셀#308
+symbol
+
+언어: 코드 · 셀#309
+domain
+
+언어: 코드 · 셀#310
+google.com
+
+언어: 코드 · 셀#311
+location
+
+언어: 코드 · 셀#312
+costCenter
+
+언어: 코드 · 셀#313
+fullTimeEquivalentMillipercent
+
+언어: 코드 · 셀#314
+canonicalForm
+
+언어: 코드 · 셀#315
+mobile
+
+언어: 코드 · 셀#316
+homeFax
+
+언어: 코드 · 셀#317
+workFax
+
+언어: 코드 · 셀#318
+otherFax
+
+언어: 코드 · 셀#319
+pager
+
+언어: 코드 · 셀#320
+workMobile
+
+언어: 코드 · 셀#321
+workPager
+
+언어: 코드 · 셀#322
+main
+
+언어: 코드 · 셀#323
+googleVoice
+
+언어: 코드 · 셀#324
+sz={size}
+
+언어: 코드 · 셀#325
+person
+
+언어: 코드 · 셀#326
+spouse
+
+언어: 코드 · 셀#327
+child
+
+언어: 코드 · 셀#328
+mother
+
+언어: 코드 · 셀#329
+father
+
+언어: 코드 · 셀#330
+parent
+
+언어: 코드 · 셀#331
+brother
+
+언어: 코드 · 셀#332
+sister
+
+언어: 코드 · 셀#333
+friend
+
+언어: 코드 · 셀#334
+relative
+
+언어: 코드 · 셀#335
+domesticPartner
+
+언어: 코드 · 셀#336
+manager
+
+언어: 코드 · 셀#337
+assistant
+
+언어: 코드 · 셀#338
+referredBy
+
+언어: 코드 · 셀#339
+partner
+
+언어: 코드 · 셀#340
+relationship
+
+언어: 코드 · 셀#341
+networking
+
+언어: 코드 · 셀#342
+single
+
+언어: 코드 · 셀#343
+inARelationship
+
+언어: 코드 · 셀#344
+engaged
+
+언어: 코드 · 셀#345
+married
+
+언어: 코드 · 셀#346
+itsComplicated
+
+언어: 코드 · 셀#347
+openRelationship
+
+언어: 코드 · 셀#348
+widowed
+
+언어: 코드 · 셀#349
+inDomesticPartnership
+
+언어: 코드 · 셀#350
+inCivilUnion
+
+언어: 코드 · 셀#351
+underwater basket weaving
+
+언어: 코드 · 셀#352
+blog
+
+언어: 코드 · 셀#353
+profile
+
+언어: 코드 · 셀#354
+homePage
+
+언어: 코드 · 셀#355
+ftp
+
+언어: 코드 · 셀#356
+reservations
+
+언어: 코드 · 셀#357
+appInstallPage
+
+언어: 코드 · 셀#358
+batchCreateContacts
+
+언어: 코드 · 셀#359
+batchDeleteContacts
+
+언어: 코드 · 셀#360
+batchUpdateContacts
+
+언어: 코드 · 셀#361
+createContact
+
+언어: 코드 · 셀#362
+deleteContact
+
+언어: 코드 · 셀#363
+deleteContactPhoto
+
+언어: 코드 · 셀#364
+get
+
+언어: 코드 · 셀#365
+getBatchGet
+
+언어: 코드 · 셀#366
+listDirectoryPeople
+
+언어: 코드 · 셀#367
+searchContacts
+
+언어: 코드 · 셀#368
+searchDirectoryPeople
+
+언어: 코드 · 셀#369
+updateContact
+
+언어: 코드 · 셀#370
+updateContactPhoto

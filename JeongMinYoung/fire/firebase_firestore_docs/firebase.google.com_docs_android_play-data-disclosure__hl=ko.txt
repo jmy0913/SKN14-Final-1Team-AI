@@ -1,0 +1,798 @@
+Source URL: https://firebase.google.com/docs/android/play-data-disclosure?hl=ko
+
+## 서문
+2021년 5월, Google Play는 개발자가 앱의 데이터 수집, 공유, 보안 관행과 관련된 공개 정보를 제공하는 새로운 데이터 보안 섹션을 발표했습니다.
+
+이 페이지는 Firebase Android SDK 사용과 관련된 데이터 공개 요건을 충족하는 데 도움이 됩니다. 이 페이지에서는 앱 개발자가 관리할 수 있는 관련 구성 또는 호출의 예를 포함하여 Google SDK에서 최종 사용자 데이터를 처리하는지 여부와 그 방식에 대한 정보를 확인할 수 있습니다.
+
+Google은 최대한 투명한 방식으로 개발자를 지원하기 위해 노력하고 있습니다. 하지만 앱의 최종 사용자 데이터 수집, 공유 및 보안 관행과 관련하여 Google Play의 데이터 보안 섹션 양식에 어떻게 답할지 결정할 책임은 전적으로 앱 개발자에게 있습니다.
+
+## 이 페이지의 정보를 사용하는 방법
+이 페이지에는 각 Firebase Android SDK의 최신 버전에서 수집되는 최종 사용자 데이터만 나열됩니다.
+
+페이지 후반부에 자동 수집되는 데이터와 사용에 따라 수집되는 데이터를 비교한 정보를 제공한 SDK별 섹션이 있습니다. 자동 수집은 앱에서 특정 메서드 또는 클래스를 호출하지 않고 SDK가 특정 데이터를 수집한다는 의미입니다. 하지만 일반적으로 SDK에서 수집하는 데이터는 앱의 특정 제품 사용, 즉, 앱 구성 및 SDK 호출 방법에 따라 달라집니다.
+
+데이터 공개를 충족하려면 Android의 데이터 유형 가이드를 사용하여 수집되는 데이터를 가장 잘 설명한 데이터 유형을 판단하면 됩니다. 데이터 공개에 특정 앱이 수집된 데이터를 공유하고 사용하는 방식도 반영해야 합니다.
+
+항상 앱에서 최신 SDK 버전을 사용합니다. 이 페이지에는 각 SDK의 최신 버전에서 수집되는 데이터만 나와 있습니다.
+
+앱의 SDK 버전을 업데이트할 때마다 이 페이지를 검토하세요. 데이터 공개가 정확하며 최신 정보인지 확인하세요.
+
+## Firebase Android SDK의 데이터 암호화, 데이터 공유, 데이터 삭제 개요
+이 페이지에 나온 수집되는 최종 사용자 데이터의 경우 Firebase에서 HTTPS를 사용해 전송 중 데이터를 암호화합니다.
+
+Firebase에서는 다음과 같은 경우를 제외하고는 이 페이지에 나온 수집되는 최종 사용자 데이터를 제3자에게 전송하지 않습니다.
+
+Firebase 서비스 제공을 지원하는 제3자 보조 프로세서로 전송하는 경우
+
+사용자 지시를 따르는 경우(예: 사용자가 Firebase를 다른 Firebase 외 서비스로 연결하도록 선택)
+
+Firebase를 사용하면 개발자가 Firebase 서비스의 기능과 일관된 방식으로 최종 사용자 데이터를 삭제할 수 있습니다.
+
+### 표
+| 데이터 암호화 | 이 페이지에 나온 수집되는 최종 사용자 데이터의 경우 Firebase에서 HTTPS를 사용해 전송 중 데이터를 암호화합니다. |
+| --- | --- |
+| 데이터 공유 | Firebase에서는 다음과 같은 경우를 제외하고는 이 페이지에 나온 수집되는 최종 사용자 데이터를 제3자에게 전송하지 않습니다.
+
+Firebase 서비스 제공을 지원하는 제3자 보조 프로세서로 전송하는 경우
+사용자 지시를 따르는 경우(예: 사용자가 Firebase를 다른 Firebase 외 서비스로 연결하도록 선택) |
+| 데이터 삭제 | Firebase를 사용하면 개발자가 Firebase 서비스의 기능과 일관된 방식으로 최종 사용자 데이터를 삭제할 수 있습니다. |
+
+## Firebase 사용자 에이전트
+Firebase 사용자 에이전트는 Firebase Android SDK가 아니라 다음을 포함한 여러 Firebase Android SDK에서 수집하는 정보 번들입니다.
+
+기기 메타데이터: OS 버전, 이름, 모델, 브랜드, 폼 팩터
+
+앱 설치에 사용된 앱(예: Play 스토어)(문서 참조)
+
+앱에서 사용되는 Firebase SDK(버전 포함)
+
+Firebase 서비스의 제공, 유지보수, 개선을 위해 Google 내부에서 Firebase 사용자 에이전트를 사용하여 플랫폼 및 버전 채택을 결정하고 있습니다. 사용자 에이전트는 사용자 또는 기기 식별자에는 연결되지 않습니다.
+
+Firebase Android SDK가 Firebase 사용자 에이전트를 수집하면 아래의 SDK 섹션에 나열됩니다.
+
+## A/B Testing
+com.google.firebase:firebase-abt
+
+## 자동으로 수집되는 데이터
+Firebase A/B Testing SDK는 최종 사용자 데이터를 자동으로 수집하지 않습니다.
+
+Firebase A/B Testing SDK에서 Firebase Remote Config 및 Firebase In-App Messaging의 실험 그룹에 멤버십을 지정하기 위해 Google Analytics 사용자 속성을 설정하여 사용합니다.
+
+Firebase Remote Config 및 Firebase In-App Messaging에서만 A/B Testing SDK를 직접 사용하므로 데이터 수집과 데이터 수집 목적에 대한 자세한 내용은 이 페이지의 해당 관련 섹션을 참조하세요.
+
+## 사용에 따라 수집되는 데이터
+Firebase A/B Testing SDK에는 개발자가 다른 최종 사용자 데이터를 수집하도록 구성하거나 호출할 수 있는 선택 기능이 없습니다.
+
+## Firebase AI Logic
+com.google.firebase:firebase-ai
+
+Firebase AI Logic은 이전에 com.google.firebase:firebase-vertexai 패키지와 함께 'Vertex AI in Firebase'라고 불렸습니다.
+
+## 자동으로 수집되는 데이터
+Firebase AI Logic SDK는 다음 데이터를 자동으로 수집합니다.
+
+호출 시 모델 이름을 수집합니다.
+
+앱에서 사용하는 Firebase AI Logic SDK 버전을 수집합니다.
+
+이 값은 각 요청의 헤더에 포함되어 있습니다.
+
+앱에서 사용하는 Kotlin 런타임 버전을 수집합니다.
+
+데이터 수집이 사용 설정된 경우 Firebase 앱 ID를 수집합니다.
+
+데이터 수집이 사용 설정된 경우 앱 버전을 수집합니다.
+
+### 표
+| 데이터 | 기본적으로 Firebase AI Logic SDK에서 수집 |
+| --- | --- |
+| 모델 이름 | 호출 시 모델 이름을 수집합니다. |
+| 앱에서 사용하는 SDK 버전 | 앱에서 사용하는 Firebase AI Logic SDK 버전을 수집합니다.
+
+이 값은 각 요청의 헤더에 포함되어 있습니다. |
+| 언어 버전 | 앱에서 사용하는 Kotlin 런타임 버전을 수집합니다.
+
+이 값은 각 요청의 헤더에 포함되어 있습니다. |
+| Firebase 앱 ID | 데이터 수집이 사용 설정된 경우 Firebase 앱 ID를 수집합니다.
+
+이 값은 각 요청의 헤더에 포함되어 있습니다. |
+| 앱 버전 | 데이터 수집이 사용 설정된 경우 앱 버전을 수집합니다.
+
+이 값은 각 요청의 헤더에 포함되어 있습니다. |
+
+## 사용에 따라 수집되는 데이터
+Firebase AI Logic SDK 및 제품 기능을 구성하거나 호출하는 방식에 따라 앱에서 데이터 공개에 포함해야 하는 최종 사용자 데이터를 수집할 수도 있습니다. 특정 사용으로 수집되는 모든 개발자 정의 최종 사용자 데이터를 고려해야 합니다.
+
+Firebase Authentication와 함께 Firebase AI Logic를 사용하고 최종 사용자가 로그인하면 Firebase AI Logic의 모든 요청에 Firebase Authentication의 해당 사용자 ID가 자동으로 포함됩니다.
+
+Vertex AI Gemini API에 대해 Firebase Console에서 AI 모니터링을 사용 설정하면 각 샘플링된 요청의 프롬프트와 생성된 출력이 성능 및 사용량 측정항목과 함께 수집됩니다.
+
+Firebase AI Logic 문서의 데이터 거버넌스 및 책임감 있는 AI를 검토하여 기본 API(Vertex AI Gemini API 또는 Gemini Developer API) 사용을 고려해야 합니다.
+
+## 추가 정보
+일반적으로 Firebase AI Logic는 앞선 하위 섹션에 나열된 수집 데이터를 사용하여 앱의 요청에 대한 응답으로 백엔드 서비스를 호출합니다. 특정 데이터를 사용하는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집 데이터를 사용하는 구체적인 방식과 SDK에서 수집하는 모든 개발자 정의 최종 사용자 데이터가 사용되는 방법을 모두 반영해야 합니다.
+
+## App Check
+com.google.firebase:firebase-appcheck
+com.google.firebase:firebase-appcheck-ktx
+com.google.firebase:firebase-appcheck-debug
+com.google.firebase:firebase-appcheck-safetynet
+com.google.firebase:firebase-appcheck-playintegrity
+
+## 자동으로 수집되는 데이터
+Firebase App Check SDK는 다음 데이터를 자동으로 수집합니다.
+
+자세한 내용은 이 페이지의 Firebase 사용자 에이전트 섹션을 참조하세요.
+
+### 표
+| 데이터 | 기본적으로 Firebase App Check SDK에서 수집 |
+| --- | --- |
+| Firebase 사용자 에이전트 | 자세한 내용은 이 페이지의 Firebase 사용자 에이전트 섹션을 참조하세요. |
+
+## 사용에 따라 수집되는 데이터
+Firebase App Check SDK 및 제품 기능을 구성하거나 호출하는 방법에 따라 앱에서 데이터 공개에 포함해야 하는 최종 사용자 데이터를 수집할 수도 있습니다. 다음 표에는 사용에 따라 수집할 수 있는 최종 사용자 데이터의 예가 나와 있지만 해당하는 특정 사용으로 수집되는 모든 데이터를 고려해야 합니다.
+
+앱이 SafetyNet을 증명 제공업체로 사용하는 경우 이 증명 토큰을 수집합니다. SafetyNet의 추가 데이터 보안 정보를 참고하세요.
+
+앱이 Play Integrity를 증명 제공업체로 사용하는 경우 이 무결성 토큰을 수집합니다. 자세한 내용은 Play Integrity의 추가 데이터 안전 정보를 참고하세요.
+
+### 표
+| 데이터 | 앱의 구성과 호출에 따라 Firebase App Check SDK에서 수집 |
+| --- | --- |
+| SafetyNet의 증명 토큰 | 앱이 SafetyNet을 증명 제공업체로 사용하는 경우 이 증명 토큰을 수집합니다. SafetyNet의 추가 데이터 보안 정보를 참고하세요. |
+| Play Integrity의 무결성 토큰 | 앱이 Play Integrity를 증명 제공업체로 사용하는 경우 이 무결성 토큰을 수집합니다. 자세한 내용은 Play Integrity의 추가 데이터 안전 정보를 참고하세요. |
+
+## 추가 정보
+Firebase 서비스의 제공, 유지보수, 개선을 위해 Google 내부에서 Firebase 사용자 에이전트를 사용하여 플랫폼 및 버전 채택을 결정하고 있습니다. 사용자 에이전트는 사용자 또는 기기 식별자에는 연결되지 않습니다.
+
+Firebase App Check는 일반적으로 백엔드 리소스가 악용되지 않도록 앞선 하위 섹션에 나열된 다른 수집 데이터를 사용하여 앱 증명을 검증합니다. 특정 데이터를 사용하는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집된 데이터를 공유하고 사용하는 구체적인 방식도 반영해야 합니다.
+
+## App Distribution
+com.google.firebase:firebase-appdistribution
+
+전체 App Distribution Android SDK 구현은 베타 테스트 용도로만 사용됩니다. Google Play에 제출할 때 애플리케이션에 전체 App Distribution SDK 구현을 포함하지 마세요.
+
+com.google.firebase:firebase-appdistribution-api
+com.google.firebase:firebase-appdistribution-api-ktx
+
+## 자동으로 수집되는 데이터
+API 전용 App Distribution Android SDK는 어떠한 최종 사용자 데이터도 자동으로 수집하지 않습니다.
+
+## 사용에 따라 수집되는 데이터
+API 전용 App Distribution Android SDK에는 개발자가 다른 최종 사용자 데이터를 수집하도록 구성하거나 호출할 수 있는 선택 기능이 없습니다.
+
+## Authentication
+com.google.firebase:firebase-auth
+com.google.firebase:firebase-auth-ktx
+
+## 자동으로 수집되는 데이터
+Firebase Authentication SDK는 다음 데이터를 자동으로 수집합니다.
+
+자세한 내용은 이 페이지의 Firebase 사용자 에이전트 섹션을 참조하세요.
+
+IP 주소를 수집하여 보안을 강화하고 가입과 인증 과정에서 데이터의 악용을 차단합니다.
+
+사용자 에이전트 문자열:
+
+앱의 FirebaseUI 사용 여부
+
+앱에서 사용하는 Authentication SDK 버전
+
+기기의 플랫폼
+
+Firebase 서비스를 제공, 유지보수, 개선하기 위해 사용자 에이전트 문자열을 수집합니다.
+
+이 사용자 에이전트는 Firebase 사용자 에이전트를 의미하는 것이 아닙니다.
+
+앱의 Firebase Android 앱 ID(앱의 패키지 이름이 아님)를 수집합니다.
+
+이 값은 각 요청의 헤더에 포함되어 있습니다.
+
+### 표
+| 데이터 | 기본적으로 Firebase Authentication SDK에서 수집 |
+| --- | --- |
+| Firebase 사용자 에이전트 | 자세한 내용은 이 페이지의 Firebase 사용자 에이전트 섹션을 참조하세요. |
+| IP 주소 | IP 주소를 수집하여 보안을 강화하고 가입과 인증 과정에서 데이터의 악용을 차단합니다. |
+| 사용자 에이전트 문자열:
+
+앱의 FirebaseUI 사용 여부
+앱에서 사용하는 Authentication SDK 버전
+기기의 플랫폼 | Firebase 서비스를 제공, 유지보수, 개선하기 위해 사용자 에이전트 문자열을 수집합니다.
+
+이 사용자 에이전트는 Firebase 사용자 에이전트를 의미하는 것이 아닙니다. |
+| Firebase Android 앱 ID | 앱의 Firebase Android 앱 ID(앱의 패키지 이름이 아님)를 수집합니다.
+
+이 값은 각 요청의 헤더에 포함되어 있습니다. |
+
+## 사용에 따라 수집되는 데이터
+Firebase Authentication SDK 및 제품 기능을 구성하거나 호출하는 방법에 따라 앱에서 데이터 공개에 포함해야 하는 최종 사용자 데이터를 수집할 수도 있습니다. 다음 표에는 사용에 따라 수집할 수 있는 최종 사용자 데이터의 예가 나와 있지만 해당하는 특정 사용으로 수집되는 모든 데이터를 고려해야 합니다.
+
+개발자가 제공하는 경우 사용자의 표시 이름을 수집합니다.
+
+앱에서 다음 중 하나를 사용하는 경우 (개발자가 제공한) 사용자 이메일 주소를 수집합니다.
+
+이메일 비밀번호 인증
+
+이메일 링크 인증
+
+인증 방법으로 사용되는 제휴 ID와 이메일 주소가 포함된 제휴 제공업체 응답
+
+앱에서 다음 중 하나를 사용하는 경우 (개발자가 제공한) 사용자 전화번호를 수집합니다.
+
+전화 인증
+
+인증 방법으로 사용되는 전화번호
+
+SMS 2단계 인증 흐름
+
+앱에서 전화 인증을 사용하는 경우 이 무결성 토큰을 수집합니다. 자세한 내용은 Play Integrity의 추가 데이터 안전 정보를 참고하세요.
+
+앱에서 전화 인증을 사용하고 Play Integrity 토큰을 가져오지 못한 경우 이 증명 토큰을 수집합니다. SafetyNet의 추가 데이터 보안 정보를 참고하세요.
+
+앱에서 Authentication 흐름을 보호하기 위해 reCAPTCHA Enterprise를 사용하는 경우 이 토큰을 수집합니다. reCAPTCHA Enterprise의 추가 데이터 보안 정보를 참조하세요.
+
+앱에서 Firebase 인증을 통해 타사 인증 제공업체를 사용하는 경우 타사 인증 제공업체와 관련된 사용자 연락처 정보를 수집합니다.
+
+예를 들어 부여된 범위에 따라, 앱에서 Facebook 인증을 사용하는 경우 사용자의 식별자가 Facebook 프로필에 연결될 수 있습니다.
+
+자세한 내용은 인증 제공업체의 문서를 참조하세요.
+
+앱이 Game Center에 연결되어 있는 경우 사용자의 Game Center ID를 수집합니다.
+
+고유한 Firebase Authentication 식별자를 생성하고 저장합니다.
+
+### 표
+| 데이터 | 앱의 구성과 호출에 따라 Firebase Authentication SDK에서 수집 |
+| --- | --- |
+| 표시 이름 | 개발자가 제공하는 경우 사용자의 표시 이름을 수집합니다. |
+| 이메일 주소 | 앱에서 다음 중 하나를 사용하는 경우 (개발자가 제공한) 사용자 이메일 주소를 수집합니다.
+
+이메일 비밀번호 인증
+이메일 링크 인증
+인증 방법으로 사용되는 제휴 ID와 이메일 주소가 포함된 제휴 제공업체 응답 |
+| 전화번호 | 앱에서 다음 중 하나를 사용하는 경우 (개발자가 제공한) 사용자 전화번호를 수집합니다.
+
+전화 인증
+인증 방법으로 사용되는 전화번호
+SMS 2단계 인증 흐름 |
+| Play Integrity의 무결성 토큰 | 앱에서 전화 인증을 사용하는 경우 이 무결성 토큰을 수집합니다. 자세한 내용은 Play Integrity의 추가 데이터 안전 정보를 참고하세요. |
+| SafetyNet의 증명 토큰 | 앱에서 전화 인증을 사용하고 Play Integrity 토큰을 가져오지 못한 경우 이 증명 토큰을 수집합니다. SafetyNet의 추가 데이터 보안 정보를 참고하세요. |
+| reCAPTCHA Enterprise의 토큰 | 앱에서 Authentication 흐름을 보호하기 위해 reCAPTCHA Enterprise를 사용하는 경우 이 토큰을 수집합니다. reCAPTCHA Enterprise의 추가 데이터 보안 정보를 참조하세요. |
+| 연락처 정보 | 앱에서 Firebase 인증을 통해 타사 인증 제공업체를 사용하는 경우 타사 인증 제공업체와 관련된 사용자 연락처 정보를 수집합니다.
+
+예를 들어 부여된 범위에 따라, 앱에서 Facebook 인증을 사용하는 경우 사용자의 식별자가 Facebook 프로필에 연결될 수 있습니다.
+
+자세한 내용은 인증 제공업체의 문서를 참조하세요. |
+| Game Center ID | 앱이 Game Center에 연결되어 있는 경우 사용자의 Game Center ID를 수집합니다. |
+| 사용자 ID | 고유한 Firebase Authentication 식별자를 생성하고 저장합니다. |
+
+## 추가 정보
+Firebase Authentication에서는 앞선 하위 섹션에 나열된 수집 데이터를 사용하여 인증과 계정 관리를 사용 설정합니다. Firebase 서비스를 제공, 유지보수, 개선하기 위해 사용자 에이전트 문자열을 사용합니다. 특정 데이터를 사용하는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집된 데이터를 공유하고 사용하는 구체적인 방식도 반영해야 합니다.
+
+## Cloud Firestore
+com.google.firebase:firebase-firestore
+com.google.firebase:firebase-firestore-ktx
+
+## 자동으로 수집되는 데이터
+Cloud Firestore SDK는 다음 데이터를 자동으로 수집합니다.
+
+자세한 내용은 이 페이지의 Firebase 사용자 에이전트 섹션을 참조하세요.
+
+### 표
+| 데이터 | 기본적으로 Cloud Firestore SDK에서 수집 |
+| --- | --- |
+| Firebase 사용자 에이전트 | 자세한 내용은 이 페이지의 Firebase 사용자 에이전트 섹션을 참조하세요. |
+
+## 사용에 따라 수집되는 데이터
+Cloud Firestore SDK 및 제품 기능을 구성하거나 호출하는 방법에 따라 앱에서 데이터 공개에 포함해야 하는 최종 사용자 데이터를 수집할 수도 있습니다. 특정 사용으로 수집되는 모든 개발자 정의 최종 사용자 데이터를 고려해야 합니다.
+
+Firebase Authentication와 함께 Cloud Firestore를 사용하고 최종 사용자가 로그인하면 Cloud Firestore의 모든 요청에 Firebase Authentication의 해당 사용자 ID가 자동으로 포함됩니다.
+
+## 추가 정보
+Firebase 서비스의 제공, 유지보수, 개선을 위해 Google 내부에서 Firebase 사용자 에이전트를 사용하여 플랫폼 및 버전 채택을 결정하고 있습니다. 사용자 에이전트는 사용자 또는 기기 식별자에는 연결되지 않습니다.
+
+특정 데이터가 사용되는 방법에 대한 자세한 내용은 위의 하위 섹션을 참조하세요. 데이터 공개에 수집 데이터를 사용하는 구체적인 방식과 SDK에서 수집하는 모든 개발자 정의 최종 사용자 데이터가 사용되는 방법을 모두 반영해야 합니다.
+
+## Cloud Functions for Firebase
+com.google.firebase:firebase-functions
+com.google.firebase:firebase-functions-ktx
+
+## 자동으로 수집되는 데이터
+Cloud Functions for Firebase Client SDK는 다음 데이터를 자동으로 수집합니다.
+
+함수 호출 시 함수 이름을 수집합니다.
+
+최종 사용자 작업에 따라 이벤트 처리 함수와 HTTP 함수를 실행하기 위해 함수 호출 시 함수 호출자의 IP 주소를 수집합니다.
+
+개발자가 FCM 토큰을 자신의 함수에 사용하여 호출 시 호출 기기로 알림을 보내거나 나중에 사용하기 위해 저장할 수 있도록 이 토큰을 수집합니다.
+
+이 토큰은 앱에서 FCM SDK를 포함하거나 사용하는 지에 관계없이 독립적으로 수집됩니다.
+
+### 표
+| 데이터 | 기본적으로 Cloud Functions for Firebase Client SDK에서 수집 |
+| --- | --- |
+| 함수 이름 | 함수 호출 시 함수 이름을 수집합니다. |
+| IP 주소 | 최종 사용자 작업에 따라 이벤트 처리 함수와 HTTP 함수를 실행하기 위해 함수 호출 시 함수 호출자의 IP 주소를 수집합니다. |
+| Firebase Cloud Messaging(FCM) 토큰 | 개발자가 FCM 토큰을 자신의 함수에 사용하여 호출 시 호출 기기로 알림을 보내거나 나중에 사용하기 위해 저장할 수 있도록 이 토큰을 수집합니다.
+
+이 토큰은 앱에서 FCM SDK를 포함하거나 사용하는 지에 관계없이 독립적으로 수집됩니다. |
+
+## 사용에 따라 수집되는 데이터
+Cloud Functions for Firebase Client SDK에는 개발자가 다른 최종 사용자 데이터를 수집하도록 구성하거나 호출할 수 있는 선택 기능이 없습니다.
+
+최종 사용자가 Firebase Authentication을 통해 로그인한 경우 모든 함수 요청에 Firebase Authentication의 해당 사용자 ID가 자동으로 포함됩니다.
+
+## 추가 정보
+일반적으로 Cloud Functions for Firebase는 앞선 하위 섹션에 나열된 수집 데이터를 사용하여 Firebase 기능과 앱의 HTTPS 요청에서 트리거한 이벤트에 대한 응답으로 백엔드 코드를 실행합니다. 특정 데이터가 사용되는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집된 데이터를 공유하고 사용하는 구체적인 방식도 반영해야 합니다.
+
+## Cloud Messaging
+com.google.firebase:firebase-messaging
+com.google.firebase:firebase-messaging-ktx
+
+## 자동으로 수집되는 데이터
+Firebase Cloud Messaging SDK는 다음 데이터를 자동으로 수집합니다.
+
+주제 구독과 구독 취소가 이루어진 앱 버전을 수집합니다.
+
+자세한 내용은 이 페이지의 Firebase 사용자 에이전트 섹션을 참조하세요.
+
+Cloud Messaging에는 Firebase 설치 SDK에 대한 종속 항목이 있습니다. SDK가 전이적으로 앱에 포함되므로 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(이 페이지의 설치 섹션 참조). Cloud Messaging에서 SDK의 데이터 수집을 통해 사용하는 데이터에 대한 자세한 내용은 Firebase 설치 관리 문서를 참조하세요.
+
+### 표
+| 데이터 | 기본적으로 Firebase Cloud Messaging SDK에서 수집 |
+| --- | --- |
+| 애플리케이션 버전 | 주제 구독과 구독 취소가 이루어진 앱 버전을 수집합니다. |
+| Firebase 사용자 에이전트 | 자세한 내용은 이 페이지의 Firebase 사용자 에이전트 섹션을 참조하세요. |
+
+## 사용에 따라 수집되는 데이터
+Firebase Cloud Messaging SDK 및 제품 기능을 구성하거나 호출하는 방법에 따라 앱에서 데이터 공개에 포함해야 하는 최종 사용자 데이터를 수집할 수도 있습니다. 다음 표에는 사용에 따라 수집할 수 있는 최종 사용자 데이터의 예가 나와 있지만 해당하는 특정 사용으로 수집되는 모든 데이터를 고려해야 합니다.
+
+BigQuery 통합을 사용 설정하고 setDeliveryMetricsExportToBigQuery를 true로 설정한 경우 메시지 전송 측정항목을 수집하여 BigQuery로 전송합니다.
+
+Cloud Messaging의 일부 선택 기능은 Google 애널리틱스용 Firebase SDK에 따라 다릅니다. 이 SDK를 앱에 포함하는 경우 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(Google 애널리틱스 문서 참조). 다음 표에는 추가로 로깅되는 데이터가 나와 있습니다.
+
+개발자에게 분석 데이터를 제공하기 위해 Google 애널리틱스용 Firebase SDK를 통해 로깅할 수 있도록 기기 내에서 로컬로 메시지 상호작용 이벤트를 전송합니다.
+
+### 표
+| 데이터 | 앱의 구성과 호출에 따라 Firebase Cloud Messaging SDK에서 수집 |
+| --- | --- |
+| 메시지 전송 측정항목 | BigQuery 통합을 사용 설정하고 setDeliveryMetricsExportToBigQuery를 true로 설정한 경우 메시지 전송 측정항목을 수집하여 BigQuery로 전송합니다. |
+
+| 데이터 | Google 애널리틱스용 Firebase SDK가 앱에 포함된 경우 Cloud Messaging에서 수집 |
+| --- | --- |
+| 알림 상호작용 이벤트 | 개발자에게 분석 데이터를 제공하기 위해 Google 애널리틱스용 Firebase SDK를 통해 로깅할 수 있도록 기기 내에서 로컬로 메시지 상호작용 이벤트를 전송합니다. |
+
+## 추가 정보
+Firebase 서비스의 제공, 유지보수, 개선을 위해 Google 내부에서 Firebase 사용자 에이전트를 사용하여 플랫폼 및 버전 채택을 결정하고 있습니다. 사용자 에이전트는 사용자 또는 기기 식별자에는 연결되지 않습니다.
+
+일반적으로 Cloud Messaging은 앞선 하위 섹션에 나열된 다른 수집 데이터를 사용하여 메시지를 클라이언트 앱에 전송합니다. 특정 데이터를 사용하는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집된 데이터를 공유하고 사용하는 구체적인 방식도 반영해야 합니다.
+
+## Cloud Storage for Firebase
+com.google.firebase:firebase-storage
+com.google.firebase:firebase-storage-ktx
+
+## 자동으로 수집되는 데이터
+Cloud Storage for Firebase SDK는 다음 데이터를 자동으로 수집합니다.
+
+앱에서 사용하는 Cloud Storage for Firebase SDK 버전을 수집합니다.
+
+이 값은 각 요청의 헤더에 포함되어 있습니다.
+
+앱의 Firebase Android 앱 ID(앱의 패키지 이름이 아님)를 수집합니다.
+
+### 표
+| 데이터 | 기본적으로 Firebase Cloud Messaging SDK에서 수집 |
+| --- | --- |
+| 앱에서 사용하는 Cloud Storage SDK 버전 | 앱에서 사용하는 Cloud Storage for Firebase SDK 버전을 수집합니다.
+
+이 값은 각 요청의 헤더에 포함되어 있습니다. |
+| Firebase Android 앱 ID | 앱의 Firebase Android 앱 ID(앱의 패키지 이름이 아님)를 수집합니다.
+
+이 값은 각 요청의 헤더에 포함되어 있습니다. |
+
+## 사용에 따라 수집되는 데이터
+Cloud Storage for Firebase SDK 및 제품 기능을 구성하거나 호출하는 방법에 따라 앱에서 데이터 공개에 포함해야 하는 최종 사용자 데이터를 수집할 수도 있습니다. 특정 사용으로 수집되는 모든 개발자 정의 최종 사용자 데이터를 고려해야 합니다.
+
+Firebase Authentication와 함께 Cloud Storage for Firebase를 사용하고 최종 사용자가 로그인하면 Cloud Storage for Firebase의 모든 요청에 Firebase Authentication의 해당 사용자 ID가 자동으로 포함됩니다.
+
+## 추가 정보
+일반적으로 Cloud Storage for Firebase는 앞선 하위 섹션에 나열된 수집 데이터를 사용하여 Firebase 서비스를 제공, 유지보수, 개선합니다. 특정 데이터를 사용하는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집 데이터를 사용하는 구체적인 방식과 SDK에서 수집하는 모든 개발자 정의 최종 사용자 데이터가 사용되는 방법을 모두 반영해야 합니다.
+
+## Crashlytics
+com.google.firebase:firebase-crashlytics
+com.google.firebase:firebase-crashlytics-ktx
+com.google.firebase:firebase-crashlytics-ndk
+
+## 자동으로 수집되는 데이터
+Firebase Crashlytics SDK는 다음 데이터를 자동으로 수집합니다.
+
+애플리케이션이 비정상 종료될 때 스택 트레이스를 수집합니다.
+
+애플리케이션이 비정상 종료될 때 관련 애플리케이션 상태를 수집합니다.
+
+애플리케이션이 비정상 종료될 때 기기의 특정 시점 메타데이터를 수집합니다.
+
+비정상 종료의 영향을 받는 사용자 수를 측정하기 위해 Crashlytics 설치 UUID를 생성하고 저장합니다.
+
+Crashlytics에는 Firebase 설치 SDK에 대한 종속 항목이 있습니다. SDK가 전이적으로 앱에 포함되므로 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(이 페이지의 설치 섹션 참조). Crashlytics는 앱 인스턴스의 Firebase 설치 ID 변경사항에 따라 Crashlytics 설치 UUID를 순환하는 경우를 제외하고 Firebase 설치 SDK에서 수집한 데이터를 사용하지 않습니다.
+
+또한 Crashlytics에는 Firebase Console에 품질 측정항목을 제공하기 위한 Firebase sessions SDK에 대한 종속 항목이 있습니다. SDK가 전이적으로 앱에 포함되므로 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(이 페이지의 Firebase sessions SDK 섹션 참조).
+
+### 표
+| 데이터 | 기본적으로 Firebase Crashlytics SDK에서 수집 |
+| --- | --- |
+| 스택 추적 | 애플리케이션이 비정상 종료될 때 스택 트레이스를 수집합니다. |
+| 관련 애플리케이션 상태 | 애플리케이션이 비정상 종료될 때 관련 애플리케이션 상태를 수집합니다. |
+| 관련 기기 메타데이터 | 애플리케이션이 비정상 종료될 때 기기의 특정 시점 메타데이터를 수집합니다. |
+| Crashlytics 설치 UUID | 비정상 종료의 영향을 받는 사용자 수를 측정하기 위해 Crashlytics 설치 UUID를 생성하고 저장합니다. |
+
+## 사용에 따라 수집되는 데이터
+Firebase Crashlytics SDK 및 제품 기능을 구성하거나 호출하는 방법에 따라 앱에서 데이터 공개에 포함해야 하는 최종 사용자 데이터를 수집할 수도 있습니다. 다음 표에는 사용에 따라 수집할 수 있는 최종 사용자 데이터의 예가 나와 있지만 해당하는 특정 사용으로 수집되는 모든 데이터를 고려해야 합니다.
+
+개발자가 비정상 종료 보고서에 첨부하는 커스텀 키, 로그, 자유 텍스트 사용자 ID를 수집합니다.
+
+커스텀 스택 트레이스로 개발자가 정의한 심각하지 않은 이벤트를 모두 수집합니다.
+
+Crashlytics의 일부 선택 기능은 Google 애널리틱스용 Firebase SDK에 따라 다릅니다. 이 SDK를 앱에 포함하는 경우 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(Google 애널리틱스 문서 참조). 다음 표에는 Crashlytics에서 해당 데이터 수집에서 사용하는 데이터가 나와 있습니다.
+
+Google 애널리틱스용 Firebase SDK에서 수집하는 '탐색경로' 로그를 사용합니다. 이러한 로그에서는 비정상 종료 횟수와 함께 비정상 종료 직전의 사용자 작업을 식별합니다.
+
+앱에 Firebase Remote Config SDK도 포함하는 경우 Crashlytics SDK에서 자동으로 수집하는 개발자 정의 Remote Config 데이터를 고려해야 합니다. 다음 표에는 Crashlytics SDK에서 수집하는 데이터가 나와 있습니다.
+
+출시 메타데이터를 수집합니다. 이 메타데이터에는 Remote Config 템플릿 버전, 출시 변형 ID, 파라미터 키, 활성 출시의 영향을 받는 파라미터 값이 포함됩니다.
+
+### 표
+| 데이터 | 앱의 구성과 호출에 따라 Firebase Crashlytics SDK에서 수집 |
+| --- | --- |
+| 개발자가 정의한 데이터 | 개발자가 비정상 종료 보고서에 첨부하는 커스텀 키, 로그, 자유 텍스트 사용자 ID를 수집합니다. |
+| 개발자가 정의한 데이터 | 커스텀 스택 트레이스로 개발자가 정의한 심각하지 않은 이벤트를 모두 수집합니다. |
+
+| 데이터 | Google 애널리틱스용 Firebase SDK가 앱에 포함된 경우 Crashlytics에서 수집 |
+| --- | --- |
+| '탐색경로' 로그 | Google 애널리틱스용 Firebase SDK에서 수집하는 '탐색경로' 로그를 사용합니다. 이러한 로그에서는 비정상 종료 횟수와 함께 비정상 종료 직전의 사용자 작업을 식별합니다. |
+
+| 데이터 | 앱에 Firebase Remote Config SDK가 포함된 경우 Crashlytics SDK에서 수집 |
+| --- | --- |
+| 개발자가 정의한 Remote Config 출시 메타데이터 | 출시 메타데이터를 수집합니다. 이 메타데이터에는 Remote Config 템플릿 버전, 출시 변형 ID, 파라미터 키, 활성 출시의 영향을 받는 파라미터 값이 포함됩니다. |
+
+## 추가 정보
+일반적으로 Firebase Crashlytics는 앞선 하위 섹션에 나열된 수집 데이터를 사용하여 비정상 종료 보고와 비정상 종료 관리 서비스를 사용 설정합니다. 특정 데이터를 사용하는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집 데이터를 사용하는 구체적인 방식과 SDK에서 수집하는 모든 개발자 정의 최종 사용자 데이터가 사용되는 방법을 모두 반영해야 합니다.
+
+## Data Connect
+com.google.firebase:firebase-dataconnect
+
+## 자동으로 수집되는 데이터
+Firebase Data Connect SDK는 다음 데이터를 자동으로 수집합니다.
+
+Data Connect 서비스에 대한 요청이 Data Connect 코드 생성기에서 생성된 코드에서 발생하는지 또는 Data Connect SDK의 직접 사용에서 발생하는지 수집합니다.
+
+이 값은 각 요청의 헤더에 포함되어 있습니다.
+
+앱의 Firebase Android 앱 ID(앱의 패키지 이름이 아님)를 수집합니다.
+
+자세한 내용은 이 페이지의 Firebase 사용자 에이전트 섹션을 참조하세요.
+
+### 표
+| 데이터 | 기본적으로 Data Connect SDK에서 수집 |
+| --- | --- |
+| Data Connect의 로컬 코드 생성이 사용 중인지 여부 | Data Connect 서비스에 대한 요청이 Data Connect 코드 생성기에서 생성된 코드에서 발생하는지 또는 Data Connect SDK의 직접 사용에서 발생하는지 수집합니다.
+
+이 값은 각 요청의 헤더에 포함되어 있습니다. |
+| Firebase Android 앱 ID | 앱의 Firebase Android 앱 ID(앱의 패키지 이름이 아님)를 수집합니다.
+
+이 값은 각 요청의 헤더에 포함되어 있습니다. |
+| Firebase 사용자 에이전트 | 자세한 내용은 이 페이지의 Firebase 사용자 에이전트 섹션을 참조하세요. |
+
+## 사용에 따라 수집되는 데이터
+Data Connect SDK 및 제품 기능을 구성하거나 호출하는 방법에 따라 앱에서 데이터 공개에 포함해야 하는 최종 사용자 데이터를 수집할 수도 있습니다. 특정 사용으로 수집되는 모든 개발자 정의 최종 사용자 데이터를 고려해야 합니다.
+
+Firebase Authentication과 함께 Data Connect를 사용하고 최종 사용자가 로그인하면 Data Connect의 모든 요청에 Firebase Authentication의 해당 사용자 ID가 자동으로 포함됩니다.
+
+## 추가 정보
+Firebase 서비스의 제공, 유지보수, 개선을 위해 Google 내부에서 Firebase 사용자 에이전트를 사용하여 플랫폼 및 버전 채택을 결정하고 있습니다. 사용자 에이전트는 사용자 또는 기기 식별자에는 연결되지 않습니다.
+
+특정 데이터가 사용되는 방법에 대한 자세한 내용은 위의 하위 섹션을 참조하세요. 데이터 공개에 수집 데이터를 사용하는 구체적인 방식과 SDK에서 수집하는 모든 개발자 정의 최종 사용자 데이터가 사용되는 방법을 모두 반영해야 합니다.
+
+## Dynamic Links
+com.google.firebase:firebase-dynamic-links
+com.google.firebase:firebase-dynamic-links-ktx
+
+## 자동으로 수집되는 데이터
+Firebase Dynamic Links SDK는 다음 데이터를 자동으로 수집합니다.
+
+링크를 만들 때 개발자가 링크에 설정한 개발자 정의 메타데이터를 포함한 동적 링크 URL을 URL과 상호작용할 때 수집합니다.
+
+Firebase Dynamic Links SDK가 통합된 상태로 앱이 설치되면 Firebase에서 앱 상태 및 링크 상호작용 이벤트를 로깅합니다.
+
+사용자가 Firebase 동적 링크와 상호작용하면 앱이 사용자 기기에 설치되어 있는지 여부와 관계없이 다음 데이터가 자동으로 로깅됩니다.
+
+URL과 상호작용할 때 동적 링크 URL을 로깅합니다. 여기에는 링크를 만들 때 개발자가 링크에 설정한 개발자 정의 메타데이터가 포함됩니다.
+
+지연된 딥 링크(앱 설치 후 딥 링크)의 앱 패키지 이름을 로깅합니다.
+
+설치 상태와 전에 앱을 실행했는지 여부 등 사용자 기기의 앱 상태와 관련된 정보를 로깅합니다.
+
+링크 상호작용 이벤트를 로깅합니다.
+
+### 표
+| 데이터 | 기본적으로 Firebase Dynamic Links SDK에서 수집 |
+| --- | --- |
+| 동적 링크 URL | 링크를 만들 때 개발자가 링크에 설정한 개발자 정의 메타데이터를 포함한 동적 링크 URL을 URL과 상호작용할 때 수집합니다. |
+
+| 데이터 | 기본적으로 Firebase에서 수집 |
+| --- | --- |
+| 동적 링크 URL | URL과 상호작용할 때 동적 링크 URL을 로깅합니다. 여기에는 링크를 만들 때 개발자가 링크에 설정한 개발자 정의 메타데이터가 포함됩니다. |
+| 앱의 패키지 이름 | 지연된 딥 링크(앱 설치 후 딥 링크)의 앱 패키지 이름을 로깅합니다. |
+| 앱 상태 | 설치 상태와 전에 앱을 실행했는지 여부 등 사용자 기기의 앱 상태와 관련된 정보를 로깅합니다. |
+| 링크 상호작용 이벤트 | 링크 상호작용 이벤트를 로깅합니다. |
+
+## 사용에 따라 수집되는 데이터
+Firebase Dynamic Links SDK에는 개발자가 다른 최종 사용자 데이터를 수집하도록 구성하거나 호출할 수 있는 선택 기능이 없습니다.
+
+Dynamic Links의 일부 선택 기능은 Google 애널리틱스용 Firebase SDK에 따라 다릅니다. 이 SDK를 앱에 포함하는 경우 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(Google 애널리틱스 문서 참조). 다음 표에는 추가로 로깅되는 데이터가 나와 있습니다.
+
+개발자에게 분석 데이터를 제공하기 위해 Google 애널리틱스용 Firebase SDK를 통해 로깅할 수 있도록 기기 내에서 로컬로 링크 상호작용 이벤트를 전송합니다.
+
+### 표
+| 데이터 | Google 애널리틱스용 Firebase SDK가 앱에 포함된 경우 Dynamic Links에서 수집 |
+| --- | --- |
+| 링크 상호작용 이벤트 | 개발자에게 분석 데이터를 제공하기 위해 Google 애널리틱스용 Firebase SDK를 통해 로깅할 수 있도록 기기 내에서 로컬로 링크 상호작용 이벤트를 전송합니다. |
+
+## 추가 정보
+일반적으로 Firebase Dynamic Links는 앞선 하위 섹션에 나열된 수집 데이터를 사용하여 최종 사용자를 앱 내 연결된 콘텐츠로 직접 이동시킵니다. 특정 데이터를 사용하는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집 데이터를 사용하는 구체적인 방식과 SDK에서 수집하는 모든 개발자 정의 최종 사용자 데이터가 사용되는 방법을 모두 반영해야 합니다.
+
+## Google Analytics
+com.google.firebase:firebase-analytics
+com.google.firebase:firebase-analytics-ktx
+
+Google 애널리틱스 문서에서 Google 애널리틱스 데이터 수집 정보를 확인하세요.
+
+## In-App Messaging
+com.google.firebase:firebase-inappmessaging
+com.google.firebase:firebase-inappmessaging-display
+com.google.firebase:firebase-inappmessaging-ktx
+com.google.firebase:firebase-inappmessaging-display-ktx
+
+## 자동으로 수집되는 데이터
+Firebase In-App Messaging SDK는 다음 데이터를 자동으로 수집합니다.
+
+개발자에게 분석 데이터를 제공하기 위해 메시지 상호작용 이벤트를 전송합니다.
+
+In-App Messaging에는 Google 애널리틱스용 Firebase SDK에 대한 필수 종속 항목이 있습니다. 이 SDK를 앱에 포함해야 하므로 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(Google 애널리틱스 문서 참조). 다음 표에는 In-App Messaging SDK가 Google Analytics의 데이터와 상호작용하는 방법의 예시가 나와 있습니다.
+
+개발자에게 분석 데이터를 제공하기 위해 Google 애널리틱스용 Firebase SDK를 통해 로깅할 수 있도록 기기 내에서 로컬로 메시지 상호작용 이벤트를 전송합니다.
+
+사용자 속성 조건을 기반으로 하는 메시지를 타겟팅하기 위해 Google Analytics용 Firebase SDK에서 수집한 사용자 속성을 설정하고 사용합니다.
+
+In-App Messaging에는 Firebase 설치 SDK에 대한 종속 항목도 있습니다. SDK가 전이적으로 앱에 포함되므로 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(이 페이지의 설치 섹션 참조). In-App Messaging에서 SDK의 데이터 수집을 통해 사용하는 데이터에 대한 자세한 내용은 Firebase 설치 관리 문서를 참조하세요.
+
+### 표
+| 데이터 | 기본적으로 Firebase In-App Messaging SDK에서 수집 |
+| --- | --- |
+| 노출수, 클릭수, 닫기 등 메시지 상호작용 이벤트 | 개발자에게 분석 데이터를 제공하기 위해 메시지 상호작용 이벤트를 전송합니다. |
+
+| 데이터 | Google 애널리틱스용 Firebase SDK가 앱에 포함된 경우 Firebase In-App Messaging에서 수집 |
+| --- | --- |
+| 노출수, 클릭수, 닫기 등 메시지 상호작용 이벤트 | 개발자에게 분석 데이터를 제공하기 위해 Google 애널리틱스용 Firebase SDK를 통해 로깅할 수 있도록 기기 내에서 로컬로 메시지 상호작용 이벤트를 전송합니다. |
+| 사용자 속성 | 사용자 속성 조건을 기반으로 하는 메시지를 타겟팅하기 위해 Google Analytics용 Firebase SDK에서 수집한 사용자 속성을 설정하고 사용합니다. |
+
+## 사용에 따라 수집되는 데이터
+Firebase In-App Messaging SDK에는 개발자가 다른 최종 사용자 데이터를 수집하도록 구성하거나 호출할 수 있는 선택 기능이 없습니다.
+
+## 추가 정보
+일반적으로 Firebase In-App Messaging은 앞선 하위 섹션에 나열된 수집 데이터를 사용하여 앱 내에서 메시지를 최종 사용자에게 전송합니다. 특정 데이터를 사용하는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집된 데이터를 사용하는 구체적인 방식도 반영해야 합니다.
+
+## 설치
+com.google.firebase:firebase-installations
+com.google.firebase:firebase-installations-ktx
+
+## 자동으로 수집되는 데이터
+Firebase 설치 SDK는 다음 데이터를 자동으로 수집합니다.
+
+사용자 또는 실제 기기를 고유하게 식별하지 않는 설치당 식별자(FID)를 생성하고 수집합니다.
+
+자세한 내용은 이 페이지의 Firebase 사용자 에이전트 섹션을 참조하세요.
+
+### 표
+| 데이터 | 기본적으로 Firebase 설치 SDK에서 수집 |
+| --- | --- |
+| Firebase 설치 ID(FID) | 사용자 또는 실제 기기를 고유하게 식별하지 않는 설치당 식별자(FID)를 생성하고 수집합니다. |
+| Firebase 사용자 에이전트 | 자세한 내용은 이 페이지의 Firebase 사용자 에이전트 섹션을 참조하세요. |
+
+## 사용에 따라 수집되는 데이터
+Firebase 설치 SDK에는 개발자가 다른 최종 사용자 데이터를 수집하도록 구성하거나 호출할 수 있는 선택 기능이 없습니다.
+
+## 추가 정보
+Firebase 서비스의 제공, 유지보수, 개선을 위해 Google 내부에서 Firebase 사용자 에이전트를 사용하여 플랫폼 및 버전 채택을 결정하고 있습니다. 사용자 에이전트는 사용자 또는 기기 식별자에는 연결되지 않습니다.
+
+일반적으로 Firebase 설치는 앞선 하위 섹션에 나열된 다른 수집 데이터를 사용하여 앱 설치를 식별하는 고유 식별자를 제공합니다. 특정 데이터를 사용하는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집된 데이터를 공유하고 사용하는 구체적인 방식도 반영해야 합니다.
+
+## Firebase ML 모델 다운로더
+com.google.firebase:firebase-ml-modeldownloader
+com.google.firebase:firebase-ml-modeldownloader-ktx
+
+## 자동으로 수집되는 데이터
+Firebase ML 모델 다운로더 SDK는 다음 데이터를 자동으로 수집합니다.
+
+모델 다운로드 이벤트 메타데이터를 수집하여 안정성 및 지연 시간 문제를 모니터링합니다.
+
+앱 인스턴스와 상호작용(예: 개발자 모델을 앱 인스턴스에 배포)할 때 기기 인증을 위한 설치 인증 토큰을 수집합니다.
+
+Firebase ML 모델 다운로더에는 Firebase 설치 SDK에 대한 종속 항목이 있습니다. SDK가 전이적으로 앱에 포함되므로 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(이 페이지의 설치 섹션 참조). Firebase ML 모델 다운로드에서 SDK의 데이터 수집을 통해 사용하는 데이터에 대한 자세한 내용은 Firebase 설치 관리 문서를 참조하세요.
+
+### 표
+| 데이터 | 기본적으로 Firebase ML 모델 다운로더 SDK에서 수집 |
+| --- | --- |
+| 다운로드 이벤트, 삭제 이벤트, 오류를 포함한 ML 모델 다운로드 메타데이터 | 모델 다운로드 이벤트 메타데이터를 수집하여 안정성 및 지연 시간 문제를 모니터링합니다. |
+| 설치 인증 토큰 | 앱 인스턴스와 상호작용(예: 개발자 모델을 앱 인스턴스에 배포)할 때 기기 인증을 위한 설치 인증 토큰을 수집합니다. |
+
+## 사용에 따라 수집되는 데이터
+Firebase ML 모델 다운로더 SDK에는 개발자가 다른 최종 사용자 데이터를 수집하도록 구성하거나 호출할 수 있는 선택 기능이 없습니다.
+
+## 추가 정보
+일반적으로 Firebase ML은 앞선 하위 섹션에 나열된 수집 데이터를 사용하여 ML 모델을 다운로드합니다. Firebase ML은 모델 다운로드 메타데이터를 집계하고 사용하여 제품 품질을 모니터링하고 사용을 파악 제품 방향을 알립니다. 특정 데이터를 사용하는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집된 데이터를 공유하고 사용하는 구체적인 방식도 반영해야 합니다.
+
+## Performance Monitoring
+com.google.firebase:firebase-perf
+com.google.firebase:firebase-perf-ktx
+
+## 자동으로 수집되는 데이터
+Firebase Performance Monitoring SDK는 다음 데이터를 자동으로 수집합니다.
+
+앱의 수명 주기 중에는 물론 최종 사용자가 앱을 사용하는 동안 앱 성능 측정항목을 수집합니다.
+
+애플리케이션의 CPU/메모리 사용량을 수집하여 앱 성능의 타임라인 뷰를 제공합니다.
+
+관련 기기 메타데이터를 수집하여 다양한 기기 세그먼트를 기준으로 성능 데이터를 필터링합니다.
+
+IP 주소를 수집하여 성능 이벤트를 이벤트가 시작된 국가에 매핑합니다.
+
+Performance Monitoring에는 Firebase 설치 SDK에 대한 종속 항목이 있습니다. SDK가 전이적으로 앱에 포함되므로 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(이 페이지의 설치 섹션 참조). Performance Monitoring에서 SDK의 데이터 수집을 통해 사용하는 데이터에 대한 자세한 내용은 Firebase 설치 관리 문서를 참조하세요.
+
+Performance Monitoring에도 애플리케이션에서 수집되는 이벤트 볼륨을 제어하는 데 도움이 되는 Firebase Remote Config SDK에 대한 종속 항목이 있습니다. SDK가 전이적으로 앱에 포함되므로 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(이 페이지의 Remote Config 섹션 참조).
+
+Performance Monitoring에는 Firebase Console에서 성능 데이터의 타임라인 뷰를 보고하기 위한 Firebase sessions SDK에 대한 종속 항목도 있습니다. SDK가 전이적으로 앱에 포함되므로 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(이 페이지의 Firebase sessions SDK 섹션 참조).
+
+### 표
+| 데이터 | 기본적으로 Firebase Performance Monitoring SDK에서 수집 |
+| --- | --- |
+| 앱 시작 시간 및 네트워크 요청 지연 시간을 포함한 앱 성능 측정항목 | 앱의 수명 주기 중에는 물론 최종 사용자가 앱을 사용하는 동안 앱 성능 측정항목을 수집합니다. |
+| CPU/메모리 사용량 | 애플리케이션의 CPU/메모리 사용량을 수집하여 앱 성능의 타임라인 뷰를 제공합니다. |
+| 관련 기기 메타데이터 | 관련 기기 메타데이터를 수집하여 다양한 기기 세그먼트를 기준으로 성능 데이터를 필터링합니다. |
+| IP 주소 | IP 주소를 수집하여 성능 이벤트를 이벤트가 시작된 국가에 매핑합니다. |
+
+## 사용에 따라 수집되는 데이터
+Firebase Performance Monitoring SDK 및 제품 기능을 구성하거나 호출하는 방법에 따라 앱에서 데이터 공개에 포함해야 하는 최종 사용자 데이터를 수집할 수도 있습니다. 다음 표에는 사용에 따라 수집할 수 있는 최종 사용자 데이터의 예가 나와 있지만 해당하는 특정 사용으로 수집되는 모든 데이터를 고려해야 합니다.
+
+개발자가 앱에서 계측하는 커스텀 trace의 앱 성능 측정항목을 수집합니다.
+
+개발자가 커스텀 trace에 연결하는 모든 커스텀 성능 측정항목을 수집합니다.
+
+개발자가 커스텀 trace에 연결하는 모든 커스텀 속성을 수집합니다.
+
+### 표
+| 데이터 | 앱의 구성과 호출에 따라 Firebase Performance Monitoring SDK에서 수집 |
+| --- | --- |
+| 개발자가 정의한 커스텀 trace | 개발자가 앱에서 계측하는 커스텀 trace의 앱 성능 측정항목을 수집합니다. |
+| 커스텀 성능 측정항목
+(개발자 정의 데이터) | 개발자가 커스텀 trace에 연결하는 모든 커스텀 성능 측정항목을 수집합니다. |
+| 커스텀 속성
+(개발자 정의 데이터) | 개발자가 커스텀 trace에 연결하는 모든 커스텀 속성을 수집합니다. |
+
+## 추가 정보
+일반적으로 Firebase Performance Monitoring은 앞선 하위 섹션에 나열된 수집 데이터를 사용하여 앱 성능 보고 및 모니터링을 사용 설정합니다. 특정 데이터를 사용하는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집 데이터를 사용하는 구체적인 방식과 SDK에서 수집하는 모든 개발자 정의 최종 사용자 데이터가 사용되는 방법을 모두 반영해야 합니다.
+
+## Realtime Database
+com.google.firebase:firebase-database
+com.google.firebase:firebase-database-ktx
+
+## 자동으로 수집되는 데이터
+Firebase Realtime Database SDK는 다음 데이터를 자동으로 수집합니다.
+
+IP 주소를 수집하여 개발자가 사용 트렌드 및 플랫폼 분류를 파악하는 데 도움이 되는 프로파일러 도구를 지원합니다.
+
+사용자 에이전트 문자열을 수집하여 개발자가 사용 트렌드 및 플랫폼 분류를 파악하는 데 도움이 되는 프로파일러 도구를 지원합니다.
+
+이 사용자 에이전트는 Firebase 사용자 에이전트를 의미하는 것이 아닙니다.
+
+### 표
+| 데이터 | 기본적으로 Firebase Realtime Database SDK에서 수집 |
+| --- | --- |
+| IP 주소 | IP 주소를 수집하여 개발자가 사용 트렌드 및 플랫폼 분류를 파악하는 데 도움이 되는 프로파일러 도구를 지원합니다. |
+| 사용자 에이전트 | 사용자 에이전트 문자열을 수집하여 개발자가 사용 트렌드 및 플랫폼 분류를 파악하는 데 도움이 되는 프로파일러 도구를 지원합니다.
+
+이 사용자 에이전트는 Firebase 사용자 에이전트를 의미하는 것이 아닙니다. |
+
+## 사용에 따라 수집되는 데이터
+Firebase Realtime Database SDK 및 제품 기능을 구성하거나 호출하는 방법에 따라 앱에서 데이터 공개에 포함해야 하는 최종 사용자 데이터를 수집할 수도 있습니다. 특정 사용으로 수집되는 모든 개발자 정의 최종 사용자 데이터를 고려해야 합니다.
+
+Firebase Authentication와 함께 Realtime Database를 사용하고 최종 사용자가 로그인하면 Realtime Database의 모든 요청에 Firebase Authentication의 해당 사용자 ID가 자동으로 포함됩니다.
+
+## 추가 정보
+특정 데이터가 사용되는 방법에 대한 자세한 내용은 위의 하위 섹션을 참조하세요. 데이터 공개에 수집 데이터를 사용하는 구체적인 방식과 SDK에서 수집하는 모든 개발자 정의 최종 사용자 데이터가 사용되는 방법을 모두 반영해야 합니다.
+
+## Remote Config
+com.google.firebase:firebase-config
+com.google.firebase:firebase-config-ktx
+
+## 자동으로 수집되는 데이터
+Firebase Remote Config SDK는 다음 데이터를 자동으로 수집합니다.
+
+이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 국가 코드를 수집합니다.
+
+이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 언어 코드를 수집합니다.
+
+이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 시간대를 수집합니다.
+
+이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 플랫폼 버전을 수집합니다.
+
+이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 OS 버전을 수집합니다.
+
+이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 앱의 Firebase Android 앱 ID(앱의 패키지 이름이 아님)를 수집합니다.
+
+이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 패키지 이름을 수집합니다.
+
+Firebase 서비스를 수집, 유지보수, 개선하기 위해 SDK 버전을 수집합니다.
+
+Remote Config에는 Firebase 설치 SDK에 대한 종속 항목이 있습니다. SDK가 전이적으로 앱에 포함되므로 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(이 페이지의 설치 섹션 참조). Remote Config에서 SDK의 데이터 수집을 통해 사용하는 데이터에 대한 자세한 내용은 Firebase 설치 관리 문서를 참조하세요.
+
+### 표
+| 데이터 | 기본적으로 Firebase Remote Config SDK에서 수집 |
+| --- | --- |
+| 국가 코드 | 이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 국가 코드를 수집합니다. |
+| 언어 코드 | 이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 언어 코드를 수집합니다. |
+| 시간대 | 이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 시간대를 수집합니다. |
+| 플랫폼 버전 | 이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 플랫폼 버전을 수집합니다. |
+| OS 버전 | 이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 OS 버전을 수집합니다. |
+| Firebase Android 앱 ID | 이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 앱의 Firebase Android 앱 ID(앱의 패키지 이름이 아님)를 수집합니다. |
+| 앱의 패키지 이름 | 이 데이터를 기반으로 하는 매개변수를 타겟팅하기 위해 패키지 이름을 수집합니다. |
+| 앱에서 사용하는 Remote Config SDK 버전 | Firebase 서비스를 수집, 유지보수, 개선하기 위해 SDK 버전을 수집합니다. |
+
+## 사용에 따라 수집되는 데이터
+Firebase Remote Config SDK에는 개발자가 다른 최종 사용자 데이터를 수집하도록 구성하거나 호출할 수 있는 선택 기능이 없습니다.
+
+Remote Config의 일부 선택 기능은 Google 애널리틱스용 Firebase SDK에 따라 다릅니다. 이 SDK를 앱에 포함하는 경우 SDK에서 자동으로 수집하는 최종 사용자 데이터를 고려해야 합니다(Google 애널리틱스 문서 참조). 다음 표에는 Remote Config SDK가 Google Analytics의 데이터와 상호작용하는 방법의 예시가 나와 있습니다.
+
+사용자 속성 조건을 기반으로 하는 파라미터를 타겟팅하기 위해 Google Analytics용 Firebase SDK에서 획득한 사용자 속성을 수집합니다.
+
+처음 열 때를 기준으로 파라미터를 타겟팅하기 위해 Google Analytics용 Firebase SDK에서 획득한 first_open 이벤트 타임스탬프를 수집합니다.
+
+Remote Config 맞춤설정을 구현하면 Firebase Remote Config SDK에서 획득한 데이터와 Google Analytics용 Firebase SDK에서 획득한 이벤트를 사용하여 예측 모델을 구성하고 모델 성능을 측정할 수 있습니다.
+
+### 표
+| 데이터 | Google 애널리틱스용 Firebase SDK가 앱에 포함된 경우 Remote Config에서 수집 |
+| --- | --- |
+| 사용자 속성 | 사용자 속성 조건을 기반으로 하는 파라미터를 타겟팅하기 위해 Google Analytics용 Firebase SDK에서 획득한 사용자 속성을 수집합니다. |
+| 최초 실행 시간 | 처음 열 때를 기준으로 파라미터를 타겟팅하기 위해 Google Analytics용 Firebase SDK에서 획득한 first_open 이벤트 타임스탬프를 수집합니다. |
+
+## 추가 정보
+일반적으로 Firebase Remote Config는 앞선 하위 섹션에 나열된 수집 데이터를 사용하여 앱 업데이트를 게시하지 않고도 앱의 동작과 모양을 변경합니다. Firebase는 OS 버전 및 SDK 버전의 집계된 데이터를 사용하여 사용 트렌드를 이해하고 제품 방향을 파악합니다. 특정 데이터를 사용하는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집된 데이터를 사용하는 구체적인 방식도 반영해야 합니다.
+
+## 전이적으로 포함된 Firebase 라이브러리
+이 섹션에 나열된 Firebase 라이브러리는 전이적으로 다른 일부 Firebase 라이브러리에 포함됩니다. 다음 라이브러리에는 개발자가 액세스할 수 있는 표면이 없지만 최종 사용자 데이터를 수집할 수 있습니다(자세한 내용은 아래 각 라이브러리 참조).
+
+## Firebase 세션
+com.google.firebase:firebase-sessions
+
+Firebase sessions SDK는 다음 데이터를 자동으로 수집합니다.
+
+패키지 이름, OS 정보, SDK 버전, 네트워크 연결 유형과 같은 애플리케이션에 대한 메타데이터를 수집합니다.
+
+기기 제조업체 및 모델과 같은 애플리케이션 메타데이터를 수집합니다.
+
+새 세션을 시작하기 위해 앱이 포그라운드에서 실행된 시간 등의 사용 데이터를 수집합니다.
+
+Firebase sessions SDK에는 개발자가 다른 최종 사용자 데이터를 수집하도록 구성하거나 호출할 수 있는 선택 기능이 없습니다.
+
+Firebase sessions SDK는 앞선 하위 섹션에 나열된 수집 데이터를 사용하여 애플리케이션의 비정상 종료 및 성능 측정항목을 제공합니다. 특정 데이터를 사용하는 방법에 대한 자세한 내용은 앞선 하위 섹션을 참조하세요. 데이터 공개에 수집 데이터를 사용하는 구체적인 방식과 SDK에서 수집하는 모든 개발자 정의 최종 사용자 데이터가 사용되는 방법을 모두 반영해야 합니다.
+
+### 표
+| 데이터 | 기본적으로 Firebase sessions SDK에서 수집 |
+| --- | --- |
+| 앱 메타데이터 | 패키지 이름, OS 정보, SDK 버전, 네트워크 연결 유형과 같은 애플리케이션에 대한 메타데이터를 수집합니다. |
+| 기기 메타데이터 | 기기 제조업체 및 모델과 같은 애플리케이션 메타데이터를 수집합니다. |
+| 애플리케이션 측정항목 | 새 세션을 시작하기 위해 앱이 포그라운드에서 실행된 시간 등의 사용 데이터를 수집합니다. |
+
+## 기타 유용한 자료
+Apple의 App Store 데이터 공개 요건에 대비하기

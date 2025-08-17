@@ -1,0 +1,49 @@
+Source URL: https://developers.google.com/people/api/rest/v1/RequestMask?hl=ko
+
+## 본문
+JSON 표현
+
+이 항목은 지원 중단되었습니다.
+
+지원 중단됨 (대신 personFields 사용)
+
+응답에서 반환할 사람 필드를 설명합니다.
+
+string (FieldMask format)
+
+필수 항목입니다. 응답에 포함할 사용자 필드의 쉼표로 구분된 목록입니다. 각 경로는 person.로 시작해야 합니다(예: person.names 또는 person.photos).
+
+### 표
+| JSON 표현 |
+| --- |
+| {
+ "includeField": string
+} |
+
+| 필드 | |
+| --- | --- |
+| includeField | string (FieldMask format)
+
+필수 항목입니다. 응답에 포함할 사용자 필드의 쉼표로 구분된 목록입니다. 각 경로는 person.로 시작해야 합니다(예: person.names 또는 person.photos). |
+
+=== 코드/텍스트 탭 수집 ===
+언어: 코드 · 셀#1
+personFields
+
+언어: 코드 · 셀#2
+includeField
+
+언어: 코드 · 셀#3
+string (FieldMask format)
+
+언어: 코드 · 셀#4
+FieldMask
+
+언어: 코드 · 셀#5
+person.
+
+언어: 코드 · 셀#6
+person.names
+
+언어: 코드 · 셀#7
+person.photos

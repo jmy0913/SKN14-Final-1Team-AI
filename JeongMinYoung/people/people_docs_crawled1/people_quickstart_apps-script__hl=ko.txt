@@ -1,0 +1,110 @@
+Source URL: https://developers.google.com/people/quickstart/apps-script?hl=ko
+
+# Google Apps Script 빠른 시작
+bookmark_border
+
+## 1. 목표
+
+환경 구성
+스크립트를 만들고 구성합니다.
+스크립트를 실행합니다.
+
+## 2. 기본 요건
+
+API 액세스가 사용 설정된 Google Workspace 도메인
+관리자 권한이 있는 해당 도메인의 Google 계정
+
+Google Drive 액세스
+
+## 3. 스크립트 만들기
+
+script.google.com/create로 이동하여 새 스크립트를 만듭니다.
+스크립트 편집기의 내용을 다음 코드로 바꿉니다.
+
+.filepath {
+    color: #fff;
+    margin: 6px;
+    max-width: calc(100% - 160px); /* Give at least 160px for the "View on GitHub" button. */
+    text-overflow: ellipsis;
+    text-shadow: rgba(0,0,0,0.1) 1px 1px;
+    overflow: hidden;
+  }
+  .github-docwidget-gitinclude-code .prettyprint {
+    margin: 0;
+  }
+  .view-on-github {
+    text-shadow: rgba(12,12,12,0.1) 1px 1px;
+  }
+
+people/quickstart/quickstart.gs
+GitHub에서 보기
+
+/**
+ * Print the display name if available for 10 connections.
+ */
+function listConnectionNames() {
+  try {
+    /**
+     * List the 10 connections/contacts of user
+     * @see https://developers.google.com/people/api/rest/v1/people.connections/list
+     */
+    const connections = People.People.Connections.list('people/me', {
+      pageSize: 10,
+      personFields: 'names,emailAddresses'
+      // use other query parameter here if needed.
+    });
+    connections.connections.forEach((person) => {
+      // if contacts/connections is available, print the name of person.
+      if (person.names && person.names.length === 0) {
+        console.log('No display name found for connection.');
+        return;
+      }
+      console.log(person.names[0].displayName);
+    });
+  } catch (err) {
+    // TODO (developer) - Handle exception from People API
+    console.log('Failed with error %s', err.message);
+  }
+}
+
+저장 를 클릭합니다.
+제목 없는 프로젝트를 클릭하고 빠른 시작을 입력한 다음 이름 바꾸기를 클릭합니다.
+
+## 4. 스크립트 구성
+
+## 4.1. People API 사용 설정
+
+Apps Script 프로젝트를 엽니다.
+
+편집기 code를 클릭합니다.
+서비스 옆에 있는 서비스 추가 add를 클릭합니다 .
+People API를 선택하고 추가를 클릭합니다.
+
+## 5. 샘플 실행
+
+Apps Script 편집기에서 실행을 클릭합니다.
+
+샘플을 처음 실행하면 액세스 권한을 승인하라는 메시지가 표시됩니다.
+
+권한 검토를 클릭합니다.
+계정을 선택합니다.
+허용을 클릭합니다.
+
+스크립트의 실행 로그가 창 하단에 표시됩니다.
+
+#feedback-question {
+  margin: 1em 0;
+  position: relative;
+}
+#feedback-question section.expandable {
+  position: static;
+}
+
+done 완료
+warning 문제가 발생했습니다
+
+## 6. 다음 단계
+
+Google Apps Script 고급 서비스 문서
+인증 및 승인 문제 해결
+People API 참조 문서

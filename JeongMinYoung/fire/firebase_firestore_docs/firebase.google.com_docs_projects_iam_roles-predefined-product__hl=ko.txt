@@ -1,0 +1,302 @@
+Source URL: https://firebase.google.com/docs/projects/iam/roles-predefined-product?hl=ko
+
+## 서문
+이 역할은 특정 Firebase 제품에 대한 전체 읽기/쓰기 또는 읽기 전용 액세스 권한을 부여합니다.
+
+Google Cloud 콘솔을 사용하여 이러한 역할을 프로젝트 구성원에게 할당합니다.
+
+## Firebase App Check 역할
+App Check 관리자  권한
+
+App Check 뷰어 권한
+
+App Check 토큰 확인자 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase App Check 관리자
+roles/firebaseappcheck.admin | App Check 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | App Check 관리자  권한 |
+| Firebase App Check 뷰어
+roles/firebaseappcheck.viewer | App Check 리소스에 대한
+읽기 전용 액세스 권한 | App Check 뷰어 권한 |
+| Firebase App Check 토큰 검사기
+roles/firebaseappcheck.tokenVerifier | App Check의 토큰 확인 기능에 대한 액세스 권한 | App Check 토큰 확인자 권한 |
+
+## Firebase App Distribution 역할
+App Distribution 관리자  권한
+
+App Distribution 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase App Distribution 관리자
+roles/firebaseappdistro.admin | App Distribution 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | App Distribution 관리자  권한 |
+| Firebase App Distribution 뷰어
+roles/firebaseappdistro.viewer | App Distribution 리소스에 대한
+읽기 전용 액세스 권한 | App Distribution 뷰어 권한 |
+
+## Firebase App Hosting 역할
+App Hosting Compute Runner 권한
+
+App Hosting 관리자  권한
+
+App Hosting 뷰어 권한
+
+App Hosting 개발자 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase App Hosting Compute Runner
+roles/firebaseapphosting.computeRunner | App Hosting 백엔드를 빌드하고 실행하는 데 필요한 최소 액세스 권한입니다. 일반적으로 서비스 계정에 부여됩니다. | App Hosting Compute Runner 권한 |
+| Firebase App Hosting 관리자
+roles/firebaseapphosting.admin | App Hosting 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | App Hosting 관리자  권한 |
+| Firebase App Hosting 뷰어
+roles/firebaseapphosting.viewer | App Hosting 리소스에 대한
+읽기 전용 액세스 권한 | App Hosting 뷰어 권한 |
+| Firebase App Hosting 개발자
+roles/firebaseapphosting.developer | App Hosting 백엔드, 빌드, 출시 리소스에 대한
+전체 읽기/쓰기 액세스 권한입니다. | App Hosting 개발자 권한 |
+
+## Firebase Authentication 역할
+Authentication 관리자  권한
+
+Authentication 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase Authentication 관리자
+roles/firebaseauth.admin | Authentication 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | Authentication 관리자  권한 |
+| Firebase Authentication 뷰어
+roles/firebaseauth.viewer | Authentication 리소스에 대한
+읽기 전용 액세스 권한 | Authentication 뷰어 권한 |
+
+## Firebase A/B Testing 역할(베타)
+A/B Testing 관리자  권한
+
+A/B Testing 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase A/B Testing 관리자
+roles/firebaseabt.admin
+(베타) | A/B Testing 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | A/B Testing 관리자  권한 |
+| Firebase A/B Testing 뷰어
+roles/firebaseabt.viewer
+(베타) | A/B Testing 리소스에 대한
+읽기 전용 액세스 권한 | A/B Testing 뷰어 권한 |
+
+## Cloud Firestore 역할
+Google Cloud 문서에서 사용 가능한 Cloud Firestore 역할을 찾습니다.
+
+프로젝트 구성원이 Firebase 콘솔에서 보안 규칙을 수정 및 게시하거나 Firebase CLI를 통해 보안 규칙을 배포하도록 허용하려면 firebaserules.* 권한이 포함된 커스텀 역할을 만들어 할당하면 됩니다.
+
+## Cloud Storage 역할
+Google Cloud 문서에서 사용 가능한 Cloud Storage 역할을 찾습니다.
+
+프로젝트 구성원이 Firebase 콘솔에서 보안 규칙을 수정 및 게시하거나 Firebase CLI를 통해 보안 규칙을 배포하도록 허용하려면 firebaserules.* 권한이 포함된 커스텀 역할을 만들어 할당하면 됩니다.
+
+## Cloud Functions for Firebase 역할
+Google Cloud 문서에서 사용 가능한 Cloud Functions for Firebase 역할을 찾습니다.
+
+## Firebase 메시징 캠페인 역할
+이러한 역할은 Firebase Cloud Messaging 및 Firebase In-App Messaging의 캠페인에 적용됩니다.
+
+Firebase 메시징 캠페인 관리자 권한
+
+Firebase 메시징 캠페인 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase 메시징 캠페인 관리자
+roles/firebasemessagingcampaigns.admin | Cloud Messaging 및 In-App Messaging의 캠페인 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | Firebase 메시징 캠페인 관리자 권한 |
+| Firebase 메시징 캠페인 뷰어
+roles/firebasemessagingcampaigns.viewer | Cloud Messaging 및 In-App Messaging의 캠페인 리소스에 대한
+읽기 전용 액세스 권한 | Firebase 메시징 캠페인 뷰어 권한 |
+
+## Firebase Cloud Messaging 역할
+Cloud Messaging 관리자  권한
+
+Cloud Messaging 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase Cloud Messaging 관리자
+roles/firebasenotifications.admin | Cloud Messaging 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | Cloud Messaging 관리자  권한 |
+| Firebase Cloud Messaging 뷰어
+roles/firebasenotifications.viewer | Cloud Messaging 리소스에 대한
+읽기 전용 액세스 권한 | Cloud Messaging 뷰어 권한 |
+
+## Firebase Crashlytics 역할
+Crashlytics 관리자  권한
+
+Crashlytics 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase Crashlytics 관리자
+roles/firebasecrashlytics.admin | Crashlytics 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | Crashlytics 관리자  권한 |
+| Firebase Crashlytics 뷰어
+roles/firebasecrashlytics.viewer | Crashlytics 리소스에 대한
+읽기 전용 액세스 권한 | Crashlytics 뷰어 권한 |
+
+## Firebase Dynamic Links 역할
+Dynamic Links 관리자  권한
+
+Dynamic Links 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase Dynamic Links 관리자
+roles/firebasedynamiclinks.admin | Dynamic Links 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | Dynamic Links 관리자  권한 |
+| Firebase Dynamic Links 뷰어
+roles/firebasedynamiclinks.viewer | Dynamic Links 리소스에 대한
+읽기 전용 액세스 권한 | Dynamic Links 뷰어 권한 |
+
+## Firebase Extensions 게시자 역할
+Firebase Extensions 게시자 - 확장 프로그램 관리자 권한
+
+Firebase Extensions 게시자 - 확장 프로그램 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase Extensions 게시자 - 확장 프로그램 관리자
+roles/firebaseextensionspublisher.extensionsAdmin
+(베타) | Firebase Extensions의 세부정보 및 측정항목
+업로드, 게시, 보기 | Firebase Extensions 게시자 - 확장 프로그램 관리자 권한 |
+| Firebase Extensions 게시자 - 확장 프로그램 뷰어
+roles/firebaseextensionspublisher.extensionsViewer
+(베타) | 이 게시자가 업로드한Firebase Extensions의
+세부정보 및 측정항목 보기 | Firebase Extensions 게시자 - 확장 프로그램 뷰어 권한 |
+
+## Firebase Hosting 역할
+Hosting 관리자  권한
+
+Hosting 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase Hosting 관리자
+roles/firebasehosting.admin | Hosting 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | Hosting 관리자  권한 |
+| Firebase Hosting 뷰어
+roles/firebasehosting.viewer | Hosting 리소스에 대한
+읽기 전용 액세스 권한 | Hosting 뷰어 권한 |
+
+## Firebase In-App Messaging 역할(베타)
+In-App Messaging 관리자  권한
+
+In-App Messaging 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase In-App Messaging 관리자
+roles/firebaseinappmessaging.admin
+(베타) | In-App Messaging 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | In-App Messaging 관리자  권한 |
+| Firebase In-App Messaging 뷰어
+roles/firebaseinappmessaging.viewer
+(베타) | In-App Messaging 리소스에 대한
+읽기 전용 액세스 권한 | In-App Messaging 뷰어 권한 |
+
+## Firebase ML 역할(베타)
+Firebase ML 관리자  권한
+
+Firebase ML 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase ML 관리자
+roles/firebaseml.admin
+(베타) | Firebase ML 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | Firebase ML 관리자  권한 |
+| Firebase ML 뷰어
+roles/firebaseml.viewer
+(베타) | Firebase ML 리소스에 대한
+읽기 전용 액세스 권한 | Firebase ML 뷰어 권한 |
+
+## Firebase AI Logic 역할
+Firebase AI Logic 관리자  권한
+
+Firebase AI Logic 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase AI Logic 관리자
+roles/firebasevertexai.admin | Firebase AI Logic 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | Firebase AI Logic 관리자  권한 |
+| Firebase AI Logic 뷰어
+roles/firebasevertexai.viewer | Firebase AI Logic 리소스에 대한
+읽기 전용 액세스 권한 | Firebase AI Logic 뷰어 권한 |
+
+## Firebase Performance Monitoring 역할
+Performance Monitoring 관리자  권한
+
+Performance Monitoring 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase Performance Monitoring 관리자
+roles/firebaseperformance.admin | Performance Monitoring 리소스에 대한
+전체 읽기/쓰기 액세스 권한
+
+Performance Monitoring 알림 구성 및 수신 | Performance Monitoring 관리자  권한 |
+| Firebase Performance Monitoring 뷰어
+roles/firebaseperformance.viewer | Performance Monitoring 리소스에 대한
+읽기 전용 액세스 권한 | Performance Monitoring 뷰어 권한 |
+
+## Firebase Realtime Database 역할
+Realtime Database 관리자  권한
+
+Realtime Database 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase Realtime Database 관리자
+roles/firebasedatabase.admin | Realtime Database 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | Realtime Database 관리자  권한 |
+| Firebase Realtime Database 뷰어
+roles/firebasedatabase.viewer | Realtime Database 리소스에 대한
+읽기 전용 액세스 권한 | Realtime Database 뷰어 권한 |
+
+## Firebase Remote Config 역할
+Remote Config 관리자  권한
+
+Remote Config 뷰어 권한
+
+### 표
+| 역할 | 설명 | 권한 |
+| --- | --- | --- |
+| Firebase Remote Config 관리자
+roles/cloudconfig.admin | Remote Config 리소스에 대한
+전체 읽기/쓰기 액세스 권한 | Remote Config 관리자  권한 |
+| Firebase Remote Config 뷰어
+roles/cloudconfig.viewer | Remote Config 리소스에 대한
+읽기 전용 액세스 권한 | Remote Config 뷰어 권한 |
+
+## Firebase Test Lab 역할
+Firebase Test Lab에서는 Cloud Storage 버킷에 액세스해야 하므로 표준 Firebase 사전 정의된 역할에 일부가 포함되어 있지 않은 매우 구체적인 권한 집합이 필요합니다. Test Lab에 대한 액세스 권한을 부여하려면 Firebase Test Lab 권한 섹션에 설명된 해결책 중 하나를 사용하세요.

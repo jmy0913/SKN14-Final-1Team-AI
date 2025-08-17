@@ -1,0 +1,81 @@
+Source URL: https://cloud.google.com/firestore/docs/reference/rest/v1beta2/projects.databases.collectionGroups.fields/list?hl=ko
+
+## 본문
+Lists the field configuration and metadata for this database.
+
+Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to indexConfig.usesAncestorConfig:false.
+
+GET https://firestore.googleapis.com/v1beta2/{parent=projects/*/databases/*/collectionGroups/*}/fields
+
+The URL uses gRPC Transcoding syntax.
+
+string
+
+A parent name of the form projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId}
+
+The filter to apply to list results. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to indexConfig.usesAncestorConfig:false.
+
+integer
+
+The number of results to return.
+
+A page token, returned from a previous call to FirestoreAdmin.ListFields, that may be used to get the next page of results.
+
+The request body must be empty.
+
+The response for FirestoreAdmin.ListFields.
+
+If successful, the response body contains data with the following structure:
+
+object (Field)
+
+The requested fields.
+
+A page token that may be used to request another page of results. If blank, this is the last page.
+
+Requires one of the following OAuth scopes:
+
+https://www.googleapis.com/auth/datastore
+
+https://www.googleapis.com/auth/cloud-platform
+
+For more information, see the Authentication Overview.
+
+### 표
+| Parameters |
+| --- |
+| parent | string
+
+A parent name of the form projects/{projectId}/databases/{databaseId}/collectionGroups/{collectionId} |
+
+| Parameters |
+| --- |
+| filter | string
+
+The filter to apply to list results. Currently, FirestoreAdmin.ListFields only supports listing fields that have been explicitly overridden. To issue this query, call FirestoreAdmin.ListFields with the filter set to indexConfig.usesAncestorConfig:false. |
+| pageSize | integer
+
+The number of results to return. |
+| pageToken | string
+
+A page token, returned from a previous call to FirestoreAdmin.ListFields, that may be used to get the next page of results. |
+
+| JSON representation |
+| --- |
+| {
+  "fields": [
+    {
+      object (Field)
+    }
+  ],
+  "nextPageToken": string
+} |
+
+| Fields |
+| --- |
+| fields[] | object (Field)
+
+The requested fields. |
+| nextPageToken | string
+
+A page token that may be used to request another page of results. If blank, this is the last page. |

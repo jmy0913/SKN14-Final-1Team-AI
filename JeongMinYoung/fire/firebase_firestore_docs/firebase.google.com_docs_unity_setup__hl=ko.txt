@@ -1,0 +1,368 @@
+Source URL: https://firebase.google.com/docs/unity/setup?hl=ko
+
+## 서문
+Firebase Unity SDK를 활용하여 Unity 게임을 업그레이드해 보세요.
+
+Firebase를 Unity 프로젝트에 연결하는 것이 얼마나 간편한지 보여드리기 위해 Google은 MechaHamster라는 샘플 게임을 제작했습니다. Firebase를 게임에 추가해 보고 싶다면 GitHub에 있는 Starter 버전을 사용하세요. 완성된 버전을 사용하려면 App Store 또는 Google Play Store에서 버전을 확인하세요.
+
+MechaHamster(GitHub)
+
+MechaHamster(App Store)
+
+MechaHamster(Play 스토어)
+
+Firebase 게임 페이지에서 Firebase로 게임을 업그레이드하는 방법을 자세히 알아보세요.
+
+Unity 프로젝트에 Firebase를 이미 추가하셨나요? Firebase Unity SDK의 최신 버전을 사용하고 있는지 확인합니다.
+
+## 기본 요건
+Unity 2021 LTS 이상을 설치합니다. Unity 2020 지원은 지원 중단된 것으로 간주하며 다음 주요 출시 후에 더 이상 적극적으로 지원되지 않습니다. 이전 버전도 호환될 수 있지만 적극적으로 지원되지는 않습니다.
+
+(Apple 플랫폼만 해당) 다음을 설치합니다.
+
+Xcode 13.3.1 이상
+CocoaPods 1.12.0 이상
+
+(Apple 플랫폼만 해당) 다음을 설치합니다.
+
+Xcode 13.3.1 이상
+
+CocoaPods 1.12.0 이상
+
+Unity 프로젝트가 다음 요구사항을 충족하는지 확인합니다.
+
+iOS — iOS 13 이상 타겟팅
+tvOS - tvOS 13 이상 타겟팅
+Android — API 수준 21(Lollipop) 이상 타겟팅
+
+Unity 프로젝트가 다음 요구사항을 충족하는지 확인합니다.
+
+iOS — iOS 13 이상 타겟팅
+
+tvOS - tvOS 13 이상 타겟팅
+
+Android — API 수준 21(Lollipop) 이상 타겟팅
+
+실제 기기를 설정하거나 에뮬레이터를 사용하여 앱을 실행합니다.
+
+Apple 플랫폼 — 실제 기기를 설정하거나 iOS 또는 tvOS 시뮬레이터를 사용합니다.
+
+Cloud Messaging을 사용하시겠어요?
+
+Android — 에뮬레이터에서 Google Play가 포함된 에뮬레이터 이미지를 사용해야 합니다.
+
+실제 기기를 설정하거나 에뮬레이터를 사용하여 앱을 실행합니다.
+
+Apple 플랫폼 — 실제 기기를 설정하거나 iOS 또는 tvOS 시뮬레이터를 사용합니다.
+
+Cloud Messaging을 사용하시겠어요?
+
+Apple 플랫폼 — 실제 기기를 설정하거나 iOS 또는 tvOS 시뮬레이터를 사용합니다.
+
+Cloud Messaging을 사용하시겠어요?
+
+iOS 또는 tvOS에서 Cloud Messaging을 사용하려면 다음 기본 요건을 충족해야 합니다.
+
+실제 기기를 설정합니다.
+Apple 개발자 계정의 Apple 푸시 알림 인증 키를 가져옵니다.
+XCode의 App(앱) > Capabilities(기능)에서 푸시 알림을 사용 설정합니다.
+
+iOS 또는 tvOS에서 Cloud Messaging을 사용하려면 다음 기본 요건을 충족해야 합니다.
+
+실제 기기를 설정합니다.
+
+Apple 개발자 계정의 Apple 푸시 알림 인증 키를 가져옵니다.
+
+XCode의 App(앱) > Capabilities(기능)에서 푸시 알림을 사용 설정합니다.
+
+Android — 에뮬레이터에서 Google Play가 포함된 에뮬레이터 이미지를 사용해야 합니다.
+
+Google 계정을 사용하여 Firebase에 로그인합니다.
+
+Unity 프로젝트가 준비되지 않았지만 Firebase 제품을 사용해 보고자 하는 경우 빠른 시작 샘플 중 하나를 다운로드하세요.
+
+## 1단계: Firebase 프로젝트 만들기
+Unity 프로젝트에 Firebase를 추가하려면 우선 Unity 프로젝트에 연결할 Firebase 프로젝트를 만들어야 합니다. Firebase 프로젝트에 대한 자세한 내용은 Firebase 프로젝트 이해를 참조하세요.
+
+Firebase 프로젝트 만들기
+
+Firebase Console에서 프로젝트 추가를 클릭합니다.
+
+ 기존 Google Cloud 프로젝트에 Firebase 리소스를 추가하려면 프로젝트 이름을 입력하거나 드롭다운 메뉴에서 선택합니다.
+
+ 새 프로젝트를 만들려면 프로젝트 이름을 입력합니다. 필요한 경우 프로젝트 이름 아래에 표시되는 프로젝트 ID를 수정할 수도 있습니다.
+
+ Firebase는 지정된 이름을 토대로 Firebase 프로젝트의 고유 ID를 생성합니다. Firebase에서 프로젝트의 리소스를 프로비저닝한 후에는 프로젝트 ID를 수정할 수 없으므로 이 프로젝트 ID를 수정하려면 지금 수정해야 합니다. Firebase에서 프로젝트 ID가 어떻게 사용되는지를 알아보려면 Firebase 프로젝트 이해를 참조하세요.
+
+Firebase Console에서 프로젝트 추가를 클릭합니다.
+
+기존 Google Cloud 프로젝트에 Firebase 리소스를 추가하려면 프로젝트 이름을 입력하거나 드롭다운 메뉴에서 선택합니다.
+
+새 프로젝트를 만들려면 프로젝트 이름을 입력합니다. 필요한 경우 프로젝트 이름 아래에 표시되는 프로젝트 ID를 수정할 수도 있습니다.
+
+ Firebase는 지정된 이름을 토대로 Firebase 프로젝트의 고유 ID를 생성합니다. Firebase에서 프로젝트의 리소스를 프로비저닝한 후에는 프로젝트 ID를 수정할 수 없으므로 이 프로젝트 ID를 수정하려면 지금 수정해야 합니다. Firebase에서 프로젝트 ID가 어떻게 사용되는지를 알아보려면 Firebase 프로젝트 이해를 참조하세요.
+
+새 프로젝트를 만들려면 프로젝트 이름을 입력합니다. 필요한 경우 프로젝트 이름 아래에 표시되는 프로젝트 ID를 수정할 수도 있습니다.
+
+메시지가 표시되면 Firebase 약관을 검토하고 이에 동의합니다.
+
+계속을 클릭합니다.
+
+(선택사항) Firebase A/B Testing, Cloud Messaging, Crashlytics, In-App Messaging, Remote Config(맞춤설정 포함) 등 Firebase 제품의 사용 환경을 최적화하려면 프로젝트에 Google Analytics를 설정합니다.
+
+ 기존 Google Analytics 계정을 선택하거나 새 계정을 만듭니다. 새 계정을 만드는 경우 Analytics 보고 위치를 선택한 후 프로젝트의 데이터 공유 설정 및 Google Analytics 약관에 동의합니다.
+ 나중에 언제든지 settings 프로젝트 설정의 통합 탭에서 Google Analytics를 설정할 수 있습니다.
+
+(선택사항) Firebase A/B Testing, Cloud Messaging, Crashlytics, In-App Messaging, Remote Config(맞춤설정 포함) 등 Firebase 제품의 사용 환경을 최적화하려면 프로젝트에 Google Analytics를 설정합니다.
+
+기존 Google Analytics 계정을 선택하거나 새 계정을 만듭니다. 새 계정을 만드는 경우 Analytics 보고 위치를 선택한 후 프로젝트의 데이터 공유 설정 및 Google Analytics 약관에 동의합니다.
+
+프로젝트 만들기(또는 기존 Google Cloud 프로젝트에 Firebase를 추가하는 경우에는 Firebase 추가)를 클릭합니다.
+
+Firebase에서 Firebase 프로젝트용 리소스를 자동으로 프로비저닝합니다. 프로세스가 완료되면 Firebase Console에서 Firebase 프로젝트의 개요 페이지로 이동됩니다.
+
+## 2단계: Firebase에 앱 등록
+Firebase 프로젝트에 연결할 앱 또는 게임을 1개 이상 등록할 수 있습니다.
+
+Firebase 콘솔로 이동
+
+프로젝트 개요 페이지 중앙에 있는 Unity 아이콘(plat_unity)을 클릭하여 설정 워크플로를 시작합니다.
+
+Firebase 프로젝트에 앱을 이미 추가한 경우 앱 추가를 클릭하여 플랫폼 옵션을 표시합니다.
+
+프로젝트 개요 페이지 중앙에 있는 Unity 아이콘(plat_unity)을 클릭하여 설정 워크플로를 시작합니다.
+
+Firebase 프로젝트에 앱을 이미 추가한 경우 앱 추가를 클릭하여 플랫폼 옵션을 표시합니다.
+
+등록하려는 Unity 프로젝트의 빌드 타겟을 선택하거나 이제 동시에 두 타겟을 등록하도록 선택할 수도 있습니다.
+
+참고: 지금은 Unity 프로젝트의 빌드 타겟을 하나만 등록하고 나중에 설정 워크플로로 돌아와서 다른 빌드 타겟을 등록할 수 있습니다.
+
+등록하려는 Unity 프로젝트의 빌드 타겟을 선택하거나 이제 동시에 두 타겟을 등록하도록 선택할 수도 있습니다.
+
+Unity 프로젝트의 플랫폼별 ID를 입력합니다.
+
+iOS의 경우 — iOS 번들 ID 필드에 Unity 프로젝트의 iOS ID를 입력합니다.
+
+Android의 경우 — Android 패키지 이름 필드에 Unity 프로젝트의 Android ID를 입력합니다.
+패키지 이름과 애플리케이션 ID는 같은 개념입니다.
+
+Unity 프로젝트의 ID는 어디에서 찾을 수 있나요?
+
+프로젝트에서 실제로 사용하는 ID를 입력해야 합니다. ID 값은 대소문자를 구분하며 Firebase 프로젝트에 등록한 후에는 해당 Firebase 앱의 ID 값을 변경할 수 없습니다.
+
+Unity 프로젝트의 플랫폼별 ID를 입력합니다.
+
+iOS의 경우 — iOS 번들 ID 필드에 Unity 프로젝트의 iOS ID를 입력합니다.
+
+Android의 경우 — Android 패키지 이름 필드에 Unity 프로젝트의 Android ID를 입력합니다.
+패키지 이름과 애플리케이션 ID는 같은 개념입니다.
+
+Unity 프로젝트의 ID는 어디에서 찾을 수 있나요?
+
+Unity IDE에서 Unity 프로젝트를 열고 각 플랫폼의 설정 섹션으로 이동합니다.
+
+iOS의 경우 — Build Settings(빌드 설정) > iOS로 이동합니다.
+Android의 경우 — Android > Player Settings(플레이어 설정) > Other Settings(기타 설정)로 이동합니다.
+
+Unity 프로젝트의 ID는 번들 식별자 값입니다(예시 ID: com.yourcompany.yourproject).
+
+Unity IDE에서 Unity 프로젝트를 열고 각 플랫폼의 설정 섹션으로 이동합니다.
+
+iOS의 경우 — Build Settings(빌드 설정) > iOS로 이동합니다.
+
+Android의 경우 — Android > Player Settings(플레이어 설정) > Other Settings(기타 설정)로 이동합니다.
+
+Unity 프로젝트의 ID는 번들 식별자 값입니다(예시 ID: com.yourcompany.yourproject).
+
+(선택사항) Unity 프로젝트의 플랫폼별 닉네임을 입력합니다.
+이러한 닉네임은 편의상 지정하는 내부용 식별자로 Firebase 콘솔에서 본인만 볼 수 있습니다.
+
+앱 등록을 클릭합니다.
+
+## 3단계: Firebase 구성 파일 추가
+Firebase 콘솔 설정 워크플로에서 플랫폼별 Firebase 구성 파일을 가져옵니다.
+
+Unity 프로젝트의 iOS 및 Android 빌드 타겟을 둘 다 등록하려는 경우 두 플랫폼용 구성 파일을 모두 다운로드하고 추가해야 합니다.
+
+iOS의 경우 — GoogleService-Info.plist 다운로드를 클릭합니다.
+
+Android의 경우 — google-services.json 다운로드를 클릭합니다.
+
+이 구성 파일에 대해 알아야 할 사항은 무엇인가요?
+
+Firebase 콘솔 설정 워크플로에서 플랫폼별 Firebase 구성 파일을 가져옵니다.
+
+iOS의 경우 — GoogleService-Info.plist 다운로드를 클릭합니다.
+
+Android의 경우 — google-services.json 다운로드를 클릭합니다.
+
+이 구성 파일에 대해 알아야 할 사항은 무엇인가요?
+
+Firebase 구성 파일에는 고유하지만 보안 비밀은 아닌 프로젝트 및 앱 식별자가 있습니다. 이 구성 파일에 대한 자세한 내용은 Firebase 프로젝트 이해를 참조하세요.
+언제든지 다시 Firebase 구성 파일을 다운로드할 수 있습니다.
+구성 파일 이름에 (2)와 같은 문자가 추가되지 않았는지 확인합니다.
+
+Firebase 구성 파일에는 고유하지만 보안 비밀은 아닌 프로젝트 및 앱 식별자가 있습니다. 이 구성 파일에 대한 자세한 내용은 Firebase 프로젝트 이해를 참조하세요.
+
+언제든지 다시 Firebase 구성 파일을 다운로드할 수 있습니다.
+
+구성 파일 이름에 (2)와 같은 문자가 추가되지 않았는지 확인합니다.
+
+Unity 프로젝트의 프로젝트 창을 연 다음 구성 파일을 Assets 폴더로 이동합니다.
+
+Firebase 콘솔로 돌아가서 설정 워크플로에서 다음을 클릭합니다.
+
+## 4단계: Firebase Unity SDK 추가
+Firebase 콘솔에서 Firebase Unity SDK 다운로드를 클릭한 후 원하는 위치에 SDK의 압축을 풉니다.
+
+언제든 Firebase Unity SDK를 다시 다운로드할 수 있습니다.
+
+Firebase Unity SDK는 플랫폼별로 제공되지 않습니다.
+
+Firebase 콘솔에서 Firebase Unity SDK 다운로드를 클릭한 후 원하는 위치에 SDK의 압축을 풉니다.
+
+언제든 Firebase Unity SDK를 다시 다운로드할 수 있습니다.
+
+Firebase Unity SDK는 플랫폼별로 제공되지 않습니다.
+
+Unity 프로젝트를 열고 Assets(애셋) > Import Package(패키지 가져오기) > Custom Package(커스텀 패키지)로 이동합니다.
+
+압축을 푼 SDK에서 앱에 사용할 지원되는 Firebase 제품을 선택합니다.
+
+Analytics 사용 설정됨
+Analytics 사용 설정되지 않음
+
+앱에서 사용할 Firebase 제품의 패키지를 추가합니다. 예를 들어 Firebase Authentication 및 Firebase Realtime Database를 사용하려면 다음을 추가하세요.
+FirebaseAuth.unitypackage 및 FirebaseDatabase.unitypackage
+
+압축을 푼 SDK에서 앱에 사용할 지원되는 Firebase 제품을 선택합니다.
+
+Unity 패키지 가져오기 창에서 가져오기를 클릭합니다.
+
+Firebase 콘솔로 돌아가서 설정 워크플로에서 다음을 클릭합니다.
+
+=== 코드/텍스트 탭 수집 ===
+언어: Analytics 사용 설정됨 · 셀#1
+FirebaseAnalytics.unitypackage
+
+언어: Analytics 사용 설정됨 · 셀#2
+FirebaseAuth.unitypackage
+
+언어: Analytics 사용 설정됨 · 셀#3
+FirebaseDatabase.unitypackage
+
+언어: Analytics 사용 설정되지 않음 · 셀#1
+FirebaseAuth.unitypackage
+
+언어: Analytics 사용 설정되지 않음 · 셀#2
+FirebaseDatabase.unitypackage
+
+## 5단계: Google Play 서비스 버전 요구사항 확인
+Android용 Firebase Unity SDK의 일부 제품에는 Google Play services가 필요합니다. 이 종속 항목이 있는 제품을 알아보세요. 이러한 제품을 사용하려면 Google Play services가 최신 상태여야 합니다.
+
+애플리케이션 시작 시 다음 using 문과 초기화 코드를 추가합니다. SDK에서 다른 메서드를 호출하기 전에 Google Play services를 확인하고 필요에 따라 필요한 버전으로 업데이트할 수 있습니다.
+
+이제 준비가 끝났습니다. Firebase를 사용하기 위한 Unity 프로젝트 등록 및 구성 작업을 마쳤습니다.
+
+설정하는 데 문제가 있다면 Unity 문제 해결 및 FAQ를 참조하세요.
+
+## 데스크톱 워크플로(베타) 설정
+게임을 만들 때 Unity 편집기와 데스크톱 플랫폼에서 먼저 게임을 테스트한 다음, 개발 과정의 이후 단계에서 휴대기기에 배포하고 테스트하는 것이 한결 간편한 경우가 많습니다. Google은 이러한 워크플로를 지원하기 위해 Windows, macOS, Linux 및 Unity 편집기 내에서 실행할 수 있는 Firebase Unity SDK의 하위 집합을 제공합니다.
+
+모바일 플랫폼과 동일한 안내에 따라 데스크톱 플랫폼 Unity 프로젝트를 설정합니다(위의 Firebase에 앱 등록 단계부터 시작).
+
+Unity IDE에서 Unity 프로젝트를 실행하거나 데스크톱용 Unity 프로젝트 빌드를 선택합니다.
+
+참고: Firebase는 개발자가 Unity 프로젝트에 추가한 모바일 Firebase 구성 파일(GoogleService-Info.plist 또는 google-services.json)을 찾습니다. 그런 다음 모바일 구성 파일에서 데스크톱 Firebase 구성 파일(google-services-desktop.json)을 자동으로 생성합니다. 이 데스크톱 구성 파일에는 Firebase Console 설정 워크플로에서 입력한 Unity 프로젝트 ID가 들어 있습니다. 이 파일은 앱을 Firebase 프로젝트와 연결합니다.
+
+편집기가 데스크톱 구성 파일을 찾을 수 없으면 StreamingAssets 디렉터리가 있고 데스크톱 구성 파일이 내부에 있는지 확인합니다.
+
+Unity IDE에서 Unity 프로젝트를 실행하거나 데스크톱용 Unity 프로젝트 빌드를 선택합니다.
+
+(선택사항) Unity 프로젝트를 수정 모드로 실행합니다.
+
+Unity의 수정 모드에서도 Firebase Unity SDK를 실행할 수 있으므로 편집기 플러그인에서 사용할 수 있습니다.
+
+편집기에서 사용하는 FirebaseApp을 만들 때 기본 인스턴스를 사용하지 마세요.
+
+대신 FirebaseApp.Create() 호출에 고유한 이름을 제공합니다.
+
+이렇게 해야 Unity IDE에서 사용하는 인스턴스와 Unity 프로젝트에서 사용하는 인스턴스 간에 옵션 충돌을 방지할 수 있습니다.
+
+(선택사항) Unity 프로젝트를 수정 모드로 실행합니다.
+
+Unity의 수정 모드에서도 Firebase Unity SDK를 실행할 수 있으므로 편집기 플러그인에서 사용할 수 있습니다.
+
+편집기에서 사용하는 FirebaseApp을 만들 때 기본 인스턴스를 사용하지 마세요.
+
+대신 FirebaseApp.Create() 호출에 고유한 이름을 제공합니다.
+
+이렇게 해야 Unity IDE에서 사용하는 인스턴스와 Unity 프로젝트에서 사용하는 인스턴스 간에 옵션 충돌을 방지할 수 있습니다.
+
+대신 FirebaseApp.Create() 호출에 고유한 이름을 제공합니다.
+
+이렇게 해야 Unity IDE에서 사용하는 인스턴스와 Unity 프로젝트에서 사용하는 인스턴스 간에 옵션 충돌을 방지할 수 있습니다.
+
+## 지원되는 Firebase 제품
+Unity Firebase 라이브러리에 대한 자세한 내용은 참고 문서를 확인하세요.
+
+## 사용 가능한 모바일 Firebase 라이브러리
+Firebase Unity SDK는 Apple 및 Android에서 다음 Firebase 제품을 지원합니다.
+
+### 표
+| Firebase 제품 | Unity 패키지 |
+| --- | --- |
+| AdMob | AdMob Unity 플러그인으로 별도 배포 |
+| Firebase AI Logic | FirebaseAI.unitypackage |
+| Analytics | FirebaseAnalytics.unitypackage |
+| App Check | FirebaseAppCheck.unitypackage |
+| Authentication | FirebaseAuth.unitypackage |
+| Cloud Firestore | FirebaseFirestore.unitypackage |
+| Cloud Functions | FirebaseFunctions.unitypackage |
+| Cloud Messaging | FirebaseMessaging.unitypackage
+(권장) FirebaseAnalytics.unitypackage |
+| Cloud Storage | FirebaseStorage.unitypackage |
+| Crashlytics | FirebaseCrashlytics.unitypackage
+(권장) FirebaseAnalytics.unitypackage |
+| Dynamic Links | FirebaseDynamicLinks.unitypackage
+(권장) FirebaseAnalytics.unitypackage |
+| Realtime Database | FirebaseDatabase.unitypackage |
+| Remote Config | FirebaseRemoteConfig.unitypackage
+(권장) FirebaseAnalytics.unitypackage |
+
+## 사용 가능한 데스크톱 Firebase 라이브러리
+Firebase Unity SDK에는 Unity 편집기 및 Windows, macOS, Linux의 독립형 데스크톱 빌드에서 Firebase의 특정 부분을 사용할 수 있도록 일부 제품에 대한 데스크톱 워크플로 지원이 포함되어 있습니다.
+
+Firebase는 Windows, macOS, Linux용으로 빌드할 때 편의상 비기능적 스텁 구현으로 나머지 데스크톱 라이브러리를 제공합니다. 따라서 데스크톱을 타겟팅하기 위해 코드를 조건부로 컴파일할 필요가 없습니다.
+
+### 표
+| Firebase 제품(데스크톱) | Unity 패키지 |
+| --- | --- |
+| Firebase AI Logic | FirebaseAI.unitypackage |
+| App Check | FirebaseAppCheck.unitypackage |
+| Authentication | FirebaseAuth.unitypackage |
+| Cloud Functions | FirebaseFunctions.unitypackage |
+| Cloud Firestore | FirebaseFirestore.unitypackage |
+| Cloud Storage | FirebaseStorage.unitypackage |
+| Realtime Database | FirebaseDatabase.unitypackage |
+| Remote Config | FirebaseRemoteConfig.unitypackage |
+
+## 다음 단계
+샘플 Firebase 앱 살펴보기
+
+앱 출시 준비
+
+Google Cloud 콘솔에서 프로젝트의 예산 알림을 설정합니다.
+Firebase 콘솔에서 사용량 및 결제 대시보드를 모니터링하여 여러 Firebase 서비스에서 프로젝트 사용량을 전체적으로 파악합니다.
+Firebase 출시 체크리스트를 검토합니다.
+
+앱 출시 준비
+
+Google Cloud 콘솔에서 프로젝트의 예산 알림을 설정합니다.
+
+Firebase 콘솔에서 사용량 및 결제 대시보드를 모니터링하여 여러 Firebase 서비스에서 프로젝트 사용량을 전체적으로 파악합니다.
+
+Firebase 출시 체크리스트를 검토합니다.
+
+Firebase와 Unity 프로젝트에 문제가 있다면 Unity 문제 해결 및 FAQ를 참조하세요.

@@ -1,0 +1,123 @@
+Source URL: https://developers.google.com/people/v1/other-contacts?hl=ko
+
+## 서문
+People API 사용 준비하기의 단계를 완료하면 '기타 연락처' 데이터를 읽고, 복사하고, 검색할 수 있습니다.
+
+다음 코드 샘플은 몇 가지 간단한 요청을 보내는 방법을 보여줍니다. 메서드의 전체 목록은 참조 문서를 참고하세요.
+
+## 사용자의 '기타 연락처' 표시
+사용자의 '기타 연락처'에 있는 사용자 목록을 가져오려면 다음 코드를 사용하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜 · 셀#1
+GET /v1/otherContacts?readMask=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+언어: 자바 · 셀#1
+ListOtherContactsResponse response = peopleService.otherContacts().list()
+ .setReadMask("metadata,names,emailAddresses")
+ .execute();
+
+List<Person> otherContacts = response.getOtherContacts();
+
+## 변경된 사용자의 '기타 연락처'를 나열합니다.
+동기화 동작에 관한 자세한 내용은 ListOtherContacts를 참고하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 자바 · 셀#1
+// Initial request
+ListOtherContactsResponse fullSyncResponse = peopleService.otherContacts().list()
+ .setReadMask("metadata,names,emailAddresses")
+ .setRequestSyncToken(true)
+ .execute();
+// Fetch all the pages
+while (fullSyncResponse.getNextPageToken() != null) {
+ fullSyncResponse = peopleService.otherContacts().list()
+ .setReadMask("metadata,names,emailAddresses")
+ .setRequestSyncToken(true)
+ .setPageToken(fullSyncResponse.getNextPageToken())
+ .execute();
+}
+
+// Some time passes
+
+// Fetch incremental changes using the sync token returned in the last fullSyncResponse.
+try {
+ ListOtherContactsResponse incrementalSyncResponse = peopleService.otherContacts().list()
+ .setReadMask("metadata,names,emailAddresses")
+ .setSyncToken(fullSyncResponse.getNextSyncToken())
+ .execute();
+ for (Person person : incrementalSyncResponse.getOtherContacts()) {
+ handlePerson(person);
+ }
+
+ // Fetch all the pages
+ while (!incrementalSyncResponse.getNextPageToken().isEmpty()) {
+ incrementalSyncResponse = peopleService.otherContacts().list()
+ .setReadMask("metadata,names,emailAddresses")
+ .setSyncToken(fullSyncResponse.getNextSyncToken())
+ .setPageToken(incrementalSyncResponse.getNextPageToken())
+ .execute();
+ for (Person person : incrementalSyncResponse.getOtherContacts()) {
+ handlePerson(person);
+ }
+ }
+} catch (GoogleJsonResponseException e) {
+ if (e.getStatusCode() == 410) {
+ // Sync token expired. Make full sync request.
+ }
+}
+
+void handlePerson(Person person) {
+ if (person.getMetadata().getDeleted()) {
+ // Handle deleted person
+ } else {
+ // Handle changed person
+ }
+}
+
+## '기타 연락처'를 'myContacts' 그룹에 복사
+'기타 연락처'를 'myContacts' 그룹에 복사하려면 다음 코드를 사용하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜 · 셀#1
+POST /v1/resource_name:copyOtherContactToMyContactsGroup?copyMask=names,emailAddresses,phoneNumbers HTTP/1.1
+Host: people.googleapis.com
+
+언어: 자바 · 셀#1
+Person copiedContact = peopleService
+ .otherContacts()
+ .copyOtherContactToMyContactsGroup(
+ "resource_name",
+ new CopyOtherContactToMyContactsGroupRequest()
+ .setCopyMask("names,emailAddresses,phoneNumbers"))
+ .execute();
+
+## 사용자의 '기타 연락처' 검색
+사용자의 모든 '기타 연락처'를 검색하려면 다음 코드를 사용하세요.
+
+=== 코드/텍스트 탭 수집 ===
+언어: 프로토콜 · 셀#1
+// Warmup cache
+GET /v1/otherContacts:search?query=&readMask=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+// Send search request after several seconds
+GET /v1/otherContacts:search?query=query&readMask=names,emailAddresses HTTP/1.1
+Host: people.googleapis.com
+
+언어: 자바 · 셀#1
+// Warmup cache
+SearchResponse response = peopleService.otherContacts().search()
+ .setQuery("")
+ .setReadMask("names,emailAddresses")
+ .execute();
+
+// Wait a few seconds
+Thread.sleep(5);
+
+// Send search request
+SearchResponse response = peopleService.otherContacts().search()
+ .setQuery("query")
+ .setReadMask("names,emailAddresses")
+ .execute();

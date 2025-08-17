@@ -1,0 +1,5 @@
+Source URL: https://developers.google.com/people/carddav?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다. Google Workspace People API CardDAV 프로토콜로 연락처 관리 컬렉션을 사용해 정리하기 내 환경설정을 기준으로 콘텐츠를 저장하고 분류하세요. Google의 CardDAV 프로토콜을 사용하여 연락처를 보고 관리할 수 있습니다. 연락처가 사용자의 Google 계정에 저장됩니다. 대부분의 Google 서비스에는 연락처 목록에 액세스할 수 없습니다. 클라이언트 애플리케이션은 CardDAV API를 사용하여 새 연락처를 만들고, 기존 연락처를 수정 또는 삭제하고, 특정 기준과 일치하는 연락처를 쿼리할 수 있습니다. 전체 사양은 구현되지 않았지만 Apple iOS™ 연락처 및 macOS와 같은 많은 클라이언트는 올바르게 상호 운용되어야 합니다. 관련 사양별로 Google의 CardDAV 지원은 다음과 같습니다. rfc2518: 분산 저작을 위한 HTTP 확장 프로그램(WebDAV) HTTP 메서드 를 지원합니다. HTTP 메서드 지원하지 않습니다 임의의(사용자 정의) WebDAV 속성을 지원하지 않습니다 WebDAV 액세스 제어(rfc3744)를 지원하지 않습니다 rfc5995: POST를 사용하여 WebDAV 컬렉션
+

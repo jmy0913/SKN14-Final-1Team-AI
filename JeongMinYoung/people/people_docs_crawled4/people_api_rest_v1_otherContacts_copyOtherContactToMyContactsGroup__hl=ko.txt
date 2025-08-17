@@ -1,0 +1,46 @@
+Source URL: https://developers.google.com/people/api/rest/v1/otherContacts/copyOtherContactToMyContactsGroup?hl=ko
+
+=== 본문 ===
+이 페이지는 Cloud Translation API 를 통해 번역되었습니다. Google Workspace People API 참고자료 Method: otherContacts.copyOtherContactToMyContactsGroup 컬렉션을 사용해 정리하기 내 환경설정을 기준으로 콘텐츠를 저장하고 분류하세요. HTTP 요청 경로 매개변수 요청 본문 JSON 표현 응답 본문 승인 범위 '기타 연락처' 복사 사용자의 'myContacts'에 있는 새 연락처 그룹 지연 시간 및 실패 증가를 방지하려면 동일한 사용자에 대한 변형 요청을 순차적으로 전송해야 합니다. HTTP 요청 URL은 gRPC 트랜스코딩 문법을 사용합니다. 경로 매개변수 매개변수 필수 항목입니다. '기타 연락처'의 리소스 이름입니다. 복사합니다. 요청 본문 요청 본문에는 다음과 같은 구조의 데이터가 포함됩니다. JSON 표현 필수 항목입니다. 새 연락처로 복사할 필드를 제한하는 필드 마스크입니다. 유효한 값은 다음과 같습니다. emailAddresses phoneNumbers 선택사항입니다. 반환되는 사람의 필드를 제한하는 필드 마스크입니다. 여러 필드는 쉼표로 구분하여 지정할 수 있습니다. 설정하지 않은 경우 기본값은 메타데이터 및 멤버십 필드가 있는 복사 마스크입니다. 유효한 값은 다음과 같습니다. addresses ageRanges calendarUrls clientData coverPhotos emailAddresses externalIds imClients 관심분야 locales 메타데이터 miscKeywords organizations phoneNumbers sipAddresses userDefined 선택사항입니다. 반환할 소스 유형의 마스크입니다. 설정하지 않으면 기본값은 입니다. 응답 본문 성공한 경우 응답 본문에 의 인스턴스가 포함됩니다. 승인 범위 다음 OAuth 범위 중 하나가 필요합니다. 자세한 내용은 승인 가이드 를 참조하세요.
+
+=== 코드 ===
+POST https://people.googleapis.com/v1/{resourceName=otherContacts/*}:copyOtherContactToMyContactsGroup
+
+=== 코드 ===
+resourceName
+
+=== 코드 ===
+{
+  "copyMask": string,
+  "readMask": string,
+  "sources": [
+    enum (ReadSourceType)
+  ]
+}
+
+=== 코드 ===
+ReadSourceType
+
+=== 코드 ===
+string (FieldMask format)
+
+=== 코드 ===
+string (FieldMask format)
+
+=== 코드 ===
+enum (ReadSourceType)
+
+=== 코드 ===
+ReadSourceType
+
+=== 코드 ===
+READ_SOURCE_TYPE_CONTACT
+
+=== 코드 ===
+READ_SOURCE_TYPE_PROFILE
+
+=== 코드 ===
+https://www.googleapis.com/auth/contacts.other.readonly
+
+=== 코드 ===
+https://www.googleapis.com/auth/contacts

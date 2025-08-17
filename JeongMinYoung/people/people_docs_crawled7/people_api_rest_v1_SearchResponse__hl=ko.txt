@@ -1,0 +1,47 @@
+Source URL: https://developers.google.com/people/api/rest/v1/SearchResponse?hl=ko
+
+## Fallback (article.innerText)
+이 페이지는 Cloud Translation API를 통해 번역되었습니다.
+홈
+제품
+Google Workspace
+People API
+참고자료
+SearchResponse
+bookmark_border
+이 페이지의 내용
+SearchResult
+
+특정 쿼리가 지정된 인증된 사용자의 검색 요청에 대한 응답입니다.
+
+JSON 표현
+{
+  "results": [
+    {
+      object (SearchResult)
+    }
+  ]
+}
+필드
+results[]
+
+object (SearchResult)
+
+요청 결과입니다.
+
+SearchResult
+
+검색어의 결과입니다.
+
+JSON 표현
+{
+  "person": {
+    object (Person)
+  }
+}
+필드
+person
+
+object (Person)
+
+일치하는 인물입니다.
