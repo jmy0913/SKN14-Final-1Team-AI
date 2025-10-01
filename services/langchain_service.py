@@ -202,7 +202,7 @@ class LangChainChatService:
             model=self.model_name,
             openai_api_base=self.api_url,
             openai_api_key=self.api_key,
-            temperature=0.2,
+            temperature=0.0,
         )
 
     async def get_chat_response(self, request: ChatRequest) -> str:
