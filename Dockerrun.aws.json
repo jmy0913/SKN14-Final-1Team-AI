@@ -1,7 +1,7 @@
 {
   "AWSEBDockerrunVersion": "1",
   "Image": {
-    "Name": "skn14f1/fastapi:latest",
+    "Name": "skn14f1/skn14-fastapi-develop:latest",
     "Update": "true"
   },
   "Ports": [
