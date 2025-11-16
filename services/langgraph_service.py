@@ -5,7 +5,7 @@ import traceback
 
 graph = graph_setting()
 
-async def run_langraph(request: ChatRequest2) -> str:
+async def run_langraph(request: ChatRequest2):
         user_input = request.user_input
         config_id = request.config_id
         image = request.image
@@ -38,3 +38,5 @@ async def run_langraph(request: ChatRequest2) -> str:
             print(f"run_langraph 에러: {str(e)}")
             traceback.print_exc()
             return f"처리 중 오류가 발생했습니다: {str(e)}"
+
+
