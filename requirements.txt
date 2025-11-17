@@ -3,8 +3,14 @@ pre-commit
 fastapi
 uvicorn[standard]
 python-dotenv
-langchain_openai
 langchain_chroma
 langchain_huggingface
 sentence-transformers
 gdown
+langgraph==0.6.7
+langchain==0.3.27
+lark
+langchain_openai==0.3.32
+langchain-community==0.3.29
+rank_bm25
+konlpy
